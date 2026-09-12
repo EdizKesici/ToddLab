@@ -1,0 +1,125 @@
+# Generic metadata per provider. Per-indicator config (which slug/code,
+# which priority) lives in config/indicators/*.yaml — this file only holds
+# what's true for every request to a given source.
+
+owid:
+  base_url: "https://ourworldindata.org/grapher"
+  auth_required: false
+  license_default: "CC-BY-4.0"
+  layer: harmonized
+  notes: >
+    Layer: carries L3 model estimates for the pilot charts (UN IGME for
+    infant mortality) — an honest, documented L4 redistribution of them.
+    The executable layer map lives in src/schema/indicator.py
+    (PROVIDER_LAYER); this block is the human-readable narrative.
+
+    No API key. Rate limit not publicly documented: the connector uses an
+    identifiable User-Agent out of courtesy, no aggressive parallelization
+    while the number of indicators stays small (phase 1-2). Some grapher
+    slugs return HTTP 403 on direct CSV download (observed on a modeled
+    IHME/GBD chart during a live-network audit) even though the underlying
+    dataset is otherwise public on the OWID site — treat a 403 as "this
+    slug isn't fetchable this way", not as a transient error, and look for
+    an alternative slug/source rather than retrying.
+
+worldbank:
+  base_url: "https://api.worldbank.org/v2"
+  auth_required: false
+  license_default: "CC-BY-4.0"
+  notes: "Connector planned for phase 2. Needs page/per_page pagination handling (see API docs)."
+
+who_gho:
+  base_url: "https://ghoapi.azureedge.net/api"
+  auth_required: false
+  license_default: "CC-BY-3.0-IGO"
+  notes: "Connector planned for phase 2. OData: filter by IndicatorCode to avoid pulling everything."
+
+un_dyb:
+  base_url: "https://unstats.un.org/unsd/demographic-social/products/dyb"
+  auth_required: false
+  license_default: "UN data reuse policy (attribution required, no endorsement implied)"
+  layer: collector
+  notes: >
+    Layer: COLLECTOR (L1-collector) — national official statistics
+    republished as reported; the canonical tier of the Todd board together
+    with `curated` (ADR-0008). Native per-1,000 rates = infant_mortality's
+    canonical unit (no conversion on this path); Table 4 life expectancy
+    comes in years (same as the indicator's unit) and MALE/FEMALE split
+    (the collector prints no "both sexes" column — the sex field is part
+    of the merge key, averaging would be a derivation).
+
+    United Nations Demographic Yearbook: the COLLECTOR tier of the layer
+    model (docs/the-measurement-problem.md section 7) — national official
+    statistics republished as reported, with the UN's own quality codes
+    ("C"/"U"/"|"/"..."), per-row footnotes, and honest gaps ("...",
+    never interpolated). Rates only computed for "C"/"|" completeness per
+    the table's own notes — that rule, not a bug, is why ~90 of ~148
+    reporting countries have IMR rates per edition. Known coverage holes
+    (Russia, US, China, UK absent from recent Table 15s) are reporting
+    gaps to expose in the coverage report, not to patch.
+
+    EDITION LOOP (P1, everything below verified live, 2026-09-06): 12
+    editions wired, per-table files, three eras — 2011-2014 on the legacy
+    site (/unsd/demographic/products/dyb/dyb{ed}/Table{NN}.xls) as
+    SpreadsheetML; 2016/2017/2021-2023 on the modern site as BINARY BIFF
+    (xlrd, years-as-floats and footnote-suffixed country names
+    normalized); 2018-2020/2024 as SpreadsheetML. Edition 2015: per-table
+    XLS links dead (PDF-only) — build_url refuses it loudly. Edition 2016:
+    files FILEPASS-encrypted with an unknown password (msoffcrypto-tool
+    verified: not empty) — not wired, zero coverage loss (2012-2016
+    covered by editions 2014 + 2017). Consecutive windows overlap and
+    merge.py arbitrates by priority (later edition = later vintage wins,
+    the standard vintage discipline; every arbitration logged in
+    provenance.json). Coverage of the loop: 2007-2024, as-reported.
+
+
+oecd:
+  base_url: "https://sdmx.oecd.org/public/rest/data"
+  auth_required: false
+  license_default: "OECD Terms and Conditions, attribution required (content: WHO Mortality Database)"
+  layer: collector
+  notes: >
+    Layer: COLLECTOR (P3 judgment) — the "Causes of mortality" dataflow
+    (DSD_HEALTH_STAT@DF_COM, agency OECD.ELS.HD) redistributes the WHO
+    Mortality Database: national civil-registration cause-of-death
+    tables AS SUBMITTED by member states (ICD-coded; Assault =
+    CICDHOCD), no modeling, no imputation. Same judgment as un_dyb for
+    content; the contrast with who_gho (whose homicide indicators are
+    literally named "Estimates of ...") marks the collector/harmonized
+    line. SDMX REST, no key, CSV responses; the connector pins all 13
+    dimension positions except REF_AREA and SEX, so one request returns
+    the whole series (rate per 100k = DT_10P5HB, counts = DT), and
+    pins CALC_METHODOLOGY=CRUDE — the dataflow also carries
+    age-standardized rates (STANDARD) for the same keys, a derived
+    comparability measure the canonical tier deliberately excludes.
+
+    Why this route exists at all (investigated live 2026-09-11): the
+    WHO Mortality Database itself has no documented public API — the
+    platform.who.int/mortality portal is a JS app with obfuscated
+    endpoints, the classic who.int/healthinfo bulk paths are dead, the
+    dthub gateway is DNS-dead. The OECD SDMX API is the one clean
+    programmatic route to the content found. Scope honestly partial:
+    49 countries (OECD + key partners incl. RUS, CHN, BRA, ZAF, IND);
+    Russia's series ends 2019 (the WHO MDB's own lag).
+
+curated:
+  base_url: "catalog/curated"   # in-repo directory, NOT a network endpoint
+  auth_required: false
+  license_default: "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+  layer: curated
+  notes: >
+    Layer: CURATED (L0-L2) — hand-entered official/scholarly series with
+    one citation per point, committed as CSVs in catalog/curated/*.csv and
+    reviewed like code in pull requests. The curation gate (ADR-0007
+    condition 3) keeps the tier finite, citable and PR-reviewable: a
+    todd_ref must demand the point, the distortion vs the collector or
+    harmonized layer must be demonstrated, and a citable source must
+    exist — the connector mechanically rejects rows without a citation.
+    "Fetching" a curated source is reading the committed CSV (no
+    network); it then flows through the same raw-snapshot path as every
+    other source. Series-level provenance and cross-checks:
+    catalog/curated/README.md.
+
+# HMD and CLIO-INFRA deliberately absent (set aside for now, per conversation).
+# `layer` values above mirror PROVIDER_LAYER in src/schema/indicator.py —
+# keep the two in sync when a provider is added.

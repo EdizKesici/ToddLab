@@ -1,0 +1,11 @@
+Entity,Code,Year,Homicide rate
+France,FRA,1990,1.1
+France,FRA,2010,1.0
+France,FRA,2023,1.2
+Germany,DEU,1990,1.2
+Germany,DEU,2023,0.8
+East Germany,OWID_DDR,1988,1.5
+West Germany,OWID_FRG,1988,1.1
+France,FRA,1975,999.0
+World,OWID_WRL,2015,6.1
+Freedonia,,2005,42.0

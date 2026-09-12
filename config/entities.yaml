@@ -1,0 +1,3361 @@
+# config/entities.yaml -- geographic entity resolution table
+#
+# 249 current countries/territories generated from pycountry (ISO 3166-1,
+# English names), plus 9 historical/manual entities added by hand (USSR,
+# Czechoslovakia, Yugoslavia, East/West Germany, North/South Yemen,
+# Kosovo).
+#
+# KNOWN LIMITATIONS (to fix before production use):
+# - `source_ids.owid` is a BET: it assumes the OWID name == the pycountry
+#   English label. True most of the time but NOT guaranteed (accents,
+#   "Democratic Republic of Congo" vs "Congo, Dem. Rep."...). The OWID
+#   connector logs an explicit warning (never crashes) when a name found
+#   in a CSV has no match here -- see {indicator}.unresolved.json, which
+#   is how this table gets corrected incrementally instead of guessed
+#   upfront. Confirmed live (see CHANGELOG): aggregates/regions/income
+#   groups (~27 names: 'World', 'Africa', 'European Union (27)'...) show
+#   up as unresolved by design -- this project only models countries.
+# - OWID Code values are NOT simply blank for non-ISO entities: OWID uses
+#   "OWID_"-prefixed pseudo-codes (OWID_USS, OWID_KOS, OWID_WRL...). See
+#   src/connectors/owid.py and normalize.py's classify_unresolved().
+# - The 15 former Soviet republics carry a `formerly_part_of` field: OWID's
+#   mortality data attaches pre-1991 values to each modern country's own
+#   code rather than to a separate USSR entity, so their series run
+#   continuously through 1991 with a flagged warning rather than being cut
+#   at the entity's own founding year. See the `ussr` entity's notes and
+#   docs/methodology.md for the full reasoning (resolved in conversation).
+# - `source_ids.un_dyb` (added v6, ADR-0008 wiring): the entity's name AS
+#   PRINTED in UN Demographic Yearbook tables when it differs from `label`
+#   (e.g. label "United States" vs DYB "United States of America"). The 12
+#   entries were verified against the live DYB 2024 Table 15 file
+#   (scripts/check_dyb_name_resolution.py: 144/145 names resolve).
+#   "Saint Helena ex. dep." is deliberately unresolved — the DYB territory
+#   is narrower than the ISO entity (sub-territory granularity is an open
+#   mapping question, visible in infant_mortality.unresolved.json).
+# - Sub-national entities OWID tracks separately (England and Wales,
+#   Scotland, Northern Ireland) are NOT modeled here yet. Flagged during a
+#   live audit as potentially relevant to Todd's family-systems anthropology
+#   (which operates partly at sub-national/regional level) -- deliberately
+#   deferred, not decided against.
+
+- entity_id: ussr
+  label: Soviet Union
+  iso3: null
+  valid_from: 1922
+  valid_to: 1991
+  predecessor: null
+  successors:
+  - russian_federation
+  - ukraine
+  - belarus
+  - moldova_republic_of
+  - georgia
+  - armenia
+  - azerbaijan
+  - kazakhstan
+  - uzbekistan
+  - turkmenistan
+  - tajikistan
+  - kyrgyzstan
+  - lithuania
+  - latvia
+  - estonia
+  source_ids:
+    owid: USSR
+    worldbank: null
+    who_gho: null
+    # Vintage name printed by the DYB collector's own tables (verified in
+    # the 1978 edition text, the PDF-era rows the XLS loop cannot reach —
+    # this override is PREPARATION for the PDF route, P1b: the as-reported
+    # XLS loop 2007-2024 contains no USSR row by construction).
+    un_dyb: Union of Soviet Socialist Republics
+  label_source: manual
+  notes: 'This project''s original tracer (Soviet infant mortality, see brief). RESOLVED
+    (see conversation and CHANGELOG): a live-network audit found OWID carries no standalone
+    ''USSR'' entity in the mortality datasets used here (infant-mortality, child-mortality),
+    even OWID''s deepest long-run series (1751-2024) -- Gapminder/UN IGME attach historical
+    values straight to each modern successor country''s own code instead. Decision:
+    each of the 15 successor republics below shows one continuous series (pre- and
+    post-1991) with a `formerly_part_of` warning on the pre-1991 portion, rather than
+    a separate fabricated ''ussr'' series. This entity is kept for reference/documentation
+    and in case a future source (e.g. HMD) does carry a genuine standalone USSR series.'
+- entity_id: czechoslovakia
+  label: Czechoslovakia
+  iso3: null
+  valid_from: 1918
+  valid_to: 1992
+  predecessor: null
+  successors:
+  - czechia
+  - slovakia
+  source_ids:
+    owid: Czechoslovakia
+    worldbank: null
+    who_gho: null
+  label_source: manual
+- entity_id: yugoslavia_sfr
+  label: Socialist Federal Republic of Yugoslavia
+  iso3: null
+  valid_from: 1945
+  valid_to: 1992
+  predecessor: null
+  successors:
+  - serbia_and_montenegro
+  - croatia
+  - slovenia
+  - bosnia_and_herzegovina
+  - north_macedonia
+  source_ids:
+    owid: Yugoslavia
+    worldbank: null
+    who_gho: null
+    # Vintage DYB name (verified in the 1978 edition text: "Yugoslavia -
+    # Yougoslavie") — preparation for the PDF route; no modern entity is
+    # labelled "Yugoslavia", so the override cannot shadow anything.
+    un_dyb: Yugoslavia
+  label_source: manual
+  notes: 'The breakup happened in several waves (1991-1992, then 2006): the direct
+    successor for Serbia and Montenegro is the ''serbia_and_montenegro'' entity below,
+    not ''serbia'' directly.'
+- entity_id: serbia_and_montenegro
+  label: Serbia and Montenegro
+  iso3: null
+  valid_from: 1992
+  valid_to: 2006
+  predecessor: yugoslavia_sfr
+  successors:
+  - serbia
+  - montenegro
+  source_ids:
+    owid: Serbia and Montenegro
+    worldbank: null
+    who_gho: null
+  label_source: manual
+- entity_id: east_germany
+  label: German Democratic Republic
+  iso3: null
+  valid_from: 1949
+  valid_to: 1990
+  predecessor: null
+  successors:
+  - germany
+  source_ids:
+    owid: East Germany
+    worldbank: null
+    who_gho: null
+  label_source: manual
+- entity_id: west_germany
+  label: West Germany
+  iso3: null
+  valid_from: 1949
+  valid_to: 1990
+  predecessor: null
+  successors:
+  - germany
+  source_ids:
+    owid: West Germany
+    worldbank: null
+    who_gho: null
+    # Vintage DYB name (verified in the 1978 edition text) — preparation
+    # for the PDF route; the FRG's own rows carry footnote 95 (the Berlin
+    # question), documented in the-measurement-problem.md.
+    un_dyb: Germany, Federal Republic of
+  label_source: manual
+- entity_id: yemen_arab_republic
+  label: Yemen Arab Republic
+  iso3: null
+  valid_from: 1918
+  valid_to: 1990
+  predecessor: null
+  successors:
+  - yemen
+  source_ids:
+    # NO un_dyb override here, deliberately: the DYB tables call the pre-1990
+    # North "Yemen" — the SAME string the post-1990 unified `yemen` entity
+    # resolves by_label. An override would hijack modern "Yemen" rows into
+    # this (expired) entity and silently drop the unified series. The
+    # vintage override only becomes safe with year-aware resolution or the
+    # PDF route (P1b); deferred on purpose.
+    owid: Yemen Arab Republic
+    worldbank: null
+    who_gho: null
+  label_source: manual
+- entity_id: yemen_democratic
+  label: Yemen People's Republic
+  iso3: null
+  valid_from: 1967
+  valid_to: 1990
+  predecessor: null
+  successors:
+  - yemen
+  source_ids:
+    owid: Yemen People's Republic
+    worldbank: null
+    who_gho: null
+  label_source: manual
+- entity_id: kosovo
+  label: Kosovo
+  iso3: null
+  valid_from: 2008
+  valid_to: null
+  predecessor: serbia
+  successors: []
+  source_ids:
+    owid: Kosovo
+    worldbank: XKX
+    who_gho: null
+  label_source: manual
+  notes: Absent from ISO 3166-1 (contested status), so absent from pycountry -> added
+    by hand. Declared independence 2008. OWID uses Code=OWID_KOS. World Bank tracks
+    it under the non-ISO code XKX. who_gho not verified yet (phase 2). Found missing
+    during a live-network audit (see CHANGELOG) that surfaced it as a real data gap,
+    not an expected aggregate.
+- entity_id: aruba
+  label: Aruba
+  iso3: ABW
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Aruba
+    worldbank: ABW
+    who_gho: ABW
+  label_source: pycountry
+- entity_id: afghanistan
+  label: Afghanistan
+  iso3: AFG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Afghanistan
+    worldbank: AFG
+    who_gho: AFG
+  label_source: pycountry
+- entity_id: angola
+  label: Angola
+  iso3: AGO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Angola
+    worldbank: AGO
+    who_gho: AGO
+  label_source: pycountry
+- entity_id: anguilla
+  label: Anguilla
+  iso3: AIA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Anguilla
+    worldbank: AIA
+    who_gho: AIA
+  label_source: pycountry
+- entity_id: aland_islands
+  label: Åland Islands
+  iso3: ALA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Åland Islands
+    worldbank: ALA
+    who_gho: ALA
+  label_source: pycountry
+- entity_id: albania
+  label: Albania
+  iso3: ALB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Albania
+    worldbank: ALB
+    who_gho: ALB
+  label_source: pycountry
+- entity_id: andorra
+  label: Andorra
+  iso3: AND
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Andorra
+    worldbank: AND
+    who_gho: AND
+  label_source: pycountry
+- entity_id: united_arab_emirates
+  label: United Arab Emirates
+  iso3: ARE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: United Arab Emirates
+    worldbank: ARE
+    who_gho: ARE
+  label_source: pycountry
+- entity_id: argentina
+  label: Argentina
+  iso3: ARG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Argentina
+    worldbank: ARG
+    who_gho: ARG
+  label_source: pycountry
+- entity_id: armenia
+  label: Armenia
+  iso3: ARM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Armenia
+    worldbank: ARM
+    who_gho: ARM
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: american_samoa
+  label: American Samoa
+  iso3: ASM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: American Samoa
+    worldbank: ASM
+    who_gho: ASM
+  label_source: pycountry
+- entity_id: antarctica
+  label: Antarctica
+  iso3: ATA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Antarctica
+    worldbank: ATA
+    who_gho: ATA
+  label_source: pycountry
+- entity_id: french_southern_territories
+  label: French Southern Territories
+  iso3: ATF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: French Southern Territories
+    worldbank: ATF
+    who_gho: ATF
+  label_source: pycountry
+- entity_id: antigua_and_barbuda
+  label: Antigua and Barbuda
+  iso3: ATG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Antigua and Barbuda
+    worldbank: ATG
+    who_gho: ATG
+  label_source: pycountry
+- entity_id: australia
+  label: Australia
+  iso3: AUS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Australia
+    worldbank: AUS
+    who_gho: AUS
+  label_source: pycountry
+- entity_id: austria
+  label: Austria
+  iso3: AUT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Austria
+    worldbank: AUT
+    who_gho: AUT
+  label_source: pycountry
+- entity_id: azerbaijan
+  label: Azerbaijan
+  iso3: AZE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Azerbaijan
+    worldbank: AZE
+    who_gho: AZE
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: burundi
+  label: Burundi
+  iso3: BDI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Burundi
+    worldbank: BDI
+    who_gho: BDI
+  label_source: pycountry
+- entity_id: belgium
+  label: Belgium
+  iso3: BEL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Belgium
+    worldbank: BEL
+    who_gho: BEL
+  label_source: pycountry
+- entity_id: benin
+  label: Benin
+  iso3: BEN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Benin
+    worldbank: BEN
+    who_gho: BEN
+  label_source: pycountry
+- entity_id: bonaire_sint_eustatius_and_saba
+  label: Bonaire, Sint Eustatius and Saba
+  iso3: BES
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bonaire, Sint Eustatius and Saba
+    worldbank: BES
+    who_gho: BES
+  label_source: pycountry
+- entity_id: burkina_faso
+  label: Burkina Faso
+  iso3: BFA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Burkina Faso
+    worldbank: BFA
+    who_gho: BFA
+  label_source: pycountry
+- entity_id: bangladesh
+  label: Bangladesh
+  iso3: BGD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bangladesh
+    worldbank: BGD
+    who_gho: BGD
+  label_source: pycountry
+- entity_id: bulgaria
+  label: Bulgaria
+  iso3: BGR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bulgaria
+    worldbank: BGR
+    who_gho: BGR
+  label_source: pycountry
+- entity_id: bahrain
+  label: Bahrain
+  iso3: BHR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bahrain
+    worldbank: BHR
+    who_gho: BHR
+  label_source: pycountry
+- entity_id: bahamas
+  label: Bahamas
+  iso3: BHS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bahamas
+    worldbank: BHS
+    who_gho: BHS
+  label_source: pycountry
+- entity_id: bosnia_and_herzegovina
+  label: Bosnia and Herzegovina
+  iso3: BIH
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bosnia and Herzegovina
+    worldbank: BIH
+    who_gho: BIH
+  label_source: pycountry
+- entity_id: saint_barthelemy
+  label: Saint Barthélemy
+  iso3: BLM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Barthélemy
+    worldbank: BLM
+    who_gho: BLM
+  label_source: pycountry
+- entity_id: belarus
+  label: Belarus
+  iso3: BLR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Belarus
+    worldbank: BLR
+    who_gho: BLR
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: belize
+  label: Belize
+  iso3: BLZ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Belize
+    worldbank: BLZ
+    who_gho: BLZ
+  label_source: pycountry
+- entity_id: bermuda
+  label: Bermuda
+  iso3: BMU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bermuda
+    worldbank: BMU
+    who_gho: BMU
+  label_source: pycountry
+- entity_id: bolivia_plurinational_state_of
+  label: Bolivia, Plurinational State of
+  iso3: BOL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bolivia, Plurinational State of
+    worldbank: BOL
+    who_gho: BOL
+    un_dyb: Bolivia (Plurinational State of)
+  label_source: pycountry
+- entity_id: brazil
+  label: Brazil
+  iso3: BRA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Brazil
+    worldbank: BRA
+    who_gho: BRA
+  label_source: pycountry
+- entity_id: barbados
+  label: Barbados
+  iso3: BRB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Barbados
+    worldbank: BRB
+    who_gho: BRB
+  label_source: pycountry
+- entity_id: brunei_darussalam
+  label: Brunei Darussalam
+  iso3: BRN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Brunei Darussalam
+    worldbank: BRN
+    who_gho: BRN
+  label_source: pycountry
+- entity_id: bhutan
+  label: Bhutan
+  iso3: BTN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bhutan
+    worldbank: BTN
+    who_gho: BTN
+  label_source: pycountry
+- entity_id: bouvet_island
+  label: Bouvet Island
+  iso3: BVT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Bouvet Island
+    worldbank: BVT
+    who_gho: BVT
+  label_source: pycountry
+- entity_id: botswana
+  label: Botswana
+  iso3: BWA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Botswana
+    worldbank: BWA
+    who_gho: BWA
+  label_source: pycountry
+- entity_id: central_african_republic
+  label: Central African Republic
+  iso3: CAF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Central African Republic
+    worldbank: CAF
+    who_gho: CAF
+  label_source: pycountry
+- entity_id: canada
+  label: Canada
+  iso3: CAN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Canada
+    worldbank: CAN
+    who_gho: CAN
+  label_source: pycountry
+- entity_id: cocos_keeling_islands
+  label: Cocos (Keeling) Islands
+  iso3: CCK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cocos (Keeling) Islands
+    worldbank: CCK
+    who_gho: CCK
+  label_source: pycountry
+- entity_id: switzerland
+  label: Switzerland
+  iso3: CHE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Switzerland
+    worldbank: CHE
+    who_gho: CHE
+  label_source: pycountry
+- entity_id: chile
+  label: Chile
+  iso3: CHL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Chile
+    worldbank: CHL
+    who_gho: CHL
+  label_source: pycountry
+- entity_id: china
+  label: China
+  iso3: CHN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: China
+    worldbank: CHN
+    who_gho: CHN
+  label_source: pycountry
+- entity_id: cote_d_ivoire
+  label: Côte d'Ivoire
+  iso3: CIV
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Côte d'Ivoire
+    worldbank: CIV
+    who_gho: CIV
+  label_source: pycountry
+- entity_id: cameroon
+  label: Cameroon
+  iso3: CMR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cameroon
+    worldbank: CMR
+    who_gho: CMR
+  label_source: pycountry
+- entity_id: congo_the_democratic_republic_of_the
+  label: Congo, The Democratic Republic of the
+  iso3: COD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Congo, The Democratic Republic of the
+    worldbank: COD
+    who_gho: COD
+    un_dyb: Democratic Republic of the Congo
+  label_source: pycountry
+- entity_id: congo
+  label: Congo
+  iso3: COG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Congo
+    worldbank: COG
+    who_gho: COG
+  label_source: pycountry
+- entity_id: cook_islands
+  label: Cook Islands
+  iso3: COK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cook Islands
+    worldbank: COK
+    who_gho: COK
+  label_source: pycountry
+- entity_id: colombia
+  label: Colombia
+  iso3: COL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Colombia
+    worldbank: COL
+    who_gho: COL
+  label_source: pycountry
+- entity_id: comoros
+  label: Comoros
+  iso3: COM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Comoros
+    worldbank: COM
+    who_gho: COM
+  label_source: pycountry
+- entity_id: cabo_verde
+  label: Cabo Verde
+  iso3: CPV
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cabo Verde
+    worldbank: CPV
+    who_gho: CPV
+    un_dyb: Cape Verde
+  label_source: pycountry
+- entity_id: costa_rica
+  label: Costa Rica
+  iso3: CRI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Costa Rica
+    worldbank: CRI
+    who_gho: CRI
+  label_source: pycountry
+- entity_id: cuba
+  label: Cuba
+  iso3: CUB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cuba
+    worldbank: CUB
+    who_gho: CUB
+  label_source: pycountry
+- entity_id: curacao
+  label: Curaçao
+  iso3: CUW
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Curaçao
+    worldbank: CUW
+    who_gho: CUW
+  label_source: pycountry
+- entity_id: christmas_island
+  label: Christmas Island
+  iso3: CXR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Christmas Island
+    worldbank: CXR
+    who_gho: CXR
+  label_source: pycountry
+- entity_id: cayman_islands
+  label: Cayman Islands
+  iso3: CYM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cayman Islands
+    worldbank: CYM
+    who_gho: CYM
+  label_source: pycountry
+- entity_id: cyprus
+  label: Cyprus
+  iso3: CYP
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cyprus
+    worldbank: CYP
+    who_gho: CYP
+  label_source: pycountry
+- entity_id: czechia
+  label: Czechia
+  iso3: CZE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Czechia
+    worldbank: CZE
+    who_gho: CZE
+    un_dyb: Czech Republic
+  label_source: pycountry
+- entity_id: germany
+  label: Germany
+  iso3: DEU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Germany
+    worldbank: DEU
+    who_gho: DEU
+  label_source: pycountry
+- entity_id: djibouti
+  label: Djibouti
+  iso3: DJI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Djibouti
+    worldbank: DJI
+    who_gho: DJI
+  label_source: pycountry
+- entity_id: dominica
+  label: Dominica
+  iso3: DMA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Dominica
+    worldbank: DMA
+    who_gho: DMA
+  label_source: pycountry
+- entity_id: denmark
+  label: Denmark
+  iso3: DNK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Denmark
+    worldbank: DNK
+    who_gho: DNK
+  label_source: pycountry
+- entity_id: dominican_republic
+  label: Dominican Republic
+  iso3: DOM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Dominican Republic
+    worldbank: DOM
+    who_gho: DOM
+  label_source: pycountry
+- entity_id: algeria
+  label: Algeria
+  iso3: DZA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Algeria
+    worldbank: DZA
+    who_gho: DZA
+  label_source: pycountry
+- entity_id: ecuador
+  label: Ecuador
+  iso3: ECU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Ecuador
+    worldbank: ECU
+    who_gho: ECU
+  label_source: pycountry
+- entity_id: egypt
+  label: Egypt
+  iso3: EGY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Egypt
+    worldbank: EGY
+    who_gho: EGY
+  label_source: pycountry
+- entity_id: eritrea
+  label: Eritrea
+  iso3: ERI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Eritrea
+    worldbank: ERI
+    who_gho: ERI
+  label_source: pycountry
+- entity_id: western_sahara
+  label: Western Sahara
+  iso3: ESH
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Western Sahara
+    worldbank: ESH
+    who_gho: ESH
+  label_source: pycountry
+- entity_id: spain
+  label: Spain
+  iso3: ESP
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Spain
+    worldbank: ESP
+    who_gho: ESP
+  label_source: pycountry
+- entity_id: estonia
+  label: Estonia
+  iso3: EST
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Estonia
+    worldbank: EST
+    who_gho: EST
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: ethiopia
+  label: Ethiopia
+  iso3: ETH
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Ethiopia
+    worldbank: ETH
+    who_gho: ETH
+  label_source: pycountry
+- entity_id: finland
+  label: Finland
+  iso3: FIN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Finland
+    worldbank: FIN
+    who_gho: FIN
+  label_source: pycountry
+- entity_id: fiji
+  label: Fiji
+  iso3: FJI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Fiji
+    worldbank: FJI
+    who_gho: FJI
+  label_source: pycountry
+- entity_id: falkland_islands_malvinas
+  label: Falkland Islands (Malvinas)
+  iso3: FLK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Falkland Islands (Malvinas)
+    worldbank: FLK
+    who_gho: FLK
+  label_source: pycountry
+- entity_id: france
+  label: France
+  iso3: FRA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: France
+    worldbank: FRA
+    who_gho: FRA
+  label_source: pycountry
+- entity_id: faroe_islands
+  label: Faroe Islands
+  iso3: FRO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Faroe Islands
+    worldbank: FRO
+    who_gho: FRO
+    un_dyb: Faeroe Islands
+  label_source: pycountry
+- entity_id: micronesia_federated_states_of
+  label: Micronesia, Federated States of
+  iso3: FSM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Micronesia, Federated States of
+    worldbank: FSM
+    who_gho: FSM
+  label_source: pycountry
+- entity_id: gabon
+  label: Gabon
+  iso3: GAB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Gabon
+    worldbank: GAB
+    who_gho: GAB
+  label_source: pycountry
+- entity_id: united_kingdom
+  label: United Kingdom
+  iso3: GBR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: United Kingdom
+    worldbank: GBR
+    who_gho: GBR
+    un_dyb: "United Kingdom of Great Britain and Northern Ireland"
+  label_source: pycountry
+- entity_id: georgia
+  label: Georgia
+  iso3: GEO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Georgia
+    worldbank: GEO
+    who_gho: GEO
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: guernsey
+  label: Guernsey
+  iso3: GGY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guernsey
+    worldbank: GGY
+    who_gho: GGY
+  label_source: pycountry
+- entity_id: ghana
+  label: Ghana
+  iso3: GHA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Ghana
+    worldbank: GHA
+    who_gho: GHA
+  label_source: pycountry
+- entity_id: gibraltar
+  label: Gibraltar
+  iso3: GIB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Gibraltar
+    worldbank: GIB
+    who_gho: GIB
+  label_source: pycountry
+- entity_id: guinea
+  label: Guinea
+  iso3: GIN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guinea
+    worldbank: GIN
+    who_gho: GIN
+  label_source: pycountry
+- entity_id: guadeloupe
+  label: Guadeloupe
+  iso3: GLP
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guadeloupe
+    worldbank: GLP
+    who_gho: GLP
+  label_source: pycountry
+- entity_id: gambia
+  label: Gambia
+  iso3: GMB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Gambia
+    worldbank: GMB
+    who_gho: GMB
+  label_source: pycountry
+- entity_id: guinea_bissau
+  label: Guinea-Bissau
+  iso3: GNB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guinea-Bissau
+    worldbank: GNB
+    who_gho: GNB
+  label_source: pycountry
+- entity_id: equatorial_guinea
+  label: Equatorial Guinea
+  iso3: GNQ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Equatorial Guinea
+    worldbank: GNQ
+    who_gho: GNQ
+  label_source: pycountry
+- entity_id: greece
+  label: Greece
+  iso3: GRC
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Greece
+    worldbank: GRC
+    who_gho: GRC
+  label_source: pycountry
+- entity_id: grenada
+  label: Grenada
+  iso3: GRD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Grenada
+    worldbank: GRD
+    who_gho: GRD
+  label_source: pycountry
+- entity_id: greenland
+  label: Greenland
+  iso3: GRL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Greenland
+    worldbank: GRL
+    who_gho: GRL
+  label_source: pycountry
+- entity_id: guatemala
+  label: Guatemala
+  iso3: GTM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guatemala
+    worldbank: GTM
+    who_gho: GTM
+  label_source: pycountry
+- entity_id: french_guiana
+  label: French Guiana
+  iso3: GUF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: French Guiana
+    worldbank: GUF
+    who_gho: GUF
+  label_source: pycountry
+- entity_id: guam
+  label: Guam
+  iso3: GUM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guam
+    worldbank: GUM
+    who_gho: GUM
+  label_source: pycountry
+- entity_id: guyana
+  label: Guyana
+  iso3: GUY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Guyana
+    worldbank: GUY
+    who_gho: GUY
+  label_source: pycountry
+- entity_id: hong_kong
+  label: Hong Kong
+  iso3: HKG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Hong Kong
+    worldbank: HKG
+    who_gho: HKG
+    un_dyb: "China, Hong Kong SAR"
+  label_source: pycountry
+- entity_id: heard_island_and_mcdonald_islands
+  label: Heard Island and McDonald Islands
+  iso3: HMD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Heard Island and McDonald Islands
+    worldbank: HMD
+    who_gho: HMD
+  label_source: pycountry
+- entity_id: honduras
+  label: Honduras
+  iso3: HND
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Honduras
+    worldbank: HND
+    who_gho: HND
+  label_source: pycountry
+- entity_id: croatia
+  label: Croatia
+  iso3: HRV
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Croatia
+    worldbank: HRV
+    who_gho: HRV
+  label_source: pycountry
+- entity_id: haiti
+  label: Haiti
+  iso3: HTI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Haiti
+    worldbank: HTI
+    who_gho: HTI
+  label_source: pycountry
+- entity_id: hungary
+  label: Hungary
+  iso3: HUN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Hungary
+    worldbank: HUN
+    who_gho: HUN
+  label_source: pycountry
+- entity_id: indonesia
+  label: Indonesia
+  iso3: IDN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Indonesia
+    worldbank: IDN
+    who_gho: IDN
+  label_source: pycountry
+- entity_id: isle_of_man
+  label: Isle of Man
+  iso3: IMN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Isle of Man
+    worldbank: IMN
+    who_gho: IMN
+  label_source: pycountry
+- entity_id: india
+  label: India
+  iso3: IND
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: India
+    worldbank: IND
+    who_gho: IND
+  label_source: pycountry
+- entity_id: british_indian_ocean_territory
+  label: British Indian Ocean Territory
+  iso3: IOT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: British Indian Ocean Territory
+    worldbank: IOT
+    who_gho: IOT
+  label_source: pycountry
+- entity_id: ireland
+  label: Ireland
+  iso3: IRL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Ireland
+    worldbank: IRL
+    who_gho: IRL
+  label_source: pycountry
+- entity_id: iran_islamic_republic_of
+  label: Iran, Islamic Republic of
+  iso3: IRN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Iran, Islamic Republic of
+    worldbank: IRN
+    who_gho: IRN
+    un_dyb: "Iran (Islamic Republic of)"
+  label_source: pycountry
+- entity_id: iraq
+  label: Iraq
+  iso3: IRQ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Iraq
+    worldbank: IRQ
+    who_gho: IRQ
+  label_source: pycountry
+- entity_id: iceland
+  label: Iceland
+  iso3: ISL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Iceland
+    worldbank: ISL
+    who_gho: ISL
+  label_source: pycountry
+- entity_id: israel
+  label: Israel
+  iso3: ISR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Israel
+    worldbank: ISR
+    who_gho: ISR
+  label_source: pycountry
+- entity_id: italy
+  label: Italy
+  iso3: ITA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Italy
+    worldbank: ITA
+    who_gho: ITA
+  label_source: pycountry
+- entity_id: jamaica
+  label: Jamaica
+  iso3: JAM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Jamaica
+    worldbank: JAM
+    who_gho: JAM
+  label_source: pycountry
+- entity_id: jersey
+  label: Jersey
+  iso3: JEY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Jersey
+    worldbank: JEY
+    who_gho: JEY
+  label_source: pycountry
+- entity_id: jordan
+  label: Jordan
+  iso3: JOR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Jordan
+    worldbank: JOR
+    who_gho: JOR
+  label_source: pycountry
+- entity_id: japan
+  label: Japan
+  iso3: JPN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Japan
+    worldbank: JPN
+    who_gho: JPN
+  label_source: pycountry
+- entity_id: kazakhstan
+  label: Kazakhstan
+  iso3: KAZ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Kazakhstan
+    worldbank: KAZ
+    who_gho: KAZ
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: kenya
+  label: Kenya
+  iso3: KEN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Kenya
+    worldbank: KEN
+    who_gho: KEN
+  label_source: pycountry
+- entity_id: kyrgyzstan
+  label: Kyrgyzstan
+  iso3: KGZ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Kyrgyzstan
+    worldbank: KGZ
+    who_gho: KGZ
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: cambodia
+  label: Cambodia
+  iso3: KHM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Cambodia
+    worldbank: KHM
+    who_gho: KHM
+  label_source: pycountry
+- entity_id: kiribati
+  label: Kiribati
+  iso3: KIR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Kiribati
+    worldbank: KIR
+    who_gho: KIR
+  label_source: pycountry
+- entity_id: saint_kitts_and_nevis
+  label: Saint Kitts and Nevis
+  iso3: KNA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Kitts and Nevis
+    worldbank: KNA
+    who_gho: KNA
+  label_source: pycountry
+- entity_id: korea_republic_of
+  label: Korea, Republic of
+  iso3: KOR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Korea, Republic of
+    worldbank: KOR
+    who_gho: KOR
+    un_dyb: "Republic of Korea"
+  label_source: pycountry
+- entity_id: kuwait
+  label: Kuwait
+  iso3: KWT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Kuwait
+    worldbank: KWT
+    who_gho: KWT
+  label_source: pycountry
+- entity_id: lao_people_s_democratic_republic
+  label: Lao People's Democratic Republic
+  iso3: LAO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Lao People's Democratic Republic
+    worldbank: LAO
+    who_gho: LAO
+  label_source: pycountry
+- entity_id: lebanon
+  label: Lebanon
+  iso3: LBN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Lebanon
+    worldbank: LBN
+    who_gho: LBN
+  label_source: pycountry
+- entity_id: liberia
+  label: Liberia
+  iso3: LBR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Liberia
+    worldbank: LBR
+    who_gho: LBR
+  label_source: pycountry
+- entity_id: libya
+  label: Libya
+  iso3: LBY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Libya
+    worldbank: LBY
+    who_gho: LBY
+  label_source: pycountry
+- entity_id: saint_lucia
+  label: Saint Lucia
+  iso3: LCA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Lucia
+    worldbank: LCA
+    who_gho: LCA
+  label_source: pycountry
+- entity_id: liechtenstein
+  label: Liechtenstein
+  iso3: LIE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Liechtenstein
+    worldbank: LIE
+    who_gho: LIE
+  label_source: pycountry
+- entity_id: sri_lanka
+  label: Sri Lanka
+  iso3: LKA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Sri Lanka
+    worldbank: LKA
+    who_gho: LKA
+  label_source: pycountry
+- entity_id: lesotho
+  label: Lesotho
+  iso3: LSO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Lesotho
+    worldbank: LSO
+    who_gho: LSO
+  label_source: pycountry
+- entity_id: lithuania
+  label: Lithuania
+  iso3: LTU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Lithuania
+    worldbank: LTU
+    who_gho: LTU
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: luxembourg
+  label: Luxembourg
+  iso3: LUX
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Luxembourg
+    worldbank: LUX
+    who_gho: LUX
+  label_source: pycountry
+- entity_id: latvia
+  label: Latvia
+  iso3: LVA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Latvia
+    worldbank: LVA
+    who_gho: LVA
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: macao
+  label: Macao
+  iso3: MAC
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Macao
+    worldbank: MAC
+    who_gho: MAC
+    un_dyb: "China, Macao SAR"
+  label_source: pycountry
+- entity_id: saint_martin_french_part
+  label: Saint Martin (French part)
+  iso3: MAF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Martin (French part)
+    worldbank: MAF
+    who_gho: MAF
+    un_dyb: "Saint-Martin (French part)"
+  label_source: pycountry
+- entity_id: morocco
+  label: Morocco
+  iso3: MAR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Morocco
+    worldbank: MAR
+    who_gho: MAR
+  label_source: pycountry
+- entity_id: monaco
+  label: Monaco
+  iso3: MCO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Monaco
+    worldbank: MCO
+    who_gho: MCO
+  label_source: pycountry
+- entity_id: moldova_republic_of
+  label: Moldova, Republic of
+  iso3: MDA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Moldova, Republic of
+    worldbank: MDA
+    who_gho: MDA
+    un_dyb: "Republic of Moldova"
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: madagascar
+  label: Madagascar
+  iso3: MDG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Madagascar
+    worldbank: MDG
+    who_gho: MDG
+  label_source: pycountry
+- entity_id: maldives
+  label: Maldives
+  iso3: MDV
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Maldives
+    worldbank: MDV
+    who_gho: MDV
+  label_source: pycountry
+- entity_id: mexico
+  label: Mexico
+  iso3: MEX
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mexico
+    worldbank: MEX
+    who_gho: MEX
+  label_source: pycountry
+- entity_id: marshall_islands
+  label: Marshall Islands
+  iso3: MHL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Marshall Islands
+    worldbank: MHL
+    who_gho: MHL
+  label_source: pycountry
+- entity_id: north_macedonia
+  label: North Macedonia
+  iso3: MKD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: North Macedonia
+    worldbank: MKD
+    who_gho: MKD
+    un_dyb: TFYR of Macedonia
+  label_source: pycountry
+- entity_id: mali
+  label: Mali
+  iso3: MLI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mali
+    worldbank: MLI
+    who_gho: MLI
+  label_source: pycountry
+- entity_id: malta
+  label: Malta
+  iso3: MLT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Malta
+    worldbank: MLT
+    who_gho: MLT
+  label_source: pycountry
+- entity_id: myanmar
+  label: Myanmar
+  iso3: MMR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Myanmar
+    worldbank: MMR
+    who_gho: MMR
+  label_source: pycountry
+- entity_id: montenegro
+  label: Montenegro
+  iso3: MNE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Montenegro
+    worldbank: MNE
+    who_gho: MNE
+  label_source: pycountry
+- entity_id: mongolia
+  label: Mongolia
+  iso3: MNG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mongolia
+    worldbank: MNG
+    who_gho: MNG
+  label_source: pycountry
+- entity_id: northern_mariana_islands
+  label: Northern Mariana Islands
+  iso3: MNP
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Northern Mariana Islands
+    worldbank: MNP
+    who_gho: MNP
+  label_source: pycountry
+- entity_id: mozambique
+  label: Mozambique
+  iso3: MOZ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mozambique
+    worldbank: MOZ
+    who_gho: MOZ
+  label_source: pycountry
+- entity_id: mauritania
+  label: Mauritania
+  iso3: MRT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mauritania
+    worldbank: MRT
+    who_gho: MRT
+  label_source: pycountry
+- entity_id: montserrat
+  label: Montserrat
+  iso3: MSR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Montserrat
+    worldbank: MSR
+    who_gho: MSR
+  label_source: pycountry
+- entity_id: martinique
+  label: Martinique
+  iso3: MTQ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Martinique
+    worldbank: MTQ
+    who_gho: MTQ
+  label_source: pycountry
+- entity_id: mauritius
+  label: Mauritius
+  iso3: MUS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mauritius
+    worldbank: MUS
+    who_gho: MUS
+  label_source: pycountry
+- entity_id: malawi
+  label: Malawi
+  iso3: MWI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Malawi
+    worldbank: MWI
+    who_gho: MWI
+  label_source: pycountry
+- entity_id: malaysia
+  label: Malaysia
+  iso3: MYS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Malaysia
+    worldbank: MYS
+    who_gho: MYS
+  label_source: pycountry
+- entity_id: mayotte
+  label: Mayotte
+  iso3: MYT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Mayotte
+    worldbank: MYT
+    who_gho: MYT
+  label_source: pycountry
+- entity_id: namibia
+  label: Namibia
+  iso3: NAM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Namibia
+    worldbank: NAM
+    who_gho: NAM
+  label_source: pycountry
+- entity_id: new_caledonia
+  label: New Caledonia
+  iso3: NCL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: New Caledonia
+    worldbank: NCL
+    who_gho: NCL
+  label_source: pycountry
+- entity_id: niger
+  label: Niger
+  iso3: NER
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Niger
+    worldbank: NER
+    who_gho: NER
+  label_source: pycountry
+- entity_id: norfolk_island
+  label: Norfolk Island
+  iso3: NFK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Norfolk Island
+    worldbank: NFK
+    who_gho: NFK
+  label_source: pycountry
+- entity_id: nigeria
+  label: Nigeria
+  iso3: NGA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Nigeria
+    worldbank: NGA
+    who_gho: NGA
+  label_source: pycountry
+- entity_id: nicaragua
+  label: Nicaragua
+  iso3: NIC
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Nicaragua
+    worldbank: NIC
+    who_gho: NIC
+  label_source: pycountry
+- entity_id: niue
+  label: Niue
+  iso3: NIU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Niue
+    worldbank: NIU
+    who_gho: NIU
+  label_source: pycountry
+- entity_id: netherlands
+  label: Netherlands
+  iso3: NLD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Netherlands
+    worldbank: NLD
+    who_gho: NLD
+    un_dyb: "Netherlands (Kingdom of the)"
+  label_source: pycountry
+- entity_id: norway
+  label: Norway
+  iso3: NOR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Norway
+    worldbank: NOR
+    who_gho: NOR
+  label_source: pycountry
+- entity_id: nepal
+  label: Nepal
+  iso3: NPL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Nepal
+    worldbank: NPL
+    who_gho: NPL
+  label_source: pycountry
+- entity_id: nauru
+  label: Nauru
+  iso3: NRU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Nauru
+    worldbank: NRU
+    who_gho: NRU
+  label_source: pycountry
+- entity_id: new_zealand
+  label: New Zealand
+  iso3: NZL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: New Zealand
+    worldbank: NZL
+    who_gho: NZL
+  label_source: pycountry
+- entity_id: oman
+  label: Oman
+  iso3: OMN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Oman
+    worldbank: OMN
+    who_gho: OMN
+  label_source: pycountry
+- entity_id: pakistan
+  label: Pakistan
+  iso3: PAK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Pakistan
+    worldbank: PAK
+    who_gho: PAK
+  label_source: pycountry
+- entity_id: panama
+  label: Panama
+  iso3: PAN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Panama
+    worldbank: PAN
+    who_gho: PAN
+  label_source: pycountry
+- entity_id: pitcairn
+  label: Pitcairn
+  iso3: PCN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Pitcairn
+    worldbank: PCN
+    who_gho: PCN
+  label_source: pycountry
+- entity_id: peru
+  label: Peru
+  iso3: PER
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Peru
+    worldbank: PER
+    who_gho: PER
+  label_source: pycountry
+- entity_id: philippines
+  label: Philippines
+  iso3: PHL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Philippines
+    worldbank: PHL
+    who_gho: PHL
+  label_source: pycountry
+- entity_id: palau
+  label: Palau
+  iso3: PLW
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Palau
+    worldbank: PLW
+    who_gho: PLW
+  label_source: pycountry
+- entity_id: papua_new_guinea
+  label: Papua New Guinea
+  iso3: PNG
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Papua New Guinea
+    worldbank: PNG
+    who_gho: PNG
+  label_source: pycountry
+- entity_id: poland
+  label: Poland
+  iso3: POL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Poland
+    worldbank: POL
+    who_gho: POL
+  label_source: pycountry
+- entity_id: puerto_rico
+  label: Puerto Rico
+  iso3: PRI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Puerto Rico
+    worldbank: PRI
+    who_gho: PRI
+  label_source: pycountry
+- entity_id: korea_democratic_people_s_republic_of
+  label: Korea, Democratic People's Republic of
+  iso3: PRK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Korea, Democratic People's Republic of
+    worldbank: PRK
+    who_gho: PRK
+    un_dyb: Democratic People's Republic of Korea
+  label_source: pycountry
+- entity_id: portugal
+  label: Portugal
+  iso3: PRT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Portugal
+    worldbank: PRT
+    who_gho: PRT
+  label_source: pycountry
+- entity_id: paraguay
+  label: Paraguay
+  iso3: PRY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Paraguay
+    worldbank: PRY
+    who_gho: PRY
+  label_source: pycountry
+- entity_id: palestine_state_of
+  label: Palestine, State of
+  iso3: PSE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Palestine, State of
+    worldbank: PSE
+    who_gho: PSE
+    un_dyb: "State of Palestine"
+  label_source: pycountry
+- entity_id: french_polynesia
+  label: French Polynesia
+  iso3: PYF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: French Polynesia
+    worldbank: PYF
+    who_gho: PYF
+  label_source: pycountry
+- entity_id: qatar
+  label: Qatar
+  iso3: QAT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Qatar
+    worldbank: QAT
+    who_gho: QAT
+  label_source: pycountry
+- entity_id: reunion
+  label: Réunion
+  iso3: REU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Réunion
+    worldbank: REU
+    who_gho: REU
+    un_dyb: "Reunion"
+  label_source: pycountry
+- entity_id: romania
+  label: Romania
+  iso3: ROU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Romania
+    worldbank: ROU
+    who_gho: ROU
+  label_source: pycountry
+- entity_id: russian_federation
+  label: Russian Federation
+  iso3: RUS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Russian Federation
+    worldbank: RUS
+    who_gho: RUS
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: rwanda
+  label: Rwanda
+  iso3: RWA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Rwanda
+    worldbank: RWA
+    who_gho: RWA
+  label_source: pycountry
+- entity_id: saudi_arabia
+  label: Saudi Arabia
+  iso3: SAU
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saudi Arabia
+    worldbank: SAU
+    who_gho: SAU
+  label_source: pycountry
+- entity_id: sudan
+  label: Sudan
+  iso3: SDN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Sudan
+    worldbank: SDN
+    who_gho: SDN
+  label_source: pycountry
+- entity_id: senegal
+  label: Senegal
+  iso3: SEN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Senegal
+    worldbank: SEN
+    who_gho: SEN
+  label_source: pycountry
+- entity_id: singapore
+  label: Singapore
+  iso3: SGP
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Singapore
+    worldbank: SGP
+    who_gho: SGP
+  label_source: pycountry
+- entity_id: south_georgia_and_the_south_sandwich_islands
+  label: South Georgia and the South Sandwich Islands
+  iso3: SGS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: South Georgia and the South Sandwich Islands
+    worldbank: SGS
+    who_gho: SGS
+  label_source: pycountry
+- entity_id: saint_helena_ascension_and_tristan_da_cunha
+  label: Saint Helena, Ascension and Tristan da Cunha
+  iso3: SHN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Helena, Ascension and Tristan da Cunha
+    worldbank: SHN
+    who_gho: SHN
+  label_source: pycountry
+- entity_id: svalbard_and_jan_mayen
+  label: Svalbard and Jan Mayen
+  iso3: SJM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Svalbard and Jan Mayen
+    worldbank: SJM
+    who_gho: SJM
+  label_source: pycountry
+- entity_id: solomon_islands
+  label: Solomon Islands
+  iso3: SLB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Solomon Islands
+    worldbank: SLB
+    who_gho: SLB
+  label_source: pycountry
+- entity_id: sierra_leone
+  label: Sierra Leone
+  iso3: SLE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Sierra Leone
+    worldbank: SLE
+    who_gho: SLE
+  label_source: pycountry
+- entity_id: el_salvador
+  label: El Salvador
+  iso3: SLV
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: El Salvador
+    worldbank: SLV
+    who_gho: SLV
+  label_source: pycountry
+- entity_id: san_marino
+  label: San Marino
+  iso3: SMR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: San Marino
+    worldbank: SMR
+    who_gho: SMR
+  label_source: pycountry
+- entity_id: somalia
+  label: Somalia
+  iso3: SOM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Somalia
+    worldbank: SOM
+    who_gho: SOM
+  label_source: pycountry
+- entity_id: saint_pierre_and_miquelon
+  label: Saint Pierre and Miquelon
+  iso3: SPM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Pierre and Miquelon
+    worldbank: SPM
+    who_gho: SPM
+  label_source: pycountry
+- entity_id: serbia
+  label: Serbia
+  iso3: SRB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Serbia
+    worldbank: SRB
+    who_gho: SRB
+  label_source: pycountry
+- entity_id: south_sudan
+  label: South Sudan
+  iso3: SSD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: South Sudan
+    worldbank: SSD
+    who_gho: SSD
+    un_dyb: Republic of South Sudan
+  label_source: pycountry
+- entity_id: sao_tome_and_principe
+  label: Sao Tome and Principe
+  iso3: STP
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Sao Tome and Principe
+    worldbank: STP
+    who_gho: STP
+  label_source: pycountry
+- entity_id: suriname
+  label: Suriname
+  iso3: SUR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Suriname
+    worldbank: SUR
+    who_gho: SUR
+  label_source: pycountry
+- entity_id: slovakia
+  label: Slovakia
+  iso3: SVK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Slovakia
+    worldbank: SVK
+    who_gho: SVK
+  label_source: pycountry
+- entity_id: slovenia
+  label: Slovenia
+  iso3: SVN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Slovenia
+    worldbank: SVN
+    who_gho: SVN
+  label_source: pycountry
+- entity_id: sweden
+  label: Sweden
+  iso3: SWE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Sweden
+    worldbank: SWE
+    who_gho: SWE
+  label_source: pycountry
+- entity_id: eswatini
+  label: Eswatini
+  iso3: SWZ
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Eswatini
+    worldbank: SWZ
+    who_gho: SWZ
+    un_dyb: Swaziland
+  label_source: pycountry
+- entity_id: sint_maarten_dutch_part
+  label: Sint Maarten (Dutch part)
+  iso3: SXM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Sint Maarten (Dutch part)
+    worldbank: SXM
+    who_gho: SXM
+  label_source: pycountry
+- entity_id: seychelles
+  label: Seychelles
+  iso3: SYC
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Seychelles
+    worldbank: SYC
+    who_gho: SYC
+  label_source: pycountry
+- entity_id: syrian_arab_republic
+  label: Syrian Arab Republic
+  iso3: SYR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Syrian Arab Republic
+    worldbank: SYR
+    who_gho: SYR
+  label_source: pycountry
+- entity_id: turks_and_caicos_islands
+  label: Turks and Caicos Islands
+  iso3: TCA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Turks and Caicos Islands
+    worldbank: TCA
+    who_gho: TCA
+  label_source: pycountry
+- entity_id: chad
+  label: Chad
+  iso3: TCD
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Chad
+    worldbank: TCD
+    who_gho: TCD
+  label_source: pycountry
+- entity_id: togo
+  label: Togo
+  iso3: TGO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Togo
+    worldbank: TGO
+    who_gho: TGO
+  label_source: pycountry
+- entity_id: thailand
+  label: Thailand
+  iso3: THA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Thailand
+    worldbank: THA
+    who_gho: THA
+  label_source: pycountry
+- entity_id: tajikistan
+  label: Tajikistan
+  iso3: TJK
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Tajikistan
+    worldbank: TJK
+    who_gho: TJK
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: tokelau
+  label: Tokelau
+  iso3: TKL
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Tokelau
+    worldbank: TKL
+    who_gho: TKL
+  label_source: pycountry
+- entity_id: turkmenistan
+  label: Turkmenistan
+  iso3: TKM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Turkmenistan
+    worldbank: TKM
+    who_gho: TKM
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: timor_leste
+  label: Timor-Leste
+  iso3: TLS
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Timor-Leste
+    worldbank: TLS
+    who_gho: TLS
+  label_source: pycountry
+- entity_id: tonga
+  label: Tonga
+  iso3: TON
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Tonga
+    worldbank: TON
+    who_gho: TON
+  label_source: pycountry
+- entity_id: trinidad_and_tobago
+  label: Trinidad and Tobago
+  iso3: TTO
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Trinidad and Tobago
+    worldbank: TTO
+    who_gho: TTO
+  label_source: pycountry
+- entity_id: tunisia
+  label: Tunisia
+  iso3: TUN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Tunisia
+    worldbank: TUN
+    who_gho: TUN
+  label_source: pycountry
+- entity_id: turkiye
+  label: Türkiye
+  iso3: TUR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Türkiye
+    worldbank: TUR
+    who_gho: TUR
+    un_dyb: Turkey
+  label_source: pycountry
+- entity_id: tuvalu
+  label: Tuvalu
+  iso3: TUV
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Tuvalu
+    worldbank: TUV
+    who_gho: TUV
+  label_source: pycountry
+- entity_id: taiwan_province_of_china
+  label: Taiwan, Province of China
+  iso3: TWN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Taiwan, Province of China
+    worldbank: TWN
+    who_gho: TWN
+  label_source: pycountry
+- entity_id: tanzania_united_republic_of
+  label: Tanzania, United Republic of
+  iso3: TZA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Tanzania, United Republic of
+    worldbank: TZA
+    who_gho: TZA
+    un_dyb: "United Republic of Tanzania"
+  label_source: pycountry
+- entity_id: uganda
+  label: Uganda
+  iso3: UGA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Uganda
+    worldbank: UGA
+    who_gho: UGA
+  label_source: pycountry
+- entity_id: ukraine
+  label: Ukraine
+  iso3: UKR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Ukraine
+    worldbank: UKR
+    who_gho: UKR
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: united_states_minor_outlying_islands
+  label: United States Minor Outlying Islands
+  iso3: UMI
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: United States Minor Outlying Islands
+    worldbank: UMI
+    who_gho: UMI
+  label_source: pycountry
+- entity_id: uruguay
+  label: Uruguay
+  iso3: URY
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Uruguay
+    worldbank: URY
+    who_gho: URY
+  label_source: pycountry
+- entity_id: united_states
+  label: United States
+  iso3: USA
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: United States
+    worldbank: USA
+    who_gho: USA
+    un_dyb: "United States of America"
+  label_source: pycountry
+- entity_id: uzbekistan
+  label: Uzbekistan
+  iso3: UZB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Uzbekistan
+    worldbank: UZB
+    who_gho: UZB
+  label_source: pycountry
+  formerly_part_of:
+    union_entity_id: ussr
+    until_year: 1991
+    note: Data before 1991 was reported by OWID's sources under this country's modern
+      name/code, but reflects the Soviet Union (USSR), not this country governed independently
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
+      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      rather than split into a separate 'ussr' series, since the underlying numbers
+      are identical either way.
+- entity_id: holy_see_vatican_city_state
+  label: Holy See (Vatican City State)
+  iso3: VAT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Holy See (Vatican City State)
+    worldbank: VAT
+    who_gho: VAT
+  label_source: pycountry
+- entity_id: saint_vincent_and_the_grenadines
+  label: Saint Vincent and the Grenadines
+  iso3: VCT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Saint Vincent and the Grenadines
+    worldbank: VCT
+    who_gho: VCT
+  label_source: pycountry
+- entity_id: venezuela_bolivarian_republic_of
+  label: Venezuela, Bolivarian Republic of
+  iso3: VEN
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Venezuela, Bolivarian Republic of
+    worldbank: VEN
+    who_gho: VEN
+    un_dyb: Venezuela (Bolivarian Republic of)
+  label_source: pycountry
+- entity_id: virgin_islands_british
+  label: Virgin Islands, British
+  iso3: VGB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Virgin Islands, British
+    worldbank: VGB
+    who_gho: VGB
+    un_dyb: British Virgin Islands
+  label_source: pycountry
+- entity_id: virgin_islands_u_s
+  label: Virgin Islands, U.S.
+  iso3: VIR
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Virgin Islands, U.S.
+    worldbank: VIR
+    who_gho: VIR
+    un_dyb: United States Virgin Islands
+  label_source: pycountry
+- entity_id: viet_nam
+  label: Viet Nam
+  iso3: VNM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Viet Nam
+    worldbank: VNM
+    who_gho: VNM
+  label_source: pycountry
+- entity_id: vanuatu
+  label: Vanuatu
+  iso3: VUT
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Vanuatu
+    worldbank: VUT
+    who_gho: VUT
+  label_source: pycountry
+- entity_id: wallis_and_futuna
+  label: Wallis and Futuna
+  iso3: WLF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Wallis and Futuna
+    worldbank: WLF
+    who_gho: WLF
+    un_dyb: Wallis and Futuna Islands
+  label_source: pycountry
+- entity_id: samoa
+  label: Samoa
+  iso3: WSM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Samoa
+    worldbank: WSM
+    who_gho: WSM
+  label_source: pycountry
+- entity_id: yemen
+  label: Yemen
+  iso3: YEM
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Yemen
+    worldbank: YEM
+    who_gho: YEM
+  label_source: pycountry
+- entity_id: south_africa
+  label: South Africa
+  iso3: ZAF
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: South Africa
+    worldbank: ZAF
+    who_gho: ZAF
+  label_source: pycountry
+- entity_id: zambia
+  label: Zambia
+  iso3: ZMB
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Zambia
+    worldbank: ZMB
+    who_gho: ZMB
+  label_source: pycountry
+- entity_id: zimbabwe
+  label: Zimbabwe
+  iso3: ZWE
+  valid_from: null
+  valid_to: null
+  predecessor: null
+  successors: []
+  source_ids:
+    owid: Zimbabwe
+    worldbank: ZWE
+    who_gho: ZWE
+  label_source: pycountry

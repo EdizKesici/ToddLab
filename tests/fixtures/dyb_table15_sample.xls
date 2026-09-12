@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Worksheet ss:Name="Data">
+  <Table>
+      <Row>
+        <Cell><Data ss:Type="String">15. Infant deaths and infant mortality rates by urban/rural residence: 2020-2024</Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Continent, country or area, and urban/rural residence</Data></Cell>
+        <Cell ss:Index="2" ss:StyleID="sCenter"><Data ss:Type="String">Co-de</Data></Cell>
+        <Cell ss:Index="3" ss:MergeAcross="4" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Number</Data></Cell>
+        <Cell ss:Index="8" ss:MergeAcross="4" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Rate</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:Index="3" ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2022</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2023</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2024</Data></Cell>
+        <Cell ss:Index="13" ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2022</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2023</Data></Cell>
+        <Cell ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="Number">2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">AFRICA - AFRIQUE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Algeria - Algérie</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Total</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">U   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">18676.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">19001.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">18007.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">17797.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Urban - Urbaine</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">U   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Botswana</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Total</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">U   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">968.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">950.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">1047.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">1013.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">EUROPE - EUROPE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">France</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Total</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">2351.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">2407.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">2544.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">2392.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">2414.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.3746540657</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.4296592141</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.7054083814</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.7402291985</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.8378378378</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Urban - Urbaine</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">2027.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.5443321286</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rural - Rurale</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">OCEANIA - OCÉANIE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Tonga</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Total</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">U   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">8.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Total</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">|   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">11.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Urban - Urbaine</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">|   </Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">3.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String"/></Cell>
+      </Row>
+  </Table>
+ </Worksheet>
+ <Worksheet ss:Name="Footnotes">
+  <Table ss:ExpandedColumnCount="2">
+      <Row>
+        <Cell><Data ss:Type="String">FOOTNOTES</Data></Cell>
+        <Cell><Data ss:Type="String">NOTES</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">Italics: data from civil registers which are incomplete or of unknown completeness.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">*</Data></Cell>
+        <Cell><Data ss:Type="String">Provisional. - Données provisoires.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">a</Data></Cell>
+        <Cell><Data ss:Type="String">'Code' indicates the source of data, as follows: C - Civil registration, estimated over 90% complete; U - Civil registration, estimated less than 90% complete; | - Other source, estimated reliable; + - Data tabulated by date of registration rather than occurrence.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number">1</Data></Cell>
+        <Cell><Data ss:Type="String">Data refer to the de facto population.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number">2</Data></Cell>
+        <Cell><Data ss:Type="String">Data include deaths registered late.</Data></Cell>
+      </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

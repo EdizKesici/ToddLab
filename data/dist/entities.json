@@ -1,0 +1,2678 @@
+[
+  {
+    "entity_id": "ussr",
+    "label": "Soviet Union",
+    "iso3": null,
+    "valid_from": 1922,
+    "valid_to": 1991,
+    "predecessor": null,
+    "successors": [
+      "russian_federation",
+      "ukraine",
+      "belarus",
+      "moldova_republic_of",
+      "georgia",
+      "armenia",
+      "azerbaijan",
+      "kazakhstan",
+      "uzbekistan",
+      "turkmenistan",
+      "tajikistan",
+      "kyrgyzstan",
+      "lithuania",
+      "latvia",
+      "estonia"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "czechoslovakia",
+    "label": "Czechoslovakia",
+    "iso3": null,
+    "valid_from": 1918,
+    "valid_to": 1992,
+    "predecessor": null,
+    "successors": [
+      "czechia",
+      "slovakia"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "yugoslavia_sfr",
+    "label": "Socialist Federal Republic of Yugoslavia",
+    "iso3": null,
+    "valid_from": 1945,
+    "valid_to": 1992,
+    "predecessor": null,
+    "successors": [
+      "serbia_and_montenegro",
+      "croatia",
+      "slovenia",
+      "bosnia_and_herzegovina",
+      "north_macedonia"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "serbia_and_montenegro",
+    "label": "Serbia and Montenegro",
+    "iso3": null,
+    "valid_from": 1992,
+    "valid_to": 2006,
+    "predecessor": "yugoslavia_sfr",
+    "successors": [
+      "serbia",
+      "montenegro"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "east_germany",
+    "label": "German Democratic Republic",
+    "iso3": null,
+    "valid_from": 1949,
+    "valid_to": 1990,
+    "predecessor": null,
+    "successors": [
+      "germany"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "west_germany",
+    "label": "West Germany",
+    "iso3": null,
+    "valid_from": 1949,
+    "valid_to": 1990,
+    "predecessor": null,
+    "successors": [
+      "germany"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "yemen_arab_republic",
+    "label": "Yemen Arab Republic",
+    "iso3": null,
+    "valid_from": 1918,
+    "valid_to": 1990,
+    "predecessor": null,
+    "successors": [
+      "yemen"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "yemen_democratic",
+    "label": "Yemen People's Republic",
+    "iso3": null,
+    "valid_from": 1967,
+    "valid_to": 1990,
+    "predecessor": null,
+    "successors": [
+      "yemen"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "kosovo",
+    "label": "Kosovo",
+    "iso3": null,
+    "valid_from": 2008,
+    "valid_to": null,
+    "predecessor": "serbia",
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "aruba",
+    "label": "Aruba",
+    "iso3": "ABW",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "afghanistan",
+    "label": "Afghanistan",
+    "iso3": "AFG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "angola",
+    "label": "Angola",
+    "iso3": "AGO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "anguilla",
+    "label": "Anguilla",
+    "iso3": "AIA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "aland_islands",
+    "label": "Åland Islands",
+    "iso3": "ALA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "albania",
+    "label": "Albania",
+    "iso3": "ALB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "andorra",
+    "label": "Andorra",
+    "iso3": "AND",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "united_arab_emirates",
+    "label": "United Arab Emirates",
+    "iso3": "ARE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "argentina",
+    "label": "Argentina",
+    "iso3": "ARG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "armenia",
+    "label": "Armenia",
+    "iso3": "ARM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "american_samoa",
+    "label": "American Samoa",
+    "iso3": "ASM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "antarctica",
+    "label": "Antarctica",
+    "iso3": "ATA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "french_southern_territories",
+    "label": "French Southern Territories",
+    "iso3": "ATF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "antigua_and_barbuda",
+    "label": "Antigua and Barbuda",
+    "iso3": "ATG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "australia",
+    "label": "Australia",
+    "iso3": "AUS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "austria",
+    "label": "Austria",
+    "iso3": "AUT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "azerbaijan",
+    "label": "Azerbaijan",
+    "iso3": "AZE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "burundi",
+    "label": "Burundi",
+    "iso3": "BDI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "belgium",
+    "label": "Belgium",
+    "iso3": "BEL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "benin",
+    "label": "Benin",
+    "iso3": "BEN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bonaire_sint_eustatius_and_saba",
+    "label": "Bonaire, Sint Eustatius and Saba",
+    "iso3": "BES",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "burkina_faso",
+    "label": "Burkina Faso",
+    "iso3": "BFA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bangladesh",
+    "label": "Bangladesh",
+    "iso3": "BGD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bulgaria",
+    "label": "Bulgaria",
+    "iso3": "BGR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bahrain",
+    "label": "Bahrain",
+    "iso3": "BHR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bahamas",
+    "label": "Bahamas",
+    "iso3": "BHS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bosnia_and_herzegovina",
+    "label": "Bosnia and Herzegovina",
+    "iso3": "BIH",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_barthelemy",
+    "label": "Saint Barthélemy",
+    "iso3": "BLM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "belarus",
+    "label": "Belarus",
+    "iso3": "BLR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "belize",
+    "label": "Belize",
+    "iso3": "BLZ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bermuda",
+    "label": "Bermuda",
+    "iso3": "BMU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bolivia_plurinational_state_of",
+    "label": "Bolivia, Plurinational State of",
+    "iso3": "BOL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "brazil",
+    "label": "Brazil",
+    "iso3": "BRA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "barbados",
+    "label": "Barbados",
+    "iso3": "BRB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "brunei_darussalam",
+    "label": "Brunei Darussalam",
+    "iso3": "BRN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bhutan",
+    "label": "Bhutan",
+    "iso3": "BTN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "bouvet_island",
+    "label": "Bouvet Island",
+    "iso3": "BVT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "botswana",
+    "label": "Botswana",
+    "iso3": "BWA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "central_african_republic",
+    "label": "Central African Republic",
+    "iso3": "CAF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "canada",
+    "label": "Canada",
+    "iso3": "CAN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cocos_keeling_islands",
+    "label": "Cocos (Keeling) Islands",
+    "iso3": "CCK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "switzerland",
+    "label": "Switzerland",
+    "iso3": "CHE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "chile",
+    "label": "Chile",
+    "iso3": "CHL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "china",
+    "label": "China",
+    "iso3": "CHN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cote_d_ivoire",
+    "label": "Côte d'Ivoire",
+    "iso3": "CIV",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cameroon",
+    "label": "Cameroon",
+    "iso3": "CMR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "congo_the_democratic_republic_of_the",
+    "label": "Congo, The Democratic Republic of the",
+    "iso3": "COD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "congo",
+    "label": "Congo",
+    "iso3": "COG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cook_islands",
+    "label": "Cook Islands",
+    "iso3": "COK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "colombia",
+    "label": "Colombia",
+    "iso3": "COL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "comoros",
+    "label": "Comoros",
+    "iso3": "COM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cabo_verde",
+    "label": "Cabo Verde",
+    "iso3": "CPV",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "costa_rica",
+    "label": "Costa Rica",
+    "iso3": "CRI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cuba",
+    "label": "Cuba",
+    "iso3": "CUB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "curacao",
+    "label": "Curaçao",
+    "iso3": "CUW",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "christmas_island",
+    "label": "Christmas Island",
+    "iso3": "CXR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cayman_islands",
+    "label": "Cayman Islands",
+    "iso3": "CYM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "cyprus",
+    "label": "Cyprus",
+    "iso3": "CYP",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "czechia",
+    "label": "Czechia",
+    "iso3": "CZE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "germany",
+    "label": "Germany",
+    "iso3": "DEU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "djibouti",
+    "label": "Djibouti",
+    "iso3": "DJI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "dominica",
+    "label": "Dominica",
+    "iso3": "DMA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "denmark",
+    "label": "Denmark",
+    "iso3": "DNK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "dominican_republic",
+    "label": "Dominican Republic",
+    "iso3": "DOM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "algeria",
+    "label": "Algeria",
+    "iso3": "DZA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "ecuador",
+    "label": "Ecuador",
+    "iso3": "ECU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "egypt",
+    "label": "Egypt",
+    "iso3": "EGY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "eritrea",
+    "label": "Eritrea",
+    "iso3": "ERI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "western_sahara",
+    "label": "Western Sahara",
+    "iso3": "ESH",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "spain",
+    "label": "Spain",
+    "iso3": "ESP",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "estonia",
+    "label": "Estonia",
+    "iso3": "EST",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "ethiopia",
+    "label": "Ethiopia",
+    "iso3": "ETH",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "finland",
+    "label": "Finland",
+    "iso3": "FIN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "fiji",
+    "label": "Fiji",
+    "iso3": "FJI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "falkland_islands_malvinas",
+    "label": "Falkland Islands (Malvinas)",
+    "iso3": "FLK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "france",
+    "label": "France",
+    "iso3": "FRA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "faroe_islands",
+    "label": "Faroe Islands",
+    "iso3": "FRO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "micronesia_federated_states_of",
+    "label": "Micronesia, Federated States of",
+    "iso3": "FSM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "gabon",
+    "label": "Gabon",
+    "iso3": "GAB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "united_kingdom",
+    "label": "United Kingdom",
+    "iso3": "GBR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "georgia",
+    "label": "Georgia",
+    "iso3": "GEO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "guernsey",
+    "label": "Guernsey",
+    "iso3": "GGY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "ghana",
+    "label": "Ghana",
+    "iso3": "GHA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "gibraltar",
+    "label": "Gibraltar",
+    "iso3": "GIB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "guinea",
+    "label": "Guinea",
+    "iso3": "GIN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "guadeloupe",
+    "label": "Guadeloupe",
+    "iso3": "GLP",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "gambia",
+    "label": "Gambia",
+    "iso3": "GMB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "guinea_bissau",
+    "label": "Guinea-Bissau",
+    "iso3": "GNB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "equatorial_guinea",
+    "label": "Equatorial Guinea",
+    "iso3": "GNQ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "greece",
+    "label": "Greece",
+    "iso3": "GRC",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "grenada",
+    "label": "Grenada",
+    "iso3": "GRD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "greenland",
+    "label": "Greenland",
+    "iso3": "GRL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "guatemala",
+    "label": "Guatemala",
+    "iso3": "GTM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "french_guiana",
+    "label": "French Guiana",
+    "iso3": "GUF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "guam",
+    "label": "Guam",
+    "iso3": "GUM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "guyana",
+    "label": "Guyana",
+    "iso3": "GUY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "hong_kong",
+    "label": "Hong Kong",
+    "iso3": "HKG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "heard_island_and_mcdonald_islands",
+    "label": "Heard Island and McDonald Islands",
+    "iso3": "HMD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "honduras",
+    "label": "Honduras",
+    "iso3": "HND",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "croatia",
+    "label": "Croatia",
+    "iso3": "HRV",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "haiti",
+    "label": "Haiti",
+    "iso3": "HTI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "hungary",
+    "label": "Hungary",
+    "iso3": "HUN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "indonesia",
+    "label": "Indonesia",
+    "iso3": "IDN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "isle_of_man",
+    "label": "Isle of Man",
+    "iso3": "IMN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "india",
+    "label": "India",
+    "iso3": "IND",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "british_indian_ocean_territory",
+    "label": "British Indian Ocean Territory",
+    "iso3": "IOT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "ireland",
+    "label": "Ireland",
+    "iso3": "IRL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "iran_islamic_republic_of",
+    "label": "Iran, Islamic Republic of",
+    "iso3": "IRN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "iraq",
+    "label": "Iraq",
+    "iso3": "IRQ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "iceland",
+    "label": "Iceland",
+    "iso3": "ISL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "israel",
+    "label": "Israel",
+    "iso3": "ISR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "italy",
+    "label": "Italy",
+    "iso3": "ITA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "jamaica",
+    "label": "Jamaica",
+    "iso3": "JAM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "jersey",
+    "label": "Jersey",
+    "iso3": "JEY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "jordan",
+    "label": "Jordan",
+    "iso3": "JOR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "japan",
+    "label": "Japan",
+    "iso3": "JPN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "kazakhstan",
+    "label": "Kazakhstan",
+    "iso3": "KAZ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "kenya",
+    "label": "Kenya",
+    "iso3": "KEN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "kyrgyzstan",
+    "label": "Kyrgyzstan",
+    "iso3": "KGZ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "cambodia",
+    "label": "Cambodia",
+    "iso3": "KHM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "kiribati",
+    "label": "Kiribati",
+    "iso3": "KIR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_kitts_and_nevis",
+    "label": "Saint Kitts and Nevis",
+    "iso3": "KNA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "korea_republic_of",
+    "label": "Korea, Republic of",
+    "iso3": "KOR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "kuwait",
+    "label": "Kuwait",
+    "iso3": "KWT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "lao_people_s_democratic_republic",
+    "label": "Lao People's Democratic Republic",
+    "iso3": "LAO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "lebanon",
+    "label": "Lebanon",
+    "iso3": "LBN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "liberia",
+    "label": "Liberia",
+    "iso3": "LBR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "libya",
+    "label": "Libya",
+    "iso3": "LBY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_lucia",
+    "label": "Saint Lucia",
+    "iso3": "LCA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "liechtenstein",
+    "label": "Liechtenstein",
+    "iso3": "LIE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "sri_lanka",
+    "label": "Sri Lanka",
+    "iso3": "LKA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "lesotho",
+    "label": "Lesotho",
+    "iso3": "LSO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "lithuania",
+    "label": "Lithuania",
+    "iso3": "LTU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "luxembourg",
+    "label": "Luxembourg",
+    "iso3": "LUX",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "latvia",
+    "label": "Latvia",
+    "iso3": "LVA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "macao",
+    "label": "Macao",
+    "iso3": "MAC",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_martin_french_part",
+    "label": "Saint Martin (French part)",
+    "iso3": "MAF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "morocco",
+    "label": "Morocco",
+    "iso3": "MAR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "monaco",
+    "label": "Monaco",
+    "iso3": "MCO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "moldova_republic_of",
+    "label": "Moldova, Republic of",
+    "iso3": "MDA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "madagascar",
+    "label": "Madagascar",
+    "iso3": "MDG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "maldives",
+    "label": "Maldives",
+    "iso3": "MDV",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mexico",
+    "label": "Mexico",
+    "iso3": "MEX",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "marshall_islands",
+    "label": "Marshall Islands",
+    "iso3": "MHL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "north_macedonia",
+    "label": "North Macedonia",
+    "iso3": "MKD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mali",
+    "label": "Mali",
+    "iso3": "MLI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "malta",
+    "label": "Malta",
+    "iso3": "MLT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "myanmar",
+    "label": "Myanmar",
+    "iso3": "MMR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "montenegro",
+    "label": "Montenegro",
+    "iso3": "MNE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mongolia",
+    "label": "Mongolia",
+    "iso3": "MNG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "northern_mariana_islands",
+    "label": "Northern Mariana Islands",
+    "iso3": "MNP",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mozambique",
+    "label": "Mozambique",
+    "iso3": "MOZ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mauritania",
+    "label": "Mauritania",
+    "iso3": "MRT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "montserrat",
+    "label": "Montserrat",
+    "iso3": "MSR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "martinique",
+    "label": "Martinique",
+    "iso3": "MTQ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mauritius",
+    "label": "Mauritius",
+    "iso3": "MUS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "malawi",
+    "label": "Malawi",
+    "iso3": "MWI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "malaysia",
+    "label": "Malaysia",
+    "iso3": "MYS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "mayotte",
+    "label": "Mayotte",
+    "iso3": "MYT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "namibia",
+    "label": "Namibia",
+    "iso3": "NAM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "new_caledonia",
+    "label": "New Caledonia",
+    "iso3": "NCL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "niger",
+    "label": "Niger",
+    "iso3": "NER",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "norfolk_island",
+    "label": "Norfolk Island",
+    "iso3": "NFK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "nigeria",
+    "label": "Nigeria",
+    "iso3": "NGA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "nicaragua",
+    "label": "Nicaragua",
+    "iso3": "NIC",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "niue",
+    "label": "Niue",
+    "iso3": "NIU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "netherlands",
+    "label": "Netherlands",
+    "iso3": "NLD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "norway",
+    "label": "Norway",
+    "iso3": "NOR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "nepal",
+    "label": "Nepal",
+    "iso3": "NPL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "nauru",
+    "label": "Nauru",
+    "iso3": "NRU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "new_zealand",
+    "label": "New Zealand",
+    "iso3": "NZL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "oman",
+    "label": "Oman",
+    "iso3": "OMN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "pakistan",
+    "label": "Pakistan",
+    "iso3": "PAK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "panama",
+    "label": "Panama",
+    "iso3": "PAN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "pitcairn",
+    "label": "Pitcairn",
+    "iso3": "PCN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "peru",
+    "label": "Peru",
+    "iso3": "PER",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "philippines",
+    "label": "Philippines",
+    "iso3": "PHL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "palau",
+    "label": "Palau",
+    "iso3": "PLW",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "papua_new_guinea",
+    "label": "Papua New Guinea",
+    "iso3": "PNG",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "poland",
+    "label": "Poland",
+    "iso3": "POL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "puerto_rico",
+    "label": "Puerto Rico",
+    "iso3": "PRI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "korea_democratic_people_s_republic_of",
+    "label": "Korea, Democratic People's Republic of",
+    "iso3": "PRK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "portugal",
+    "label": "Portugal",
+    "iso3": "PRT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "paraguay",
+    "label": "Paraguay",
+    "iso3": "PRY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "palestine_state_of",
+    "label": "Palestine, State of",
+    "iso3": "PSE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "french_polynesia",
+    "label": "French Polynesia",
+    "iso3": "PYF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "qatar",
+    "label": "Qatar",
+    "iso3": "QAT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "reunion",
+    "label": "Réunion",
+    "iso3": "REU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "romania",
+    "label": "Romania",
+    "iso3": "ROU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "russian_federation",
+    "label": "Russian Federation",
+    "iso3": "RUS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "rwanda",
+    "label": "Rwanda",
+    "iso3": "RWA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saudi_arabia",
+    "label": "Saudi Arabia",
+    "iso3": "SAU",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "sudan",
+    "label": "Sudan",
+    "iso3": "SDN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "senegal",
+    "label": "Senegal",
+    "iso3": "SEN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "singapore",
+    "label": "Singapore",
+    "iso3": "SGP",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "south_georgia_and_the_south_sandwich_islands",
+    "label": "South Georgia and the South Sandwich Islands",
+    "iso3": "SGS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_helena_ascension_and_tristan_da_cunha",
+    "label": "Saint Helena, Ascension and Tristan da Cunha",
+    "iso3": "SHN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "svalbard_and_jan_mayen",
+    "label": "Svalbard and Jan Mayen",
+    "iso3": "SJM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "solomon_islands",
+    "label": "Solomon Islands",
+    "iso3": "SLB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "sierra_leone",
+    "label": "Sierra Leone",
+    "iso3": "SLE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "el_salvador",
+    "label": "El Salvador",
+    "iso3": "SLV",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "san_marino",
+    "label": "San Marino",
+    "iso3": "SMR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "somalia",
+    "label": "Somalia",
+    "iso3": "SOM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_pierre_and_miquelon",
+    "label": "Saint Pierre and Miquelon",
+    "iso3": "SPM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "serbia",
+    "label": "Serbia",
+    "iso3": "SRB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "south_sudan",
+    "label": "South Sudan",
+    "iso3": "SSD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "sao_tome_and_principe",
+    "label": "Sao Tome and Principe",
+    "iso3": "STP",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "suriname",
+    "label": "Suriname",
+    "iso3": "SUR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "slovakia",
+    "label": "Slovakia",
+    "iso3": "SVK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "slovenia",
+    "label": "Slovenia",
+    "iso3": "SVN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "sweden",
+    "label": "Sweden",
+    "iso3": "SWE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "eswatini",
+    "label": "Eswatini",
+    "iso3": "SWZ",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "sint_maarten_dutch_part",
+    "label": "Sint Maarten (Dutch part)",
+    "iso3": "SXM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "seychelles",
+    "label": "Seychelles",
+    "iso3": "SYC",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "syrian_arab_republic",
+    "label": "Syrian Arab Republic",
+    "iso3": "SYR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "turks_and_caicos_islands",
+    "label": "Turks and Caicos Islands",
+    "iso3": "TCA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "chad",
+    "label": "Chad",
+    "iso3": "TCD",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "togo",
+    "label": "Togo",
+    "iso3": "TGO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "thailand",
+    "label": "Thailand",
+    "iso3": "THA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "tajikistan",
+    "label": "Tajikistan",
+    "iso3": "TJK",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "tokelau",
+    "label": "Tokelau",
+    "iso3": "TKL",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "turkmenistan",
+    "label": "Turkmenistan",
+    "iso3": "TKM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "timor_leste",
+    "label": "Timor-Leste",
+    "iso3": "TLS",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "tonga",
+    "label": "Tonga",
+    "iso3": "TON",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "trinidad_and_tobago",
+    "label": "Trinidad and Tobago",
+    "iso3": "TTO",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "tunisia",
+    "label": "Tunisia",
+    "iso3": "TUN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "turkiye",
+    "label": "Türkiye",
+    "iso3": "TUR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "tuvalu",
+    "label": "Tuvalu",
+    "iso3": "TUV",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "taiwan_province_of_china",
+    "label": "Taiwan, Province of China",
+    "iso3": "TWN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "tanzania_united_republic_of",
+    "label": "Tanzania, United Republic of",
+    "iso3": "TZA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "uganda",
+    "label": "Uganda",
+    "iso3": "UGA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "ukraine",
+    "label": "Ukraine",
+    "iso3": "UKR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "united_states_minor_outlying_islands",
+    "label": "United States Minor Outlying Islands",
+    "iso3": "UMI",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "uruguay",
+    "label": "Uruguay",
+    "iso3": "URY",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "united_states",
+    "label": "United States",
+    "iso3": "USA",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "uzbekistan",
+    "label": "Uzbekistan",
+    "iso3": "UZB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": {
+      "union_entity_id": "ussr",
+      "until_year": 1991,
+      "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live, see CHANGELOG). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
+    }
+  },
+  {
+    "entity_id": "holy_see_vatican_city_state",
+    "label": "Holy See (Vatican City State)",
+    "iso3": "VAT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "saint_vincent_and_the_grenadines",
+    "label": "Saint Vincent and the Grenadines",
+    "iso3": "VCT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "venezuela_bolivarian_republic_of",
+    "label": "Venezuela, Bolivarian Republic of",
+    "iso3": "VEN",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "virgin_islands_british",
+    "label": "Virgin Islands, British",
+    "iso3": "VGB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "virgin_islands_u_s",
+    "label": "Virgin Islands, U.S.",
+    "iso3": "VIR",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "viet_nam",
+    "label": "Viet Nam",
+    "iso3": "VNM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "vanuatu",
+    "label": "Vanuatu",
+    "iso3": "VUT",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "wallis_and_futuna",
+    "label": "Wallis and Futuna",
+    "iso3": "WLF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "samoa",
+    "label": "Samoa",
+    "iso3": "WSM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "yemen",
+    "label": "Yemen",
+    "iso3": "YEM",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "south_africa",
+    "label": "South Africa",
+    "iso3": "ZAF",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "zambia",
+    "label": "Zambia",
+    "iso3": "ZMB",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "zimbabwe",
+    "label": "Zimbabwe",
+    "iso3": "ZWE",
+    "valid_from": null,
+    "valid_to": null,
+    "predecessor": null,
+    "successors": [],
+    "formerly_part_of": null
+  }
+]

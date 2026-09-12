@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Option A (decided in conversation): commit the distribution payload
+# (data/dist) so the project stays buildable/deployable and developable
+# offline, with reviewable data revisions in git history; ignore the
+# regenerable intermediates and build artifacts.
+data/raw/
+data/processed/
+reports/
