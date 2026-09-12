@@ -1,0 +1,167 @@
+id: infant_mortality
+label: "Infant mortality"
+family: mortality
+unit: deaths_per_1000_births
+higher_is_better: false
+todd_core: true
+
+sources:
+  # ADR-0008 (Technique A, decided in conversation): the Todd board's
+  # canonical series is the AS-REPORTED tier — curated official series
+  # (L0-L2) + collectors (L1-collector) — with the harmonized layer as
+  # witness, never merged. Priorities arbitrate WITHIN the canonical tier
+  # only. Among the DYB editions the rule is: later edition = later
+  # vintage = higher priority (standard vintage discipline); every
+  # arbitration between overlapping windows is logged in
+  # {indicator}.provenance.json.
+  - provider: curated
+    ref: ussr_infant_mortality_official
+    priority: 1
+    role: canonical
+    unit: deaths_per_1000_births
+  # 12 wired editions (2015 = dead XLS links; 2016 = FILEPASS-encrypted,
+  # both verified live 2026-09-06 and deliberately absent — no coverage
+  # loss, see config/sources.yaml un_dyb notes). field=rate: IMR per 1,000
+  # live births, the DYB's native unit (= the canonical unit here).
+  - provider: un_dyb
+    ref: 2024/table15
+    field: rate
+    priority: 2
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2023/table15
+    field: rate
+    priority: 3
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2022/table15
+    field: rate
+    priority: 4
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2021/table15
+    field: rate
+    priority: 5
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2020/table15
+    field: rate
+    priority: 6
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2019/table15
+    field: rate
+    priority: 7
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2018/table15
+    field: rate
+    priority: 8
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2017/table15
+    field: rate
+    priority: 9
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2014/table15
+    field: rate
+    priority: 10
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2013/table15
+    field: rate
+    priority: 11
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2012/table15
+    field: rate
+    priority: 12
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: un_dyb
+    ref: 2011/table15
+    field: rate
+    priority: 13
+    role: canonical
+    unit: deaths_per_1000_births
+  - provider: owid
+    ref: infant-mortality
+    priority: 14
+    role: witness
+    unit: deaths_per_100_births
+
+coverage_start: 1950
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = official as-reported series: the hand-curated USSR
+  official series (one citation per point, curation gate ADR-0007) and
+  UN DYB Table 15 rates across 12 editions, 2007-2024 (published only for
+  UN completeness codes C or "|"); witness tier = UN IGME harmonized
+  estimates via OWID for cross-country comparability. Authenticity first
+  per ADR-0008: the two tiers are displayed beside each other, never
+  blended.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 400   # generous safety net in per-1,000 (the old 0-40 percent bounds, rescaled); the pre-1991 South Sudan point above 400 stays flagged on purpose
+
+license: >
+  Mixed, per source (see "sources"): curated points = facts with citation,
+  small extracts, clearly attributed (catalog/curated/README.md); UN DYB =
+  UN data reuse policy (attribution required, no endorsement implied);
+  OWID witness = CC-BY-4.0.
+notes: >
+  THE tracer from the brief (Soviet infant mortality, Todd's method).
+
+  CANONICAL TIER (ADR-0008, Technique A chosen in conversation: "A" = the
+  as-reported layer as source-of-record; the alternative "B" would have
+  kept the harmonized series canonical and fallen back into the very
+  smoothing problem this project exists to expose):
+  - curated `ussr_infant_mortality_official`: the official Soviet series
+    1970-1990 (22.9 in 1971, 27.9 in 1974, peak 31.4 in 1976, 21.8 in
+    1990), one citation per point, per-row definition notes carrying the
+    Soviet live-birth definition and the 1976-87 publication blackout.
+    This is how the `ussr` entity finally gets a real series — the gap
+    found in the live audit (OWID carries no standalone USSR entity in
+    this chart) is resolved by the curated tier, not by fabrication.
+  - un_dyb Table 15, editions 2011-2014 + 2017-2024 (the loop, P1): an
+    as-reported IMR series over 2007-2024, overlapping windows
+    reconstructed edition by edition with intra-tier arbitration (later
+    vintage wins, logged). Collector holes are data: Russia, the US,
+    China, the UK are absent from the recent editions (questionnaire
+    gaps) — they stay absent from the canonical series, with the named
+    alternative routes (HMD, national offices) in the-measurement-
+    problem.md section 4, until those connectors exist. The pre-2007 and
+    1991-2006 as-reported history lives in the PDF-era editions (1948-2013
+    plus the dead/encrypted 2015/2016) — deliberately NOT in this loop
+    (see the-measurement-problem.md section 7 and ADR-0007's PDF-route
+    gate).
+
+  WITNESS TIER: owid `infant-mortality` (UN IGME harmonized estimates,
+  1950-2023, near-global) — the comparability backbone, converted from
+  its native percentage into per-1,000 through the declared
+  UNIT_CONVERSIONS table. Displayed as divergence beside the canonical
+  series (the IGME 21.9 plateau vs the official 27.9-31.4 rise IS the
+  founding case); never merged, never averaged.
+
+  UNIT HISTORY (live-network audits, see CHANGELOG): the OWID chart
+  reports a percentage, not per-1,000 — the phase-1 fix declared the
+  percentage as the indicator unit. Phase 2 (now): the canonical unit is
+  per-1,000 (the field's native unit — DYB, official series, IGME all
+  publish per-1,000; the OWID chart was the outlier), so the witness
+  carries the x10 conversion instead of every other source carrying the
+  x0.1 one. All values in `data` and `witnesses[].data` are per-1,000.

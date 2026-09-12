@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Worksheet ss:Name="Data">
+  <Table>
+      <Row>
+        <Cell><Data ss:Type="String">4. Vital statistics summary and life expectancy at birth:  2020 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">Aperçu des statistiques de l'état civil et de l'espérance de vie à la naissance :  2020 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Continent, country or area and year</Data></Cell>
+        <Cell ss:Index="2" ss:MergeAcross="3" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Live births</Data></Cell>
+        <Cell ss:Index="7" ss:MergeAcross="3" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Deaths</Data></Cell>
+        <Cell ss:Index="13" ss:MergeAcross="2" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Infant deaths</Data></Cell>
+        <Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Life expectancy at birth</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:Index="2" ss:StyleID="sCenter"><Data ss:Type="String">Co-de</Data></Cell>
+        <Cell ss:Index="3" ss:StyleID="sCenter"><Data ss:Type="String">Number</Data></Cell>
+        <Cell ss:Index="5" ss:StyleID="sCenter"><Data ss:Type="String">Crude birth rate</Data></Cell>
+        <Cell ss:Index="7" ss:StyleID="sCenter"><Data ss:Type="String">Co-de</Data></Cell>
+        <Cell ss:Index="8" ss:StyleID="sCenter"><Data ss:Type="String">Number</Data></Cell>
+        <Cell ss:Index="10" ss:StyleID="sCenter"><Data ss:Type="String">Crude death rate</Data></Cell>
+        <Cell ss:Index="13" ss:StyleID="sCenter"><Data ss:Type="String">Co-de</Data></Cell>
+        <Cell ss:Index="14" ss:StyleID="sCenter"><Data ss:Type="String">Number</Data></Cell>
+        <Cell ss:Index="16" ss:StyleID="sCenter"><Data ss:Type="String">Rate (per 1000 births)</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Male</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Female</Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">AFRICA - AFRIQUE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Algeria - Algérie</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">988209.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">22.3369498881</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">U</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">241069.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="13" ss:StyleID="sLeft"><Data ss:Type="String">U</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">18676.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">74.2000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">III</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">77.9000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">III</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">949799.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">21.1357648315</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">U</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">258491.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="13" ss:StyleID="sLeft"><Data ss:Type="String">U</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">19001.0000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">EUROPE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Czechia</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">110281.0000000000</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">10.4</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">129500.0000000000</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">12.1</Data></Cell>
+        <Cell ss:Index="13" ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataIntegerRoman"><Data ss:Type="String">1281.0000000000</Data></Cell>
+        <Cell ss:StyleID="sDataDecimal"><Data ss:Type="String">2.6</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">74.3000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">4</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">80.7000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">4</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">73.8000000000</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">80.1000000000</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2022</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.9000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">France</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.1000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.6000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.3000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">V 5</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.7000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">V</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2022</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.4000000000</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.8000000000</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2023</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.6000000000</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.9000000000</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2024</Data></Cell>
+        <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.8000000000</Data></Cell>
+        <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">86.1000000000</Data></Cell>
+      </Row>
+  </Table>
+ </Worksheet>
+ <Worksheet ss:Name="Footnotes">
+  <Table ss:ExpandedColumnCount="2">
+      <Row>
+        <Cell><Data ss:Type="String">FOOTNOTES</Data></Cell>
+        <Cell><Data ss:Type="String">NOTES</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">Italics: data from civil registers which are incomplete or of unknown completeness.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">*</Data></Cell>
+        <Cell><Data ss:Type="String">Provisional. - Données provisoires.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">a</Data></Cell>
+        <Cell><Data ss:Type="String">'Code' indicates the source of data, as follows: C - Civil registration, estimated over 90% complete; U - Civil registration, estimated less than 90% complete; | - Other source, estimated reliable.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">b</Data></Cell>
+        <Cell><Data ss:Type="String">A Roman number in front of the data for males specifies the range of the reference period of life expectancy for males and females presented on the row.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number">4</Data></Cell>
+        <Cell><Data ss:Type="String">Data refer to the de facto population.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number">5</Data></Cell>
+        <Cell><Data ss:Type="String">Data refer to the de facto population present in the country.</Data></Cell>
+      </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

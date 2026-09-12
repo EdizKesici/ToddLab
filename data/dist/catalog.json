@@ -1,0 +1,44 @@
+[
+  {
+    "id": "homicide_rate",
+    "label": "Homicide rate",
+    "family": "mortality",
+    "unit": "deaths_per_100000_population",
+    "higher_is_better": false,
+    "todd_core": true,
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = WHO Mortality Database cause-of-death registrations as submitted by member states (civil registration, ICD-coded, Assault = X85-Y09 and predecessors), redistributed by the OECD Causes of Mortality dataflow over SDMX, 49 countries, 1960-2024, sex-split as published; witness tier = UNODC intentional-homicide compilation via OWID (criminal-justice and vital-registration sources with imputation, near-global, 1990-2023). Authenticity first per ADR-0008: the two tiers count differently and are displayed beside each other, never blended.",
+    "reclassification_sensitive": true,
+    "license": "Mixed, per source (see \"sources\"): OECD DF_COM = OECD Terms and Conditions, attribution required (content: WHO Mortality Database); OWID witness = CC-BY-4.0.",
+    "n_points": 7193,
+    "n_witness_points": 4220
+  },
+  {
+    "id": "infant_mortality",
+    "label": "Infant mortality",
+    "family": "mortality",
+    "unit": "deaths_per_1000_births",
+    "higher_is_better": false,
+    "todd_core": true,
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = official as-reported series: the hand-curated USSR official series (one citation per point, curation gate ADR-0007) and UN DYB Table 15 rates across 12 editions, 2007-2024 (published only for UN completeness codes C or \"|\"); witness tier = UN IGME harmonized estimates via OWID for cross-country comparability. Authenticity first per ADR-0008: the two tiers are displayed beside each other, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): curated points = facts with citation, small extracts, clearly attributed (catalog/curated/README.md); UN DYB = UN data reuse policy (attribution required, no endorsement implied); OWID witness = CC-BY-4.0.",
+    "n_points": 1419,
+    "n_witness_points": 13202
+  },
+  {
+    "id": "life_expectancy",
+    "label": "Life expectancy at birth",
+    "family": "mortality",
+    "unit": "years",
+    "higher_is_better": true,
+    "todd_core": true,
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = UN DYB Table 4, national official statistics as reported, 12 editions, 2007-2024, sex-split (Male/Female) as printed by the collector; witness tier = OWID \"life expectancy\" (UN WPP estimates and historical reconstructions — Riley, HMD — both sexes), near-global, longer span (to 1875 for some entities). Authenticity first per ADR-0008: displayed beside each other, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): UN DYB = UN data reuse policy (attribution required, no endorsement implied); OWID witness = CC-BY-4.0.",
+    "n_points": 3018,
+    "n_witness_points": 19468
+  }
+]

@@ -1,0 +1,98 @@
+id: homicide_rate
+label: "Homicide rate"
+family: mortality
+unit: deaths_per_100000_population
+higher_is_better: false
+todd_core: true
+
+sources:
+  # ADR-0008 applied to the third pilot (P3): canonical = the as-reported
+  # collector (WHO Mortality Database registrations, redistributed by the
+  # OECD "Causes of mortality" SDMX dataflow — ICD Assault, CICDHOCD),
+  # witness = the UNODC compilation via OWID (criminal-justice records +
+  # imputation, near-global). The two count homicide DIFFERENTLY (vital
+  # registration vs police/criminal justice) — the divergence between
+  # them is signal to display, not noise to reconcile.
+  - provider: oecd
+    ref: DF_COM/CICDHOCD
+    field: rate
+    priority: 1
+    role: canonical
+    unit: deaths_per_100000_population
+  - provider: owid
+    ref: homicide-rate-unodc
+    field: "Homicide rate per 100,000 population"
+    priority: 2
+    role: witness
+
+coverage_start: 1960
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = WHO Mortality Database cause-of-death registrations as
+  submitted by member states (civil registration, ICD-coded, Assault =
+  X85-Y09 and predecessors), redistributed by the OECD Causes of
+  Mortality dataflow over SDMX, 49 countries, 1960-2024, sex-split as
+  published; witness tier = UNODC intentional-homicide compilation via
+  OWID (criminal-justice and vital-registration sources with imputation,
+  near-global, 1990-2023). Authenticity first per ADR-0008: the two
+  tiers count differently and are displayed beside each other, never
+  blended.
+reclassification_sensitive: true
+
+plausible_range:
+  min: 0
+  max: 200   # real history sits above the old 150 bound: Colombia's 1991-93 vital-registration
+              # assault mortality (the Escobar-era peak) reports 158-163 per 100k as-reported —
+              # flagged when the bound was 150, kept in the dist on purpose (the safety net
+              # reports, it does not censor); >200 would still flag.
+
+license: >
+  Mixed, per source (see "sources"): OECD DF_COM = OECD Terms and
+  Conditions, attribution required (content: WHO Mortality Database);
+  OWID witness = CC-BY-4.0.
+notes: >
+  THE THIRD PILOT GOES TWO-TIER (P3): until v7 this indicator was the
+  review's standing gap — mono-OWID, no canonical/witness treatment.
+  The canonical is now the WHO Mortality Database route: national
+  civil-registration deaths by cause, as submitted, ICD-coded, carried
+  by the OECD "Causes of mortality" (DF_COM) dataflow over its public
+  SDMX API. Content judgment: the registrations are as-reported (not
+  modeled) — the same collector-tier judgment as UN DYB, and the
+  contrast with GHO's own homicide indicators (literally named
+  "Estimates of ...", harmonized) marks the line.
+
+  THE SEX SPLIT IS TODD-RELEVANT SIGNAL: the dataflow publishes per
+  sex, and the as-reported numbers are stark — Russia's assault
+  mortality 1994 crisis peak: male 63.3 vs female 14.3 per 100k
+  (4.4x). The (entity, year, sex) merge key carries it end-to-end,
+  exactly like life_expectancy.
+
+  THE CRUDE-RATE PIN (anti-derivation discipline): the dataflow also
+  carries age-standardized rates for the same keys (RUS 1994 male:
+  crude 52.5 vs standardized 63.3 per 100k) — standardization adjusts
+  for age structure, a derived comparability measure, NOT the
+  as-reported rate. The canonical tier fetches CALC_METHODOLOGY=CRUDE
+  only; the age-standardized variant is a witness-tier concept and is
+  deliberately absent.
+
+  HONEST SCOPE LIMITS (collector holes are data, see
+  the-measurement-problem.md): 49 countries (OECD + key partners incl.
+  Russia, China, Brazil, South Africa, India, Colombia) — NOT
+  near-global; most of Africa and Central Asia absent, Ukraine and
+  Belarus absent from this dataflow. Russia's series ends 2019 (the WHO
+  MDB's own lag): 2020+ is witness-only there — a divergence to
+  display, not a gap to patch.
+
+  WITNESS TIER: owid `homicide-rate-unodc` — the UNODC compilation
+  (criminal-justice + vital-registration sources, with imputation for
+  missing country-years), near-global 1990-2023. Vital-registration
+  assault (canonical) vs criminal-justice homicide (witness) differ
+  where deaths are classified differently than they are investigated:
+  the comparison IS the point.
+
+  reclassification_sensitive=true: the homicide/suicide/accident/
+  "undetermined intent" boundary shifts with the quality of a country's
+  cause-of-death certification system — relevant to the reclassification
+  test mentioned in the brief ("ill-defined" categories).

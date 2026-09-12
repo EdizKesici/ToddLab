@@ -1,0 +1,13 @@
+Entity,Code,Year,Infant mortality rate
+France,FRA,1950,5.2
+France,FRA,1960,2.74
+France,FRA,1990,0.73
+France,FRA,2000,0.44
+France,FRA,2023,0.34
+Russia,RUS,1958,4.1
+Russia,RUS,1970,2.47
+Russia,RUS,1990,2.15
+Russia,RUS,1992,1.86
+Russia,RUS,2000,1.53
+Russia,RUS,2023,0.40
+Wakanda,,1990,5.5

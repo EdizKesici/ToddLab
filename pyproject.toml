@@ -1,0 +1,21 @@
+[project]
+name = "toddlab"
+version = "0.1.0"
+description = "Backend for collecting and normalizing hard social indicators (mortality, anthropometry...) for cross-country comparison, inspired by the Emmanuel Todd method."
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "requests>=2.31",
+    "xlrd>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pycountry>=24.6",
+    "babel>=2.14",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
