@@ -1186,6 +1186,10 @@
     owid: Micronesia, Federated States of
     worldbank: FSM
     who_gho: FSM
+    # Table 21 prints "Micronesia (Federated States of)" (parentheses, not
+    # commas) — verified unresolved in the 2011-2019 LE-by-age editions,
+    # resolved since v10.
+    un_dyb: Micronesia (Federated States of)
   label_source: pycountry
 - entity_id: gabon
   label: Gabon
@@ -2534,7 +2538,14 @@
     owid: Palestine, State of
     worldbank: PSE
     who_gho: PSE
-    un_dyb: "State of Palestine"
+    # Both printed names of the same entity, edition-dependent (verified
+    # against the wired snapshots): "State of Palestine" (2012+ editions)
+    # and "Occupied Palestinian Territory" (2011 and earlier) — the v10
+    # alias-list support closed a gap that had kept the 2011-edition rows
+    # unresolved since v6.
+    un_dyb:
+      - State of Palestine
+      - Occupied Palestinian Territory
   label_source: pycountry
 - entity_id: french_polynesia
   label: French Polynesia

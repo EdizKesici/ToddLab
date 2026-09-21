@@ -19,11 +19,13 @@ sources:
     priority: 1
     role: canonical
     unit: deaths_per_100000_population
+    root: who_mdb
   - provider: owid
     ref: homicide-rate-unodc
     field: "Homicide rate per 100,000 population"
     priority: 2
     role: witness
+    root: unodc
 
 coverage_start: 1960
 coverage_end: 2024
@@ -65,8 +67,8 @@ notes: >
 
   THE SEX SPLIT IS TODD-RELEVANT SIGNAL: the dataflow publishes per
   sex, and the as-reported numbers are stark — Russia's assault
-  mortality 1994 crisis peak: male 63.3 vs female 14.3 per 100k
-  (4.4x). The (entity, year, sex) merge key carries it end-to-end,
+  mortality 1994 crisis peak: male 52.5 vs female 14.3 per 100k
+  (3.7x). The (entity, year, sex) merge key carries it end-to-end,
   exactly like life_expectancy.
 
   THE CRUDE-RATE PIN (anti-derivation discipline): the dataflow also

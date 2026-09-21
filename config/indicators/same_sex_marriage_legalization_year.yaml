@@ -1,0 +1,93 @@
+id: same_sex_marriage_legalization_year
+label: "Same-sex marriage legalization year"
+family: markers
+unit: year
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE MARKER'S ONLY HONEST TIER (v15): the curation gate. The probe
+  # record (2026-09-20): NO machine-readable door redistributes the
+  # legalization years — OWID carries no same-sex-marriage grapher chart
+  # (10 candidate slugs probed, all 404), the collectors' fertility/
+  # vital-statistics dataflows print births, not statutes, and the legal
+  # databases (ILGA, Pew's timeline) publish prose/HTML tables. The
+  # signal Todd reads is a DATED NATIONAL EVENT with a legal citation —
+  # exactly the curated tier's shape: one row per country, the year the
+  # FIRST national law took effect, one citation per point.
+  - provider: curated
+    ref: same_sex_marriage_legalization
+    priority: 1
+    role: canonical
+    root: national_legislation
+
+coverage_start: 2001
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = a curated table of dated national legislation (33
+  countries, 2001-2025, one citation per point — statute or nationwide
+  ruling with its effective date, the consensus dating cross-checked
+  against the legislative record); no witness tier exists (no
+  machine-readable door carries the series — probed live 2026-09-20,
+  the curation gate's condition (b) finding).
+reclassification_sensitive: false
+
+plausible_range:
+  min: 1990   # the first national law is 2001 (Netherlands); the bound's
+  max: 2030   # headroom admits the table's forward edge (2025 laws) while
+              # a unit error (a 0, a 100000, a misloaded rate) flags on
+              # either side — the marker IS its year, so the value's
+              # plausibility is the dating's plausibility.
+
+license: >
+  Facts with citation (small extracts, clearly attributed) — see
+  docs/licenses.md and catalog/curated/README.md.
+
+notes: >
+  THE TENTH INDICATOR, THE FIRST MARKER (v15). The corpus's family
+  'markers' = Todd's dated institutional events — the thresholds his
+  method reads as STATE ZERO points, not curves. This one (13
+  citations, La Défaite de l'Occident 2024 — the single-book metric
+  with the corpus's heaviest per-book concentration outside the #1) is
+  Todd's 'religion zero' marker: the year a country legalizes same-sex
+  marriage dates the moment its Christian norm system stopped being
+  state-bearing (his chain: 2015 -> Trump -> Ukraine war reads from
+  these very dates — Ireland's referendum and Obergefell both 2015,
+  the US marker the chain's hinge).
+
+  THE MARKER'S SHAPE: one point per country, the point's year = the
+  legalization year, the value = the same year (the board reads a
+  STEP: France 2013, Germany 2017, Greece 2024 — the Orthodox world's
+  first, the marker family's own divergence display). Every point
+  carries its citation in the dist (the statute or nationwide ruling,
+  with its effective date) and a definition_note spelling the dating
+  convention: the year the FIRST NATIONAL law took effect (a statute's
+  entry into force, not its signature; a nationwide court ruling where
+  the statute never preceded one — Obergefell 2015, Colombia 2016,
+  Austria 2019's court-ordered effective date; a referendum's year
+  where the people voted first — Ireland 2015, Switzerland's 2021
+  referendum approval with the 2022 entry into force). Sub-national
+  firsts (Massachusetts 2004, Mexico City 2010) and the registered-
+  partnership history (Denmark 1989, the world's first) ride in the
+  definition_notes, never in the value — the marker is the NATIONAL
+  marriage date, as Todd reads it.
+
+  THE CURATION GATE (ADR-0007, all three conditions):
+  (a) the todd_ref demands it — 13 citations in La Défaite de
+  l'Occident, the 'religion zero' chain's own dating instrument;
+  (b) the distortion is the ABSENCE — no collector or harmonized door
+  carries the series at all (probed live: OWID 404 on every candidate
+  slug, the collectors print vital statistics, not statutes), so the
+  curated tier is not competing with a wire, it is the only tier;
+  (c) every row carries its citation — enforced mechanically by the
+  connector (an empty citation column is a parse error).
+
+  HONEST SCOPE LIMITS: 33 countries = the countries with a national
+  same-sex marriage law in force as of the 2025 vintage (the table's
+  coverage ends at Thailand and Liechtenstein 2025); the countries
+  where marriage remains unlegalized have NO row (an absent row is the
+  honest state — a 0 would invent a date); the couples' registered-
+  partnership intermediate step (Denmark 1989 onward) is deliberately
+  NOT the marker, per Todd's own usage.

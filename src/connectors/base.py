@@ -42,13 +42,19 @@ class RawRecord:
     - footnote_refs: the footnote numbers printed next to the value
       (country-, row- and cell-level, reading order), whose TEXTS live in
       the snapshot's `footnotes` block and are joined into the dist;
-    - reference_range: Table 4's Roman numeral next to the LE value — the
-      width in years of the reference period the LE was computed over
-      (III = 3-year period), a Todd-relevant as-reported nuance;
+    - reference_range: the printed reference period of the value, in the
+      source's own syntax — Table 4's Roman numeral next to the LE value
+      (III = 3-year period; the width), or Table 21/22's explicit period
+      string ("2012 - 2015") whose END year is the point's year (the
+      DYB's own convention, verified edition by edition against Table 4);
+      a Todd-relevant as-reported nuance;
     - missing_marker: WHICH marker was printed where the value is absent
       ("..." = not available, "-" = nil/not applicable) — an explicit gap
       with its printed reason, never silently conflated;
-    - provisional: the "*" marker (the DYB's own "provisional" flag).
+    - provisional: the "*" marker (the DYB's own "provisional" flag);
+    - small_base: the "\u2666" marker (Table 17: "Ratios based on 30 or
+      fewer maternal deaths are identified by the symbol ♦" — the printed
+      Notes17 text; a small-numbers caveat on the RATIO, as-reported).
     """
     entity_raw_name: str
     iso3_raw: str | None
@@ -62,6 +68,7 @@ class RawRecord:
     reference_range: str | None = None
     missing_marker: str | None = None
     provisional: bool | None = None
+    small_base: bool | None = None
 
 
 @dataclass

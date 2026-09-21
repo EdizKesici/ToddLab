@@ -7,7 +7,7 @@ indicator schema so it can be audited/corrected independently.
 """
 from __future__ import annotations
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class FormerUnionMembership(BaseModel):
@@ -47,10 +47,22 @@ class SourceIds(BaseModel):
     who_gho: str | None = None
     # Entity name AS PRINTED in UN Demographic Yearbook tables, when it
     # differs from `label` (e.g. label "Bolivia" vs DYB "Bolivia
-    # (Plurinational State of)"). Each entry was verified against the live
-    # DYB Table 15 file — this is the same incremental-correction mechanism
-    # as the OWID names, never a guessed alias.
-    un_dyb: str | None = None
+    # (Plurinational State of)"). A LIST when the DYB's own naming changed
+    # across editions: "State of Palestine" (2012+) and "Occupied
+    # Palestinian Territory" (2011 and earlier) are the same entity under
+    # two printed names, verified against the live files — this is the
+    # same incremental-correction mechanism as the OWID names, never a
+    # guessed alias.
+    un_dyb: str | list[str] | None = None
+
+    @field_validator("un_dyb", mode="before")
+    @classmethod
+    def _normalize_un_dyb_aliases(cls, value):
+        # Backward-compatible normalization: a bare string becomes a
+        # one-element list, so the registry indexes one shape.
+        if isinstance(value, str):
+            return [value]
+        return value
 
 
 class Entity(BaseModel):
@@ -100,7 +112,11 @@ class EntityRegistry:
         self.entities = entities
         self._by_id = {e.entity_id: e for e in entities}
         self._by_owid_name = {e.source_ids.owid: e for e in entities if e.source_ids.owid}
-        self._by_dyb_name = {e.source_ids.un_dyb: e for e in entities if e.source_ids.un_dyb}
+        # un_dyb aliases (normalized to a list by SourceIds): each printed
+        # name of an entity indexes to it.
+        self._by_dyb_name = {
+            alias: e for e in entities for alias in (e.source_ids.un_dyb or [])
+        }
         self._by_label = {e.label: e for e in entities}
         self._by_iso3 = {e.iso3: e for e in entities if e.iso3}
 

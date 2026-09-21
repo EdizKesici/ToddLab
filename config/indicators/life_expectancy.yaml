@@ -8,64 +8,105 @@ todd_core: true
 sources:
   # ADR-0008 applied to the second pilot indicator (P1): the canonical
   # series is the as-reported collector tier (UN DYB Table 4), the
-  # harmonized layer (OWID/UN WPP) is the witness. Among the DYB editions:
-  # later edition = later vintage = higher priority (standard vintage
+  # harmonized layer is the witness. Among the DYB editions: later
+  # edition = later vintage = higher priority (standard vintage
   # discipline, arbitrations logged in {indicator}.provenance.json).
-  # Editions 2015 (dead XLS links) and 2016 (FILEPASS-encrypted) are
-  # deliberately absent — verified live 2026-09-06, no coverage loss (see
-  # config/sources.yaml un_dyb notes).
+  # Edition 2016 (FILEPASS-encrypted) is deliberately absent — verified
+  # live 2026-09-06, no coverage loss (see config/sources.yaml un_dyb
+  # notes). Edition 2015 was recovered in v10 through the legacy URL
+  # pattern (its window 2011-2015 now has its own vintage).
+  #
+  # `root` (v11, the genealogy field): the two LE witnesses carry
+  # DIFFERENT roots on purpose — OWID's long-run series is a mixed
+  # compilation (Riley/HMD historical + WPP modern), the World Bank's is
+  # pure UN WPP. Two harmonized roots, not one: the genealogy says so,
+  # and the divergences between them are display material.
   - provider: un_dyb
     ref: 2024/table04
     priority: 1
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2023/table04
     priority: 2
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2022/table04
     priority: 3
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2021/table04
     priority: 4
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2020/table04
     priority: 5
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2019/table04
     priority: 6
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2018/table04
     priority: 7
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2017/table04
     priority: 8
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2014/table04
+    ref: 2015/table04
     priority: 9
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2013/table04
+    ref: 2014/table04
     priority: 10
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2012/table04
+    ref: 2013/table04
     priority: 11
     role: canonical
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2011/table04
+    ref: 2012/table04
     priority: 12
     role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2011/table04
+    priority: 13
+    role: canonical
+    root: unsd_dyb
   - provider: owid
     ref: life-expectancy
-    priority: 13
+    priority: 14
     role: witness
+    root: owid_longrun_composite
+  # v11 (P5): the World Bank's sex-split LE codes (the .MA.IN/.FE.IN
+  # suffix convention) — pure UN WPP estimates, the witness the sex-split
+  # canonical tier was missing: Russia 1994 male = 57.55 where the DYB
+  # collector is absent, and 64.56 in 2012 exactly matching the collector's
+  # own last Russian life table (verified live). Rounded to at most one
+  # decimal (the WDI print, same honest coarseness as the IMR codes).
+  - provider: worldbank
+    ref: SP.DYN.LE00.MA.IN
+    priority: 15
+    role: witness
+    root: un_wpp
+  - provider: worldbank
+    ref: SP.DYN.LE00.FE.IN
+    priority: 16
+    role: witness
+    root: un_wpp
 
 coverage_start: 2007
 coverage_end: 2024
@@ -73,11 +114,12 @@ coverage_end: 2024
 reliability: high
 reliability_criteria: >
   Canonical tier = UN DYB Table 4, national official statistics as
-  reported, 12 editions, 2007-2024, sex-split (Male/Female) as printed by
-  the collector; witness tier = OWID "life expectancy" (UN WPP estimates
-  and historical reconstructions — Riley, HMD — both sexes), near-global,
-  longer span (to 1875 for some entities). Authenticity first per
-  ADR-0008: displayed beside each other, never blended.
+  reported, 13 editions (2015 recovered v10), 2007-2024, sex-split (Male/Female) as printed by
+  the collector; witness tier = OWID "life expectancy" (the mixed
+  long-run compilation — Riley, HMD, UN WPP — both sexes) and the World
+  Bank SP.DYN.LE00.MA/FE codes (pure UN WPP, sex-split), near-global.
+  Authenticity first per ADR-0008: displayed beside each other, never
+  blended.
 reclassification_sensitive: false
 
 plausible_range:
@@ -87,7 +129,7 @@ plausible_range:
 license: >
   Mixed, per source (see "sources"): UN DYB = UN data reuse policy
   (attribution required, no endorsement implied); OWID witness =
-  CC-BY-4.0.
+  CC-BY-4.0; World Bank witness = CC-BY-4.0.
 notes: >
   THE SEX DIMENSION (the honest cost of the as-reported route): the DYB
   collector prints life expectancy at birth for Male and Female
@@ -96,29 +138,40 @@ notes: >
   derive). Every canonical point therefore carries sex="male"|"female"
   and (entity, year, sex) is the merge key. The OWID witness is
   both-sexes: it stays comparable at the SERIES level (its both-sexes
-  level sits between the two canonical curves), not pointwise. A
-  both-sexes canonical series would be a derived product, explicitly
-  out of scope until a separate decision says otherwise — and the
-  male/female split is itself a Todd-relevant signal (the Russian sex
-  gap in life expectancy is one of his standing exhibits).
+  level sits between the two canonical curves), not pointwise. Since v11
+  the World Bank witnesses ARE sex-split (SP.DYN.LE00.MA/FE): the
+  male/female witness curves the sex-split canonical lacked — the
+  Russian sex gap in life expectancy, one of Todd's standing exhibits,
+  can now be read collector-vs-model curve to curve, not only against a
+  both-sexes line. A both-sexes canonical series would be a derived
+  product, explicitly out of scope until a separate decision says
+  otherwise.
 
-  CANONICAL TIER: un_dyb Table 4, editions 2011-2014 + 2017-2024 —
+  CANONICAL TIER: un_dyb Table 4, editions 2011-2015 + 2017-2024 (the
+  2015 vintage recovered in v10 via the legacy URL pattern) —
   as-reported LE at birth over 2007-2024, overlapping windows
   reconstructed edition by edition, intra-tier arbitration (later
   vintage wins, logged in provenance.json). Collector holes are data:
   countries absent from the table's windows (no questionnaire response
-  or no civil-registration LE that year) stay absent. The pre-2007
-  as-reported history lives in the PDF-era editions — deliberately NOT
-  in this loop (ADR-0007's PDF-route gate).
+  or no civil-registration LE that year) stay absent — Russia included,
+  which is why the WPP witness (WB codes) carries Russia's full series
+  where the collector freezes. The pre-2007 as-reported history lives
+  in the PDF-era editions — deliberately NOT in this loop (ADR-0007's
+  PDF-route gate).
 
-  WITNESS TIER: owid `life-expectancy` — "over the long-run" series
-  combining historical reconstructions (Riley, HMD) with UN WPP
-  estimates, methodologically heterogeneous by period; check
-  n_missing_within_span per country in reports/coverage_report.md
-  before using this series for a given country over a long span.
+  WITNESS TIER: two DIFFERENT harmonized roots, deliberately both wired:
+  - owid `life-expectancy` — "over the long-run" series combining
+    historical reconstructions (Riley, HMD) with UN WPP estimates,
+    methodologically heterogeneous by period (root:
+    owid_longrun_composite); check n_missing_within_span per country in
+    reports/coverage_report.md before using this series for a given
+    country over a long span.
+  - worldbank SP.DYN.LE00.MA.IN / SP.DYN.LE00.FE.IN — pure UN WPP
+    (root: un_wpp), sex-split, 1960-2024, rounded to one decimal (the
+    WDI print). Where the two witnesses disagree, the difference is the
+    Riley/HMD-vs-WPP genealogy showing — display material, not an error
+    to reconcile.
 
-  Life expectancy at 60 (mentioned in the brief as a companion
-  indicator) deliberately absent from this pilot — DYB Table 21 ("Life
-  expectancy at specified ages", latest-year cross-sections, 2005+) is
-  the identified as-reported route; to add in phase 2/3 as a companion
-  indicator.
+  Life expectancy at 60 is its own indicator since v10 (life_expectancy_60,
+  DYB Tables 21/22 + a GHO witness) — see its config for the
+  cross-section semantics of the by-age tables.

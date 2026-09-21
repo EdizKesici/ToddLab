@@ -1,0 +1,186 @@
+id: birth_rate_fertility
+label: "Total fertility rate"
+family: society
+unit: births_per_woman
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE CORPUS'S #1 (todd_refs, 111 citations, 16/16 books — the only
+  # metric Todd uses in every single book) and THE TFR-vs-CBR DECISION v14
+  # answers: Todd's variable is FERTILITY PER WOMAN (the corpus notes say
+  # it outright — "World TFR decline", "TFR trends 1965-77", "onset
+  # dates", "threshold crossings"), not the crude birth rate. The two
+  # measures differ in exactly one thing that matters for Todd's
+  # year-by-year country comparison: the CBR (births per 1,000 total
+  # population) is dragged by age structure — a young country prints high
+  # CBR at moderate fertility, an old country prints low CBR at the same
+  # TFR — while the TFR (the synthetic number of children per woman
+  # passing through one year's age-specific rates) is structure-free by
+  # construction, comparable across countries AND across Todd's full
+  # 1870-2020 span. The CBR face (the collector's own natalité print,
+  # DYB Table 9, a different unit) is recorded in sources.yaml as the
+  # unwired companion door — a future crude_birth_rate decision.
+  #
+  # THE CANONICAL FINDING (verified live 2026-09-19, before any config):
+  # no collector wire prints a national TFR except Eurostat's demo_find
+  # — the UN DYB publishes CBR (Table 9) and general/age-specific rates
+  # (Table 10, no TFR column; summing the ASFR would be a derivation the
+  # canonical tier refuses by constitution) and the OECD SDMX registry
+  # has no national fertility dataflow (DF_FERTILITY is regional
+  # TL2/TL3). So the collector tier here is Eurostat: the TFR each
+  # national statistical office computes and publishes, collected via the
+  # Eurostat questionnaire — same judgment as un_dyb for content.
+  - provider: eurostat
+    ref: demo_find/TOTFERRT
+    priority: 1
+    role: canonical
+    root: eurostat_demo
+  # THE FRANCE VARIANT PAIR (the FX/FR seam): Eurostat prints TWO French
+  # series — FX "Metropolitan France" 1960-2012 (53 points; INSEE ended
+  # the metro-only series) and FR "France" 1998-2024 (27 points, whole
+  # France incl. overseas departments; the overlap prints slightly
+  # different values: 2000 = 1.87 metro vs 1.89 total, both as-reported).
+  # Neither is a duplicate of the other, so each rides its own
+  # geo-pinned source_ref and the merge arbitrates the 1998-2012 overlap
+  # by priority — FR (the later-maintained national series) wins, every
+  # discarded FX value logged in provenance.json: the standard vintage
+  # discipline, the DYB edition-loop precedent. The canonical French
+  # series is therefore FX 1960-1997 + FR 1998-2024, seam included — the
+  # metropolitan France of Todd's books carries the pre-1998 canon.
+  - provider: eurostat
+    ref: demo_find/TOTFERRT/FR
+    priority: 2
+    role: canonical
+    root: eurostat_demo
+  - provider: eurostat
+    ref: demo_find/TOTFERRT/FX
+    priority: 3
+    role: canonical
+    root: eurostat_demo
+  # THE WITNESS: WDI's TFR redistribution of UN WPP (bare code, no sex
+  # dimension — a synthetic measure over women's reproductive lifetimes
+  # has no split to print), ~200 countries, 1960-2024, the WDI print
+  # precision as carried (FRA 2022 = 1.78, RUS 1990 = 1.892, both
+  # verified live). Root un_wpp — the same root the life_expectancy
+  # witnesses carry; for the EU countries WPP anchors on the national
+  # series (FR 2022: collector 1.78, witness 1.78), and the divergence
+  # case lives where WPP models what the collector never collected
+  # (Russia post-2010, the whole non-European world).
+  - provider: worldbank
+    ref: SP.DYN.TFRT.IN
+    priority: 4
+    role: witness
+    root: un_wpp
+
+coverage_start: 1960
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat demo_find TOTFERRT, the national official
+  total fertility rates as collected by Eurostat (questionnaire
+  collector), 47 country codes on the main slice (46 printing values,
+  Bosnia none) plus the two French series — 46 valued entities,
+  1960-2024, per-observation status flags (b/e/p) transported
+  as-reported; witness tier = UN WPP estimates via the World Bank's
+  SP.DYN.TFRT.IN (modeled, ~200 countries, 1960-2024, the WDI print
+  precision as carried: FRA 2022 = 1.78, RUS 1990 = 1.892). Authenticity
+  first per ADR-0008: displayed beside each other, never blended.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 10   # the collector's own history stays below 4.1 (Ireland 1964
+            # = 4.07 is the live slice's maximum, verified 2026-09-19); the
+            # bound's headroom belongs to the WITNESS, whose WPP modeled
+            # tail peaks at Yemen 1985 = 8.86 (verified live) — revision
+            # headroom without swallowing unit errors: a per-1,000 misload
+            # (a crude-birth-rate value) prints >= 10 immediately.
+
+license: >
+  Mixed, per source (see "sources"): Eurostat = Eurostat reuse policy
+  (attribution required, no endorsement implied); World Bank witness =
+  CC-BY-4.0.
+
+# v16: the companion link, declared on BOTH sides (the symmetry the
+# cross-validation enforces — a one-way declaration fails the build):
+# crude_birth_rate reads the same demographic phenomenon through the
+# OTHER measure (births per 1,000 total population, the collector's own
+# natalité print — DYB Table 9). Two indicators, two measures, never a
+# unit conversion: the CBR drags the age structure the TFR is free of.
+companion_indicators: ["crude_birth_rate"]
+
+notes: >
+  THE EIGHTH INDICATOR, THE CORPUS'S #1 (111 citations, 16/16 books —
+  fertility is the only metric Todd uses in every book: the
+  19th-century European transition of L'invention de l'Europe and
+  L'enfance du monde, the Soviet natality collapse of La Chute finale,
+  the world TFR decline of Après l'Empire, the onset dates of Où en
+  sommes-nous ?, the 2015 Catholic-periphery comparison of Qui est
+  Charlie ?). The unit is CHILDREN PER WOMAN — the corpus notes'
+  "TFR decline", "threshold crossings" and "onset dates" are all
+  statements about this quantity; the replacement threshold (~2.1)
+  against which Todd reads every series is native to it. higher_is_better
+  is REQUIRED by the schema but carries no normative claim here: the
+  corpus's dominant signal is the fertility TRANSITION (the decline),
+  so false is the least-misleading default — the board reads levels and
+  drops, not a direction. THE SEX DIMENSION IS ABSENT BY CONSTRUCTION:
+  TFR is already a synthetic measure over women's lifetimes; no split
+  exists to report, and every point carries sex=None.
+
+  CANONICAL TIER: three Eurostat sources, one collector. The main slice
+  (demo_find/TOTFERRT) serves 47 country codes, 46 of them printing
+  values — Western Europe annually from 1960 (65 points each), the
+  Eastern partnership partially (Russia 2006-2010, Belarus to 2018,
+  Ukraine to 2019, Moldova to 2023 — the national offices stopped
+  answering the questionnaire, the collector's honest freeze, exactly
+  Russia's last DYB life table; Bosnia and Herzegovina prints NO point
+  at all, the questionnaire never answered), the UK to 2018 (Brexit
+  ended the series: pre-2019 British comparisons are canonical-only,
+  post-2019 witness-only). The German series is 2000-2024 (DE wired;
+  DE_TOT dropped at parse — verified live to print values identical to
+  DE on every one of the 25 overlapping years). Kosovo (XK) prints
+  2016-2019 but resolves to no ISO3: it flows to the unresolved report,
+  the SAME pending product decision as the World Bank's Kosovo — a
+  decision, not a bug. THE FX/FR SEAM: France rides TWO series (FX
+  metropolitan 1960-2012, FR whole-France 1998-2024); the merge keeps
+  FX 1960-1997 + FR 1998-2024 and arbitrates the 15 overlap years to FR
+  (later vintage wins, each discarded FX value logged in
+  provenance.json) — the definitional seam the collector itself printed
+  (1998: 1.76 metro vs 1.78 total; 2000: 1.87 vs 1.89; 2010: 2.02 vs
+  2.03), displayed, never reconciled. The collector's per-observation
+  flags ride as-reported: quality_code carries the printed letter
+  (b = break in series, e = estimated, p = provisional — FR 2014 carries
+  'b', the French series' own methodological break), provisional=true
+  where the flag contains p.
+
+  WITNESS TIER: one door, the minimal honest choice (the v13
+  discipline): WDI's WPP redistribution, worldwide — the face the
+  canonical tier's honest partiality cannot serve (Todd's Muslim-world
+  and Central-Asia comparisons of Après l'Empire live HERE, on the
+  modeled layer, next to a collector that never asked those countries).
+  Where the tiers agree (EU, post-2000), they agree because WPP anchors
+  on the national series — the root field says so (un_wpp beside
+  eurostat_demo: two independent roots, the genealogy display's exact
+  case); where they diverge (Russia after 2010 — collector frozen,
+  witness modeled on), the divergence IS the story the board displays.
+
+  HONEST SCOPE LIMITS: no 19th-century history on the canonical tier
+  (Eurostat starts 1960 — Todd's 1870-1930 European transition onset
+  dates are BOOK data, territory for the curated tier or the HFD
+  decision); no USSR entity (dissolved before the wire); the witness
+  inherits WPP's revisions silently (no vintage pinning on that door).
+  UNWIRED DOORS, recorded for the next decisions: GHO 'tfr' (a third
+  un_wpp door — the "illusion of independent verification" warning
+  applies, one witness door suffices), OWID 'children-per-woman' (pure
+  WPP 1950-2023, 254 entities — same root again) and
+  'total-fertility-rate' (WPP + pre-1950 depth for a handful of
+  countries, Sweden from 1891 — would need its own composite root),
+  DYB Table 9 (the collector's CBR face, a different unit — the future
+  crude_birth_rate indicator, one parser away), DYB Table 10
+  (general + age-specific fertility rates, latest-available-year
+  cross-sections, no TFR column — verified on the 2024 file), and the
+  Human Fertility Database (France from 1817, the collector with the
+  historical depth Todd's onset dates need — the HMD-class pending
+  decision recorded in sources.yaml).

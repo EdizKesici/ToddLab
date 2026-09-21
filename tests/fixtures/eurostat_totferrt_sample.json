@@ -1,0 +1,112 @@
+{
+ "version": "1.0",
+ "class": "dataset",
+ "label": "Fertility indicators",
+ "id": [
+  "freq",
+  "indic_de",
+  "geo",
+  "time"
+ ],
+ "size": [
+  1,
+  1,
+  10,
+  7
+ ],
+ "dimension": {
+  "freq": {
+   "category": {
+    "index": {
+     "A": 0
+    },
+    "label": {
+     "A": "Annual"
+    }
+   }
+  },
+  "indic_de": {
+   "category": {
+    "index": {
+     "TOTFERRT": 0
+    },
+    "label": {
+     "TOTFERRT": "Total fertility rate"
+    }
+   }
+  },
+  "geo": {
+   "category": {
+    "index": {
+     "DE": 0,
+     "DE_TOT": 1,
+     "EL": 2,
+     "EU27_2020": 3,
+     "FR": 4,
+     "FX": 5,
+     "IE": 6,
+     "RU": 7,
+     "UK": 8,
+     "XK": 9
+    },
+    "label": {
+     "DE": "Germany",
+     "DE_TOT": "Germany including former GDR",
+     "EL": "Greece",
+     "EU27_2020": "European Union - 27 countries (from 2020)",
+     "FR": "France",
+     "FX": "Metropolitan France",
+     "IE": "Ireland",
+     "RU": "Russia",
+     "UK": "United Kingdom",
+     "XK": "Kosovo*"
+    }
+   }
+  },
+  "time": {
+   "category": {
+    "index": {
+     "1960": 0,
+     "1994": 1,
+     "2008": 2,
+     "2012": 3,
+     "2014": 4,
+     "2017": 5,
+     "2023": 6
+    },
+    "label": {
+     "1960": 0,
+     "1994": 1,
+     "2008": 2,
+     "2012": 3,
+     "2014": 4,
+     "2017": 5,
+     "2023": 6
+    }
+   }
+  }
+ },
+ "value": {
+  "6": 1.39,
+  "13": 1.39,
+  "15": 1.33,
+  "20": 1.26,
+  "27": 1.38,
+  "32": 2.0,
+  "34": 1.66,
+  "35": 2.73,
+  "36": 1.66,
+  "42": 3.78,
+  "51": 1.49,
+  "59": 1.92,
+  "68": 1.65
+ },
+ "updated": "2026-09-16T11:00:00+0200",
+ "status": {
+  "6": "b",
+  "13": "b",
+  "27": "bep",
+  "32": "b",
+  "34": "p"
+ }
+}

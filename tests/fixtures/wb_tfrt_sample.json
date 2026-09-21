@@ -1,0 +1,154 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 5000,
+  "total": 9
+ },
+ [
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "1990",
+   "value": 1.892,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2020",
+   "value": 1.79,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "ZW",
+    "value": "Zimbabwe"
+   },
+   "countryiso3code": "ZWE",
+   "date": "1990",
+   "value": 4.61,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2020",
+   "value": 2.3,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "ZJ",
+    "value": "Africa Eastern and Southern"
+   },
+   "countryiso3code": "AFE",
+   "date": "2020",
+   "value": 4.1,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "XD",
+    "value": "High income"
+   },
+   "countryiso3code": "",
+   "date": "2020",
+   "value": 2.5,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2020",
+   "value": 1.6,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.TFRT.IN",
+    "value": "Fertility rate, total (births per woman)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1960",
+   "value": 2.9,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  }
+ ]
+]

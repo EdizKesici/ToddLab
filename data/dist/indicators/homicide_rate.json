@@ -5,6 +5,7 @@
   "unit": "deaths_per_100000_population",
   "higher_is_better": false,
   "todd_core": true,
+  "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = WHO Mortality Database cause-of-death registrations as submitted by member states (civil registration, ICD-coded, Assault = X85-Y09 and predecessors), redistributed by the OECD Causes of Mortality dataflow over SDMX, 49 countries, 1960-2024, sex-split as published; witness tier = UNODC intentional-homicide compilation via OWID (criminal-justice and vital-registration sources with imputation, near-global, 1990-2023). Authenticity first per ADR-0008: the two tiers count differently and are displayed beside each other, never blended.",
   "reclassification_sensitive": true,
@@ -13,13 +14,15 @@
     "end": 2024
   },
   "license": "Mixed, per source (see \"sources\"): OECD DF_COM = OECD Terms and Conditions, attribution required (content: WHO Mortality Database); OWID witness = CC-BY-4.0.",
-  "notes": "THE THIRD PILOT GOES TWO-TIER (P3): until v7 this indicator was the review's standing gap — mono-OWID, no canonical/witness treatment. The canonical is now the WHO Mortality Database route: national civil-registration deaths by cause, as submitted, ICD-coded, carried by the OECD \"Causes of mortality\" (DF_COM) dataflow over its public SDMX API. Content judgment: the registrations are as-reported (not modeled) — the same collector-tier judgment as UN DYB, and the contrast with GHO's own homicide indicators (literally named \"Estimates of ...\", harmonized) marks the line.\nTHE SEX SPLIT IS TODD-RELEVANT SIGNAL: the dataflow publishes per sex, and the as-reported numbers are stark — Russia's assault mortality 1994 crisis peak: male 63.3 vs female 14.3 per 100k (4.4x). The (entity, year, sex) merge key carries it end-to-end, exactly like life_expectancy.\nTHE CRUDE-RATE PIN (anti-derivation discipline): the dataflow also carries age-standardized rates for the same keys (RUS 1994 male: crude 52.5 vs standardized 63.3 per 100k) — standardization adjusts for age structure, a derived comparability measure, NOT the as-reported rate. The canonical tier fetches CALC_METHODOLOGY=CRUDE only; the age-standardized variant is a witness-tier concept and is deliberately absent.\nHONEST SCOPE LIMITS (collector holes are data, see the-measurement-problem.md): 49 countries (OECD + key partners incl. Russia, China, Brazil, South Africa, India, Colombia) — NOT near-global; most of Africa and Central Asia absent, Ukraine and Belarus absent from this dataflow. Russia's series ends 2019 (the WHO MDB's own lag): 2020+ is witness-only there — a divergence to display, not a gap to patch.\nWITNESS TIER: owid `homicide-rate-unodc` — the UNODC compilation (criminal-justice + vital-registration sources, with imputation for missing country-years), near-global 1990-2023. Vital-registration assault (canonical) vs criminal-justice homicide (witness) differ where deaths are classified differently than they are investigated: the comparison IS the point.\nreclassification_sensitive=true: the homicide/suicide/accident/ \"undetermined intent\" boundary shifts with the quality of a country's cause-of-death certification system — relevant to the reclassification test mentioned in the brief (\"ill-defined\" categories).",
+  "notes": "THE THIRD PILOT GOES TWO-TIER (P3): until v7 this indicator was the review's standing gap — mono-OWID, no canonical/witness treatment. The canonical is now the WHO Mortality Database route: national civil-registration deaths by cause, as submitted, ICD-coded, carried by the OECD \"Causes of mortality\" (DF_COM) dataflow over its public SDMX API. Content judgment: the registrations are as-reported (not modeled) — the same collector-tier judgment as UN DYB, and the contrast with GHO's own homicide indicators (literally named \"Estimates of ...\", harmonized) marks the line.\nTHE SEX SPLIT IS TODD-RELEVANT SIGNAL: the dataflow publishes per sex, and the as-reported numbers are stark — Russia's assault mortality 1994 crisis peak: male 52.5 vs female 14.3 per 100k (3.7x). The (entity, year, sex) merge key carries it end-to-end, exactly like life_expectancy.\nTHE CRUDE-RATE PIN (anti-derivation discipline): the dataflow also carries age-standardized rates for the same keys (RUS 1994 male: crude 52.5 vs standardized 63.3 per 100k) — standardization adjusts for age structure, a derived comparability measure, NOT the as-reported rate. The canonical tier fetches CALC_METHODOLOGY=CRUDE only; the age-standardized variant is a witness-tier concept and is deliberately absent.\nHONEST SCOPE LIMITS (collector holes are data, see the-measurement-problem.md): 49 countries (OECD + key partners incl. Russia, China, Brazil, South Africa, India, Colombia) — NOT near-global; most of Africa and Central Asia absent, Ukraine and Belarus absent from this dataflow. Russia's series ends 2019 (the WHO MDB's own lag): 2020+ is witness-only there — a divergence to display, not a gap to patch.\nWITNESS TIER: owid `homicide-rate-unodc` — the UNODC compilation (criminal-justice + vital-registration sources, with imputation for missing country-years), near-global 1990-2023. Vital-registration assault (canonical) vs criminal-justice homicide (witness) differ where deaths are classified differently than they are investigated: the comparison IS the point.\nreclassification_sensitive=true: the homicide/suicide/accident/ \"undetermined intent\" boundary shifts with the quality of a country's cause-of-death certification system — relevant to the reclassification test mentioned in the brief (\"ill-defined\" categories).",
   "sources": [
     {
       "provider": "oecd",
       "source_ref": "DF_COM/CICDHOCD",
       "role": "canonical",
       "layer": "collector",
+      "root": "who_mdb",
+      "root_label": "WHO Mortality Database (civil registration, as submitted by member states)",
       "native_unit": "deaths_per_100000_population",
       "citation": "OECD, Causes of mortality (DF_COM), death cause 'CICDHOCD' - WHO Mortality Database redistribution",
       "url": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.HD,DSD_HEALTH_STAT@DF_COM,1.1/.A.CSEM.DT_10P5HB._T...CICDHOCD.CRUDE....?dimensionAtObservation=AllDimensions",
@@ -30,6 +33,8 @@
       "source_ref": "homicide-rate-unodc",
       "role": "witness",
       "layer": "harmonized",
+      "root": "unodc",
+      "root_label": "UN Office on Drugs and Crime (UNODC)",
       "native_unit": null,
       "citation": "Our World in Data, grapher dataset 'homicide-rate-unodc'",
       "url": "https://ourworldindata.org/grapher/homicide-rate-unodc",
@@ -55209,6 +55214,8 @@
       "provider": "owid",
       "source_ref": "homicide-rate-unodc",
       "layer": "harmonized",
+      "root": "unodc",
+      "root_label": "UN Office on Drugs and Crime (UNODC)",
       "unit": "deaths_per_100000_population",
       "native_unit": null,
       "citation": "Our World in Data, grapher dataset 'homicide-rate-unodc'",
@@ -76318,5 +76325,83 @@
         }
       ]
     }
-  ]
+  ],
+  "todd_refs": {
+    "family": "mortality",
+    "citations": 25,
+    "books": 10,
+    "refs": [
+      {
+        "book": "La Chute finale",
+        "year": 1976,
+        "year_raw": "1976/1990",
+        "citations": 3,
+        "label": "Homicide rate",
+        "note": "Cited jointly with suicide as 'rising violent deaths' signature. Already in config/indicators/."
+      },
+      {
+        "book": "Le Fou et le Prolétaire",
+        "year": 1979,
+        "citations": 5,
+        "label": "Homicide rate",
+        "note": "Europe c.1880-1900 + French départements + Corsica."
+      },
+      {
+        "book": "La troisième planète",
+        "year": 1983,
+        "citations": 2,
+        "label": "Homicide rate",
+        "note": "US/Mexico + Asia WHO table."
+      },
+      {
+        "book": "Le Destin des immigrés",
+        "year": 1994,
+        "citations": 1,
+        "label": "Male homicide deaths per 100,000, US whites vs Blacks, 1989",
+        "note": "US white/Black, 1989."
+      },
+      {
+        "book": "L'illusion économique",
+        "year": 1998,
+        "citations": 1,
+        "label": "US homicide rate (per 100,000 inhabitants)",
+        "note": "US 1993 vs Europe/Japan."
+      },
+      {
+        "book": "Après l'Empire",
+        "year": 2002,
+        "citations": 3,
+        "label": "Homicide rate per 100,000",
+        "note": "UN table, 24 countries, 1994-99 (Russia 23, Colombia 73, US 6.6, Japan 0.6)."
+      },
+      {
+        "book": "Après la démocratie",
+        "year": 2008,
+        "citations": 1,
+        "label": "Homicide rate per 100,000 (France + international)",
+        "note": "France + genuine international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia)."
+      },
+      {
+        "book": "L'invention de la France",
+        "year": 2012,
+        "citations": 1,
+        "label": "Homicide rate",
+        "note": "1875-85 map; stable violence geography over two centuries."
+      },
+      {
+        "book": "Qui est Charlie ?",
+        "year": 2015,
+        "citations": 1,
+        "label": "Homicide count, France, 1996 vs 2013",
+        "note": "France, 1996 vs 2013 count."
+      },
+      {
+        "book": "La Défaite de l'Occident",
+        "year": 2024,
+        "citations": 7,
+        "label": "Homicide rate",
+        "note": "Russia 2000-2020 citation, reinforcing."
+      }
+    ]
+  }
 }

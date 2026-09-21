@@ -1,0 +1,87 @@
+id: universal_suffrage_introduction_year
+label: "Universal suffrage introduction year"
+family: markers
+unit: year
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE MARKER'S ONLY HONEST TIER (v15): the curation gate, the same
+  # finding as same_sex_marriage — no machine-readable door redistributes
+  # suffrage introduction dates (probed live 2026-09-20: OWID 404 on the
+  # candidate slugs; the electoral-history reference is Caramani's print
+  # archive). The signal Todd reads is a DATED NATIONAL EVENT with a
+  # scholarly citation — one row per country, the historiography's own
+  # dating, one citation per point.
+  - provider: curated
+    ref: universal_suffrage_introduction
+    priority: 1
+    role: canonical
+    root: national_legislation
+
+coverage_start: 1848
+coverage_end: 1946
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = a curated table of dated franchise introductions (16
+  countries, 1848-1946, one citation per point — the standard scholarly
+  dating of the Caramani electoral-archive family, the male/female
+  decomposition carried per row in definition_note); no witness tier
+  exists (no machine-readable door carries the series — probed live
+  2026-09-20).
+reclassification_sensitive: false
+
+plausible_range:
+  min: 1789   # the era of mass franchises begins with the French
+  max: 2030   # Revolution; anything earlier (a 1848-misload as 848) or a
+              # unit error (a rate, a count) flags immediately — the
+              # marker IS its year.
+
+license: >
+  Facts with citation (small extracts, clearly attributed) — see
+  docs/licenses.md and catalog/curated/README.md.
+
+notes: >
+  THE ELEVENTH INDICATOR, THE SECOND MARKER (v15). Todd's
+  L'invention de l'Europe (1990, 7 citations) reads the introduction of
+  universal suffrage as the anthropological fingerprint: the exogamous
+  communal systems of Western Europe universalized the vote EARLY and
+  from below (France 1848, Germany 1871), the authoritarian-family belt
+  late and from above (Austria 1907, Belgium 1919 — the plural-vote
+  compromise dissolving only then), the asymmetric-communal north
+  splitting the date in two (Sweden's '1911/1921', the corpus label's
+  own dual dating: the male grant and the female grant a decade apart).
+  The marker dates the franchise's arrival as the historiography dates
+  it — which for the 19th-century introductions IS the male grant (they
+  were called 'suffrage universel' at the time, women's exclusion
+  notwithstanding) and for the later ones the completing women's grant
+  (Norway 1913, Denmark 1915, the Netherlands 1919). The male/female
+  decomposition rides EVERY row's definition_note: Todd's own convention
+  (he prints '1911/1921' for Sweden), applied uniformly.
+
+  THE MARKER'S SHAPE: one point per country, the point's year = the
+  introduction year, the value = the same year (the board reads the
+  STEP: France 1848, Austria 1907, Italy 1946 — Catholic Europe's late
+  completion, the family-systems map's own order). Every point carries
+  its citation (the standard scholarly dating, the Caramani electoral-
+  archive family) and its decomposition note (e.g. Switzerland: male
+  1848, women 1971 — the famous latecomer the Catholic-periphery
+  argument reads).
+
+  THE CURATION GATE (ADR-0007, all three conditions):
+  (a) the todd_ref demands it — 7 citations in L'invention de l'Europe,
+  the book's comparative-anthropology core; (b) the distortion is the
+  ABSENCE — no door carries the series (probed live, the OWID candidate
+  slugs all 404, electoral history lives in print archives);
+  (c) every row carries its citation — enforced mechanically.
+
+  HONEST SCOPE LIMITS: 16 countries = Todd's own named set (Sweden,
+  Austria, Belgium, the UK, Norway) extended to the European core his
+  maps compare against (the founding six + the Nordic pair + the
+  Catholic pair + the latecomers Italy and Switzerland); the countries
+  outside the European comparison set have NO row (the honest absent
+  state); the dating CONVENTION itself (male grant vs women's
+  completion) is the one interpretive choice, and it rides every row's
+  note rather than hiding in a footnote — as-reported, where 'as' is
+  'as the historiography that Todd cites'.

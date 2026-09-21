@@ -14,92 +14,146 @@ sources:
   # vintage = higher priority (standard vintage discipline); every
   # arbitration between overlapping windows is logged in
   # {indicator}.provenance.json.
+  #
+  # `root` (v11) is the genealogy field: the ultimate origin a source
+  # redistributes. On this indicator it settles the founding case of
+  # docs/the-measurement-problem.md section 1 — the four agreeing
+  # witnesses (OWID, WB x2, GHO) are ONE UN IGME root seen through four
+  # doors, not four confirmations.
   - provider: curated
     ref: ussr_infant_mortality_official
     priority: 1
     role: canonical
     unit: deaths_per_1000_births
-  # 12 wired editions (2015 = dead XLS links; 2016 = FILEPASS-encrypted,
-  # both verified live 2026-09-06 and deliberately absent — no coverage
-  # loss, see config/sources.yaml un_dyb notes). field=rate: IMR per 1,000
-  # live births, the DYB's native unit (= the canonical unit here).
+    root: soviet_official
+  # 13 wired editions: 2015 recovered in v10 through the legacy URL
+  # pattern (verified live 2026-09-13); 2016 (FILEPASS-encrypted) remains
+  # deliberately absent, no coverage loss (see config/sources.yaml un_dyb
+  # notes). field=rate: IMR per 1,000 live births, the DYB's native unit
+  # (= the canonical unit here).
   - provider: un_dyb
     ref: 2024/table15
     field: rate
     priority: 2
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2023/table15
     field: rate
     priority: 3
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2022/table15
     field: rate
     priority: 4
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2021/table15
     field: rate
     priority: 5
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2020/table15
     field: rate
     priority: 6
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2019/table15
     field: rate
     priority: 7
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2018/table15
     field: rate
     priority: 8
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
     ref: 2017/table15
     field: rate
     priority: 9
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2014/table15
+    ref: 2015/table15
     field: rate
     priority: 10
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2013/table15
+    ref: 2014/table15
     field: rate
     priority: 11
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2012/table15
+    ref: 2013/table15
     field: rate
     priority: 12
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: un_dyb
-    ref: 2011/table15
+    ref: 2012/table15
     field: rate
     priority: 13
     role: canonical
     unit: deaths_per_1000_births
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2011/table15
+    field: rate
+    priority: 14
+    role: canonical
+    unit: deaths_per_1000_births
+    root: unsd_dyb
   - provider: owid
     ref: infant-mortality
-    priority: 14
+    priority: 15
     role: witness
     unit: deaths_per_100_births
+    root: un_igme
+  # v11 (P5): the two World Bank doors — WDI's sex-split IMR codes (the
+  # .MA.IN/.FE.IN suffix convention, cross-checked against the printed
+  # indicator name at parse). Same root as the OWID witness (UN IGME),
+  # ROUNDED to at most one decimal (verified live: France 2020 female
+  # prints 3 where OWID/GHO carry 3.33047) — the coarser print is the
+  # genealogy footnote, displayed by the divergence view, not hidden.
+  - provider: worldbank
+    ref: SP.DYN.IMRT.MA.IN
+    priority: 16
+    role: witness
+    root: un_igme
+  - provider: worldbank
+    ref: SP.DYN.IMRT.FE.IN
+    priority: 17
+    role: witness
+    root: un_igme
+  # v11 (P5): the third door of the IGME triangle — GHO MDG_0000000001,
+  # the exact same estimates OWID carries (verified live: France 2020
+  # 3.330470548 vs OWID 3.3304706, a rounding apart), full sex split
+  # (MLE/FMLE/BTSX), reaching back to 1931. Zero new connector code: the
+  # v10 GHO connector's SEX-only shape held.
+  - provider: who_gho
+    ref: MDG_0000000001
+    priority: 18
+    role: witness
+    root: un_igme
 
 coverage_start: 1950
 coverage_end: 2024
@@ -108,9 +162,10 @@ reliability: high
 reliability_criteria: >
   Canonical tier = official as-reported series: the hand-curated USSR
   official series (one citation per point, curation gate ADR-0007) and
-  UN DYB Table 15 rates across 12 editions, 2007-2024 (published only for
+  UN DYB Table 15 rates across 13 editions (2015 recovered v10), 2007-2024 (published only for
   UN completeness codes C or "|"); witness tier = UN IGME harmonized
-  estimates via OWID for cross-country comparability. Authenticity first
+  estimates via OWID, the World Bank (WDI, sex-split, rounded print) and
+  GHO for cross-country comparability — one root, four doors. Authenticity first
   per ADR-0008: the two tiers are displayed beside each other, never
   blended.
 reclassification_sensitive: false
@@ -123,7 +178,8 @@ license: >
   Mixed, per source (see "sources"): curated points = facts with citation,
   small extracts, clearly attributed (catalog/curated/README.md); UN DYB =
   UN data reuse policy (attribution required, no endorsement implied);
-  OWID witness = CC-BY-4.0.
+  OWID witness = CC-BY-4.0; World Bank witness = CC-BY-4.0; GHO witness =
+  CC-BY-3.0-IGO.
 notes: >
   THE tracer from the brief (Soviet infant mortality, Todd's method).
 
@@ -151,12 +207,22 @@ notes: >
     (see the-measurement-problem.md section 7 and ADR-0007's PDF-route
     gate).
 
-  WITNESS TIER: owid `infant-mortality` (UN IGME harmonized estimates,
-  1950-2023, near-global) — the comparability backbone, converted from
-  its native percentage into per-1,000 through the declared
-  UNIT_CONVERSIONS table. Displayed as divergence beside the canonical
-  series (the IGME 21.9 plateau vs the official 27.9-31.4 rise IS the
-  founding case); never merged, never averaged.
+  WITNESS TIER (v11, one root — UN IGME — through four doors):
+  - owid `infant-mortality` (UN IGME harmonized estimates, 1950-2023,
+    near-global, both sexes) — the comparability backbone, converted from
+    its native percentage into per-1,000 through the declared
+    UNIT_CONVERSIONS table.
+  - worldbank SP.DYN.IMRT.MA.IN / SP.DYN.IMRT.FE.IN (WDI, sex-split,
+    1960-2024): the same IGME estimates ROUNDED to at most one decimal —
+    the honest coarseness of the WDI redistribution, verified live
+    (France 2020 female prints 3 where OWID carries 3.3304706). Displayed
+    as divergence beside the canonical series (the IGME 21.9 plateau vs
+    the official 27.9-31.4 rise IS the founding case); never merged,
+    never averaged.
+  - who_gho MDG_0000000001 (IGME, sex-split MLE/FMLE/BTSX, 1931-2024):
+    value-identical to the OWID witness (verified live to the seventh
+    significant digit) — wired precisely so the catalog can SAY "one
+    root, four doors" from the data instead of from the docs.
 
   UNIT HISTORY (live-network audits, see CHANGELOG): the OWID chart
   reports a percentage, not per-1,000 — the phase-1 fix declared the
@@ -164,4 +230,5 @@ notes: >
   per-1,000 (the field's native unit — DYB, official series, IGME all
   publish per-1,000; the OWID chart was the outlier), so the witness
   carries the x10 conversion instead of every other source carrying the
-  x0.1 one. All values in `data` and `witnesses[].data` are per-1,000.
+  x0.1 one. The WB and GHO witnesses are natively per-1,000. All values
+  in `data` and `witnesses[].data` are per-1,000.

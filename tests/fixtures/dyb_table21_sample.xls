@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Worksheet ss:Name="Data">
+  <Table>
+      <Row>
+        <Cell><Data ss:Type="String">21. Life expectancy at specified ages for each sex: latest available year,  2020 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">Espérance de vie à un âge donné pour chaque sexe : dernière année disponible,  2020 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Continent, country or area and date
+Continent, pays ou zone et date</Data></Cell>
+        <Cell ss:StyleID="sCenterBold"><Data ss:Type="String">Age (in years)
+Age (en années)</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"/>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">0</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">5</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">10</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">15</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">20</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">25</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">30</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">35</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">40</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">45</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">50</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">55</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">60</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">65</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">70</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">75</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">80</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">85</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">90</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">95</Data></Cell>
+        <Cell ss:StyleID="sData"><Data ss:Type="Number">100</Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">AFRICA - AFRIQUE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Algeria - Algérie</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2023</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Male
+-
+Hommes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">71.3</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">67.4</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">62.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">57.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">52.7</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">47.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">43.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">38.4</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">33.8</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">29.3</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">24.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">20.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">16.4</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">12.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">8.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">5.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">1.5</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Female
+-
+Femmes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">74.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">70.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">65.7</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">60.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">56.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">51.3</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">46.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">41.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">37.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">32.7</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">28.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">23.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">19.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">15.4</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">11.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">7.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">4.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">2.6</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Mauritius - Maurice<html:Sup>12</html:Sup></Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">2022 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Male
+-
+Hommes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">69.1234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">65.2234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">60.3234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">55.4234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">50.5234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">45.6234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">41.7234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">36.8234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">32.9234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">28.0234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">25.1234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">20.2234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">16.1123456789012</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">13.4234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">10.7234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">8.0234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">5.5234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.2234567890123</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Female
+-
+Femmes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">76.0987654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">72.1887654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">67.2787654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">62.3687654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">57.4587654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">52.5487654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">47.6387654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">42.7287654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">38.8187654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">33.9087654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">28.9987654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">24.0887654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">21.9876543210987</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">17.2787654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">13.5687654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">10.8587654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">8.1487654321098</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">5.4387654321098</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">EUROPE - EUROPE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">France</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2020</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Male
+-
+Hommes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">78.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">73.8</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">68.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">63.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">59.0</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">54.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">49.3</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">44.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">39.8</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">35.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">30.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">26.3</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">21.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">18.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">14.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">11.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">8.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">5.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.7</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">2.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">2.0</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Female
+-
+Femmes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">84.6</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">79.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">74.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">69.9</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">65.0</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">60.0</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">55.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">50.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">45.3</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">40.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">35.7</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">31.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">26.5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">22.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">18.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">14.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">10.4</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">7.2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">4.7</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">2.1</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Male
+-
+Hommes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">79.3</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sAgeGroup"><Data ss:Type="String">Female
+-
+Femmes</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">85.1</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataGap"><Data ss:Type="String">...</Data></Cell>
+      </Row>
+  </Table>
+ </Worksheet>
+ <Worksheet ss:Name="Footnotes">
+  <Table ss:ExpandedColumnCount="2">
+      <Row>
+        <Cell><Data ss:Type="String">FOOTNOTES</Data></Cell>
+        <Cell><Data ss:Type="String">NOTES</Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number">12</Data></Cell>
+        <Cell><Data ss:Type="String">Data refer to a three-year reference period. - Les données se rapportent à une période de référence de trois années.</Data></Cell>
+      </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

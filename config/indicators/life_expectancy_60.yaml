@@ -1,0 +1,190 @@
+id: life_expectancy_60
+label: "Life expectancy at age 60"
+family: mortality
+unit: years
+higher_is_better: true
+todd_core: false
+
+sources:
+  # ADR-0008 applied to the fifth indicator (v10): canonical = the collector
+  # (UN DYB "Life expectancy at specified ages for each sex", the table whose
+  # NUMBER alternates — 21 in even editions, 22 in odd ones; both wired per
+  # edition below), witness = the WHO GHO WHOSIS_000015 modeled estimates
+  # (WPP-derived — the piece of phase 5 pulled forward because this indicator
+  # needed a witness and OWID publishes no age-60 chart, its by-age charts
+  # jump 45 -> 65). `field` selects the AGE column ("60"); the snapshots
+  # hold that column's records only — the 20 other ages mean another
+  # indicator + config + a re-fetch of the same tables.
+  - provider: un_dyb
+    ref: 2024/table21
+    field: "60"
+    priority: 1
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2023/table22
+    field: "60"
+    priority: 2
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2022/table21
+    field: "60"
+    priority: 3
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2021/table22
+    field: "60"
+    priority: 4
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2020/table21
+    field: "60"
+    priority: 5
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2019/table22
+    field: "60"
+    priority: 6
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2018/table21
+    field: "60"
+    priority: 7
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2017/table22
+    field: "60"
+    priority: 8
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2015/table22
+    field: "60"
+    priority: 9
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2014/table21
+    field: "60"
+    priority: 10
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2013/table22
+    field: "60"
+    priority: 11
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2012/table21
+    field: "60"
+    priority: 12
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2011/table22
+    field: "60"
+    priority: 13
+    role: canonical
+    root: unsd_dyb
+  - provider: who_gho
+    ref: WHOSIS_000015
+    priority: 14
+    role: witness
+    root: un_wpp
+
+coverage_start: 1992
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = UN DYB Tables 21/22 (life expectancy at specified ages,
+  by sex), national life tables as reported by each country, 13 editions
+  2011-2015 + 2017-2024, sex-split as printed (Male/Female rows, no
+  both-sexes column to report). Witness tier = WHO GHO WHOSIS_000015
+  (WPP-derived modeled estimates, 183 countries, 2000-2021; the
+  uncertainty intervals are carried nowhere — dropped at parse,
+  re-fetchable from source_url).
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 45   # the real band on BOTH tiers is 9.0-29.8 years (verified on the
+            # live data 2026-09-13: canonical min Nicaragua 2010 male 9.04,
+            # max Hong Kong SAR 2019 female 29.76; witness min/max 9.1/29.1).
+            # 45 still catches the catastrophic error classes — a 5qx
+            # per-mille value (150-450) or an LE-at-birth column confusion
+            # (60-85) both land far outside — without crying wolf on the
+            # legitimate tail. Tier divergence (collector vs WPP model) is
+            # display material, not a validation error.
+
+license: >
+  Mixed, per source (see "sources"): UN DYB = UN data reuse policy
+  (attribution required, no endorsement implied); GHO witness = CC-BY-3.0-IGO.
+notes: >
+  THE COMPANION INDICATOR (Extra board): LE at birth answers "how long is
+  a life"; LE at 60 answers "how long is old age" — the Todd-relevant
+  distinction for any reading of aging societies. The two indicators
+  share the DYB's sex discipline (Male/Female printed separately; no
+  both-sexes column, and averaging would be a derivation), so every
+  canonical point carries sex="male"|"female" and (entity, year, sex) is
+  the merge key.
+
+  THE RENUMBERING ZONE: "Life expectancy at specified ages" swaps table
+  numbers with the 5qx probabilities by edition parity (verified across
+  all 13 wired editions): table 21 in even editions, table 22 in odd
+  ones. A number-only dispatch would silently mis-parse the 5qx file
+  (identical layout) — the connector's title guard keys on the title's
+  WORDS and raises with the parity rule if the config asks for the wrong
+  number.
+
+  CROSS-SECTION SEMANTICS (the structural difference with the other
+  indicators): each edition prints each country's LATEST available life
+  table only. The canonical series is therefore a stack of cross-sections
+  across the 13 editions, not an annual panel: a country that stops
+  responding freezes (Russia's last life table is 2012 — repeated
+  identically in every edition 2013-2024, merged into ONE point), and a
+  country responding annually contributes one newer year per edition.
+  Read the gaps between points as "no newer life table was available",
+  never as missing years of an annual series.
+
+  REFERENCE PERIODS: a block's year row can be a single year ("2019") or
+  an explicit period ("2012 - 2015", "2022 - 2024"). The point's year is
+  the END of the printed period — the DYB's own convention, verified
+  edition by edition against Table 4 (France 2015 + Roman IV = period
+  2012-2015 appears in Tables 4 and 22 of the 2017 edition as the same
+  life table; same for Mauritius 2017/III, Dominican Republic 2015/VI).
+  The printed period rides the points' reference_range. Three countries
+  print actuarial-style multi-year tables extending beyond the edition
+  year (Dominican Republic / Philippines / Yemen "2020 - 2025" in the
+  2024 edition): kept as printed, year = 2025, the collector republished
+  the country's own submitted period.
+
+  THE 2024 DUAL BLOCK: France carries TWO blocks in the 2024 edition —
+  the full 2020 life table and a 2024 block where only age 0 is published
+  (ages 5-100 print "..."). The 2024 block materializes as an explicit
+  gap for LE-60: the collector's own not-yet-computed degradation, kept
+  as-printed, exactly like Table 15's "counts published, no rate".
+
+  NO QUALITY CODES, NO MARKER CELLS: like Table 4, this table prints no
+  C/U/| code (that legend describes registration completeness, not life
+  tables) and no markers next to the values; the BIFF editions glue
+  footnote references to the country names and to the YEAR rows ("20103"
+  = 2010 + note 3 — the split is deterministic, DYB years are always 4
+  digits); both ride the points' footnote_refs.
+
+  WITNESS TIER: who_gho WHOSIS_000015 "Life expectancy at age 60" —
+  WPP-derived modeled estimates (not registrations), 2000-2021, three sex
+  series (male / female / both). The canonical/witness spread is the
+  displayable signal: Russia 2012 male = 15.38 as-reported vs 15.43
+  modeled; France 2020 male = 22.77 vs 22.60. The witness's uncertainty
+  intervals (Low/High in the API payload) are carried by neither tier:
+  dropped at parse (the raw snapshots hold parsed records only),
+  re-fetchable from source_url — adding them to the dist is a schema
+  decision to take explicitly if the frontend ever needs them.

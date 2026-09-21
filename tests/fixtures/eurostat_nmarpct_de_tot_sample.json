@@ -1,0 +1,87 @@
+{
+ "version": "1.0",
+ "class": "dataset",
+ "label": "Fertility indicators",
+ "id": [
+  "freq",
+  "indic_de",
+  "geo",
+  "time"
+ ],
+ "size": [
+  1,
+  1,
+  1,
+  9
+ ],
+ "dimension": {
+  "freq": {
+   "category": {
+    "index": {
+     "A": 0
+    },
+    "label": {
+     "A": "Annual"
+    }
+   }
+  },
+  "indic_de": {
+   "category": {
+    "index": {
+     "NMARPCT": 0
+    },
+    "label": {
+     "NMARPCT": "Proportion of live births outside marriage"
+    }
+   }
+  },
+  "geo": {
+   "category": {
+    "index": {
+     "DE_TOT": 0
+    },
+    "label": {
+     "DE_TOT": "Germany including former GDR"
+    }
+   }
+  },
+  "time": {
+   "category": {
+    "index": {
+     "1960": 0,
+     "1970": 1,
+     "1980": 2,
+     "1985": 3,
+     "1990": 4,
+     "1998": 5,
+     "2000": 6,
+     "2012": 7,
+     "2024": 8
+    },
+    "label": {
+     "1960": 0,
+     "1970": 1,
+     "1980": 2,
+     "1985": 3,
+     "1990": 4,
+     "1998": 5,
+     "2000": 6,
+     "2012": 7,
+     "2024": 8
+    }
+   }
+  }
+ },
+ "value": {
+  "0": 7.6,
+  "1": 7.2,
+  "2": 11.9,
+  "3": 16.2,
+  "4": 15.3,
+  "5": 20.0,
+  "6": 23.4,
+  "7": 34.5,
+  "8": 32.4
+ },
+ "updated": "2026-09-20T11:00:00+0200"
+}

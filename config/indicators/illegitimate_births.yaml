@@ -1,0 +1,167 @@
+id: illegitimate_births
+label: "Share of live births outside marriage"
+family: society
+unit: percent_of_live_births
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE TWELFTH INDICATOR, THE CORPUS'S OWN illégitimité (todd_refs: 16
+  # citations, 6 books — Le Fou et le Prolétaire's France régionale
+  # 1900-1973, La troisième planète's master table by family type,
+  # L'invention de l'Europe's Alentejo/Andalusia geographic argument,
+  # Qui est Charlie ?'s 1960-vs-2015 tenfold rise). Todd's variable is
+  # the SHARE of births outside marriage — the family-anthropology
+  # axis where the exogamous/communitarian divide prints as a number:
+  # France 1960 ~6% -> 2020s ~60%, Turkey ~3%, the GDR's decades at
+  # 25-35% while the FRG printed single digits.
+  #
+  # THE v16 PROBE FINDING (verified live 2026-09-20, before any config):
+  # NO collector wire prints this share except Eurostat's demo_find —
+  # whose indic_de codelist carries NMARPCT, "Proportion of live births
+  # outside marriage", printed DIRECTLY (no derivation: the counts-based
+  # doors — demo_cnia's births by marital status — would demand a ratio
+  # the canonical tier refuses by constitution; OECD Family Database
+  # SF2.4 carries the share but no SDMX wire — the v14 registry finding;
+  # WDI carries no such indicator; OWID's own chart is the OECD Family
+  # Database's redistribution, wired below as the witness). The same
+  # dataset as the TFR (v14): one collector, two Todd metrics.
+  #
+  # THE GERMAN SEAM (v16's own display case, the FX/FR seam's mirror):
+  # Eurostat prints TWO German series, and on NMARPCT the relationship
+  # is the REVERSE of the TFR's duplicate — DE_TOT "Germany including
+  # former GDR" is the FULL 65-year series (1960-2024) while DE's 39
+  # points carry five pre-reunification FRG-only benchmarks that
+  # DIVERGE (1960: 6.3 vs 7.6, 1970: 5.5 vs 7.2, 1980: 7.6 vs 11.9,
+  # 1985: 9.4 vs 16.2, 1990: 10.5 vs 15.3 — the GDR's high non-marital
+  # share is exactly Todd's communist-family-systems story). DE_TOT is
+  # therefore wired as its own geo-pinned source at THE HIGHEST
+  # priority: the merge keeps the all-Germany series and logs every DE
+  # collision as a provenance discard — the vintage discipline, applied
+  # to a definitional seam instead of an edition overlap.
+  - provider: eurostat
+    ref: demo_find/NMARPCT/DE_TOT
+    priority: 1
+    role: canonical
+    root: eurostat_demo
+  # The main all-countries slice (everything except the variant geos,
+  # which the connector drops at parse, logged): 46+ countries, the
+  # collector's own questionnaire respondents, 1960-2024, per-observation
+  # status flags (b/e/p) as-reported — EL 2023 'b' (the Greek series'
+  # break), MD 2022 'p' (verified live).
+  - provider: eurostat
+    ref: demo_find/NMARPCT
+    priority: 2
+    role: canonical
+    root: eurostat_demo
+  # THE FRANCE VARIANT PAIR (the FX/FR seam, identical architecture to
+  # the TFR's): FX "Metropolitan France" 1960-2012 (53 points, 6.1 ->
+  # 55.8 — the France of Todd's books) and FR "France" 1998-2024 (27
+  # points, 41.7 -> 59.7, whole France incl. overseas departments; the
+  # overlap prints slightly different values: 2000 = 42.6 metro vs 43.6
+  # total, both as-reported). FR wins the seam's 1998-2012 overlap (the
+  # later-maintained national series), every discarded FX value logged.
+  - provider: eurostat
+    ref: demo_find/NMARPCT/FR
+    priority: 3
+    role: canonical
+    root: eurostat_demo
+  - provider: eurostat
+    ref: demo_find/NMARPCT/FX
+    priority: 4
+    role: canonical
+    root: eurostat_demo
+  # THE WITNESS: OWID's 'share-of-births-outside-marriage' chart — the
+  # OECD Family Database's redistribution (SF2.4; OWID's own page
+  # attribution says "OECD (2025)", verified live 2026-09-20), 42
+  # entities, 1960-2021: the OECD-country face (Japan, Korea, Chile,
+  # the Anglophone world) the Eurostat questionnaire never polled. The
+  # vintage divergence is the honest two-door story: the witness's
+  # France 2020 = 62.2 IS the collector's own FR 2020 print (OECD
+  # anchors on the national series — the WPP-witness pattern), while
+  # its coverage ends at the OECD's 2021 vintage where Eurostat prints
+  # through 2024.
+  - provider: owid
+    ref: share-of-births-outside-marriage
+    priority: 5
+    role: witness
+    root: oecd_family
+
+coverage_start: 1960
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat demo_find NMARPCT, the national official
+  shares of live births outside marriage as collected by Eurostat
+  (questionnaire collector), four sources: the DE_TOT geo-pinned German
+  series door (65 points 1960-2024, "including former GDR"), the main
+  all-countries slice, and the two geo-pinned French series (FX
+  metropolitan 1960-2012, FR whole 1998-2024 — the seam the merge
+  arbitrates by priority); per-observation status flags (b/e/p)
+  transported as-reported. Witness tier = the OECD Family Database via
+  OWID's chart door (OECD-compiled, 42 entities, 1960-2021). Authenticity
+  first per ADR-0008: displayed beside each other, never blended.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 100   # a share of live births: the natural 0-100 bound. The
+             # collector's own maximum prints in the low 60s (France
+             # 2020 = 62.2); the witness's WPP-free tail peaks at Chile
+             # 2019 = 75.08 (verified live) — a bound that swallows the
+             # OECD questionnaire tail while flagging any misload
+             # (a per-1,000 count or a fraction read as 0.6 for 60%
+             # sits immediately outside the plausible zone's center of
+             # mass and gets reviewed).
+
+license: >
+  Mixed, per source (see "sources"): Eurostat = Eurostat reuse policy
+  (attribution required, no endorsement implied); OWID/OECD Family
+  Database witness = CC-BY-4.0 (OWID's chart-door terms).
+
+notes: >
+  THE TWELFTH INDICATOR, TODD'S ILLÉGITIMITÉ (todd_refs: 16 citations,
+  6 books). The corpus's notes read it as the family-anthropology
+  fingerprint: the share of births outside marriage separates the
+  exogamous-individualist systems (where it climbs freely — France, the
+  Anglophone world) from the communitarian endogamous belt (where it
+  stays near zero — Turkey 2010-2024 prints 2.6 -> 3.4, Japan ~2) and
+  marks the communist systems' statist relaxation (the GDR's 25-35%
+  decades, carried by the German seam's DE_TOT door). higher_is_better
+  is REQUIRED by the schema but carries no normative claim: the corpus
+  reads the share descriptively (levels and contrasts, never a
+  direction), so false is the least-misleading default. THE SEX
+  DIMENSION IS ABSENT BY CONSTRUCTION (a population-level share of
+  live births); every point carries sex=None. UNIT: percent (the
+  collector prints 41.7 for France 1998, 6.1 for FX 1960 — a 0-100
+  share, never a fraction).
+
+  CANONICAL TIER: four Eurostat sources, one collector, the same
+  dataset as the TFR (v14's #1 — demo_find's codelist carries both:
+  TOTFERRT and NMARPCT, two Todd metrics through one questionnaire).
+  The main slice serves the questionnaire's respondents with their own
+  honest freezes: the UK to 2017 (Brexit, the same end as the TFR's),
+  Turkey 2010-2024, Russia 2006-2014 (the collector's window), Kosovo
+  printing 2002-2021 but resolving to no ISO3 (the pending class, the
+  same product decision as every XK row). THE GERMAN SEAM: DE_TOT (the
+  all-Germany series, 65 points) outranks the main slice so the five
+  pre-reunification FRG-only benchmarks (DE: 1960 6.3, 1970 5.5, 1980
+  7.6, 1985 9.4, 1990 10.5) all become provenance discards against the
+  all-Germany prints (7.6, 7.2, 11.9, 16.2, 15.3) — the seam that keeps
+  one definitionally-consistent German series while logging the other
+  variant's every print. THE FX/FR SEAM: identical to the TFR's (FX
+  metro 1960-1997 + FR whole 1998-2024, the 1998-2012 overlap
+  arbitrated to FR with discards logged).
+
+  WITNESS TIER: the OECD Family Database through OWID's chart door —
+  the worldwide-OECD face the collector never polled (Japan, South
+  Korea, Chile, Canada, Australia, New Zealand, Israel, Mexico...42
+  entities, 1960-2021). The vintage note is the honest divergence: the
+  OECD's compilation ends at its 2021 vintage where the collector
+  prints through 2024; on the co-covered EU entities the OECD anchors
+  on the national series (France 2020: 62.2 both doors — the
+  WPP-witness pattern, no modeling divergence to display), so the
+  board's non-European comparisons ride the witness tier alone — the
+  same tier split the TFR and the CBR carry.

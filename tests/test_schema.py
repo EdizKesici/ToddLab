@@ -12,7 +12,7 @@ def _base_indicator(**overrides) -> dict:
         "unit": "test_unit",
         "higher_is_better": False,
         "todd_core": True,
-        "sources": [{"provider": "owid", "ref": "test-slug", "priority": 1}],
+        "sources": [{"provider": "owid", "ref": "test-slug", "priority": 1, "root": "un_igme"}],
         "reliability": "high",
         "reliability_criteria": "Justification long enough to pass the validator.",
         "license": "CC-BY-4.0",
@@ -26,13 +26,31 @@ def test_valid_indicator_passes():
     assert ind.id == "test_indicator"
 
 
+def test_root_is_required_on_every_source():
+    # v11: the genealogy can never silently go missing — a source without
+    # a root is a config error, not a defaultable field.
+    with pytest.raises(ValidationError, match="root\n  +Field required"):
+        Indicator.model_validate(
+            _base_indicator(sources=[{"provider": "owid", "ref": "a", "priority": 1}])
+        )
+
+
+def test_root_must_belong_to_the_closed_registry():
+    with pytest.raises(ValidationError, match="unknown root 'made_up_root'"):
+        Indicator.model_validate(
+            _base_indicator(
+                sources=[{"provider": "owid", "ref": "a", "priority": 1, "root": "made_up_root"}]
+            )
+        )
+
+
 def test_duplicate_priorities_rejected():
     with pytest.raises(ValidationError, match="source priorities must be unique"):
         Indicator.model_validate(
             _base_indicator(
                 sources=[
-                    {"provider": "owid", "ref": "a", "priority": 1},
-                    {"provider": "worldbank", "ref": "b", "priority": 1},
+                    {"provider": "owid", "ref": "a", "priority": 1, "root": "un_igme"},
+                    {"provider": "worldbank", "ref": "b", "priority": 1, "root": "un_igme"},
                 ]
             )
         )
@@ -64,8 +82,8 @@ def test_sources_by_priority_is_sorted():
     ind = Indicator.model_validate(
         _base_indicator(
             sources=[
-                {"provider": "worldbank", "ref": "b", "priority": 3},
-                {"provider": "owid", "ref": "a", "priority": 1},
+                {"provider": "worldbank", "ref": "b", "priority": 3, "root": "un_wpp"},
+                {"provider": "owid", "ref": "a", "priority": 1, "root": "un_igme"},
             ]
         )
     )

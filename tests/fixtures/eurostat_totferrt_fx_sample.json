@@ -1,0 +1,72 @@
+{
+ "version": "1.0",
+ "class": "dataset",
+ "label": "Fertility indicators",
+ "id": [
+  "freq",
+  "indic_de",
+  "geo",
+  "time"
+ ],
+ "size": [
+  1,
+  1,
+  1,
+  4
+ ],
+ "dimension": {
+  "freq": {
+   "category": {
+    "index": {
+     "A": 0
+    },
+    "label": {
+     "A": "Annual"
+    }
+   }
+  },
+  "indic_de": {
+   "category": {
+    "index": {
+     "TOTFERRT": 0
+    },
+    "label": {
+     "TOTFERRT": "Total fertility rate"
+    }
+   }
+  },
+  "geo": {
+   "category": {
+    "index": {
+     "FX": 0
+    },
+    "label": {
+     "FX": "Metropolitan France"
+    }
+   }
+  },
+  "time": {
+   "category": {
+    "index": {
+     "1960": 0,
+     "1994": 1,
+     "2000": 2,
+     "2012": 3
+    },
+    "label": {
+     "1960": 0,
+     "1994": 1,
+     "2000": 2,
+     "2012": 3
+    }
+   }
+  }
+ },
+ "value": {
+  "0": 2.73,
+  "1": 1.66,
+  "2": 1.87,
+  "3": 1.99
+ },
+ "updated": "2026-09-16T11:00:00+0200"
+}

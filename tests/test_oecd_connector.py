@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import pytest
@@ -34,7 +35,9 @@ def test_parse_sdmx_csv_maps_sexes_and_carries_iso3():
     # The sex split rides the records (_T -> None, M/F -> male/female) and
     # the REF_AREA code rides BOTH name and iso3 (it IS an ISO3).
     assert by[("RUS", 1994, None)] == pytest.approx(32.3)
-    assert by[("RUS", 1994, "male")] == pytest.approx(63.3)
+    # 52.5 = the CRUDE rate the pinned URL returns (63.3 is the
+    # age-standardized variant — see the pin-guard tests below).
+    assert by[("RUS", 1994, "male")] == pytest.approx(52.5)
     assert by[("RUS", 1994, "female")] == pytest.approx(14.3)
     assert all(r.entity_raw_name == r.iso3_raw for r in records)
     # A modern OECD country code resolves through the registry's ISO3 path.
@@ -56,7 +59,7 @@ def test_parse_sdmx_csv_skips_attribute_only_rows():
     text = FIXTURE.read_text(encoding="utf-8")
     attribute_row = (
         "DATAFLOW,OECD.ELS.HD:DSD_HEALTH_STAT@DF_COM(1.1),I,IDN,A,CSEM,DT_10P5HB,"
-        "_T,F,_Z,CICDHOCD,STANDARD,_Z,_Z,_Z,_Z,,,1,,,,0\n"
+        "_T,F,_Z,CICDHOCD,CRUDE,_Z,_Z,_Z,_Z,,,1,,,,0\n"
     )
     records = parse_sdmx_csv(text + attribute_row)
     assert all(r.iso3_raw != "IDN" for r in records)
@@ -72,6 +75,54 @@ def test_parse_sdmx_csv_refuses_empty_responses():
     header = FIXTURE.read_text(encoding="utf-8").splitlines()[0]
     with pytest.raises(ValueError, match="No data rows"):
         parse_sdmx_csv(header + "\n")
+
+
+@pytest.mark.parametrize(
+    ("old", "new", "needle"),
+    [
+        # the methodology flip: DF_COM also carries the age-standardized
+        # variant of the same keys — it must never slip in as canonical
+        (",CRUDE,", ",STANDARD,", "CALC_METHODOLOGY='STANDARD'"),
+        # the unit flip: death counts (DT) where rates were asked for
+        (",DT_10P5HB,", ",DT,", "UNIT_MEASURE='DT'"),
+        # the frequency flip: anything but annual observations
+        (",RUS,A,", ",RUS,M,", "FREQ='M'"),
+    ],
+)
+def test_parse_sdmx_csv_refuses_slices_the_url_did_not_pin(old, new, needle):
+    # The v8 review's guard: build_url() pins FREQ/MEASURE/UNIT_MEASURE/AGE/
+    # CALC_METHODOLOGY, but the v8 parser trusted the URL and never looked
+    # at those columns — a response mixing in another slice would have been
+    # ingested as as-reported data. Every data row is now verified against
+    # the pins and refused loudly.
+    sabotaged = FIXTURE.read_text(encoding="utf-8").replace(old, new, 1)
+    with pytest.raises(ValueError, match=re.escape(needle)):
+        parse_sdmx_csv(sabotaged)
+
+
+def test_parse_sdmx_csv_refuses_the_literal_v8_fixture_row():
+    # The exact row that shipped in v8's fixture, frozen as the regression:
+    # STANDARD-labeled, reading the age-standardized 63.3 where the crude
+    # 52.5 belongs — the copy-paste the review traced through the
+    # docstring, the config and the fixture. The parser must refuse it.
+    v8_row = (
+        "DATAFLOW,OECD.ELS.HD:DSD_HEALTH_STAT@DF_COM(1.1),I,RUS,A,CSEM,"
+        "DT_10P5HB,_T,M,_Z,CICDHOCD,STANDARD,_Z,_Z,_Z,_Z,1994,63.3,1,,,,0\n"
+    )
+    header = FIXTURE.read_text(encoding="utf-8").splitlines()[0]
+    with pytest.raises(ValueError, match=re.escape("CALC_METHODOLOGY='STANDARD'")):
+        parse_sdmx_csv(header + "\n" + v8_row)
+
+
+def test_parse_sdmx_csv_verifies_the_death_cause_when_given():
+    text = FIXTURE.read_text(encoding="utf-8")
+    # A response answering a DIFFERENT cause's question is refused when the
+    # caller says which cause it asked for (fetch_raw always does).
+    wrong_cause = text.replace(",CICDHOCD,", ",CIHDHOCD,", 1)
+    with pytest.raises(ValueError, match=re.escape("DEATH_CAUSE='CIHDHOCD'")):
+        parse_sdmx_csv(wrong_cause, death_cause="CICDHOCD")
+    # ...and the honest response parses cleanly under the same pin.
+    assert len(parse_sdmx_csv(text, death_cause="CICDHOCD")) == 8
 
 
 def test_connector_is_registered_and_declared_collector():

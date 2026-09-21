@@ -1,0 +1,110 @@
+id: suicide_rate
+label: "Suicide rate"
+family: mortality
+unit: deaths_per_100000_population
+higher_is_better: false
+todd_core: true
+
+sources:
+  # ADR-0008 applied exactly as homicide_rate (the sibling cause-of-death
+  # pilot): canonical = the AS-REPORTED collector (WHO Mortality Database
+  # registrations, redistributed by the OECD "Causes of mortality" dataflow
+  # — here CICDHARM, the OECD's cross-ICD grouping of intentional
+  # self-harm, X60-Y84 and predecessors), witness = the WHO Global Health
+  # Estimates (GHE) crude rates via GHO's SDGSUICIDE — the modeled series
+  # that re-distributes the ill-defined causes the collectors left
+  # unassigned. Same dataflow, same connector, same pin discipline as the
+  # homicide config: one cause-code swap.
+  #
+  # THE CORPUS CASE (todd_refs, v13): suicide_rate is the #2 metric of
+  # Todd's corpus by citations (80 across 11 books — the flagship of Le
+  # Fou et le Prolétaire at 38 citations and a pivot of La Chute finale
+  # at 15), and the OECD dataflow carries it one config away from
+  # homicide (verified live 2026-09-19 before any config was written:
+  # CICDHARM present in the cause list, RUS 1994 M = 73.9 as-reported).
+  - provider: oecd
+    ref: DF_COM/CICDHARM
+    field: rate
+    priority: 1
+    role: canonical
+    unit: deaths_per_100000_population
+    root: who_mdb
+  # The witness: GHO SDGSUICIDE ("Crude suicide rates (per 100 000
+  # population)") — CRUDE, sex-split (SEX_MLE/FMLE/BTSX ride Dim1), 185
+  # countries, 2000-2021, every all-ages point carrying Low/High
+  # uncertainty intervals (dropped at parse per the documented
+  # witness-CI decision). The connector's Dim2 rule keeps the
+  # AGEGROUP_YEARSALL series and drops the latest-year age slices
+  # (6,105 records, logged). root=who_ghe — the FIRST indicator whose
+  # witness is GHE-modeled rather than IGME/WPP/MMEIG: the registry
+  # gained the root in v13 for this config.
+  - provider: who_gho
+    ref: SDGSUICIDE
+    priority: 2
+    role: witness
+    root: who_ghe
+
+coverage_start: 1960
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = WHO Mortality Database cause-of-death registrations as
+  submitted by member states (civil registration, ICD-coded, intentional
+  self-harm = X60-Y84 and predecessors), redistributed by the OECD Causes
+  of Mortality dataflow over SDMX, 46 countries, 1960-2024, sex-split as
+  published, zero null observations in the live slice; witness tier =
+  WHO Global Health Estimates crude suicide rates via GHO (modeled, 185
+  countries, 2000-2021, sex-split, uncertainty intervals published but
+  not carried). Authenticity first per ADR-0008: collector as-reported
+  beside model estimates, never blended.
+reclassification_sensitive: true
+
+plausible_range:
+  min: 0
+  max: 100   # real history sits high but below 100: Lithuania's post-Soviet
+              # crisis peak prints 83.5 (male, 1994, as-reported — the live
+              # slice's maximum, verified 2026-09-19), with 1996/2002 within
+              # a point of it; the bound leaves room for the GHE witness
+              # (whose modeled tail runs ABOVE the collector's on the same
+              # country-years) without flagging every build — >100 would
+              # still flag.
+
+license: >
+  Mixed, per source (see "sources"): OECD DF_COM = OECD Terms and
+  Conditions, attribution required (content: WHO Mortality Database);
+  GHO witness = CC-BY-3.0-IGO.
+notes: >
+  THE SEVENTH INDICATOR, THE CORPUS'S #2 (80 citations across 11 books):
+  suicide is the founding metric of Le Fou et le Prolétaire (38
+  citations: France 1835-1977, the European table, the class
+  breakdowns) and the second pillar of La Chute finale's Soviet
+  collapse diagnosis (15 citations, the 7-country comparative table).
+  The config is the homicide architecture one cause-code away —
+  canonical WHO-MDB-as-submitted via OECD DF_COM (CICDHARM), witness
+  GHE-modeled via GHO — with one NEW display case the homicide pair
+  does not carry: the two tiers DIVERGE SYSTEMATICALLY, not
+  episodically. GHE re-distributes the "ill-defined causes" (R-codes,
+  the half-certified deaths of every struggling registration system)
+  across the definite causes: Russia male 2000 prints 69.8 as-reported
+  vs 95.2 modeled (both verified live 2026-09-19) — a +36% uplift that
+  IS the reclassification-sensitivity of the metric, displayed
+  tier-by-tier instead of reconciled. reclassification_sensitive=true is
+  literal here: the suicide/accident/undetermined-intent boundary moves
+  with certification quality, and the witness gap measures how much it
+  moved. SEX SPLIT IS TODD-RELEVANT SIGNAL, twice over: the dataflow
+  publishes per sex (Russia 1994: male 73.9 vs female 13.2, a 5.6x
+  ratio as-reported — the Leskov/Werther asymmetry the books lean on),
+  and the witness carries the split too (95.2 vs 16.0 modeled the same
+  year). HONEST SCOPE LIMITS: 46 countries canonical (OECD members +
+  key partners — most of Africa and Central Asia absent, Ukraine and
+  Belarus absent from this dataflow, Russia ends 2019 per the WHO MDB
+  lag — 2020+ is witness-only there); the witness's window is
+  2000-2021 only, so pre-2000 and post-2021 comparisons are
+  canonical-only; France's historical series (1835-1977, the Fou et le
+  Prolétaire backbone) is BOOK data, territory for the curated tier,
+  not fetchable from any living provider. The OWID door of the same
+  GHE root (death-rate-from-suicides-ghe, both-sexes, 2000-2021) was
+  probed and deliberately NOT wired in v13 — one witness door is the
+  minimal honest choice; it remains the natural second door, exactly
+  like the unwired GHO maternal doors recorded in v12.

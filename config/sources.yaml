@@ -22,17 +22,89 @@ owid:
     slug isn't fetchable this way", not as a transient error, and look for
     an alternative slug/source rather than retrying.
 
+    v16 witness door: share-of-births-outside-marriage (42 entities,
+    1960-2021, verified live 2026-09-20) — OWID's own page attribution
+    names the OECD Family Database ("OECD (2025)"): the chart is the
+    L4 redistribution of the OECD-COMPILED SF2.4 share, root oecd_family,
+    the illegitimate_births witness. The Family Database itself carries
+    no SDMX wire (the v14 registry finding), so this chart door is the
+    machine-readable face of that compilation — and on the co-covered
+    EU entities it anchors on the national series (France 2020: 62.2 on
+    both doors, Germany 1960 = DE_TOT's 7.6), which makes the vintage
+    end (2021) its honest limit, not a modeling divergence.
+
 worldbank:
   base_url: "https://api.worldbank.org/v2"
   auth_required: false
   license_default: "CC-BY-4.0"
-  notes: "Connector planned for phase 2. Needs page/per_page pagination handling (see API docs)."
+  layer: harmonized
+  notes: >
+    Layer: HARMONIZED (L3) — the World Development Indicators do not
+    collect: they REDISTRIBUTE the modeling families' series (UN IGME
+    for the child-mortality codes, UN WPP for the life-expectancy
+    codes); witness material, never canonical (ADR-0007/0008). This is
+    the provider the `root` genealogy field was built for (v11): on
+    infant mortality, OWID, WDI and GHO are three doors carrying ONE
+    root — the catalog now says so from the data.
+
+    Connector live since v11 (the phase-5 piece). API v2, JSON, no key:
+    pagination is NOT optional (the documented default per_page is 50 —
+    the connector requests per_page=5000, verified accepted live, which
+    answers the wired codes' ~17.5k rows in 4 pages). /country/all
+    includes the 78 aggregate entities (World, regions, income groups):
+    the data rows carry no region field, so the connector fetches the
+    provider's own /country classification once (region.id "NA" =
+    Aggregates) and the parser drops the aggregates it lists, logged —
+    the same "provider's own classification, not ours" judgment as GHO's
+    SpatialDimType. Sex lives in the CODE suffix (.MA.IN / .FE.IN / the
+    bare code), cross-checked at parse against the indicator NAME every
+    row prints ("..., male (per 1,000 live births)") — a mismatch raises,
+    never a guessed slice. Null values (the WDI year slot with no
+    estimate yet — the trailing 2025 rows) stay explicit gap points.
+    PRECISION, verified live: WDI prints its redistribution ROUNDED to
+    at most one decimal (France 2020 female IMR 3 where OWID/GHO carry
+    3.33) — same root, coarser print, displayed by the divergence view.
+    The v12 maternal codes (SH.STA.MMRT, SH.MMR.DTHS) are BARE codes —
+    no sex dimension in the series — and print their estimates rounded
+    to INTEGERS (South Sudan 1987 ratio 8045, India 1985 deaths
+    180,000, verified live 2026-09-13); their WDI grid is the full
+    1960-2025 window with the series valued 1985-2023, so the
+    outside-window slots ride as explicit null gap points (the same null
+    discipline, more of them — the provider's own print, kept as such).
+    The v14 fertility code (SP.DYN.TFRT.IN) is also BARE (a synthetic
+    measure over women's lifetimes has no sex split to print) and
+    carries the WDI print precision AS CARRIED, which is per-observation
+    (FRA 2022 = 1.78, RUS 1990 = 1.892 — verified live 2026-09-19):
+    print precision is per-code, not provider-wide; each indicator
+    config documents its own code's print.
 
 who_gho:
   base_url: "https://ghoapi.azureedge.net/api"
   auth_required: false
   license_default: "CC-BY-3.0-IGO"
-  notes: "Connector planned for phase 2. OData: filter by IndicatorCode to avoid pulling everything."
+  notes: >
+    Layer: HARMONIZED (L3) — the WHO Global Health Observatory's modeled
+    estimates (its indicator names say so openly: "Estimates of...");
+    witness material, never canonical (ADR-0007/0008). Connector live
+    since v10, built for WHOSIS_000015 ("Life expectancy at age 60",
+    the life_expectancy_60 witness — the piece of phase 5 pulled
+    forward; OWID publishes no age-60 chart, its by-age charts jump
+    45 -> 65). Since v11 it carries MDG_0000000001 (the IGME door on
+    infant mortality), and since v13 SDGSUICIDE ("Crude suicide rates
+    per 100 000", the GHE door on suicide_rate — the first who_ghe-root
+    witness): that indicator disaggregates by AGE on Dim2, and the
+    connector's Dim2 rule keeps the ALL-AGES series (AGEGROUP_YEARSALL)
+    while dropping the latest-year age slices (6,105 records live,
+    logged; an age slice would be a different indicator). All-ages
+    records carry Low/High uncertainty intervals which remain dropped at
+    parse per the documented witness-CI decision. More GHO indicators =
+    phase 5, with the dims handling growing then.
+
+    SpatialDimType=COUNTRY rows only (the provider's own classification
+    filters REGION/GLOBAL/income groups — 726 rows in WHOSIS_000015 —
+    which are dropped at parse and stored nowhere, the fetch log line
+    being the record of the drop), the SEX dimension mapped to the
+    project's male/female vocabulary.
 
 un_dyb:
   base_url: "https://unstats.un.org/unsd/demographic-social/products/dyb"
@@ -58,18 +130,82 @@ un_dyb:
     (Russia, US, China, UK absent from recent Table 15s) are reporting
     gaps to expose in the coverage report, not to patch.
 
-    EDITION LOOP (P1, everything below verified live, 2026-09-06): 12
-    editions wired, per-table files, three eras — 2011-2014 on the legacy
-    site (/unsd/demographic/products/dyb/dyb{ed}/Table{NN}.xls) as
+    TABLE 9 (v15, wired 2026-09-20): "Live births and crude birth rates,
+    by urban/rural residence" — the collector's natalité print, the SAME
+    wide layout as Table 15 (Total/Urban/Rural rows, quality-code column,
+    Number then Rate blocks, 5-year windows, Footnotes worksheet), so
+    the Table 15 parser serves it through a dispatch branch with its own
+    content guard (the title's words, the 21/22 lesson applied — table
+    number verified STABLE across all 13 wired editions, but the title
+    stays the ground truth). The wired block is the RATE (CBR per 1,000
+    population, as computed by the UNSD from the countries' registered
+    births — the SAME births Table 17's maternal ratios are computed
+    from, the collector's own cross-table dependency). One Table-9-
+    specific marker grammar find rides the connector: "*" glued to a
+    footnote ref ("*47") on live-birth COUNT cells — provisional AND a
+    note in one cell, 26 live occurrences across editions 2011/2017-
+    2022, accepted as provisional + refs since v15. The unwired face:
+    the Number block (live-birth counts — one `field: number` config
+    away, the Table 15 rate/number precedent), and Table 10 (births by
+    age of mother + general/age-specific fertility rates, latest-
+    available-year cross-sections like Table 21 — verified on the 2024
+    file to carry NO TFR column; summing the printed ASFR would be a
+    derivation the canonical tier refuses).
+
+    TABLE 21/22 (v10, wired 2026-09-13): "Life expectancy at specified
+    ages for each sex: latest available year" — the by-age life tables,
+    sex split in ROWS, ages 0, 5, ..., 100 across 21 columns. The table
+    NUMBER ALTERNATES with the 5qx probabilities by edition parity
+    (LE-by-age = table 21 in even editions, 22 in odd ones — verified
+    across all 13 wired editions), so the connector's dispatch keys on
+    the title TEXT, not the number, and raises with the parity rule on a
+    wrong source_ref. Each edition is a LATEST-AVAILABLE-YEAR
+    cross-section (one life table per country), so the reconstructed
+    series is a stack of cross-sections, not an annual panel — a country
+    that stops responding freezes (Russia's last table: 2012). Reference
+    periods print in full ("2012 - 2015"); the year is the END of the
+    period, the DYB's own convention (verified against Table 4's
+    Roman-numeral rows, edition by edition).
+
+    TABLE 17 (P3b, wired 2026-09-12; v12 = 13 editions + the counts
+    indicator): maternal deaths (WHO-collected cause-of-death
+    statistics) + maternal mortality ratios per 100,000 live births,
+    computed and published by the UN Statistics Division — one "Number"
+    row and, where the collector judges the data reliable enough, one
+    "Rate" row per country. Table number STABLE across editions
+    2011-2024 (the 21/22 renumbering zone does not reach this table).
+    Since v12 the loop runs 13 editions (2011-2015 + 2017-2024: the
+    2015 edition wired through the recovered legacy URL pattern) and
+    BOTH blocks are wired — the ratio indicator reads the Rate rows,
+    maternal_deaths reads the Number rows (the counts block is WIDER:
+    the collector refuses ratios, never counts — 47 of the 124
+    count-printing countries in the 2015 edition have no Rate rows at
+    all, verified live 2026-09-13). Two table-specific as-reported
+    annotations: the diamond marker (ratio based on 30 or fewer
+    maternal deaths — small_base; a RATE-row annotation only, zero
+    occurrences on Number rows verified on the 2015 file) and
+    footnotes that often restate the quality code (notes 1-4 are
+    literally "The code is C/+C/U/+U") or carry country caveats
+    (Russia 2001-2003: Chechnya excluded). Pre-1975 rates used the
+    female population as denominator — not comparable, and outside
+    the wired 2001-2022 window anyway.
+
+    EDITION LOOP (P1, everything below verified live, 2026-09-06; 2015
+    re-verified 2026-09-13): 13 editions wired, per-table files, three
+    eras — 2011-2014 on the legacy site
+    (/unsd/demographic/products/dyb/dyb{ed}/Table{NN}.xls) as
     SpreadsheetML; 2016/2017/2021-2023 on the modern site as BINARY BIFF
     (xlrd, years-as-floats and footnote-suffixed country names
-    normalized); 2018-2020/2024 as SpreadsheetML. Edition 2015: per-table
-    XLS links dead (PDF-only) — build_url refuses it loudly. Edition 2016:
+    normalized); 2018-2020/2024 as SpreadsheetML. Edition 2015
+    RECOVERED in v10: its own per-table links are dead (tiny HTML error
+    pages, PDF-only index) but the LEGACY pattern /dyb2015/TableNN.xls is
+    alive and parses clean — verified by direct download (Table04 2.2
+    MB, Table15 716 KB, Table21 468 KB, Table22 1.3 MB). Edition 2016:
     files FILEPASS-encrypted with an unknown password (msoffcrypto-tool
     verified: not empty) — not wired, zero coverage loss (2012-2016
-    covered by editions 2014 + 2017). Consecutive windows overlap and
-    merge.py arbitrates by priority (later edition = later vintage wins,
-    the standard vintage discipline; every arbitration logged in
+    covered by editions 2014 + 2015 + 2017). Consecutive windows overlap
+    and merge.py arbitrates by priority (later edition = later vintage
+    wins, the standard vintage discipline; every arbitration logged in
     provenance.json). Coverage of the loop: 2007-2024, as-reported.
 
 
@@ -83,15 +219,20 @@ oecd:
     (DSD_HEALTH_STAT@DF_COM, agency OECD.ELS.HD) redistributes the WHO
     Mortality Database: national civil-registration cause-of-death
     tables AS SUBMITTED by member states (ICD-coded; Assault =
-    CICDHOCD), no modeling, no imputation. Same judgment as un_dyb for
-    content; the contrast with who_gho (whose homicide indicators are
-    literally named "Estimates of ...") marks the collector/harmonized
-    line. SDMX REST, no key, CSV responses; the connector pins all 13
-    dimension positions except REF_AREA and SEX, so one request returns
-    the whole series (rate per 100k = DT_10P5HB, counts = DT), and
-    pins CALC_METHODOLOGY=CRUDE — the dataflow also carries
-    age-standardized rates (STANDARD) for the same keys, a derived
-    comparability measure the canonical tier deliberately excludes.
+    CICDHOCD, intentional self-harm = CICDHARM), no modeling, no
+    imputation. Same judgment as un_dyb for content; the contrast with
+    who_gho (whose homicide indicators are literally named "Estimates
+    of ...") marks the collector/harmonized line. SDMX REST, no key,
+    CSV responses; the connector pins all 13 dimension positions except
+    REF_AREA and SEX, so one request returns the whole series (rate per
+    100k = DT_10P5HB, counts = DT), and pins CALC_METHODOLOGY=CRUDE —
+    the dataflow also carries age-standardized rates (STANDARD) for the
+    same keys, a derived comparability measure the canonical tier
+    deliberately excludes. Since v13 two causes are wired: CICDHOCD
+    (homicide) and CICDHARM (suicide — the corpus's #2, verified live
+    before any config: the cause list carries 50 codes, the suicide
+    slice = 46 countries x 1960-2024, 7,225 rows, zero nulls, as-
+    reported max LTU 1994 M 83.5).
 
     Why this route exists at all (investigated live 2026-09-11): the
     WHO Mortality Database itself has no documented public API — the
@@ -99,8 +240,9 @@ oecd:
     endpoints, the classic who.int/healthinfo bulk paths are dead, the
     dthub gateway is DNS-dead. The OECD SDMX API is the one clean
     programmatic route to the content found. Scope honestly partial:
-    49 countries (OECD + key partners incl. RUS, CHN, BRA, ZAF, IND);
-    Russia's series ends 2019 (the WHO MDB's own lag).
+    49 countries on homicide, 46 on suicide (OECD + key partners incl.
+    RUS, CHN, BRA, ZAF, IND); Russia's series ends 2019 (the WHO MDB's
+    own lag).
 
 curated:
   base_url: "catalog/curated"   # in-repo directory, NOT a network endpoint
@@ -120,6 +262,215 @@ curated:
     other source. Series-level provenance and cross-checks:
     catalog/curated/README.md.
 
-# HMD and CLIO-INFRA deliberately absent (set aside for now, per conversation).
+    Since v15 the tier carries its SECOND family of series: the MARKERS
+    (dated institutional events, the corpus's own 'markers' family).
+    The founding precedent was one series (ussr_infant_mortality_
+    official, a collector-shaped series entered because the machine-
+    readable collectors stopped at 2007); the markers are a different
+    shape — ONE POINT per country, the point's year and value BOTH the
+    event year, the citation the statute or the scholarly dating — and
+    a different gate finding: for the markers the demonstrated
+    distortion of condition (b) is the ABSENCE of any machine-readable
+    door (probed live 2026-09-20: OWID 404 on every candidate slug for
+    both marker metrics, the collectors print vital statistics, not
+    statutes — the probe record lives in the v15 worklog). Current
+    marker series: same_sex_marriage_legalization (33 countries,
+    2001-2025) and universal_suffrage_introduction (16 countries,
+    1848-1946, the historiography's own dating with the male/female
+    decomposition per row).
+
+eurostat:
+  base_url: "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
+  auth_required: false
+  license_default: "Eurostat reuse policy (attribution required, no endorsement implied)"
+  layer: collector
+  notes: >
+    Layer: COLLECTOR (v14 judgment) — Eurostat's questionnaire
+    collections republish the series the national statistical offices
+    themselves compute and publish: the DEMOGRAPHY questionnaire
+    (dataset demo_find) carries the TFR (indic_de TOTFERRT, "births per
+    woman", v14) and, since v16, the SHARE OF LIVE BIRTHS OUTSIDE
+    MARRIAGE (indic_de NMARPCT, "Proportion of live births outside
+    marriage" — the corpus's illegitimate_births, printed DIRECTLY by
+    the collector, no ratio derivation); since v17 the LABOUR-FORCE
+    questionnaire (dataset une_rt_a) carries the corpus's
+    unemployment_rate — the national official rates (each office's own
+    LFS print, 1-decimal as published, pinned age=Y15-74/unit=PC_ACT/
+    sex=T: the age codelist carries no TOTAL — Y15-74 is the LFS's own
+    labour-force window; the b/d flags ride as-reported, d on FR and ES
+    2021-2025 = the LFS questionnaire redesign, a definitional seam
+    surfaced not stitched). Collected by Eurostat via its own
+    questionnaires: no modeling, no cross-country harmonization of
+    definitions. The same collector judgment as un_dyb for content; the
+    contrast with who_gho/worldbank (WPP/ILOEST redistributions) marks
+    the collector/harmonized line. Live since v14 for ONE dataset, and
+    since v17 for TWO: the connector dispatches by dataset (demo_find's
+    ref grammar '{code}[/{geo}]' vs une_rt_a's '{age}/{unit}/{sex}',
+    each with its own layout pin-guard — another dataset remains
+    another dispatch decision, the one-block-at-a-time scope
+    of the DYB tables) — now serving THREE Todd metrics through its
+    two questionnaires.
+
+    API (v1.0 dissemination, JSON, no key; verified live 2026-09-19):
+    flat positions over the response's own dimension order [freq,
+    indic_de, geo, time]; cells with no observation are ABSENT from
+    `value` (no explicit gap rows, unlike the WB grid); an optional
+    `status` object carries the collector's per-observation flags (b =
+    break in series, e = estimated, p = provisional — combos occur),
+    transported as-reported on quality_code/provisional. THE GEO
+    CODELIST QUIRKS (pycountry answers none of them, verified live):
+    EL = Greece (never ISO's GR), UK = the UK (never ISO's GB), FX =
+    Metropolitan France (the series-variant code) — the connector maps
+    all three to ISO3 explicitly; XK = Kosovo, deliberately left
+    without an ISO3 so it flows to the unresolved report (the same
+    pending product decision as the WB's Kosovo). Longer geo codes are
+    the codelist's aggregates (EU27_2020, EA20, EFTA...) plus DE_TOT
+    ("Germany including former GDR") — a CODE-SPECIFIC case, both
+    directions verified live: on TOTFERRT (2026-09-19) DE_TOT prints
+    values IDENTICAL to DE on all 25 overlapping years (one German
+    door, the duplicate dropped at parse, logged); on NMARPCT
+    (2026-09-20) the relationship REVERSES — DE_TOT is the FULL 65-year
+    series and DE's five pre-reunification benchmarks are FRG-only
+    prints that DIVERGE (1960: 6.3 vs 7.6; 1970: 5.5 vs 7.2; 1980:
+    7.6 vs 11.9; 1985: 9.4 vs 16.2; 1990: 10.5 vs 15.3 — the GDR's
+    high non-marital share), so DE_TOT rides its own geo-pinned
+    source (demo_find/NMARPCT/DE_TOT, priority ABOVE the main slice)
+    and the merge logs every DE collision as a provenance discard —
+    the FX/FR seam's architecture applied to a definitional seam. THE
+    FRANCE VARIANT PAIR: FX (metro, 1960-2012) and FR (whole France,
+    1998-2024) are dropped from the all-countries slice and wired as
+    their own geo-pinned source_refs (demo_find/{code}/FX, .../FR)
+    with distinct priorities — the merge arbitrates the 1998-2012
+    overlap by vintage with every discarded value logged, the DYB
+    edition-loop discipline.
+
+    WHY THIS PROVIDER EXISTS (the v14 finding, verified live before any
+    config): the corpus's #1 metric is TFR and NO other collector wire
+    prints one — the UN DYB has Table 9 (live births + CRUDE BIRTH
+    RATES, by urban/rural residence, the same wide layout as Table 15 —
+    the collector's natalité face, a DIFFERENT unit, one parser away
+    from a future crude_birth_rate indicator) and Table 10 (births by
+    age of mother + GENERAL and AGE-SPECIFIC fertility rates,
+    latest-available-year cross-sections like Table 21 — verified on
+    the 2024 file to carry NO TFR column; summing the printed ASFR
+    would be a derivation the canonical tier refuses), while the OECD
+    SDMX registry carries no national fertility dataflow (DSD_REG_DEMO
+    @DF_FERTILITY is TL2/TL3 regional; the Family Database is not on
+    SDMX). The Human Fertility Database (France from 1817, the
+    historical depth Todd's onset dates need) remains the HMD-class
+    pending decision — deliberately NOT wired, recorded below with the
+    same status as HMD/CLIO-INFRA.
+
+# HMD and CLIO-INFRA deliberately absent (set aside for now, per
+# conversation). The Human FERTILITY Database (HFD) joins that pending
+# class in v14: the collector-tier source with the historical depth the
+# fertility metric's 19th-century face needs (France from 1817) — see
+# the eurostat notes above.
+#
+# industrial_employment_share (v15, DEFERRED with the probe record):
+# the corpus's #6 (30 citations, 5 books) was probed live 2026-09-20
+# before any wiring decision, and the finding is a constitutional one:
+# NO door prints the share as-reported. The collectors print COUNTS —
+# ILOSTAT's DF_EMP_TEMP_SEX_IND_NB (the old branch classification,
+# national sources, verified live: FRA 2024 total 29021.954 thousands)
+# and its ECO/ISIC variants, all NB (number) flows; the OECD
+# DSD_ALFS@DF_ALFS_EMP_ISIC (agency OECD.SDD.TPS, v1.1, verified live:
+# 49 areas x 1955-2025, counts in persons/thousands with the
+# "Industry (including construction)" aggregate present); the
+# rplumber bulk door (EMP_TEMP_SEX_ECO_NB_A, verified live: ECO_AGGREGATE_
+# /ECO_ISIC4 classifications, counts again) — and no RT (rate/share)
+# flow exists on any of them (EMP_TEMP_SEX_ECO_RT_A returns 400). The
+# one machine-readable door that DOES print the percentage, WB
+# SL.IND.EMPL.ZS ("Employment in industry, % of total employment,
+# modeled ILO estimate", verified live: FRA 2024 = 19.54), is ILOEST —
+# the ILO's modeled estimates, harmonized material, witness-only by
+# constitution. Computing the share from the collectors' counts
+# (sector / total) would be a DERIVATION, which the canonical tier
+# refuses — the same refusal as summing DYB Table 10's ASFRs into a
+# TFR. So the metric waits on the pending composite-derived-layer
+# decision (client-side ratio of two canonical counts, its own ADR)
+# with WB SL.IND.EMPL.ZS as the natural witness — the same shape as
+# the homicide/suicide collector-vs-modeled pairs, one tier apart.
 # `layer` values above mirror PROVIDER_LAYER in src/schema/indicator.py —
 # keep the two in sync when a provider is added.
+#
+# consanguineous_marriage_rate (v17, WIRED through the curated tier): the
+# corpus's #6 and the former backlog HEAD (34 citations, 10 books — Le
+# Destin des immigrés alone carries 16, and Après l'Empire's DHS table
+# reads "Sudan 57% to Turkey 15%"). The gate finding stands (probed
+# live 2026-09-20: GHO zero 'consang' indicators, WDI zero over the
+# 25,000-indicator scan, OWID 404 on every candidate slug, no collector
+# questionnaire prints it) — so the metric lives on the curated tier,
+# the third curated family (the consensus-literature series):
+# catalog/curated/consanguineous_marriage_rate.csv, 102 rows, 69
+# countries, 1943-2021, one citation per point. THE SOURCES THE TABLE
+# CARRIES: A.H. Bittles' consang.net global tables (the domain's
+# standard compilation — the national surveys and dispensation
+# registries, parsed from the saved continent tables), plus the
+# readings verified DIRECTLY from the collected evidence (the DHS final
+# reports and journal papers): PDHS 2017-18 FR354 Table 4.5 (Pakistan
+# 63.9, married-to-a-relative, N=12,364), El-Mouzan et al. 2008 (Saudi
+# national 56.0), Saadat et al. 2004 (Iran national 38.6 over 306,343
+# couples), Ben Halim et al. 2012 (Tunisia's representative cohort
+# 29.8), Kalam et al. 2024 (India's pooled NFHS national 13.6),
+# Kaplan et al. 2016 (Turkey's national 18.5). Year convention: the
+# END year of the printed measurement period; the publication year
+# where none prints; the decade's end for a fuzzy '1970s'. The
+# 19th-century face (Todd's historical France/Algeria rows) has NO
+# citable machine-readable print in hand — the table starts 1943 (the
+# Spanish dispensation window), the honest limit documented in the
+# indicator config's notes.
+#
+# unemployment_rate (v17, WIRED — the v17 probe verdict settled the
+# v16 deferral question): the corpus's economy family's first metric
+# (20 citations, 7 books — the interwar Austria 1930-34 of
+# L'invention de l'Europe, France's ~10% structural claim of Qui est
+# Charlie ?, Les Luttes de classes' France-vs-Germany board). THE
+# COLLECTOR FINDING (verified live 2026-09-20, the probe record in
+# scripts/v17_probe/unemp/REPORT.md): Eurostat une_rt_a pinned
+# age=Y15-74&unit=PC_ACT&sex=T is the ONE wire that prints the plain
+# national rate at the collector tier — the rates each national
+# statistical office computes from its own LFS, collected by the
+# Eurostat questionnaire, 1-decimal as published. THE ILOSTAT VERDICT
+# (wholesale witness-only): every unemployment flow is ILO-processed
+# material — DF_UNE_2EAP_SEX_AGE_RT is ILOEST ("imputed observations
+# ... subject to high uncertainty"), the 5EAP/5UNE family is the 19th
+# ICLS WORK harmonization ("may differ from official national
+# figures"), and the DEAP/TUNE families are the LFS/ILMS databases
+# whose rows carry "Repository: ILO-STATISTICS - Micro data
+# processing" and LFS-ADJ adjusted series (Germany's own rows are
+# "LFS - EU Labour Force Survey" + its adjusted variant, never the
+# Bundesagentur print; 783 outright "ILO - Modelled Estimates" rows in
+# the 2015 sample). THE OECD VERDICT: LFS_INDIC / IALFS_UNE_M are
+# OECD-harmonized (the IALFS description documents OECD re-timing the
+# UK's rolling quarters), OIALAB_INDIC is registered-unemployment
+# counts ("not comparable across countries" per its own description),
+# and no DF_HUR-style flow exists in the current registry — do not
+# wire. THE WITNESS: WB SL.UEM.TOTL.NE.ZS, the national-estimate line
+# the probe fingerprinted as the ILOSTAT DEAP plain-rate family
+# redistributed by WDI (byte-identical on the co-covered core: FRA
+# 1992 = 10.203 on both doors) — 208 real countries including XKX
+# Kosovo, 1990-2025, carrying the France 1990-2002 and Germany
+# 1991-2008 years the Eurostat cube lacks (FR starts 2003, everyone
+# else 2009; ME stops 2020; no UK — post-Brexit the LFS door stopped
+# carrying it).
+#
+# UNWIRED DOORS RECORDED (v17):
+# - WB SL.UEM.TOTL.ZS (the modeled-ILO-estimate code — the divergence
+#   partner: 45.8% of common cells differ from NE, e.g. BHR 1998
+#   NE=43.156 vs ZS=1.114; identical for the OECD core, kept as the
+#   recorded modelled alternate).
+# - WB sex splits SL.UEM.TOTL.{MA,FE}.{NE,}ZS (verified live: FRA 2015
+#   MA.NE=10.794, FE.NE=9.878 — the sex-split witness doors).
+# - Eurostat une_rt_a sex=M/F (the canonical sex-split doors, one ref
+#   away each — the connector grammar already carries them) and
+#   une_rt_m (monthly; annualising refused).
+# - ILOSTAT DF_UNE_DEAP_SEX_AGE_CCT_RT / _CBR_RT (the ILMS
+#   citizenship and place-of-birth rate flows, verified live for FRA
+#   2015-2018, SOURCE "LFS - Enquête sur l'emploi") — THE FUTURE
+#   "Le Destin des immigrés" by-nationality door, harmonized-tier
+#   when that day comes.
+# - ILOSTAT 2EAP/5EAP/DEAP/TUNE unemployment families wholesale
+#   (witness-only by the verdict above).
+# - OECD LFS_INDIC / IALFS_UNE_M / IALFS family / OIALAB_INDIC /
+#   KEI (witness-class at best; not wired).
