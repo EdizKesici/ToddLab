@@ -29,7 +29,12 @@ without colliding.
 
 Witness points with value=None are KEPT as points (an explicit "reported
 to the collector but no value computed" gap — e.g. DYB rates for "U"
-data), distinct from absent points (no row at all).
+data), distinct from absent points (no row at all). Since v9 the SAME
+semantics apply to the canonical tier: a key where every canonical source
+prints "no value" is kept as ONE explicit gap point (the highest-priority
+candidate's own annotations riding it), because that gap is itself data —
+the collector's honest degradation ("counts published, no ratio computed
+for cause-of-death data judged incomplete"). A key with at least onevalued candidate never emits a gap point.
 """
 from __future__ import annotations
 
@@ -67,6 +72,9 @@ class MergedPoint:
     reference_range: str | None = None
     missing_marker: str | None = None
     provisional: bool | None = None
+    # Table 17's "\u2666" marker (ratio based on 30 or fewer maternal
+    # deaths), same winner-annotations discipline as the fields above.
+    small_base: bool | None = None
 
 
 @dataclass
@@ -97,10 +105,19 @@ def merge_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list
 
     for (entity_id, year, sex), candidates in by_key.items():
         usable = [c for c in candidates if c.value is not None]
-        if not usable:
-            continue  # every canonical source explicitly reports "no value" here: nothing is fabricated
-        usable.sort(key=lambda c: c.priority)
-        winner = usable[0]
+        if usable:
+            usable.sort(key=lambda c: c.priority)
+            winner = usable[0]
+        else:
+            # Every canonical source prints "no value" here (the collector's
+            # honest degradation — e.g. DYB rates under "U"/"..." codes):
+            # keep ONE explicit gap point carrying the highest-priority
+            # (latest vintage) candidate's own annotations. Nothing is
+            # fabricated, and the gap stops reading as "never reported".
+            # No provenance entry: nothing was discarded — every candidate
+            # agrees there is no value (the gap point itself is the record).
+            candidates.sort(key=lambda c: c.priority)
+            winner = candidates[0]
         merged.append(
             MergedPoint(
                 entity_id=entity_id,
@@ -116,9 +133,10 @@ def merge_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list
                 reference_range=winner.reference_range,
                 missing_marker=winner.missing_marker,
                 provisional=winner.provisional,
+                small_base=winner.small_base,
             )
         )
-        if len(usable) > 1:
+        if usable and len(usable) > 1:
             provenance_log.append(
                 {
                     "role": "canonical",
@@ -170,6 +188,7 @@ def build_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, l
                 reference_range=winner.reference_range,
                 missing_marker=winner.missing_marker,
                 provisional=winner.provisional,
+                small_base=winner.small_base,
             )
         )
         if len(candidates) > 1:
@@ -220,6 +239,7 @@ def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[Merged
                         **({"reference_range": p.reference_range} if p.reference_range else {}),
                         **({"missing_marker": p.missing_marker} if p.missing_marker else {}),
                         **({"provisional": True} if p.provisional else {}),
+                        **({"small_base": True} if p.small_base else {}),
                     }
                     for p in series.points
                 ],

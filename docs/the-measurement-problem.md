@@ -40,7 +40,10 @@ bad source" story:
    Estimation"; GHO `MDG_0000000001` values for Russia match OWID's to the
    third decimal; WDI carries the same series. Three providers, one root.
    Cross-confirming them against each other is an illusion of independent
-   verification.
+   verification. **Since v11 this paragraph is executable, not just asserted:
+   all three doors are wired as witnesses (OWID, WDI's SP.DYN.IMRT codes,
+   GHO MDG_0000000001) and every source declares its `root` — the catalog
+   says "one harmonized root (UN IGME) via four doors" from the data.**
 
 ## 2. What actually happened in the USSR (the historical event)
 
@@ -151,7 +154,67 @@ Decisions implied by this analysis (to be applied incrementally):
    genealogy). Example: `owid`, `worldbank`, `who_gho` on infant mortality
    all declare `family: un_igme, layer: harmonized`. The catalog can then
    compute how many *independent* roots an indicator has (here: one, not
-   three) and say so in the UI.
+   three) and say so in the UI. — **DONE (v11): implemented as the `root`
+   field on every `SourceRef` (a closed registry, `ROOT_LABELS`), emitted
+   on the dist's `sources[]`/`witnesses[]` and summarized per-role with
+   door counts in `catalog.json`; `cli stats` prints the genealogy line
+   ("witness: un_igme (owid, who_gho, worldbank x2)"). The LE
+   counter-case is wired too: its witnesses carry two DIFFERENT roots —
+   `owid_longrun_composite` vs `un_wpp` — the divergence between them is
+   the genealogy showing, display material. Since v13 the registry holds
+   a ninth root, `who_ghe` (the WHO Global Health Estimates): suicide_
+   rate's witness is the first to carry it, and it is the root-field
+   case the project was built for — the GHE model re-distributes the
+   ill-defined causes over the collectors' printed suicides, so the
+   canonical (who_mdb: 69.8 for Russia's male 2000) and the witness
+   (who_ghe: 95.2, same country-year-sex) diverge SYSTEMATICALLY; two
+   tiers, two roots, one displayed spread that IS the metric's
+   reclassification sensitivity.** Since v14 the registry holds a tenth
+   root, `eurostat_demo` — birth_rate_fertility's canonical (the corpus's
+   #1 needed a collector that prints a national TFR and none of the
+   existing wires does: the DYB publishes CBR and age-specific rates but
+   no TFR column, the OECD SDMX registry has no national fertility
+   dataflow), so the root is the Eurostat questionnaire collector itself,
+   sitting BESIDE `un_wpp` (the WPP witness): for the EU the two roots
+   AGREE because WPP anchors on the national series (FR 2022 prints
+   1.78 on both tiers), and everywhere else the witness models what the
+   collector never polled — the tier split, stated as genealogy.
+   Since v15 the registry holds an eleventh root, `national_legislation`
+   — the MARKERS' root (same-sex marriage legalization, universal
+   suffrage introduction): the dated law itself, cited per point. A
+   root unlike every other: there is no upstream redistributor to
+   disclose (the citation IS the origin), which is also why the
+   markers carry `witnesses: none` — nothing upstream exists to
+   witness. The genealogy field's honest answer to a tier that cannot
+   be cross-checked: it says so. Since v16 the registry holds a
+   twelfth root, `oecd_family` — illegitimate_births' witness: the
+   OECD Family Database's compiled share of births outside marriage
+   (SF2.4), reached through OWID's chart door (the compilation itself
+   carries no SDMX wire). An OECD-COMPILED product sits on the
+   harmonized side of the line (the OECD assembles and standardizes
+   national series — the relation WPP/GHE hold to their collectors),
+   and the root label is what lets its honest limit read correctly:
+   the vintage ends at the OECD's 2021 compilation where the collector
+   prints through 2024, and on the co-covered entities the two roots
+   AGREE (France 2020 = 62.2 on both doors — the OECD anchors on the
+   national series, the WPP-witness pattern in a second family).
+   Since v17 the registry holds a FIFTEENTH-ROOT-PAIR (roots 13-15):
+   `consanguinity_studies` — the consanguinity-literature root, the
+   markers' constitution applied to a RATE metric (the published study
+   IS the origin: national surveys, dispensation registries, DHS final
+   reports, vectored by Bittles' consang.net compilation; no upstream
+   redistributor exists anywhere — probed live — so consanguineous_
+   marriage_rate carries `witnesses: none`); and the unemployment
+   pair `eurostat_lfs` / `ilo_lfs` — the collector and the ILO-processed
+   family it faces (Eurostat's une_rt_a questionnaire collecting each
+   office's own LFS rate; the ILOSTAT LFS database's re-processed
+   microdata redistributed by WDI as the national-estimate line). The
+   pair holds the same relation who_mdb/who_ghe hold — same underlying
+   national surveys, one harmonization step apart — and its seams are
+   the coverage cliff (Germany 1991-2008 lives only on the witness:
+   the collector's own coverage, stated as genealogy) and the
+   print-precision seam (FRA 2024: 7.436 vs 7.4 — the collector's
+   1-decimal face), both reading as two doors, never a contradiction.
 2. **A `curated` source type**: small tables committed in the repo
    (`catalog/curated/*.csv`), each row carrying `entity_id, year, value,
    citation, definition_note`. This is how the `ussr` entity finally gets a
@@ -260,35 +323,164 @@ for itself.
 ### 7.2 Consequences for the architecture
 
 1. **Collectors are first-class providers.** `un_dyb` is implemented,
-   live-fetchable, and — since v7 — **wired as an EDITION LOOP**: 12
-   editions (2011-2014 + 2017-2024; 2015 = dead XLS links, 2016 =
-   FILEPASS-encrypted, both verified live and excluded without coverage
-   loss), three file eras (legacy-site SpreadsheetML, BIFF via xlrd,
-   modern SpreadsheetML), two tables (15 = infant deaths/IMR, 4 = life
-   expectancy at birth). Consecutive 5-year windows overlap and the merge
-   arbitrates by vintage (later edition wins, logged) — reconstructing
-   the as-reported series over **2007-2024**: 1419 canonical IMR points
-   (118 entities) and 3018 canonical LE points (182 entities, sex-split:
-   the collector prints Male/Female separately and averaging would be a
-   derivation). Since v8 the collector's OWN annotations ride every point
-   as-reported: quality codes (C/U/|/+, the "+" = tabulated by
-   registration date), footnote refs JOINED to their texts (the Armenian
-   live-birth definition ships beside Armenia's IMR), the LE reference
-   ranges (the Roman numerals — a "2012" LE with range III was computed
-   over 2010-2012), the printed missing markers and the "*" provisional
-   flags. The WHO Mortality Database is wired too (v8) — through the
-   OECD DF_COM SDMX redistribution (`oecd` connector, cause Assault =
-   CICDHOCD, CRUDE methodology pinned: the dataflow also carries
-   age-standardized rates for the same keys — RUS 1994 male 52.5 crude
-   vs 63.3 standardized — and standardization is a derived measure, not
-   the as-reported rate): homicide_rate's canonical tier, 49 countries,
-   1960-2024, sex-split, Russia's 1994 crisis peak (male 52.5 vs female
-   14.3) as counted by the registrar. The PDF-era
+   live-fetchable, and — since v7 — **wired as an EDITION LOOP**: 13
+   editions (2011-2015 + 2017-2024 — the 2015 vintage recovered in v10
+   through the legacy URL pattern after its own index links proved to be
+   the dead part; 2016 = FILEPASS-encrypted, verified live and excluded
+   without coverage loss), three file eras (legacy-site SpreadsheetML,
+   BIFF via xlrd, modern SpreadsheetML), five tables (15 = infant
+   deaths/IMR, 9 = live births/crude birth rates — since v15, the
+   collector's natalité print served by the Table 15 parser through its
+   own content-guarded dispatch branch, 2,225 valued canonical CBR
+   points across 179 entities over 2007-2024, 1,900 edition
+   arbitrations logged; 4 = life expectancy at birth, 17 = maternal
+   deaths and
+   ratios, 21/22 = life expectancy at specified ages). Consecutive
+   5-year windows overlap and the merge arbitrates by vintage (later
+   edition wins, logged) — reconstructing the as-reported series: **1,426
+   valued canonical IMR points across 118 entities (1,405 un_dyb over
+   reference years 2007-2024 + 21 curated USSR over 1970-1990 — the
+   split is stated because a bare count is not recountable without it;
+   plus, since v9, 1,276 explicit gap points, 2,702 total)** and 3,032
+   valued canonical LE points (184 entities; plus 2,986 explicit gaps,
+   6,018 total; sex-split: the collector prints Male/Female separately
+   and averaging would be a derivation). Since v8 the collector's OWN
+   annotations ride every point as-reported: quality codes (C/U/|/+, the
+   "+" = tabulated by registration date), footnote refs JOINED to their
+   texts (the Armenian live-birth definition ships beside Armenia's
+   IMR), the LE reference ranges (the Roman numerals — a "2012" LE with
+   range III was computed over 2010-2012), the printed missing markers
+   and the "*" provisional flags — and since v10 that includes the
+   SpreadsheetML editions' <html:Sup>-wrapped refs, silently dropped by
+   the v2-era text extraction and now carried everywhere (728 IMR + 558
+   LE + 22 maternal points gained their printed refs at the v10
+   cutover, nothing else moved). The WHO Mortality Database is wired
+   too (v8) — through the OECD DF_COM SDMX redistribution (`oecd`
+   connector, cause Assault = CICDHOCD, CRUDE methodology pinned: the
+   dataflow also carries age-standardized rates for the same keys — RUS
+   1994 male 52.5 crude vs 63.3 standardized — and standardization is a
+   derived measure, not the as-reported rate): homicide_rate's canonical
+   tier, 49 countries, 1960-2024, sex-split, Russia's 1994 crisis peak
+   (male 52.5 vs female 14.3) as counted by the registrar. Since v13 a
+   second cause rides the same dataflow: **intentional self-harm =
+   CICDHARM, suicide_rate's canonical tier** — 46 countries, 1960-2024,
+   7,225 as-reported points, zero null observations, the live slice's
+   maximum being Lithuania 1994 male 83.5 (the post-Soviet peak ABOVE
+   Russia's 73.9). The corpus (todd_refs, v13) ranked it #2 of Todd's
+   metrics (80 citations across 11 books) BEFORE it was wired — the
+   compilation now weights the roadmap, and the roadmap pointed here.
+   Since v14 the same roadmap pointed at its #1, and the finding there
+   is architectural: **no collector wire prints a national total
+   fertility rate except Eurostat's demo_find** (verified live on the
+   files and the SDMX registry before any config: DYB Table 9 = crude
+   birth rates, Table 10 = general/age-specific rates with NO TFR
+   column — summing the printed ASFR would be a derivation, forbidden
+   at the canonical tier; OECD SDMX = no national fertility dataflow).
+   So birth_rate_fertility's canonical tier is the **eurostat collector**
+   (demo_find/TOTFERRT, the TFRs the national statistical offices
+   themselves publish, 1960-2024, per-observation b/e/p flags riding
+   the points as-reported), and it carries the project's newest
+   as-reported display case: the **France variant pair** — Eurostat
+   prints TWO French series (FX "Metropolitan France" 1960-2012, FR
+   "France" 1998-2024, values differing in the overlap: 2000 = 1.87
+   metro vs 1.89 total), wired as separate geo-pinned sources so the
+   merge arbitrates the 15 overlap years by vintage with every
+   discarded value logged — the definitional seam the collector itself
+   printed, displayed, never reconciled. The WPP witness (WDI's
+   SP.DYN.TFRT.IN) carries the worldwide face the collector never
+   polled: Todd's Muslim-world and Central-Asia comparisons of Après
+   l'Empire live on the modeled layer, next to a collector that never
+   asked those countries — the honest tier split of the corpus's #1.
+   Since v15 the CBR face of the same phenomenon is wired too, as its
+   own indicator: **crude_birth_rate** (DYB Table 9, the collector's
+   natalité print — the same births Table 17's ratios are computed
+   from; 2,225 valued points, 179 entities, 2007-2024, 1,900 edition
+   arbitrations; Russia answers this questionnaire through 2024,
+   unlike Table 15). The TFR and CBR ride as COMPANION indicators —
+   the dist's `companion_indicators` field says what a unit conversion
+   never may: the two measures differ by exactly the age structure CBR
+   drags along. And the corpus's marker family entered the pipeline
+   the same version: **same_sex_marriage_legalization_year** (33
+   countries, the 'religion zero' chain of La Défaite de l'Occident)
+   and **universal_suffrage_introduction_year** (16 countries, 1848-
+   1946, the franchise's arrival dated as the historiography dates it,
+   the male/female decomposition riding every row's note) — curated
+   tables, one point per country, the curation gate's condition (b)
+   finding being the ABSENCE of any machine-readable door (probed
+   live: no OWID chart, no collector wire). Since v16 the
+   illégitimité itself is wired: **illegitimate_births** — the share
+   of live births outside marriage (16 citations, 6 books), printed
+   DIRECTLY by the Eurostat collector (demo_find's NMARPCT — the same
+   dataset as the TFR, two Todd metrics through one questionnaire,
+   2,144 canonical points, 46 entities, 1960-2024, zero derivation:
+   no ratio computed anywhere) with the OECD Family Database as its
+   witness through OWID's chart door (42 entities, 1960-2021 — the
+   vintage's honest end). THE GERMAN SEAM is this indicator's own
+   display case, and the exact REVERSE of the TFR's duplicate: the
+   codelist's DE_TOT ("Germany including former GDR") is the FULL
+   65-year series while DE's pre-reunification benchmarks are
+   FRG-only prints that DIVERGE (1980: 7.6 FRG vs 11.9 all-Germany —
+   the GDR's high non-marital share is Todd's communist-family story
+   in one number), so DE_TOT rides its own geo-pinned source ABOVE
+   the main slice and every DE collision becomes a logged provenance
+   discard: the FX/FR seam's architecture (two prints of one country,
+   arbitrated, displayed, never reconciled) applied to a definitional
+   seam — the same v16 repaired the seam-field's own symmetry (the
+   TFR/CBR companion pair now declared on both sides, a
+   cross-validation away from ever drifting one-way again). And v17
+   claimed the backlog's head in the same motion, both tracks at once:
+   **consanguineous_marriage_rate** (34 citations, 10 books — the
+   corpus's #6, Le Destin des immigrés alone carrying 16) through the
+   CURATED tier — the third curated family, the consensus-literature
+   series: 102 published readings, 69 countries, 1943-2021, one
+   citation per point, a SPARSE panel by the metric's own nature (a
+   country rides the vintages its literature prints — Norway's three
+   registry vintages, Pakistan's four DHS vintages 61.2 -> 63.9, the
+   Maghreb trio, the European sub-1% dispensation belt Todd's
+   L'invention de l'Europe reads); and **unemployment_rate** (20
+   citations, 7 books, the economy family's first indicator) on the
+   probe's collector verdict — NO other wire prints the plain national
+   rate (ILOSTAT wholesale ILO-processed: ILOEST modeled, 19th-ICLS
+   harmonized, LFS/ILMS microdata-reprocessed, Germany's own rows the
+   EU-LFS adjusted series; OECD doors OECD-harmonized or registered
+   counts) — so the canonical is Eurostat's une_rt_a pinned
+   Y15-74/PC_ACT/T (the pins ARE the indicator: no age TOTAL exists in
+   the codelist, PC_ACT the rate's own denominator, the LFS-2021 'd'
+   flag the definitional seam France's continuous series carries) with
+   the WB national-estimate witness — the coverage cliff (Germany
+   1991-2008 witness-only) and the crisis peaks (ES/EL 2013 = 26.1 /
+   27.8) displayed as-reported. The PDF-era
    editions (1948-2010, the only route for the defunct entities) were
    measured by the P1b spike on the 1978 edition: 5/6 spot-checks exact,
    47% of lines full-confidence, 21% OCR-refused — viable but reviewed,
    not fully automatic; for the defunct (a few rows per edition) the
-   curated gate is the honest route.
+   curated gate is the honest route. Since v9 the loop carries a third
+   table: **17 = maternal deaths and maternal mortality ratios** (the
+   number STABLE across editions, unlike the 21/22 renumbering zone),
+   2001-2022, 97 entities on the ratio — the counts WHO-collected, the
+   ratio computed by the UN Statistics Division itself (we republish the
+   collector's published figure, we do not re-derive it), and the table's
+   own "♦" marker ("Ratios based on 30 or fewer maternal deaths") riding
+   the points as-reported — the marker marks RATE cells only (zero
+   occurrences on Number rows, verified on the 2015 file). Since v12 the
+   table is wired at BOTH blocks: the ratio indicator reads the Rate rows
+   (1,114 valued points over 97 entities, 13 editions since the 2015
+   vintage joined the loop) and **maternal_deaths reads the Number rows**
+   — 1,584 valued points over 131 entities: the counts block is WIDER
+   because the collector's editorial rule refuses ratios, never counts,
+   so the Number-ONLY countries (Libya: 12 registered deaths in 2016, no
+   ratio computed) finally have a series instead of an absence. Since v10 a fourth table is wired: **21/22 = life
+   expectancy at specified ages** — the table NUMBER alternates with the
+   5qx probabilities by edition parity (21 in even editions, 22 in odd
+   ones; the dispatch keys on the title's WORDS), each edition prints
+   each country's LATEST available life table (the series is a stack of
+   cross-sections: Russia's last table is 2012, frozen across every
+   later edition), printed reference periods ride the points with their
+   END year as the point's year (the collector's own convention,
+   verified against Table 4's Roman-numeral rows) — LE-60's canonical
+   tier: 1,754 valued points (166 entities, reference years 1992-2025)
+   + 774 explicit gaps, beside the first GHO witness (WHOSIS_000015,
+   WPP-derived: Russia 2012 male 15.38 as-reported vs 15.43 modeled).
 2. **Source-of-record per layer, witnesses beside it.** The merge layer
    arbitrates duplicates *within* one layer family only; cross-layer series
    are displayed as divergence, never averaged into one line. Implemented:
@@ -299,6 +491,15 @@ for itself.
    collector", with the alternative route named (HMD, national office) —
    never patched silently. Live-verified in v6: Russia is honestly absent
    from the canonical series while the IGME witness carries its series.
+   Since v9 the principle is enforced one level deeper: a cell the
+   collector PRINTED as empty ("..." under a "U" code — counts published,
+   no rate computed) survives into the canonical dist as a value=null gap
+   point carrying the printed code, instead of silently vanishing the way
+   "never reported" and "reported, refused" used to read identically.
+   Measured effect at the v9 cutover: IMR +1,270 explicit gap points and
+   LE +2,944 with zero valued points changed — the degradation the
+   collector prints is now the frontend's to display ("no ratio [code
+   U]") rather than the pipeline's to hide.
 4. **The curation gate stays narrow.** Hand-curated points (the full USSR
    1965-1990 official series — done: 1970-1990, 21 points) enter only with
    a Todd claim, a demonstrated distortion, and a citable source — a

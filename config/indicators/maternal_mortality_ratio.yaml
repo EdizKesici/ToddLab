@@ -1,0 +1,225 @@
+id: maternal_mortality_ratio
+label: "Maternal mortality ratio"
+family: mortality
+unit: maternal_deaths_per_100k_live_births
+higher_is_better: false
+todd_core: false
+
+sources:
+  # ADR-0008 applied to the fourth indicator (P3b): canonical = the
+  # collector (UN DYB Table 17, 13 wired editions 2011-2015 + 2017-2024 —
+  # the 2015 edition recovered in v10 through the legacy URL pattern and
+  # wired here in v12; 2016 FILEPASS-encrypted, deliberately absent, zero
+  # coverage loss; the table number is STABLE across editions, unlike the
+  # 21/22 renumbering zone), witness = the UN MMEIG modeled estimates
+  # through TWO doors: OWID (the 2020 round, 1751-2020) and the World Bank
+  # (the 2023 round, annual 1985-2023 — v12). The two doors redistribute
+  # DIFFERENT ROUNDS of the same modeling family: one root, two vintages —
+  # their divergence on overlapping years is the model's own revision made
+  # visible, a genealogy signal, not a contradiction. The two TIERS are
+  # different animals by construction: the canonical series only exists
+  # where a country runs cause-of-death registration good enough for the
+  # collector to publish a ratio (C/| codes); the witnesses model the whole
+  # world including the countries the collector cannot serve. The
+  # divergence between them IS the signal: it measures where official
+  # maternal-death statistics degrade below the modeled reality.
+  - provider: un_dyb
+    ref: 2024/table17
+    priority: 1
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2023/table17
+    priority: 2
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2022/table17
+    priority: 3
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2021/table17
+    priority: 4
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2020/table17
+    priority: 5
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2019/table17
+    priority: 6
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2018/table17
+    priority: 7
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2017/table17
+    priority: 8
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2015/table17
+    priority: 9
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2014/table17
+    priority: 10
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2013/table17
+    priority: 11
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2012/table17
+    priority: 12
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2011/table17
+    priority: 13
+    role: canonical
+    root: unsd_dyb
+  - provider: owid
+    ref: maternal-mortality
+    field: "Maternal mortality ratio"
+    priority: 14
+    role: witness
+    root: un_mmeig
+  # v12 (the maternal bloc): the second MMEIG door — WDI's SH.STA.MMRT,
+  # carrying the 2023 round of the estimates ("Trends 2000-2023"):
+  # ANNUAL 1985-2023, past the OWID door's 2020 wall. Bare code (no
+  # .MA.IN/.FE.IN suffix — the series has no sex dimension) with a name
+  # that prints no sex slice: the connector's bidirectional cross-check
+  # passes with sex=None. WDI prints the series rounded to INTEGERS
+  # (verified live 2026-09-13: South Sudan 1987 prints 8045 where the
+  # OWID door carries 6774.7 — different rounds of the same root AND
+  # different print precision; the coarser print is the genealogy
+  # footnote, same as WDI's one-decimal print on the IGME codes).
+  - provider: worldbank
+    ref: SH.STA.MMRT
+    priority: 15
+    role: witness
+    root: un_mmeig
+
+coverage_start: 2001
+coverage_end: 2022
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = UN DYB Table 17 maternal deaths (provided to the UNSD via
+  WHO cause-of-death statistics) and the ratios the UN Statistics Division
+  computes from them per 100,000 live births, 13 editions 2001-2022 (2015
+  recovered v10, wired v12), C/U/|/+ quality-coded as printed. Medium, not
+  high: maternal deaths are the classic under-reported cause even inside
+  otherwise-complete civil registration (obstetric deaths misclassified to
+  disease chapters), and the collector's own editorial rule refuses to
+  compute ratios where the data is judged incomplete — the series' honest
+  limits are part of the signal. Witness tier = UN MMEIG modeled estimates
+  through two doors (OWID: the 2020 round, 200 entities, 1751-2020; World
+  Bank: the 2023 round, annual 1985-2023), which exist precisely where
+  registration cannot serve.
+reclassification_sensitive: true
+
+plausible_range:
+  min: 0
+  max: 9000   # deliberately WIDE: the two tiers occupy different magnitude
+              # bands by construction. The canonical as-reported ratios
+              # (civil-registration countries) sit below ~100. The MMEIG
+              # witnesses model ratios into the thousands for
+              # no-registration states — verified live: the OWID door
+              # (2020 round) carries South Sudan 1987 = 6774.7 and Rwanda
+              # 1994 = 4105.5 (the genocide year; real modeled values,
+              # kept, the safety net reports it does not censor), and the
+              # v12 World Bank door (2023 round) carries South Sudan 1987
+              # = 8045 — the bound moves 7000 -> 9000 with it (a bound
+              # hugging the canonical band would flag thousands of
+              # legitimate witness points on every build — cry-wolf).
+              # 9000 still catches the catastrophic error classes (unit
+              # confusions, counts-instead-of-ratios) on BOTH tiers. Tier
+              # divergence is display material, not a validation error.
+
+license: >
+  Mixed, per source (see "sources"): UN DYB = UN data reuse policy
+  (attribution required, no endorsement implied); OWID witness = CC-BY-4.0
+  (content: UN MMEIG estimates); World Bank witness = CC-BY-4.0 (content:
+  UN MMEIG estimates).
+notes: >
+  THE FOURTH INDICATOR, THE PUREST COLLECTOR DEGRADATION CASE (P3b): DYB
+  Table 17 prints, per country-year, a "Number" row (registered maternal
+  deaths, WHO-collected cause-of-death statistics) and — only where the
+  collector judges the data reliable enough — a "Rate" row. That editorial
+  rule is the indicator's own built-in honesty, and it lands at two depths:
+  a Rate row with "..." in a given year (counts published, no ratio
+  computed for that year — v9 merge semantics keep those as value=null
+  points carrying the printed quality code), and a country with a
+  Number-ONLY block and no Rate row at all (Libya in the 2024 edition: 12
+  deaths in 2016, no ratio published) — the latter leaves no point in the
+  ratio indicator; since v12 the counts block has its own indicator
+  (maternal_deaths), the wiring this note deferred for three versions.
+
+  THE RATIO IS THE COLLECTOR'S PUBLISHED FIGURE, NOT OURS: the rates are
+  computed by the UN Statistics Division from the country counts and Table 9
+  live births (printed Notes17), not by the countries themselves. We
+  republish the collector's published ratio as-is — the as-reported
+  discipline applies to the collector's publication, it does not make us
+  re-derive anything. Unit: maternal deaths per 100,000 live births in the
+  same year.
+
+  THE 13-EDITION LOOP (v12): 2011-2015 + 2017-2024 — the 2015 edition,
+  recovered in v10 through the legacy /dyb2015/Table17.xls pattern (its own
+  per-table links are dead), is wired here at priority 9: its 2005-2014
+  window adds keys the later editions dropped and re-arbitrates the
+  2014-and-older vintages (verified live 2026-09-13: the file parses clean,
+  77 rate-printing countries / 509 valued ratios, 0 unresolved entity
+  names). Edition 2016 stays deliberately absent (FILEPASS-encrypted,
+  zero coverage loss — its window is covered by 2014 + 2015 + 2017).
+
+  TWO TABLE-17-SPECIFIC AS-REPORTED ANNOTATIONS: the "diamond" marker on
+  ratio cells = "Ratios based on 30 or fewer maternal deaths" (small_base,
+  e.g. France 2019 and every Mauritius/Italy ratio — a small-numbers
+  caveat the front should render, not hide); per-year footnote refs that
+  for this table often RESTATE the quality code (the Footnotes sheet's
+  notes 1-4 are literally "The code is C/+C/U/+U") and sometimes carry
+  country-specific caveats — Russia's note 5 in the 2011/2014 editions
+  documents that 2001-2003 data exclude the Chechnya region.
+
+  PRE-1975 CAVEAT (outside our window, documented for completeness): in
+  issues prior to 1975 the DYB calculated maternal mortality against the
+  female population, not live births — those rates are not comparable.
+  Our wired window (2001-2022 via editions 2011-2015 + 2017-2024) is
+  entirely on the modern definition. The ICD-10-bold convention (bold =
+  ICD-10 classified) is a TYPEFACE signal, not a cell value: like Table
+  15's italics it is not carried — the C/U/| code column is its
+  machine-readable equivalent.
+
+  WITNESS TIER, TWO DOORS OF ONE ROOT (un_mmeig — and two ROUNDS of it):
+  owid `maternal-mortality` — the UN MMEIG modeled estimates, 200
+  entities 1751-2020 (the 2020 round), multi-variable CSV (field pinned
+  to "Maternal mortality ratio"). worldbank SH.STA.MMRT — the same
+  modeling family's 2023 round, annual 1985-2023, integer print. The
+  doors diverge on overlapping years BECAUSE the model was revised
+  between rounds (verified live: South Sudan 1987 = 6774.7 OWID vs
+  8045 WB; Egypt 2020 = 16.8 OWID vs 31 WB) — the divergence view
+  displays the revision, the root field explains why they still agree
+  in structure. The canonical/witness spread is structural too: e.g.
+  Egypt canonical (as registered) ~12-33 vs witness (modeled) ~50-70
+  in overlapping years — the collector only hears what the registration
+  system catches.
+
+  THE WITNESS GRID (WDI's own print): SH.STA.MMRT arrives as WDI's full
+  1960-2025 year grid; the series itself is valued 1985-2023 (annual,
+  ~194 entities every year). The year slots outside the series' window
+  (1960-1984, 2024-2025) ride as explicit null gap points — the same
+  null discipline as the trailing-2025 slots on the IGME codes, readable
+  as "the provider prints no estimate for this slot", never silently
+  dropped. The entities with no MMEIG estimate at all (23 of WDI's 217
+  country-classified entities) stay as all-gap witness series.

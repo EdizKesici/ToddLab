@@ -1,0 +1,115 @@
+id: consanguineous_marriage_rate
+label: "Consanguineous marriage rate"
+family: society
+unit: percent
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE METRIC'S ONLY HONEST TIER (v17): the curation gate, satisfied the
+  # same way the markers' was (v15) — the ABSENCE of any machine-readable
+  # door (probed live 2026-09-20, the v16 deferral record in sources.yaml:
+  # GHO 0 hit, WDI 0/25000, OWID 404 on every candidate slug; the DHS
+  # surveys Todd cites are microdata releases, not series doors). The
+  # signal Todd reads is a published prevalence reading per country and
+  # vintage — exactly the curated tier's shape: one row per (country,
+  # study year), one citation per row.
+  - provider: curated
+    ref: consanguineous_marriage_rate
+    priority: 1
+    role: canonical
+    root: consanguinity_studies
+
+coverage_start: 1943
+coverage_end: 2021
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = a curated table of published consanguinity-prevalence
+  readings (102 rows, 69 countries, 1943-2021, one citation per row — the
+  consang.net global tables of A.H. Bittles' compilation carrying the
+  national surveys and dispensation registries, plus the DHS final
+  reports and journal studies verified directly: PDHS 2017-18 Table 4.5,
+  El-Mouzan 2008, Saadat 2004, Ben Halim 2012, Kalam 2024, Kaplan 2016).
+  Reliability is MIXED BY NATURE and documented per row: the European
+  registry belt (dispensation and civil registration, N up to 1.4
+  million) is high; the survey belt is moderate (national samples N
+  1,500-306,000); the subnational and community-scope readings (entered
+  only where no national print exists) are the table's honest frontier,
+  each carrying its scope in definition_note. No witness tier exists (no
+  machine-readable door carries the series — the gate finding).
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0     # the as-reported zero (Panama 1957: 0 of 350 dispensations)
+  max: 70    # the corpus's own world scale (La troisième planète cites
+             # 0-60%) + the observed tail (Burkina Faso North 65.8, the
+             # Fulani reading) — anything above 70 or a unit error (a
+             # rate in per-mille, a count) flags immediately.
+
+license: >
+  Facts with citation (small extracts, clearly attributed) — see
+  docs/licenses.md and catalog/curated/README.md.
+
+notes: >
+  THE THIRTEENTH INDICATOR, THE BACKLOG'S HEAD (v17). The corpus's #6
+  (34 citations, 10 books) and the one that was already waiting at v16
+  with its gate satisfied: consanguineous marriage is Todd's
+  anthropological signature variable — the family-systems map's own
+  metric (La troisième planète's world scale 0-60%, L'enfance du
+  monde's Iran, Le Destin des immigrés' 16-citation cross-community
+  table, Après l'Empire's early-1990s DHS reading "Sudan 57% to Turkey
+  15%", Qui est Charlie ?'s Maghreb ~25-35% c.2000).
+
+  THE TABLE'S SHAPE: one row per (country, study year), the value = the
+  study's printed overall consanguineous-marriage rate in percent over
+  the union types THAT study counts (the types ride every note: most
+  count D1C,1C,11/2C,2C; Bahrain 2009 counts first cousins only — the
+  perimeter is the note's job, the number is never converted). YEAR
+  CONVENTION: the END year of the printed measurement period
+  ('1956/57' -> 1957); the publication year where the compilation
+  prints no period (El-Alfi 1969 -> 1969); the decade's end for a fuzzy
+  '1970s' (1979) — the source's own period string rides every note.
+
+  THE THREE BELTS the table carries: (1) the EUROPEAN REGISTRY BELT
+  (France 0.8 in 1958 over 510,000 dispensations, Norway's three
+  registry vintages 0.6 -> 0.7 -> 0.1 over up to 1.4 million marriages,
+  Spain 4.1, Italy 0.5/1.1, the two Masterson island readings Ireland
+  0.5 / Northern Ireland-as-UK 0.4) — the sub-1% exogamous North Todd's
+  L'invention de l'Europe reads; (2) the LATIN DISPENSATION BELT
+  (Freire-Maia's 1956/57 cycle across the Americas, the later
+  Orioli/Liascovich/Castilla vintages) — Brazil 4.8 -> 1.1 -> 1.3, the
+  Andean prints; (3) THE MUSLIM-WORLD SURVEY BELT (the corpus's heart:
+  Pakistan's four DHS vintages 61.2 -> 60.5 -> 56.4 -> 63.9, Iran 38.6
+  over 306,343 couples, Saudi Arabia 56.0 national, Iraq 33.0, Jordan
+  39.7, Kuwait 38.4 -> 34.3, the Maghreb trio Algeria 22.6 / Morocco
+  19.9 / Tunisia 29.8, Turkey's four vintages 21.2 -> 18.5, Israel's
+  Arab community 34.2 -> 22.9, Palestine's two 29.2 -> 27.7, Sudan's
+  Khartoum 52.0) — the 20-65% belt La troisième planète's scale was
+  built for.
+
+  THE CURATION GATE (ADR-0007, all three conditions):
+  (a) the todd_ref demands it — 34 citations across 10 books, the
+  heaviest concentration in Le Destin des immigrés (16); (b) the
+  distortion is the ABSENCE — no door carries the series at all (probed
+  live, the v16 record); (c) every row carries its citation — enforced
+  mechanically by the connector. The rows are READ from saved evidence
+  files (the v16 fixture lesson applied: the compilation's prints via
+  the probe parser, the journal and DHS values via the collected
+  abstracts and report texts — never typed from memory).
+
+  HONEST SCOPE LIMITS: the table is a SPARSE panel, not an annual
+  series — a country rides the vintages its literature prints (Norway
+  3, Pakistan 4, Brazil 3; most countries 1-2 readings), which is the
+  honest shape of this metric everywhere. Subnational and
+  community-scope readings enter ONLY where no national print exists
+  (each flagged SUBNATIONAL in its note with the alternative prints
+  documented); the two Israels are the Arab community's own national
+  surveys (the scope is the study's, the note says so). Todd's own
+  19th-century France and interwar Europe live in his books' tables —
+  no citable machine print is in hand, so the table starts 1943 (the
+  Spanish dispensation window 1940/43); the French INSEE census
+  instrument (1975-1982 decline) is likewise a different instrument,
+  not entered (documented on the France row). Todd's Sudan 57% (Après
+  l'Empire's DHS-table citation) vs the entered Khartoum 52.0 — the
+  divergence is documented on the Sudan row, as-reported on both ends.

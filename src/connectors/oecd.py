@@ -8,7 +8,8 @@ national civil-registration cause-of-death tables AS SUBMITTED by member
 states (ICD-coded; "Assault" = CICDHOCD, the OECD's cross-ICD-version
 grouping of the assault codes). The dataflow carries, per country/sex/year:
 the mortality rate per 100,000 inhabitants (UNIT_MEASURE=DT_10P5HB) and
-the death count (UNIT_MEASURE=DT), MEASURE=CSEM, CALC_METHODOLOGY=STANDARD.
+the death count (UNIT_MEASURE=DT), MEASURE=CSEM, in both CALC_METHODOLOGY
+variants: CRUDE and the age-standardized STANDARD.
 
 Why this is a COLLECTOR, not a harmonized layer (the layer judgment):
 the content is as-reported registrations — no modeling, no imputation,
@@ -17,7 +18,7 @@ no cross-country adjustment. The contrast with GHO's VIOLENCE_HOMICIDERATE
 the project's collector-vs-harmonized line, and the dataflow's own
 measure is the honest series the Todd board wants canonically: e.g.
 Russia's assault mortality 1980-2019 as reported, the 1994 crisis peak
-(male 63.3 vs female 14.3 per 100k) printed as counted.
+(male 52.5 vs female 14.3 per 100k) printed as counted.
 
 Honest scope limits (the coverage report exposes them, not hides them):
 - 49 countries (OECD members + key partners incl. RUS, CHN, BRA, ZAF,
@@ -41,6 +42,9 @@ KEY = 13 dot-separated dimension positions (empty = all values):
 The connector pins everything except REF_AREA and SEX (all three sexes are
 fetched: _T/M/F — the sex split is itself Todd-relevant signal) so one
 request returns the whole as-reported series for the configured cause.
+The parser then VERIFIES the response against those pins (the v8.1 guard):
+a data row from any other slice — the age-standardized variant above all —
+is refused loudly, never ingested.
 CALC_METHODOLOGY is pinned to CRUDE — the dataflow ALSO carries
 age-standardized rates (STANDARD) for the same keys (live check, RUS
 1994 male: crude 52.5 vs standardized 63.3 per 100k): standardization
@@ -100,14 +104,34 @@ def build_url(source_ref: str, field: str | None = None) -> str:
     return f"{OECD_SDMX_BASE}/{OECD_DF_COM_FLOW}/{key}?dimensionAtObservation=AllDimensions"
 
 
-def parse_sdmx_csv(csv_text: str, *, field: str = "rate") -> list:
+def parse_sdmx_csv(csv_text: str, *, field: str = "rate",
+                   death_cause: str | None = None) -> list:
     """Pure function: SDMX-CSV text of the DF_COM dataflow -> RawRecords.
 
     No network access. One RawRecord per (country, year, sex); the ISO3
     code rides both entity_raw_name and iso3_raw (REF_AREA IS an ISO3);
     the SDMX observation status rides quality_code when the dataflow
-    prints one. Raises ValueError on a malformed body."""
+    prints one. Raises ValueError on a malformed body — or on any DATA row
+    that disagrees with the dimensions build_url() pins (FREQ, MEASURE,
+    UNIT_MEASURE, AGE, CALC_METHODOLOGY, plus DEATH_CAUSE when the caller
+    passes the cause it asked for): the v8 review's guard — a response
+    mixing in another slice (the age-standardized rates above all) is
+    refused, never silently ingested."""
     from src.connectors.base import RawRecord
+
+    unit = _UNIT_BY_FIELD.get(field or "rate")
+    if unit is None:
+        raise ValueError(f"field must be 'rate' or 'number', got {field!r}")
+    # What the fetch URL pins (build_url): the response must BE this slice.
+    pins = {
+        "FREQ": "A",
+        "MEASURE": "CSEM",
+        "UNIT_MEASURE": unit,
+        "AGE": "_T",
+        "CALC_METHODOLOGY": "CRUDE",
+    }
+    if death_cause:
+        pins["DEATH_CAUSE"] = death_cause
 
     reader = csv.DictReader(io.StringIO(csv_text))
     if not reader.fieldnames or "REF_AREA" not in reader.fieldnames or "OBS_VALUE" not in reader.fieldnames:
@@ -132,6 +156,19 @@ def parse_sdmx_csv(csv_text: str, *, field: str = "rate") -> list:
             continue
         if not re.fullmatch(r"\d{4}", year_raw):
             raise ValueError(f"Unexpected SDMX TIME_PERIOD {year_raw!r}: layout change?")
+        # THE PIN GUARD (v8.1): trust the URL, but verify the response.
+        # DF_COM carries other slices for the same keys — the
+        # age-standardized STANDARD rates above all; a row from any of
+        # them is refused loudly, never ingested as as-reported data.
+        for col, want in pins.items():
+            got = (row.get(col) or "").strip()
+            if got != want:
+                raise ValueError(
+                    f"OECD SDMX data row REF_AREA={ref_area} {year_raw} has "
+                    f"{col}={got!r} but the fetch URL pins {want!r}: the API "
+                    "returned a slice we did not ask for — refusing to "
+                    "ingest it. Endpoint behavior change?"
+                )
         value_raw = (row.get("OBS_VALUE") or "").strip()
         if value_raw == "":
             value = None  # an explicit gap in the dataflow, never a zero
@@ -174,7 +211,10 @@ class OecdConnector(Connector):
             timeout=self._timeout,
         )
         response.raise_for_status()
-        records = parse_sdmx_csv(response.text, field=field or "rate")
+        cause = _OECD_REF_RE.match(source_ref or "")["cause"]
+        records = parse_sdmx_csv(
+            response.text, field=field or "rate", death_cause=cause
+        )
         return RawFetchResult(
             provider=self.provider,
             source_ref=source_ref,

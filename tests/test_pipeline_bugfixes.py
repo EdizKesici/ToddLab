@@ -23,7 +23,7 @@ def _minimal_indicator(indicator_id: str, ref: str) -> Indicator:
             "unit": "test_unit",
             "higher_is_better": False,
             "todd_core": True,
-            "sources": [{"provider": "owid", "ref": ref, "priority": 1}],
+            "sources": [{"provider": "owid", "ref": ref, "priority": 1, "root": "un_igme"}],
             "reliability": "high",
             "reliability_criteria": "Justification long enough to pass the validator.",
             "license": "CC-BY-4.0",
@@ -110,3 +110,79 @@ def test_latest_snapshot_returns_none_when_only_malformed_files_exist(tmp_path):
 
 def test_latest_snapshot_returns_none_when_directory_is_missing(tmp_path):
     assert _latest_snapshot(tmp_path, "owid", "nonexistent_indicator", "some-ref") is None
+
+
+# --- v9: the QC/footnote plumbing audit ---------------------------------------
+
+
+def test_witness_points_with_footnote_refs_join_without_keyerror(tmp_path):
+    # The v9 audit of the QC/footnote plumbing found a LATENT crash: build.py's
+    # _referenced_refs accessed p["provider"] directly, but WITNESS points
+    # inherit provider/source_ref from their series (merge.py's witness
+    # payload omits them per point). No current witness carried footnote_refs,
+    # so it slept — the first DYB-style witness would have raised a KeyError
+    # at build time. Regression: a witness point WITH refs joins its note
+    # under the witness's own source.
+    import json
+
+    from src.pipeline.build import build_indicator_file
+    from src.schema.entity import EntityRegistry
+
+    indicator = Indicator.model_validate(
+        {
+            "id": "test_mmr",
+            "label": "Test MMR",
+            "family": "mortality",
+            "unit": "test_unit",
+            "higher_is_better": False,
+            "todd_core": False,
+            "sources": [
+                {"provider": "un_dyb", "ref": "2024/table17", "priority": 1, "root": "unsd_dyb"},
+                {"provider": "owid", "ref": "maternal-mortality", "priority": 2, "role": "witness",
+                 "field": "Maternal mortality ratio", "root": "un_mmeig"},
+            ],
+            "reliability": "high",
+            "reliability_criteria": "Justification long enough to pass the validator.",
+            "license": "CC-BY-4.0",
+        }
+    )
+    processed = tmp_path / "processed"
+    processed.mkdir()
+    # Canonical: one plain point. Witness: one point CARRYING footnote refs
+    # (no provider/source_ref keys — inherited from the series, the shape
+    # merge.py actually writes).
+    (processed / "test_mmr.merged.json").write_text(
+        json.dumps([
+            {"entity_id": "france", "year": 2020, "value": 5.2, "provider": "un_dyb",
+             "source_ref": "2024/table17", "priority": 1, "role": "canonical"},
+        ]),
+        encoding="utf-8",
+    )
+    (processed / "test_mmr.witnesses.json").write_text(
+        json.dumps([
+            {
+                "provider": "owid",
+                "source_ref": "maternal-mortality",
+                "data": [
+                    {"entity_id": "france", "year": 2020, "value": 4.6,
+                     "footnote_refs": ["7"]},
+                ],
+            }
+        ]),
+        encoding="utf-8",
+    )
+    # The witness source's snapshot carries a note 7.
+    (processed / "test_mmr.footnotes.json").write_text(
+        json.dumps({"owid:maternal-mortality": {"legend": {}, "notes": {"7": "Modeled estimate caveat."}}}),
+        encoding="utf-8",
+    )
+
+    entities = EntityRegistry(entities=[])
+    payload = build_indicator_file(indicator, processed, tmp_path / "dist")
+
+    witness = payload["witnesses"][0]
+    assert witness["data"][0]["footnote_refs"] == ["7"]
+    # The note text joined under the WITNESS source, not a KeyError.
+    sources = {(s["provider"], s["source_ref"]): s for s in payload["sources"]}
+    witness_notes = sources[("owid", "maternal-mortality")]["footnotes"]["notes"]
+    assert witness_notes["7"] == "Modeled estimate caveat."

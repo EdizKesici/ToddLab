@@ -6,11 +6,15 @@ from src.connectors.dyb import (
     DybConnector,
     _english_name,
     _parse_table15_rows,
+    _parse_table17_rows,
+    _parse_table21_rows,
     _parse_table4_rows,
     build_url,
     parse_dyb,
     parse_dyb_footnotes,
     parse_table15,
+    parse_table17,
+    parse_table21,
     parse_table4,
 )
 from src.pipeline.fetch import CONNECTORS
@@ -196,11 +200,15 @@ def test_build_url_legacy_era_uses_the_old_site():
     )
 
 
-def test_build_url_2015_refused_loudly():
-    # The 2015 per-table XLS links are dead on the live site (HTML 404s);
-    # fetching them would feed an error page to a lenient parser.
-    with pytest.raises(ValueError, match="2015"):
+def test_build_url_2015_uses_the_recovered_legacy_pattern():
+    # v10: the 2015 edition is RECOVERED — its own index links are dead
+    # (tiny HTML error pages) but the legacy /dyb2015/TableNN.xls pattern
+    # is alive on the live site (verified by direct download 2026-09-13).
+    # The v8 contract (build_url refusing "2015/..." loudly) is superseded.
+    assert (
         build_url("2015/table15")
+        == "https://unstats.un.org/unsd/demographic/products/dyb/dyb2015/Table15.xls"
+    )
 
 
 def test_parse_dyb_dispatches_on_the_files_own_title():
@@ -462,3 +470,410 @@ def test_unknown_marker_cell_raises_loudly():
                 '<Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">??</Data></Cell>\n        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="String">3.7054083814</Data></Cell>',
             )
         )
+
+
+# ---------------------------------------------------------------------------
+# Table 17 — maternal deaths + maternal mortality ratios (P3b, v9)
+# ---------------------------------------------------------------------------
+
+FIXTURE17 = Path(__file__).parent / "fixtures" / "dyb_table17_sample.xls"
+
+
+def _records17(**kwargs):
+    return parse_table17(FIXTURE17.read_text(encoding="utf-8"), **kwargs)
+
+
+def test_table17_fixture_parses_with_expected_shape():
+    records = _records17()
+    # 6 rate-printing countries x 6 years (Libya prints counts only).
+    assert len(records) == 36
+    assert {r.entity_raw_name for r in records} == {
+        "Algeria", "Mauritius", "France", "Italy", "Russian Federation", "Egypt",
+    }
+
+
+def test_table17_number_block_selects_registered_deaths():
+    records = _records17(block="number")
+    # Libya exists ONLY here: counts published, no ratio computed — the
+    # collector's honest degradation.
+    assert {r.entity_raw_name for r in records} == {
+        "Algeria", "Libya", "France", "Italy", "Russian Federation",
+    }
+    libya = {r.year: r for r in records if r.entity_raw_name == "Libya"}
+    assert libya[2022].value == pytest.approx(12.0)
+    assert libya[2022].quality_code == "+U"
+
+
+def test_table17_diamond_marker_is_captured_as_small_base():
+    # Notes17: "Ratios based on 30 or fewer maternal deaths are identified
+    # by the symbol ♦" — as-reported, transported as small_base.
+    mauritius = {r.year: r for r in _records17() if r.entity_raw_name == "Mauritius"}
+    assert all(r.small_base is True for r in mauritius.values())
+    algeria = {r.year: r for r in _records17() if r.entity_raw_name == "Algeria"}
+    assert all(r.small_base is None for r in algeria.values())
+
+
+def test_table17_diamond_plus_footnote_ref_in_one_cell():
+    # The real editions glue the marker to a footnote ref ("♦1", 501 real
+    # occurrences across the wired editions): BOTH ride the record.
+    france = {r.year: r for r in _records17() if r.entity_raw_name == "France"}
+    assert france[2023].small_base is True
+    assert france[2023].footnote_refs == ["1"]
+
+
+def test_table17_gap_and_nil_markers_stay_distinct():
+    italy = {r.year: r for r in _records17() if r.entity_raw_name == "Italy"}
+    assert italy[2022].value is None
+    assert italy[2022].missing_marker == "-"  # nil, not "not available"
+    algeria = {r.year: r for r in _records17() if r.entity_raw_name == "Algeria"}
+    assert algeria[2022].value is None
+    assert algeria[2022].missing_marker == "..."
+
+
+def test_table17_provisional_star_rides_the_rate():
+    france = {r.year: r for r in _records17() if r.entity_raw_name == "France"}
+    assert france[2024].provisional is True
+
+
+def test_table17_quality_code_column_is_captured():
+    # Column 1, like Table 15 — including the "code not available" case
+    # printed as "..." (kept as printed, never interpreted).
+    egypt = {r.year: r for r in _records17() if r.entity_raw_name == "Egypt"}
+    assert all(r.quality_code == "..." for r in egypt.values())
+    russia = {r.year: r for r in _records17() if r.entity_raw_name == "Russian Federation"}
+    assert russia[2019].quality_code == "+C"
+
+
+def test_table17_per_year_footnote_refs_ride_the_values():
+    # The footnote annotates the YEAR's value (Russia 2019 carries note 5,
+    # the Chechnya-style territorial caveat), not the whole row.
+    russia = {r.year: r for r in _records17() if r.entity_raw_name == "Russian Federation"}
+    assert russia[2019].footnote_refs == ["5"]
+    assert russia[2020].footnote_refs is None
+
+
+def test_table17_repeated_page_header_is_skipped():
+    # The fixture carries a second year-header mid-table: skipped, and the
+    # records still parse (36 = 6 countries x 6 years, no duplicates).
+    assert len(_records17()) == 36
+
+
+def test_table17_dispatches_on_the_files_own_title():
+    data = FIXTURE17.read_bytes()
+    assert parse_dyb(data, expected_table=17)[0].value is not None
+    with pytest.raises(ValueError, match="refusing to parse a different table"):
+        parse_dyb(data, expected_table=15)
+
+
+def test_table17_invalid_block_raises():
+    with pytest.raises(ValueError, match="block must be"):
+        _records17(block="ratio")
+
+
+def test_table17_biff_style_glued_footnote_digits_on_names():
+    # The BIFF editions glue footnote digits to country names; the table 17
+    # parser must capture them as country-level refs like the others.
+    rows = [
+        ["17. Maternal deaths and maternal mortality ratios: 2019 - 2024"],
+        ["Mortalité liée à la maternité, nombre de décès et taux : 2019 - 2024"],
+        ["Continent and country or area", "Co-de", "2019", None, "2020", None, "2021", None, "2022", None, "2023", None, "2024"],
+        [None, None, None, None, None, None, None, None, None, None, None, None, None],
+        ["Norfolk Island - Île Norfolk128"],
+        ["Number - Nombre", "C", "1", "128", None, None, None, None, None, None, None, None, None],
+        ["Rate - Taux", "C", "2.5", None, None, None, None, None, None, None, None, None, None],
+    ]
+    records = _parse_table17_rows(rows, block="rate")
+    assert records[0].entity_raw_name == "Norfolk Island"
+    assert records[0].footnote_refs == ["128"]  # the glued digits ride the refs
+    assert records[0].value == pytest.approx(2.5)
+
+
+# --- Table 21/22: life expectancy at specified ages (v10) ---------------------
+
+FIXTURE21 = Path(__file__).parent / "fixtures" / "dyb_table21_sample.xls"
+
+
+def _records21(**kwargs):
+    return parse_table21(FIXTURE21.read_text(encoding="utf-8"), **kwargs)
+
+
+def test_table21_age_column_selection_and_sex_split():
+    # `age` selects the column: age 60 reads the 13th age column, age 0 the
+    # first — same file, same blocks, different values (the config's `field`).
+    by_key = {(r.entity_raw_name, r.year, r.sex): r.value for r in _records21(age="60")}
+    assert by_key[("Algeria", 2023, "male")] == 16.4
+    assert by_key[("Algeria", 2023, "female")] == 19.6
+    assert by_key[("France", 2020, "male")] == 21.9
+    assert by_key[("France", 2020, "female")] == 26.5
+    by_key0 = {(r.entity_raw_name, r.year, r.sex): r.value for r in _records21(age="0")}
+    assert by_key0[("France", 2020, "male")] == 78.5
+    assert by_key0[("Mauritius", 2024, "female")] == 76.0987654321098
+    # Every record is sex-split as printed: the table has no both-sexes row.
+    assert {r.sex for r in _records21(age="60")} == {"male", "female"}
+
+
+def test_table21_reference_period_year_is_the_end():
+    # "2022 - 2024" -> year 2024 (the END of the printed period, the DYB's
+    # own convention — verified against Table 4's Roman-numeral rows) and
+    # the printed period rides reference_range. A single-year row keeps
+    # year as printed with no range.
+    mauritius = [r for r in _records21(age="60") if r.entity_raw_name == "Mauritius"]
+    assert all(r.year == 2024 for r in mauritius)
+    assert all(r.reference_range == "2022 - 2024" for r in mauritius)
+    algeria = [r for r in _records21(age="60") if r.entity_raw_name == "Algeria"]
+    assert all(r.year == 2023 for r in algeria)
+    assert all(r.reference_range is None for r in algeria)
+
+
+def test_table21_dual_block_and_explicit_gaps():
+    # The 2024-edition degradation: France carries the full 2020 table AND
+    # a 2024 block where only age 0 is published — age 60 prints "...", kept
+    # as an explicit gap with its printed marker, never dropped.
+    france = {(r.year, r.sex): r for r in _records21(age="60") if r.entity_raw_name == "France"}
+    assert set(france) == {(2020, "male"), (2020, "female"), (2024, "male"), (2024, "female")}
+    assert france[(2020, "male")].value == 21.9
+    for sex in ("male", "female"):
+        gap = france[(2024, sex)]
+        assert gap.value is None
+        assert gap.missing_marker == "..."
+
+
+def test_table21_sup_footnote_refs_ride_the_records():
+    # The SpreadsheetML editions 2011-2015 + 2024 wrap country-level footnote
+    # references in <html:Sup>NN</html:Sup> child elements: the fixture's
+    # "Mauritius - Maurice<SUP>12</SUP>" must arrive as ref ["12"] on every
+    # Mauritius point (the v10 itertext fix — plain .text dropped these).
+    mauritius = [r for r in _records21(age="60") if r.entity_raw_name == "Mauritius"]
+    assert all(r.footnote_refs == ["12"] for r in mauritius)
+
+
+def test_table21_biff_year_row_glued_footnote_digits():
+    # The BIFF editions glue a footnote digit to the YEAR row ("20103" =
+    # 2010 + note 3 — deterministic, DYB years are exactly 4 digits): the
+    # year splits, the ref rides both sex rows of the block.
+    rows = [
+        ["21. Life expectancy at specified ages for each sex: latest available year,  2005 - 2024"],
+        ["Continent, country or area and date", "Age (in years)"],
+        [None] + [str(a) for a in range(0, 101, 5)],
+        ["France"],
+        ["20103"],
+        ["Male - Hommes", "80.1", "75.2", "70.3", "65.4", "60.5", "55.6", "50.7", "45.8", "40.9", "36.1", "31.2", "26.3", "21.4", "17.5", "13.6", "9.7", "5.8", "1.9", "...", "...", "..."],
+        ["Female - Femmes", "85.1", "80.2", "75.3", "70.4", "65.5", "60.6", "55.7", "50.8", "45.9", "41.1", "36.2", "31.3", "26.4", "22.5", "18.6", "14.7", "10.8", "6.9", "...", "...", "..."],
+    ]
+    records = _parse_table21_rows(rows, age="60")
+    assert [(r.year, r.sex, r.value, r.footnote_refs) for r in records] == [
+        (2010, "male", 21.4, ["3"]),
+        (2010, "female", 26.4, ["3"]),
+    ]
+
+
+def test_table21_glued_footnote_on_range_end_year():
+    # "2012 - 20153" = the period 2012-2015 + note 3 on the END year: the
+    # range string rides clean, the ref rides the points.
+    rows = [
+        ["22. Life expectancy at specified ages for each sex: latest available year,  1998 - 2017"],
+        ["Continent, country or area and date", "Age (in years)"],
+        [None] + [str(a) for a in range(0, 101, 5)],
+        ["Mauritius - Maurice"],
+        ["2012 - 20153"],
+        ["Male - Hommes", "70.1", "66.2", "61.3", "56.4", "51.5", "46.6", "41.7", "36.8", "31.9", "27.1", "22.2", "17.3", "12.4", "8.5", "4.6", "3.7", "2.8", "1.9", "...", "...", "..."],
+        ["Female - Femmes", "75.1", "71.2", "66.3", "61.4", "56.5", "51.6", "46.7", "41.8", "36.9", "32.1", "27.2", "22.3", "17.4", "13.5", "9.6", "5.7", "3.8", "2.9", "...", "...", "..."],
+    ]
+    records = _parse_table21_rows(rows, age="60")
+    for r in records:
+        assert r.year == 2015
+        assert r.reference_range == "2012 - 2015"
+        assert r.footnote_refs == ["3"]
+
+
+def test_table21_repeated_age_header_mid_table_is_skipped():
+    rows = [
+        ["21. Life expectancy at specified ages for each sex: latest available year,  2005 - 2024"],
+        [None] + [str(a) for a in range(0, 101, 5)],
+        ["France"],
+        ["2020"],
+        ["Male\n-\nHommes", "78.5", "73.8", "68.9", "63.9", "59.0", "54.1", "49.3", "44.5", "39.8", "35.1", "30.6", "26.3", "21.9", "18.1", "14.6", "11.2", "8.2", "5.6", "3.7", "2.5", "2.0"],
+        ["Female\n-\nFemmes", "84.6", "79.9", "74.9", "69.9", "65.0", "60.0", "55.1", "50.2", "45.3", "40.5", "35.7", "31.1", "26.5", "22.2", "18.1", "14.1", "10.4", "7.2", "4.7", "3.1", "2.1"],
+        [None] + [str(a) for a in range(0, 101, 5)],  # repeated page header
+        ["Algeria - Algérie"],
+        ["2023"],
+        ["Male\n-\nHommes", "71.3", "67.4", "62.5", "57.6", "52.7", "47.9", "43.1", "38.4", "33.8", "29.3", "24.9", "20.6", "16.4", "12.5", "8.9", "5.6", "3.1", "1.5", "...", "...", "..."],
+        ["Female\n-\nFemmes", "74.2", "70.5", "65.7", "60.9", "56.1", "51.3", "46.6", "41.9", "37.2", "32.7", "28.2", "23.9", "19.6", "15.4", "11.6", "7.9", "4.9", "2.6", "...", "...", "..."],
+    ]
+    records = _parse_table21_rows(rows, age="60")
+    assert len(records) == 4  # 2 countries x 2 sexes, header repeat skipped
+
+
+def test_table21_unknown_age_raises_with_the_available_list():
+    with pytest.raises(ValueError, match="AGE.*Available ages.*0, 5"):
+        _records21(age="62")
+
+
+def test_table21_dispatches_on_the_title_text_not_just_the_number():
+    # Dispatch on the file's OWN title: the fixture says "21." and parses;
+    # the same content re-titled "22." (the odd-edition number of the same
+    # table) must parse identically — the renumbering zone keys on WORDS.
+    data = FIXTURE21.read_bytes()
+    assert len(parse_dyb(data, expected_table=21, block="60")) == 8
+    retitled = data.replace(
+        b"21. Life expectancy at specified ages",
+        b"22. Life expectancy at specified ages",
+    )
+    assert len(parse_dyb(retitled, expected_table=22, block="60")) == 8
+
+
+def test_parse_dyb_refuses_the_5qx_table_in_the_renumbering_zone():
+    # A table-21-numbered file whose title is the 5qx probabilities (what an
+    # odd-edition config would fetch by mistake): same layout, different
+    # measure — refusing loudly with the parity rule, never mis-parsing.
+    data = FIXTURE21.read_bytes().replace(
+        b"21. Life expectancy at specified ages for each sex",
+        b"21. Probability of dying in the five year interval following specified age (5qx), by sex",
+    )
+    with pytest.raises(ValueError, match="renumbering zone alternates by edition parity"):
+        parse_dyb(data, expected_table=21, block="60")
+
+
+def test_table21_default_rate_block_raises_helpfully():
+    # parse_dyb's default block is "rate" (the Table 15/17 selector): on
+    # Table 21/22 it must fail loudly pointing at the age selector, never
+    # guess a column.
+    with pytest.raises(ValueError, match="got 'rate'"):
+        parse_dyb(FIXTURE21.read_bytes(), expected_table=21)
+
+
+# ---------------------------------------------------------------------------
+# Table 9 — live births + crude birth rates (v15): the CBR companion.
+# The Table 15 wide layout through its own dispatch branch, with the
+# content guard on the title's own words (the 21/22 lesson applied).
+# ---------------------------------------------------------------------------
+
+FIXTURE9 = Path(__file__).parent / "fixtures" / "dyb_table9_sample.xls"
+
+
+def test_table9_fixture_parses_with_expected_shape():
+    records = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="rate")
+    # Algeria (4 valued + 1 gap) + Botswana (4+1) + Burundi (5 gaps) +
+    # France (5 valued — the live 2024 file values all five years) +
+    # Tonga (U: 5 gaps; |: 1 valued + 4 gaps) = 30 records
+    # across 5 countries, Total rows only.
+    assert len(records) == 30
+    assert {r.entity_raw_name for r in records} == {"Algeria", "Botswana", "Burundi", "France", "Tonga"}
+    assert all(r.iso3_raw is None for r in records)  # the DYB prints names, not codes
+
+
+def test_table9_rate_values_match_the_live_anchors():
+    # The anchor discipline (v13/v14): the fixture reproduces the exact
+    # bytes the live DYB 2024 Table 9 prints — Algeria's CBR series, the
+    # collector's own 10-digit precision as carried.
+    records = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="rate")
+    algeria = {r.year: r for r in records if r.entity_raw_name == "Algeria"}
+    assert algeria[2020].value == pytest.approx(22.3369498881)
+    assert algeria[2021].value == pytest.approx(21.1357648315)
+    assert algeria[2023].value == pytest.approx(19.3150537642)
+    assert algeria[2024].value is None and algeria[2024].missing_marker == "..."
+    assert algeria[2020].quality_code == "C"
+    assert algeria[2020].footnote_refs == ["1"]  # the glued country footnote "Algérie1"
+
+
+def test_table9_plus_u_rates_are_explicit_gaps_counts_still_printed():
+    # Burundi's live row: quality '+U' → the collector's editorial rule
+    # computes no CBR — every rate cell prints '...', an explicit gap
+    # never zero, exactly the Table 15 discipline.
+    records = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="rate")
+    burundi = [r for r in records if r.entity_raw_name == "Burundi"]
+    assert len(burundi) == 5
+    assert all(r.value is None and r.missing_marker == "..." for r in burundi)
+    assert all(r.quality_code == "+U" for r in burundi)
+    # The counts the same rows print (the number block) stay valued.
+    counts = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="number")
+    burundi_counts = [r for r in counts if r.entity_raw_name == "Burundi" and r.year == 2020]
+    assert burundi_counts[0].value == pytest.approx(372795.0)
+
+
+def test_table9_number_block_star_plus_ref_is_provisional_with_refs():
+    # THE v15 GRAMMAR FIND: '*NN' glued on a live-birth COUNT cell — the
+    # collector marks the count provisional AND cites its footnote in one
+    # cell. provisional=True, the digits ride footnote_refs beside the
+    # country's own ref (the diamond form's exact mirror).
+    counts = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="number")
+    algeria_2021 = next(r for r in counts if r.entity_raw_name == "Algeria" and r.year == 2021)
+    assert algeria_2021.value == pytest.approx(949799.0)
+    assert algeria_2021.provisional is True
+    assert algeria_2021.footnote_refs == ["1", "2"]  # country ref + the star's own ref
+
+
+def test_table9_two_total_rows_under_different_quality_codes_both_emit():
+    # Tonga's real Table-15 behaviour, present on Table 9 files too: two
+    # Total rows (U and |) covering different years — both emitted, the
+    # merge arbitrates by its own rules later.
+    records = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="rate")
+    tonga = [r for r in records if r.entity_raw_name == "Tonga"]
+    assert {(r.quality_code, r.year, r.value) for r in tonga} == {
+        ("U", 2020, None), ("U", 2021, None), ("U", 2022, None), ("U", 2023, None), ("U", 2024, None),
+        ("|", 2020, None), ("|", 2021, 27.8), ("|", 2022, None), ("|", 2023, None), ("|", 2024, None),
+    }
+
+
+def test_table9_content_guard_rejects_a_same_numbered_wrong_table():
+    # The 21/22 lesson applied: the title's WORDS are the ground truth, the
+    # number the cross-check — a table-9-numbered file whose title is not
+    # the live-births/CBR table refuses loudly.
+    data = FIXTURE9.read_bytes().replace(
+        b"9. Live births and crude birth rates, by urban/rural residence",
+        b"9. Some other demographic table by residence",
+    )
+    with pytest.raises(ValueError, match="NOT the live-births/CBR table"):
+        parse_dyb(data, expected_table=9)
+
+
+def test_table9_dispatches_through_the_shared_wide_layout():
+    # The dispatch branch routes the Table 9 file through the Table 15
+    # parser family: 'rate' selects the CBR block, 'number' the counts —
+    # the same block selector, the same wide layout contract. France's
+    # row is the live DYB 2024 bytes: the '*' provisional marker rides
+    # 2022/2023/2024 on BOTH blocks, and 2020/2021 print unflagged (the
+    # v16 anchor repair — the v15 file's France block was fabricated).
+    rate_recs = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="rate")
+    num_recs = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="number")
+    france_rates = {r.year: r.value for r in rate_recs if r.entity_raw_name == "France"}
+    france_counts = {r.year: r.value for r in num_recs if r.entity_raw_name == "France"}
+    assert france_rates[2020] == pytest.approx(10.6579082599)
+    assert france_counts[2020] == pytest.approx(696664.0)
+    for year in (2022, 2023, 2024):
+        rate = next(r for r in rate_recs if r.entity_raw_name == "France" and r.year == year)
+        count = next(r for r in num_recs if r.entity_raw_name == "France" and r.year == year)
+        assert rate.provisional is True
+        assert count.provisional is True
+    for year in (2020, 2021):
+        rate = next(r for r in rate_recs if r.entity_raw_name == "France" and r.year == year)
+        assert rate.provisional is None
+
+
+def test_table9_repeated_page_header_mid_table_is_skipped():
+    # The fixture plants a second year-header mid-table (the repeated page
+    # header the real files print): skipped, never an error, never a second
+    # header's columns shadowing the first.
+    records = parse_dyb(FIXTURE9.read_bytes(), expected_table=9, block="rate")
+    assert len(records) == 30  # the full set, no duplication from the repeat
+
+
+def test_table9_footnotes_worksheet_rides_the_snapshot():
+    footnotes = parse_dyb_footnotes(FIXTURE9.read_bytes())
+    assert footnotes["notes"]["1"] == "Data refer to the de facto population."
+    assert footnotes["notes"]["2"] == "Data include births registered late."
+
+
+def test_star_plus_ref_marker_cell_grammar():
+    # Unit pin on the v15 grammar: the starred form mirrors the diamond
+    # form — '*' alone = provisional; '*47' = provisional + ref; the Roman
+    # and digit forms unchanged. Each shape pinned in one place.
+    from src.connectors.dyb import _parse_marker_cell
+    assert _parse_marker_cell("*") == (None, None, True, None)
+    assert _parse_marker_cell("*47") == (["47"], None, True, None)
+    assert _parse_marker_cell("*\xa025") == (["25"], None, True, None)
+    assert _parse_marker_cell("47") == (["47"], None, None, None)
+    assert _parse_marker_cell("II 39") == (["39"], "II", None, None)
+    # The mirror discipline: an unknown glued marker still raises loudly.
+    with pytest.raises(ValueError, match="Unexpected marker cell"):
+        _parse_marker_cell("x*47")

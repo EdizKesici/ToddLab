@@ -1,0 +1,1030 @@
+{
+  "id": "consanguineous_marriage_rate",
+  "label": "Consanguineous marriage rate",
+  "family": "society",
+  "unit": "percent",
+  "higher_is_better": false,
+  "todd_core": true,
+  "companion_indicators": [],
+  "reliability": "medium",
+  "reliability_criteria": "Canonical tier = a curated table of published consanguinity-prevalence readings (102 rows, 69 countries, 1943-2021, one citation per row — the consang.net global tables of A.H. Bittles' compilation carrying the national surveys and dispensation registries, plus the DHS final reports and journal studies verified directly: PDHS 2017-18 Table 4.5, El-Mouzan 2008, Saadat 2004, Ben Halim 2012, Kalam 2024, Kaplan 2016). Reliability is MIXED BY NATURE and documented per row: the European registry belt (dispensation and civil registration, N up to 1.4 million) is high; the survey belt is moderate (national samples N 1,500-306,000); the subnational and community-scope readings (entered only where no national print exists) are the table's honest frontier, each carrying its scope in definition_note. No witness tier exists (no machine-readable door carries the series — the gate finding).",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 1943,
+    "end": 2021
+  },
+  "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md and catalog/curated/README.md.",
+  "notes": "THE THIRTEENTH INDICATOR, THE BACKLOG'S HEAD (v17). The corpus's #6 (34 citations, 10 books) and the one that was already waiting at v16 with its gate satisfied: consanguineous marriage is Todd's anthropological signature variable — the family-systems map's own metric (La troisième planète's world scale 0-60%, L'enfance du monde's Iran, Le Destin des immigrés' 16-citation cross-community table, Après l'Empire's early-1990s DHS reading \"Sudan 57% to Turkey 15%\", Qui est Charlie ?'s Maghreb ~25-35% c.2000).\nTHE TABLE'S SHAPE: one row per (country, study year), the value = the study's printed overall consanguineous-marriage rate in percent over the union types THAT study counts (the types ride every note: most count D1C,1C,11/2C,2C; Bahrain 2009 counts first cousins only — the perimeter is the note's job, the number is never converted). YEAR CONVENTION: the END year of the printed measurement period ('1956/57' -> 1957); the publication year where the compilation prints no period (El-Alfi 1969 -> 1969); the decade's end for a fuzzy '1970s' (1979) — the source's own period string rides every note.\nTHE THREE BELTS the table carries: (1) the EUROPEAN REGISTRY BELT (France 0.8 in 1958 over 510,000 dispensations, Norway's three registry vintages 0.6 -> 0.7 -> 0.1 over up to 1.4 million marriages, Spain 4.1, Italy 0.5/1.1, the two Masterson island readings Ireland 0.5 / Northern Ireland-as-UK 0.4) — the sub-1% exogamous North Todd's L'invention de l'Europe reads; (2) the LATIN DISPENSATION BELT (Freire-Maia's 1956/57 cycle across the Americas, the later Orioli/Liascovich/Castilla vintages) — Brazil 4.8 -> 1.1 -> 1.3, the Andean prints; (3) THE MUSLIM-WORLD SURVEY BELT (the corpus's heart: Pakistan's four DHS vintages 61.2 -> 60.5 -> 56.4 -> 63.9, Iran 38.6 over 306,343 couples, Saudi Arabia 56.0 national, Iraq 33.0, Jordan 39.7, Kuwait 38.4 -> 34.3, the Maghreb trio Algeria 22.6 / Morocco 19.9 / Tunisia 29.8, Turkey's four vintages 21.2 -> 18.5, Israel's Arab community 34.2 -> 22.9, Palestine's two 29.2 -> 27.7, Sudan's Khartoum 52.0) — the 20-65% belt La troisième planète's scale was built for.\nTHE CURATION GATE (ADR-0007, all three conditions): (a) the todd_ref demands it — 34 citations across 10 books, the heaviest concentration in Le Destin des immigrés (16); (b) the distortion is the ABSENCE — no door carries the series at all (probed live, the v16 record); (c) every row carries its citation — enforced mechanically by the connector. The rows are READ from saved evidence files (the v16 fixture lesson applied: the compilation's prints via the probe parser, the journal and DHS values via the collected abstracts and report texts — never typed from memory).\nHONEST SCOPE LIMITS: the table is a SPARSE panel, not an annual series — a country rides the vintages its literature prints (Norway 3, Pakistan 4, Brazil 3; most countries 1-2 readings), which is the honest shape of this metric everywhere. Subnational and community-scope readings enter ONLY where no national print exists (each flagged SUBNATIONAL in its note with the alternative prints documented); the two Israels are the Arab community's own national surveys (the scope is the study's, the note says so). Todd's own 19th-century France and interwar Europe live in his books' tables — no citable machine print is in hand, so the table starts 1943 (the Spanish dispensation window 1940/43); the French INSEE census instrument (1975-1982 decline) is likewise a different instrument, not entered (documented on the France row). Todd's Sudan 57% (Après l'Empire's DHS-table citation) vs the entered Khartoum 52.0 — the divergence is documented on the Sudan row, as-reported on both ends.",
+  "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "consanguinity_studies",
+      "root_label": "The consanguinity-studies literature (national surveys and dispensation registries; Bittles' consang.net compilation + DHS final reports, cited per point)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'consanguineous_marriage_rate' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/consanguineous_marriage_rate.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "afghanistan",
+      "year": 2010,
+      "value": 42.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Saify & Saadat (2012), Afghan survey of the West and South provinces — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "Scope: West and South provinces (the survey's own sample, not a national reading); period '2010'; N=7,140; types D1C,1C,11/2C,2C. A second reading (Saadat & Tajbakhsh 2013, '2011/12', West & South, 52.3%, N=5,200) rides this note."
+    },
+    {
+      "entity_id": "algeria",
+      "year": 1979,
+      "value": 22.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Benallegue & Kedji (as carried, truncated 'Benallegue &', in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table), Algerian civil-registration study",
+      "definition_note": "National (All-Algeria), civil registration; period '1979'; N=120,491; types 1C,2C. The compilation also prints two 1970 Civil-registration readings (27.5% and 34.0%) for the earlier vintage. The modern Beni Abbes isolate reading (55.06%, Bachir et al. 2019) is subnational and not entered."
+    },
+    {
+      "entity_id": "argentina",
+      "year": 1957,
+      "value": 1.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Argentine dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Argentina), Catholic dispensation records; period '1956/57'; N=51,391; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "argentina",
+      "year": 1979,
+      "value": 0.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Orioli et al. (1982), Argentine inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Argentina), hospital inpatients; period '1967/79'; N=6,494; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "argentina",
+      "year": 1981,
+      "value": 0.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Castilla et al. (1992), Argentine registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Argentina), civil registration; period '1980/81'; N=212,320; types 1C."
+    },
+    {
+      "entity_id": "argentina",
+      "year": 1996,
+      "value": 0.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Argentine births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Argentina), birth-registry study; period '1967/96'; N=20,826; types >1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "bahrain",
+      "year": 1989,
+      "value": 45.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Al-Naser (1994), Bahraini survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (Bahrain), survey; period '1989'; N=10,070. The compilation's broadest Bahraini print. A 500-household reading the same year prints 31.8% (Al Arrayed 1994)."
+    },
+    {
+      "entity_id": "bahrain",
+      "year": 2009,
+      "value": 6.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Al-Arrayed & Hamamy (2012), Bahraini study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (Bahrain); period '2009'; N=10,248; types counted: FIRST COUSINS ONLY (the compilation's own scope for this study — the narrow perimeter is why this print is far below the 1989 all-types reading; Gulf-wide all-types readings run 30-45%). Not comparable with the 1989 row except through this note."
+    },
+    {
+      "entity_id": "bangladesh",
+      "year": 1966,
+      "value": 6.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Khan et al. (unpublished), Matlab surveillance-area study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Matlab — the ICDDR,B surveillance area, not a national reading); period '1966/-'; N=8,000; types 1C,2C."
+    },
+    {
+      "entity_id": "belgium",
+      "year": 1959,
+      "value": 1.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Twiesselmann et al. (1962), Belgian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Belgium), Catholic dispensation records; period '1950/59'; N=605,849; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "bolivia_plurinational_state_of",
+      "year": 1957,
+      "value": 0.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Bolivian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Bolivia), Catholic dispensation records; period '1956/57'; N=4,130; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "bolivia_plurinational_state_of",
+      "year": 1996,
+      "value": 0.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Bolivian births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Bolivia), birth-registry study; period '1967/96'; N=958; types 1C."
+    },
+    {
+      "entity_id": "brazil",
+      "year": 1957,
+      "value": 4.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1957), Brazilian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Brazil), Catholic dispensation records; period '1956/57'; N=212,090; types UN,1C,11/2C,2C. Subnational prints exist (Bahia 3.4% 1967; Rio Grande do Norte 7.7% 1967, da Fonseca & Freire-Maia 1970) — not entered."
+    },
+    {
+      "entity_id": "brazil",
+      "year": 1979,
+      "value": 1.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Orioli et al. (1982), Brazilian inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Brazil), hospital inpatients; period '1967/79'; N=2,328; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "brazil",
+      "year": 1996,
+      "value": 1.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Brazilian births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Brazil), birth-registry study; period '1967/96'; N=11,558; types >1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "burkina_faso",
+      "year": 2001,
+      "value": 65.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Hampshire & Smith (2001), Northern Burkina Faso Fulani study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (the North, Fulani communities — the compilation's and the table's world maximum); period printed '-' (dated by publication year); N=308; types 1C,2C."
+    },
+    {
+      "entity_id": "cambodia",
+      "year": 2004,
+      "value": 12.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Sullivan (pers. comm.), Siem Reap outpatient study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Siem Reap — no national Cambodian reading in the compilation); period '2004'; N=300; types 1C,2C."
+    },
+    {
+      "entity_id": "canada",
+      "year": 1959,
+      "value": 1.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Canadian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Canada), Catholic dispensation records; period '1959'; N=51,729; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "chile",
+      "year": 1957,
+      "value": 1.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Chilean dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Chile), Catholic dispensation records; period '1956/57'; N=28,596; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "chile",
+      "year": 1996,
+      "value": 0.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Chilean births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Chile), birth-registry study; period '1967/96'; N=6,959; types >1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "china",
+      "year": 1964,
+      "value": 1.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Hong Kong inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "Scope: Hong Kong (the compilation's only All-territory print for the China area; no mainland national reading exists — the provincial prints are Beijing 1.1-2.4%, Wu 1987 rural range 0.8-5.7%, Zhejiang 1981/91 1.1-3.0%, all subnational); period '1961/64'; N=9,749; types >1C,1C,<1C."
+    },
+    {
+      "entity_id": "colombia",
+      "year": 1957,
+      "value": 3.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Colombian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Colombia), Catholic dispensation records; period '1956/57'; N=34,470; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "colombia",
+      "year": 1996,
+      "value": 1.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Colombian births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Colombia), birth-registry study; period '1967/96'; N=609; types 1C,2C."
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 1954,
+      "value": 3.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Costa Rican dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Costa Rica), Catholic dispensation records; period '1954'; N=3,833; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "croatia",
+      "year": 1964,
+      "value": 0.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Zagreb inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "SUBNATIONAL (Zagreb — no national Croatian reading in the compilation); period '1961/64'; N=8,309; types >1C,1C,<1C."
+    },
+    {
+      "entity_id": "cuba",
+      "year": 1957,
+      "value": 0.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Cuban dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Cuba), Catholic dispensation records; period '1956/57'; N=2,277; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1964,
+      "value": 0.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Czechoslovak inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National sample (All-Czechoslovakia), hospital inpatients; period '1961/64'; N=19,726; types >1C,1C,<1C. The pre-split entity Todd's European maps sometimes fold together."
+    },
+    {
+      "entity_id": "ecuador",
+      "year": 1957,
+      "value": 6.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Ecuadorian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Ecuador), Catholic dispensation records; period '1956/57'; N=3,954; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "ecuador",
+      "year": 1996,
+      "value": 1.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Ecuadorian births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Ecuador), birth-registry study; period '1967/96'; N=2,311; types >1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "egypt",
+      "year": 1979,
+      "value": 23.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Habib & Book (1983), Egyptian survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Egypt), survey; period printed '1970s' (year = the decade's end, the table's dating convention); N=505; types 1C."
+    },
+    {
+      "entity_id": "egypt",
+      "year": 1983,
+      "value": 29.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Hafez et al. (1983), Egyptian multi-site school/workplace/hospital survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Egypt, the combined multi-site cohort — the study's largest arm); period printed '-' (dated by publication year); N=26,554; types D1C,1C,11/2C,2C. The same study's milieu arms print urban 22.1% (N=7,646), suburban-hospital 26.8% (N=11,280), rural 39.1% (N=7,628). A Nubia reading (Badr 1972, '1967/68', 63.6%, N=1,782) is subnational."
+    },
+    {
+      "entity_id": "el_salvador",
+      "year": 1957,
+      "value": 4.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Salvadoran dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-El Salvador), Catholic dispensation records; period '1956/57'; N=2,494; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "france",
+      "year": 1958,
+      "value": 0.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Sutter & Goux (1964), French Roman-Catholic dispensation study of 510,000 marriages 1946-1958 — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-France), Catholic dispensation records; period printed '1946/58'; N=510,000; types counted UN,1C,11/2C,2C (uncle-niece through second cousins). The classic INED source for the French endogamy-exogamy gradient; Todd's own census-instrument readings (1975-1982 decline, La nouvelle France) are a different instrument and are not in this table (no machine-readable print in hand)."
+    },
+    {
+      "entity_id": "guinea",
+      "year": 1964,
+      "value": 25.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Chantrelle & Dupire (1964), Fouta-Djallon study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (Fouta-Djallon — no national Guinean reading in the compilation); period printed '-' (dated by publication year); N=739; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "honduras",
+      "year": 1957,
+      "value": 3.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Honduran dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Honduras), Catholic dispensation records; period '1956/57'; N=3,759; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "hungary",
+      "year": 1946,
+      "value": 0.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Czeizel et al. (1976), Hungarian registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Hungary), civil registration; period '1946'; N=98,662; types UN,AN,1C."
+    },
+    {
+      "entity_id": "hungary",
+      "year": 1971,
+      "value": 0.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Czeizel et al. (1976), Hungarian inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National sample (All-Hungary), hospital inpatients; period '1971'; N=5,229; types 1C,2C."
+    },
+    {
+      "entity_id": "india",
+      "year": 1993,
+      "value": 15.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Bittles & Hussain (2000), East India Muslim survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL-COMMUNITY (the Muslim population of East India — the compilation's best India print before the NFHS era); period '1992/93'; N=2,622; types UN,1C,2C. A Bihar Muslim reading (Ansari & Sinha 1978, 13.9%) also exists, subnational."
+    },
+    {
+      "entity_id": "india",
+      "year": 2021,
+      "value": 13.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Kalam, Sharma, Ghosh & Roy (2024), 'Linkages between consanguinity, pregnancy outcomes and offspring mortality in twenty-first century India', Scientific Reports 14:22522 (doi:10.1038/s41598-024-69151-7) — pooled National Family Health Survey 4 (2015-16) + 5 (2019-21)",
+      "definition_note": "National (the NFHS pooled national sample, close-consanguinity CC 8.2% + distant-consanguinity DC 5.3% as printed in the abstract: 'The overall prevalence of consanguinity is 13.6%'); period 'NFHS-4 2015-16 + NFHS-5 2019-21' (year = the pooled window's end); read directly from the saved PubMed abstract (gap_evidence/kalam_2024_pubmed.txt)."
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 1990,
+      "value": 17.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Glinka (1994), West Timor & Flores Roman-Catholic survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (West Timor & Flores, Roman-Catholic communities — no national Indonesian reading in the compilation); period '1990'; N=970; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "iran_islamic_republic_of",
+      "year": 2001,
+      "value": 38.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Saadat, Ansari-Lari & Farhud (2004), 'Consanguineous marriage in Iran', Annals of Human Biology 31(2):263-269 (doi:10.1080/03014460310001652211)",
+      "definition_note": "National (12 ethnic/religious populations, multi-stage representative sampling); N=306,343 couples; the abstract prints 'The overall rate of consanguineous marriage was 38.6%' (first cousins 27.9%, mean inbreeding coefficient 0.0185); read directly from the saved PubMed abstract (gap_evidence/iran_saadat_2004_pubmed.txt). The compilation's own Iranian row is the Persian Shi'a subgroup (30.0%, N=169,310) — subnational by community, superseded by the national print."
+    },
+    {
+      "entity_id": "iraq",
+      "year": 2004,
+      "value": 33.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "COSIT (2005), Iraq Family Health Survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Iraq), survey; period '2004'; N=23,937; types D1C,1C. A Baghdad urban arm the same year prints 29.0% (Central Organization for Statistics and IT) — subnational."
+    },
+    {
+      "entity_id": "ireland",
+      "year": 1968,
+      "value": 0.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Masterson (1970), Irish Republic dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Irish Republic), Catholic dispensation records; period '1959/68'; N=41,528; types UN,1C,11/2C,D2C,2C. The same study's Northern-Ireland arm (0.4%) rides the united_kingdom row."
+    },
+    {
+      "entity_id": "israel",
+      "year": 1977,
+      "value": 34.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Bashi (1977), Israeli Arab-community survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "Scope: the Arab community of Israel (the study's own scope — NOT a whole-population rate; the Jewish population prints ride community-specific studies such as Tsafrir & Halbrecht 1972's Petah Tiqwa Non-Ashkenazi 14.3%); period printed '-' (dated by publication year); N=3,203; types D1C,1C."
+    },
+    {
+      "entity_id": "israel",
+      "year": 2007,
+      "value": 22.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Sharkia et al. (2015), Israeli All-Arab survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "Scope: the Arab community of Israel (same scope discipline as the 1977 row); period '2000/07'; N=737; types D1C,1C,11/2C,2C. The interim vintages ride this note: Jaber et al. 1994 urban 24.2% / suburban 28.2% / rural 30.6%; Vardi-Saliternik et al. 2002 Muslim 32.1% / Bedouin 45.3% / Christian 20.6% / Druze 40.9% (all '1990/92'); Sharkia et al. 2007 Haifa District 29.9% ('1980/85') and 20.0% ('2000/04')."
+    },
+    {
+      "entity_id": "italy",
+      "year": 1953,
+      "value": 0.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Fraccaro (1957), Italian registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Italy), civil registration; period '1953'; N=340,693; types UN,AN,1C. The compilation also carries subnational dispensation readings (Florence 1939/58: 1.1%, N=50,028; Bologna Appennine 1950/80: 1.6%, N=5,340) — not entered, Italy has national prints."
+    },
+    {
+      "entity_id": "italy",
+      "year": 1981,
+      "value": 1.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Romeo et al. (1981), Italian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Italy), Catholic dispensation records; period printed '-' (dated by publication year); types 1C,2C."
+    },
+    {
+      "entity_id": "japan",
+      "year": 1972,
+      "value": 5.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Imaizumi et al. (1975), Japanese national survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Japan), survey; period '1972'; N=9,385; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "japan",
+      "year": 1983,
+      "value": 3.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Imaizumi (1986), Japanese national survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Japan), survey; period '1983'; N=9,225; types 1C,11/2C,2C. The Japanese decline vintage."
+    },
+    {
+      "entity_id": "jordan",
+      "year": 1979,
+      "value": 39.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Khoury & Massad (1992), Jordanian national survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Jordan), survey; period '1969/79'; N=1,989; types D1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "kuwait",
+      "year": 1969,
+      "value": 38.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "El-Alfi et al. (1969), Kuwaiti inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Kuwait), hospital inpatients; period printed '-' (dated by publication year); N=2,133; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "kuwait",
+      "year": 1983,
+      "value": 34.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Al-Awadi et al. (1985), Kuwaiti gynecology-outpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Kuwait), gynecology outpatients; period '1983'; N=5,007; types D1C,1C,11/2C,2C. Later Kuwait City/Jahra readings (Radovanovic et al. 1999, '1996/97', 22.5%/42.2%) are subnational."
+    },
+    {
+      "entity_id": "lebanon",
+      "year": 1984,
+      "value": 25.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Khlat (1988), Beirut all-religions survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "Scope: Beirut, all-religions sample (the compilation's broadest pre-war Lebanese print); period '1983/84'; N=2,854; types 1C,2C. Community arms the same study: Christian 16.5% (N=1,001), Muslim 29.6% (N=1,853)."
+    },
+    {
+      "entity_id": "lebanon",
+      "year": 2009,
+      "value": 35.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Barbour & Salameh (2009), Lebanese national survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Lebanon), survey; period printed '-' (dated by publication year); N=1,556; types 1C,2C."
+    },
+    {
+      "entity_id": "libya",
+      "year": 1985,
+      "value": 37.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Abudejaja et al. (1987), Benghazi study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (Benghazi — no national Libyan reading in the compilation); period '1982/85'; N=636; types 1C,2C."
+    },
+    {
+      "entity_id": "malaysia",
+      "year": 1964,
+      "value": 7.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Kuala Lumpur inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Kuala Lumpur — no national Malaysian reading in the compilation); period '1961/64'; N=15,658; types >1C,1C,<1C."
+    },
+    {
+      "entity_id": "mexico",
+      "year": 1957,
+      "value": 1.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Mexican dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Mexico), Catholic dispensation records; period '1956/57'; N=28,192; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "morocco",
+      "year": 1992,
+      "value": 19.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Lamdouar & Bouazzaoui (1994), Moroccan registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "National (All-Morocco), registration; period '1982/92'; N=4,773; types 1C,2C. A later Doukkala-region study (El Khair et al. 2019, 26.56%) is subnational."
+    },
+    {
+      "entity_id": "nepal",
+      "year": 2012,
+      "value": 32.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Bhatta & Haque (2014), Nepal Muslim-community survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL-COMMUNITY (the Muslim community — no national Nepali reading in the compilation); period '2011/12'; N=400; types 1C."
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 1953,
+      "value": 0.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1957), Dutch registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Holland), civil registration; period '1948/53'; N=351,085; types UN,1C."
+    },
+    {
+      "entity_id": "nigeria",
+      "year": 1974,
+      "value": 51.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Scott-Emuakpor (1974), Western Nigeria Yoruba study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (the West, Yoruba communities — no national Nigerian reading in the compilation); period printed '-' (dated by publication year); N=489; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "norway",
+      "year": 1972,
+      "value": 0.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Saugstad (1977), Norwegian registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Norway), civil registration; period '1967/72'; N=401,671; types UN,1C,11/2C,2C. First of the three Norwegian registry vintages."
+    },
+    {
+      "entity_id": "norway",
+      "year": 1981,
+      "value": 0.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Magnus et al. (1985), Norwegian registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Norway), civil registration; period '1967/81'; N=893,941; types 1C,2C. Second registry vintage."
+    },
+    {
+      "entity_id": "norway",
+      "year": 1993,
+      "value": 0.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stoltenberg et al. (1998), Norwegian registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Norway), civil registration; period '1967/93'; N=1,431,055; types >1C,1C. Third registry vintage — the million-marriage print. A later national registration (Sorbye et al. 2014, period '1995/10', N=712,430) prints '<0.01%' — a bound, not a number, so it is documented here rather than entered."
+    },
+    {
+      "entity_id": "oman",
+      "year": 1997,
+      "value": 35.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Rajab & Patton (2000), Omani outpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Oman), hospital outpatients; period '1994/97'; N=60,895; types 1C,2C. A smaller same-study reading prints 33.0% ('1995', N=500) — superseded by the larger sample."
+    },
+    {
+      "entity_id": "oman",
+      "year": 2000,
+      "value": 38.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Islam (2012), Omani survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Oman), survey; period '2000'; N=2,037; types 1C."
+    },
+    {
+      "entity_id": "pakistan",
+      "year": 1991,
+      "value": 61.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "NIPS (1992), Pakistan Demographic and Health Survey 1990-91 — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Pakistan), PDHS; period '1990/91'; N=6,611; types 1C,2C. The vintage of Apres l'Empire's DHS table (early 1990s). A Gujrat district reading (Shami & Hussain 1984, '1982/83', 48.5%, N=48.5's own sample) and a Lahore/Punjab obstetric reading (Bittles et al. 1993, '1979/86', 50.3%, N=9,520) are subnational."
+    },
+    {
+      "entity_id": "pakistan",
+      "year": 2007,
+      "value": 60.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "NIPS (2008), Pakistan Demographic and Health Survey 2006-07 — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Pakistan), PDHS; period '2006/07'; N=10,023; types 1C,2C."
+    },
+    {
+      "entity_id": "pakistan",
+      "year": 2013,
+      "value": 56.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "NIPS (2013), Pakistan Demographic and Health Survey 2012-13 — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Pakistan), PDHS; period '2012/13'; N=13,558; types 1C,2C."
+    },
+    {
+      "entity_id": "pakistan",
+      "year": 2018,
+      "value": 63.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "NIPS & ICF (2019), Pakistan Demographic and Health Survey 2017-18, final report FR354, Table 4.5 'Marriage between relatives'",
+      "definition_note": "National (All-Pakistan, excluding Azad Jammu and Kashmir and Gilgit Baltistan), ever-married women 15-49; period '2017/18'; N=12,364; the table's Total row prints Not-related 36.1%, so married-to-a-relative = 63.9 (first cousin on father's side 28.7 + first cousin on mother's side 20.9 + second cousin 8.3 + other relation 5.9); read directly from the saved report text (gap_evidence/pdhs_2017-18_FR354.txt). The report's own trend note: father's-side first-cousin marriages fell from 32% in 2006-07 to 29% in 2017-18."
+    },
+    {
+      "entity_id": "palestine_state_of",
+      "year": 1995,
+      "value": 29.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Assaf & Khawaja (2009), Palestinian Family Health Survey analysis — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Palestine, West Bank + Gaza), household survey; period '1995'; N=16,171; types 1C. A same-year West Bank reading (Pedersen 2002, N=5,778) prints 31.6% — superseded by the larger sample, documented here."
+    },
+    {
+      "entity_id": "palestine_state_of",
+      "year": 2004,
+      "value": 27.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Assaf & Khawaja (2009), Palestinian Family Health Survey analysis — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Palestine, West Bank + Gaza), household survey; period '2004'; N=4,971; types D1C,1C. A later Gaza-only marriage-registry reading (Sirdah 2014, '2000/13', 39.9%, N=156,635) is subnational (Gaza perimeter), documented here."
+    },
+    {
+      "entity_id": "panama",
+      "year": 1957,
+      "value": 0.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Panamanian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Panama), Catholic dispensation records; period '1956/57'; N=350; types '-'. The compilation prints 0 — zero consanguineous dispensations among the 350 processed (as-reported zero, kept as printed). A later Panama City inpatients reading (Stevenson et al. 1966, '1961/64', 1.7%, N=15,523) is subnational and rides this note."
+    },
+    {
+      "entity_id": "peru",
+      "year": 1957,
+      "value": 4.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Peruvian dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Peru), Catholic dispensation records; period '1956/57'; N=565; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "peru",
+      "year": 1996,
+      "value": 0.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Peruvian births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Peru), birth-registry study; period '1967/96'; N=332; types 1C."
+    },
+    {
+      "entity_id": "philippines",
+      "year": 1964,
+      "value": 0.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Manila inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Manila — no national Philippine reading in the compilation); period '1961/64'; N=29,143; types >1C,1C,<1C."
+    },
+    {
+      "entity_id": "portugal",
+      "year": 1955,
+      "value": 1.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1957), Portuguese registration study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Portugal), civil registration; period '1952/5'; N=276,800; types UN,1C."
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2004,
+      "value": 44.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Bener & Alali (2006), Doha clinic study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Doha clinic attenders — no national Qatari reading in the compilation); period '2004'; N=1,515; types D1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "saudi_arabia",
+      "year": 1995,
+      "value": 40.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "El-Hazmi et al. (1995), Saudi national survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Saudi), survey; period printed '-' (dated by publication year); N=3,212; types IC,2C. An earlier visitors-based reading prints 18.9% (Chaleby & Tuma, '1980s', N=143) — small-sample."
+    },
+    {
+      "entity_id": "saudi_arabia",
+      "year": 2005,
+      "value": 56.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "El-Mouzan, Al Salloum, Al Herbish, Qurachi & Miqdad (2008), 'Regional variations in the prevalence of consanguinity in Saudi Arabia', Saudi Medical Journal 29(11)",
+      "definition_note": "National (the Saudi national Family Health Survey's nationally representative cross-sectional sample, mother-reported family relation to husband); period '2004-2005'; the abstract prints 'The overall prevalence of consanguinity was 56% with the first-degree cousin (33.6%) being the most common type' — read directly from the saved full text (gap_evidence/saudi_elmouzan_2008.txt)."
+    },
+    {
+      "entity_id": "singapore",
+      "year": 1964,
+      "value": 5.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Singapore inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Singapore), hospital inpatients; period '1961/64'; N=39,333; types >1C,1C,<1C."
+    },
+    {
+      "entity_id": "south_africa",
+      "year": 1964,
+      "value": 0.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Stevenson et al. (1966), Johannesburg inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (Johannesburg — no national South African reading in the compilation); period '1961/64'; N=10,909; types >1C,1C,<1C."
+    },
+    {
+      "entity_id": "spain",
+      "year": 1943,
+      "value": 4.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Pinto-Cisternas et al. (1979), Spanish dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Spain), Catholic dispensation records; period '1940/3'; types UN,1C,11/2C,2C. The high-Catholic-periphery print of L'invention de l'Europe's consanguinity map."
+    },
+    {
+      "entity_id": "sri_lanka",
+      "year": 1973,
+      "value": 21.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Reid (1976), Kandy Buddhist survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Kandy, Buddhist community — no national Sri Lankan reading in the compilation); period '1973'; N=455; types 1C,2C."
+    },
+    {
+      "entity_id": "sudan",
+      "year": 1988,
+      "value": 52.0,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Saha & El Sheikh (1988), Khartoum study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "Scope: All-Khartoum (the capital-region series — the compilation's broadest Sudanese print); period printed '-' (dated by publication year); N=4,833; types 1C,2C. The same study's community arms: Arabs 55.2% (N=4,186), Negroid 45.7% (N=302), Nilote 18.3% (N=345); a Gezira reading (Ahmed 1979, '1969/74', 44.2%, N=2,999) is subnational. Todd's own citation (Apres l'Empire's DHS table) reads Sudan at 57% — the early-1990s compilation he used prints a slightly higher face than the 1988 Khartoum series entered here."
+    },
+    {
+      "entity_id": "sweden",
+      "year": 1950,
+      "value": 0.6,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Romanus (1953), Swedish termination-of-impediment study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "National (All-Sweden), church marriage-impediment records; period '1946/50'; N=15,802; types 1C,2C."
+    },
+    {
+      "entity_id": "syrian_arab_republic",
+      "year": 2008,
+      "value": 27.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Othman & Saadat (2009), Syrian urban survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "Scope: the survey's urban arm, entered as the compilation's first-listed All-Syria print; period '2008'; N=31,384; types D1C,1C,2C. The same survey's rural arm prints 35.9% (N=36,574); the compilation prints no national aggregate, and Tadmouri et al. (2009) print the pair's inbreeding coefficients (0.0203 urban vs 0.0265 rural) — the urban/rural split is the honest face of this reading."
+    },
+    {
+      "entity_id": "tanzania_united_republic_of",
+      "year": 1958,
+      "value": 37.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Tanner (1958), Pangani Muslim-community study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (Pangani, Muslim community — no national Tanzanian reading in the compilation); period printed '-' (dated by publication year); N=503; types 1C."
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 1989,
+      "value": 26.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Riou et al. (1989), Northern Tunisia inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Africa table",
+      "definition_note": "SUBNATIONAL (the Northern region — the compilation's only pre-2000 Tunisian print); period printed '-' (dated by publication year); N=5,767; types >1C,1C,11/2C,2C. Ben Halim et al. (2012) cite the same study at 31.62% — the two prints differ on the union-type perimeter, both documented here."
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 2008,
+      "value": 29.8,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Ben Halim, Rebaai, Zemni, Ben Halim, Gritli, Khelifa, Ben Arab, Ben Rhouma, Zili, Sanguinetti, Yacoubi & Vandeponseele (2012), 'Consanguinity, endogamy, and genetic disorders in Tunisia', Journal of Community Genetics 3(3) (doi:10.1007/s12687-012-0128-7)",
+      "definition_note": "National (the study's population-control cohort, the paper's own representative reading: 'the control cohort used as a representative group of the overall consanguinity level in the Tunisian population... (29.80%)', first cousins 17.13%); year 2008 = the National Office for Family and Population Affairs comparison point the study prints (the ONFP registry itself carries 21% close-consanguinity unions for 2008); read directly from the saved full text (gap_evidence/tunisia_romdhane_text.txt)."
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 1987,
+      "value": 21.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Basaran et al. (1988), Turkish national outpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National sample (All-Turkey), hospital outpatients; period '1970/87'; N=55,175; types D1C,1C,11/2C,2C. The compilation's largest Turkish print (confirmed independently by Ben Halim et al. 2012's citation of 'Turkey with 21.2% (Basaran et al.)'). An Antalya south-west reading the same vintage (Guz et al. 1989, 15.3%, N=2,604) is subnational — Todd's own 'Turkey 15%' (Apres l'Empire's DHS-table citation) sits closest to that print."
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 1988,
+      "value": 21.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Tuncbilek & Ulusoy (1989), Turkish national survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Turkey), survey; period '1988'; N=5,257; types 1C,2C."
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2004,
+      "value": 20.1,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Koc (2008), Turkish Demographic and Health Survey 2003 analysis — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Turkey), TDHS-based; period '2003/04'; N=7,435; types 1C,2C."
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2013,
+      "value": 18.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Kaplan, Pinar, Kaplan, Aslantekin, Karabulut, Ayar & Dilmen (2016), 'The prevalence of consanguineous marriages and affecting factors in Turkey: a national survey', Journal of Biosocial Science 48(5):616-630 (doi:10.1017/S0021932016000055)",
+      "definition_note": "National (All-Turkey), Ministry of Health cross-sectional survey Oct-Dec 2013 across the 81 provinces; N=4,913 ever-married women; 57.8% of the consanguineous unions are first cousins (read directly from the saved Europe PMC record, gap_evidence/kaplan_turkey.json)."
+    },
+    {
+      "entity_id": "united_arab_emirates",
+      "year": 1995,
+      "value": 37.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Al-Gazali et al. (1997), Al Ain (UAE) centre study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "SUBNATIONAL (Al Ain, Abu Dhabi emirate — no national UAE reading in the compilation); period '1994/95'; N=1,502; types D1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 1968,
+      "value": 0.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Masterson (1970), Northern Ireland dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Europe table",
+      "definition_note": "Scope: Northern Ireland (the study's own 'All-N. Ireland' arm — the UK's only national-register print in the compilation); period '1959/68'; N=41,528; types UN,1C,11/2C,D2C,2C. An earlier London outpatient reading (Pugh & Carter, 1950/51, 0.4%, N=5,217, unpublished, cited in Coleman 1980) is subnational and not entered."
+    },
+    {
+      "entity_id": "united_states",
+      "year": 1960,
+      "value": 0.2,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), US dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-U.S.A.), Catholic dispensation records; period '1959/60'; N=133,228; types 1C,11/2C,2C."
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 1957,
+      "value": 4.5,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Freire-Maia (1968), Uruguayan dispensation study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National (All-Uruguay), Catholic dispensation records; period '1956/57'; N=2,931; types UN,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 1996,
+      "value": 0.7,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Uruguayan births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Uruguay), birth-registry study; period '1967/96'; N=1,407; types >1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "venezuela_bolivarian_republic_of",
+      "year": 1979,
+      "value": 1.3,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Orioli et al. (1982), Venezuelan inpatients study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Venezuela), hospital inpatients; period '1967/79'; N=1,517; types D1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "venezuela_bolivarian_republic_of",
+      "year": 1996,
+      "value": 1.4,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Liascovich et al. (2001), Venezuelan births study — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Americas table",
+      "definition_note": "National sample (All-Venezuela), birth-registry study; period '1967/96'; N=8,592; types >1C,1C,11/2C,2C."
+    },
+    {
+      "entity_id": "yemen",
+      "year": 1997,
+      "value": 33.9,
+      "provider": "curated",
+      "source_ref": "consanguineous_marriage_rate",
+      "citation": "Jurdi & Saxena (2003), Yemeni survey — as carried in the consang.net 'Consanguineous Marriage' global tables (A.H. Bittles' compilation), accessed 2026-09-20, Asia table",
+      "definition_note": "National (All-Yemen), survey; period '1997'; N=9,762; types 1C."
+    }
+  ],
+  "witnesses": [],
+  "todd_refs": {
+    "family": "society",
+    "citations": 34,
+    "books": 10,
+    "refs": [
+      {
+        "book": "La troisième planète",
+        "year": 1983,
+        "citations": 1,
+        "label": "First-cousin (consanguineous) marriage frequency",
+        "note": "World-scale range cited (0-60%)."
+      },
+      {
+        "book": "L'enfance du monde",
+        "year": 1984,
+        "citations": 1,
+        "label": "Consanguineous (first-cousin) marriage rate",
+        "note": "Iran citation."
+      },
+      {
+        "book": "La nouvelle France",
+        "year": 1988,
+        "citations": 1,
+        "label": "First-cousin marriage frequency (Muslim world)",
+        "note": "Muslim-world citation (10-30% range)."
+      },
+      {
+        "book": "Le Destin des immigrés",
+        "year": 1994,
+        "citations": 16,
+        "label": "Consanguineous / first-cousin marriage rates (Europe, Quebec, Jews, Gypsies, Arab world, Maghreb)",
+        "note": "Extensive citations across dozens of countries/communities."
+      },
+      {
+        "book": "Après l'Empire",
+        "year": 2002,
+        "citations": 2,
+        "label": "Consanguineous (first-cousin) marriage rate",
+        "note": "DHS table, 18 countries, early 1990s (Sudan 57% to Turkey 15%)."
+      },
+      {
+        "book": "Qui est Charlie ?",
+        "year": 2015,
+        "citations": 1,
+        "label": "First-cousin marriage rates in the Maghreb c. 2000",
+        "note": "Maghreb, ~25-35%, c.2000."
+      },
+      {
+        "book": "Où en sommes-nous ?",
+        "year": 2017,
+        "citations": 8,
+        "label": "First-cousin (consanguineous) marriage rates, world + Jewish case",
+        "note": "Reinforcing citation."
+      },
+      {
+        "book": "Les Luttes de classes en France",
+        "year": 2019,
+        "citations": 2,
+        "label": "First-cousin marriage frequency (Muslim world)",
+        "note": "Pakistan/Maghreb citation."
+      },
+      {
+        "book": "Où en sont-elles ?",
+        "year": 2021,
+        "citations": 1,
+        "label": "First-cousin marriage frequency (Muslim world)",
+        "note": "Muslim-world citation."
+      },
+      {
+        "book": "La Défaite de l'Occident",
+        "year": 2024,
+        "citations": 1,
+        "label": "Consanguineous / cousin-marriage rate, Karnataka",
+        "note": "Muslim-world citation."
+      }
+    ]
+  }
+}

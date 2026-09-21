@@ -64,6 +64,9 @@ class NormalizedPoint:
     reference_range: str | None = None
     missing_marker: str | None = None
     provisional: bool | None = None
+    # Table 17's "\u2666" marker (ratio based on 30 or fewer maternal
+    # deaths) — same transport discipline as `provisional`.
+    small_base: bool | None = None
 
 
 def _snapshot_timestamp(path: Path) -> datetime | None:
@@ -181,6 +184,7 @@ def normalize_indicator(
                     reference_range=record.get("reference_range"),
                     missing_marker=record.get("missing_marker"),
                     provisional=record.get("provisional"),
+                    small_base=record.get("small_base"),
                 )
             )
 

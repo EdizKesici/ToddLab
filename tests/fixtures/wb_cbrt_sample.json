@@ -1,0 +1,154 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 5000,
+  "total": 9
+ },
+ [
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "1960",
+   "value": 23.881,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2024",
+   "value": 9.7,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "NE",
+    "value": "Niger"
+   },
+   "countryiso3code": "NER",
+   "date": "1960",
+   "value": 57.613,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2024",
+   "value": 17.4,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "ZF",
+    "value": "Africa Eastern and Southern"
+   },
+   "countryiso3code": "AFE",
+   "date": "2024",
+   "value": 31.2,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "XD",
+    "value": "High income"
+   },
+   "countryiso3code": "",
+   "date": "2024",
+   "value": 9.1,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2024",
+   "value": 12.3,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.CBRT.IN",
+    "value": "Birth rate, crude (per 1,000 people)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1960",
+   "value": 17.9,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  }
+ ]
+]

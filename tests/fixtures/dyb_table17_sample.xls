@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Worksheet ss:Name="Table 17">
+  <Table>
+      <Row>
+        <Cell/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sTitle"><Data ss:Type="String">17. Maternal deaths and maternal mortality ratios:  2019 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sTitle"><Data ss:Type="String">Mortalité liée à la maternité, nombre de décès et taux :  2019 - 2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Continent and country or area
+Continent et pays ou zone</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Co-de</Data></Cell>
+        <Cell ss:Index="3" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2019</Data></Cell>
+        <Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:Index="9" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2022</Data></Cell>
+        <Cell ss:Index="11" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2023</Data></Cell>
+        <Cell ss:Index="13" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">AFRICA - AFRIQUE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Algeria - Algérie</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Number - Nombre</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C  </Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">210</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">205</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">198</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">190</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rate - Taux</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">12.5</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">11.9</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">11.2</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">10.4</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">10.1</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Libya - Libye</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Number - Nombre</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">+U</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">12</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">10</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Mauritius - Maurice</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rate - Taux</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">+C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">66.7</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">52.7</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">31.6</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">46.3</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">74.7</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">38.5</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Continent and country or area
+Continent et pays ou zone</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">Co-de</Data></Cell>
+        <Cell ss:Index="3" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2019</Data></Cell>
+        <Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2020</Data></Cell>
+        <Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
+        <Cell ss:Index="9" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2022</Data></Cell>
+        <Cell ss:Index="11" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2023</Data></Cell>
+        <Cell ss:Index="13" ss:MergeAcross="1" ss:StyleID="sRefDate"><Data ss:Type="Number">2024</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">EUROPE - EUROPE</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">France</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Number - Nombre</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">38</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">37</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">34</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">33</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">33</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rate - Taux</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">4.86</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">4.59</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">4.47</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">4.43</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.5</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦1</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">5.17</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Italy - Italie</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Number - Nombre</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">14</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">6</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">16</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">-</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">13</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">16</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rate - Taux</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">2.72</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">1.19</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.29</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">-</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">2.75</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦2</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">3.49</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">♦</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Russian Federation - Fédération de Russie</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Number - Nombre</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">+C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">216</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">189</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">150</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">147</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rate - Taux</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">+C</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">11.39</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">9.98</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">8.87</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">9.16</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sCountryName"><Data ss:Type="String">Egypt - Égypte</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sRefDate"><Data ss:Type="String">Rate - Taux</Data></Cell>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">19.18</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">18.27</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">15.27</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">13.27</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">11.93</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+        <Cell ss:StyleID="sDataFloatRoman"><Data ss:Type="Number">12.13</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"/>
+      </Row>
+
+  </Table>
+ </Worksheet>
+ <Worksheet ss:Name="Footnotes">
+  <Table>
+      <Row>
+        <Cell ss:StyleID="sTitle"><Data ss:Type="String">Footnotes</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">a
+'Code' indicates the source of data, as follows: C - Civil registration, estimated over 90% complete U - Civil registration, estimated less than 90% complete | - Other source, estimated reliable + - Data tabulated by date of registration rather than occurence ... - Information not available</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">*
+Provisional. - Données provisoires.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">italics
+Data from civil registers which are incomplete or of unknown completeness.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">1 The code is C. - Le code est C.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">2 The code is U. - Le code est U.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell ss:StyleID="sLeft"><Data ss:Type="String">5 For 2019 and before, data on cause of death do not include a region. Therefore, rates must be used with caution. - Pour 2019 et avant, les données sur les causes de décès ne comprennent pas une région.</Data></Cell>
+      </Row>
+
+  </Table>
+ </Worksheet>
+</Workbook>

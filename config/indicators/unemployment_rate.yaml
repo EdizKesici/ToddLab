@@ -1,0 +1,138 @@
+id: unemployment_rate
+label: "Unemployment rate"
+family: economy
+unit: percent
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE FOURTEENTH INDICATOR (v17), the corpus's economy family's first
+  # entry (20 citations, 7 books: L'invention de l'Europe's interwar
+  # Austria 1930-34 and Belgian-industry prints, L'illusion économique's
+  # France-3-million threshold, Qui est Charlie ?'s France >10%
+  # structural claim and departmental map, Les Luttes de classes'
+  # France-9-10%-vs-Germany-3-4% board, Après la démocratie's
+  # France-vs-Germany 1975-2008 series, Le Destin des immigrés'
+  # by-nationality FRG-1987 question — the last one a future
+  # ILMS-citizenship door, recorded in sources.yaml).
+  #
+  # THE CANONICAL FINDING (the v17 probe verdict, verified live
+  # 2026-09-20 before any config): NO other wire prints the plain
+  # national rate at the collector tier. ILOSTAT is wholesale
+  # ILO-PROCESSED material — 2EAP/2UNE is ILOEST (modeled estimates,
+  # "imputed observations... subject to high uncertainty"), 5EAP/5UNE is
+  # the 19th-ICLS WORK harmonization ("may differ from official national
+  # figures"), DEAP/TUNE is the LFS/ILMS database family whose rows
+  # carry "Repository: ILO-STATISTICS - Micro data processing" and
+  # LFS-ADJ adjusted series (Germany's own rows are the EU-LFS and its
+  # adjusted variant, not the Bundesagentur print) — every flow
+  # witness-only by constitution. The OECD doors are OECD-harmonized
+  # (LFS_INDIC / IALFS_UNE_M, the latter's own description documents
+  # OECD re-timing the UK's rolling quarters) or registered-unemployment
+  # counts ("not comparable across countries" per the flow's own
+  # description). Eurostat's une_rt_a is the one collector: the rate
+  # each national statistical office computes from its own LFS,
+  # collected by the questionnaire, printed at the 1-decimal
+  # as-published face.
+  - provider: eurostat
+    ref: une_rt_a/Y15-74/PC_ACT/T
+    priority: 1
+    role: canonical
+    root: eurostat_lfs
+
+  # THE WITNESS (worldwide): WDI's SL.UEM.TOTL.NE.ZS, "Unemployment,
+  # total (% of total labor force) (national estimate)" — the
+  # national-estimate line, which the v17 probe fingerprinted as the
+  # ILOSTAT DEAP plain-rate family redistributed by WDI (byte-identical
+  # to DF_UNE_DEAP_SEX_AGE_RT on the co-covered core: FRA 1992 = 10.203
+  # on both doors). NE over ZS (the modeled-ILO-estimate code, recorded
+  # unwired in sources.yaml): NE covers 208 real countries including
+  # XKX Kosovo versus 187, one more year (1990 versus 1991), and the
+  # as-reported-at-source face; for FRA/DEU/USA the two codes currently
+  # print identical values, so nothing is lost and the 45.8% NE-vs-ZS
+  # cell divergence (BHR 1998: 43.156 vs 1.114) stays outside the core
+  # where it belongs. This door also carries what the collector lacks:
+  # the 1990-2002 France and 1991-2008 Germany years (the Eurostat cube
+  # starts FR at 2003, everyone else at 2009 — the coverage cliff
+  # documented per-geo in the probe record).
+  - provider: worldbank
+    ref: SL.UEM.TOTL.NE.ZS
+    priority: 2
+    role: witness
+    root: ilo_lfs
+
+coverage_start: 1990
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat une_rt_a pinned age=Y15-74/unit=PC_ACT/
+  sex=T (the LFS questionnaire's own broadest band — the codelist
+  carries no TOTAL; unit PC_ACT is the rate's own denominator, not
+  PC_POP; 1-decimal as published), 38 geos (EU + EFTA + Western
+  Balkans + Turkiye; no UK — post-Brexit the door stopped carrying it),
+  2003-2025, 635 valued cells, the collector's b/d flags transported
+  as-reported on quality_code (d on FR and ES 2021-2025: the 2021 LFS
+  questionnaire redesign — a definitional seam the connector surfaces,
+  not a geo seam; b = break in series; no provisional codes in this
+  dataset). Witness tier = the WB national-estimate line, 208 countries
+  1990-2025, 0-3 decimals as printed. Root pair eurostat_lfs/ilo_lfs:
+  same underlying national surveys, one harmonization step apart — on
+  the co-covered core they print the same rates to rounding (FR 2015:
+  10.4 vs 10.354), and the seams the pair displays (FR 2024 7.436 vs
+  7.4 rounding; DE 2005 11.193 on the witness vs ABSENT on the
+  collector) read as two doors, never a contradiction.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0     # the floor is structural (any LFS can print a 0.x rate in
+             # principle; the observed minimum is single-digit)
+  max: 60    # the observed span: the collector's max is the Greek crisis
+             # (EL 2013 = 27.8, ES 2013 = 26.1); the witness carries the
+             # post-war break values (XKX 2001 = 57.0) and BHR 1998 =
+             # 43.156 — 60 admits the registry-break tail while a unit
+             # error (a count, a share of population) or a misload of
+             # the monthly family flags immediately.
+
+license: >
+  Eurostat reuse policy (attribution required, no endorsement implied);
+  World Bank WDI CC-BY-4.0 — see docs/licenses.md.
+
+notes: >
+  THE PINS ARE THE INDICATOR (verified live before any wiring): age
+  Y15-74 (the codelist's seven bands carry NO TOTAL — a query for it
+  soft-misses with HTTP 200 and an empty value object; Y15-74 is the
+  LFS's own labour-force window and the de-facto total rate), unit
+  PC_ACT (percentage of the labour force — the rate's denominator;
+  PC_POP prints the wrong denominator, FR 2015 = 6.6), sex T (the
+  both-sexes rate; the M/F splits exist — FR M 2015 = 10.8, F = 9.9 —
+  the unwired sex doors, one ref away each), freq A only (the monthly
+  companion une_rt_m is refused: annualising monthly data is a
+  derivation).
+
+  THE COVERAGE CLIFF (the honest shape, documented per-geo by the
+  probe): FR alone runs 2003-2025 (23 points, the only full-length
+  series); every other EU geo + IS/NO/TR/MK start 2009; SE 2005, CH
+  and RS 2010; BA starts 2021; ME (Montenegro) STOPS AT 2020. Germany
+  1991-2008 lives only on the witness (DEU 1991 = 5.316, DEU 2005 =
+  11.193 — the EU-LFS 15+ rate, ~3pp above the 2010s Y15-74 prints of
+  the same economy: the witness's own age-base and methodology seam,
+  displayed by the divergence view and explained by the root pair).
+  The interwar prints of L'invention de l'Europe (Austria 1930-34)
+  are book tables — territory curated, not a living wire; this
+  indicator's history starts 1990 on the witness.
+
+  THE FLAG STORY (the collector's own annotations, as-reported): b =
+  break in series (DE 2010/2011/2020, the German LFS redesigns), d =
+  definition differs (FR and ES 2021-2025, the LFS 2021 questionnaire
+  redesign — France's series is one continuous 2003-2025 line with a
+  definitional seam riding quality_code, NOT a geo seam: FX does not
+  exist in this dataset, probed empty). u/bu (low reliability) hit
+  small states only, none on FR/DE. No 'e'/'p' in this cube.
+
+  THE BY-NATIONALITY DOOR (Le Destin des immigrés' Turks-and-Yugoslavs
+  question, out of scope today): ILOSTAT's citizenship and
+  place-of-born rate flows (DF_UNE_DEAP_SEX_AGE_CCT_RT / _CBR_RT, the
+  ILMS family, verified live for FRA 2015-2018) are the future
+  harmonized-tier door for exactly that question — recorded in
+  sources.yaml with the probe fingerprint.

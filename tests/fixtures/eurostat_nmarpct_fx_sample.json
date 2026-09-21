@@ -1,0 +1,72 @@
+{
+ "version": "1.0",
+ "class": "dataset",
+ "label": "Fertility indicators",
+ "id": [
+  "freq",
+  "indic_de",
+  "geo",
+  "time"
+ ],
+ "size": [
+  1,
+  1,
+  1,
+  4
+ ],
+ "dimension": {
+  "freq": {
+   "category": {
+    "index": {
+     "A": 0
+    },
+    "label": {
+     "A": "Annual"
+    }
+   }
+  },
+  "indic_de": {
+   "category": {
+    "index": {
+     "NMARPCT": 0
+    },
+    "label": {
+     "NMARPCT": "Proportion of live births outside marriage"
+    }
+   }
+  },
+  "geo": {
+   "category": {
+    "index": {
+     "FX": 0
+    },
+    "label": {
+     "FX": "Metropolitan France"
+    }
+   }
+  },
+  "time": {
+   "category": {
+    "index": {
+     "1960": 0,
+     "1998": 1,
+     "2000": 2,
+     "2012": 3
+    },
+    "label": {
+     "1960": 0,
+     "1998": 1,
+     "2000": 2,
+     "2012": 3
+    }
+   }
+  }
+ },
+ "value": {
+  "0": 6.1,
+  "1": 40.7,
+  "2": 42.6,
+  "3": 55.8
+ },
+ "updated": "2026-09-20T11:00:00+0200"
+}

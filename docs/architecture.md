@@ -16,6 +16,28 @@ Each step reads the file written by the previous one from disk
 `*.validation.json` -> `data/dist/`). No step keeps in-memory state across
 runs: you can stop after any step and resume by rerunning `rebuild`.
 
+## The Todd corpus rides as metadata (v13)
+
+Ediz's OCR compilation of Todd's metrics (todd_core.csv, outside the
+repo) transforms one-way into `config/todd_refs.yaml`
+(`scripts/normalize_todd_refs.py`, deterministic, validating loudly).
+Config load cross-validates the bijection between `todd_core: true`
+indicators and corpus metric ids (ADR-0009) — the flag is
+evidence-backed, failing loudly on either side. The build emits the
+corpus additively: a `todd_refs` block on matching indicators and
+catalog entries, and `dist/todd_corpus.json` — all 24 metrics,
+implemented and unimplemented, ranked by the corpus's citation weight
+(the executable roadmap: birth_rate_fertility 111 citations, the #1,
+implemented since v14 — consanguineous_marriage_rate 34 and
+unemployment_rate 20 implemented in v17's two-track delivery, the
+corpus now at 10/24 — the backlog tops at industrial_employment_share
+30, waiting on the composite-derived-layer decision). `cli stats` closes with the corpus block. The GHO connector
+gained the Dim2 AGEGROUP rule for the suicide witness (all-ages series
+kept, latest-year age slices dropped and logged, unknown Dim2 types
+refused) — the SDGSUICIDE payload disaggregates 2021 into 11 age bands
+beside the all-ages record, a hidden dimension that would otherwise
+have ingested duplicates.
+
 Why this separation rather than a single fetch-and-build script: the only
 step that needs the network is `fetch`. Everything else (`rebuild`) runs
 offline — this is what made it possible to develop and test 100% of the
@@ -58,8 +80,13 @@ top of the file itself:
 The DYB connector (v7) is the worked example of a provider serving
 MULTIPLE formats, eras and tables: format detection by magic bytes
 (SpreadsheetML vs BIFF via xlrd), parser dispatch on the file's own
-(title-verified) table number, per-era URL building (legacy site
-2011-2014, modern site 2016+), and era-specific normalizations (BIFF
+title (number AND text — the v10 21/22 renumbering zone keys on the
+WORDS: the LE-by-age table alternates numbers with the 5qx
+probabilities by edition parity, and a number-only dispatch would have
+mis-parsed the same layout into the wrong measure), per-era URL building
+(legacy site 2011-2015 — the 2015 edition recovered in v10 through the
+legacy pattern after its own index links turned out to be the dead part,
+modern site 2016+), and era-specific normalizations (BIFF
 years-as-floats, footnote references glued to names). A source that
 reports a demographic breakdown carries it through the whole pipeline:
 `(entity, year, sex)` is the merge key.
@@ -73,14 +100,80 @@ reports a demographic breakdown carries it through the whole pipeline:
   rather than silent multiplication. Unknown pairs still raise loudly.
   Still open (phase 2): more unit families as new indicators land.
 - **Canonical/witness semantics are implemented** (v6) and now cover all
-  three pilot indicators (v7: life_expectancy; v8: homicide_rate via the
+  twelve indicators (v7: life_expectancy; v8: homicide_rate via the
   OECD/WHO-Mortality-Database route, sex-split, CRUDE rates pinned over
-  the dataflow's age-standardized variant). Per-point provenance for the
+  the dataflow's age-standardized variant; v9: maternal_mortality_ratio
+  via DYB Table 17 — 13 editions 2001-2022 since v12, the "♦"
+  small-numbers marker riding the points — plus maternal_deaths, the
+  same table's Number block as its own indicator, closing the v9 scope
+  limit that left Number-only countries outside every series; v10:
+  life_expectancy_60 via DYB Tables 21/22 — the renumbering zone,
+  latest-available-year cross-sections, printed reference periods —
+  with the first GHO witness, WHOSIS_000015; v13: suicide_rate — the
+  corpus's #2 by citations, the homicide architecture one cause-code
+  away, whose witness is the first who_ghe root: the GHE model
+  re-distributes the ill-defined causes over the collectors' printed
+  suicides (Russia male 2000: 69.8 as-reported vs 95.2 modeled), a
+  systematic tier divergence displayed, never reconciled; v14:
+  birth_rate_fertility — the corpus's #1, the only metric in all 16
+  books — canonical on the Eurostat collector (demo_find/TOTFERRT,
+  the one collector wire that prints a national TFR) with its own
+  display case: the France variant pair, TWO printed series
+  (metropolitan 1960-2012, whole 1998-2024) wired as separate
+  geo-pinned sources so the merge arbitrates the overlap by vintage,
+  every discarded value logged — and the WPP witness carrying the
+  worldwide face the collector never polled; v16:
+  illegitimate_births — Todd's illégitimité, the share the SAME
+  Eurostat dataset prints directly (demo_find/NMARPCT, no derivation)
+  — carrying the GERMAN SEAM: the codelist's DE_TOT is the fuller
+  65-year all-Germany series and DIVERGES from DE's FRG-only
+  pre-reunification benchmarks (1980: 7.6 vs 11.9, the GDR's high
+  non-marital share), so DE_TOT rides its own geo-pinned source ABOVE
+  the main slice and every DE collision is a logged provenance discard
+  — the France seam's architecture applied to a definitional seam —
+  with the OECD Family Database witness through OWID's chart door, the
+  registry's oecd_family root; v17 — the two-track version, BOTH
+  tracks probed in parallel before any wiring:
+  consanguineous_marriage_rate — the backlog's head, the corpus's #6
+  (34 citations, 10 books) — claimed through the CURATED tier (the
+  gate satisfied since v16: no machine-readable door anywhere), 102
+  published readings across 69 countries, 1943-2021, one citation per
+  point, the third curated family (the consensus-literature series)
+  and the 13th root consanguinity_studies — the study IS the origin,
+  no witness can ever cross-check it; and unemployment_rate — the
+  economy family's FIRST indicator (the Family enum gains `economy`)
+  — canonical on the project's SECOND Eurostat dataset (une_rt_a
+  pinned Y15-74/PC_ACT/T, the connector's second dispatch decision
+  with its own ref grammar and layout pin-guard; the probe verdict:
+  ILOSTAT wholesale ILO-processed, OECD harmonized — no other
+  collector prints the plain national rate) with the WB
+  national-estimate witness (root ilo_lfs — the ILOSTAT DEAP family
+  redistributed by WDI), the root pair eurostat_lfs/ilo_lfs keeping
+  the COVERAGE CLIFF (Germany 1991-2008 witness-only, the collector
+  starts DE at 2009) and the LFS-2021 definitional 'd' seam reading
+  as two doors, never a contradiction).
+  Per-point provenance for the
   collector tier (v8: DYB quality codes, footnote texts, LE reference
   ranges, missing markers, provisional flags — as-reported, joined into
   the dist) is DONE; witness citation blocks on every source are DONE.
-  Still open: the `family` root-genealogy field (§5.1) once
-  worldbank/gho connectors land.
+  v9 also upgraded the merge semantics: printed-but-empty cells survive
+  as explicit canonical gap points ("counts published, no ratio
+  computed"), measured at the cutover as IMR +1,270 / LE +2,944 gap
+  points with zero valued points changed.
+  The `family` root-genealogy field is DONE since v11 (§5.1 of the
+  measurement problem — `SourceRef.root`, a closed registry in
+  `src/schema/indicator.py`), implemented together with the World Bank
+  connector (the provider that made it necessary): every source
+  declares its ultimate origin, the dist's `sources[]`/`witnesses[]`
+  carry `root`+`root_label`, and `catalog.json` computes the per-role
+  roots with door counts — infant mortality's four agreeing witnesses
+  read as "1 root (UN IGME) via 4 doors", life expectancy's two as
+  genuinely different roots (the OWID long-run compilation vs pure
+  WPP), and since v12 the maternal ratio's two agreeing witnesses read
+  as "1 root (UN MMEIG) via 2 doors" — doors carrying DIFFERENT ROUNDS
+  of the model (the OWID 2020 round vs the WDI 2023 round), so their
+  divergence (South Sudan 1987: 6,774.7 vs 8,045) is the model's own
+  revision made visible instead of a contradiction.
 - **The PDF-era editions (1948-2010) and the defunct entities** (the P1
   correction: the XLS loop's windows cannot contain them by
   construction). The P1b spike (DYB 1978 Table 15) measured the PDF
@@ -102,7 +195,7 @@ reports a demographic breakdown carries it through the whole pipeline:
   the public grapher CSVs (simple, no extra dependency). OWID also exposes
   a richer metadata layer (semantic indicator search, versioned Parquet
   tables) — a migration candidate if the indicator count grows
-  significantly; not needed for 3 pilot indicators.
+  significantly; not needed for the pilot indicators.
 - **Retry/backoff on transient network errors**: a live-network audit found
   one slug returning a hard HTTP 403 (not a transient failure — the source
   itself needed swapping, see CHANGELOG), so retry logic wasn't the

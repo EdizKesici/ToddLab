@@ -14,11 +14,11 @@ import json
 
 
 def _point(entity_id="france", year=2021, value=3.1, provider="un_dyb", ref="2024/table15",
-           priority=2, role="canonical", citation=None, definition_note=None, sex=None) -> NormalizedPoint:
+           priority=2, role="canonical", citation=None, definition_note=None, sex=None, **annotations) -> NormalizedPoint:
     return NormalizedPoint(
         entity_id=entity_id, year=year, value=value, provider=provider, source_ref=ref,
         priority=priority, role=role, citation=citation, definition_note=definition_note,
-        sex=sex,
+        sex=sex, **annotations,
     )
 
 
@@ -51,12 +51,31 @@ def test_canonical_arbitration_stays_within_the_tier_and_is_logged():
     assert provenance[0]["discarded"][0]["provider"] == "un_dyb"
 
 
-def test_all_none_canonical_candidates_produce_nothing():
-    # A key where every canonical source explicitly reports no value is
-    # absent from the canonical series — nothing is fabricated.
-    points = [_point(entity_id="algeria", year=2021, value=None, role="canonical")]
-    merged, _ = merge_points(points)
-    assert merged == []
+def test_all_none_canonical_candidates_produce_one_explicit_gap_point():
+    # v9 merge semantics: a key where every canonical source explicitly
+    # reports "no value" is kept as ONE explicit gap point — the collector's
+    # honest degradation ("counts published, no ratio computed") is data,
+    # and it must stop reading as "never reported". The gap point carries
+    # the highest-priority candidate's own annotations, and NO provenance
+    # entry is logged (nothing was discarded — every candidate agrees).
+    points = [
+        _point(entity_id="algeria", year=2021, value=None, role="canonical",
+               quality_code="U", missing_marker="..."),
+        _point(entity_id="algeria", year=2021, value=None, role="canonical",
+               provider="un_dyb", ref="2017/table15", priority=3,
+               quality_code="U", missing_marker="..."),
+    ]
+    merged, provenance = merge_points(points)
+    assert len(merged) == 1
+    gap = merged[0]
+    assert gap.value is None
+    assert gap.entity_id == "algeria"
+    assert gap.year == 2021
+    assert gap.provider == "un_dyb"
+    assert gap.source_ref == "2024/table15"  # highest priority (latest vintage)
+    assert gap.quality_code == "U"  # the winner's OWN annotations ride it
+    assert gap.missing_marker == "..."
+    assert provenance == []  # nothing was arbitrated between conflicting values
 
 
 # --- Witness series construction ------------------------------------------------
@@ -120,7 +139,7 @@ def test_merge_indicator_writes_both_files(tmp_path):
             # full dataclass is serialized, like sex above); the DIST omits
             # them for plain points, see build.py.
             "quality_code": None, "footnote_refs": None, "reference_range": None,
-            "missing_marker": None, "provisional": None,
+            "missing_marker": None, "provisional": None, "small_base": None,
         }
     ]
     # Witness: the harmonized series beside it, never merged.

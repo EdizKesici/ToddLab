@@ -22,8 +22,11 @@ from pathlib import Path
 from src.connectors.base import Connector, RawFetchResult
 from src.connectors.curated import CuratedConnector
 from src.connectors.dyb import DybConnector
+from src.connectors.eurostat import EurostatConnector
+from src.connectors.gho import GhoConnector
 from src.connectors.oecd import OecdConnector
 from src.connectors.owid import OwidConnector
+from src.connectors.worldbank import WorldbankConnector
 from src.schema.indicator import Indicator, Provider
 
 logger = logging.getLogger(__name__)
@@ -32,8 +35,10 @@ CONNECTORS: dict[Provider, Connector] = {
     Provider.owid: OwidConnector(),
     Provider.un_dyb: DybConnector(),
     Provider.oecd: OecdConnector(),  # DF_COM: WHO Mortality Database via SDMX (P3)
+    Provider.who_gho: GhoConnector(),  # GHO OData JSON (v10: WHOSIS_000015 LE-60 witness + v11: MDG_0000000001 IMR witness)
+    Provider.worldbank: WorldbankConnector(),  # WDI v2 JSON (v11, P5: IGME/WPP witnesses, sex-split codes)
+    Provider.eurostat: EurostatConnector(),  # demo_find JSON (v14: TFR collector, the corpus's #1)
     Provider.curated: CuratedConnector(),  # no network: "fetch" = read catalog/curated/{ref}.csv
-    # Provider.worldbank and Provider.who_gho: phase 5, deliberately absent.
 }
 # ADR-0007/0008 wiring state: un_dyb (collector tier) and curated (L0-L2)
 # are the CANONICAL sources of infant_mortality (authenticity first), with
@@ -62,8 +67,8 @@ class FetchOutcome:
 def fetch_indicator(indicator: Indicator, raw_dir: Path) -> FetchOutcome:
     """Fetch every source of an indicator for which a connector is available.
 
-    A source whose provider has no connector yet (worldbank, who_gho in
-    phase 1) is explicitly logged as SKIPPED, never silently ignored. A
+    A source whose provider has no connector yet (worldbank in phase 1) is
+    explicitly logged as SKIPPED, never silently ignored. A
     source that raises during fetch is caught, logged, and recorded as a
     failure — it does NOT stop the other sources of this indicator, nor the
     rest of the run (see fetch_all).

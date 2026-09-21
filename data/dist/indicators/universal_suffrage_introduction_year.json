@@ -1,0 +1,193 @@
+{
+  "id": "universal_suffrage_introduction_year",
+  "label": "Universal suffrage introduction year",
+  "family": "markers",
+  "unit": "year",
+  "higher_is_better": false,
+  "todd_core": true,
+  "companion_indicators": [],
+  "reliability": "high",
+  "reliability_criteria": "Canonical tier = a curated table of dated franchise introductions (16 countries, 1848-1946, one citation per point — the standard scholarly dating of the Caramani electoral-archive family, the male/female decomposition carried per row in definition_note); no witness tier exists (no machine-readable door carries the series — probed live 2026-09-20).",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 1848,
+    "end": 1946
+  },
+  "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md and catalog/curated/README.md.",
+  "notes": "THE ELEVENTH INDICATOR, THE SECOND MARKER (v15). Todd's L'invention de l'Europe (1990, 7 citations) reads the introduction of universal suffrage as the anthropological fingerprint: the exogamous communal systems of Western Europe universalized the vote EARLY and from below (France 1848, Germany 1871), the authoritarian-family belt late and from above (Austria 1907, Belgium 1919 — the plural-vote compromise dissolving only then), the asymmetric-communal north splitting the date in two (Sweden's '1911/1921', the corpus label's own dual dating: the male grant and the female grant a decade apart). The marker dates the franchise's arrival as the historiography dates it — which for the 19th-century introductions IS the male grant (they were called 'suffrage universel' at the time, women's exclusion notwithstanding) and for the later ones the completing women's grant (Norway 1913, Denmark 1915, the Netherlands 1919). The male/female decomposition rides EVERY row's definition_note: Todd's own convention (he prints '1911/1921' for Sweden), applied uniformly.\nTHE MARKER'S SHAPE: one point per country, the point's year = the introduction year, the value = the same year (the board reads the STEP: France 1848, Austria 1907, Italy 1946 — Catholic Europe's late completion, the family-systems map's own order). Every point carries its citation (the standard scholarly dating, the Caramani electoral- archive family) and its decomposition note (e.g. Switzerland: male 1848, women 1971 — the famous latecomer the Catholic-periphery argument reads).\nTHE CURATION GATE (ADR-0007, all three conditions): (a) the todd_ref demands it — 7 citations in L'invention de l'Europe, the book's comparative-anthropology core; (b) the distortion is the ABSENCE — no door carries the series (probed live, the OWID candidate slugs all 404, electoral history lives in print archives); (c) every row carries its citation — enforced mechanically.\nHONEST SCOPE LIMITS: 16 countries = Todd's own named set (Sweden, Austria, Belgium, the UK, Norway) extended to the European core his maps compare against (the founding six + the Nordic pair + the Catholic pair + the latecomers Italy and Switzerland); the countries outside the European comparison set have NO row (the honest absent state); the dating CONVENTION itself (male grant vs women's completion) is the one interpretive choice, and it rides every row's note rather than hiding in a footnote — as-reported, where 'as' is 'as the historiography that Todd cites'.",
+  "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "national_legislation",
+      "root_label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'universal_suffrage_introduction' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/universal_suffrage_introduction.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "austria",
+      "year": 1907,
+      "value": 1907.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Universal and equal male suffrage for the Reichsrat by the 1906-12-21 constitutional amendment (applied at the 1907 election); Caramani (2003); standard dating — the case Todd's L'invention de l'Europe names",
+      "definition_note": "Male universal 1907 (Todd's own date); women 1918 (Provisional National Assembly)"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "One man one vote from 1919 (plural voting abolished by the 1919-04-09 law); Caramani (2003); standard dating — the case Todd's L'invention de l'Europe names",
+      "definition_note": "Universal male 'pur et simple' 1919 (Todd's own date; male universal WITH plural votes 1893); women 1948 (law of 1948-03-27)"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1915,
+      "value": 1915.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Constitutional amendment of 1915 (universal suffrage incl. women; the 1849 constitution's broad male franchise completed); Caramani (2003); standard dating",
+      "definition_note": "Broad male franchise 1849 (with exclusions); universal (both sexes) 1915 — the Danish standard dating"
+    },
+    {
+      "entity_id": "finland",
+      "year": 1906,
+      "value": 1906.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "1906 Eduskunta reform (universal suffrage including women, applied 1907) — the first in Europe; Caramani (2003); standard dating",
+      "definition_note": "Universal (both sexes) 1906 in one parliamentary reform — the clean single-date case"
+    },
+    {
+      "entity_id": "france",
+      "year": 1848,
+      "value": 1848.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Universal (male) suffrage established by the 1848 Revolution (applied at the 1848 constituent and presidential elections); standard dating, Caramani (2003) 'The Societies of Europe: Elections in Western Europe since 1815' electoral archive",
+      "definition_note": "Male universal 1848; women 1944 (ordinance of 1944-04-21, first vote 1945) — the marker year follows the historiographical convention that dates 'le suffrage universel' at the male grant, as Todd does"
+    },
+    {
+      "entity_id": "germany",
+      "year": 1871,
+      "value": 1871.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Reichstag elected under male universal suffrage from the Empire's founding (1871); Caramani (2003) electoral archive; standard dating",
+      "definition_note": "Male universal 1871 (North German Confederation 1867); women 1918 (law of 1918-11-30)"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 1915,
+      "value": 1915.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Women's suffrage 1915 (initially over 40), all franchise restrictions removed 1920; male universal 1903 (tax qualification removed); Caramani (2003); standard dating",
+      "definition_note": "Male universal 1903; women 1915 (restricted), equal terms 1920 — the marker year follows the standard Icelandic dating"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 1922,
+      "value": 1922.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Irish Free State constitution (1922) establishing universal suffrage on equal terms; under UK law previously (women 30+ from 1918); Caramani (2003); standard dating",
+      "definition_note": "Universal (both sexes) 1922 at state founding; UK 1918/1928 franchise history before it"
+    },
+    {
+      "entity_id": "italy",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Women vote for the first time at the 1946 institutional referendum and Constituent Assembly election; male universal 1919; Caramani (2003); standard dating",
+      "definition_note": "Male universal 1919; universal (both sexes) 1946 — the standard Italian dating"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "1919 constitution (universal suffrage, women included, first applied at the 1919-10-26 referendum on the dynasty); Caramani (2003); standard dating",
+      "definition_note": "Universal (both sexes) 1919 in one constitutional step — the clean single-date case"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Women's suffrage law of 1919-05-18 completing the 1917 constitutional revision's male universal suffrage; Caramani (2003); standard dating",
+      "definition_note": "Male universal 1917 (applied 1918); universal (both sexes) 1919 — the Dutch standard dating"
+    },
+    {
+      "entity_id": "norway",
+      "year": 1913,
+      "value": 1913.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Universal suffrage with women's inclusion (constitutional amendment of 1913-06-11 — among the first sovereign states); male universal 1898; Caramani (2003); standard dating — the case Todd names",
+      "definition_note": "Male universal 1898; universal (both sexes) 1913 — Norway's standard dating IS the women's grant, unlike the male-grant convention of the older introductions"
+    },
+    {
+      "entity_id": "spain",
+      "year": 1931,
+      "value": 1931.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Second Republic constitution (1931) — universal suffrage including women (applied at the 1933 election); male universal 1890; Caramani (2003); standard dating",
+      "definition_note": "Male universal 1890; universal (both sexes) 1931"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 1911,
+      "value": 1911.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Male universal suffrage for the second chamber (1909 decision, first applied at the 1911 election); women 1921 (1919 decision, first applied 1921); Caramani (2003); standard dating",
+      "definition_note": "Todd prints the pair '1911/1921' — the marker year is the male grant (1911), the note carries the female half (1921) exactly as the corpus label does"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1848,
+      "value": 1848.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Male universal suffrage at the 1848 federal constitution; Caramani (2003); standard dating",
+      "definition_note": "Male universal 1848; women at federal level only 1971 (referendum of 1971-02-07) — the famous latecomer, the divergence Todd's Catholic-periphery argument reads"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "universal_suffrage_introduction",
+      "citation": "Representation of the People Act 1918 (all men 21+, women 30+ meeting property qualifications); equal franchise 1928; Caramani (2003); standard dating — the case Todd names",
+      "definition_note": "Male universal 1918 (Todd's convention); women 30+ 1918, full equality 1928 (Equal Franchise Act)"
+    }
+  ],
+  "witnesses": [],
+  "todd_refs": {
+    "family": "markers",
+    "citations": 7,
+    "books": 1,
+    "refs": [
+      {
+        "book": "L'invention de l'Europe",
+        "year": 1990,
+        "citations": 7,
+        "label": "Introduction of universal suffrage: Sweden 1911/1921, Austria 1907, Belgium 1919",
+        "note": "Sweden/Austria/Belgium/UK/Norway, dated introduction."
+      }
+    ]
+  }
+}

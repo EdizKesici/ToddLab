@@ -1,0 +1,314 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 5000,
+  "total": 19
+ },
+ [
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1990",
+   "value": 9.36,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1992",
+   "value": 10.203,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2015",
+   "value": 10.354,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2023",
+   "value": 7.335,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2024",
+   "value": 7.436,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1991",
+   "value": 5.316,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2005",
+   "value": 11.193,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2015",
+   "value": 4.612,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2023",
+   "value": 2.978,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1991",
+   "value": 6.8,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2015",
+   "value": 5.28,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2023",
+   "value": 3.638,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "ES",
+    "value": "Spain"
+   },
+   "countryiso3code": "ESP",
+   "date": "2013",
+   "value": 26.094,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "ES",
+    "value": "Spain"
+   },
+   "countryiso3code": "ESP",
+   "date": "2023",
+   "value": 12.179,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "GR",
+    "value": "Greece"
+   },
+   "countryiso3code": "GRC",
+   "date": "2013",
+   "value": 27.686,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "GR",
+    "value": "Greece"
+   },
+   "countryiso3code": "GRC",
+   "date": "2023",
+   "value": 11.023,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2001",
+   "value": 57,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2023",
+   "value": 10.533,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  },
+  {
+   "indicator": {
+    "id": "SL.UEM.TOTL.NE.ZS",
+    "value": "Unemployment, total (% of total labor force) (national estimate)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2015",
+   "value": 5.29007572529697,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 1
+  }
+ ]
+]
