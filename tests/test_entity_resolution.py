@@ -75,3 +75,50 @@ def test_unrelated_entity_has_no_formerly_part_of(real_entities):
 def test_no_duplicate_entity_id(real_entities):
     ids = [e.entity_id for e in real_entities.entities]
     assert len(ids) == len(set(ids))
+
+
+# --- v21: the SSR entities and the Kosovo resolution -------------------------
+
+
+def test_v21_ssr_entities_exist_and_resolve_by_id(real_entities):
+    for eid, label in (
+        ("byelorussian_ssr", "Byelorussian SSR"),
+        ("ukrainian_ssr", "Ukrainian SSR"),
+    ):
+        e = real_entities.by_id(eid)
+        assert e is not None and e.label == label
+        # The UN's own printed name in the DYB 1978 tables (the un_dyb
+        # override): a future PDF-route connector resolves by it.
+        assert real_entities.by_dyb_name(label) is e
+
+
+def test_v21_ssr_entities_carry_their_lifetime(real_entities):
+    for eid, succ in (("byelorussian_ssr", "belarus"), ("ukrainian_ssr", "ukraine")):
+        e = real_entities.by_id(eid)
+        assert (e.valid_from, e.valid_to) == (1922, 1991)
+        assert e.successors == [succ]
+        assert e.covers_year(1974) and not e.covers_year(1992)
+
+
+def test_v21_kosovo_resolves_through_the_user_assigned_code(real_entities):
+    # The World Bank's countryiso3code (XKX) and the Eurostat override's
+    # target are the SAME user-assigned code — one entity, both doors.
+    from_source = real_entities.resolve_from_source("worldbank", "Kosovo", "XKX")
+    assert from_source is not None and from_source.entity_id == "kosovo"
+    assert from_source.covers_year(2008) and not from_source.covers_year(2007)
+
+
+def test_v21_the_dyb1978_prints_resolve_by_name(real_entities):
+    # The as-printed names of the vanished entities against the registry:
+    # USSR and Yugoslavia ride their declared un_dyb overrides, the rest
+    # resolve by label (the DYB's English name equals the label).
+    for printed, eid in (
+        ("Union of Soviet Socialist Republics", "ussr"),
+        ("Yugoslavia", "yugoslavia_sfr"),
+        ("Czechoslovakia", "czechoslovakia"),
+        ("German Democratic Republic", "east_germany"),
+        ("Byelorussian SSR", "byelorussian_ssr"),
+        ("Ukrainian SSR", "ukrainian_ssr"),
+    ):
+        e = real_entities.by_dyb_name(printed) or real_entities.by_label(printed)
+        assert e is not None and e.entity_id == eid, printed

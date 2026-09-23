@@ -51,11 +51,142 @@ Compare countries side by side on hard indicators (infant mortality, life expect
 - **WHO Mortality Database, via the OECD "Causes of mortality" dataflow**
   (collector tier) — cause-of-death registrations as submitted by member
   states (ICD-coded; Assault for the homicide rate, intentional
-  self-harm for the suicide rate — v13, the corpus's #2 by citations),
-  49 countries on homicide / 46 on suicide, 1960-2024, crude rates (the
+  self-harm for the suicide rate — v13, the corpus's #2 by citations,
+  and chronic liver diseases and cirrhosis for the alcohol-mortality
+  indicator — v18, La Chute finale's calibration pair printing itself:
+  FRA 1979 = 29.0 vs SWE 12.2), 49 countries on homicide / 46 on
+  suicide / 45 on cirrhosis, 1960-2024, crude rates (the
   age-standardized variant is a derived measure and deliberately not
-  used as canonical). The two causes share one architecture: the OECD
-  dataflow carries 50 death-cause codes, each one config away.
+  used as canonical). The three causes share one architecture: the OECD
+  dataflow carries 50 death-cause codes, each one config away — and
+  the v18 wiring corrected the v13 probe record on the way: "RUS
+  absent from the cirrhosis slice" was a probe artifact (the v13 probe
+  omitted the Accept header; the full slice answers 7,089 records
+  through the production machinery). The honest finding instead:
+  Russia genuinely does not ride this cause's collector slice (its
+  alcohol deaths live under different ICD codes — the WHO-MDB coding
+  story), so the Russian claim rides the GHE witness (modeled,
+  age-standardized) and the book tables.
+- **OECD, THREE MORE DATAFLOWS** (collector tier, v19+v22 — the
+  four-flow connector, the eurostat precedent applied: one connector,
+  one grammar + pin guard per dataset) — the Income Distribution Database
+  (DSD_WISE_IDD@DF_IDD, the gini canonical: national household-survey
+  microdata as submitted, equivalized disposable income, 45 areas
+  1974-2025, USA 1995 = 0.361 on L'illusion économique's own year) and
+  the ITF/IRTAD Transport safety indicators (DSD_INDICATORS@
+  DF_SAFETY, the road-mortality canonical: police-reported crash
+  registrations, 55 areas 1994-2025, FRA 15.2 -> 4.7 the
+  sécurité-routière arc, LVA 1994 = 28.44 the post-Soviet tail, RUS
+  absent from the whole flow — the honest limit the witness covers).
+  THE IDD STITCHING (the version's display case): the flow prints the
+  same country-year under METHODOLOGY x DEFINITION vintages, so the
+  gini config wires FOUR doors in a priority chain (METH2012-current >
+  its definition back-series with and without the overlap year >
+  METH2011 history) — the OECD explorer's own chained display made
+  explicit, France sewing three times (0.277 in 1996 -> 0.309 in 2011
+  -> 0.278 in 2020), every collision a logged provenance discard. The
+  road flow prints THREE denominators — the per-100k population rate
+  is wired (the mortality family's unit), the per-vehicle face
+  (10P4VEH_MOT_ROAD — the exact denominator of Todd's own 1974 WHO
+  table in Le Fou et le Prolétaire) and the per-vehicle-km face stay
+  registered non-wired doors, one config line away.
+- **OECD, THE MIGRATION QUESTIONNAIRE'S MATRIX** (collector tier,
+  v22 — the fourth dataflow, DSD_MIG_F@DF_MIG_POPF "International
+  migration database - stocks of foreign-born population", OECD.ELS.IMD)
+  — the bilateral WITNESS of immigration_stock's new by-origin face:
+  REF_AREA x BIRTH_COUNTRY, both axes ISO3, 38 destinations x 242
+  origin codes, the OECD-COMPILED face of the same national
+  registrations (the oecd_family relation — the IMD's own foreign-born
+  face). THE ACCESS QUIRK: the flow refuses positional keys (every
+  dotted key 404s — the observation dimension carries TIME), so the
+  door serves only through the empty-key /all download: 197,570 rows /
+  18.2 MB in one call, already the pinned frame (MEASURE=B14 only,
+  FREQ=A only, PS only — the flow's whole vocabulary, hard-verified per
+  row), both sexes riding for the parser to split (the _T frame kept,
+  the F rows dropped logged — the by-sex face recorded unwired). THE
+  SEAM, verified to the unit: the questionnaire prints the SAME number
+  the Eurostat c_birth face prints (FR<-MAR 2015 = 954,742 on both
+  doors) — the agreement the root field exists to explain, both doors
+  walking back to the same national registrations; and the OECD face
+  EXTENDS the canonical universe: the FR Maghreb series 2019-2021 past
+  the Eurostat cutoff, the vanished-entity origins (CSK_F/SUN_F/
+  YUG_F/ANT_F/SCG_F — the by-origin face of the v21 admission), and
+  the world's non-European destinations the Eurostat codelist
+  structurally cannot print (US<-MEX 12,383,868 in 2024, US<-W
+  51,226,993 the World-total row dropped logged).
+- **Eurostat, THE BY-ORIGIN ROW DOORS** (collector tier, v22 — the
+  bilateral face of the migration questionnaire, migr_pop3ctb/ROW/
+  {geo}): one geo-pinned call per destination, c_birth deliberately
+  UNPINNED — the by-birth codelist AS PRINTED (307 codes: 243
+  countries + the door's 64 aggregate/summary codes, dropped logged
+  per class; the c_birth == geo diagonal — the native face — drops
+  logged too). THE HONEST COVERAGE LIMIT: 30 of the codelist's 44
+  country geos print the by-origin detail (91,230 canonical points, 30
+  destinations x 243 origins, 1998-2025); 14 print only their totals
+  (DE, EL, MT, ME, MD, MK, GE, AL, RS, UA, AD, MC, AM, AZ — Germany's
+  row carries 184 cells, every one an aggregate or summary code) —
+  unwired, recorded, the Ukraine-on-the-FOR-door class of honest
+  absence. THE TODD BOARD'S OWN CELLS ride it: FR<-DZ 1999 =
+  1,246,706 -> 2018 = 1,390,284, FR<-MA 2015 = 954,742, FR<-PT 2025 =
+  599,492, the Maghreb/Turkey slices on the census rounds (the
+  coverage cliff as-printed), the UK row 1998-2004. THE VANISHED
+  ORIGIN: Eurostat keeps printing the Netherlands Antilles' withdrawn
+  alpha-2 AN as a birth place (FR<-AN 1999 = 78) — the
+  netherlands_antilles entity (iso3 ANT) carries it, the kosovo/XKX
+  precedent on the birth-place axis.
+- **World Inequality Database, via OWID's chart door** (research-
+  harmonization tier serving as CANONICAL, v19) — the corpus NAMES the
+  source for La Défaite de l'Occident's own inequality board
+  ("Russia/USA/France, WID data"), and no collector anywhere prints a
+  top-fractile income share: the metric is by construction a
+  constructed series (fiscal microdata + surveys + national accounts,
+  the DINA guidelines), so the compilation the corpus names IS the
+  origin tier — the consanguinity_studies constitution. The direct
+  WID API refuses this environment on every extractor shape (the
+  CloudFront 403 record in sources.yaml), so the machine-readable
+  face is OWID's chart door — incomes-of-the-richest, 165 entities,
+  1820-2024, attribution "WID.world (2026)" read live from the chart
+  metadata — the same door-relation the OECD Family Database holds.
+  The top-1% indicator stands canonical-ALONE (no cross-root witness
+  door exists — the honest absence, the probe record), the sibling
+  extrapolations chart refused by the anti-derivation line, and the
+  gini's WID pre-tax witness rides the same door family (the concept
+  seam: France 2022 = 0.299 disposable canonical vs 0.4592 pre-tax
+  witness — the redistribution IS the gap, displayed never
+  reconciled).
+- **The v20 queue doors — five compilations, one corpus closed**
+  (24/24 since v20) — the final five metrics each found their machine
+  face on a compilation's chart door or the provider's own wire:
+  the ICPR World Prison Brief via OWID's prison-population-rate (225
+  entities 1993-2026, the Défaite six-country board printing itself:
+  USA 683 -> 542, RUS 729 -> 300, FRA 82 -> 126 — the UNODC collector
+  portal is a client-rendered SPA with no machine door, the WPB's own
+  site answers 404 on /api, the chart IS the wire), the OECD PISA
+  Database via the average-performance chart door with the
+  Mathematics column pinned (90 entities, 2003-2022 — the SDMX
+  registry carries NO PISA dataflow; Todd's own TIMSS table has no
+  machine door at all, the assessment seam documented), the UNAIDS
+  Global AIDS Update via the share-of-the-population-infected chart
+  door (161 entities 1990-2024 — aidsinfo a SPA, api.unaids.org
+  DNS-dead; the compilation's own universe excludes the USA, Russia
+  and China, verified identically on the GHO redistribution), the
+  NCD-RisC height compilation via the average-height-of-men chart
+  door (200 entities, birth cohorts 1896-1996, FRA +13.3cm — the
+  book's +10cm printing bigger) with the Baten-Blum/Clio-Infra
+  historical record as the CROSS-ROOT witness (the pre-1896 tail on
+  the witness tier, the barro_lee relation), and — the one door on a
+  provider's OWN wire — the NCD-RisC adult BMI pooled analysis as WHO
+  GHO's NCD_BMI_30C (199 countries, 1980-2024, full sex split, the
+  FIRST GHO-canonical indicator; the OWID chart redistributes it
+  bit-identically, its own evidence for the auto-witness refusal).
+  The GHO connector gained the PER-CODE AGE PIN for it: a door whose
+  every row carries one age frame (YEARS18-PLUS, not SDGSUICIDE's
+  YEARSALL) declares that frame, and the parser accepts exactly it —
+  anything else stops the parse loudly. One GHO witness rides the
+  collection tier — the WHO Health in Prisons coupe (36 European
+  countries at the single 2020 vintage, the RS_198 pattern) — while
+  three of the five stand canonical-alone, the top_income precedent
+  for the honest absence of any cross-root machine door.
 - **Curated tables** (in-repo, cited per point) — official or scholarly
   series no machine-readable collector redistributes. Three families
   since v17: collector-shaped series (the Soviet official infant-
@@ -75,7 +206,21 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   38.6 over 306,343 couples, the European sub-1% registry belt, the
   Maghreb trio; the sparse-panel shape is the metric's own honest
   form, the scope discipline — national first, the largest study
-  otherwise — riding every row's note). The curation gate's probe
+  otherwise — riding every row's note), and — v21 — the TRANSCRIPTION
+  SERIES: the DYB 1978 vanished-entity tables, the UN's own
+  as-reported prints of states the modern XLS loop cannot reach (the
+  USSR, the Byelorussian and Ukrainian SSR — three distinct UN member
+  seats, each its own rows — plus Czechoslovakia, Yugoslavia SFR and
+  the GDR), every value READ from the archived text layer and
+  arithmetically cross-checked before entering the catalog (the Table
+  15 count over the printed rate reproduces Table 9's births within
+  0.4%; Table 4's LE equals Table 22's age-0 column), the Soviet
+  live-birth definition and the Berlin footnote riding their rows'
+  notes, the '*' prints and the C row-codes carried as structured
+  fields (the curated format's v21 extension). The Yemen gate applied
+  in reverse: the 1978 prints are Population Division ESTIMATES
+  (footnote 4) — witness-class by constitution, the rows excluded,
+  the entities honest and data-less. The curation gate's probe
   record: no OWID chart, no collector wire — the curated tier is not
   competing with a door, it is the only tier.
 - **Our World in Data / UN IGME, UNODC, UN MMEIG** (harmonized tier) — model
@@ -96,7 +241,13 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   ill-defined causes the collectors left unassigned (Russia male 2000:
   69.8 as-reported vs 95.2 modeled), so the two tiers of that indicator
   diverge systematically instead of episodically — the cleanest display
-  of reclassification sensitivity in the project.
+  of reclassification sensitivity in the project. Since v19 it also
+  carries RS_198, the Global status report on road safety's modeled
+  death rate — the road-mortality witness and the first who_roadsafety
+  root (a DIFFERENT WHO estimate family from the GHE: the biennial
+  report's own cross-section, 197 countries at its single 2021 vintage,
+  Russia 10.6 included where the ITF collector never carried it — the
+  coupe pattern the cirrhosis witness set).
 - **Eurostat, Fertility indicators** (collector tier, v14 — the
   fertility canonical; v16 — the illégitimité too) — the series the
   national statistical offices themselves compute and publish,
@@ -151,6 +302,36 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   (Germany 1991-2008 lives only on the witness; the collector starts
   DE at 2009) and the rounding seam (FRA 2024: 7.436 vs 7.4) reading
   as two doors, never a contradiction.
+- **Eurostat, THREE MORE QUESTIONNAIRES** (collector tier, v18 — the
+  five-dataset connector) — the national accounts (nama_10_a10_e), the
+  LFS attainment table (edat_lfse_03) and the migration collection
+  (migr_pop3ctb), each wired as its own dispatch decision with its own
+  ref grammar and layout pin-guard. THE INDUSTRIAL FINDING (the
+  version's headline): the accounts door PRINTS the share of total
+  employment by industry directly (unit PC_TOT_PER, na_item EMP_DC,
+  nace_r2 B-E — the door's own aggregate, "Industry (except
+  construction)"; FR 1995 = 16.4 -> 2024 = 10.1, DE 23.1 -> 17.5) —
+  the finding that dissolved the composite-derived-layer question the
+  backlog's head had waited on since v15: no derivation is needed
+  because the collector prints the share. The agricultural share
+  rides the same door one nace pin away (A: FR 4.4 -> 2.3). The
+  education pair rides the LFS attainment table (tertiary ED5-8,
+  secondary ED3_4 the completed-secondary face, age Y25-64 — one
+  questionnaire now carrying three Todd metrics: unemployment,
+  tertiary, secondary; UNESCO UIS, the world's education collector,
+  has no live API, the probe record in sources.yaml). The migration
+  door prints the foreign-born stock per country (c_birth=FOR: FR
+  2008 = 7,076,824 -> 2024 = 9,362,105, annual, the door's codelist
+  richer than the LFS's). THE EA EDGE: nama's geo codelist carries
+  the Euro-area aggregate as the bare two-letter code "EA" — the only
+  two-letter aggregate in any wired Eurostat codelist, dropped logged
+  by the connector's per-dataset table. Witnesses: the ILOEST modeled
+  sector shares (WB, the compound seam — industry including
+  construction on a modeled employment concept — displayed, never
+  reconciled), the Barro-Lee/Lee-Lee long-run attainment panel via
+  OWID's chart door (tertiary only — the corpus's own named source),
+  and the UN DESA migrant-stock estimates (WB SM.POP.TOTL: FR 2024 =
+  9.19M DESA vs 9.36M collector, the estimation seam).
 - **World Bank Open Data / WDI** (harmonized tier, v11 — the phase-5
   provider) — UN IGME child-mortality codes and UN WPP life-expectancy
   codes as WITNESS series, sex-split through the provider's own code

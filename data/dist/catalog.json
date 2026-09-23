@@ -1,5 +1,50 @@
 [
   {
+    "id": "agricultural_employment_share",
+    "label": "Agricultural employment share",
+    "family": "economy",
+    "unit": "percent",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = Eurostat nama_10_a10_e pinned na_item=EMP_DC, unit=PC_TOT_PER, nace_r2=A (\"Agriculture, forestry and fishing\" — the door's own aggregate label): same universe and discipline as industrial (34 countries, aggregates dropped logged incl. the EA two-letter edge, no sex dimension, FR 1995-2024 full annual series 4.4 -> 2.3). Witness tier = the ILO modeled agriculture shares, world 1991-2024. Root pair eurostat_na/ilo_modelled.",
+    "reclassification_sensitive": false,
+    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0 — see docs/licenses.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "eurostat_na",
+          "label": "Eurostat national accounts (nama_10_a10_e — employment by industry as each country prints it, shares at PC_TOT_PER)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "ilo_modelled",
+          "label": "ILO modelled estimates, ILOSTAT 2EMP family (redistributed by World Bank WDI as the employment-by-sector share codes)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 1132,
+    "n_witness_points": 14208,
+    "todd_refs": {
+      "family": "economy",
+      "citations": 2,
+      "books": 1,
+      "refs": [
+        {
+          "book": "Le Destin des immigrés",
+          "year": 1994,
+          "citations": 2,
+          "label": "Agricultural employment/population share (Britain 1841, USA 1841, Turkey 1985)",
+          "note": "UK/USA/Turkey, 1841-1985."
+        }
+      ]
+    }
+  },
+  {
     "id": "birth_rate_fertility",
     "label": "Total fertility rate",
     "family": "society",
@@ -29,8 +74,8 @@
         }
       ]
     },
-    "n_points": 1953,
-    "n_witness_points": 14190,
+    "n_points": 1957,
+    "n_witness_points": 14208,
     "todd_refs": {
       "family": "society",
       "citations": 111,
@@ -148,6 +193,73 @@
           "citations": 13,
           "label": "Birth rate / fertility",
           "note": "Russia/Ukraine 1995-2020 + Bangalore fertility-under-patriliny point."
+        }
+      ]
+    }
+  },
+  {
+    "id": "cirrhosis_alcohol_mortality",
+    "label": "Cirrhosis / alcohol-related mortality",
+    "family": "mortality",
+    "unit": "deaths_per_100000_population",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = WHO Mortality Database cause-of-death registrations as submitted by member states (civil registration, ICD-coded, \"Chronic liver diseases and cirrhosis\" = the OECD's cross-ICD CICDCIRR grouping), redistributed by the OECD Causes of Mortality dataflow over SDMX, 45 areas, 1960-2024, sex-split as published (2,385 both-sexes + 2,352 male + 2,352 female cells in the live slice), quality codes as-reported (45 'D' + 3 'B' cells). Witness tier = WHO Global Health Estimates age-standardized liver-cirrhosis rates via GHO (modeled, 180 countries x 3 sexes at the GHE's own single 2019 vintage — no multi-year GHE cirrhosis series exists on the API, the neighboring codes probed and recorded; the all-ages series kept and the 15+ variant dropped logged per the connector's Dim2 rule). Authenticity first per ADR-0008: collector as-reported beside model estimates, never blended.",
+    "reclassification_sensitive": true,
+    "license": "Mixed, per source (see \"sources\"): OECD DF_COM = OECD Terms and Conditions, attribution required (content: WHO Mortality Database); GHO witness = CC-BY-3.0-IGO.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "who_mdb",
+          "label": "WHO Mortality Database (civil registration, as submitted by member states)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "who_ghe",
+          "label": "WHO Global Health Estimates (GHE) — modeled cause-of-death estimates",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 7089,
+    "n_witness_points": 540,
+    "todd_refs": {
+      "family": "mortality",
+      "citations": 9,
+      "books": 4,
+      "refs": [
+        {
+          "book": "La Chute finale",
+          "year": 1976,
+          "year_raw": "1976/1990",
+          "citations": 2,
+          "label": "Cirrhosis / alcohol-related mortality",
+          "note": "France vs Sweden benchmark, used to calibrate Soviet alcoholism scale."
+        },
+        {
+          "book": "Le Fou et le Prolétaire",
+          "year": 1979,
+          "citations": 5,
+          "label": "Cirrhosis / alcohol-related mortality",
+          "note": "France vs USA/Germany/Italy, class breakdown."
+        },
+        {
+          "book": "L'invention de la France",
+          "year": 2012,
+          "citations": 0,
+          "label": "Cirrhosis / alcohol-related mortality",
+          "note": "Mapped, 1975; Nord/Pas-de-Calais highest."
+        },
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 2,
+          "label": "Alcohol-related deaths, absolute",
+          "note": "Russia 2000-2017, rate and counts."
         }
       ]
     }
@@ -273,7 +385,7 @@
         {
           "root": "unsd_dyb",
           "label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
-          "doors": 13
+          "doors": 14
         }
       ],
       "witness": [
@@ -284,8 +396,99 @@
         }
       ]
     },
-    "n_points": 3319,
-    "n_witness_points": 14190
+    "n_points": 3346,
+    "n_witness_points": 14208
+  },
+  {
+    "id": "gini_index",
+    "label": "Gini index of income inequality",
+    "family": "economy",
+    "unit": "gini_coefficient_0_to_1",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = the OECD Income Distribution Database (IDD) via SDMX (DSD_WISE_IDD@DF_IDD), the Gini of equivalized disposable income as submitted by member statistical offices (national household surveys), 45 areas, 1974-2025, unit 0_TO_1, AGE=_T, four vintage doors in a priority chain (METH2012-D_CUR > METH2012-D_PREV > METH2012-D_INC > METH2011-D_CUR — the OECD explorer's own chained display; 906 country-year keys, zero unresolved, every collision a logged provenance discard). Witness tier = the WID pre-tax Gini via OWID's chart door (165 entities, 1820-2024, the DINA research harmonization — a different income concept, the gap displayed never reconciled). Authenticity first per ADR-0008: collector print beside research harmonization, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OECD IDD = OECD Terms and Conditions, attribution required; OWID/WID witness = CC-BY-4.0 (OWID's chart-door terms; content: World Inequality Database).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "oecd_idd",
+          "label": "OECD Income Distribution Database (IDD — national household-survey Ginis as submitted, equivalized disposable income; METH2012 chained through the definition vintages)",
+          "doors": 4
+        }
+      ],
+      "witness": [
+        {
+          "root": "wid",
+          "label": "World Inequality Database (WID.world — DINA research harmonization, pre-tax national income concepts; via OWID's chart door)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 906,
+    "n_witness_points": 3203,
+    "todd_refs": {
+      "family": "economy",
+      "citations": 4,
+      "books": 2,
+      "refs": [
+        {
+          "book": "L'illusion économique",
+          "year": 1998,
+          "citations": 3,
+          "label": "Gini coefficient (income distribution)",
+          "note": "15-country OECD table, 1995."
+        },
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 1,
+          "label": "Gini inequality index",
+          "note": "Distribution measure (not level); US-focused citation."
+        }
+      ]
+    }
+  },
+  {
+    "id": "hiv_prevalence_rate",
+    "label": "HIV prevalence among adults (15-49)",
+    "family": "mortality",
+    "unit": "percent",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = UNAIDS' own epidemic indicators (the Global AIDS Update's modeled estimates, the Spectrum/EPP framework's central estimates), prevalence among adults 15-49 in percent, 161 entities, 1990-2024, reached through OWID's chart door (the direct UNAIDS machine door is closed from this environment — the probe record). A modeled-estimates canonical by necessity: no collector prints a prevalence (seroprevalence surveys feed the model, never the wire). No witness tier — the GHO and WB doors redistribute the same root (refused as auto-witnesses), and the IHME cross-root family is 403-blocked (re-confirmed live). The top_income_share constitution: the compilation the corpus names, displayed as what it is.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: UNAIDS, Global AIDS Update — UNAIDS' own reuse terms apply upstream).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "unaids",
+          "label": "UNAIDS (the Global AIDS Update epidemic indicators, modeled estimates; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 5199,
+    "n_witness_points": 0,
+    "todd_refs": {
+      "family": "mortality",
+      "citations": 1,
+      "books": 1,
+      "refs": [
+        {
+          "book": "Où en sommes-nous ?",
+          "year": 2017,
+          "citations": 1,
+          "label": "HIV seroprevalence, Africa (women 15–49)",
+          "note": "WHO/UNAIDS-style data, used by Todd as a patrilineality proxy."
+        }
+      ]
+    }
   },
   {
     "id": "homicide_rate",
@@ -424,7 +627,7 @@
         }
       ]
     },
-    "n_points": 2144,
+    "n_points": 2156,
     "n_witness_points": 2139,
     "todd_refs": {
       "family": "society",
@@ -477,6 +680,188 @@
     }
   },
   {
+    "id": "immigration_stock",
+    "label": "Immigrant stock (foreign-born population)",
+    "family": "demography",
+    "unit": "persons",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = Eurostat migr_pop3ctb pinned c_birth=FOR (the foreign-born total — \"Foreign country\"), age=TOTAL, sex=T, unit=NR (the dataset's only unit, pinned and guarded): 44 countries (aggregates dropped logged), the door's own per-country starts (Ireland 2000, Italy/Lithuania/Spain 2002, France 2007 — the FR series annual 2007-2025, census-aligned) with the collector's b/e/p flags as-reported. Since v22 the SAME collector tier carries the by-origin face: the 44 geo-pinned ROW doors (c_birth open, the 307-code by-birth codelist as printed; aggregates, the FOR/NAT/TOTAL/OTH/UNK/RNC summary codes and the native diagonal dropped logged per class), as each country's own registration prints it. Witness tiers = the UN DESA migrant-stock estimates via WDI (world 1990-2024, the total face) and — since v22, the by-origin face — the OECD migration questionnaire's foreign-born matrix (38 destinations x the BIRTH_COUNTRY codelist, SEX=_T; the two questionnaires agreeing to the unit on the co-covered core). Root pair eurostat_migr/un_desa/oecd_mig: the registrations, the compiled estimates of the same stock, and the OECD-compiled questionnaire answers — one estimation/compilation step apart each.",
+    "reclassification_sensitive": false,
+    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0; OECD Terms and Conditions, attribution required — see docs/licenses.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "eurostat_migr",
+          "label": "Eurostat migration statistics (migr_pop3ctb — foreign-born stock by country of birth, as each country reports)",
+          "doors": 31
+        }
+      ],
+      "witness": [
+        {
+          "root": "oecd_mig",
+          "label": "OECD International Migration Database (DSD_MIG_F@DF_MIG_POPF — the questionnaire's foreign-born matrix, OECD-compiled)",
+          "doors": 1
+        },
+        {
+          "root": "un_desa",
+          "label": "UN Population Division, Trends in International Migrant Stock (DESA estimates; redistributed by World Bank WDI as SM.POP.TOTL)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 557,
+    "n_witness_points": 14208,
+    "todd_refs": {
+      "family": "demography",
+      "citations": 11,
+      "books": 1,
+      "refs": [
+        {
+          "book": "Le Destin des immigrés",
+          "year": 1994,
+          "citations": 11,
+          "label": "Maghreb, Turkish, Portuguese populations — France/UK/Germany 1946–1990 (+ 4 distribution maps)",
+          "note": "France/UK/Germany immigrant population by origin, 1946-1990, official censuses."
+        }
+      ]
+    }
+  },
+  {
+    "id": "incarceration_rate",
+    "label": "Prison population rate",
+    "family": "society",
+    "unit": "prisoners_per_100000_population",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = the Institute for Crime & Justice Policy Research's World Prison Brief (2026 vintage, lastUpdated 2026-01-21), the national prison administrations' own counts compiled — prisoners per 100,000 population, pre-trial and remand detainees included, 225 areas, 1993-2026 — reached through OWID's chart door (the compilation's own site has no API and the UNODC collector portal is a client-rendered SPA with no discoverable machine door — the probe record). A compilation canonical by necessity: no collector prints the rate on any reachable wire. Witness tier = the WHO Health in Prisons database (GHO PRISON_A2, the European questionnaire collection's 2020 cross-section, 36 countries). Authenticity first per ADR-0008: the boards' compilation beside the health-services collection, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: Institute for Crime & Justice Policy Research, World Prison Brief — ICPR's own reuse terms apply upstream); GHO witness = CC-BY-3.0-IGO.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "icpr_wpb",
+          "label": "Institute for Crime & Justice Policy Research, World Prison Brief (national prison-administration counts compiled; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "who_prisons",
+          "label": "WHO Health in Prisons database (the European prison-health questionnaire collection; the PRISON_* family on GHO)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 2207,
+    "n_witness_points": 36,
+    "todd_refs": {
+      "family": "society",
+      "citations": 3,
+      "books": 3,
+      "refs": [
+        {
+          "book": "L'illusion économique",
+          "year": 1998,
+          "citations": 1,
+          "label": "US adults on probation / in jail or prison / on parole",
+          "note": "US correctional-population growth 1980-1993 (see note: total correctional population, not strict incarceration)."
+        },
+        {
+          "book": "Qui est Charlie ?",
+          "year": 2015,
+          "citations": 1,
+          "label": "Persons taken into custody (écroués) and incarceration rate, 1980 vs 2014",
+          "note": "France écroués, 1980 vs 2014, +70% corrected for population."
+        },
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 1,
+          "label": "Incarceration rate, six-country comparison",
+          "note": "6-country comparison (US/Russia/UK/France/Germany/Japan)."
+        }
+      ]
+    }
+  },
+  {
+    "id": "industrial_employment_share",
+    "label": "Industrial employment share",
+    "family": "economy",
+    "unit": "percent",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = Eurostat nama_10_a10_e pinned na_item=EMP_DC (total employment domestic concept — the door also prints SAL_DC employees and SELF_DC self-employed, unwired), unit=PC_TOT_PER (percentage of total — the door's OWN share unit; the counts face THS_PER and the index face I15_* refused), nace_r2=B-E (\"Industry (except construction)\" — the door's own aggregate label, verified live 2026-09-21): 34 countries + aggregates dropped (EU27_2020/EA/EA21/ EA20/EA19/EA12 — EA the bare two-letter Euro-area aggregate, dropped logged as _DATASET_TWO_LETTER_AGGREGATES records), no sex dimension (both-sexes by construction), FR/DE 1995-2024 full annual series (FR 16.4 -> 10.1, DE 23.1 -> 17.5), the EA aggregates' own prints riding the drop log. Witness tier = the ILO modeled shares, world 1991-2024, industry INCLUDING construction. The root pair eurostat_na/ilo_modelled: same underlying national accounts and surveys, one modeling step and one construction-coverage apart.",
+    "reclassification_sensitive": false,
+    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0 — see docs/licenses.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "eurostat_na",
+          "label": "Eurostat national accounts (nama_10_a10_e — employment by industry as each country prints it, shares at PC_TOT_PER)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "ilo_modelled",
+          "label": "ILO modelled estimates, ILOSTAT 2EMP family (redistributed by World Bank WDI as the employment-by-sector share codes)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 1132,
+    "n_witness_points": 14208,
+    "todd_refs": {
+      "family": "economy",
+      "citations": 30,
+      "books": 5,
+      "refs": [
+        {
+          "book": "La nouvelle France",
+          "year": 1988,
+          "citations": 4,
+          "label": "Industrial employment share (maps and census)",
+          "note": "French census, 1975-1982 decline."
+        },
+        {
+          "book": "L'invention de l'Europe",
+          "year": 1990,
+          "citations": 20,
+          "label": "Industry share of active population, c.1880 (map) and c.1970 (map) + country values",
+          "note": "Multiple European maps/tables, 1880-1987, several countries."
+        },
+        {
+          "book": "Le Destin des immigrés",
+          "year": 1994,
+          "citations": 2,
+          "label": "Employment share of mines/manufacturing/construction/transport (Britain 1841) and of mines/industry/building by nationality (Germany 1987 census)",
+          "note": "UK/Germany, by nationality."
+        },
+        {
+          "book": "L'illusion économique",
+          "year": 1998,
+          "citations": 3,
+          "label": "Active population employed in industry (%)",
+          "note": "US/Germany/Japan/UK/France/Italy, 1971-1994."
+        },
+        {
+          "book": "Les Luttes de classes en France",
+          "year": 2019,
+          "citations": 1,
+          "label": "Industrial employment share (maps and census)",
+          "note": "Eastern Europe vs France/South Europe comparison."
+        }
+      ]
+    }
+  },
+  {
     "id": "infant_mortality",
     "label": "Infant mortality",
     "family": "mortality",
@@ -498,7 +883,7 @@
         {
           "root": "unsd_dyb",
           "label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
-          "doors": 13
+          "doors": 14
         }
       ],
       "witness": [
@@ -509,8 +894,8 @@
         }
       ]
     },
-    "n_points": 2702,
-    "n_witness_points": 80741,
+    "n_points": 2719,
+    "n_witness_points": 80828,
     "todd_refs": {
       "family": "mortality",
       "citations": 52,
@@ -628,7 +1013,7 @@
         {
           "root": "unsd_dyb",
           "label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
-          "doors": 13
+          "doors": 14
         }
       ],
       "witness": [
@@ -644,8 +1029,8 @@
         }
       ]
     },
-    "n_points": 6018,
-    "n_witness_points": 47848,
+    "n_points": 6030,
+    "n_witness_points": 47884,
     "todd_refs": {
       "family": "mortality",
       "citations": 26,
@@ -764,6 +1149,51 @@
     "n_witness_points": 12210
   },
   {
+    "id": "male_height_trend",
+    "label": "Mean male height by birth cohort",
+    "family": "society",
+    "unit": "centimeters",
+    "higher_is_better": true,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = the NCD Risk Factor Collaboration's 2016 eLife compilation (1,472 population-based measurement studies re-analyzed; mean height at age 18 by birth cohort, 200 entities, 1896-1996) via OWID's chart door, single-column clean. Witness tier = Baten & Blum (2015) via Clio-Infra (the historical anthropometric record, 153 entities, 1550-2000) — a genuinely cross-root compilation agreeing at the cm level on the overlapping cohorts. Authenticity first per ADR-0008: two independent compilations displayed beside each other, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart doors = CC-BY-4.0 (OWID's chart-door terms; content: NCD Risk Factor Collaboration (2016), and Baten & Blum (2015) via Clio-Infra — the compilations' own reuse terms apply upstream).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "ncd_risc_height",
+          "label": "NCD Risk Factor Collaboration, a century of trends in adult human height (2016 eLife, birth cohorts 1896-1996; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "baten_blum",
+          "label": "Baten & Blum (2015) via Clio-Infra, Biological Standards of Living (the historical anthropometric record; via OWID's chart door)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 20200,
+    "n_witness_points": 1488,
+    "todd_refs": {
+      "family": "society",
+      "citations": 1,
+      "books": 1,
+      "refs": [
+        {
+          "book": "Après la démocratie",
+          "year": 2008,
+          "citations": 1,
+          "label": "Average height of 20-year-old men, France 1900-2005",
+          "note": "Average height of French men, +10cm, 1900-2005."
+        }
+      ]
+    }
+  },
+  {
     "id": "maternal_deaths",
     "label": "Maternal deaths",
     "family": "mortality",
@@ -792,7 +1222,7 @@
       ]
     },
     "n_points": 2834,
-    "n_witness_points": 14190
+    "n_witness_points": 14208
   },
   {
     "id": "maternal_mortality_ratio",
@@ -823,7 +1253,130 @@
       ]
     },
     "n_points": 1898,
-    "n_witness_points": 23058
+    "n_witness_points": 23076
+  },
+  {
+    "id": "math_test_scores",
+    "label": "PISA mathematics mean score",
+    "family": "education",
+    "unit": "pisa_score_points",
+    "higher_is_better": true,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = the OECD PISA assessment's own mean mathematics scale scores (the PISA Database, OECD 2023 vintage), 90 entities, the seven triennial cycles 2003-2022, reached through OWID's chart door with the mathematics column pinned (the CSV's own header) — the OECD runs the assessment and prints the scale scores itself (the collector judgment); the SDMX registry carries no PISA dataflow, so the chart door is the machine face. No witness tier — the by-sex door is the same root, the composite learning scores are derived, and TIMSS (the assessment Todd's own table read) has no machine door. Authenticity first per ADR-0008: the assessment's own scores displayed as what they are.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: OECD, PISA Database — the OECD's own reuse terms apply upstream).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "oecd_pisa",
+          "label": "OECD PISA assessment (the PISA Database mean scale scores; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 480,
+    "n_witness_points": 0,
+    "todd_refs": {
+      "family": "education",
+      "citations": 3,
+      "books": 1,
+      "refs": [
+        {
+          "book": "L'illusion économique",
+          "year": 1998,
+          "citations": 3,
+          "label": "TIMSS 8th-grade mathematics mean scores",
+          "note": "TIMSS 8th-grade, 19 countries, OECD source."
+        }
+      ]
+    }
+  },
+  {
+    "id": "obesity_rate",
+    "label": "Obesity prevalence among adults (BMI >= 30)",
+    "family": "mortality",
+    "unit": "percent",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = the NCD Risk Factor Collaboration's adult BMI pooled analysis (measured population-based surveys re-analyzed), republished by WHO GHO as NCD_BMI_30C — the crude 18+ face, 199 countries, 1980-2024, full sex-split, on the provider's own API wire (the 2026 vintage, lastUpdated 2026-05-22, read live). A modeled-estimates canonical by necessity: no collector prints the prevalence anywhere (the WB probe record); the OWID chart door prints the same series bit-identically (verified on the live anchors — the same-root relation recorded) and is refused as an auto-witness. No witness tier. The top_income_share constitution (v19): the authoritative compilation displayed as what it is.",
+    "reclassification_sensitive": false,
+    "license": "WHO Global Health Observatory (GHO) API — CC-BY-3.0-IGO (content: NCD Risk Factor Collaboration pooled analysis, republished by WHO).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "ncd_risc_bmi",
+          "label": "NCD Risk Factor Collaboration, adult BMI pooled analysis (republished by WHO GHO as the NCD_BMI_* family)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 26865,
+    "n_witness_points": 0,
+    "todd_refs": {
+      "family": "mortality",
+      "citations": 3,
+      "books": 1,
+      "refs": [
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 3,
+          "label": "Obesity among college-educated, US vs France",
+          "note": "CDC-sourced, US health-paradox argument."
+        }
+      ]
+    }
+  },
+  {
+    "id": "road_accident_mortality",
+    "label": "Road accident mortality",
+    "family": "mortality",
+    "unit": "deaths_per_100000_population",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = ITF/IRTAD road-safety statistics via SDMX (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 100,000 population as submitted by the member countries' police crash registration systems (FATALITIES/10P5HB, TRANSPORT_MODE=ROAD, all vehicle types, annual rows only — the monthly/quarterly prints the same flow carries are pinned out at the URL), 55 areas, 1994-2025. Witness tier = the WHO Global status report on road safety via GHO (RS_198, modeled estimates, 197 countries at the single 2021 vintage — no multi-year series on the API, probed and recorded). Authenticity first per ADR-0008: as-reported registrations beside modeled estimates, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OECD.ITF = OECD/ITF Terms and Conditions, attribution required; GHO witness = CC-BY-3.0-IGO.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "itf_irtad",
+          "label": "ITF/IRTAD road safety statistics (police-reported crash registrations as submitted; OECD.ITF DSD_INDICATORS@DF_SAFETY on the SDMX wire)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "who_roadsafety",
+          "label": "WHO Global status report on road safety (modeled road-death estimates; the RS_* indicator family on GHO)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 1551,
+    "n_witness_points": 197,
+    "todd_refs": {
+      "family": "mortality",
+      "citations": 4,
+      "books": 1,
+      "refs": [
+        {
+          "book": "Le Fou et le Prolétaire",
+          "year": 1979,
+          "citations": 4,
+          "label": "Road accident mortality (deaths per 1M vehicles)",
+          "note": "WHO 13-country table, 1974, per 1M vehicles."
+        }
+      ]
+    }
   },
   {
     "id": "same_sex_marriage_legalization_year",
@@ -860,6 +1413,59 @@
           "citations": 13,
           "label": "Same-sex marriage legalization year (Christianity 'state zero' marker)",
           "note": "Dated per-country legalization; Todd's 'religion zero' marker (2015 -> Trump -> Ukraine war chain)."
+        }
+      ]
+    }
+  },
+  {
+    "id": "secondary_education_share",
+    "label": "Secondary education share",
+    "family": "society",
+    "unit": "percent",
+    "higher_is_better": true,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = Eurostat edat_lfse_03 pinned isced11=ED3_4 (upper secondary and post-secondary non-tertiary as HIGHEST attainment — the completed-secondary print, tertiary excluded), age=Y25-64, sex=T, unit=PC (pinned and guarded): 36 countries, the same per-country starts as tertiary (1992-era), the collector's b/e/p flags as-reported. No witness tier wired (the probe record); the world face is the Barro-Lee panel's secondary bucket, unwired.",
+    "reclassification_sensitive": false,
+    "license": "Eurostat reuse policy (attribution required, no endorsement implied) — see docs/licenses.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "eurostat_lfs",
+          "label": "Eurostat labour-force statistics (une_rt_a — national official unemployment rates collected by Eurostat)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 1000,
+    "n_witness_points": 0,
+    "todd_refs": {
+      "family": "society",
+      "citations": 8,
+      "books": 3,
+      "refs": [
+        {
+          "book": "La nouvelle France",
+          "year": 1988,
+          "citations": 1,
+          "label": "Share holding baccalauréat or higher by age group (1982)",
+          "note": "French baccalauréat share by age group, 1982 census."
+        },
+        {
+          "book": "Qui est Charlie ?",
+          "year": 2015,
+          "citations": 1,
+          "label": "Secondary-education attainment c. 1945: US vs Europe/Japan",
+          "note": "US vs Europe/Japan, c.1945."
+        },
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 6,
+          "label": "Secondary-educated share of age cohort 70-74 (Barro-Lee)",
+          "note": "Barro-Lee panel, Poland/Hungary."
         }
       ]
     }
@@ -981,6 +1587,125 @@
     }
   },
   {
+    "id": "tertiary_education_share",
+    "label": "Tertiary education share",
+    "family": "society",
+    "unit": "percent",
+    "higher_is_better": true,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = Eurostat edat_lfse_03 pinned isced11=ED5-8 (tertiary as highest attainment), age=Y25-64 (the LFS's adult band), sex=T, unit=PC (the dataset's only unit, pinned and guarded): 36 countries (EU + EFTA + the Balkans + Türkiye; no XK), the door's own per-country starts (Belgium/Denmark/Germany/Greece/ Ireland 1992, France 1993 — the attainment series reach deeper than the probe's pinned window), the collector's b/e/p flags transported as-reported. Witness tier = the Barro-Lee/Lee-Lee long-run panel via OWID's chart door, 153 entities 1870-2010+, 5-year steps. Root pair eurostat_lfs/ barro_lee: the survey print and the reconciled scholarly panel — on the co-covered core they print the same levels to a few points (the panel's partial-tertiary bucket running above the LFS's completed-only face by construction), the seam documented, never blended.",
+    "reclassification_sensitive": false,
+    "license": "Eurostat reuse policy (attribution required, no endorsement implied); OWID chart data CC-BY-4.0 (source: Barro and Lee (2015); Lee and Lee (2016)) — see docs/licenses.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "eurostat_lfs",
+          "label": "Eurostat labour-force statistics (une_rt_a — national official unemployment rates collected by Eurostat)",
+          "doors": 1
+        }
+      ],
+      "witness": [
+        {
+          "root": "barro_lee",
+          "label": "Barro-Lee / Lee-Lee educational attainment panels (scholarly compilation, 1870-2010; via OWID's long-run chart door)",
+          "doors": 1
+        }
+      ]
+    },
+    "n_points": 1000,
+    "n_witness_points": 3511,
+    "todd_refs": {
+      "family": "society",
+      "citations": 13,
+      "books": 2,
+      "refs": [
+        {
+          "book": "L'illusion économique",
+          "year": 1998,
+          "citations": 5,
+          "label": "Share of each US cohort obtaining a BA (Bac+3 equivalent)",
+          "note": "US BA share by birth cohort, 1900-1965."
+        },
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 8,
+          "label": "Tertiary-educated share of age cohort 70-74 (Barro-Lee)",
+          "note": "Barro-Lee panel, Russia/USA/Poland."
+        }
+      ]
+    }
+  },
+  {
+    "id": "top_income_share",
+    "label": "Top 1% pre-tax income share",
+    "family": "economy",
+    "unit": "percent",
+    "higher_is_better": false,
+    "todd_core": true,
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = the World Inequality Database's pre-tax national income top-1% share (DINA research harmonization: fiscal microdata + household surveys + national accounts blended per the 2020/2025 guidelines), reached through OWID's chart door (165 entities, 1820-2024, the chart's own attribution naming WID.world; the direct WID API probed and refused from this environment — every extractor shape 403, the record in sources.yaml). A research-harmonization canonical by necessity: no collector prints the metric anywhere (the probe record). No witness tier — no cross-root machine door exists (the IDD's measure list enumerated live, the extrapolations door refused as same-root modeled). Authenticity first per ADR-0008: the compilation the corpus itself names, displayed as what it is.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: World Inequality Database, WID. world's own reuse terms apply upstream).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "wid",
+          "label": "World Inequality Database (WID.world — DINA research harmonization, pre-tax national income concepts; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 3203,
+    "n_witness_points": 0,
+    "todd_refs": {
+      "family": "economy",
+      "citations": 7,
+      "books": 5,
+      "refs": [
+        {
+          "book": "L'illusion économique",
+          "year": 1998,
+          "citations": 1,
+          "label": "Share of total income by fractile (US)",
+          "note": "US income share by quintile, 1973->1990."
+        },
+        {
+          "book": "Après l'Empire",
+          "year": 2002,
+          "citations": 1,
+          "label": "Income shares of top groups, US 1980->2000",
+          "note": "US top-5%/quintile income shares, 1980->2000, rising concentration."
+        },
+        {
+          "book": "Qui est Charlie ?",
+          "year": 2015,
+          "citations": 1,
+          "label": "Income inequality structure, France (OECD reading)",
+          "note": "OECD reading, France; top 1% pulling away."
+        },
+        {
+          "book": "Où en sommes-nous ?",
+          "year": 2017,
+          "citations": 1,
+          "label": "Top 1 % income share (Germany, persistence)",
+          "note": "Atkinson-Piketty 6-country table, 1900-2000."
+        },
+        {
+          "book": "La Défaite de l'Occident",
+          "year": 2024,
+          "citations": 3,
+          "label": "Pre-tax income share, top 1% and next 9%",
+          "note": "Russia/USA/France, WID data."
+        }
+      ]
+    }
+  },
+  {
     "id": "unemployment_rate",
     "label": "Unemployment rate",
     "family": "economy",
@@ -1009,7 +1734,7 @@
       ]
     },
     "n_points": 584,
-    "n_witness_points": 14190,
+    "n_witness_points": 14208,
     "todd_refs": {
       "family": "economy",
       "citations": 20,

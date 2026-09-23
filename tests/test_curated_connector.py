@@ -162,3 +162,93 @@ def test_snapshot_round_trip_through_the_production_writer(tmp_path):
     assert payload["provider"] == "curated"
     assert payload["source_ref"] == "ussr_infant_mortality_official"
     assert payload["records"][0]["citation"]  # provenance survives the round-trip
+
+
+# --- v21: the extended transcription format (the DYB 1978 tables) -------------
+
+
+def _extended_csv(rows: str) -> str:
+    header = (
+        "entity_id,year,value,citation,definition_note,"
+        "sex,provisional,quality_code,reference_range\n"
+    )
+    return header + rows
+
+
+def test_v21_real_transcription_tables_parse():
+    for name, n in (
+        ("dyb1978_vanished_crude_birth_rate", 27),
+        ("dyb1978_vanished_infant_mortality", 17),
+        ("dyb1978_vanished_life_expectancy", 12),
+    ):
+        records = parse_curated_csv((REAL_CATALOG / f"{name}.csv").read_text(encoding="utf-8"))
+        assert len(records) == n
+
+
+def test_v21_extended_columns_ride_the_record():
+    text = _extended_csv(
+        'ussr,1972,64,"UN DYB 1978 Table 4","Text-layer read verified",male,false,,1971-1972\n'
+        'ussr,1972,74,"UN DYB 1978 Table 4","Text-layer read verified",female,false,,1971-1972\n'
+    )
+    records = parse_curated_csv(text)
+    m, f = records
+    assert (m.sex, m.provisional, m.quality_code, m.reference_range) == ("male", False, None, "1971-1972")
+    assert (f.sex, f.provisional) == ("female", False)
+    # The male/female pair on the same year is legitimate: the duplicate
+    # key is (entity, year, SEX) — the merge key downstream.
+    assert len(records) == 2
+
+
+def test_v21_sex_column_validated_loudly():
+    text = _extended_csv('ussr,1972,64,"cite","note",both,false,,\n')
+    with pytest.raises(ValueError, match="sex 'both'"):
+        parse_curated_csv(text)
+
+
+def test_v21_provisional_column_validated_loudly():
+    text = _extended_csv('ussr,1972,64,"cite","note",male,maybe,,\n')
+    with pytest.raises(ValueError, match="provisional 'maybe'"):
+        parse_curated_csv(text)
+
+
+def test_v21_duplicate_key_gains_sex():
+    # Twice the SAME sex on one (entity, year) is the collision; the pair
+    # is not (covered above).
+    text = _extended_csv(
+        'ussr,1972,64,"cite","note",male,false,,\n'
+        'ussr,1972,65,"cite","note",male,false,,\n'
+    )
+    with pytest.raises(ValueError, match=r"duplicate \(ussr, 1972, male\)"):
+        parse_curated_csv(text)
+
+
+def test_v21_legacy_duplicate_still_raises_with_the_new_key():
+    # A 5-column file cannot express sex: two rows on one (entity, year)
+    # remain the collision they always were.
+    text = _valid_csv('ussr,1972,64,"cite","note"\nussr,1972,65,"cite","note"\n')
+    with pytest.raises(ValueError, match=r"duplicate \(ussr, 1972, None\)"):
+        parse_curated_csv(text)
+
+
+def test_v21_a_short_header_between_the_two_forms_raises():
+    text = "entity_id,year,value,citation,definition_note,sex\nussr,1972,64,cite,note,male\n"
+    with pytest.raises(ValueError, match="header"):
+        parse_curated_csv(text)
+
+
+def test_v21_the_real_tables_resolve_against_the_real_registry(real_entities: EntityRegistry):
+    # Every entity_id the three transcription tables carry must exist in
+    # the registry — the curated tier resolves by exact id, a typo lands
+    # in unresolved.json, so the registry is the gate.
+    for name in (
+        "dyb1978_vanished_crude_birth_rate",
+        "dyb1978_vanished_infant_mortality",
+        "dyb1978_vanished_life_expectancy",
+    ):
+        records = parse_curated_csv((REAL_CATALOG / f"{name}.csv").read_text(encoding="utf-8"))
+        for r in records:
+            entity = real_entities.resolve_from_source("curated", r.entity_raw_name, None)
+            assert entity is not None, (name, r.entity_raw_name)
+            # covers_year: every curated year sits inside the entity's
+            # lifetime (the vanished entities' dissolution years honored).
+            assert entity.covers_year(r.year), (name, r.entity_raw_name, r.year)

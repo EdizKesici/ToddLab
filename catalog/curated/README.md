@@ -30,7 +30,13 @@ A point may enter a curated table only if **all three** hold:
 If a point fails any condition, it does not enter — the gap stays
 visible in the coverage report instead.
 
-## File format
+## File format (v21: the extended transcription header)
+
+The five legacy columns plus four optional transcription columns
+(`sex`, `provisional`, `quality_code`, `reference_range`) — see
+src/connectors/curated.py for the strict validation of both forms.
+
+## File format (legacy reference)
 
 One CSV per series, named exactly as the `source_ref` used in
 `config/indicators/*.yaml` (e.g. `ussr_infant_mortality_official.csv`):
@@ -238,6 +244,70 @@ prints documented where they differ from the entered readings (his
 Sudan 57% vs the compilation's Khartoum 52.0 — as-reported on both
 ends); the 19th-century face (his historical France/Algeria tables)
 waits for a citable print — the table starts 1943.
+
+## The transcription series (v21) — the tier's fourth family
+
+The vanished entities of the as-reported canon (USSR, Czechoslovakia,
+Yugoslavia SFR, the GDR, the two Yemens) have no door in the modern
+XLS loop (2007-2024): the states no longer exist, so the questionnaire
+cannot carry them. But the UN's own 1978 yearbook DID print their rows
+— the PDF edition of the Demographic Yearbook 1978 (Tables 4, 9, 15,
+22), the collector's as-reported prints of the era. The transcription
+family carries those prints into the canonical tier: every value READ
+from the archived text layer (scripts/dyb1978.txt, the P1b spike's
+extraction), never typed from memory.
+
+### `dyb1978_vanished_infant_mortality.csv` — the Table 15 prints
+
+- 17 points: Czechoslovakia 1974-1978 (20.5 -> 18.7), Yugoslavia SFR
+  1974-1978 (40.9 -> 33.6), the GDR 1974-1978 (15.9 -> 13.2), the
+  Byelorussian and Ukrainian SSR single pre-blackout 1974 rows (16.6,
+  19.2 — the two other Soviet UN seats).
+- Every citation names the table and the printed death count; every
+  note carries the cross-check (the count over the printed rate
+  reproduces Table 9's births within 0.4% — e.g. Yugoslavia 1974:
+  15,666/40.9*1000 = 383,032 vs 382,947 printed); the Soviet rows
+  carry the live-birth definition footnote (Table 15 fn 33); the GDR
+  rows carry the Berlin footnote (fn 24); '*' prints ride
+  provisional=true; the row code C rides quality_code.
+- Gate (a): the vanished entities are the v1 audit's own gap list.
+  Gate (b): the distortion is TOTAL — without this table the
+  indicator carries NOTHING for these states, and the harmonized
+  witnesses attach their histories to successor codes instead.
+  Gate (c): the DYB 1978 itself, table, row and footnote.
+
+### `dyb1978_vanished_crude_birth_rate.csv` — the Table 9 prints
+
+- 27 points: the USSR 1974-1977 (18.0/18.1/18.4/18.1 — the union's
+  OWN prints, 4,546,095 -> 4,693,369 live births), the BySSR and
+  UkSSR 1974-1977, and the CSK/GDR/YUG full 1974-1978 Total rows.
+- The Soviet-definition footnote rides every Soviet row's note (the
+  denominator excludes the very-preterm births — the same caveat as
+  the official IMR series, Table 9 fn 37); the GDR rows carry the
+  Berlin note; the pronatalist climb 10.6 -> 13.9 is the GDR's own
+  as-reported signature.
+
+### `dyb1978_vanished_life_expectancy.csv` — the Table 4 prints
+
+- 12 points: the six entities x male/female. The USSR 1971-1972
+  M 64 / F 74 (the union-level print of the founding claim's era,
+  integer precision — the print's own), BySSR 1970-1971 68/76, UkSSR
+  67/74, CSK 1976 66.99/74.05, GDR 1976 68.82/74.42, YUG 1970-1972
+  65.42/70.22.
+- The point's year = the printed reference period's END year (the
+  Table 21/22 convention); the period string rides reference_range
+  as-printed. The three European pairs are corroborated by Table 22's
+  age-0 column (byte-for-byte); the Soviet seats print only in
+  Table 4 — documented in their notes.
+
+**The Yemen exclusion (the gate doing its job):** the two Yemen
+entities print in the same tables (CBR 48.7/48.2, LE 37.3/38.7 and
+40.6/42.4, "1970-1975") — but their rows carry footnote 4:
+"Estimate(s) for 1970-1975 prepared by the Population Division of the
+United Nations." UN PD estimates are the WPP family: witness-class by
+the project's constitution, never canonical. The rows are excluded
+and the entities remain declared-but-data-less — the negative finding
+recorded in config/sources.yaml.
 
 ## Adding a new curated series
 

@@ -22,14 +22,25 @@ it was cross-checked) lives in `catalog/curated/README.md`.
 
 FILE FORMAT (declared by ADR-0007, validated strictly here):
     entity_id,year,value,citation,definition_note
+The v21 extended format (additive, for transcriptions of collector prints
+that carry demographic structure — the DYB 1978 vanished-entities tables):
+    entity_id,year,value,citation,definition_note,sex,provisional,quality_code,reference_range
+The four extension columns mirror RawRecord fields one-to-one and may be
+EMPTY (the legacy semantics); `sex` accepts exactly "male"/"female" (the
+merge key downstream), `provisional` exactly "true"/"false", and
+`quality_code`/`reference_range` carry the collector's own printed
+annotations verbatim. Both headers are accepted — anything else is a
+parse error, the house loud-failure rule.
 - `entity_id` is OUR canonical id (not a source name): curated tables are
   written by us, on purpose, so resolution happens by exact id in
   normalize.py. A typo surfaces in {indicator}.unresolved.json like any
   other source — curated does not get silent forgiveness.
 - `value` must be non-empty: in a curated table a gap is an ABSENT ROW,
   never an empty cell (we only enter points we can cite).
-- duplicate (entity_id, year) rows are a parse error: the table must be
-  arbitration-free by construction.
+- duplicate (entity_id, year, sex) rows are a parse error: the table must
+  be arbitration-free by construction (the v21 key gains `sex` — a
+  male/female pair on the same year is legitimate, twice the same sex is
+  not).
 
 `source_ref` format: the CSV file name without extension, e.g.
 "ussr_infant_mortality_official" -> catalog/curated/ussr_infant_mortality_official.csv.
@@ -53,6 +64,12 @@ DEFAULT_CATALOG_DIR = Path(__file__).resolve().parents[2] / "catalog" / "curated
 
 REQUIRED_COLUMNS = ["entity_id", "year", "value", "citation", "definition_note"]
 
+# v21 additive extension (see module docstring): the transcription columns.
+EXTENDED_COLUMNS = REQUIRED_COLUMNS + ["sex", "provisional", "quality_code", "reference_range"]
+
+_VALID_SEX = {"male", "female"}
+_VALID_PROVISIONAL = {"true", "false"}
+
 _FORBIDDEN_IN_REF = ("/", "\\", "..")
 
 
@@ -73,13 +90,15 @@ def parse_curated_csv(text: str) -> list[RawRecord]:
     format is OURS, so any deviation is a bug in the catalog, not a surprise
     from an external layout. Fails loudly with the offending line number."""
     reader = csv.DictReader(io.StringIO(text))
-    if reader.fieldnames != REQUIRED_COLUMNS:
+    if reader.fieldnames not in (REQUIRED_COLUMNS, EXTENDED_COLUMNS):
         raise ValueError(
-            f"Curated CSV header must be exactly {REQUIRED_COLUMNS}, got {reader.fieldnames!r}"
+            f"Curated CSV header must be exactly {REQUIRED_COLUMNS} or the v21 "
+            f"extended {EXTENDED_COLUMNS}, got {reader.fieldnames!r}"
         )
+    extended = reader.fieldnames == EXTENDED_COLUMNS
 
     records: list[RawRecord] = []
-    seen: set[tuple[str, int]] = set()
+    seen: set[tuple[str, int, str | None]] = set()
     for line_no, row in enumerate(reader, start=2):  # line 1 is the header
         where = f"line {line_no}"
         entity_id = (row.get("entity_id") or "").strip()
@@ -87,6 +106,31 @@ def parse_curated_csv(text: str) -> list[RawRecord]:
         value_raw = (row.get("value") or "").strip()
         citation = (row.get("citation") or "").strip()
         definition_note = (row.get("definition_note") or "").strip()
+
+        sex: str | None = None
+        provisional: bool | None = None
+        quality_code: str | None = None
+        reference_range: str | None = None
+        if extended:
+            sex_raw = (row.get("sex") or "").strip().lower()
+            if sex_raw:
+                if sex_raw not in _VALID_SEX:
+                    raise ValueError(
+                        f"{where}: sex {sex_raw!r} is not one of {sorted(_VALID_SEX)} — "
+                        "the merge key downstream is (entity, year, sex), so a curated "
+                        "sex-split table must declare the demographic breakdown exactly"
+                    )
+                sex = sex_raw
+            prov_raw = (row.get("provisional") or "").strip().lower()
+            if prov_raw:
+                if prov_raw not in _VALID_PROVISIONAL:
+                    raise ValueError(
+                        f"{where}: provisional {prov_raw!r} is not 'true'/'false' — the "
+                        "column mirrors the collector's own '*' legend, nothing else"
+                    )
+                provisional = prov_raw == "true"
+            quality_code = (row.get("quality_code") or "").strip() or None
+            reference_range = (row.get("reference_range") or "").strip() or None
 
         if not entity_id:
             raise ValueError(f"{where}: empty entity_id in curated CSV")
@@ -109,10 +153,10 @@ def parse_curated_csv(text: str) -> list[RawRecord]:
                 "(ADR-0007): no citable source, no entry"
             )
 
-        key = (entity_id, year)
+        key = (entity_id, year, sex)
         if key in seen:
             raise ValueError(
-                f"{where}: duplicate ({entity_id}, {year}) in curated CSV — "
+                f"{where}: duplicate ({entity_id}, {year}, {sex}) in curated CSV — "
                 "the curated tier must be arbitration-free by construction"
             )
         seen.add(key)
@@ -125,6 +169,10 @@ def parse_curated_csv(text: str) -> list[RawRecord]:
                 value=value,
                 citation=citation,
                 definition_note=definition_note or None,
+                sex=sex,
+                provisional=provisional,
+                quality_code=quality_code,
+                reference_range=reference_range,
             )
         )
 

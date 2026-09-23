@@ -1,0 +1,6348 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 20000,
+  "total": 17490,
+  "sourceid": "2",
+  "lastupdated": "2026-07-13"
+ },
+ [
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2025",
+   "value": 27.8764008685803,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2024",
+   "value": 28.1305382372254,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2023",
+   "value": 29.5905328513096,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2022",
+   "value": 30.2322890988986,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2021",
+   "value": 29.9948792380617,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2020",
+   "value": 30.9395264330649,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2019",
+   "value": 29.4860631743563,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2018",
+   "value": 30.2959781840116,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2017",
+   "value": 29.3177250851597,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2016",
+   "value": 30.1715840674492,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2015",
+   "value": 30.2968272232799,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2014",
+   "value": 29.6374868920666,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2013",
+   "value": 30.5275836296914,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2012",
+   "value": 31.4618561851203,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2011",
+   "value": 31.5106490490577,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2010",
+   "value": 33.4019991960754,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2009",
+   "value": 35.60509112014,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2008",
+   "value": 36.2689007853455,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2007",
+   "value": 35.5002739538806,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2006",
+   "value": 34.4725777204637,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2005",
+   "value": 34.2418834291577,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2004",
+   "value": 32.9170619670145,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2003",
+   "value": 32.1295956610121,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2002",
+   "value": 32.6629895264442,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2001",
+   "value": 32.7673613179063,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "2000",
+   "value": 32.8306182326132,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1999",
+   "value": 33.0007061404065,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1998",
+   "value": 34.964290235605,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1997",
+   "value": 36.3422397043438,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1996",
+   "value": 36.9037918300979,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1995",
+   "value": 38.5297611914974,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1994",
+   "value": 40.3956160773323,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1993",
+   "value": 42.0379911748802,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1992",
+   "value": 43.7949700461427,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1991",
+   "value": 45.0903089434348,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BG",
+    "value": "Bulgaria"
+   },
+   "countryiso3code": "BGR",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2025",
+   "value": 19.3392093582674,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2024",
+   "value": 19.5436001329131,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2023",
+   "value": 19.245754578992,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2022",
+   "value": 19.274886618314,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2021",
+   "value": 19.5148151862004,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2020",
+   "value": 19.9647820525018,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2019",
+   "value": 20.39200271718,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2018",
+   "value": 20.2326732273394,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2017",
+   "value": 20.4110220188657,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2016",
+   "value": 20.2938126069055,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2015",
+   "value": 20.3760439673531,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2014",
+   "value": 20.5331886436257,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2013",
+   "value": 21.3053237692525,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2012",
+   "value": 21.7779972462666,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2011",
+   "value": 22.1859074981925,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2010",
+   "value": 22.2786779645648,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2009",
+   "value": 22.6822594314255,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2008",
+   "value": 23.2664984297317,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2007",
+   "value": 23.5460210579727,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2006",
+   "value": 24.1382876198395,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2005",
+   "value": 24.0649071274019,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2004",
+   "value": 24.3843754346763,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2003",
+   "value": 24.257251041848,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2002",
+   "value": 25.5159289337732,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2001",
+   "value": 26.167381209741,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2000",
+   "value": 26.3850401291446,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1999",
+   "value": 26.4157543037987,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1998",
+   "value": 26.4523028147416,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1997",
+   "value": 26.7184557186822,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1996",
+   "value": 26.6661654867392,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1995",
+   "value": 27.1020184674312,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1994",
+   "value": 27.0147959637101,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1993",
+   "value": 27.6586307481606,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1992",
+   "value": 28.081931960536,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1991",
+   "value": 28.4247127882961,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2025",
+   "value": 25.9741661900069,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2024",
+   "value": 26.2904809714931,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2023",
+   "value": 26.3957028467134,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2022",
+   "value": 26.7742975854336,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2021",
+   "value": 27.3811673985671,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2020",
+   "value": 27.2304940804705,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2019",
+   "value": 27.1495116563958,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2018",
+   "value": 27.3456982131664,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2017",
+   "value": 27.408028435384,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2016",
+   "value": 27.33707604136,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2015",
+   "value": 27.6242257343991,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2014",
+   "value": 28.0851666953054,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2013",
+   "value": 27.7258458848951,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2012",
+   "value": 28.1974895392439,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2011",
+   "value": 27.6642517502902,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2010",
+   "value": 28.7571845440313,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2009",
+   "value": 28.8260606145451,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2008",
+   "value": 29.3313900595113,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2007",
+   "value": 30.3601084856613,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2006",
+   "value": 29.8531977539054,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2005",
+   "value": 29.8396164797777,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2004",
+   "value": 31.2532116993414,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2003",
+   "value": 31.3777391883868,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2002",
+   "value": 32.3668135625331,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2001",
+   "value": 32.7815599937358,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2000",
+   "value": 33.5310714327787,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1999",
+   "value": 33.8350510790984,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1998",
+   "value": 34.3901573330689,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1997",
+   "value": 34.6736031282961,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1996",
+   "value": 35.2720577200735,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1995",
+   "value": 36.0043335918813,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1994",
+   "value": 36.5002094389386,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1993",
+   "value": 37.3530173628577,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1992",
+   "value": 38.0235714389962,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1991",
+   "value": 38.4327002744077,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2025",
+   "value": 23.2286936582183,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2024",
+   "value": 23.3448435188082,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2023",
+   "value": 23.7088479999434,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2022",
+   "value": 23.6221319238424,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2021",
+   "value": 23.6970961960328,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2020",
+   "value": 23.9319260380391,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2019",
+   "value": 24.225756536984,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2018",
+   "value": 24.4484966180265,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2017",
+   "value": 24.5819062343045,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2016",
+   "value": 24.594734051284,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2015",
+   "value": 24.90449732946,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2014",
+   "value": 25.1255684256487,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2013",
+   "value": 25.1886060017838,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2012",
+   "value": 25.31119389192,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2011",
+   "value": 25.4301856511526,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2010",
+   "value": 25.5193233281322,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2009",
+   "value": 26.0942930205917,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2008",
+   "value": 26.7716359352987,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2007",
+   "value": 27.2902607311947,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2006",
+   "value": 27.4952463180058,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2005",
+   "value": 27.3920849763087,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2004",
+   "value": 27.8227722055162,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2003",
+   "value": 28.7212896472085,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2002",
+   "value": 28.789947213679,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2001",
+   "value": 29.6517084188053,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2000",
+   "value": 30.4307901533441,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1999",
+   "value": 30.5708775485798,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1998",
+   "value": 30.9280235877478,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1997",
+   "value": 31.958389880079,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1996",
+   "value": 32.1167541156344,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1995",
+   "value": 32.3487634206938,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1994",
+   "value": 32.8521033463982,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1993",
+   "value": 33.1171230767318,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1992",
+   "value": 33.4483145114909,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1991",
+   "value": 33.2837862928435,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2024",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2020",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2015",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2010",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2005",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2000",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1995",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2025",
+   "value": 18.9122762686396,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2024",
+   "value": 19.0437070998445,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2023",
+   "value": 19.3356581942933,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2022",
+   "value": 19.2767779678998,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2021",
+   "value": 19.183666430817,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2020",
+   "value": 19.4184044990188,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2019",
+   "value": 19.7528962033625,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2018",
+   "value": 19.7028367872634,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2017",
+   "value": 19.5555626898736,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2016",
+   "value": 19.6004288978866,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2015",
+   "value": 19.678506704267,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2014",
+   "value": 19.8362096579529,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2013",
+   "value": 19.8032434024193,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2012",
+   "value": 19.5790234623623,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2011",
+   "value": 19.5605716592392,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2010",
+   "value": 19.4896699994272,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2009",
+   "value": 19.8872717103055,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2008",
+   "value": 21.3502704279058,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2007",
+   "value": 22.0203748051062,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2006",
+   "value": 22.2306233143871,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2005",
+   "value": 22.131757184111,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2004",
+   "value": 22.2493042173759,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2003",
+   "value": 22.2872763085885,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2002",
+   "value": 22.3459708523018,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2001",
+   "value": 22.4697538277737,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2000",
+   "value": 22.6696814582688,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1999",
+   "value": 22.6476588774035,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1998",
+   "value": 23.0736932374096,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1997",
+   "value": 23.2914365488552,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1996",
+   "value": 23.2383477288001,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1995",
+   "value": 23.3599589520439,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1994",
+   "value": 23.3134581689564,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1993",
+   "value": 23.4201428306095,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1992",
+   "value": 23.8557759293555,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1991",
+   "value": 24.3734633619148,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.IND.EMPL.ZS",
+    "value": "Employment in industry (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  }
+ ]
+]

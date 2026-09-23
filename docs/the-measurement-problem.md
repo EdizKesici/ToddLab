@@ -215,10 +215,100 @@ Decisions implied by this analysis (to be applied incrementally):
    the collector's own coverage, stated as genealogy) and the
    print-precision seam (FRA 2024: 7.436 vs 7.4 — the collector's
    1-decimal face), both reading as two doors, never a contradiction.
+   Since v18 the registry holds roots 16-20, the v18 five:
+   `eurostat_na` (the national-accounts questionnaire — the root whose
+   WIRING dissolved the composite-derived-layer question: the accounts
+   print the employment shares directly at PC_TOT_PER, no derivation
+   anywhere, the ADR held in reserve since v15 retired unused);
+   `ilo_modelled` (the ILOEST 2EMP sector shares redistributed by WDI
+   — the employment witnesses, the compound seam the pairs display:
+   industry including construction on a modeled employment concept);
+   `barro_lee` (the Barro-Lee/Lee-Lee attainment panels via OWID's
+   chart door — THE CORPUS'S OWN NAMED SOURCE riding the witness
+   tier, the scholar's reconciliation facing the LFS print);
+   `un_desa` (the Trends in International Migrant Stock estimates via
+   WDI — the immigration witness, the WPP relation in a third family);
+   and `eurostat_migr` (the migration questionnaire's foreign-born
+   stock). The v18 pattern the registry now carries explicitly: ONE
+   QUESTIONNAIRE FAMILY can serve several metrics through distinct
+   roots (the labour-force survey: unemployment via eurostat_lfs,
+   attainment through the same root; the accounts and migration their
+   own), and one QUESTIONNAIRE COLLECTOR (Eurostat) now speaks five
+   datasets — the registry's answer to "which door" always naming the
+   ultimate origin, never the API. Since v19 the registry holds four
+   more roots (21-24): `wid` — the World Inequality Database's DINA
+   research harmonization, CANONICAL for top_income_share by the same
+   constitution `consanguinity_studies` set (no collector anywhere
+   prints a top-fractile income share — the metric is by construction
+   a constructed series, so the compilation the corpus itself names
+   for La Défaite de l'Occident is the origin tier), reached through
+   OWID's chart door because the direct API refuses every extractor
+   shape from this environment (the CloudFront 403 record — the same
+   door-relation `oecd_family` holds); `oecd_idd` — the Income
+   Distribution Database, the national household-survey Ginis as
+   submitted (the 1995 fifteen-country table of L'illusion
+   économique's lineage), carrying the METHODOLOGY x DEFINITION
+   vintage grammar its four-door stitch makes explicit; `itf_irtad` —
+   the police-reported road-crash registrations on the ITF wire
+   (road_accident_mortality's collector, RUS absent from the whole
+   flow); and `who_roadsafety` — the Global status report's modeled
+   road-death estimates (a DIFFERENT WHO family from `who_ghe`, the
+   biennial coupe, its own root because its own methodology and
+   vintage cadence). The layer judgment the new pair displays:
+   research harmonization can stand CANONICAL when the metric has no
+   collector anywhere (the top-1% share) while sitting BESIDE a
+   collector on the same metric family (the gini: disposable-income
+   surveys canonical, pre-tax DINA witness) — the layer is a property
+   of the DOOR's relation to the metric, not a fixed rank of sources.
+   Since v20 — the corpus-closing delivery — the registry holds seven
+   more (25-31), five of them CANONICALS BY THE SAME CONSTITUTION: `icpr_wpb`
+   (the World Prison Brief compilation — incarceration has no
+   collector wire anywhere from this environment: UNODC's portal is a
+   client-rendered SPA, the WPB's site has no API); `oecd_pisa` (the
+   assessment's own scores through the chart door — the OECD RUNS the
+   survey, a collector with no SDMX wire); `ncd_risc_bmi` (the adult
+   BMI pooled analysis REPUBLISHED BY GHO — canonical on the
+   provider's own API wire, the first GHO-canonical door, its OWID
+   redistribution bit-identical and refused as an auto-witness);
+   `unaids` (the Global AIDS Update's modeled central estimates, the
+   wid door relation — aidsinfo a SPA, the compilation's own country
+   universe excluding the USA, Russia and China); and `ncd_risc_height`
+   (the 2016 eLife birth-cohort compilation — height at 18 by birth
+   year, the framing seams displayed never reconciled). The two
+   witnesses close the set: `who_prisons` (the Health in Prisons
+   questionnaire collection — the coupe pattern on a genuinely
+   cross-root door) and `baten_blum` (the Clio-Infra historical
+   anthropometric record — the pre-1896 tail riding the witness tier
+   exactly as `barro_lee` rides it for attainment: the scholarly
+   compilation facing the modern one, cm-level seams displayed).
+   The constitution's arc now complete: v17 consanguinity (the
+   study IS the origin), v19 wid (the compilation the corpus names),
+   v20 five more — the pattern is the registry's own majority for
+   canonicals without collectors, each entry carrying the probe
+   record that closed the collector question. v21 adds NO new root:
+   the vanished-entity tables ride `unsd_dyb` itself — the PDF route,
+   the collector's own 1978 print transcribed (the transcription
+   curation's genealogy: the origin is the collector, the curator
+   only reads). v22 adds the 32nd, oecd_mig — the OECD migration
+   questionnaire's own bilateral matrix (DSD_MIG_F@DF_MIG_POPF, the
+   IMD's foreign-born face), the bilateral WITNESS of
+   immigration_stock's by-origin layer: an OECD-COMPILED product in
+   the oecd_family relation, and the seam the root field exists to
+   display — the two questionnaires agree TO THE UNIT on the
+   co-covered core (FR<-MAR 2015 = 954,742 on both doors; agreement
+   that would read like independent confirmation if the genealogy did
+   not say both doors walk back to the same national registrations),
+   while the OECD face extends what the Eurostat universe prints (the
+   FR Maghreb series 2019-2021 past the cutoff, the vanished-entity
+   origins CSK_F/SUN_F/YUG_F/ANT_F/SCG_F, the world's non-European
+   destinations US<-MEX 12,383,868).
 2. **A `curated` source type**: small tables committed in the repo
    (`catalog/curated/*.csv`), each row carrying `entity_id, year, value,
-   citation, definition_note`. This is how the `ussr` entity finally gets a
-   real infant-mortality series — and how the founding tracer becomes
+   citation, definition_note` — plus, since v21, the four optional
+   transcription columns (`sex`, `provisional`, `quality_code`,
+   `reference_range`) that carry a collector print's own structure
+   into the same strict format. This is how the `ussr` entity finally gets a
+   real infant-mortality series — how the founding tracer becomes
    representable without fabrication. License posture: facts with citation,
    small extracts, clearly attributed (see `docs/licenses.md`).
 3. **Canonical + witnesses, now with a paradigm case.** For each indicator:
@@ -337,14 +427,29 @@ for itself.
    deaths and
    ratios, 21/22 = life expectancy at specified ages). Consecutive
    5-year windows overlap and the merge arbitrates by vintage (later
-   edition wins, logged) — reconstructing the as-reported series: **1,426
-   valued canonical IMR points across 118 entities (1,405 un_dyb over
-   reference years 2007-2024 + 21 curated USSR over 1970-1990 — the
-   split is stated because a bare count is not recountable without it;
-   plus, since v9, 1,276 explicit gap points, 2,702 total)** and 3,032
-   valued canonical LE points (184 entities; plus 2,986 explicit gaps,
-   6,018 total; sex-split: the collector prints Male/Female separately
-   and averaging would be a derivation). Since v8 the collector's OWN
+   edition wins, logged) — reconstructing the as-reported series: **1,443
+   valued canonical IMR points across 123 entities (1,405 un_dyb over
+   reference years 2007-2024 + 38 curated — 21 official USSR over
+   1970-1990 + 17 vanished-entity prints over 1974-1978, since v21 —
+   the split is stated because a bare count is not recountable without
+   it; plus, since v9, 1,276 explicit gap points, 2,719 total)** and
+   3,044 valued canonical LE points (190 entities; plus 2,986 explicit
+   gaps, 6,030 total; sex-split: the collector prints Male/Female
+   separately and averaging would be a derivation). The CBR companion
+   reads 2,252 valued canonical points (2,225 XLS-loop over 2007-2024
+   + 27 vanished-entity prints over 1974-1978 since v21). THE PDF
+   ROUTE (v21): the 1978 edition's own tables — the vanished entities'
+   as-reported prints the XLS loop structurally cannot carry — enter
+   as TRANSCRIPTION curation: the three Soviet UN seats each their own
+   rows (the union 4,546,095 live births and CBR 18.0 in 1974, the
+   Byelorussian and Ukrainian SSRs their own series beside it;
+   USSR 1971-1972 LE M 64 / F 74, the union-level print of the
+   founding claim's era), Czechoslovakia/Yugoslavia/GDR full
+   1974-1978 rows, every value arithmetically cross-checked (the
+   Table 15 count over the printed rate reproduces Table 9's births
+   within 0.4%) — and the Yemen prints EXCLUDED on the edition's own
+   footnote 4 (Population Division estimates, the WPP family:
+   witness-class by constitution). Since v8 the collector's OWN
    annotations ride every point as-reported: quality codes (C/U/|/+, the
    "+" = tabulated by registration date), footnote refs JOINED to their
    texts (the Armenian live-birth definition ships beside Armenia's
@@ -449,7 +554,102 @@ for itself.
    flag the definitional seam France's continuous series carries) with
    the WB national-estimate witness — the coverage cliff (Germany
    1991-2008 witness-only) and the crisis peaks (ES/EL 2013 = 26.1 /
-   27.8) displayed as-reported. The PDF-era
+   27.8) displayed as-reported. And v18 ran EVERYTHING in parallel
+   (the green light's own challenge) and delivered SIX indicators
+   through four doors: the probe CORRECTION that became the version's
+   headline — the national-accounts door (nama_10_a10_e at unit
+   PC_TOT_PER) PRINTS the employment shares directly, so
+   industrial_employment_share (the backlog's head, 30 citations,
+   deferred since v15 on "no collector prints the %") is wired
+   WITHOUT any derivation and the composite-derived-layer ADR is
+   retired unused (the agricultural share rides the same door at
+   nace A); the education pair on the LFS attainment table (one
+   questionnaire now carrying three Todd metrics — UNESCO UIS, the
+   world's education collector, having no live API, its dead door
+   recorded) with tertiary's witness being the corpus's own named
+   source (the Barro-Lee/Lee-Lee panels through OWID's chart door);
+   immigration_stock on the migration questionnaire's foreign-born
+   stock (FR 2008 = 7.08M -> 2024 = 9.36M annual, the UN DESA
+   estimates the witness) — and since v22 the BY-ORIGIN boards wired
+   (the recorded future door opened): the dist's `bilateral` layer,
+   canonical on the 30 Eurostat ROW doors (91,230 points, 30
+   destinations x 243 origins, the Maghreb/Turkish/Portuguese cells
+   of Le Destin des immigrés' own table shape — FR<-DZ 1999 =
+   1,246,706 -> 2018 = 1,390,284), witness on the OECD matrix
+   (the oecd_mig root above: the seam agreeing to the unit, the
+   extension 2019-2021, the world face, the vanished origins); and cirrhosis on the OECD's third cause code — the
+   v13 probe note "RUS absent (404)" corrected as a probe artifact
+   (the slice answers 7,089 records through the production
+   machinery), the honest finding being that Russia genuinely does
+   not ride THIS cause's collector slice (the WHO-MDB coding story:
+   its alcohol deaths live under different ICD codes), so La Chute
+   finale's Soviet-alcoholism claim rides the GHE witness and the
+   book tables — while its France-vs-Sweden calibration pair (FRA
+   1979 = 29.0 vs SWE 12.2) prints in the canonical tier itself.
+   And v19 claimed the inequality pair and the road, corpus 16 ->
+   19 of 24: **top_income_share** (the backlog's head, 7 citations
+   — the corpus NAMES WID for La Défaite de l'Occident's own board,
+   and the direct API refuses this environment on every extractor
+   shape, the CloudFront 403 record: so the canonical rides OWID's
+   chart door, 165 entities, 1820-2024, the USA's full U-shape
+   1913 = 20.43 -> 2024 = 20.73 and France's Atkinson-Piketty
+   decline 22.73 -> 12.1 printing on the door — CANONICAL-ALONE,
+   no cross-root witness door existing anywhere, the extrapolations
+   sibling refused as the same root's modeled extension);
+   **gini_index** on the OECD IDD (the 1995 table of L'illusion
+   économique's own lineage: USA 1995 = 0.361 on the door's own
+   series) wired as the FOUR-DOOR vintage chain — the flow printing
+   the same country-year under METHODOLOGY x DEFINITION vintages,
+   the chain (current computation > its definition back-series >
+   the pre-revision history) simulated on the full live slice at
+   906 keys and zero unresolved, France sewing three times
+   (0.277 -> 0.309 -> 0.278 -> 0.299) with every collision a logged
+   provenance discard — the WID pre-tax witness displaying the
+   CONCEPT SEAM beside it (France 2022: 0.299 disposable vs 0.4592
+   pre-tax, the redistribution IS the gap, never reconciled); and
+   **road_accident_mortality** on the ITF/IRTAD wire (Le Fou et le
+   Prolétaire's own metric, 55 areas 1994-2025: France 15.2 -> 4.7,
+   the USA 15.5 -> 12.2 the never-halved divergence, LVA 1994 =
+   28.44 the post-Soviet tail) with the per-vehicle denominator of
+   Todd's own 1974 WHO table a registered door on the same flow
+   (10P4VEH_MOT_ROAD), RUS absent from the whole collector — the
+   GHO RS_198 coupe (197 countries at the report's single 2021
+   vintage, Russia 10.6) the witness, a THIRD WHO estimate family
+   earning its own root (who_roadsafety, beside who_ghe).
+   And v20 claimed the queue WHOLE, corpus 19 -> 24 of 24 — THE
+   CLOSING DELIVERY: **incarceration_rate** (La Défaite's own
+   six-country board on the ICPR World Prison Brief's chart door:
+   USA 683 -> 542, RUS 729 -> 300 — the two carceral worlds the book
+   sets against each other — FRA 82 -> 126 the écroués arc's stock
+   face, JPN 48 the family-systems' low; the UNODC collector portal
+   a client-rendered SPA with no machine door, the compilation
+   canonical by the consanguinity constitution; the WHO Health in
+   Prisons coupe — 36 European countries at 2020 — the witness);
+   **math_test_scores** (the education family's first indicator:
+   L'illusion économique's TIMSS table read through the OECD's modern
+   PISA door with the Mathematics column pinned, France 510.8 ->
+   473.9 the slide the book's declinism opened, Russia absent from
+   the 2022 cycle — CANONICAL-ALONE, TIMSS itself without a machine
+   door); **obesity_rate** (the health-paradox pair on the provider's
+   own wire: USA 41.8 vs FRA 12.5 in 2024, the American
+   female-over-male inversion riding the canonical tier's own sex
+   split, Japan's 5.2 the lean counter-example — the FIRST
+   GHO-canonical indicator, the per-code AGE pin's own door, the OWID
+   redistribution bit-identical and refused as the auto-witness it
+   is); **hiv_prevalence_rate** (the patrilineality proxy on the
+   UNAIDS chart door: Zimbabwe peaking 29.65 in 1995, Eswatini 23.4
+   by 2024, South Africa 17.2 — the belt's own curves; the
+   compilation's universe excluding the USA, Russia and China,
+   verified on both redistributions — CANONICAL-ALONE, the IHME
+   cross-root family re-confirmed behind the 403); and
+   **male_height_trend** (the closing metric: the book's +10cm
+   French century printing BIGGER on the birth-cohort read, 166.41
+   -> 179.74 across 101 annual cohort points, Korea's +15.2 the
+   compilation's biggest gain — with the Baten-Blum/Clio-Infra
+   historical record the CROSS-ROOT witness carrying the pre-1896
+   tail, the framing seams — birth-year vs calendar, age 18 vs the
+   book's 20 — displayed never reconciled).
+   The PDF-era
    editions (1948-2010, the only route for the defunct entities) were
    measured by the P1b spike on the 1978 edition: 5/6 spot-checks exact,
    47% of lines full-confidence, 21% OCR-refused — viable but reviewed,

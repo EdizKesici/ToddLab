@@ -1,0 +1,120 @@
+id: road_accident_mortality
+label: "Road accident mortality"
+family: mortality
+unit: deaths_per_100000_population
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE NINETEENTH INDICATOR (v19, 4 citations — Le Fou et le
+  # Prolétaire's own metric). Todd's 1979 table: a WHO thirteen-
+  # country comparison, 1974, deaths per MILLION VEHICLES — the
+  # machine-age mortality he reads as the industrial society's own
+  # death register (France vs Britain vs the USA, the road as the
+  # class-neutral killer of the automobile century).
+  #
+  # THE v19 PROBE VERDICT (verified live 2026-09-21, before any
+  # wiring): the ITF/IRTAD road-safety statistics ride the SDMX wire
+  # as OECD.ITF DSD_INDICATORS@DF_SAFETY — police-reported crash
+  # registrations as the member countries submit them, 55 areas,
+  # 1994-2025, THREE printed denominators (the dataflow's own unit
+  # codelist, read live): 10P5HB (deaths per 100,000 population —
+  # the family-consistent face every mortality indicator of this
+  # project carries), 10P4VEH_MOT_ROAD (per 10,000 registered motor
+  # vehicles — the DIRECT DESCENDANT of Todd's 1974 denominator),
+  # and 10P9VEHKM (per billion vehicle-kilometres). THE CHOICE, made
+  # and documented: the per-100k population rate is wired — the
+  # mortality family's own unit (suicide, homicide, cirrhosis all
+  # print it), the cross-metric comparison the Todd boards demand;
+  # the per-vehicle face stays a REGISTERED NON-WIRED DOOR (38
+  # areas, 1994-2024 — the exact 1974-table denominator, one config
+  # line away the day the by-vehicle comparison is demanded). The
+  # count face rides a sibling dataflow (DSD_ST@DF_STFAT, 53 areas,
+  # annual/monthly/quarterly — FRA 2018 = 3,248 deaths as counted),
+  # also registered non-wired.
+  #
+  # THE RUSSIA FINDING (the honest limit, verified on the FULL live
+  # slice): RUS is absent from the ENTIRE ITF flow — zero rows
+  # across 1994-2025 on every unit (the IRTAD questionnaire never
+  # carried Russia's series on this wire). The witness tier carries
+  # Russia's face: GHO RS_198 ("Estimated road traffic death rate
+  # (per 100 000 population)", RUS 2021 = 10.6, verified live).
+  # Two doors, two stories — the coverage report's own line.
+  - provider: oecd
+    ref: DF_SAFETY/FATALITIES/10P5HB
+    priority: 1
+    role: canonical
+    root: itf_irtad
+  # THE WITNESS: the WHO Global status report on road safety — GHO
+  # RS_198, the modeled world face: 197 countries at the report's
+  # own single 2021 vintage (the biennial cross-section, the GHE
+  # cirrhosis witness's own coupe pattern — one print, not a series;
+  # the neighboring codes probed: RS_196 the count face, 195 rows
+  # 2021, same single vintage — no multi-year series exists on the
+  # API for this family, the record in sources.yaml). Underreporting
+  # corrections and country models make it the harmonized tier —
+  # witness-only by constitution (the who_ghe relation), displayed
+  # beside the police registrations, never blended.
+  - provider: who_gho
+    ref: RS_198
+    priority: 2
+    role: witness
+    root: who_roadsafety
+
+coverage_start: 1994
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = ITF/IRTAD road-safety statistics via SDMX
+  (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 100,000
+  population as submitted by the member countries' police crash
+  registration systems (FATALITIES/10P5HB, TRANSPORT_MODE=ROAD, all
+  vehicle types, annual rows only — the monthly/quarterly prints the
+  same flow carries are pinned out at the URL), 55 areas, 1994-2025.
+  Witness tier = the WHO Global status report on road safety via GHO
+  (RS_198, modeled estimates, 197 countries at the single 2021
+  vintage — no multi-year series on the API, probed and recorded).
+  Authenticity first per ADR-0008: as-reported registrations beside
+  modeled estimates, never blended.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 35   # the live slice's own tail is the post-Soviet road-death
+             # crisis: LVA 1994 = 28.4, KOR 1996 = 27.8, KAZ 2007 =
+             # 26.8, SVN 1994 = 25.4 (verified live) — the bound
+             # swallows the registrations' real span while flagging
+             # any misload (a raw count (3,248) or a per-10k-vehicle
+             # print (0.68) sits immediately outside and gets
+             # reviewed). LIE's honest zeros (1998-2002, the
+             # microstate's 0-death years) ride inside the floor.
+
+license: >
+  Mixed, per source (see "sources"): OECD.ITF = OECD/ITF Terms and
+  Conditions, attribution required; GHO witness = CC-BY-3.0-IGO.
+
+notes: >
+  THE TODD ARC PRINTS ITSELF (todd_refs: 4 citations, all Le Fou et
+  le Prolétaire): France 1994 = 15.2 -> 2024 = 4.7 (the sécurité
+  routière arc — the threefold fall of the machine-age mortality the
+  1979 table measured at its peak), Germany 1994 = 12.1 -> 2024 =
+  3.3, Sweden 1994 = 7.5-8 -> 2.0-2.1 — and the USA's own
+  divergence: 1994 = 15.5 -> 2023 = 12.2, the rich world's one
+  series that never fell by half (the Anglophone automobile-society
+  contrast Todd's comparative tables live on). The POST-SOVIET CRISIS
+  prints at the top of the slice: LVA 1994 = 28.4, the Estonian/
+  Latvian/Slovenian 1990s peaks — the transition's road-death
+  epidemic, the mortality family's own Russia-adjacent story (RUS
+  itself absent from the flow — see sources). THE WITNESS'S WORLD
+  FACE: 197 countries at the 2021 vintage, RUS 10.6, FRA 4.7, the
+  coverage coupe the GHE-cirrhosis pattern set. THE HONEST LIMITS:
+  the 1974 table itself (13 countries, deaths per million vehicles,
+  the WHO print Todd read) is BOOK data — territory curated, the
+  same line the 19th-century French boards hold; the per-vehicle
+  denominator lives one door away (10P4VEH_MOT_ROAD, registered
+  non-wired); RUS absent from the whole canonical flow; the witness
+  is a single-vintage cross-section, no trend on that tier; no sex
+  dimension (the flow prints none — total road deaths, the
+  registration's own shape).

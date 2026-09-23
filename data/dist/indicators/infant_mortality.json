@@ -29,6 +29,18 @@
       "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
     },
     {
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "unsd_dyb",
+      "root_label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
+      "native_unit": "deaths_per_1000_births",
+      "citation": "Hand-curated series 'dyb1978_vanished_infant_mortality' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/dyb1978_vanished_infant_mortality.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    },
+    {
       "provider": "un_dyb",
       "source_ref": "2024/table15",
       "role": "canonical",
@@ -5374,6 +5386,16 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "byelorussian_ssr",
+      "year": 1974,
+      "value": 16.6,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (2,443 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 22025); cross-checked: 2,443 deaths over Table 9's 146,876 births = 16.6 per 1,000 (printed rate 16.6). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
       "entity_id": "cabo_verde",
       "year": 2008,
       "value": 24.8877687643,
@@ -7487,6 +7509,58 @@
       "quality_code": "C"
     },
     {
+      "entity_id": "czechoslovakia",
+      "year": 1974,
+      "value": 20.5,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (5,972 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21938); cross-checked: 5,972 deaths over Table 9's 291,800 births = 20.5 per 1,000 (printed rate 20.5)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1975,
+      "value": 20.8,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (6,028 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21938); cross-checked: 6,028 deaths over Table 9's 289,425 births = 20.8 per 1,000 (printed rate 20.8)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1976,
+      "value": 21.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (6,021 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21938); cross-checked: 6,021 deaths over Table 9's 287,192 births = 21.0 per 1,000 (printed rate 21)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1977,
+      "value": 19.6,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (5,519 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21938); cross-checked: 5,519 deaths over Table 9's 281,722 births = 19.6 per 1,000 (printed rate 19.6); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1978,
+      "value": 18.7,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (5,208 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21938); cross-checked: 5,208 deaths over Table 9's 278,250 births = 18.7 per 1,000 (printed rate 18.7); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
       "entity_id": "denmark",
       "year": 2007,
       "value": 3.9940713004,
@@ -7845,6 +7919,58 @@
       "source_ref": "2024/table15",
       "quality_code": "U",
       "missing_marker": "..."
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1974,
+      "value": 15.9,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (2,844 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21943); cross-checked: 2,844 deaths over Table 9's 179,127 births = 15.9 per 1,000 (printed rate 15.9). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1975,
+      "value": 15.9,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (2,885 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21943); cross-checked: 2,885 deaths over Table 9's 181,798 births = 15.9 per 1,000 (printed rate 15.9). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1976,
+      "value": 14.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (2,727 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21943); cross-checked: 2,727 deaths over Table 9's 195,483 births = 14.0 per 1,000 (printed rate 14). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1977,
+      "value": 13.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (2,933 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21943); cross-checked: 2,933 deaths over Table 9's 223,152 births = 13.1 per 1,000 (printed rate 13.1). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1978,
+      "value": 13.2,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (3,059 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21943); cross-checked: 3,059 deaths over Table 9's 232,151 births = 13.2 per 1,000 (printed rate 13.2). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
     },
     {
       "entity_id": "ecuador",
@@ -25197,6 +25323,16 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "ukrainian_ssr",
+      "year": 1974,
+      "value": 19.2,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (14,136 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 22027); cross-checked: 14,136 deaths over Table 9's 736,616 births = 19.2 per 1,000 (printed rate 19.2). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
       "entity_id": "united_arab_emirates",
       "year": 2007,
       "value": null,
@@ -26659,6 +26795,59 @@
         "13"
       ],
       "missing_marker": "..."
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1974,
+      "value": 40.9,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (15,666 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21977); cross-checked: 15,666 deaths over Table 9's 382,947 births = 40.9 per 1,000 (printed rate 40.9)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1975,
+      "value": 39.8,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (15,423 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21977); cross-checked: 15,423 deaths over Table 9's 388,037 births = 39.7 per 1,000 (printed rate 39.8)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1976,
+      "value": 37.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (14,488 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21977); cross-checked: 14,488 deaths over Table 9's 390,487 births = 37.1 per 1,000 (printed rate 37.1); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1977,
+      "value": 35.2,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (13,545 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21977); cross-checked: 13,545 deaths over Table 9's 384,808 births = 35.2 per 1,000 (printed rate 35.2); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1978,
+      "value": 33.6,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_infant_mortality",
+      "citation": "UN Demographic Yearbook 1978, Table 15 (Infant deaths and infant mortality rates by urban/rural residence, 1974-1978), the entity's Total row as printed (12,811 infant deaths); rate per 1,000 live births as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 21977); cross-checked: 12,811 deaths over Table 9's 380,816 births = 33.6 per 1,000 (printed rate 33.6); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
     },
     {
       "entity_id": "zimbabwe",
@@ -92781,7 +92970,7 @@
       "citation": "WHO Global Health Observatory (GHO) API, indicator 'MDG_0000000001'",
       "url": "https://ghoapi.azureedge.net/api/MDG_0000000001",
       "license": "CC-BY-3.0-IGO",
-      "n_points": 39159,
+      "n_points": 39210,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -198035,6 +198224,295 @@
           "entity_id": "korea_republic_of",
           "year": 2024,
           "value": 2.549124472,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 21.485253804
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 19.061234928,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 23.797085079,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 19.828732938
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 17.57112388,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 21.977028913,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 18.339077791
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 16.257872956,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 20.343245614,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 17.042814071
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 15.096312628,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 18.887638991,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 15.874486813
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 14.090559258,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 17.584556992,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 14.843455722
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 13.184024208,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 16.418892963,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 13.91660213
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 12.358447554,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 15.374497407,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 13.064471881
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 11.622988067,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 14.41667683,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 12.270648008
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 10.926025629,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 13.519211461,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 11.526867651
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 10.267282322,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 12.70630992,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 10.824948295
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 9.666702803,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 11.910723592,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 10.187254319
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 9.118926183,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 11.207259216,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 9.613135454
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 8.610001907,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 10.562451041,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 9.119601146
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 8.188922663,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 10.002681175,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 8.692212545
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 7.805348753,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 9.526636723,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 8.32925405
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 7.498465642,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 9.118679615,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 7.999774894
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 7.196642837,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 8.749977985,
           "sex": "male"
         },
         {
@@ -314565,7 +315043,7 @@
       "citation": "World Bank Open Data API, indicator 'SP.DYN.IMRT.FE.IN'",
       "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.IMRT.FE.IN?format=json&per_page=5000",
       "license": "CC-BY-4.0",
-      "n_points": 14190,
+      "n_points": 14208,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -355351,6 +355829,114 @@
         },
         {
           "entity_id": "korea_republic_of",
+          "year": 2025,
+          "value": null,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 19.1,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 17.6,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 16.3,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 15.1,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 14.1,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 13.2,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 12.4,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 11.6,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 10.9,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 10.3,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 9.7,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 9.1,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 8.6,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 8.2,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 7.8,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 7.5,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 7.2,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
           "year": 2025,
           "value": null,
           "sex": "female"
@@ -399720,7 +400306,7 @@
       "citation": "World Bank Open Data API, indicator 'SP.DYN.IMRT.MA.IN'",
       "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.IMRT.MA.IN?format=json&per_page=5000",
       "license": "CC-BY-4.0",
-      "n_points": 14190,
+      "n_points": 14208,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -440506,6 +441092,114 @@
         },
         {
           "entity_id": "korea_republic_of",
+          "year": 2025,
+          "value": null,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 23.8,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 22.0,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 20.3,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 18.9,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 17.6,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 16.4,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 15.4,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 14.4,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 13.5,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 12.7,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 11.9,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 11.2,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 10.6,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 10.0,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 9.5,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 9.1,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 8.7,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
           "year": 2025,
           "value": null,
           "sex": "male"

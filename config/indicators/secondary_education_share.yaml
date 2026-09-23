@@ -1,0 +1,88 @@
+id: secondary_education_share
+label: "Secondary education share"
+family: society
+unit: percent
+higher_is_better: true
+todd_core: true
+
+sources:
+  # THE NINETEENTH INDICATOR (v18) — 8 citations, 3 books (La Défaite
+  # de l'Occident's Barro-Lee reads at 6: "Secondary-educated share of
+  # age cohort 70-74" for Poland/Hungary; Qui est Charlie ?'s c.1945
+  # US-vs-Europe/Japan secondary-attainment comparison; La nouvelle
+  # France's 1982 baccalauréat share by age group). The education pair's
+  # second config: the SAME dataset, the SAME dispatch, the ISCED pin
+  # swapped — the v18 nama/industrial architecture repeated inside
+  # edat_lfse_03.
+  #
+  # Canonical = Eurostat edat_lfse_03/ED3_4/Y25-64/T — the share of
+  # the adult population whose highest attainment is upper secondary
+  # or post-secondary non-tertiary (ISCED 2011 levels 3-4, NOT
+  # counting tertiary): the Barro-Lee "secondary" bucket's closest LFS
+  # face, the completed-secondary print.
+  - provider: eurostat
+    ref: edat_lfse_03/ED3_4/Y25-64/T
+    priority: 1
+    role: canonical
+    unit: percent
+    root: eurostat_lfs
+
+  # NO WITNESS — deliberately (the v18 probe verdict, recorded in
+  # sources.yaml): the OWID long-run collection exposes tertiary and
+  # mean-years charts only; every candidate secondary-attainment slug
+  # probed 404 (share-of-the-population-with-completed-secondary-
+  # education, -with-secondary-education, -with-at-least-secondary-
+  # education, -with-upper-secondary-education, 2026-09-21). The
+  # Barro-Lee panel's secondary bucket exists but rides no machine
+  # door (the site's data files are manual downloads). The world face
+  # waits on a future wiring (the same class as the by-nationality
+  # unemployment door); the marker/consanguinity precedent covers the
+  # witnesses-none shape — but with the honest difference recorded in
+  # notes: a machine-readable world panel EXISTS (Barro-Lee direct),
+  # it is simply not yet wired.
+
+coverage_start: 1992
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat edat_lfse_03 pinned isced11=ED3_4 (upper
+  secondary and post-secondary non-tertiary as HIGHEST attainment —
+  the completed-secondary print, tertiary excluded), age=Y25-64,
+  sex=T, unit=PC (pinned and guarded): 36 countries, the same
+  per-country starts as tertiary (1992-era), the collector's b/e/p
+  flags as-reported. No witness tier wired
+  (the probe record); the world face is the Barro-Lee panel's
+  secondary bucket, unwired.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 90    # the completed-secondary face tops in the high 40s-to-50s
+             # (the German-class education systems); 90 admits the
+             # historical upper tail while a misload of the ED3-8
+             # at-least-upper-secondary face (which runs ~20 points
+             # higher, tertiary included) or the ED5-8 face flags
+             # immediately.
+
+license: >
+  Eurostat reuse policy (attribution required, no endorsement implied)
+  — see docs/licenses.md.
+
+notes: >
+  THE ISCED CHOICE, DOCUMENTED (the pair's definitional honesty):
+  ED3_4 prints upper-secondary-or-post-secondary-non-tertiary as the
+  population's HIGHEST attainment — secondary completed, tertiary
+  excluded. The ED3-8 code ("Upper secondary, post-secondary and
+  tertiary") is the at-least-secondary face — a DIFFERENT metric ~20
+  points higher; the ED34_44/ED35_45 codes are the survey's own
+  recode variants; all three unwired, recorded in sources.yaml. THE
+  WITNESS GAP: tertiary carries the Barro-Lee panel; secondary waits
+  (the OWID door prints no secondary chart — the probe record); the
+  world face of this board rides no tier today, the same honest
+  shape the markers and consanguinity carry, with the future door
+  recorded. THE COHORT FACE: La Défaite de l'Occident's 70-74 reads
+  and Qui est Charlie ?'s c.1945 comparison are panel/book faces —
+  the canonical's Y25-64 band is the LFS's adult window. La nouvelle
+  # France's 1982 French census board is curated territory (book
+  data). The M/F sex splits: one ref away, unwired.

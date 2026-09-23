@@ -1,0 +1,6348 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 20000,
+  "total": 17490,
+  "sourceid": "2",
+  "lastupdated": "2026-07-13"
+ },
+ [
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2025",
+   "value": 51.7754423010249,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2024",
+   "value": 52.2336421724481,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2023",
+   "value": 52.6974361025137,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2022",
+   "value": 53.1111063583967,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2021",
+   "value": 53.4018361685719,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2020",
+   "value": 52.9487914827034,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2019",
+   "value": 51.5701324352258,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2018",
+   "value": 53.0356069665737,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2017",
+   "value": 54.5825993907749,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2016",
+   "value": 56.1607711907331,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2015",
+   "value": 57.6106551982306,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2014",
+   "value": 58.722505632836,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2013",
+   "value": 59.8409350025008,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2012",
+   "value": 61.0767331771585,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2011",
+   "value": 62.3825218637511,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2010",
+   "value": 63.7733147339776,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2009",
+   "value": 65.2660552377756,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2008",
+   "value": 66.27654066054,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2007",
+   "value": 67.0661116043412,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2006",
+   "value": 68.14328815905,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2005",
+   "value": 69.5898786781003,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2004",
+   "value": 71.0656372830697,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2003",
+   "value": 72.2809663366224,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2002",
+   "value": 73.6578071167102,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2001",
+   "value": 74.6718321692371,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "2000",
+   "value": 75.7585805102224,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1999",
+   "value": 76.5207672098285,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1998",
+   "value": 77.7616789035262,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1997",
+   "value": 78.7592095893586,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1996",
+   "value": 79.8099795362577,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1995",
+   "value": 81.0709421669958,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1994",
+   "value": 81.8969749621622,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1993",
+   "value": 81.8923257852154,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1992",
+   "value": 82.0061517059009,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1991",
+   "value": 81.911889949471,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "BF",
+    "value": "Burkina Faso"
+   },
+   "countryiso3code": "BFA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2025",
+   "value": 2.33412938549967,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2024",
+   "value": 2.39137797232537,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2023",
+   "value": 2.50551207357095,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2022",
+   "value": 2.59254288928259,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2021",
+   "value": 2.51483563043554,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2020",
+   "value": 2.35004825828845,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2019",
+   "value": 2.51529494034492,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2018",
+   "value": 2.49665280040208,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2017",
+   "value": 2.60567334700683,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2016",
+   "value": 2.87190100053817,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2015",
+   "value": 2.74492881802116,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2014",
+   "value": 2.84532855129578,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2013",
+   "value": 3.07468603940482,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2012",
+   "value": 2.93519968394183,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2011",
+   "value": 2.92935605051346,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2010",
+   "value": 2.91628963096486,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2009",
+   "value": 2.94919555638024,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2008",
+   "value": 2.75954072487772,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2007",
+   "value": 3.41125136818961,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2006",
+   "value": 3.65341220272104,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2005",
+   "value": 3.57629786597461,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2004",
+   "value": 3.67093811893622,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2003",
+   "value": 4.03399070706044,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2002",
+   "value": 3.91722095554192,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2001",
+   "value": 3.85819057816485,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2000",
+   "value": 3.92859020647262,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1999",
+   "value": 4.02326219046311,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1998",
+   "value": 4.18267455457589,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1997",
+   "value": 4.39657907792116,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1996",
+   "value": 4.57403766520751,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1995",
+   "value": 4.6377962250851,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1994",
+   "value": 4.91960592493118,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1993",
+   "value": 5.16407737828864,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1992",
+   "value": 5.28027862547016,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1991",
+   "value": 5.40357282744229,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2025",
+   "value": 1.07104516806735,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2024",
+   "value": 1.09309527721912,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2023",
+   "value": 1.21168390188867,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2022",
+   "value": 1.27225858221331,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2021",
+   "value": 1.21183428547171,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2020",
+   "value": 1.11355468975483,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2019",
+   "value": 1.18740607688,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2018",
+   "value": 1.26910924531579,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2017",
+   "value": 1.27775937087065,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2016",
+   "value": 1.30724054984753,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2015",
+   "value": 1.39978647623171,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2014",
+   "value": 1.43811499003853,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2013",
+   "value": 1.45894463226383,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2012",
+   "value": 1.57384407563171,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2011",
+   "value": 1.72134177495464,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2010",
+   "value": 1.61830257757644,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2009",
+   "value": 1.64213520468111,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2008",
+   "value": 1.62361397138887,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2007",
+   "value": 2.29226746401861,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2006",
+   "value": 2.51144888364642,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2005",
+   "value": 2.3258013941122,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2004",
+   "value": 2.35515518034185,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2003",
+   "value": 2.42462694583117,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2002",
+   "value": 2.48709644827829,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2001",
+   "value": 2.61599256583608,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2000",
+   "value": 2.63752286933477,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1999",
+   "value": 2.86390534226756,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1998",
+   "value": 2.77992529407154,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1997",
+   "value": 2.94220631720949,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1996",
+   "value": 2.93477985279435,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1995",
+   "value": 3.17017783481766,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1994",
+   "value": 3.24876344254583,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1993",
+   "value": 3.49241223892923,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1992",
+   "value": 3.55614043480647,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1991",
+   "value": 3.64354776344305,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2025",
+   "value": 2.81371149789044,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2024",
+   "value": 2.88245007613386,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2023",
+   "value": 3.00513467595088,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2022",
+   "value": 3.09502610392424,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2021",
+   "value": 3.16651807349569,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2020",
+   "value": 3.25705691945571,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2019",
+   "value": 3.37543887644299,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2018",
+   "value": 3.51265896669884,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2017",
+   "value": 3.59733668825534,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2016",
+   "value": 3.66047703814595,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2015",
+   "value": 3.78330569236643,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2014",
+   "value": 3.81313828581695,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2013",
+   "value": 3.88664167379885,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2012",
+   "value": 4.06018997889294,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2011",
+   "value": 4.15668546041956,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2010",
+   "value": 4.42593770787925,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2009",
+   "value": 4.56759500737223,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2008",
+   "value": 4.5758736182003,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2007",
+   "value": 4.58826077807892,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2006",
+   "value": 4.61760546802279,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2005",
+   "value": 4.76630781883524,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2004",
+   "value": 4.93852073306913,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2003",
+   "value": 4.97659184053021,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2002",
+   "value": 4.99027123635164,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2001",
+   "value": 5.22580965943388,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2000",
+   "value": 5.45064111035691,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1999",
+   "value": 5.58810438805113,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1998",
+   "value": 5.67121988168286,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1997",
+   "value": 5.74689473572859,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1996",
+   "value": 5.90692519708688,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1995",
+   "value": 6.11495824946048,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1994",
+   "value": 6.22165049989619,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1993",
+   "value": 6.38853916162429,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1992",
+   "value": 6.86823468394356,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1991",
+   "value": 7.19125692494999,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2024",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2020",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2015",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2010",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2005",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2000",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1995",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2025",
+   "value": 1.52494439217106,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2024",
+   "value": 1.5689918084039,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2023",
+   "value": 1.5696095192715,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2022",
+   "value": 1.62054352999574,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2021",
+   "value": 1.6624029464832,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2020",
+   "value": 1.74639361793943,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2019",
+   "value": 1.78830473970119,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2018",
+   "value": 1.8191184184211,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2017",
+   "value": 1.88251210793922,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2016",
+   "value": 1.89639178595969,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2015",
+   "value": 1.89654672691753,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2014",
+   "value": 1.76919324552367,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2013",
+   "value": 1.72950794487142,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2012",
+   "value": 1.80265090362838,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2011",
+   "value": 1.87146407894409,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2010",
+   "value": 1.85195450028334,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2009",
+   "value": 1.73206959313867,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2008",
+   "value": 1.71756180762692,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2007",
+   "value": 1.67663483829058,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2006",
+   "value": 1.77470537064913,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2005",
+   "value": 1.80175738688274,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2004",
+   "value": 1.86556254488759,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2003",
+   "value": 1.92701482396667,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2002",
+   "value": 2.07923696141639,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2001",
+   "value": 2.23769860333397,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2000",
+   "value": 2.39654573854086,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1999",
+   "value": 2.60169830416711,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1998",
+   "value": 2.71261999097877,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1997",
+   "value": 2.77717676188496,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1996",
+   "value": 2.87615076127207,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1995",
+   "value": 2.91578710767577,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1994",
+   "value": 2.93161589542779,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1993",
+   "value": 2.74587543040743,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1992",
+   "value": 2.90296750457869,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1991",
+   "value": 2.93686126843486,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SL.AGR.EMPL.ZS",
+    "value": "Employment in agriculture (% of total employment) (modeled ILO estimate)"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  }
+ ]
+]

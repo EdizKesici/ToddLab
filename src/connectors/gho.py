@@ -54,6 +54,17 @@ API SHAPE (verified live 2026-09-13, WHOSIS_000015: 12,936 rows):
   re-fetchable from source_url. A Dim2Type OTHER than AGEGROUP is not
   silently interpreted: it raises (layout change → a human decides).
   Dim2-less indicators (WHOSIS_000015, MDG_0000000001) pass untouched.
+- v20 — the per-code AGE pin: NCD_BMI_30C (the obesity canonical)
+  disaggregates by AGE too, but as a SINGLE population face printed on
+  every row (Dim2 = AGEGROUP_YEARS18-PLUS — the 18+ adult frame, read
+  live 2026-09-22: 28,350 rows, 199 countries x 1980-2024 x 3 sexes,
+  every row carrying the same 18+ tag — no slices beside it to drop).
+  The YEARSALL default would refuse that whole payload, so the pin
+  table below declares the door's own face per code: a pinned code
+  ACCEPTS exactly its pinned Dim2 and raises on anything else (a
+  row from another age frame = a door change, a human decides); an
+  unpinned code keeps the YEARSALL rule verbatim (SDGSUICIDE's
+  drop-the-slices grammar — bit-compat with every pre-v20 parse).
 - NumericValue is the estimate; "Value" is its formatted string
   ("15.9 [15.3-16.8]") and Low/High the uncertainty interval. The
   RawRecord schema carries only the estimate: the formatted string and
@@ -78,13 +89,28 @@ logger = logging.getLogger(__name__)
 # Dim1 values of the SEX dimension -> the project's sex vocabulary.
 _SEX_DIM = {"SEX_MLE": "male", "SEX_FMLE": "female", "SEX_BTSX": None}
 
+# v20: the per-code AGE pin — a door whose every row carries ONE age
+# frame (no slices beside it) declares that frame here, and the parser
+# accepts exactly it (anything else raises). Codes not listed keep the
+# YEARSALL drop-the-slices grammar (SDGSUICIDE) or the Dim2-less pass
+# (WHOSIS_000015, MDG_0000000001, PRISON_A2_*).
+_CODE_AGE_PIN: dict[str, str] = {
+    "NCD_BMI_30C": "AGEGROUP_YEARS18-PLUS",  # read live 2026-09-22 on the full 28,350-row slice
+}
+
 
 def build_url(code: str) -> str:
     return GHO_API_URL.format(code=code)
 
 
-def parse_gho(json_text: str) -> list[RawRecord]:
+def parse_gho(json_text: str, *, code: str | None = None) -> list[RawRecord]:
     """Pure function: GHO API JSON text -> RawRecords (COUNTRY rows only).
+
+    `code` (the GHO indicator code being parsed, passed by fetch_raw)
+    selects the per-code Dim2 grammar: a code pinned in _CODE_AGE_PIN
+    accepts exactly its pinned age frame; any other code keeps the
+    YEARSALL rule (drop the slices) or passes Dim2-less rows untouched.
+    Unpinned callers (tests) keep the pre-v20 behavior bit-identical.
 
     Raises ValueError on any shape surprise — the loud-failure rule."""
     try:
@@ -104,8 +130,8 @@ def parse_gho(json_text: str) -> list[RawRecord]:
         if dim_type != "COUNTRY":
             skipped_non_country += 1
             continue
-        code = row.get("SpatialDim")
-        if not code or not isinstance(code, str):
+        spatial = row.get("SpatialDim")
+        if not spatial or not isinstance(spatial, str):
             raise ValueError(f"GHO COUNTRY row without a SpatialDim code: {row!r}")
         year = row.get("TimeDim")
         if row.get("TimeDimType") != "YEAR" or not isinstance(year, int):
@@ -132,9 +158,20 @@ def parse_gho(json_text: str) -> list[RawRecord]:
         # indicator nobody asked for — dropped at parse, stored nowhere,
         # the log line below is the record of the drop. A Dim2Type other
         # than AGEGROUP is a layout surprise, never silently re-interpreted.
+        # v20: a code pinned in _CODE_AGE_PIN carries its age frame on
+        # EVERY row (no slices) — the pin is the door's own face, and any
+        # deviation from it is a door change that must stop the parse.
         dim2_type = row.get("Dim2Type")
         dim2 = row.get("Dim2")
-        if dim2_type is not None or dim2 is not None:
+        pinned_age = _CODE_AGE_PIN.get(code) if code is not None else None
+        if pinned_age is not None:
+            if dim2 != pinned_age:
+                raise ValueError(
+                    f"GHO code {code!r} is age-pinned to {pinned_age!r} but a row "
+                    f"carries Dim2={dim2!r} (Dim2Type={dim2_type!r}) — a door change, "
+                    "never silently re-interpreted (the pin is the door's own face)."
+                )
+        elif dim2_type is not None or dim2 is not None:
             if dim2_type != "AGEGROUP":
                 raise ValueError(
                     f"GHO row with Dim2Type {dim2_type!r}: this connector only knows the "
@@ -149,8 +186,8 @@ def parse_gho(json_text: str) -> list[RawRecord]:
             raise ValueError(f"GHO NumericValue is neither number nor null: {value!r}")
         records.append(
             RawRecord(
-                entity_raw_name=code,  # the API prints no country name, only the code
-                iso3_raw=code,
+                entity_raw_name=spatial,  # the API prints no country name, only the code
+                iso3_raw=spatial,
                 year=year,
                 value=float(value) if value is not None else None,
                 sex=sex,
@@ -201,5 +238,5 @@ class GhoConnector(Connector):
             indicator_id=indicator_id,
             fetched_at=RawFetchResult.now_iso(),
             source_url=url,
-            records=parse_gho(response.text),
+            records=parse_gho(response.text, code=source_ref),
         )

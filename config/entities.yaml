@@ -40,7 +40,18 @@
 
 - entity_id: ussr
   label: Soviet Union
-  iso3: null
+  # v22: SUN — the entity's own WITHDRAWN ISO 3166-1 alpha-3 (assigned to
+  # the USSR, withdrawn at dissolution). Declared now for the by-origin
+  # axis: the OECD migration questionnaire prints SUN_F ("Former USSR")
+  # as a country of birth (people born in the union, counted in the
+  # foreign-born stock wherever they live now), and the ISO3-first
+  # resolution needs the code to land on THIS entity — the v21 kosovo/XKX
+  # precedent, the vanished-entity admission's by-origin face. No
+  # destination axis ever prints it (all 38 OECD and 44 Eurostat
+  # destinations are current states); a stock point's YEAR is the
+  # measurement year, not the birth year — normalize deliberately skips
+  # covers_year on the origin axis for exactly this reason.
+  iso3: SUN
   valid_from: 1922
   valid_to: 1991
   predecessor: null
@@ -77,11 +88,61 @@
     values straight to each modern successor country''s own code instead. Decision:
     each of the 15 successor republics below shows one continuous series (pre- and
     post-1991) with a `formerly_part_of` warning on the pre-1991 portion, rather than
-    a separate fabricated ''ussr'' series. This entity is kept for reference/documentation
-    and in case a future source (e.g. HMD) does carry a genuine standalone USSR series.'
+    a separate fabricated ''ussr'' series. The v21 curated tier now carries the genuine
+    standalone prints the UN''s own 1978 yearbook tables carry: crude birth rate 1974-1977
+    (Table 9) and life expectancy at birth 1971-1972 by sex (Table 4) — the as-reported
+    UN-member prints, joined to the official IMR series already curated since v5.'
+- entity_id: byelorussian_ssr
+  label: Byelorussian SSR
+  iso3: null
+  valid_from: 1922
+  valid_to: 1991
+  predecessor: null
+  successors:
+  - belarus
+  source_ids:
+    owid: null
+    worldbank: null
+    who_gho: null
+    # The UN's own printed name in the DYB 1978 tables (verified in the
+    # edition's Table 9/15 rows: "Byelorussian SSR - RSS de Bielorussie").
+    # A distinct UN MEMBER row: the USSR, Byelorussian SSR and Ukrainian SSR
+    # each reported separately to the UN (the three Soviet UN seats), so the
+    # collector prints each its own rows — carried as-reported (v21).
+    un_dyb: Byelorussian SSR
+  label_source: manual
+  notes: 'One of the USSR''s three UN-member republics (UN membership 1945, union
+    membership 1922). The DYB 1978 prints its own vital rows beside the union''s:
+    CBR 1974-1977 (Table 9), IMR 1974 (Table 15, the same single pre-blackout
+    year as the union), LE at birth 1970-1971 by sex (Table 4). Successor
+    `belarus` keeps its own continuous (witness-attached) series; the two never
+    collide (distinct entity ids, the merge key is (entity, year, sex)).'
+- entity_id: ukrainian_ssr
+  label: Ukrainian SSR
+  iso3: null
+  valid_from: 1922
+  valid_to: 1991
+  predecessor: null
+  successors:
+  - ukraine
+  source_ids:
+    owid: null
+    worldbank: null
+    who_gho: null
+    # The UN's own printed name in the DYB 1978 tables (verified in the
+    # edition's Table 9/15 rows: "Ukrainian SSR - RSS d'Ukraine").
+    un_dyb: Ukrainian SSR
+  label_source: manual
+  notes: 'One of the USSR''s three UN-member republics (UN membership 1945, union
+    membership 1922). Same DYB 1978 print shape as the Byelorussian SSR: CBR
+    1974-1977, IMR 1974, LE at birth 1970-1971 by sex. Successor `ukraine`
+    keeps its own continuous (witness-attached) series; the two never collide.'
 - entity_id: czechoslovakia
   label: Czechoslovakia
-  iso3: null
+  # v22: CSK — the withdrawn ISO 3166-1 alpha-3 (see ussr/SUN for the
+  # by-origin rationale; the OECD questionnaire prints CSK_F "Former
+  # Czechoslovakia" as a country of birth).
+  iso3: CSK
   valid_from: 1918
   valid_to: 1992
   predecessor: null
@@ -95,7 +156,10 @@
   label_source: manual
 - entity_id: yugoslavia_sfr
   label: Socialist Federal Republic of Yugoslavia
-  iso3: null
+  # v22: YUG — the withdrawn ISO 3166-1 alpha-3 (see ussr/SUN for the
+  # by-origin rationale; the OECD questionnaire prints YUG_F "Former
+  # Yugoslavia" as a country of birth).
+  iso3: YUG
   valid_from: 1945
   valid_to: 1992
   predecessor: null
@@ -119,7 +183,10 @@
     not ''serbia'' directly.'
 - entity_id: serbia_and_montenegro
   label: Serbia and Montenegro
-  iso3: null
+  # v22: SCG — the withdrawn ISO 3166-1 alpha-3 (see ussr/SUN for the
+  # by-origin rationale; the OECD questionnaire prints SCG_F "Former
+  # Serbia and Montenegro" as a country of birth).
+  iso3: SCG
   valid_from: 1992
   valid_to: 2006
   predecessor: yugoslavia_sfr
@@ -195,7 +262,15 @@
   label_source: manual
 - entity_id: kosovo
   label: Kosovo
-  iso3: null
+  # v21: XKX — the USER-ASSIGNED ISO 3166-1 code (the XK prefix is reserved
+  # for user assignment; XKX is the code the World Bank prints as
+  # countryiso3code and Eurostat maps its own XK geo code onto). Kosovo is
+  # absent from ISO 3166-1 proper (contested status) and from pycountry,
+  # which is why the eurostat connector's override table carries XK -> XKX
+  # explicitly. This resolves the v1-era pending product decision: the
+  # collector's own two doors (WB XKX, Eurostat XK) now land on this entity;
+  # pre-2008 rows still drop on valid_from (declared independence 2008).
+  iso3: XKX
   valid_from: 2008
   valid_to: null
   predecessor: serbia
@@ -207,9 +282,40 @@
   label_source: manual
   notes: Absent from ISO 3166-1 (contested status), so absent from pycountry -> added
     by hand. Declared independence 2008. OWID uses Code=OWID_KOS. World Bank tracks
-    it under the non-ISO code XKX. who_gho not verified yet (phase 2). Found missing
-    during a live-network audit (see CHANGELOG) that surfaced it as a real data gap,
-    not an expected aggregate.
+    it under the non-ISO code XKX (now carried as this entity's user-assigned iso3,
+    v21). who_gho not verified yet (phase 2). Found missing during a live-network
+    audit (see CHANGELOG) that surfaced it as a real data gap, not an expected
+    aggregate.
+- entity_id: netherlands_antilles
+  label: Netherlands Antilles
+  # v22: ANT — the WITHDRAWN ISO 3166-1 alpha-3 (dissolved 10 October 2010
+  # into the two successor countries below). Admitted as its own entity for
+  # the by-origin axis, the same vanished-entity class the v21 DYB-1978 route
+  # admitted on the destination axis: BOTH migration doors print it as a
+  # country of birth — Eurostat keeps the withdrawn alpha-2 AN (FR<-AN 1999
+  # = 78, 2005 = 450, verified live 2026-09-22) and the OECD prints ANT_F
+  # "Former Netherlands Antilles" — people born in the former entity,
+  # counted in the foreign-born stock wherever they live now. The ISO3-first
+  # resolution lands both doors on this entity exactly (the kosovo/XKX
+  # precedent). A stock point's YEAR is the measurement year, not the birth
+  # year — normalize deliberately skips covers_year on the origin axis, so
+  # the post-dissolution stock prints (2015-2018) ride as-printed.
+  iso3: ANT
+  valid_from: null
+  valid_to: 2010
+  predecessor: netherlands
+  successors:
+  - curacao
+  - bonaire_sint_eustatius_and_saba
+  source_ids:
+    owid: null
+    worldbank: null
+    who_gho: null
+  label_source: manual
+  notes: Dissolved 10 October 2010 (Curaçao and Bonaire/Sint Eustatius/Saba
+    the successors). Both migration doors keep printing the withdrawn code as
+    a birth place (Eurostat AN, OECD ANT_F) — the by-origin face of the v21
+    vanished-entity admission, wired with the bilateral layer in v22.
 - entity_id: aruba
   label: Aruba
   iso3: ABW

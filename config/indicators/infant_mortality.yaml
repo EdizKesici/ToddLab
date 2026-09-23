@@ -26,6 +26,19 @@ sources:
     role: canonical
     unit: deaths_per_1000_births
     root: soviet_official
+  # v21: the DYB 1978 vanished-entities transcription (the PDF route the
+  # XLS loop cannot reach): Czechoslovakia, Yugoslavia SFR, the GDR (the
+  # full 1974-1978 Total rows) + the Byelorussian/Ukrainian SSR single
+  # pre-blackout 1974 rows — every value READ from the archived text layer
+  # and arithmetically cross-checked (Table 15 counts over Table 9 births
+  # reproduce the printed rates within 0.4%); root unsd_dyb: the DATA's
+  # origin is the collector's own 1978 print, the curator only transcribes.
+  - provider: curated
+    ref: dyb1978_vanished_infant_mortality
+    priority: 2
+    role: canonical
+    unit: deaths_per_1000_births
+    root: unsd_dyb
   # 13 wired editions: 2015 recovered in v10 through the legacy URL
   # pattern (verified live 2026-09-13); 2016 (FILEPASS-encrypted) remains
   # deliberately absent, no coverage loss (see config/sources.yaml un_dyb
@@ -34,97 +47,97 @@ sources:
   - provider: un_dyb
     ref: 2024/table15
     field: rate
-    priority: 2
+    priority: 3
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2023/table15
     field: rate
-    priority: 3
+    priority: 4
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2022/table15
     field: rate
-    priority: 4
+    priority: 5
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2021/table15
     field: rate
-    priority: 5
+    priority: 6
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2020/table15
     field: rate
-    priority: 6
+    priority: 7
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2019/table15
     field: rate
-    priority: 7
+    priority: 8
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2018/table15
     field: rate
-    priority: 8
+    priority: 9
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2017/table15
     field: rate
-    priority: 9
+    priority: 10
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2015/table15
     field: rate
-    priority: 10
+    priority: 11
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2014/table15
     field: rate
-    priority: 11
+    priority: 12
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2013/table15
     field: rate
-    priority: 12
+    priority: 13
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2012/table15
     field: rate
-    priority: 13
+    priority: 14
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: un_dyb
     ref: 2011/table15
     field: rate
-    priority: 14
+    priority: 15
     role: canonical
     unit: deaths_per_1000_births
     root: unsd_dyb
   - provider: owid
     ref: infant-mortality
-    priority: 15
+    priority: 16
     role: witness
     unit: deaths_per_100_births
     root: un_igme
@@ -136,12 +149,12 @@ sources:
   # genealogy footnote, displayed by the divergence view, not hidden.
   - provider: worldbank
     ref: SP.DYN.IMRT.MA.IN
-    priority: 16
+    priority: 17
     role: witness
     root: un_igme
   - provider: worldbank
     ref: SP.DYN.IMRT.FE.IN
-    priority: 17
+    priority: 18
     role: witness
     root: un_igme
   # v11 (P5): the third door of the IGME triangle — GHO MDG_0000000001,
@@ -151,7 +164,7 @@ sources:
   # v10 GHO connector's SEX-only shape held.
   - provider: who_gho
     ref: MDG_0000000001
-    priority: 18
+    priority: 19
     role: witness
     root: un_igme
 

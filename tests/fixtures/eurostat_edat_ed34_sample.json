@@ -1,0 +1,272 @@
+{
+ "version": "2.0",
+ "class": "dataset",
+ "label": "Population in private households by educational attainment level",
+ "id": [
+  "freq",
+  "sex",
+  "age",
+  "unit",
+  "isced11",
+  "geo",
+  "time"
+ ],
+ "size": [
+  1,
+  1,
+  1,
+  1,
+  1,
+  38,
+  34
+ ],
+ "dimension": {
+  "freq": {
+   "label": "Time frequency",
+   "category": {
+    "index": {
+     "A": 0
+    },
+    "label": {
+     "A": "Annual"
+    }
+   }
+  },
+  "sex": {
+   "label": "Sex",
+   "category": {
+    "index": {
+     "T": 0
+    },
+    "label": {
+     "T": "Total"
+    }
+   }
+  },
+  "age": {
+   "label": "Age class",
+   "category": {
+    "index": {
+     "Y25-64": 0
+    },
+    "label": {
+     "Y25-64": "From 25 to 64 years"
+    }
+   }
+  },
+  "unit": {
+   "label": "Unit of measure",
+   "category": {
+    "index": {
+     "PC": 0
+    },
+    "label": {
+     "PC": "Percentage"
+    }
+   }
+  },
+  "isced11": {
+   "label": "International Standard Classification of Education (ISCED 2011)",
+   "category": {
+    "index": {
+     "ED3_4": 0
+    },
+    "label": {
+     "ED3_4": "Upper secondary and post-secondary non-tertiary education (levels 3 and 4)"
+    }
+   }
+  },
+  "geo": {
+   "label": "Geopolitical entity (reporting)",
+   "category": {
+    "index": {
+     "EU27_2020": 0,
+     "EA21": 1,
+     "BE": 2,
+     "BG": 3,
+     "CZ": 4,
+     "DK": 5,
+     "DE": 6,
+     "EE": 7,
+     "IE": 8,
+     "EL": 9,
+     "ES": 10,
+     "FR": 11,
+     "HR": 12,
+     "IT": 13,
+     "CY": 14,
+     "LV": 15,
+     "LT": 16,
+     "LU": 17,
+     "HU": 18,
+     "MT": 19,
+     "NL": 20,
+     "AT": 21,
+     "PL": 22,
+     "PT": 23,
+     "RO": 24,
+     "SI": 25,
+     "SK": 26,
+     "FI": 27,
+     "SE": 28,
+     "IS": 29,
+     "NO": 30,
+     "CH": 31,
+     "UK": 32,
+     "BA": 33,
+     "ME": 34,
+     "MK": 35,
+     "RS": 36,
+     "TR": 37
+    },
+    "label": {
+     "EU27_2020": "European Union - 27 countries (from 2020)",
+     "EA21": "Euro area – 21 countries (from 2026)",
+     "BE": "Belgium",
+     "BG": "Bulgaria",
+     "CZ": "Czechia",
+     "DK": "Denmark",
+     "DE": "Germany",
+     "EE": "Estonia",
+     "IE": "Ireland",
+     "EL": "Greece",
+     "ES": "Spain",
+     "FR": "France",
+     "HR": "Croatia",
+     "IT": "Italy",
+     "CY": "Cyprus",
+     "LV": "Latvia",
+     "LT": "Lithuania",
+     "LU": "Luxembourg",
+     "HU": "Hungary",
+     "MT": "Malta",
+     "NL": "Netherlands",
+     "AT": "Austria",
+     "PL": "Poland",
+     "PT": "Portugal",
+     "RO": "Romania",
+     "SI": "Slovenia",
+     "SK": "Slovakia",
+     "FI": "Finland",
+     "SE": "Sweden",
+     "IS": "Iceland",
+     "NO": "Norway",
+     "CH": "Switzerland",
+     "UK": "United Kingdom",
+     "BA": "Bosnia and Herzegovina",
+     "ME": "Montenegro",
+     "MK": "North Macedonia",
+     "RS": "Serbia",
+     "TR": "Türkiye"
+    }
+   }
+  },
+  "time": {
+   "label": "Time",
+   "category": {
+    "index": {
+     "1992": 0,
+     "1993": 1,
+     "1994": 2,
+     "1995": 3,
+     "1996": 4,
+     "1997": 5,
+     "1998": 6,
+     "1999": 7,
+     "2000": 8,
+     "2001": 9,
+     "2002": 10,
+     "2003": 11,
+     "2004": 12,
+     "2005": 13,
+     "2006": 14,
+     "2007": 15,
+     "2008": 16,
+     "2009": 17,
+     "2010": 18,
+     "2011": 19,
+     "2012": 20,
+     "2013": 21,
+     "2014": 22,
+     "2015": 23,
+     "2016": 24,
+     "2017": 25,
+     "2018": 26,
+     "2019": 27,
+     "2020": 28,
+     "2021": 29,
+     "2022": 30,
+     "2023": 31,
+     "2024": 32,
+     "2025": 33
+    },
+    "label": {
+     "1992": "1992",
+     "1993": "1993",
+     "1994": "1994",
+     "1995": "1995",
+     "1996": "1996",
+     "1997": "1997",
+     "1998": "1998",
+     "1999": "1999",
+     "2000": "2000",
+     "2001": "2001",
+     "2002": "2002",
+     "2003": "2003",
+     "2004": "2004",
+     "2005": "2005",
+     "2006": "2006",
+     "2007": "2007",
+     "2008": "2008",
+     "2009": "2009",
+     "2010": "2010",
+     "2011": "2011",
+     "2012": "2012",
+     "2013": "2013",
+     "2014": "2014",
+     "2015": "2015",
+     "2016": "2016",
+     "2017": "2017",
+     "2018": "2018",
+     "2019": "2019",
+     "2020": "2020",
+     "2021": "2021",
+     "2022": "2022",
+     "2023": "2023",
+     "2024": "2024",
+     "2025": "2025"
+    }
+   }
+  }
+ },
+ "value": {
+  "216": 59.0,
+  "227": 59.1,
+  "236": 50.1,
+  "46": 42.4,
+  "57": 44.4,
+  "66": 41.7,
+  "352": 18.6,
+  "363": 22.4,
+  "372": 22.9,
+  "12": 47.1,
+  "23": 47.6,
+  "32": 44.4,
+  "386": 41.4,
+  "397": 43.5,
+  "406": 40.5,
+  "454": 37.0,
+  "465": 42.3,
+  "474": 44.4,
+  "760": 68.0,
+  "771": 63.0,
+  "780": 55.4,
+  "208": 56.7
+ },
+ "status": {
+  "406": "b",
+  "454": "b",
+  "208": "b"
+ },
+ "updated": "2026-09-10T23:00:00+0200"
+}

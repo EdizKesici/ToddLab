@@ -1,0 +1,358 @@
+id: immigration_stock
+label: "Immigrant stock (foreign-born population)"
+family: demography
+unit: persons
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE TWENTIETH INDICATOR (v18) — 11 citations, 1 book (Le Destin des
+  # immigrés, Todd's immigrant-origin boards: "Maghreb, Turkish,
+  # Portuguese populations — France/UK/Germany 1946-1990 (+ 4
+  # distribution maps)", the official censuses). The metric of the
+  # book that made the by-origin question THE Todd question.
+  #
+  # Canonical = Eurostat migr_pop3ctb/FOR/TOTAL/T — the migration
+  # questionnaire's own stock table ("Population on 1 January by age
+  # group, sex and country of birth"), pinned c_birth=FOR ("Foreign
+  # country"): the foreign-born stock each country's own registration
+  # prints. FR's series is annual and census-aligned (2008 = 7,076,824
+  # -> 2024 = 9,362,105, verified live 2026-09-21); the door's 45-geo
+  # codelist (EU27_2020 + 44 countries incl. TR/UA/GE/AM/AZ/AD/MC —
+  # RICHER than the LFS door's) is the collector universe.
+  - provider: eurostat
+    ref: migr_pop3ctb/FOR/TOTAL/T
+    priority: 1
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+
+  # THE WITNESS (worldwide): WB SM.POP.TOTL, "International migrant
+  # stock, total" — the UN Population Division's Trends in
+  # International Migrant Stock, DESA's compiled estimates of the
+  # same foreign-born stock (census-based with estimation for missing
+  # years), world 1990-2024, 5-year steps to 2015 then annual. The
+  # pair's shape: FR 1990 = 5,890,023 on the witness (the DESA
+  # estimate) riding beside the collector's 2008+ annual prints; the
+  # two doors converge on the co-covered core (FR 2024: 9,186,757
+  # DESA vs 9,362,105 collector — the estimation seam displayed, the
+  # WPP relation).
+  - provider: worldbank
+    ref: SM.POP.TOTL
+    priority: 2
+    role: witness
+    root: un_desa
+
+  # THE BY-ORIGIN FACE (v22) — THE Todd question wired: the bilateral
+  # (destination x origin) decomposition of the SAME stock, the shape
+  # of Le Destin des immigrés' own boards ("the stock of Moroccans/
+  # Turks/Portuguese IN France/Germany/UK"). Canonical = the 30
+  # destination ROWS of migr_pop3ctb that PRINT the by-origin detail
+  # (one geo-pinned ref each, c_birth UNPINNED = the by-birth codelist
+  # as printed, 307 codes: 243 countries + the door's 64 aggregate/
+  # summary codes, dropped logged per class; the diagonal
+  # c_birth == geo — the native face — drops logged too). THE HONEST
+  # COVERAGE LIMIT, verified live 2026-09-22: 14 of the codelist's 44
+  # country geos print ONLY their totals on this face (DE, EL, MT, ME,
+  # MD, MK, GE, AL, RS, UA, AD, MC, AM, AZ — Germany's row carries 184
+  # cells, every one of them an aggregate or a FOR/NAT/TOTAL/UNK
+  # summary code, ZERO country origins) — the registration's own honest
+  # absence, the same class as Ukraine's zero cells on the FOR door;
+  # those doors stay unwired, recorded here (the day they print, they
+  # join). Each wired row is one destination's own registration, the
+  # same collector judgment as the FOR door above — the priorities are
+  # nominal (the rows are disjoint by destination, arbitration never
+  # fires across them). The FR row answers 226 country origins
+  # (FR<-MA 2015 = 954,742, FR<-DZ 2018 = 1,390,284, FR<-PT 2025 =
+  # 599,492 — the Todd-board anchors, verified live 2026-09-22); the
+  # Maghreb/Turkey slices ride the census rounds (1999/2005/2015-2018)
+  # and STOP at 2018 for FR — the coverage cliff the dist carries
+  # as-printed. The UK row prints 1998-2004 only (the honest
+  # post-Brexit-era record on this table).
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/BE
+    priority: 3
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/BG
+    priority: 4
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CZ
+    priority: 5
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/DK
+    priority: 6
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/EE
+    priority: 7
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IE
+    priority: 8
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/ES
+    priority: 9
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/FR
+    priority: 10
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/HR
+    priority: 11
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IT
+    priority: 12
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CY
+    priority: 13
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LV
+    priority: 14
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LT
+    priority: 15
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LU
+    priority: 16
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/HU
+    priority: 17
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/NL
+    priority: 18
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/AT
+    priority: 19
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/PL
+    priority: 20
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/PT
+    priority: 21
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/RO
+    priority: 22
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SI
+    priority: 23
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SK
+    priority: 24
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/FI
+    priority: 25
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SE
+    priority: 26
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IS
+    priority: 27
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LI
+    priority: 28
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/NO
+    priority: 29
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CH
+    priority: 30
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/UK
+    priority: 31
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/TR
+    priority: 32
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+
+  # THE BY-ORIGIN WITNESS (v22): OECD DSD_MIG_F@DF_MIG_POPF, "International
+  # migration database - stocks of foreign-born population" — the OECD
+  # migration questionnaire's own bilateral matrix (REF_AREA x
+  # BIRTH_COUNTRY, both axes ISO3), the OECD-COMPILED face of the same
+  # national registrations (the oecd_family relation). The door serves only
+  # through the empty-key /all download (positional keys 404, verified
+  # live); the parser pins the SEX=_T frame (the F rows drop logged — the
+  # by-sex face recorded unwired) and drops the residual vocabulary
+  # (W/W_X/EEA/EU15/A4/STLS) and the diagonal, logged per class. THE SEAM,
+  # verified to the unit: OECD FR<-MAR _T 2015 = 954,742 = the Eurostat
+  # c_birth print EXACTLY (2018 = 992,120 both sides) — agreement that
+  # reads like confirmation unless the genealogy says both doors walk back
+  # to the same national registrations. And the OECD face EXTENDS the
+  # canonical universe: the FR Maghreb series 2019-2021 past the Eurostat
+  # 2018 cutoff (FR<-MAR 2021 = 1,036,133), the vanished-entity origins
+  # (CSK_F/SUN_F/YUG_F/ANT_F/SCG_F — the by-origin face of the v21
+  # admission), and the world's non-European destinations the 45-geo
+  # Eurostat codelist structurally cannot print (US<-MEX 12,383,868 in
+  # 2024, US<-W 51,226,993 the World-total row the witness drops logged).
+  - provider: oecd
+    ref: DF_MIG_POPF
+    priority: 33
+    role: witness
+    unit: persons
+    root: oecd_mig
+
+coverage_start: 1990
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat migr_pop3ctb pinned c_birth=FOR (the
+  foreign-born total — "Foreign country"), age=TOTAL, sex=T, unit=NR
+  (the dataset's only unit, pinned and guarded): 44 countries
+  (aggregates dropped logged), the door's own per-country starts
+  (Ireland 2000, Italy/Lithuania/Spain 2002, France 2007 — the FR
+  series annual 2007-2025, census-aligned) with the collector's
+  b/e/p flags as-reported. Since v22 the SAME collector tier carries
+  the by-origin face: the 44 geo-pinned ROW doors (c_birth open, the
+  307-code by-birth codelist as printed; aggregates, the
+  FOR/NAT/TOTAL/OTH/UNK/RNC summary codes and the native diagonal
+  dropped logged per class), as each country's own registration
+  prints it. Witness tiers = the UN DESA migrant-stock estimates via
+  WDI (world 1990-2024, the total face) and — since v22, the
+  by-origin face — the OECD migration questionnaire's foreign-born
+  matrix (38 destinations x the BIRTH_COUNTRY codelist, SEX=_T;
+  the two questionnaires agreeing to the unit on the co-covered
+  core). Root pair eurostat_migr/un_desa/oecd_mig: the registrations,
+  the compiled estimates of the same stock, and the OECD-compiled
+  questionnaire answers — one estimation/compilation step apart each.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 60000000   # the world's largest foreign-born stocks print in the
+                 # 50s of millions (US 2024 class; the by-origin US<-W
+                 # World row rides the same head — dropped logged on the
+                 # OECD door, the bound admits any per-origin print that
+                 # remains); 60M admits that head while a unit error (a
+                 # share, a rate, a flow) or a misload of the NAT/TOTAL
+                 # c_birth doors flags immediately.
+
+license: >
+  Eurostat reuse policy (attribution required, no endorsement implied);
+  World Bank WDI CC-BY-4.0; OECD Terms and Conditions, attribution
+  required — see docs/licenses.md.
+
+notes: >
+  THE TODD BY-ORIGIN QUESTION, WIRED (v22): Todd's boards are
+  BILATERAL — the stock of Moroccans/Turks/Portuguese IN
+  France/Germany/UK — and the indicator now carries the matrix beside
+  its total: the dist's `bilateral` layer (destination_entity_id x
+  origin_entity_id x year, additive — the (entity, year) data and
+  witnesses stay bit-identical). Canonical = the 44 Eurostat ROW
+  doors; witness = the OECD matrix. THE SEAM, verified to the unit:
+  the two questionnaires agree exactly on the co-covered core
+  (FR<-MA 2015 = 954,742 on BOTH doors; 2018 = 992,120 both sides)
+  and the OECD face extends the French Maghreb series past the
+  Eurostat 2018 cutoff (2019 = 1,009,605, 2021 = 1,036,133) — the
+  compilation seam displayed, never reconciled. THE ANCHORS the
+  book's own tables read: FR<-DZ 1999 = 1,246,706 -> 2018 =
+  1,390,284, FR<-TR -> 256,684, FR<-PT 1999 = 579,465 -> 2025 =
+  599,492; the world face the Eurostat universe cannot print:
+  US<-MEX 12,383,868 (2024). THE VANISHED ORIGINS, admitted (the
+  v21 class): both doors keep printing the withdrawn codes as birth
+  places — Eurostat AN (Netherlands Antilles), the OECD _F prints
+  (CSK_F/SUN_F/YUG_F/SCG_F/ANT_F) — each landing on its vanished
+  entity through its withdrawn ISO3 (the kosovo/XKX precedent); a
+  stock point's year is the MEASUREMENT year, never the birth year,
+  so the origin axis deliberately skips the entity validity guard
+  (people born in Czechoslovakia, counted in Germany in 2015, are
+  the as-printed classification). The v18 disambiguation now wired:
+  the citizenship face (migr_pop1ctz, DSD_MIG@DF_MIG) stays
+  unwired, both DSDs documented in sources.yaml. THE HISTORICAL
+  FACE: Todd's 1946-1990 boards are census-era BOOK tables (the
+  censuses themselves are the collector, print-era), territory
+  curated. THE UK COVERAGE: the door carries the UK through the
+  post-Brexit years with its own honest gaps (per-geo start years
+  vary — the same coverage-cliff discipline unemployment's UK
+  carries); the by-origin detail thins post-2018 (~26 origins
+  printing for FR against 138 in 2015) while the totals keep
+  printing — the honest as-printed shape. THE REMAINING UNWIRED
+  FACES, recorded: by-sex (both doors print it), age bands
+  (Eurostat), the citizenship face (both DSDs), the DESA bilateral
+  matrix (manual-download), the OWID US-by-CoB historical chart
+  (1850+, the census-era US face).

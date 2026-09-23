@@ -1,0 +1,117 @@
+id: obesity_rate
+label: "Obesity prevalence among adults (BMI >= 30)"
+family: mortality
+unit: percent
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE TWENTY-SECOND INDICATOR (v20, 3 citations — all La Défaite de
+  # l'Occident): Todd's health-paradox metric, read as the CDC's
+  # college-educated US-vs-France comparison (the book's own framing:
+  # even the educated American is heavier — the anomie-of-abundance
+  # argument the mortality family carries).
+  #
+  # THE v20 PROBE VERDICT (verified live 2026-09-22, before any
+  # wiring): NO collector prints an obesity prevalence anywhere —
+  # no international health-examination-survey wire exists (the WB
+  # carries no code at all: SH.STA.OBES / .ZS / SN.ITK.OBES all
+  # answer the empty message — probed and recorded). The origin tier
+  # is the NCD Risk Factor Collaboration's adult BMI pooled analysis
+  # (the worldwide re-analysis of population-based measurement
+  # surveys), REPUBLISHED BY WHO GHO as the NCD_BMI_* indicator
+  # family — and the GHO API is the provider's OWN machine wire:
+  # NCD_BMI_30C, the crude 18+ both-frame face, 199 countries,
+  # 1980-2024, FULL SEX SPLIT (SEX_MLE/SEX_FMLE/SEX_BTSX on every
+  # country-year), 26,865 COUNTRY rows. THE GRAMMAR FINDING: unlike
+  # SDGSUICIDE (Dim2 slices beside an all-ages row), NCD_BMI_30C
+  # carries Dim2 = AGEGROUP_YEARS18-PLUS on EVERY row — the door's
+  # single population face, no slices — so the connector gained a
+  # per-code AGE pin (a pinned code accepts exactly its frame and
+  # raises on anything else; unpinned codes keep the YEARSALL rule
+  # bit-identical).
+  #
+  # THE SAME-ROOT RELATION, verified at the byte level: OWID's chart
+  # door (share-of-adults-defined-as-obese, 206 entities, 1980-2024,
+  # attribution "World Health Organization - Global Health
+  # Observatory (2026)" read live) prints the IDENTICAL series —
+  # FRA 2024 = 12.524594 on both doors, USA 41.830319/41.83032, JPN
+  # 5.1900275/5.1900277 (verified live, the rounding tail aside) —
+  # the chart IS this door's redistribution, an auto-witness,
+  # refused by the discipline (the Atkinson-Piketty precedent, v19).
+  # The canonical rides the provider's own wire, strictly richer
+  # (the sex split the chart's both-sexes column drops). The
+  # age-standardized sibling (NCD_BMI_30A, the share-of-men chart's
+  # own face) is a registered non-wired door — the standardization
+  # seam documented, never reconciled.
+  #
+  # NO CROSS-ROOT WITNESS — the honest absence, recorded: every
+  # machine door carries the same WHO/NCD-RisC root (the GHO family
+  # and its OWID redistribution); the self-reported survey faces
+  # (obesewm, the DHS women 15-49 questionnaire) are a different
+  # collection with a different frame — not a cross-check of the 18+
+  # measured-analysis estimates, registered as the future door the
+  # day the by-survey face is demanded.
+  - provider: who_gho
+    ref: NCD_BMI_30C
+    priority: 1
+    role: canonical
+    root: ncd_risc_bmi
+
+coverage_start: 1980
+coverage_end: 2024
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = the NCD Risk Factor Collaboration's adult BMI
+  pooled analysis (measured population-based surveys re-analyzed),
+  republished by WHO GHO as NCD_BMI_30C — the crude 18+ face, 199
+  countries, 1980-2024, full sex-split, on the provider's own API
+  wire (the 2026 vintage, lastUpdated 2026-05-22, read live). A
+  modeled-estimates canonical by necessity: no collector prints the
+  prevalence anywhere (the WB probe record); the OWID chart door
+  prints the same series bit-identically (verified on the live
+  anchors — the same-root relation recorded) and is refused as an
+  auto-witness. No witness tier. The top_income_share constitution
+  (v19): the authoritative compilation displayed as what it is.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 90   # the pooled analysis' own tail is the Pacific island
+            # extreme: American Samoa women 2024 = 80.89 (verified
+            # live on the full slice), the next tail French Polynesia
+            # and Nauru in the 60s-70s — the bound swallows the
+            # measured span while flagging any misload (a fraction
+            # read (0.125 for 12.5%), a per-1,000 print, or a BMI
+            # mean (25-ish) all sit immediately outside and get
+            # reviewed).
+
+license: >
+  WHO Global Health Observatory (GHO) API — CC-BY-3.0-IGO (content:
+  NCD Risk Factor Collaboration pooled analysis, republished by WHO).
+
+notes: >
+  THE TODD ARC PRINTS ITSELF (todd_refs: 3 citations, La Défaite de
+  l'Occident): the book's health-paradox pair — USA 41.8 vs FRANCE
+  12.5 (2024, both sexes crude) — rides the door directly at the
+  population level (the book's own face is the CDC's college-
+  educated comparison, a survey-microdata cut this door does not
+  print — the paradox's educated-vs-general seam documented, the
+  same way the by-origin migration faces are registered). JAPAN 5.2
+  prints the lean counter-example the book's East Asia argument
+  leans on; RUSSIA 21.2, GERMANY 24.5, and the measured arc 1980->
+  2024 (FRA 10.6 -> 12.5, USA 11.8 -> 41.8 — the fourfold American
+  rise IS the anomie-of-abundance curve). THE SEX SPLIT rides the
+  canonical tier itself (the merge key keeps male/female/both apart):
+  the American female 43.0 vs male 40.6 (2024) inversion prints
+  beside the French near-parity (12.6/12.5). THE HONEST LIMITS: a
+  modeled-estimates canonical (the pooled analysis' own confidence
+  intervals dropped at parse with every GHO door — the connector's
+  standing record); the crude-vs-age-standardized seam (NCD_BMI_30A
+  registered non-wired — the standardization redistributes the
+  age structure, ~1-2 points on the co-covered core); the
+  college-educated face and the by-survey self-reported faces are
+  BOOK/curated territory (registered future doors); no witness tier
+  (the same-root absence recorded above).

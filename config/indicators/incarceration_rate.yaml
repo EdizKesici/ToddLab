@@ -1,0 +1,130 @@
+id: incarceration_rate
+label: "Prison population rate"
+family: society
+unit: prisoners_per_100000_population
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE TWENTIETH INDICATOR (v20, 3 citations, ex æquo head of the
+  # remaining queue): Todd's incarceration metric across three books.
+  # La Défaite de l'Occident's own six-country comparison (US/Russia/UK/
+  # France/Germany/Japan — the carceral face of the anomic vs family-
+  # systems split); L'illusion économique's US correctional population
+  # growth 1980-1993 (the book's own note: total correctional population,
+  # probation and parole included — a BROADER face than strict
+  # incarceration, the seam documented below); Qui est Charlie ?'s France
+  # écroués comparison 1980 vs 2014 (+70% corrected for population —
+  # persons taken into custody, the French penitentiary administration's
+  # own count, again a broader face than the stock of detainees).
+  #
+  # THE v20 PROBE VERDICT (verified live 2026-09-22, before any wiring):
+  # NO international collector prints an incarceration rate on any
+  # machine wire reachable from this environment. The UNODC dataportal
+  # (the penal-system questionnaire collector, the natural collector
+  # tier) is a client-rendered SPA — every datareport page returns the
+  # same 44KB shell, no server-rendered data, no discoverable API path
+  # in the Drupal settings or the page source (probed: /api, /api/
+  # indicators, swagger, the datareport pages, the datasets page — the
+  # record in scripts/v20_probe/). The World Prison Brief's own site
+  # (prisonstudies.org) answers 404 on /api and serves HTML country
+  # pages only. The machine face of the compilation the field reads is
+  # OWID's chart door: prison-population-rate, 225 entities, 1993-2026,
+  # single clean column "Prison population rate" (prisoners per 100,000
+  # people, INCLUDING pre-trial and remand detainees — the chart's own
+  # subtitle), the chart's own attribution read live from its metadata:
+  # "Institute for Crime & Justice Policy Research (2026); Population
+  # based on various sources (2024) ... 'World Prison Brief' [original
+  # data]". The same door-relation oecd_family (v16) and wid (v19) hold:
+  # the compilation has no wire of its own, the chart IS the wire. Root:
+  # icpr_wpb — a compilation serving as CANONICAL by necessity, the
+  # consanguinity_studies constitution (v17).
+  - provider: owid
+    ref: prison-population-rate
+    priority: 1
+    role: canonical
+    root: icpr_wpb
+  # THE WITNESS: the WHO Health in Prisons database — GHO's PRISON_A2_
+  # PRISIONERS_PER100KPOP, the European prison-health questionnaire
+  # collection's own per-100k print: 36 countries at the collection's
+  # single 2020 vintage (the coupe pattern the GHE cirrhosis witness
+  # v18 and RS_198 v19 set — one print, the collection's own cadence,
+  # never a series). A genuinely CROSS-ROOT door (the health-services
+  # questionnaire vs the prison-administration compilation): the pair
+  # displays the two 2020 seams — FRA: WPB ~104 vs the collection's
+  # 93.1; GEO 245.99 the collection's own post-Soviet top — never
+  # reconciled. The honest coverage limit: Europe only (the WHO-Europe
+  # prison-health network's own universe), 36 of the canonical's 225
+  # areas, one single year.
+  - provider: who_gho
+    ref: PRISON_A2_PRISIONERS_PER100KPOP
+    priority: 2
+    role: witness
+    root: who_prisons
+
+coverage_start: 1993
+coverage_end: 2026
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = the Institute for Crime & Justice Policy Research's
+  World Prison Brief (2026 vintage, lastUpdated 2026-01-21), the
+  national prison administrations' own counts compiled — prisoners per
+  100,000 population, pre-trial and remand detainees included, 225
+  areas, 1993-2026 — reached through OWID's chart door (the
+  compilation's own site has no API and the UNODC collector portal is
+  a client-rendered SPA with no discoverable machine door — the probe
+  record). A compilation canonical by necessity: no collector prints
+  the rate on any reachable wire. Witness tier = the WHO Health in
+  Prisons database (GHO PRISON_A2, the European questionnaire
+  collection's 2020 cross-section, 36 countries). Authenticity first
+  per ADR-0008: the boards' compilation beside the health-services
+  collection, never blended.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 1800   # the live slice's own tail is El Salvador's state-of-
+              # exception arc: SLV 2024 = 1,659 (verified live), with
+              # the Seychelles 2014 = 837 and Cuba 2020 = 794 the
+              # pre-SLV extreme tail — the bound swallows the
+              # compilation's real span while flagging any misload (a
+              # raw count (2.3 million US prisoners) or a per-million
+              # print sits immediately outside and gets reviewed).
+              # Kosovo's honest floor (11 in 2000) rides inside.
+
+license: >
+  Mixed, per source (see "sources"): OWID chart door = CC-BY-4.0
+  (OWID's chart-door terms; content: Institute for Crime & Justice
+  Policy Research, World Prison Brief — ICPR's own reuse terms apply
+  upstream); GHO witness = CC-BY-3.0-IGO.
+
+notes: >
+  THE TODD ARCS PRINT THEMSELVES (todd_refs: 3 citations, 3 books).
+  La Défaite de l'Occident's own six-country board rides the door
+  directly: USA 683 (2000) -> 542 (2023) the never-matched American
+  carceral mass (L'illusion économique read its growth 1980-1993 at
+  1.3-1.4 million inmates — the door's per-100k face of the same
+  arc), RUSSIA 729 (2000) -> 300 (2023) the post-Soviet fall from
+  the world's top (the emptied Gulag-aftermath the book sets against
+  the American rise), FRANCE 82 -> 126 (2025) the slow French climb,
+  GERMANY 85 -> 71, JAPAN 48 -> 33 the family-systems' own low, UK
+  121 -> 139. Qui est Charlie ?'s écroués arc (1980 vs 2014, +70%
+  corrected for population) is the French segment of the same door —
+  the seam that the book's own count is persons taken into custody
+  (écroués, a flow) while the door prints the detention stock per
+  100k, two faces of the French penitentiary's expansion, displayed
+  never reconciled. EL SALVADOR prints at the slice's top: 1659 in
+  2024, the estado de excepción's own arithmetic. THE HONEST LIMITS:
+  L'illusion économique's US number is the TOTAL correctional
+  population (probation and parole included — the book's own note,
+  a face ~3x the incarcerated stock); the 1970s-back French écroués
+  series and every pre-1993 face are BOOK data — territory curated,
+  the same line the 19th-century boards hold; the UNODC collector
+  tier is unreachable as a machine door (the SPA record); the
+  witness carries 36 European countries at the single 2020 vintage
+  (no trend on that tier, and no USA/Russia/Japan — the collection's
+  own universe); the door's UK face is the United Kingdom aggregate
+  (the chart's England-and-Wales sub-entity resolves to nothing and
+  drops logged, the OWID door's own discipline).

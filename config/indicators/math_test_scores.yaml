@@ -1,0 +1,119 @@
+id: math_test_scores
+label: "PISA mathematics mean score"
+family: education
+unit: pisa_score_points
+higher_is_better: true
+todd_core: true
+
+sources:
+  # THE TWENTY-FIRST INDICATOR (v20, 3 citations — all L'illusion
+  # économique, the education family's first indicator): Todd's own
+  # table is TIMSS 8th-grade mathematics mean scores, 19 countries,
+  # read through the OECD's own comparative volume ("OECD source" —
+  # the corpus's own words for it: the OECD published the IEA
+  # assessment's cross-country table that the book's Luffparagraph on
+  # educational decline leaned on).
+  #
+  # THE v20 PROBE VERDICT (verified live 2026-09-22, before any
+  # wiring): TIMSS itself has NO machine door — zero hit in OWID's
+  # full sitemap (the saved v19 crawl), no IEA API (the iea.nl data
+  # pages serve report PDFs and zipped data files behind no wire) —
+  # the assessment Todd read is unreachable as a series from this
+  # environment, registered as the future door. The OECD's own modern
+  # assessment rides the chart door: average-performance-of-15-year-
+  # olds-in-mathematics-reading-and-science, 90 entities, the
+  # mathematics column ('field' pin — the CSV's own header
+  # "Mathematics"), the seven cycles 2003-2022, the chart's own
+  # attribution read live from its metadata: "OECD (2023) ... 'PISA
+  # Database' [original data]". The oecd_family door relation (v16):
+  # the OECD runs the assessment (the collector judgment — nobody
+  # upstream prints a PISA score), but the SDMX registry carries NO
+  # PISA dataflow (verified on the full live registry listing — the
+  # education flows there are REG_EDU regional attainment and TALIS
+  # teacher surveys), so the chart IS the machine face. Root:
+  # oecd_pisa.
+  #
+  # THE ASSESSMENT SEAM, drawn and documented: Todd's table is TIMSS
+  # 8th-graders (the IEA's grade-based frame); the wired door is PISA
+  # 15-year-olds (the OECD's age-based frame). Two assessments, two
+  # frames, one metric family — the seam rides the root label and
+  # this block, never reconciled, the same way the road door's
+  # per-100k choice was documented against Todd's per-vehicle
+  # denominator (v19).
+  #
+  # NO WITNESS — the honest absence, recorded: the by-sex chart
+  # (pisa-mean-performance-on-the-mathematics-scale-by-sex, Girls/Boys
+  # columns) is the SAME OECD PISA root — an auto-witness, refused;
+  # the World Bank's harmonized-learning-outcome scores are a DERIVED
+  # composite (reading+math+science blended into one index) — refused
+  # by the anti-derivation line (the extrapolations precedent, v19);
+  # TIMSS would be the natural cross-root witness and has no machine
+  # door (the probe record above). math_test_scores stands
+  # canonical-alone, the top_income_share precedent (v19) for the
+  # witness tier's honest absence.
+  - provider: owid
+    ref: average-performance-of-15-year-olds-in-mathematics-reading-and-science
+    field: Mathematics
+    priority: 1
+    role: canonical
+    root: oecd_pisa
+
+coverage_start: 2003
+coverage_end: 2022
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = the OECD PISA assessment's own mean mathematics
+  scale scores (the PISA Database, OECD 2023 vintage), 90 entities,
+  the seven triennial cycles 2003-2022, reached through OWID's chart
+  door with the mathematics column pinned (the CSV's own header) —
+  the OECD runs the assessment and prints the scale scores itself
+  (the collector judgment); the SDMX registry carries no PISA
+  dataflow, so the chart door is the machine face. No witness tier —
+  the by-sex door is the same root, the composite learning scores
+  are derived, and TIMSS (the assessment Todd's own table read) has
+  no machine door. Authenticity first per ADR-0008: the assessment's
+  own scores displayed as what they are.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 300
+  max: 650  # the PISA scale's own working band, calibrated on the
+            # door's observed span: Qatar 2006 = 317.96 the floor,
+            # Dominican Republic 2015-2018 = 325-327 the next tail,
+            # Singapore 2022 = 574.66 the ceiling (verified live) —
+            # the bound swallows the assessment's real span while
+            # flagging any misload (a percentage read, a rank (1-90),
+            # or a doubled scale all sit immediately outside and get
+            # reviewed).
+
+license: >
+  Mixed, per source (see "sources"): OWID chart door = CC-BY-4.0
+  (OWID's chart-door terms; content: OECD, PISA Database — the OECD's
+  own reuse terms apply upstream).
+
+notes: >
+  THE TODD ARC PRINTS ITSELF (todd_refs: 3 citations, all L'illusion
+  économique 1998): the book's educational-decline argument read the
+  OECD's own TIMSS table — the wired door prints the OECD's modern
+  face of the same argument. FRANCE 510.8 (2003) -> 473.9 (2022),
+  the French slide the book's own arc opened (the 2022 cycle is the
+  post-Covid dip, printed); UNITED STATES 482.9 -> 464.9, the
+  American mid-band drift the book set against its university
+  exceptionalism; GERMANY 503 -> 474.8 (2022), JAPAN 534.1 -> 535.6
+  the stable East-Asian top the declinist tables leaned on, UNITED
+  KINGDOM 508.3 -> 489.0. RUSSIA prints six cycles 2003-2018
+  (468.4 -> 487.8) and is ABSENT from 2022 — the assessment cycle
+  Russia did not sit, the honest coverage gap (an explicit gap year,
+  never a skip). THE HONEST LIMITS: the assessment seam (TIMSS
+  8th-grade vs PISA 15-year-olds — two frames, one metric family,
+  documented in sources); the 2000 cycle prints no mathematics mean
+  on this door (the chart carries reading-only rows for 2000 — the
+  PISA 2000 design made reading the major domain; those entities
+  arrive as explicit gap points, the door's own shape); the
+  sub-national participants (Hong Kong, Macao, Taipei, Quebec...) ride
+  the door's own entity list and resolve where the registry carries
+  them; the by-sex faces (Girls/Boys) and the reading/science columns
+  are registered future doors on the same chart; the pre-2003 history
+  is BOOK data — territory curated.
