@@ -1,0 +1,127 @@
+id: industrial_employment_share
+label: "Industrial employment share"
+family: economy
+unit: percent
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE SIXTEENTH INDICATOR (v18), THE BACKLOG'S HEAD CLAIMED (30
+  # citations, 5 books — L'invention de l'Europe's industry-share maps
+  # c.1880 and c.1970 at 20 citations alone, L'illusion économique's
+  # US/Germany/Japan/UK/France/Italy 1971-1994 board, La nouvelle
+  # France's French census 1975-82, Les Luttes de classes' Eastern
+  # Europe comparison, Le Destin des immigrés' 1841 Britain census
+  # board). The metric that had waited the longest: deferred at v15
+  # ("no collector prints the %"), again at v16, still at v17 — the
+  # composite-derived-layer ADR held in reserve (ratio of two canonical
+  # counts, client-side). v18 DISSOLVED THE QUESTION BY PROBE: Eurostat's
+  # national-accounts door (nama_10_a10_e) prints the share of total
+  # employment by industry DIRECTLY at unit PC_TOT_PER — no derivation
+  # anywhere, the collector tier stands, the ADR is not needed (the
+  # probe record in sources.yaml retires the v15/v16/v17 deferral).
+  #
+  # Canonical = Eurostat nama_10_a10_e/EMP_DC/PC_TOT_PER/B-E — "Total
+  # employment domestic concept" as a percentage of total employment,
+  # NACE B-E, the door's OWN printed aggregate labeled "Industry
+  # (except construction)". The accounts questionnaire: the same
+  # collector judgment as une_rt_a (each national office's own print),
+  # a different questionnaire (the national accounts, not the LFS).
+  - provider: eurostat
+    ref: nama_10_a10_e/EMP_DC/PC_TOT_PER/B-E
+    priority: 1
+    role: canonical
+    unit: percent
+    root: eurostat_na
+
+  # THE WITNESS (worldwide + the definitional seam): WB SL.IND.EMPL.ZS,
+  # "Employment in industry (% of total employment) (modeled ILO
+  # estimate)" — ILOSTAT's 2EMP family ("Estimaciones modeladas de la
+  # OIT" per the flow registry's own description) redistributed by WDI,
+  # world coverage. THE SEAM THE PAIR DISPLAYS IS COMPOUND, documented
+  # exactly: the ILO "industry" INCLUDES construction (B-E+F in NACE
+  # terms — the OECD-era "Industry" aggregate Todd's own boards read)
+  # AND rides a labor-force-modeled employment concept, not the
+  # accounts' domestic concept — FR 2015: 10.8 canonical (B-E) vs
+  # 20.376 witness (verified live), a divergence the construction
+  # coverage (~6pp that year) does NOT alone close: the modeled-
+  # employment base adds the rest. Displayed by the two-tier, never
+  # reconciled (the same two-doors-never-a-contradiction discipline the
+  # unemployment rounding seam carries). The US/Japan/world face rides
+  # the witness alone — the canonical covers the accounts universe
+  # (EU+ with IS/NO/CH/UK and the enlargement countries).
+  - provider: worldbank
+    ref: SL.IND.EMPL.ZS
+    priority: 2
+    role: witness
+    root: ilo_modelled
+
+coverage_start: 1975
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat nama_10_a10_e pinned na_item=EMP_DC (total
+  employment domestic concept — the door also prints SAL_DC employees
+  and SELF_DC self-employed, unwired), unit=PC_TOT_PER (percentage of
+  total — the door's OWN share unit; the counts face THS_PER and the
+  index face I15_* refused), nace_r2=B-E ("Industry (except
+  construction)" — the door's own aggregate label, verified live
+  2026-09-21): 34 countries + aggregates dropped (EU27_2020/EA/EA21/
+  EA20/EA19/EA12 — EA the bare two-letter Euro-area aggregate,
+  dropped logged as _DATASET_TWO_LETTER_AGGREGATES records), no sex
+  dimension (both-sexes by construction), FR/DE 1995-2024 full annual
+  series (FR 16.4 -> 10.1, DE 23.1 -> 17.5), the EA aggregates'
+  own prints riding the drop log. Witness tier = the ILO modeled
+  shares, world 1991-2024, industry INCLUDING construction. The root
+  pair eurostat_na/ilo_modelled: same underlying national accounts and
+  surveys, one modeling step and one construction-coverage apart.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 60    # the canonical's own span tops at DE 1995 = 23.1 / BG-era
+             # ex-communist industry shares in the high 20s; the
+             # witness's incl-construction face peaks around 40s (the
+             # ex-USSR industrial economies of the 1990s); 60 admits the
+             # planned-economy tail while a unit error (a count, a
+             # share-of-population) or a misload of the THS_PER counts
+             # face flags immediately.
+
+license: >
+  Eurostat reuse policy (attribution required, no endorsement implied);
+  World Bank WDI CC-BY-4.0 — see docs/licenses.md.
+
+notes: >
+  THE COMPOSITE-DERIVED-LAYER QUESTION, RETIRED (the v18 probe record
+  in sources.yaml): the v15 finding "NO collector wire prints the %
+  as-reported (ILO/OECD = counts; WB = ILOEST modeled)" was true of
+  every door probed THEN — ILOSTAT's registry (re-verified v18: the
+  _RT flows are informal-employment and employment-to-population
+  rates, no plain sector-share flow), the OECD doors (harmonized),
+  the DYB (the economic-characteristic tables were dropped before the
+  live XLS archive begins — the wired editions 2011-2024 carry none,
+  the 1970s-90s tables Todd read are print-era, and the unstats
+  archive's 2001-2006 XLS era has no industry table either, probed).
+  The national-accounts door was the un-probed gap: PC_TOT_PER prints
+  the share the countries themselves publish. No ADR needed — the
+  reserve decision retires unused.
+  THE DEFINITIONAL NOTE (the honest face): Todd's own "industry" is
+  broader than the canonical's B-E — Le Destin des immigrés counts
+  mines+manufacturing+construction+transport for its 1841 Britain
+  board, and the OECD-era Labour Force Statistics "Industry" the
+  L'illusion board reads included construction. The canonical prints
+  the door's own aggregate (B-E, except construction); the
+  construction share rides the SAME door one nace code away
+  (nama_10_a10_e/EMP_DC/PC_TOT_PER/F, unwired, recorded in
+  sources.yaml); the witness prints the incl-construction definition
+  — the seam is displayed, the definitional choice is documented, and
+  a B-E+F SUM would be a derivation the constitution forbids (the
+  very derivation the composite ADR would have legitimized — no
+  longer needed because the door prints its own aggregate honestly).
+  THE HISTORICAL FACE: L'invention de l'Europe's c.1880 and c.1970
+  maps are BOOK tables (census-era), territory curated, not a living
+  wire — the same class as unemployment's interwar Austria and
+  cirrhosis's 19th-century France. The lfsa_egan2 LFS counts door,
+  the SAL_DC/SELF_DC items and the remaining nace aggregates are
+  recorded unwired in sources.yaml.

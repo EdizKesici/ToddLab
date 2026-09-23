@@ -1,0 +1,125 @@
+id: cirrhosis_alcohol_mortality
+label: "Cirrhosis / alcohol-related mortality"
+family: mortality
+unit: deaths_per_100000_population
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE FIFTEENTH INDICATOR (v18), the mortality family's fourth cause:
+  # cirrhosis — the alcohol-mortality face Todd reads as the Soviet
+  # system's physiological ledger (La Chute finale calibrates the Soviet
+  # alcoholism scale against the France-vs-Sweden benchmark; Le Fou et
+  # le Prolétaire breaks France/USA/Germany/Italy down by class; La
+  # Défaite de l'Occident reads Russia's 2000-2017 alcohol deaths).
+  #
+  # Canonical = the AS-REPORTED collector (WHO Mortality Database
+  # registrations, redistributed by the OECD "Causes of mortality"
+  # dataflow — here CICDCIRR, "Chronic liver diseases and cirrhosis",
+  # the OECD's cross-ICD grouping of K70-K77 and predecessors): the
+  # same dataflow, same connector, same pin discipline as homicide and
+  # suicide — one cause-code swap, exactly the v13 precedent.
+  #
+  # THE PROBE VERDICT (verified live 2026-09-21 before any wiring): the
+  # v13 note "RUS absent du slice cirrhose (404 NoRecordsFound)" was a
+  # PROBE ARTIFACT — the full CICDCIRR slice answers HTTP 200 with 7,089
+  # records, 45 areas, 1960-2024, sex-split (the connector's own
+  # machinery parsed it). The honest finding that replaces it: Russia
+  # and Ukraine are GENUINELY absent from THIS cause's slice (RUS rides
+  # the dataflow for CICDHARM/CICDHOCD — the v13/v8 wirings — but not
+  # for cirrhosis), the WHO-MDB coding fact that IS the Russian alcohol
+  # story: the deaths Todd's Soviet chapters count live under different
+  # ICD codes (alcoholic cardiomyopathy I42 and the ill-defined
+  # cardiovascular basket — the Treml/Nemtsov critique), and the
+  # witness tier (GHE) carries the modeled redistribution that covers
+  # Russia. Two doors, two stories, never reconciled.
+  - provider: oecd
+    ref: DF_COM/CICDCIRR
+    field: rate
+    priority: 1
+    role: canonical
+    unit: deaths_per_100000_population
+    root: who_mdb
+  # The witness: GHO SA_0000001457 ("Liver cirrhosis, age-standardized
+  # death rates (15+), per 100,000 population") — the GHE modeled
+  # CROSS-SECTION: 180 countries x 3 sexes at its own single vintage
+  # (2019 — the GHE's print for this indicator; the neighboring GHO
+  # cirrhosis codes are thinner still, probed live 2026-09-21:
+  # SA_0000001446 carries 2002-2004 only, SA_0000001456 2000-2005 with
+  # no Russia — no multi-year GHE cirrhosis series exists on the API,
+  # the record in sources.yaml). RUS rides the witness (2019 = 42.1
+  # male / 21.2 female at the 15+ face, 22.5 both at the all-ages face
+  # the connector keeps). The Dim2 grammar (the SDGSUICIDE precedent):
+  # the indicator prints BOTH an AGEGROUP_YEARS15PLUS and an
+  # AGEGROUP_YEARSALL series; the connector's all-ages rule keeps
+  # YEARSALL (the face comparable to the canonical's all-ages
+  # population base) and drops the 15+ slices logged.
+  # Age-standardized = the GHE comparability derivation — witness-only
+  # by constitution, displayed beside the crude collector print, never
+  # blended (the who_mdb/who_ghe root pair's whole story).
+  - provider: who_gho
+    ref: SA_0000001457
+    priority: 2
+    role: witness
+    root: who_ghe
+
+coverage_start: 1960
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = WHO Mortality Database cause-of-death registrations
+  as submitted by member states (civil registration, ICD-coded,
+  "Chronic liver diseases and cirrhosis" = the OECD's cross-ICD
+  CICDCIRR grouping), redistributed by the OECD Causes of Mortality
+  dataflow over SDMX, 45 areas, 1960-2024, sex-split as published
+  (2,385 both-sexes + 2,352 male + 2,352 female cells in the live
+  slice), quality codes as-reported (45 'D' + 3 'B' cells). Witness
+  tier = WHO Global Health Estimates age-standardized liver-cirrhosis
+  rates via GHO (modeled, 180 countries x 3 sexes at the GHE's own
+  single 2019 vintage — no multi-year GHE cirrhosis series exists on
+  the API, the neighboring codes probed and recorded; the all-ages
+  series kept and the 15+ variant dropped logged per the connector's
+  Dim2 rule). Authenticity first per ADR-0008: collector as-reported
+  beside model estimates, never blended.
+reclassification_sensitive: true
+
+plausible_range:
+  min: 0
+  max: 130   # the live slice's own tail is Hungary's post-communist
+              # alcoholic cirrhosis epidemic, AS-REPORTED: male 104.1
+              # (1992) -> 126.5 (1994) -> 104.7 (1999), six cells over
+              # 100 — history the first draft's 0-100 bound flagged
+              # (caught by the rebuild's own coverage report, the bound
+              # recalibrated to the collector's real span); the GHE
+              # witness's tail (Egypt 2019 male = 113.3
+              # age-standardized) also rides inside; >130 flags a unit
+              # error or misload immediately.
+
+license: >
+  Mixed, per source (see "sources"): OECD DF_COM = OECD Terms and
+  Conditions, attribution required (content: WHO Mortality Database);
+  GHO witness = CC-BY-3.0-IGO.
+
+notes: >
+  THE TODD BENCHMARK PAIR PRINTS ITSELF: La Chute finale's calibration
+  anchor — France vs Sweden, the cirrhosis rates that scale the Soviet
+  alcoholism estimate — rides the canonical's own 1979 cells (FRA 29.0
+  vs SWE 12.2 both-sexes, FRA 15.5 male vs SWE 17.5 male: the French
+  both-sexes rate 2.4x Sweden's while the male rates nearly match, the
+  class-and-gender structure the book reads). The Fou et le Prolétaire
+  quadripod prints too: FRA/USA/DEU/ITA 1979 = 29.0/13.2/24.4(1990
+  start)/34.7 — Italy's 50.0 male the live slice's own maximum. The
+  Défaite de l'Occident's Russia 2000-2017 face lives on the WITNESS
+  alone (RUS absent from this cause's collector slice — see sources:
+  the coding story), the same coverage shape unemployment's Germany
+  1991-2008 has. THE HONEST LIMITS: 45 areas canonical (OECD+ — no
+  RUS/UKR on this cause, most of Africa and Central Asia absent);
+  France's historical series (the 19th-century La Chute finale /
+  L'invention de la France boards) is BOOK data, territory curated;
+  the witness window is 2000-2021 so pre-2000/post-2021 comparisons
+  are canonical-only; the GHE 15+ variant (RUS 2019 male 42.1 — the
+  indicator's own title face) is dropped logged, one ref away if the
+  15+ comparison is ever demanded. The OWID cirrhosis chart doors were
+  probed (deaths-from-cirrhosis 404-class) — no additional machine
+  door found beyond the GHE root the project already carries.

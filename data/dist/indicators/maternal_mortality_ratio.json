@@ -62030,7 +62030,7 @@
       "citation": "World Bank Open Data API, indicator 'SH.STA.MMRT'",
       "url": "https://api.worldbank.org/v2/country/all/indicator/SH.STA.MMRT?format=json&per_page=5000",
       "license": "CC-BY-4.0",
-      "n_points": 14190,
+      "n_points": 14208,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -96019,6 +96019,96 @@
         },
         {
           "entity_id": "korea_republic_of",
+          "year": 2025,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
           "year": 2025,
           "value": null
         },

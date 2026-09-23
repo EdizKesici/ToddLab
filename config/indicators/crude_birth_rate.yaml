@@ -6,6 +6,22 @@ higher_is_better: false
 todd_core: false
 
 sources:
+  # v21: the DYB 1978 vanished-entities transcription (the PDF route):
+  # the USSR 1974-1977 CBR (18.0/18.1/18.4/18.1 — the union's OWN print,
+  # joined to the official IMR series), the Byelorussian/Ukrainian SSR
+  # 1974-1977 rows (the two other UN-member Soviet seats), and the
+  # Czechoslovakia/GDR/Yugoslavia full 1974-1978 Total rows — every value
+  # READ from the archived text layer, arithmetically consistent with the
+  # same edition's Tables 4/15 (cross-checks in catalog/curated/README.md);
+  # root unsd_dyb: the data's origin is the collector's own 1978 print.
+  # The Yemen T4/T9 prints are EXCLUDED: footnote 4 marks them Population
+  # Division ESTIMATES (1970-1975) — witness-class by the project's
+  # constitution, never canonical (see config/sources.yaml, v21 record).
+  - provider: curated
+    ref: dyb1978_vanished_crude_birth_rate
+    priority: 1
+    role: canonical
+    root: unsd_dyb
   # THE CBR COMPANION (v15): the v14 TFR-vs-CBR decision left this door
   # open on purpose — Todd's variable is fertility PER WOMAN (the corpus
   # notes say it: "World TFR decline", "onset dates", "threshold
@@ -29,79 +45,79 @@ sources:
   - provider: un_dyb
     ref: 2024/table09
     field: rate
-    priority: 1
+    priority: 2
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2023/table09
     field: rate
-    priority: 2
+    priority: 3
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2022/table09
     field: rate
-    priority: 3
+    priority: 4
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2021/table09
     field: rate
-    priority: 4
+    priority: 5
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2020/table09
     field: rate
-    priority: 5
+    priority: 6
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2019/table09
     field: rate
-    priority: 6
+    priority: 7
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2018/table09
     field: rate
-    priority: 7
+    priority: 8
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2017/table09
     field: rate
-    priority: 8
+    priority: 9
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2015/table09
     field: rate
-    priority: 9
+    priority: 10
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2014/table09
     field: rate
-    priority: 10
+    priority: 11
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2013/table09
     field: rate
-    priority: 11
+    priority: 12
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2012/table09
     field: rate
-    priority: 12
+    priority: 13
     role: canonical
     root: unsd_dyb
   - provider: un_dyb
     ref: 2011/table09
     field: rate
-    priority: 13
+    priority: 14
     role: canonical
     root: unsd_dyb
   # THE WITNESS: WDI's CBR redistribution of UN WPP (bare code, no sex
@@ -116,11 +132,11 @@ sources:
   # view was built to display.
   - provider: worldbank
     ref: SP.DYN.CBRT.IN
-    priority: 14
+    priority: 15
     role: witness
     root: un_wpp
 
-coverage_start: 2007
+coverage_start: 1974  # v21: the DYB 1978 curated vanished-entities tables (1974-1978) predate the XLS loop
 coverage_end: 2024
 
 reliability: high

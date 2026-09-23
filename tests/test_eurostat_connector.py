@@ -8,6 +8,7 @@ the seam's own status flags. Anchor values are the live-probed numbers;
 fills are synthetic.
 """
 import json
+import logging
 from pathlib import Path
 
 import pytest
@@ -64,13 +65,14 @@ def test_parse_main_slice_keeps_countries_and_drops_the_codelist_variants(caplog
     got = {(r.iso3_raw, r.year): r for r in records}
 
     # The kept countries: DE, EL (Greece via the override), IE, RU, UK
-    # (via the override), XK (kept WITH iso3 None — the unresolved path).
+    # (via the override), XK (v21: Kosovo -> XKX, the user-assigned code
+    # the kosovo entity now carries — the resolved path).
     iso3s = {r.iso3_raw for r in records}
-    assert iso3s == {"DEU", "GRC", "GBR", "IRL", "RUS", None}
-    # EL/UK/FX ride the explicit override table (pycountry answers none
-    # of them, verified live); XK deliberately does not. v16 adds DE_TOT
-    # (the German series door — pinned, not duplicated, on NMARPCT).
-    assert EUROSTAT_GEO_TO_ISO3 == {"EL": "GRC", "UK": "GBR", "FX": "FRA", "DE_TOT": "DEU"}
+    assert iso3s == {"DEU", "GRC", "GBR", "IRL", "RUS", "XKX"}
+    # EL/UK/FX/XK ride the explicit override table (pycountry answers none
+    # of them, verified live). v16 adds DE_TOT (the German series door —
+    # pinned, not duplicated, on NMARPCT); v21 adds XK (Kosovo).
+    assert EUROSTAT_GEO_TO_ISO3 == {"EL": "GRC", "UK": "GBR", "FX": "FRA", "DE_TOT": "DEU", "XK": "XKX"}
 
     assert got[("DEU", 2023)].value == pytest.approx(1.39)
     assert got[("GRC", 1994)].value == pytest.approx(1.33)
@@ -78,10 +80,9 @@ def test_parse_main_slice_keeps_countries_and_drops_the_codelist_variants(caplog
     assert got[("IRL", 1960)].value == pytest.approx(3.78)
     assert got[("RUS", 2008)].value == pytest.approx(1.49)
 
-    # Kosovo: the provider prints it (XK, label "Kosovo*"), it resolves
-    # to no ISO3 and flows to normalize's unresolved report — the SAME
-    # pending product decision as the World Bank's Kosovo.
-    xk = [r for r in records if r.iso3_raw is None]
+    # Kosovo: the provider prints it (XK, label "Kosovo*"); v21 resolves
+    # it to XKX — the pending product decision closed on the entity.
+    xk = [r for r in records if r.iso3_raw == "XKX"]
     assert len(xk) == 1
     assert (xk[0].entity_raw_name, xk[0].year, xk[0].value) == ("Kosovo*", 2017, pytest.approx(1.65))
 
@@ -211,10 +212,10 @@ def test_parse_nmarpct_main_slice_drops_variants_with_the_code_aware_log(caplog)
         records = parse_eurostat(NMAIN, expected_ref="demo_find/NMARPCT")
     got = {(r.iso3_raw, r.year): r for r in records}
 
-    # The kept countries: DE, EL, MD, TR, UK, XK (unresolved) — the
-    # aggregate, DE_TOT and the France variant pair are dropped.
+    # The kept countries: DE, EL, MD, TR, UK, XK (v21: resolved to XKX) —
+    # the aggregate, DE_TOT and the France variant pair are dropped.
     iso3s = {r.iso3_raw for r in records}
-    assert iso3s == {"DEU", "GRC", "MDA", "TUR", "GBR", None}
+    assert iso3s == {"DEU", "GRC", "MDA", "TUR", "GBR", "XKX"}
 
     # The live anchors: the FRG-only German benchmarks (the seam's
     # discarded side), the collector's questionnaire tail.
@@ -222,8 +223,9 @@ def test_parse_nmarpct_main_slice_drops_variants_with_the_code_aware_log(caplog)
     assert got[("DEU", 1980)].value == pytest.approx(7.6)  # the FRG print DE_TOT's 11.9 beats
     assert got[("TUR", 2024)].value == pytest.approx(3.4)
     assert got[("GBR", 1960)].value == pytest.approx(5.2)
-    # Kosovo 2002/2012 print but resolve to no ISO3 (the pending class).
-    xk = [r for r in records if r.iso3_raw is None]
+    # Kosovo 2002/2012 print and resolve to XKX (v21 — the 2002 row will
+    # drop on the entity's valid_from=2008 at normalize, the honest shape).
+    xk = [r for r in records if r.iso3_raw == "XKX"]
     assert [(r.entity_raw_name, r.year, r.value) for r in xk] == [
         ("Kosovo*", 2002, pytest.approx(6.8)),
         ("Kosovo*", 2012, pytest.approx(46.1)),
@@ -393,3 +395,297 @@ def test_unert_soft_miss_is_a_loud_failure():
     payload["value"] = {}
     with pytest.raises(ValueError, match="zero country rows"):
         parse_eurostat(json.dumps(payload), expected_ref=UNERT_REF)
+
+
+# ---------------------------------------------------------------------------
+# v18 — the three new dispatch decisions: nama_10_a10_e (the national-
+# accounts share door), edat_lfse_03 (the LFS attainment table),
+# migr_pop3ctb (the foreign-born stock door).
+
+NAMA_BE = (FIXTURES / "eurostat_nama_be_sample.json").read_text(encoding="utf-8")
+NAMA_A = (FIXTURES / "eurostat_nama_a_sample.json").read_text(encoding="utf-8")
+EDAT_58 = (FIXTURES / "eurostat_edat_ed58_sample.json").read_text(encoding="utf-8")
+EDAT_34 = (FIXTURES / "eurostat_edat_ed34_sample.json").read_text(encoding="utf-8")
+MIGR_FOR = (FIXTURES / "eurostat_migr_for_sample.json").read_text(encoding="utf-8")
+NAMA_BE_REF = "nama_10_a10_e/EMP_DC/PC_TOT_PER/B-E"
+NAMA_A_REF = "nama_10_a10_e/EMP_DC/PC_TOT_PER/A"
+EDAT_58_REF = "edat_lfse_03/ED5-8/Y25-64/T"
+EDAT_34_REF = "edat_lfse_03/ED3_4/Y25-64/T"
+MIGR_FOR_REF = "migr_pop3ctb/FOR/TOTAL/T"
+
+
+def test_build_url_pins_the_v18_query_shapes():
+    # nama: the three pins (na_item, unit, nace_r2) ride the query — the
+    # share's own selector grammar; the nace aggregate with its hyphen.
+    assert build_url(NAMA_BE_REF) == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
+        "/nama_10_a10_e?format=JSON&lang=EN&na_item=EMP_DC&unit=PC_TOT_PER&nace_r2=B-E"
+    )
+    assert build_url(NAMA_A_REF).endswith("na_item=EMP_DC&unit=PC_TOT_PER&nace_r2=A")
+    # edat: the ISCED pin (hyphen and underscore shapes both grammar-true)
+    # + the implicit unit=PC pin (the dataset's only unit, guarded).
+    assert build_url(EDAT_58_REF) == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
+        "/edat_lfse_03?format=JSON&lang=EN&isced11=ED5-8&age=Y25-64&sex=T&unit=PC"
+    )
+    assert build_url(EDAT_34_REF).endswith("isced11=ED3_4&age=Y25-64&sex=T&unit=PC")
+    # migr: c_birth/age/sex + unit=NR pinned.
+    assert build_url(MIGR_FOR_REF) == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
+        "/migr_pop3ctb?format=JSON&lang=EN&c_birth=FOR&age=TOTAL&sex=T&unit=NR"
+    )
+    # the unwired doors ride the same grammars one pin away.
+    assert build_url("nama_10_a10_e/EMP_DC/PC_TOT_PER/F").endswith("nace_r2=F")
+    assert "sex=M" in build_url("edat_lfse_03/ED5-8/Y25-64/M")
+    assert "c_birth=NAT" in build_url("migr_pop3ctb/NAT/TOTAL/T")
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    [
+        "nama_10_a10_e/B-E",              # missing na_item/unit
+        "nama_10_a10_e/EMP_DC/PC_TOT_PER",  # missing nace
+        "edat_lfse_03/ED5-8",             # missing age/sex
+        "edat_lfse_03/ED5-8/Y25-64",      # one pin short
+        "migr_pop3ctb/FOR",               # missing age/sex
+        "migr_pop3ctb/FOR/TOTAL",         # one pin short
+        "unknown_ds/anything",            # one dispatch decision per dataset
+    ],
+)
+def test_v18_ref_formats_are_the_one_grammar_each_dataset_speaks(bad_ref):
+    with pytest.raises(ValueError, match="Invalid Eurostat source_ref"):
+        build_url(bad_ref)
+
+
+def test_parse_nama_be_keeps_countries_drops_the_two_letter_aggregate(caplog):
+    import logging
+
+    with caplog.at_level(logging.INFO, logger="src.connectors.eurostat"):
+        records = parse_eurostat(NAMA_BE, expected_ref=NAMA_BE_REF)
+    got = {(r.iso3_raw, r.year): r for r in records}
+
+    # THE LIVE ANCHORS (the fixture was generated from the live cube,
+    # 2026-09-21): the de-industrialization slopes as the collector
+    # prints them — FR 1995 = 16.4 -> 2024 = 10.1, DE 23.1 -> 17.5.
+    assert got[("FRA", 1995)].value == pytest.approx(16.4)
+    assert got[("FRA", 2024)].value == pytest.approx(10.1)
+    assert got[("DEU", 1995)].value == pytest.approx(23.1)
+    assert got[("DEU", 2024)].value == pytest.approx(17.5)
+    # the 'p' flags ride as-reported (the accounts' own provisional
+    # markers on the freshest years).
+    assert got[("FRA", 2024)].quality_code == "p"
+    assert got[("FRA", 2024)].provisional is True
+    # THE EA EDGE: the Euro-area aggregate prints as the bare two-letter
+    # code "EA" — dropped logged as the aggregate it is (the only
+    # two-letter aggregate in any wired codelist, verified live).
+    assert all(r.iso3_raw != "EA" for r in records)
+    logs = "\n".join(r.message for r in caplog.records)
+    assert "dropped" in logs and "aggregate" in logs
+    # no sex dimension in this cube: both-sexes by construction.
+    assert all(r.sex is None for r in records)
+    # Kosovo rides the codelist (XK) but prints NO valued cells in the
+    # employment cube — its absence is the collector's own answer (the
+    # unresolved-name path is exercised by the demo_find fixtures).
+
+
+def test_parse_nama_a_reads_the_same_door_one_nace_pin_away():
+    records = parse_eurostat(NAMA_A, expected_ref=NAMA_A_REF)
+    got = {(r.iso3_raw, r.year): r.value for r in records}
+    # the agrarian-exodus baseline as printed: FR 1995 = 4.4 -> 2.3.
+    assert got[("FRA", 1995)] == pytest.approx(4.4)
+    assert got[("FRA", 2024)] == pytest.approx(2.3)
+    assert got[("DEU", 2024)] == pytest.approx(1.2)
+
+
+def test_parse_edat_anchors_and_flags():
+    records = parse_eurostat(EDAT_58, expected_ref=EDAT_58_REF)
+    got = {(r.iso3_raw, r.year): r for r in records}
+    # THE LIVE ANCHORS: the tertiary-attainment climb as the LFS prints
+    # it — FR 2004 = 24.5 -> 2024 = 43.2; the 'b' break flags ride
+    # quality_code (the survey redesigns).
+    assert got[("FRA", 2004)].value == pytest.approx(24.5)
+    assert got[("FRA", 2024)].value == pytest.approx(43.2)
+    assert got[("FRA", 2024)].quality_code == "b"
+    assert got[("FRA", 2024)].provisional is False  # 'b' is a break, not 'p'
+    # sex=T: the merge key's None.
+    assert all(r.sex is None for r in records)
+
+
+def test_parse_edat_ed34_is_the_completed_secondary_face():
+    records = parse_eurostat(EDAT_34, expected_ref=EDAT_34_REF)
+    got = {(r.iso3_raw, r.year): r.value for r in records}
+    # the ISCED choice pinned by its own anchors: ED3_4 (highest
+    # attainment = secondary, tertiary EXCLUDED) reads in the 40s-50s —
+    # the at-least-secondary face (ED3-8) would run ~20 points higher,
+    # a misload this pin would catch.
+    assert got[("FRA", 2004)] == pytest.approx(41.4)
+    assert got[("DEU", 1996)] == pytest.approx(56.7)
+
+
+def test_parse_migr_for_reads_the_stock_door():
+    records = parse_eurostat(MIGR_FOR, expected_ref=MIGR_FOR_REF)
+    got = {(r.iso3_raw, r.year): r for r in records}
+    # THE LIVE ANCHORS: FR's foreign-born stock, annual and
+    # census-aligned as the registration prints it — 2008 = 7,076,824
+    # -> 2024 = 9,362,105; the 'b'/'e'/'p' flags ride as-reported.
+    assert got[("FRA", 2008)].value == pytest.approx(7076824)
+    assert got[("FRA", 2024)].value == pytest.approx(9362105)
+    assert got[("FRA", 2024)].quality_code == "p"
+    # Germany's own stock (the 2011 census break flag era).
+    assert got[("DEU", 2010)].value == pytest.approx(9812263)
+    # sex=T: the merge key's None.
+    assert all(r.sex is None for r in records)
+
+
+def test_v18_pin_guards_refuse_slices_we_did_not_ask_for():
+    # Cross-dataset payloads: wrong layouts, loud failures.
+    with pytest.raises(ValueError, match="not the nama_10_a10_e layout"):
+        parse_eurostat(UNERT, expected_ref=NAMA_BE_REF)
+    with pytest.raises(ValueError, match="not the edat_lfse_03 layout"):
+        parse_eurostat(NAMA_BE, expected_ref=EDAT_58_REF)
+    with pytest.raises(ValueError, match="not the migr_pop3ctb layout"):
+        parse_eurostat(EDAT_58, expected_ref=MIGR_FOR_REF)
+    # The nace pin the payload does not carry: refused.
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(NAMA_BE, expected_ref="nama_10_a10_e/EMP_DC/PC_TOT_PER/A")
+    # The ISCED pin swapped: refused (ED3_4 payload under an ED5-8 ref).
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(EDAT_34, expected_ref=EDAT_58_REF)
+    # The c_birth pin swapped: refused.
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(MIGR_FOR, expected_ref="migr_pop3ctb/NAT/TOTAL/T")
+
+
+def test_v18_soft_miss_is_a_loud_failure():
+    # The same soft-miss pattern on every new dataset: an empty value
+    # object answers HTTP 200 — the parse must fail loudly.
+    for text, ref in ((NAMA_BE, NAMA_BE_REF), (EDAT_58, EDAT_58_REF), (MIGR_FOR, MIGR_FOR_REF)):
+        payload = json.loads(text)
+        payload["value"] = {}
+        with pytest.raises(ValueError, match="zero country rows"):
+            parse_eurostat(json.dumps(payload), expected_ref=ref)
+
+
+# --- v22: the bilateral ROW door (migr_pop3ctb/ROW/{geo}) --------------------
+
+ROW_FR = (FIXTURES / "eurostat_migr_row_fr_sample.json").read_text(encoding="utf-8")
+ROW_FR_REF = "migr_pop3ctb/ROW/FR"
+
+
+def test_build_url_pins_the_row_query_shape():
+    # geo PINNED in the URL, c_birth deliberately ABSENT (the by-birth
+    # codelist as printed — the whole point of the ROW door), the frame
+    # pins age/sex/unit riding beside.
+    assert build_url(ROW_FR_REF) == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+        "migr_pop3ctb?format=JSON&lang=EN&geo=FR&age=TOTAL&sex=T&unit=NR"
+    )
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    [
+        "migr_pop3ctb/ROW/",           # no geo
+        "migr_pop3ctb/ROW/fr",         # lowercase geo
+        "migr_pop3ctb/ROW/FR/extra",   # four segments = the pinned grammar
+    ],
+)
+def test_row_ref_format_is_the_one_grammar_the_door_speaks(bad_ref):
+    with pytest.raises(ValueError, match="Invalid Eurostat source_ref"):
+        build_url(bad_ref)
+
+
+def test_parse_row_reads_the_bilateral_face_with_the_drop_classes(caplog):
+    with caplog.at_level(logging.INFO):
+        records = parse_eurostat(ROW_FR, expected_ref=ROW_FR_REF)
+    # THE ARITHMETIC OF THE DOOR, exact: 1,450 non-empty cells =
+    # 1,220 emitted + 150 aggregate/region + 76 summary codes + 4 diagonal
+    # (read live 2026-09-22, the fixture IS the live response).
+    assert len(records) == 1220
+    logged = " ".join(rec.getMessage() for rec in caplog.records)
+    assert "dropped 150 aggregate/region origin cell(s)" in logged
+    assert "dropped 76 summary-code cell(s)" in logged
+    assert "dropped 4 diagonal cell(s)" in logged
+    # every emitted record carries BOTH axes (the destination pinned FR).
+    assert all(r.iso3_raw == "FRA" and r.entity_raw_name == "France" for r in records)
+    assert all(r.origin_raw_name and r.origin_iso3_raw for r in records)
+    assert all(r.sex is None for r in records)  # the T pin
+
+
+def test_parse_row_carries_the_todd_board_anchors():
+    records = parse_eurostat(ROW_FR, expected_ref=ROW_FR_REF)
+    got = {(r.origin_iso3_raw, r.year): r.value for r in records}
+    # THE BOOK'S OWN BOARD (Le Destin des immigrés): the Maghreb/Turkish/
+    # Portuguese stocks IN France, as the registration prints them.
+    assert got[("MAR", 2015)] == pytest.approx(954742)
+    assert got[("MAR", 2018)] == pytest.approx(992120)
+    assert got[("DZA", 1999)] == pytest.approx(1246706)
+    assert got[("DZA", 2018)] == pytest.approx(1390284)
+    assert got[("TUN", 2018)] == pytest.approx(415642)
+    assert got[("TUR", 2018)] == pytest.approx(256684)
+    assert got[("PRT", 1999)] == pytest.approx(579465)
+    assert got[("PRT", 2025)] == pytest.approx(599492)
+    # the census-round coverage cliff, as-printed: the Maghreb slices stop
+    # at 2018 while Portugal prints the full 14-round series.
+    assert not any(y > 2018 for (o, y) in got if o in ("MAR", "DZA", "TUN", "TUR"))
+    # THE VANISHED ORIGIN, admitted (v22): the withdrawn alpha-2 AN rides
+    # the origin override table onto the netherlands_antilles entity's ANT.
+    assert got[("ANT", 1999)] == pytest.approx(78)
+    assert got[("ANT", 2005)] == pytest.approx(450)
+    # THE SHARED-OVERRIDE PATH: EL (Greece, Eurostat's own code) resolves
+    # through the geo table onto GRC — the origin axis inherits it.
+    assert got[("GRC", 1999)] == pytest.approx(11872)
+
+
+def test_parse_row_carries_the_flags_as_reported():
+    records = parse_eurostat(ROW_FR, expected_ref=ROW_FR_REF)
+    flagged = [r for r in records if r.quality_code]
+    assert flagged  # the 'b'/'e'/'p' flags ride the by-origin cells too
+    assert {r.quality_code for r in flagged} <= {"b", "e", "p", "be", "bp", "ep", "bep"}
+    assert any(r.provisional for r in records)  # 'p'-carrying cells flag
+
+
+def test_row_pin_guards_refuse_slices_we_did_not_ask_for():
+    # the geo pin: a DE row under an FR ref — refused (the soft-miss
+    # pattern guards the pinned destination).
+    payload = json.loads(ROW_FR)
+    payload["dimension"]["geo"]["category"]["index"] = {"DE": 0}
+    with pytest.raises(ValueError, match="refusing a slice carrying more"):
+        parse_eurostat(json.dumps(payload), expected_ref=ROW_FR_REF)
+    # the age pin: swapped — refused (the ROW frame is TOTAL, always).
+    payload = json.loads(ROW_FR)
+    payload["dimension"]["age"]["category"]["index"] = {"Y15-64": 0}
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(json.dumps(payload), expected_ref=ROW_FR_REF)
+    # the sex pin: swapped — refused.
+    payload = json.loads(ROW_FR)
+    payload["dimension"]["sex"]["category"]["index"] = {"F": 0}
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(json.dumps(payload), expected_ref=ROW_FR_REF)
+
+
+def test_row_soft_miss_is_a_loud_failure():
+    payload = json.loads(ROW_FR)
+    payload["value"] = {}
+    with pytest.raises(ValueError, match="zero country rows"):
+        parse_eurostat(json.dumps(payload), expected_ref=ROW_FR_REF)
+
+
+def test_row_requires_a_resolvable_origin_codelist(caplog=None):
+    # a two-letter c_birth code neither override table answers is a
+    # codelist surprise — loud failure, never a guessed mapping.
+    payload = json.loads(ROW_FR)
+    cb = payload["dimension"]["c_birth"]["category"]
+    # swap a real origin code (AD) for an unresolvable two-letter code
+    ad_idx = cb["index"]["AD"]
+    cb["index"]["XX"] = cb["index"].pop("AD")
+    cb["label"]["XX"] = "Codelist surprise"
+    values = {k: v for k, v in payload["value"].items()}
+    payload["value"] = {
+        str(0 + int(k) if int(k) // 28 == ad_idx and False else k): v for k, v in values.items()
+    }
+    # place a value on the XX origin at 2015 (position = ad_idx*28 + t2015)
+    t2015 = payload["dimension"]["time"]["category"]["index"]["2015"]
+    payload["value"][str(ad_idx * 28 + t2015)] = 1234
+    with pytest.raises(ValueError, match="neither in the origin override tables"):
+        parse_eurostat(json.dumps(payload), expected_ref=ROW_FR_REF)

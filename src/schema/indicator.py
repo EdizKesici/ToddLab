@@ -28,6 +28,22 @@ class Family(str, Enum):
     # the GDP-adjacent reads). unemployment_rate is that family's first
     # indicator; the same one-metric-at-a-time narrowing as markers.
     economy = "economy"
+    # v18: the corpus's 'demography' family (the population-stock reads —
+    # immigration_stock 11 citations, Le Destin des immigrés' boards:
+    # the metric that IS the demographic-structure question). The same
+    # one-metric-at-a-time narrowing: immigration_stock is this family's
+    # first indicator (the corpus's birth/fertility metrics ride the
+    # society family — 'demography' in the corpus vocabulary names the
+    # stock/structure reads, not the vital rates).
+    demography = "demography"
+    # v20: the corpus's 'education' family (the assessed-learning reads —
+    # math_test_scores 3 citations, L'illusion économique's TIMSS table
+    # read through the OECD's own comparative volume, "OECD source" in
+    # the corpus's own words). The same one-metric-at-a-time narrowing:
+    # math_test_scores is this family's first indicator; the attainment
+    # shares (tertiary/secondary) ride the society family where the
+    # corpus itself files them.
+    education = "education"
 
 
 class Reliability(str, Enum):
@@ -159,6 +175,321 @@ ROOT_LABELS: dict[str, str] = {
     "ilo_lfs": (
         "ILOSTAT LFS database (ILO-processed national labour-force surveys; redistributed by World Bank WDI as national estimate)"
     ),
+    # v18 (industrial/agricultural employment canonical): Eurostat's
+    # national-accounts collection — employment by industry AS EACH
+    # COUNTRY PRINTS IT IN ITS OWN NATIONAL ACCOUNTS (dataset
+    # nama_10_a10_e, unit PC_TOT_PER: the share of total employment
+    # printed DIRECTLY by the collector — the v18 probe finding that
+    # dissolved the composite-derived-layer question the backlog's head
+    # had waited on since v15: the v15/v16 record "no collector prints
+    # the %" was true of ILOSTAT/OECD/WB but the national-accounts door
+    # had never been probed). Distinct from eurostat_demo (demography)
+    # and eurostat_lfs (the labour-force survey): same collector
+    # judgment — the national office's own print — different
+    # questionnaire, the accounts compilation. THE DEFINITIONAL SEAM the
+    # root pair displays is COMPOUND: the canonical prints the door's
+    # own aggregate B-E "Industry (except construction)" on the
+    # accounts' domestic employment concept, while the ILOEST witness
+    # (ilo_modelled) prints industry INCLUDING construction on a
+    # labor-force-modeled employment base (FR 2015: 10.8 vs 20.376,
+    # verified live — the construction coverage alone does not close
+    # the gap) — two doors, never a contradiction; Todd's own boards'
+    # broader "industry" (Le Destin des immigrés:
+    # mines+manufacturing+construction+transport) is documented
+    # per-indicator.
+    "eurostat_na": (
+        "Eurostat national accounts (nama_10_a10_e — employment by industry as each country prints it, shares at PC_TOT_PER)"
+    ),
+    # v18 (industrial/agricultural employment witness): the ILO modelled
+    # estimates — ILOSTAT's 2EMP family ("Estimaciones modeladas de la
+    # OIT" in the flow registry's own description), redistributed by
+    # World Bank WDI as SL.IND.EMPL.ZS / SL.AGR.EMPL.ZS. The same
+    # harmonized-family relation who_ghe/un_wpp hold to their
+    # collectors: modeled world coverage on the witness tier, the
+    # collector print on the canonical tier, and the definitional seam
+    # (industry incl. construction on the modeled face vs the door's
+    # B-E aggregate) reads as two doors, never a contradiction.
+    "ilo_modelled": (
+        "ILO modelled estimates, ILOSTAT 2EMP family (redistributed by World Bank WDI as the employment-by-sector share codes)"
+    ),
+    # v18 (tertiary_education_share witness): the Barro-Lee / Lee-Lee
+    # educational-attainment panels — THE SCHOLARLY COMPILATION THE
+    # CORPUS ITSELF NAMES (La Défaite de l'Occident's refs read
+    # "Tertiary-educated share of age cohort 70-74 (Barro-Lee)"; the
+    # OWID chart's own attribution: "Barro and Lee (2015); Lee and Lee
+    # (2016)"). Reached through OWID's long-run chart door
+    # (share-of-the-population-with-completed-tertiary-education,
+    # 1870+, 153 entities). A harmonized-family witness: reconciled and
+    # interpolated across censuses — the LFS attainment print
+    # (eurostat_lfs) is the collector tier, the panel is the world/historical
+    # face, and the pair displays the vintage and definitional divergence
+    # (the chart's own subtitle: "completed OR partially completed").
+    "barro_lee": (
+        "Barro-Lee / Lee-Lee educational attainment panels (scholarly compilation, 1870-2010; via OWID's long-run chart door)"
+    ),
+    # v18 (immigration_stock witness): the UN Population Division's
+    # Trends in International Migrant Stock — DESA's compiled estimates
+    # of the foreign-born stock per country (census-based, with
+    # estimation for missing years), worldwide 1990-2024, redistributed
+    # by World Bank WDI as SM.POP.TOTL. The harmonized-family witness
+    # for the Eurostat migration collector: same underlying
+    # registrations, one estimation step apart (the WPP relation).
+    "un_desa": (
+        "UN Population Division, Trends in International Migrant Stock (DESA estimates; redistributed by World Bank WDI as SM.POP.TOTL)"
+    ),
+    # v18 (immigration_stock canonical): Eurostat's migration
+    # collection — the foreign-born stock each country's own
+    # registration prints (dataset migr_pop3ctb, pinned c_birth=FOR,
+    # the "Foreign country" total). Distinct questionnaire from
+    # demo_find/lfs/na: the migration/citizenship collection. The Todd
+    # by-origin face (Le Destin des immigrés' Maghreb/Turkish/Portuguese
+    # boards — FR-by-MA/DZ/TN/TR/PT probed live, the codes print
+    # 2015-2018 for the detailed French slices) is the recorded future
+    # door in sources.yaml: the indicator shape carries one value per
+    # entity-year, the bilateral matrix is its own decision.
+    "eurostat_migr": (
+        "Eurostat migration statistics (migr_pop3ctb — foreign-born stock by country of birth, as each country reports)"
+    ),
+    # v22 (immigration_stock by-origin witness): the OECD migration
+    # questionnaire's own bilateral matrix — DSD_MIG_F@DF_MIG_POPF,
+    # "International migration database - stocks of foreign-born
+    # population": the foreign-born stock by country of birth as the
+    # member states submit it (REF_AREA x BIRTH_COUNTRY, both axes
+    # OECD-ISO3). AN OECD-COMPILED WITNESS, not a second collector of
+    # the registrations: the OECD assembles the questionnaire answers
+    # into its International Migration Database (the IMD's own
+    # foreign-born face), the same relation oecd_family (v16) holds to
+    # the national series it standardizes. THE SEAM the root field
+    # exists to display: the two questionnaires agree TO THE UNIT on
+    # the co-covered core (FR<-MAR _T 2015 = 954,742 = the Eurostat
+    # c_birth print exactly, 2018 = 992,120 both sides, verified live
+    # 2026-09-22) — agreement that reads like independent confirmation
+    # unless the genealogy says both doors walk back to the same
+    # national registrations. And the OECD face EXTENDS what the
+    # Eurostat universe prints: the FR Maghreb series 2019-2021 past
+    # the Eurostat cutoff, and the world's non-European destinations
+    # (US<-MEX 12,383,868 in 2024) the 45-geo Eurostat codelist
+    # structurally cannot carry — the compilation seam, shown never
+    # reconciled.
+    "oecd_mig": (
+        "OECD International Migration Database (DSD_MIG_F@DF_MIG_POPF — the questionnaire's foreign-born matrix, OECD-compiled)"
+    ),
+    # v19 (top_income_share canonical): the World Inequality Database —
+    # the DINA research harmonization (distributional national accounts:
+    # fiscal microdata + household surveys + national accounts blended
+    # per the 2020/2025 guidelines) whose pre-tax national-income
+    # concepts Todd himself reads in La Défaite de l'Occident ("WID
+    # data" — the corpus's own words). Reached through OWID's chart
+    # door: probed live 2026-09-21, api.wid.world refuses this
+    # environment on EVERY extractor shape (CloudFront 403 — the
+    # endpoint the R/Stata packages ride), the country pages are
+    # WordPress views without machine files, so the chart door
+    # (incomes-of-the-richest, 165 entities 1820-2024, attribution
+    # "WID.world (2026)") is the machine-readable face of the
+    # compilation — the same door-relation oecd_family holds (v16). A
+    # research-harmonization root serving as CANONICAL: no collector
+    # anywhere prints a top-1% income share (tax administrations
+    # register incomes, never the national share of the top fractile —
+    # the metric is by construction a constructed series), so the
+    # authoritative compilation the corpus names IS the origin — the
+    # consanguinity_studies constitution (v17), not a collector. No
+    # cross-root witness exists on any machine door (the IDD's 35
+    # measures carry no top-share print — the probe record; the OWID
+    # extrapolations chart is the SAME root's modeled extension,
+    # refused by the anti-derivation discipline).
+    "wid": (
+        "World Inequality Database (WID.world — DINA research harmonization, pre-tax "
+        "national income concepts; via OWID's chart door)"
+    ),
+    # v19 (gini_index canonical): the OECD Income Distribution Database
+    # — the national household-survey microdata AS SUBMITTED by member
+    # statistical offices (equivalized disposable income, the concept
+    # the 1995 fifteen-country table of L'illusion économique read), on
+    # the SDMX wire as DSD_WISE_IDD@DF_IDD (MEASURE=INC_DISP_GINI, unit
+    # 0_TO_1, 45 areas, 1974-2025 — RUS carried 2008-2017, the survey
+    # window). The collector judgment for content: survey tabulations
+    # redistributed, never modeled (the layer judgment the WID witness's
+    # DINA estimates sit against). THE STITCHING the root label has to
+    # carry: the IDD prints the same country-year under METHODOLOGY x
+    # DEFINITION vintages (METH2012 the current computation, METH2011
+    # the pre-revision history; D_CUR the current income definition,
+    # D_PREV/D_INC its back-series with/without the overlap year) — the
+    # config's four-door priority chain is the OECD explorer's own
+    # chained display made explicit, every collision a logged
+    # provenance discard.
+    "oecd_idd": (
+        "OECD Income Distribution Database (IDD — national household-survey Ginis as "
+        "submitted, equivalized disposable income; METH2012 chained through the "
+        "definition vintages)"
+    ),
+    # v19 (road_accident_mortality canonical): the ITF/IRTAD road-safety
+    # database — police-reported crash registrations as the member
+    # countries submit them (the IRTAD questionnaires), on the SDMX wire
+    # as OECD.ITF DSD_INDICATORS@DF_SAFETY (FATALITIES/10P5HB: road
+    # deaths per 100,000 population, 55 areas 1994-2025 — FRA 15.2 in
+    # 1994 -> 4.7 in 2024). The collector judgment, the DF_COM relation
+    # for road deaths. RUS absent from the ENTIRE flow (verified live on
+    # the full slice, zero rows) — the honest coverage limit; the
+    # same dataflow also prints the per-vehicle face (10P4VEH_MOT_ROAD
+    # — the exact denominator of Todd's 1974 WHO table in Le Fou et le
+    # Prolétaire) and the per-vehicle-km face (10P9VEHKM), both
+    # registered non-wired doors.
+    "itf_irtad": (
+        "ITF/IRTAD road safety statistics (police-reported crash registrations as "
+        "submitted; OECD.ITF DSD_INDICATORS@DF_SAFETY on the SDMX wire)"
+    ),
+    # v19 (road_accident_mortality witness): the WHO Global status
+    # report on road safety estimates — the RS_* indicator family on
+    # GHO ("Estimated road traffic death rate (per 100 000 population)",
+    # RS_198: 197 countries at the report's own single 2021 vintage —
+    # the modeled world face, RUS included at 10.6). A DIFFERENT WHO
+    # estimate family from who_ghe (the GHE cause-of-death
+    # redistribution): the status report models road deaths from the
+    # registrations + corrections for underreporting — the same
+    # collector-estimates relation, its own root because its own
+    # methodology and vintage cadence (the biennial report's cross-
+    # section, not the GHE's annual series).
+    "who_roadsafety": (
+        "WHO Global status report on road safety (modeled road-death estimates; the RS_* "
+        "indicator family on GHO)"
+    ),
+    # v20 (incarceration_rate canonical): the Institute for Crime & Justice
+    # Policy Research's World Prison Brief — THE compilation the field
+    # reads (the national prison administrations' own counts, per 100,000
+    # population, pre-trial and remand detainees included), 225 areas,
+    # 1993-2026. Reached through OWID's chart door (prison-population-
+    # rate, attribution "Institute for Crime & Justice Policy Research
+    # (2026)" read live from the chart metadata 2026-09-22): the WPB's
+    # own site (prisonstudies.org) carries no API (404 probed), and the
+    # UNODC dataportal that also collects penal data is a client-rendered
+    # SPA whose machine door never surfaced in the probe record — so the
+    # chart IS the wire, the same door-relation oecd_family (v16) and wid
+    # (v19) hold. A compilation serving as CANONICAL by necessity: no
+    # international collector prints an incarceration rate on any machine
+    # wire from this environment (the probe record), so the compilation
+    # the boards read is the origin tier — the consanguinity_studies
+    # constitution (v17).
+    "icpr_wpb": (
+        "Institute for Crime & Justice Policy Research, World Prison Brief "
+        "(national prison-administration counts compiled; via OWID's chart door)"
+    ),
+    # v20 (incarceration_rate witness): the WHO Health in Prisons
+    # database — the prison-health questionnaire collection (GHO's
+    # PRISON_* indicator family, the European member states' own reports
+    # through the WHO-Europe prison-health network). PRISON_A2_
+    # PRISIONERS_PER100KPOP prints a 36-country European cross-section at
+    # the collection's own single 2020 vintage (FRA 93.1, DEU 69.7,
+    # GBR 129.8 — read live 2026-09-22) — the coupe pattern the GHE
+    # cirrhosis witness (v18) and RS_198 (v19) set: one print, the
+    # collection's own cadence, never a series. A genuinely different
+    # root from icpr_wpb (the health-services questionnaire vs the
+    # prison-administration compilation): the pair displays the two
+    # doors' 2020 seams, never reconciled.
+    "who_prisons": (
+        "WHO Health in Prisons database (the European prison-health questionnaire "
+        "collection; the PRISON_* family on GHO)"
+    ),
+    # v20 (math_test_scores canonical): the OECD PISA assessment — the
+    # triennial survey's own mean scale scores (the PISA Database, OECD
+    # 2023 vintage), reached through OWID's chart door (average-
+    # performance-of-15-year-olds-in-mathematics-reading-and-science,
+    # mathematics column, 90 entities, the seven cycles 2003-2022,
+    # attribution "OECD (2023) ... 'PISA Database' [original data]" read
+    # live from the chart metadata). The oecd_family door relation: the
+    # OECD runs the assessment (the collector judgment — nobody upstream
+    # prints a PISA score), but the SDMX registry carries NO PISA
+    # dataflow (verified on the full live registry listing in v19's
+    # probe record — the education flows there are REG_EDU regional and
+    # TALIS teacher surveys), so the chart door is the machine face.
+    # Todd's own table is TIMSS 8th-grade (L'illusion économique, "OECD
+    # source") — the IEA assessment read through the OECD's own volume;
+    # TIMSS itself has NO machine door (zero sitemap hit, no IEA API —
+    # the probe record), so the modern OECD door is the wired face and
+    # the TIMSS seam is documented per-indicator.
+    "oecd_pisa": (
+        "OECD PISA assessment (the PISA Database mean scale scores; via OWID's chart door)"
+    ),
+    # v20 (obesity_rate canonical): the NCD Risk Factor Collaboration's
+    # adult BMI pooled analysis — the worldwide re-analysis of
+    # population-based measurement surveys (945 country-years of
+    # measured height/weight), REPUBLISHED BY WHO GHO as the NCD_BMI_*
+    # indicator family (the 2026 vintage, lastUpdated 2026-05-22, read
+    # live). Canonical through the provider's OWN machine wire (the GHO
+    # API, NCD_BMI_30C the crude 18+ face, 199 countries, 1980-2024,
+    # full sex-split) — richer than the OWID chart door that
+    # redistributes the same series (share-of-adults-defined-as-obese,
+    # bit-identical to rounding on every probed anchor: FRA 2024 =
+    # 12.524594 on both doors, the same-root relation verified live —
+    # the auto-witness refusal's own evidence). No collector prints an
+    # obesity prevalence anywhere (no international health-examination
+    # survey wire exists — the probe record), so the pooled analysis is
+    # the origin tier, the consanguinity_studies/wid constitution.
+    "ncd_risc_bmi": (
+        "NCD Risk Factor Collaboration, adult BMI pooled analysis "
+        "(republished by WHO GHO as the NCD_BMI_* family)"
+    ),
+    # v20 (hiv_prevalence_rate canonical): UNAIDS — the Joint United
+    # Nations Programme on HIV/AIDS' own epidemic indicators (the Global
+    # AIDS Update's estimates, the Spectrum/EPP modeling framework's
+    # central estimates), reached through OWID's chart door (share-of-
+    # the-population-infected-with-hiv, 161 entities, 1990-2024,
+    # attribution "Joint United Nations Programme on HIV/AIDS (2026) ...
+    # 'Global AIDS Update, Epidemic Indicators'" read live). The direct
+    # UNAIDS machine door is closed from this environment (aidsinfo is
+    # a client-rendered SPA with no discoverable API path, api.unaids
+    # .org is DNS-dead — the probe record), so the chart IS the wire,
+    # the wid door relation. The compilation's own country universe
+    # EXCLUDES the USA, Russia and China (verified identically on the
+    # GHO redistribution MDG_0000000029 — the UNAIDS reporting shape
+    # itself, not a door artifact). Same-root doors refused as
+    # auto-witnesses: the GHO MDG_0000000029 print (1-decimal) and the
+    # WB SH.DYN.AIDS count face (its own metadata READ: "Adults (ages
+    # 15+) living with HIV" — the number, not the rate); the IHME GBD
+    # cross-root family stays behind OWID's 403 (re-confirmed live on
+    # the unaids-vs-ihme chart).
+    "unaids": (
+        "UNAIDS (the Global AIDS Update epidemic indicators, modeled estimates; "
+        "via OWID's chart door)"
+    ),
+    # v20 (male_height_trend canonical): the NCD Risk Factor
+    # Collaboration's 2016 eLife compilation "A century of trends in
+    # adult human height" — 1,472 population-based studies re-analyzed
+    # into mean height AT AGE 18 by birth cohort, 200 countries and
+    # territories, 1896-1996. Reached through OWID's chart door
+    # (average-height-of-men, single column "Mean male height (cm)",
+    # attribution "NCD Risk Factor Collaboration (2016)" read live);
+    # ncdrisc.org's own downloads page carries only the 2020 child/
+    # adolescent study files today (read live — the adult 2016 eLife
+    # files no longer listed), so the chart door is the machine face.
+    # The sibling door (average-height-by-year-of-birth, the Men+Women
+    # columns) is the SAME root — an auto-witness, refused; the Women
+    # column is the registered future door. Distinct from ncd_risc_bmi
+    # (the same collaboration's BMI pooled analysis, a different
+    # publication with its own cadence — the who_ghe/who_roadsafety
+    # granularity).
+    "ncd_risc_height": (
+        "NCD Risk Factor Collaboration, a century of trends in adult human height "
+        "(2016 eLife, birth cohorts 1896-1996; via OWID's chart door)"
+    ),
+    # v20 (male_height_trend witness): the Baten & Blum (2015) height
+    # compilation through Clio-Infra's "Biological Standards of Living"
+    # — the economic-history reconstruction of mean male heights from
+    # the anthropometric record (militia, army recruits, conscripts:
+    # the sources states kept before surveys existed), 153 entities,
+    # 1550-2000, sparse by nature. Reached through OWID's chart door
+    # (average-height-of-men-by-year-of-birth, column "Height (Baten
+    # and Blum 2015)", attribution read live: "Various sources (2015)
+    # ... 'Clio-Infra - Biological Standards of Living' [original
+    # data]"). A genuinely CROSS-ROOT witness against ncd_risc_height
+    # (the historical-record compilation vs the measured-survey
+    # re-analysis — different source bases, different methods), the
+    # barro_lee relation: the cm-level seams on the overlapping cohorts
+    # (FRA 1900: Baten-Blum 166.8 vs NCD-RisC 166.9) are displayed,
+    # never reconciled.
+    "baten_blum": (
+        "Baten & Blum (2015) via Clio-Infra, Biological Standards of Living "
+        "(the historical anthropometric record; via OWID's chart door)"
+    ),
 }
 
 
@@ -198,6 +529,33 @@ PROVIDER_LAYER: dict["Provider", str] = {
 EUROSTAT_DATASET_TITLES: dict[str, str] = {
     "demo_find": "Fertility indicators",
     "une_rt_a": "Unemployment by sex and age - annual data",
+    # v18 (read from each dataset's own live API label 2026-09-21 — the
+    # citation carries the questionnaire's own title, never a borrowed one):
+    "nama_10_a10_e": "Employment by main industry (NACE Rev.2) - national accounts - annual data",
+    "edat_lfse_03": "Population in private households by educational attainment level",
+    "migr_pop3ctb": "Population on 1 January by age group, sex and country of birth",
+}
+# v19: the OECD connector's three dataflows — titles read from the live
+# SDMX registry (2026-09-21), the same one-questionnaire-one-title rule as
+# EUROSTAT_DATASET_TITLES. The citation builder dispatches per flow; the
+# DF_COM template stays PROVIDER_CITATION's oecd default (bit-compat with
+# every pre-v19 dist).
+OECD_DATAFLOW_TITLES: dict[str, str] = {
+    "DF_COM": "Causes of mortality",
+    "DF_IDD": "Income distribution database",
+    "DF_SAFETY": "Transport safety indicators",
+    # v22: read live from the SDMX registry (2026-09-22) — the migration
+    # questionnaire's foreign-born face, one-flow-one-title as ever.
+    "DF_MIG_POPF": "International migration database - stocks of foreign-born population",
+}
+# v19: the IDD DEFINITION dimension's own codelist labels (read live from
+# the DSD, CL_DEFINITION) — the citation names the vintage a door carries
+# ("current definition" vs the back-series variants) so the four gini
+# doors stay distinguishable where a reader meets them.
+IDD_DEFINITION_LABELS: dict[str, str] = {
+    "D_CUR": "current definition",
+    "D_PREV": "previous definition, with overlap year",
+    "D_INC": "previous definition, without overlap year",
 }
 PROVIDER_CITATION: dict["Provider", str] = {
     Provider.curated: "Hand-curated series '{ref}' (catalog/curated/, one citation per point)",

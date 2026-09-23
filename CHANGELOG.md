@@ -18,6 +18,1296 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-09-22 — v22: the by-origin face — the bilateral
+## decomposition of immigration_stock (THE Todd question, the book's own
+## table shape), the OECD migration questionnaire's matrix as its
+## witness, and the vanished origins admitted on the birth-place axis
+
+**No dist contract break (additive, one indicator):** the 27 other
+indicator files are byte-identical; immigration_stock.json keeps every
+pre-existing key bit-identical (the 557-point (entity, year) data, the
+UN DESA witness series, the todd_refs block) modulo the designed
+additions — 31 new sources[] entries (30 Eurostat ROW doors + the OECD
+witness) and the `bilateral` layer: 91,230 canonical points on 6,282
+(destination x origin) pairs, 30 destinations x 243 origins, 1998-2025,
+plus the OECD witness series (99,225 points, 38 destinations, 236
+origins, 1995-2024). entities.json gains exactly one record
+(netherlands_antilles, iso3 ANT) and four iso3 field changes (ussr SUN,
+czechoslovakia CSK, yugoslavia_sfr YUG, serbia_and_montenegro SCG —
+the withdrawn codes, declared). catalog.json moves only
+immigration_stock's roots summary (canonical eurostat_migr doors 1 ->
+31; witness +oecd_mig). todd_corpus.json is BIT-IDENTICAL: v22 adds a
+FACE to an existing indicator, the corpus stays 24/24 with zero flips
+(the v21 discipline).
+
+### Context
+
+Ediz re-uploaded ToddLab_v21.zip (the session-loss #4 recovery: the
+workspace had reverted to the v16 era, the v20 base was re-certified,
+the v22 probes ran and the design froze — see the v22 design dossier in
+scripts/v22_probe/, Task 33 of the worklog) with the instruction to run
+the wiring start to finish ("Tu peux déjà te lancer dans la v22 en
+attendant la review de la v21"; the zip arrived as "la V21
+(non-review)"). The base was extracted and certified (341/341, the v21
+changelog on top) and the wiring ran on it exactly as designed, probes
+already complete: the by-origin matrix of immigration_stock — the shape
+of Le Destin des immigrés' own boards ("the stock of
+Moroccans/Turks/Portuguese IN France/Germany/UK"), the door the project
+recorded as "THE TODD BY-ORIGIN QUESTION, RECORDED AS THE FUTURE DOOR"
+since v18.
+
+### Investigated (live, before any wiring — the v22 probe record)
+
+- **The Eurostat bilateral face (probe A):** migr_pop3ctb with geo
+  pinned, c_birth UNPINNED = the FULL bilateral row of a destination in
+  one 33 KB call (FR: 1,450 non-empty cells, 1998-2025, the 307-code
+  by-birth codelist of which 243 are country codes). The v18 anchors
+  disambiguated: the BIRTH face prints FR<-MA 2015 = 954,742 (v18's
+  "MA 2015 = 458,561" was the CITIZENSHIP face, migr_pop1ctz — two
+  legalities of the same stock, now recorded in the config's notes).
+  The door's own arithmetic: NAT + FOR = TOTAL to the unit every year.
+- **The UN DESA matrix (probe B):** still no wire (the dataportal = net
+  migration only, the pages 404) — the witness tier does not need it.
+- **The OECD finding (probes C+D):** the SDMX registry carries 16
+  migration dataflows, among them DSD_MIG_F@DF_MIG_POPF ("International
+  migration database - stocks of foreign-born population", OECD.ELS.IMD)
+  — the questionnaire's own bilateral matrix, REF_AREA x BIRTH_COUNTRY,
+  both axes ISO3. The flow serves ONLY through the empty-key /all
+  download (positional keys 404 — the observation dimension carries
+  TIME): 197,570 rows / 18.2 MB, already the pinned frame (MEASURE=B14
+  only, FREQ=A only, PS only), SEX _T + F. THE SEAM, verified to the
+  unit: OECD FR<-MAR _T 2015 = 954,742 = the Eurostat c_birth print
+  EXACTLY (2018 = 992,120 both sides); the OECD face EXTENDS the FR
+  Maghreb series past the Eurostat 2018 cutoff (2019 = 1,009,605,
+  2021 = 1,036,133) and carries the world's non-European destinations
+  (US<-MEX 12,383,868 in 2024, US<-W 51,226,993) the Eurostat universe
+  structurally cannot print.
+- **The wiring's own finding (the fetch):** 14 of the codelist's 44
+  country geos print ONLY their totals on the by-origin face (DE, EL,
+  MT, ME, MD, MK, GE, AL, RS, UA, AD, MC, AM, AZ — Germany's row
+  carries 184 cells, every one an aggregate or a FOR/NAT/TOTAL/UNK
+  summary code, ZERO country origins) — the registration's own honest
+  absence, the same class as Ukraine's zero cells on the FOR door;
+  those doors stay unwired, recorded in the config's notes.
+- **The origin-axis codelist surprises:** Eurostat prints AN (the
+  Netherlands Antilles' withdrawn alpha-2) as a birth place (FR<-AN
+  1999 = 78, 2005 = 450); the OECD prints the _F vanished-entity codes
+  (ANT_F "Former Netherlands Antilles", CSK_F, SCG_F, SUN_F, YUG_F)
+  and XKV (its own Kosovo code) — plus the residual vocabulary (W,
+  W_X "World unspecified", EEA, EU15, A4 "Caribbean", STLS
+  "Stateless"), each decoded live from the DSD's codelist.
+
+### Added
+
+- **The `bilateral` dist layer** (the additive contract): destination
+  x origin x year points shaped {destination_entity_id,
+  origin_entity_id, year, value, provider, source_ref} + its own
+  witness series — emitted ONLY when the indicator's processed tree
+  carries by-origin points, so every single-axis indicator's dist file
+  stays byte-identical (the honest absence of the layer is itself the
+  additivity guarantee, pinned by the v18-era integration test).
+- **The Eurostat ROW grammar** (migr_pop3ctb/ROW/{geo}): geo pinned in
+  the URL, c_birth deliberately UNPINNED; the frame pins (age=TOTAL,
+  sex=T, unit=NR) verified by the layout guard; the general row-major
+  position decode (c_birth and geo sit at different strides than the
+  pinned-c_birth layout the historical arithmetic assumed); the three
+  drop classes logged per class (aggregates/regions, the
+  FOR/NAT/TOTAL/OTH/UNK/RNC summary codes, the c_birth == geo
+  diagonal — the native face); the origin axis resolved through the
+  shared override tables (EL/UK/XK ride the geo table, AN rides the
+  new origin table).
+- **The OECD DF_MIG_POPF grammar** (the bare-flow ref, the empty-key
+  /all download): the frame pins hard-verified per row (FREQ=A,
+  MEASURE=B14, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z, UNIT=PS — the flow's
+  whole vocabulary); the SEX split (_T kept, F dropped logged — the
+  by-sex face recorded unwired); the residual vocabulary dropped
+  logged per code; the origin overrides (XKV -> XKX, the _F codes ->
+  their withdrawn ISO3).
+- **The pipeline's bilateral plumbing**: normalize routes the origin
+  axis (RawRecord.origin_raw_name/origin_iso3_raw — additive fields)
+  to a separate layer written {id}.bilateral.json (always, the
+  stale-file discipline); merge arbitrates under the (destination,
+  origin, year, sex) key with the same two rules verbatim; validate
+  checks the layer's own plausible bounds, duplicates and coverage;
+  build emits the dist layer with its own citations; stats prints the
+  matrix's counts (the numbers this entry quotes).
+- **The origin-axis covers_year exemption**, documented in code: a
+  stock point's year is the MEASUREMENT year, never the birth year —
+  people born in the former Netherlands Antilles are counted in the
+  2015 stock exactly as both questionnaires print them; the
+  destination axis keeps the guard.
+- **The netherlands_antilles entity** (iso3 ANT, valid_to 2010, the
+  two successors) and the withdrawn ISO3 declarations on ussr (SUN),
+  czechoslovakia (CSK), yugoslavia_sfr (YUG), serbia_and_montenegro
+  (SCG) — the by-origin face of the v21 vanished-entity admission
+  (the kosovo/XKX precedent: a withdrawn code declared on the entity
+  the ISO3-first resolution lands on).
+- **The oecd_mig root** (the OECD migration questionnaire's matrix —
+  the IMD's own foreign-born face, OECD-compiled) and the DF_MIG_POPF
+  title read live from the SDMX registry.
+- **Tests: 341 -> 361** (+10 Eurostat ROW, +9 OECD MIGF, +1 the
+  bilateral end-to-end integration, +1 v18-era test extended with the
+  additivity pin), the fixtures GENERATED live (the v16 discipline:
+  every anchor READ from the response bytes, never typed — the FR row
+  response whole, the OECD CSV a byte-copied slice of the /all
+  download carrying every drop class and override code).
+
+### Verified (live, frozen at delivery time)
+
+- Fetch: 31/31 sources, 0 failures (30 ROW doors + the OECD /all
+  download — 18.2 MB, 99,225 records after the sex split and the
+  drops).
+- Rebuild + verify_v22_diff.py: **53 PASS / 0 FAIL** — the 27 other
+  indicator files byte-identical; immigration_stock's pre-existing
+  keys bit-identical; entities.json exactly +1 record and 4 iso3
+  flips; catalog.json one entry's roots summary; todd_corpus.json
+  byte-identical; double rebuild deterministic.
+- Stats v22: bilateral canonical 91,230 points = 91,230 valued + 0
+  explicit gaps; 6,282 pairs; 30 destinations x 243 origins;
+  1998-2025. The FR row: 226 country origins (FR<-DZ 1999 =
+  1,246,706 -> 2018 = 1,390,284, FR<-MA 2015 = 954,742, FR<-PT 2025 =
+  599,492); the Maghreb/Turkey slices ride the census rounds and stop
+  at 2018 for FR (the coverage cliff, as-printed); the UK row prints
+  1998-2004. The witness: 99,225 points, 7,684 pairs, 38 destinations
+  (the USA's row: 210 origins), 236 origins, 1995-2024 — the seam
+  (FR<-MAR 2015 = 954,742 on BOTH doors), the extension (2019-2021),
+  the world face (US<-MEX 2024 = 12,383,867.87), the vanished origins
+  (CSK/SUN/YUG/SCG/ANT/XKX all landed on their entities). The 11 other
+  counters unchanged; corpus 24/24.
+
+### Known limitations
+
+- The by-sex face of both doors stays unwired (recorded: the Eurostat
+  M/F sex doors, the OECD F rows dropped logged); same for the age
+  bands (Eurostat) and the citizenship face (migr_pop1ctz +
+  DSD_MIG@DF_MIG — both DSDs documented in sources.yaml).
+- The UN DESA bilateral matrix (the world face's own compilation)
+  remains manual-download; the OECD matrix carries the non-European
+  destinations in its place.
+- The OWID US-by-CoB historical chart (1850+, the census-era US face
+  of exactly Todd's table class) is recorded as the US historical
+  face's future door.
+- The 14 total-only geos (above) stay unwired until the day they
+  print; the day one starts, its fetch fails loudly (the soft-miss
+  guard doubles as the change detector).
+
+## 2026-09-22 — v21: the entities version — the DYB 1978
+## vanished-entity tables (the PDF route the XLS loop cannot reach), the
+## Byelorussian and Ukrainian SSR admitted as the UN's own member rows,
+## and the Kosovo resolution (XKX, the user-assigned code)
+
+**No dist contract break (additive, data-only):** the 28 existing
+indicator files keep every pre-existing key bit-identical; the designed
+additions are exactly +72 canonical points (17 IMR + 27 CBR + 12 LE —
+the vanished entities — and 12 + 4 Kosovo on the Eurostat collectors)
+and +285 witness points, every single one of them Kosovo (verified
+entity-by-entity). entities.json gains exactly two records
+(byelorussian_ssr, ukrainian_ssr) and one field change
+(kosovo.iso3 None -> "XKX"). todd_corpus.json is BIT-IDENTICAL: v21
+adds data to existing indicators, the corpus stays 24/24 with zero
+flips. catalog.json moves only n_points / n_witness_points, the
+coverage_declared starts (1974 / 1971), and the roots door-counts
+(unsd_dyb 13 -> 14: the curated door joins its own collector root).
+
+### Context
+
+Ediz approved v19 and v20 in one message ("C'est tout bon pour la v19
+et v20 ! Tu peux continuer !") — the corpus-closing version and the
+inequality pair both passed review, and with the backlog empty the
+roadmap question became depth, not count. The first pending decision
+on the list since v1 was the vanished entities (USSR, Czechoslovakia,
+Yugoslavia SFR, the GDR, the two Yemens): the P1b spike's recommended
+route was the curated gate, and the probe material (the DYB 1978 PDF,
+24 MB, on disk since that spike) was already in the workspace. The
+session started with a THIRD base loss (the local tree back at v16,
+the GitHub still at v17); Ediz re-uploaded ToddLab_v20.zip, the tree
+was restored, verified (328/328, rebuild bit-identical against the
+shipped dist), and the probe ran BEFORE any wiring (the probes-before-
+code discipline).
+
+### Investigated (live, before any config)
+
+- **The DYB 1978 inventory (the probe's own bug-reports included):**
+  every table zone was located by its printed title, then every
+  vanished-entity row re-found by pattern — the probe's first pass
+  MISSED the Soviet rows because the UNION OF SOVIET SOCIALIST
+  REPUBLICS section prints bare "USSR" / "Byelorussian SSR" /
+  "Ukrainian SSR" (not the long form the patterns carried), a lesson
+  recorded in the probe before the extraction was trusted.
+- **The harvest:** Table 9 (live births + CBR 1974-1978) prints the
+  full Total rows for Czechoslovakia (19.9 -> 18.4 per 1,000, counts
+  291,800 -> 278,250), the GDR (10.6 -> 13.9 — the post-1976
+  pronatalist climb, counts 179,127 -> 232,151), Yugoslavia (18.1 ->
+  17.4) and the three Soviet UN seats: the USSR itself (18.0/18.1/
+  18.4/18.1 over 1974-1977, 4,546,095 -> 4,693,369 live births), the
+  Byelorussian SSR (15.8/15.7/15.7/15.8) and the Ukrainian SSR
+  (15.2/15.1/15.2/14.7). Table 15 (infant deaths + IMR 1974-1978):
+  Czechoslovakia 20.5 -> 18.7, the GDR 15.9 -> 13.2, Yugoslavia 40.9
+  -> 33.6 (counts 15,666 -> 12,811), and the three Soviet seats'
+  single pre-blackout 1974 rows: USSR 27.7 (125,908 deaths — the
+  known institutional carrier), BySSR 16.6 (2,443), UkSSR 19.2
+  (14,136). Table 4 (the latest-year vitals + LE at birth): every
+  entity's LE pair printed with its own reference period — the USSR
+  1971-1972 M 64 / F 74 (the union-level print of the founding
+  claim's era, integer precision), BySSR 1970-1971 68/76, UkSSR
+  67/74, Czechoslovakia 1976 66.99/74.05, the GDR 1976 68.82/74.42,
+  Yugoslavia 1970-1972 65.42/70.22. Table 22 corroborates the three
+  European LE pairs at their age-0 column, byte-for-byte.
+- **THE CROSS-CHECK MATRIX (every extracted value, before any CSV):**
+  Table 15's count over Table 15's rate reproduces Table 9's births
+  within 0.4% on all fifteen CSK/GDR/YUG year-pairs (e.g. Yugoslavia
+  1974: 15,666/40.9*1000 = 383,032 vs 382,947 printed); Table 4's
+  latest-year CBR equals Table 9's rate for that year on all six
+  entities; Table 4's IMR equals Table 15's; Table 4's LE equals
+  Table 22's age-0. The generator script refuses to write a CSV if
+  any cross-check fails, and every decoded value is verified present
+  in its raw text-layer line (the v16 anchor discipline applied to
+  the catalog itself: READ, never typed).
+- **THE YEMEN GATE (the probe protecting the tier boundary):** the
+  two Yemen entities print in Tables 4 and 9 (CBR 48.7 / 48.2, LE M/F
+  37.3/38.7 and 40.6/42.4, "1970-1975") — but the rows carry
+  footnote 4: "Estimate(s) for 1970-1975 prepared by the Population
+  Division of the United Nations." UN PD estimates are the WPP
+  family: WITNESS-class by the project's constitution, never
+  canonical. The Yemen rows are EXCLUDED from the curated tables —
+  the two entities remain declared-but-data-less, the negative
+  finding documented in sources.yaml.
+- **The Kosovo question (pending since the v1 audit):** the WB prints
+  countryiso3code XKX on its Kosovo rows; Eurostat prints geo XK on
+  demo_find (NMARPCT carries 16 rows 2002-2021, TOTFERRT 4 rows
+  2016-2019 — the collector's own Kosovo TFR series); both are the
+  SAME user-assigned code (the XK prefix is reserved for user
+  assignment under ISO 3166-1). Resolution: the kosovo entity carries
+  iso3 XKX (it had null), the Eurostat override table gains XK -> XKX
+  — both collectors' doors land on one entity, pre-2008 rows still
+  refuse on valid_from. The Channel Islands (CHI, 66 rows on every WB
+  witness) stay the documented permanent class: a WB-specific grouping
+  of two crown dependencies, no Todd relevance, no invented entity.
+
+### Added
+
+- **The three DYB 1978 curated tables (the PDF route):**
+  `dyb1978_vanished_infant_mortality.csv` (17 points: CSK/YUG/GDR
+  1974-1978 + the two SSR single 1974 rows), `dyb1978_vanished_crude_
+  birth_rate.csv` (27 points: the six entities, the USSR 1974-1977
+  union prints included), `dyb1978_vanished_life_expectancy.csv` (12
+  points: the six entities x male/female, the year = the printed
+  period's END year, the period string riding reference_range).
+  Root: unsd_dyb on all three — the DATA's origin is the collector's
+  own 1978 print; the curator only transcribes (the same genealogy
+  rule that keeps the ussr IMR table on soviet_official, its own
+  origin). Every row's citation names the table and the printed
+  counts; every Soviet row's note carries the live-birth definition
+  (Table 9 fn 37 / Table 15 fn 33); every GDR row carries the Berlin
+  footnote (fn 24); the '*' prints ride provisional=true; the row
+  code C rides quality_code.
+- **The curated CSV format's v21 extension (additive):** four
+  optional transcription columns — sex, provisional, quality_code,
+  reference_range — mirroring RawRecord one-to-one; both headers
+  accepted (legacy 5-column, extended 9-column), anything else is a
+  parse error; the duplicate key gains sex (a male/female pair on one
+  year is legitimate, twice the same sex is the collision it always
+  was); sex accepts exactly male/female, provisional exactly
+  true/false — loud failures on anything else.
+- **The two SSR entities:** byelorussian_ssr and ukrainian_ssr
+  (1922-1991, successors belarus/ukraine, the UN's own printed names
+  as their un_dyb overrides). THE DECISION the 1978 tables settle:
+  the USSR, BySSR and UkSSR were three distinct UN MEMBER seats —
+  the collector prints each its own rows, so the as-reported
+  principle carries them as three entities. The successors' own
+  continuous (witness-attached) series never collide with the SSR
+  prints: distinct entity ids, the merge key is (entity, year, sex).
+- **The Kosovo resolution:** kosovo.iso3 = XKX + the Eurostat
+  override XK -> XKX. Canonical landings: illegitimate_births +12
+  (2008-2021, the NMARPCT gaps of 2013/2014 honest), birth_rate_
+  fertility +4 (2016-2019: 1.66/1.65/1.61/1.55 — the collector's
+  Kosovo TFR, the fertility slide as-reported). Witness landings:
+  +285 points across the ten WB-witness indicators, every one
+  Kosovo (valued on the five data-carrying doors, explicit gaps on
+  the five where the WB prints Kosovo rows without values — the
+  witness contract's own "no value stays one gap point" rule).
+- 13 tests (328 -> 341): 8 curated-format (the extended header, the
+  loud validations, the sex-aware duplicate key, the real tables
+  against the real registry with covers_year), 4 entity (the SSR
+  records, the XKX resolution, the DYB 1978 printed names), 1
+  integration (the vanished entities end-to-end: the five IMR rows
+  with their markers and notes, the four CBR series, the six LE
+  pairs with the reference_range, the corpus untouched at 24/24).
+
+### Changed
+
+- The three indicator configs gain their curated source at the top
+  of the canonical block (IMR p2 behind the official Soviet series,
+  CBR and LE p1 — the earliest data), the DYB loop renumbered behind
+  them (priorities are NOT part of the dist contract — verified:
+  zero provenance change, the sources' order in the dist files is
+  the only visible move, plus the new curated entry).
+- coverage_declared: crude_birth_rate 2007 -> 1974, life_expectancy
+  2007 -> 1971 (the curated tables predate the XLS loop; the v5-era
+  review lesson — declared coverage must track the real floor).
+- The ussr entity's note: the "future source" it waited for is the
+  1978 print itself — the union now carries CBR and LE beside the
+  official IMR series.
+- The two Eurostat slices carrying XK rows re-fetched (the v20
+  snapshots had frozen iso3_raw=None at their parse time; the
+  override only applies at parse — the counts identical: 2069 +
+  1892 records, the live data unchanged).
+
+### Fixed
+
+- Nothing inherited: the v19 and v20 reviews both came back clean.
+- The session's own bug-reports, fixed before they could land: the
+  probe's missed Soviet rows (bare "USSR" name forms), the staging
+  script re-staging an already-rebuilt dist as its baseline (caught
+  by the entities diff showing 260 instead of 258 — the pristine
+  baseline re-extracted from the shipped zip before the verify ran).
+
+### Verified (live numbers, frozen at delivery)
+
+- Fetch: 5/5 targeted (3 curated network-free + the two Eurostat
+  slices), 0 failures.
+- Rebuild + verify_v21_diff.py: **199 PASS / 0 FAIL** — the 28
+  indicators keep every pre-existing point bit-identical with exactly
+  the designed additions; entities.json = +2 records + kosovo.iso3;
+  todd_corpus.json bit-identical (24/24, zero flips); catalog.json
+  moves only the designed fields; double rebuild deterministic.
+- Stats: infant_mortality 2,702 -> 2,719 canonical (curated 38 = 21
+  official + 17 vanished); crude_birth_rate 3,319 -> 3,346 (curated
+  27, the USSR union's own CBR prints); life_expectancy 6,018 ->
+  6,030 (curated 12, sex-split); illegitimate_births 2,144 -> 2,156
+  (Kosovo 2008-2021); birth_rate_fertility 1,953 -> 1,957 (Kosovo
+  TFR 2016-2019). Spot-checks from the dist: the founding claim's
+  union-level print (USSR 1971-1972: M 64 / F 74 — the ten-year gap
+  at union level, the RSFSR-specific 12-13 year gap of the books
+  living on the successor's series); the Yugoslav IMR halving
+  40.9 -> 33.6 in five years; the GDR's pronatalist CBR climb
+  10.6 -> 13.9 over the same window; Kosovo TFR 1.66 -> 1.55.
+- Tests: 341/341.
+
+### Known limitations
+
+- The vanished entities live on ONE edition: the DYB 1978 prints
+  five years (1974-1978) of CBR/IMR and one LE print per entity —
+  the PDF route is a cross-section, not a loop; earlier editions
+  (1975, 1976, 1977...) would extend the windows one print at a
+  time, each needing its own text-layer verification pass.
+- The USSR/SSR IMR prints stop at 1974 (the publication blackout
+  1976-1987, exactly the territory the official curated series
+  already covers 1970-1990); the SSR entities carry exactly one IMR
+  point each, their 1975+ story living in the successor republics'
+  witness-attached series.
+- The two Yemens remain data-less (the Population Division estimate
+  gate); the Channel Islands remain the documented permanent
+  unresolved class; the pre-2008 Kosovo rows refuse on valid_from
+  (2002-2007 on NMARPCT, 2001 on the WB witness).
+- The URSS/SSR LE prints are integer-precision on Table 4 (64/74,
+  68/76, 67/74) — the print's own precision, carried as-reported;
+  the European pairs print two decimals.
+
+## 2026-09-22 — v20: the queue claimed whole — incarceration_rate (La
+## Défaite's six-country board on the ICPR World Prison Brief's chart
+## door, the UNODC collector portal a client-rendered SPA with no
+## machine door), math_test_scores (L'illusion économique's TIMSS table
+## read through the OECD's modern face — the PISA chart door, the SDMX
+## registry carrying no PISA dataflow), obesity_rate (the NCD-RisC
+## pooled analysis on WHO GHO's OWN wire, the per-code AGE pin's first
+## door), hiv_prevalence_rate (the UNAIDS chart door — aidsinfo a SPA,
+## api.unaids.org DNS-dead), and male_height_trend (the NCD-RisC 2016
+## birth-cohort compilation + the Baten-Blum/Clio-Infra cross-root
+## witness) — the five-indicator final delivery, THE CORPUS-CLOSING
+## VERSION, 19 -> 24 of 24
+
+**No dist contract break (purely additive):** the twenty-three existing
+indicators keep every pre-existing key bit-identical (verified
+key-by-key, 57/57 checks); the dist gains exactly five new indicator
+files, five catalog entries, the designed corpus flips (implemented
+19 -> 24 — ALL of them, the backlog empty for the first time), and the
+registry's seven new roots (icpr_wpb, who_prisons, oecd_pisa,
+ncd_risc_bmi, unaids, ncd_risc_height, baten_blum — 31 at the
+registry). One new Family value (education — the corpus's own
+vocabulary for the assessed-learning reads, math_test_scores its first
+indicator) and one new grammar pin (the GHO connector's per-code AGE
+pin — see Added). No new provider: PROVIDER_LAYER unchanged, every new
+door rides an existing provider (owid ×5, who_gho ×2). No designed
+value change.
+
+### Context
+
+Ediz green-lit V20 while his V19 review is still pending ("OK, en
+attendant la review de la V19, tu peux déjà commencer la V20") — the
+max-parallel cadence now spanning reviews. The v19 exit note had
+proposed the queue option (d): finish the five remaining metrics in
+ONE version, the corpus at 24/24; the standing max-parallel mandate
+and Ediz's go settled it — v20 is THE QUEUE VERSION, the delivery that
+closes todd_core.csv's universe. Five probe tracks ran before a single
+line of wiring (scripts/v20_probe/), all verdicts below read from the
+live APIs 2026-09-22. The v19 state was intact in the working repo
+this time (no recovery preamble needed — the first session since v16
+to start from the previous delivery's tree verbatim).
+
+### Investigated (live, before any config)
+
+(A) INCARCERATION — the collector-tier question answered honestly
+negative: UNODC's dataunodc.un.org (the penal-system questionnaire
+collector, the natural canonical) is a client-rendered SPA — every
+datareport page returns the same 44KB shell, the Drupal settings carry
+no data API, and no machine door surfaced in any probed shape (the
+record in scripts/v20_probe/probe_v20_unodc.py + prison_probe.log).
+The World Prison Brief's own site answers 404 on /api (prisonstudies
+.org serves HTML country pages only). The machine face of the
+compilation the field reads is OWID's chart door: prison-population-
+rate, 225 entities, 1993-2026, "Number of prisoners, including
+pre-trial and remand detainees, per 100,000 people" (the chart's own
+subtitle), attribution read live from the chart metadata: "Institute
+for Crime & Justice Policy Research (2026) ... 'World Prison Brief'
+[original data]" — the same door-relation oecd_family (v16) and wid
+(v19) hold. THE WITNESS the probes surfaced: GHO's PRISON_A2_
+PRISIONERS_PER100KPOP — the WHO Health in Prisons database, the
+European prison-health questionnaire collection, printing a 36-country
+cross-section at its own single 2020 vintage (FRA 93.1, DEU 69.7, GBR
+129.8, GEO 245.99 the post-Soviet European top) — the coupe pattern
+(RS_198 v19, SA_0000001457 v18) on a genuinely cross-root door. The
+sub-national faces recorded: the door carries the UK's constituent
+parts (England & Wales, Scotland, Northern Ireland) and BiH's entities
+as separate rows — they resolve to no registry entity and drop logged,
+the honest OWID-door discipline.
+
+(B) MATH — the assessment seam: Todd's own table is TIMSS 8th-grade
+(L'illusion économique, "OECD source" — the corpus's own words), and
+TIMSS has NO machine door (zero hit in OWID's full saved sitemap, no
+IEA API). The OECD SDMX registry (the full live listing saved at v19)
+carries NO PISA dataflow — the education flows there are REG_EDU
+(regional attainment) and TALIS (teacher surveys). The OECD's modern
+machine face is the chart door: average-performance-of-15-year-olds-
+in-mathematics-reading-and-science, 90 entities, the mathematics
+column (the CSV's own header "Mathematics" — the field pin), the seven
+cycles 2003-2022, attribution read live: "OECD (2023) ... 'PISA
+Database' [original data]". The by-sex sibling chart is the same root
+(auto-witness refused, registered); the World Bank's harmonized
+learning scores are a derived composite (refused by the anti-derivation
+line — the extrapolations precedent); TIMSS registered as the future
+door. NO WITNESS — canonical-alone, the top_income_share precedent.
+The door's own shape documented: the 2000 cycle prints reading-only
+rows (PISA 2000's major domain) — the math column arrives as explicit
+gap points, 41 of them on the live slice; Russia prints six cycles
+2003-2018 and is ABSENT from 2022 (the cycle it did not sit).
+
+(C) OBESITY — the first GHO-CANONICAL indicator, and the grammar find
+that came with it: NO collector prints an obesity prevalence anywhere
+(the WB probe: SH.STA.OBES/.ZS/SN.ITK.OBES all answer the empty
+message — recorded). The origin tier is the NCD-RisC adult BMI pooled
+analysis REPUBLISHED BY WHO GHO as the NCD_BMI_* family — and the GHO
+API is the provider's own machine wire: NCD_BMI_30C (the crude 18+
+face, 199 countries, 1980-2024, FULL SEX SPLIT, 26,865 COUNTRY rows).
+THE GRAMMAR: unlike SDGSUICIDE (age slices beside an all-ages row),
+NCD_BMI_30C carries Dim2 = AGEGROUP_YEARS18-PLUS on EVERY row — the
+door's single population face — which the YEARSALL rule would have
+refused wholesale: the connector gained a per-code AGE pin (a pinned
+code accepts exactly its frame, anything else raises; unpinned codes
+keep the YEARSALL grammar bit-identical). THE SAME-ROOT RELATION
+verified at the byte level: the OWID chart door (share-of-adults-
+defined-as-obese, attribution "World Health Organization - Global
+Health Observatory (2026)" read live) prints the IDENTICAL series —
+FRA 2024 = 12.524594 on both doors, USA 41.830319/41.83032, JPN
+5.1900275/5.1900277 — the chart IS this door's redistribution, an
+auto-witness refused with its own bit-identity as the evidence. The
+age-standardized sibling (NCD_BMI_30A) registered non-wired (the
+standardization seam).
+
+(D) HIV — the compilation the corpus names ("WHO/UNAIDS-style data")
+with its direct machine door CLOSED: aidsinfo.unaids.org is a
+client-rendered SPA (21KB shell, /api 404), kbase/api.unaids.org are
+DNS-dead. The machine face is the OWID chart door: share-of-the-
+population-infected-with-hiv, 161 entities, 1990-2024, attribution
+read live: "Joint United Nations Programme on HIV/AIDS (2026) ...
+'Global AIDS Update, Epidemic Indicators' [original data]" — the wid
+door relation. THE COVERAGE FINDING, verified TWICE: the compilation's
+own country universe excludes the USA, Russia and China — the GHO
+redistribution (MDG_0000000029, 145 areas) is absent of exactly the
+same three, so the exclusion is the UNAIDS reporting shape itself, not
+a door artifact (the regional aggregate that carries them, "Western &
+Central Europe and North America (UNAIDS)", drops logged). The
+same-root doors refused as auto-witnesses and registered: the GHO
+MDG_0000000029 print (1-decimal — FRA 2024 = 0.3 vs the door's
+0.28482) and the WB SH.DYN.AIDS code, whose own metadata READ LIVE
+names it "Adults (ages 15+) living with HIV" — the COUNT face (FRA
+2023 = 180,000). The cross-root family (IHME GBD) re-confirmed behind
+OWID's 403 on the unaids-vs-ihme chart, verbatim the v1 record. NO
+WITNESS — canonical-alone.
+
+(E) HEIGHT — two compilations, one cross-root pair: the NCD-RisC 2016
+eLife "century of trends" (1,472 studies re-analyzed, mean height AT
+AGE 18 BY BIRTH COHORT, 200 entities, 1896-1996) through the chart
+door average-height-of-men (single column, attribution "NCD Risk
+Factor Collaboration (2016)" read live; ncdrisc.org's own downloads
+page carries only the 2020 child/adolescent study files today — read
+live, the adult 2016 eLife files no longer listed, the chart IS the
+wire); and the Baten & Blum (2015) compilation through Clio-Infra's
+"Biological Standards of Living" (the economic-history record —
+militia rolls, army recruits: 153 entities, 1550-2000, sparse by
+nature) as the CROSS-ROOT WITNESS, the barro_lee relation (the
+cm-level seams on the overlapping cohorts displayed never reconciled;
+the pre-1896 tail carried on the witness tier alone). The sibling
+Men+Women chart refused as the same-root auto-witness (the Women
+column registered as the future door). THE FRAMING SEAMS drawn and
+documented: birth-cohort years vs Todd's calendar years, age 18 vs
+the book's 20-year-olds — displayed, never reconciled. The probe
+artifact honestly kept: the Baten-Blum door prints the DRC under the
+name "Congo, DRC" with NO ISO3 code — 11 witness points drop logged
+(the possible_mapping_gap bucket, the report the record; the same
+pending class the Channel Islands hold).
+
+### Added
+
+- src/schema/indicator.py: the registry's SEVEN new roots (31 total),
+  each with its live-verified registry comment — icpr_wpb (the
+  compilation canonical by necessity, the consanguinity_studies
+  constitution), who_prisons (the prison-health questionnaire
+  collection), oecd_pisa (the assessment's own scores through the
+  chart door — the OECD runs the survey, no SDMX wire), ncd_risc_bmi
+  (the pooled analysis on the provider's own wire), unaids (the
+  Global AIDS Update estimates through the chart door),
+  ncd_risc_height (the 2016 eLife birth-cohort compilation), and
+  baten_blum (the Clio-Infra historical record). The Family enum
+  gains `education` — the corpus's own vocabulary, its first
+  indicator math_test_scores.
+- src/connectors/gho.py: THE PER-CODE AGE PIN (_CODE_AGE_PIN) — a door
+  whose every row carries one age frame (NCD_BMI_30C: YEARS18-PLUS,
+  read live on the full 28,350-row slice) declares that frame in the
+  table; a pinned code accepts exactly it and raises on anything else
+  (a door change stops the parse, never silently re-interpreted);
+  unpinned codes keep the YEARSALL drop-the-slices grammar
+  bit-identical (SDGSUICIDE's 17 tests untouched). parse_gho gains the
+  optional code kwarg (fetch_raw forwards source_ref — the pin applies
+  in production exactly as in tests); the loop's country-code local
+  renamed (spatial) so the two codes never shadow each other — the
+  collision itself caught by the fixture validation during the
+  session, the probe scripts kept as the record.
+- config/indicators/incarceration_rate.yaml — the twentieth indicator
+  (3 citations, 3 books): canonical = the ICPR World Prison Brief
+  through the OWID chart door (prison-population-rate, 225 entities,
+  1993-2026, per 100k, pre-trial included), reliability medium (a
+  compilation canonical by necessity — no collector wire anywhere),
+  plausible 0-1800 (SLV 2024 = 1,659 the estado-de-excepción
+  calibrator; a raw count or per-million print flags immediately);
+  witness = the GHO PRISON_A2 coupe (36 European countries at the
+  2020 vintage).
+- config/indicators/math_test_scores.yaml — the twenty-first (3
+  citations, the education family's first): canonical = the OECD PISA
+  mathematics mean through the chart door with field=Mathematics (the
+  CSV's own header — the pin, 90 entities, 2003-2022), reliability
+  high (the assessment's own scores, the OECD the collector), plausible
+  300-650 (QAT 2006 = 317.96 the floor, SGP 2022 = 574.66 the
+  ceiling; a percentage, rank, or doubled scale flags); witnesses:
+  NONE — the honest absence, the TIMSS seam and the refused composite
+  documented in the config's own block.
+- config/indicators/obesity_rate.yaml — the twenty-second (3
+  citations): canonical = GHO NCD_BMI_30C on the provider's own wire
+  (the crude 18+ face, 199 countries, 1980-2024, full sex split —
+  the first GHO-canonical indicator, the per-code AGE pin's own
+  door), reliability medium (a modeled-estimates canonical by
+  necessity — the top_income_share constitution), plausible 0-90
+  (ASM women 2024 = 80.89 the Pacific tail; a fraction read or a BMI
+  mean flags); witnesses: NONE — the OWID chart's bit-identity the
+  auto-witness refusal's own evidence.
+- config/indicators/hiv_prevalence_rate.yaml — the twenty-third (1
+  citation): canonical = the UNAIDS prevalence through the OWID chart
+  door (161 entities, 1990-2024, % of 15-49), reliability medium
+  (modeled central estimates by necessity), plausible 0-40 (ZWE 1995
+  = 29.65 the epidemic's own peak); witnesses: NONE — the same-root
+  doors and the 403 family documented.
+- config/indicators/male_height_trend.yaml — the TWENTY-FOURTH, THE
+  CLOSING METRIC (1 citation): canonical = the NCD-RisC birth-cohort
+  compilation through the chart door (200 entities, 1896-1996, cm),
+  reliability high (two independent compilations agreeing at the cm
+  level), plausible 145-190 (both doors' spans: LAO 1896 = 152.88 to
+  NLD 1985 = 182.57, Baten-Blum PNG 152.36 to DNK 183.2); witness =
+  the Baten-Blum/Clio-Infra door (the pre-1896 tail on the witness
+  tier — the barro_lee relation).
+- tests/conftest.py: seed_gho_snapshot forwards the code to the parser
+  (exactly as fetch_raw does — the AGE pin applies in tests too);
+  the v20 seed block in test_pipeline_integration.py's _run_pipeline.
+- Seven fixtures GENERATED from the live APIs through the connectors'
+  own build_url (scripts/make_v20_fixtures.py — the v19 discipline:
+  anchors READ, never typed): the five OWID chart-door carves
+  (prison 118/2,272 rows — the Todd six-country board whole; PISA
+  61/496; HIV 179/5,514 including the aggregate rows the parser
+  drops logged; height 178/21,008; Baten-Blum 88/1,499) and the two
+  GHO carves (NCD_BMI_30C 96+4 rows with the full sex split; PRISON_A2
+  11/36 — the coupe's own anchored subset).
+
+### Changed
+
+- Nothing pre-existing: the twenty-three old indicator files, catalog
+  entries and entities.json are bit-identical (verify_v20_diff 57/57);
+  the GHO connector's unpinned path keeps its exact public behavior
+  (SDGSUICIDE's tests untouched), the code kwarg optional and
+  backward-compatible.
+
+### Fixed
+
+- One shadowing bug caught by the fixture validation itself during
+  the session (the v18/v19 lesson repeating, gladly): parse_gho's
+  loop had reused the name `code` for the SpatialDim country code
+  since v10 — the new code kwarg collided, the pin looked up "FRA"
+  instead of "NCD_BMI_30C", and every row dropped as an "age slice"
+  with a zero-rows error. The local renamed (spatial), the make_
+  v20_fixtures validation the guard that caught it before any test
+  was written.
+
+### Verified (live, frozen at delivery 2026-09-22)
+
+- Fetch: 7/7 doors, 0 failures (prison owid 2,272 records; the GHO
+  prison coupe 36; PISA 496; obesity 26,865; HIV 5,514; height
+  21,008; Baten-Blum 1,499).
+- Tests: 314 -> 328 (+14: six GHO connector — the pin's acceptance,
+  the unpinned refusal, the off-frame and Dim2-less sabotage guards,
+  the coupe pass, the fetch_raw piping; three OWID connector — the
+  field pin's anchors, the multi-variable refusal, the typo'd-field
+  guard; five integration — the ICPR door + coupe, the PISA canonical-
+  alone with its 2000 gaps, the GHO canonical-alone with its sex
+  split, the UNAIDS canonical-alone with its universe limits, the
+  NCD-RisC + Baten-Blum pair). 328/328 at packaging.
+- Rebuild + verify_v20_diff.py: 57/57 PASS / 0 FAIL — the twenty-three
+  old indicators bit-identical, catalog +5 exactly (old entries
+  identical), entities.json identical, corpus = exactly the five
+  designed flips (19 -> 24) and the backlog EMPTY, double rebuild
+  deterministic (31 dist files byte-stable).
+- Stats dist: incarceration_rate canonical 2,207 points, 220
+  entities, 1993-2026 (the door's 225 minus the five UK/BiH
+  sub-national faces, dropped logged); witness coupe 36 points, 36
+  entities, 2020. math_test_scores canonical 480 points = 439 valued
+  + 41 explicit gaps (the 2000 reading-only rows — the door's own
+  shape), 88 entities, 2003-2022. obesity_rate canonical 26,865
+  points, 199 entities, 1980-2024, the sex split riding the canonical
+  tier itself. hiv_prevalence_rate canonical 5,199 points, 152
+  entities, 1990-2024 (161 minus the World and eight UNAIDS regional
+  aggregates, dropped logged). male_height_trend canonical 20,200
+  points, 200 entities, 1896-1996; witness 1,488 points, 152
+  entities, 1550-2000 (the pre-1896 tail the canonical cannot carry).
+- The Todd anchors print themselves: the Défaite six-country board —
+  USA 683 (2000) -> 542 (2023), RUSSIA 729 -> 300 (the two carceral
+  worlds the book sets against each other), FRANCE 82 -> 126 (the Qui
+  est Charlie ? écroués arc's stock face), GERMANY 85 -> 71, JAPAN
+  48 -> 33, UK 121 -> 139; the French PISA slide 510.8 (2003) ->
+  473.9 (2022) with the American 482.9 -> 464.9 beside it; the
+  health-paradox pair USA 41.8 vs FRANCE 12.5 (2024) with the
+  American female-over-male inversion (43.0/40.6) and Japan's lean
+  5.2; the patrilineal belt — ZWE peaking 29.65 (1995), SWZ 23.4,
+  ZAF 17.2 (2024); and the height arcs — FRANCE birth-1896 = 166.41
+  -> birth-1996 = 179.74 (+13.3cm, the book's +10cm printing bigger),
+  KOR +15.2 the compilation's biggest gain, NLD 182.57 the tallest.
+
+### Known limitations
+
+- incarceration_rate: a compilation canonical (no collector wire —
+  the UNODC SPA record); L'illusion économique's US number is the
+  total correctional population (probation and parole included, ~3x
+  the stock — the book's own note); the écroués flow vs the detention
+  stock seam documented; the pre-1993 faces and the 1970s French
+  series are BOOK data (curated territory); the witness carries 36
+  European countries at one vintage (no trend, no USA/RUS/JPN); the
+  UK sub-national faces (England & Wales etc.) drop logged.
+- math_test_scores: the TIMSS-vs-PISA assessment seam (two frames,
+  one metric family — Todd's own table is TIMSS, the machine door is
+  PISA 15-year-olds); the 2000 cycle's reading-only rows arrive as 41
+  explicit gaps; Russia absent from 2022; the by-sex faces, the
+  reading/science columns, and TIMSS itself registered as future
+  doors; no witness tier.
+- obesity_rate: a modeled-estimates canonical (the pooled analysis'
+  confidence intervals dropped at parse with every GHO door — the
+  standing record); the crude-vs-age-standardized seam (NCD_BMI_30A
+  registered non-wired); the book's college-educated face is survey
+  microdata, curated territory; no witness tier (the same-root
+  absence, its bit-identity the evidence).
+- hiv_prevalence_rate: the compilation's own universe excludes the
+  USA, Russia and China (verified on both redistributions — the
+  UNAIDS reporting shape); the corpus's own women-15-49 face lives
+  behind the closed aidsinfo door (registered); no witness tier (the
+  403 family re-confirmed).
+- male_height_trend: the birth-cohort vs calendar-year and age-18 vs
+  age-20 framing seams (documented, never reconciled); the 1996+
+  cohorts live behind the 2020 child/adolescent study (a different
+  publication, registered); the Women column registered (no corpus
+  metric demands it); the Baten-Blum DRC rows print under a name the
+  registry doesn't carry ("Congo, DRC", no ISO3 — 11 witness points
+  dropped logged, the pending class); the witness is sparse by nature.
+- THE CORPUS IS CLOSED (24/24): the implemented share's own roadmap
+  is empty — the "what to build next" question the corpus made
+  a data statement in v13 now answers itself. The registered future
+  doors (per-vehicle road deaths, the WID percentile vocabulary, the
+  by-origin migration matrix, the by-sex PISA and HIV faces, the
+  1996+ height cohorts, TIMSS, NCD_BMI_30A...) and the curated
+  territories (the 19th-century boards, the book tables) remain the
+  recorded expansion space — depth, not corpus count.
+
+## 2026-09-22 — v19: the inequality pair and the road — top_income_share
+## (the backlog's head claimed through WID's chart door, the corpus's own
+## named source), gini_index (the OECD IDD's four-door vintage stitch, the
+## 1995 table's lineage), and road_accident_mortality (Le Fou et le
+## Prolétaire's metric on the ITF/IRTAD wire) — the three-indicator
+## parallel delivery, corpus 16 -> 19 of 24
+
+**No dist contract break (purely additive):** the twenty existing
+indicators keep every pre-existing key bit-identical (verified
+key-by-key, 52/52 checks); the dist gains exactly three new indicator
+files, three catalog entries, the designed corpus flips (implemented
+16 -> 19), and the registry's four new roots (wid, oecd_idd, itf_irtad,
+who_roadsafety). No new provider enum, no new Family value — the OECD
+connector's THIRD and FOURTH dataflows arrive instead (the eurostat
+v18 precedent: one connector, several datasets, one grammar + pin guard
+per dataset). No designed value change.
+
+### Context
+Ediz's v18 review landed "rien à corriger", with the standing
+max-parallel mandate ("tu peux faire tout en parallèle (si tu en es
+capable), sinon choisis celui que tu veux") still governing the
+cadence. The v18 exit note had proposed four v19 candidates
+(top_income_share, gini_index, road_accident_mortality, the curated
+19th-century faces); the corpus-order house rule settles the first
+three — they ARE the remaining backlog's head (7, 4 and 4 citations,
+the three highest of the eight left) — and the curated historical
+faces stay a recorded future door. One recovery preamble, the same
+shape v18 itself needed: the local workspace had again rolled back
+(worse this time — the working repo showed v16, not v17), but every
+v18 artifact survived in download/ (zip + patch + the probe scripts);
+the reviewed zip IS the authoritative state, so the repo was restored
+by extracting ToddLab_v18.zip fresh (289 raw snapshots included), the
+baseline re-verified (302/302), and the v18 dist staged bit-identical
+for this entry's diff. The GitHub remote still sits at v17 (the v18
+push is Ediz's, at his own cadence) — so this entry's patch is built
+against the v18 zip extract, the delivery he reviewed.
+
+### Investigated (live, before any config)
+Four probe tracks, all run in parallel (scripts/v19_probe/), all
+verdicts below read from the live APIs 2026-09-21/22:
+
+(A) WID.World — the corpus NAMES the source for La Défaite de
+l'Occident's own board ("Russia/USA/France, WID data", pre-tax top 1%
+and next 9%). The direct machine door is CLOSED from this environment:
+api.wid.world answers 403 CloudFront on every extractor shape probed
+(GET query-string, POST form, POST raw, browser headers — the endpoint
+the R/Stata packages ride), the new portal's country pages are
+WordPress views carrying no data files, and the old bulk-download path
+is gone (404). The machine-readable face is OWID's chart door:
+incomes-of-the-richest, 165 entities, 1820-2024, single clean column
+"Share (richest 1%, before tax)", the chart's own attribution read
+live from its metadata: "WID.world (2026) - World Inequality
+Database". The same door-relation oecd_family holds (v16). The
+sibling extrapolations chart (income-share-top-1-before-tax-wid-
+extrapolations, 227 entities) is the SAME root plus the provider's own
+"(Projected)" column — refused by the anti-derivation line, never
+wired. The Atkinson-Piketty historical chart OWID still carries
+(declining-share-of-the-top-1..., 8 entities 1871-2019 — the Où en
+sommes-nous ? six-country table) is ALSO WID-rooted now (the series
+were folded in): a self-witness, not a cross-check — so
+top_income_share stands canonical-ALONE, the secondary_education
+precedent for the witness tier's honest absence (the OECD IDD's 35
+measures, enumerated live, carry no top-fractile share).
+
+(B) The OECD Income Distribution Database — the 1995 fifteen-country
+table L'illusion économique read is this collection's lineage, and it
+rides the SDMX wire as DSD_WISE_IDD@DF_IDD (OECD.WISE.INE): MEASURE=
+INC_DISP_GINI, unit 0_TO_1, 45 areas, 1974-2025, RUS carried
+2008-2017 (the RLMS survey window). THE GRAMMAR FINDING: the flow
+prints the same (country, year) under METHODOLOGY x DEFINITION
+vintages — METH2012 (the current computation) vs METH2011 (the
+pre-revision history); D_CUR ("current definition") vs D_PREV
+("previous definition - with overlap year") vs D_INC ("previous
+definition - without overlap year"; labels read live from the DSD's
+own CL_DEFINITION codelist). The stitching chain was SIMULATED on the
+full live slice before any wiring: 906 (area, year) keys, zero
+unresolved, D_CUR/M12 > D_PREV/M12 > D_INC/M12 > D_CUR/M2011
+(649/10/61/186 wins; M2011-D_PREV never wins a key — not wired, the
+minimal-chain discipline). France sews three times: 1996-2011 on
+METH2011, 2011-2020 on METH2012-D_PREV, 2020-2023 on METH2012-D_CUR —
+the OECD explorer's own chained display, made explicit. The WID gini
+chart (gini-coefficient-wid, 165 entities 1820-2024, attribution
+verified the same way) is the cross-root witness — a DIFFERENT income
+concept (pre-tax national income vs equivalized disposable), the seam
+displayed never reconciled: France 2022 = 0.299 disposable vs 0.4592
+pre-tax, the redistribution IS the gap.
+
+(C) The road — the ITF/IRTAD statistics ride the SDMX wire as
+OECD.ITF DSD_INDICATORS@DF_SAFETY: police-reported crash registrations
+as submitted, 55 areas, 1994-2025, THREE printed denominators (the
+flow's own unit codelist read live): 10P5HB (per 100,000 population —
+the family-consistent face, WIRED), 10P4VEH_MOT_ROAD (per 10,000
+registered motor vehicles — the direct descendant of Todd's 1974 WHO
+table denominator, registered non-wired), 10P9VEHKM (per billion
+vehicle-km, registered non-wired). The count face rides a sibling
+dataflow (DSD_ST@DF_STFAT, 53 areas, annual/monthly/quarterly rows —
+FRA 2018 = 3,248 as counted, also registered non-wired). RUS is
+absent from the ENTIRE ITF flow — zero rows across 1994-2025 on every
+unit, verified on the full slice. The witness: GHO RS_198 ("Estimated
+road traffic death rate (per 100 000 population)"), 197 countries at
+the report's own single 2021 vintage (RUS 2021 = 10.6, FRA 4.7) — the
+GHE-cirrhosis coupe pattern, one print not a series; the neighboring
+RS_196 (counts) same single vintage, no multi-year series on the API
+for this family, recorded.
+
+(D) Two endpoint grammar lessons, both caught by the probes before any
+code: the OECD SDMX data endpoint REFUSES "latest" as the version
+token ("Invalid version string provided" — every flow reference
+carries its explicit registry version), and the SDMX-CSV envelope is
+uniform across providers (DATAFLOW,<flow-urn>,I,<area>,... — REF_AREA
+at position 3 behind the three envelope columns, the shared walker's
+existing skip rule handling the residue).
+
+### Added
+- src/connectors/oecd.py: THE THREE-FLOW CONNECTOR — DF_COM (v10,
+  verbatim behavior, its 17 existing tests untouched), DF_IDD
+  ('DF_IDD/{measure}/{methodology}/{definition}', 9 dimensions, the
+  unit derived per-measure through a deliberate gate
+  _IDD_UNIT_BY_MEASURE), DF_SAFETY ('DF_SAFETY/{measure}/{unit}', 8
+  dimensions, TRANSPORT_MODE pinned ROAD, FREQ pinned A — the flow's
+  monthly/quarterly rows never fetched). One shared SDMX-CSV walker
+  (_walk_sdmx_csv) with a per-flow pin dict: trust the URL, verify
+  the response — a row from any other slice (a METH2011 row under a
+  D_CUR ref, a monthly row, a per-vehicle unit) is refused loudly,
+  never ingested. Neither new flow carries a SEX dimension: every
+  record sex=None, the flows' own shape.
+- The registry's four new roots (schema/indicator.py, each with its
+  live-verified registry comment): wid (the DINA research
+  harmonization — CANONICAL for top_income_share by the
+  consanguinity_studies constitution: no collector anywhere prints a
+  top-fractile income share, the metric is by construction a
+  constructed series, so the compilation the corpus names is the
+  origin tier), oecd_idd (the national household surveys as
+  submitted), itf_irtad (the police crash registrations), and
+  who_roadsafety (the Global status report estimates — a DIFFERENT
+  WHO family from who_ghe, its own methodology and vintage cadence).
+  PROVIDER_LAYER unchanged: every new door rides an existing provider.
+- OECD_DATAFLOW_TITLES + IDD_DEFINITION_LABELS (schema) and the
+  per-flow citation dispatch (build.py): the IDD citation names the
+  vintage each door carries ("current definition" vs the back-series
+  variants); DF_COM's citation template is verbatim (bit-compat with
+  every pre-v19 dist).
+- config/indicators/top_income_share.yaml — the seventeenth
+  indicator, the backlog's head (7 citations, 5 books): canonical =
+  the WID pre-tax top-1% share through the OWID chart door
+  (incomes-of-the-richest), reliability medium (a research
+  compilation by necessity, displayed as what it is), plausible
+  0-70 (the compilation's own tail: Malawi 1997 = 64.09), witnesses:
+  NONE — the honest absence, the config's own comment block recording
+  why (the IDD measure list, the refused extrapolations door).
+- config/indicators/gini_index.yaml — the eighteenth indicator (4
+  citations, 2 books): the FOUR-DOOR canonical chain (the NMARPCT
+  quatuor pattern, applied to a methodology-definition seam instead of
+  a geo seam) + the WID pre-tax witness (the concept seam: France 2022
+  0.299 disposable vs 0.4592 pre-tax, never reconciled, displayed).
+  Plausible 0-1: the Gini's own mathematical domain, the unit-error
+  bound by construction.
+- config/indicators/road_accident_mortality.yaml — the nineteenth
+  indicator (4 citations, 1 book — all Le Fou et le Prolétaire):
+  canonical = ITF FATALITIES/10P5HB (the per-100k family face, the
+  choice documented against the per-vehicle door of Todd's own 1974
+  table), witness = GHO RS_198 (the 2021 coupe). Plausible 0-35 (the
+  registrations' own tail: LVA 1994 = 28.44 — the post-Soviet
+  road-death crisis; LIE's honest zeros ride the floor).
+- tests/conftest.py: seed_oecd_idd_snapshot + seed_oecd_safety_snapshot
+  (the pins extracted from the source_ref like the production
+  connector — a D_CUR seed REFUSES a D_PREV fixture row).
+- Eight fixtures GENERATED from the live APIs through the connector's
+  own build_url (scripts/v19_probe/make_v19_fixtures.py — the v16
+  discipline: anchors READ, never typed): the four IDD vintage doors
+  (oecd_idd_gini_cur/prevdef/incdef/m2011.csv — 88/12/4/103 anchored
+  rows from the 649/19/61/421 live slices), the ITF road door
+  (itf_safety_road_mortality.csv, 358 of 1,551), the two WID charts
+  (owid_incomes_of_richest.csv + owid_gini_wid.csv, 558 rows each),
+  and the GHO coupe (gho_road_mortality.json — 11 country rows + the
+  7 non-COUNTRY rows the parser drops logged).
+
+### Changed
+- Nothing pre-existing: the twenty old indicator files, catalog
+  entries and entities.json are bit-identical (verify_v19_diff 52/52);
+  the DF_COM connector path kept its exact public surface (parse_
+  sdmx_csv's signature and its 17 tests untouched, the walker
+  refactor internal).
+
+### Fixed
+- Two TYPED ANCHORS caught by the tests themselves during the session
+  (the v18 lesson repeating, gladly): FRA 2019 D_PREV guessed at 0.281
+  (the door prints 0.292) and BRA 2006 D_INC copied from an unfiltered
+  probe line (0.5039 — a row from another slice; the pinned door
+  prints 0.50879539), plus RUS 2008 read off the full slice instead of
+  the M2011 door (0.374 vs the door's 0.428). All three corrected
+  against the fixtures' own bytes; the probe scripts remain the
+  mistake's record.
+
+### Verified (live, frozen at delivery 2026-09-22)
+- Fetch: 8/8 doors, 0 failures (top_income owid 3,765 records; the
+  four IDD doors 649/19/61/421; gini witness 3,765; road ITF 1,551;
+  RS_198 197 country rows).
+- Tests: 302 -> 314 (+12: nine connector — the URL pins, the vintage
+  anchors, the sabotage guards on METHODOLOGY/DEFINITION/UNIT/AGE/
+  FREQ/TRANSPORT_MODE/MEASURE, the shared body rules; three
+  integration — the canonical-alone contract, the four-door stitch
+  with its provenance seam assertions, the IRTAD print + coupe).
+  314/314 at packaging.
+- Rebuild + verify_v19_diff.py: 52/52 PASS / 0 FAIL — the twenty old
+  indicators bit-identical, catalog +3 exactly, entities.json
+  identical, corpus = exactly the three designed flips (16 -> 19),
+  double rebuild deterministic (26 dist files byte-stable).
+- Stats dist: top_income_share canonical 3,203 points = 3,203 valued +
+  0 gap, 155 entities, 1820-2024 (the chart's 165 entities minus the
+  ten aggregate/historical rows that resolve to nothing — World and
+  the nine "… (WID)" regional aggregates, dropped logged, the OWID
+  door's own discipline; GDR rides as its own entity); witnesses:
+  none. gini_index canonical 906 points, 45 entities, 1974-2025 (the
+  exact simulated key count — the chain's own arithmetic); witness WID
+  3,203 points, 155 entities, 1820-2024. road_accident_mortality
+  canonical 1,551 points, 55 entities, 1994-2025; witness RS_198 197
+  entities at the single 2021 vintage (the coupe's own shape, every
+  witness point 2021).
+- The Todd anchors print themselves: USA 1913 = 20.43 -> 2024 = 20.73
+  (the full U-shape), France 1910 = 22.73 -> 2022 = 12.1 (the
+  Atkinson-Piketty arc, now INSIDE WID), Russia 1820-2017 in 46 points
+  ending at the oligarchy's 20.0; USA 1995 = 0.361 (L'illusion
+  économique's own year on the door's own series), the stitched France
+  0.277 (1996, M11) -> 0.309 (2011, M12-D_PREV) -> 0.278 (2020,
+  M12-D_CUR) -> 0.299 (2023); France 1994 = 15.2 -> 2024 = 4.7 road
+  deaths, the USA 15.5 -> 12.2 (the never-halved divergence), LVA 1994
+  = 28.44 the post-Soviet tail.
+
+### Known limitations
+- top_income_share: a single research compilation, canonical-alone (no
+  cross-root machine witness exists — the probe record); the provider's
+  pre-tax concept is a distributional-national-accounts construct; the
+  "next 9%" of La Défaite's own table (p90p99) lives behind the blocked
+  WID API — registered as the future door; the 19th-century tails are
+  the compilation's own reconstructions (the layer judgment rides the
+  root label).
+- gini_index: 45 areas canonical (the world face rides the witness
+  tier alone); the vintage seams are real series breaks (France 2011
+  and 2020, Germany 2011, the USA 2013, the UK 2002) — carried
+  honestly, every collision a logged provenance discard; no sex
+  dimension (a household-distribution index); Russia's canonical
+  window is the five survey points 2008-2017.
+- road_accident_mortality: RUS absent from the whole ITF flow (the
+  witness carries Russia's modeled 2021 face alone); the 1974
+  thirteen-country table itself is BOOK data (curated territory, the
+  same line the 19th-century boards hold); the per-vehicle denominator
+  of Todd's own table is one registered door away (10P4VEH_MOT_ROAD,
+  38 areas 1994-2024); the witness is a single-vintage cross-section —
+  no trend on that tier.
+- The remaining backlog, after nineteen of twenty-four: incarceration_
+  rate 3, math_test_scores 3, obesity_rate 3, hiv_prevalence_rate 1,
+  male_height_trend 1 — the corpus's tail, three of them at the same
+  citation weight.
+
+## 2026-09-21 — v18: the six-indicator delivery — the economy family's
+## second and third (industrial and agricultural employment, the backlog's
+## head claimed and the composite question dissolved), the education pair
+## (tertiary and secondary, the LFS's third metric family), the migration
+## door (immigration_stock, the demography family's first), and cirrhosis
+## (the mortality family's fourth cause) — the everything-in-parallel version
+
+**No dist contract break (purely additive):** the fourteen existing
+indicators keep every pre-existing key bit-identical (verified
+key-by-key); the dist gains exactly six new indicator files, six catalog
+entries, the designed corpus flips (implemented 10 -> 16), and the
+registry's five new roots (eurostat_na, ilo_modelled, barro_lee,
+un_desa, eurostat_migr) plus the Family enum's `demography`. No designed
+value change this time — not even a companion flip.
+
+### Context
+
+Ediz green-lit V18 with the maximal-parallelism challenge ("tu peux
+faire tout en parallèle (si tu en est capable), sinon choisis celui que
+tu veux") after a clean v17 review. The version therefore ran FOUR probe
+tracks in parallel before a single line of wiring (scripts/v18_probe/,
+five rounds): (A) the cirrhosis doors, (B) the industrial/agricultural
+employment doors — the backlog's HEAD, deferred three times on the
+composite-derived-layer question, (C) the education pair's doors, (D)
+the immigration-stock doors. All four tracks returned before the wiring
+began; the six metrics that follow are what the probes blessed.
+
+A session-recovery note for the record: the v17 delivery had been built
+outside this workspace's visible repo — the working tree sat at v16
+while Ediz's GitHub carried v17. The v18 session recovered by syncing
+the GitHub state into the working repo, re-fetching the two v17 network
+raws + the curated snapshot live, and verifying that the rebuilt dist
+reproduces the GitHub v17 dist BIT-FOR-BYTE (no provider revision
+between the deliveries) before any v18 work began.
+
+### Investigated (live, before any config)
+
+- **industrial_employment_share (30 citations, 5 books — the backlog's
+  head since v15):** the finding that earned the wiring is a
+  CORRECTION of the project's own probe record. The v15/v16/v17
+  deferral rested on "NO collector prints the % as-reported" — true of
+  every door probed then (ILOSTAT counts, re-verified for v18: the
+  73-flow EMP+ECO inventory shows every _RT flow is an
+  informal-employment or employment-to-population rate, no plain
+  sector-share print; the OECD doors are counts or OECD-harmonized;
+  WB SL.IND.EMPL.ZS is ILOEST modeled), but the EU NATIONAL ACCOUNTS
+  were never probed: nama_10_a10_e prints the share of total
+  employment by industry DIRECTLY at unit PC_TOT_PER, na_item EMP_DC
+  ("Total employment domestic concept"), nace_r2 B-E — the door's own
+  aggregate, labeled "Industry (except construction)" (FR 1995 = 16.4
+  -> 2024 = 10.1, DE 23.1 -> 17.5, 34 countries, the accounts' own
+  'p' flags on the freshest years, verified live 2026-09-21). The
+  composite-derived-layer ADR held in reserve since v15 is RETIRED
+  UNUSED: no derivation is needed because the collector prints the
+  share. The EA edge: this dataset's geo codelist carries the
+  Euro-area aggregate as the bare TWO-LETTER code "EA" — the only
+  two-letter aggregate in any wired Eurostat codelist — dropped logged
+  by a per-dataset aggregate table. The DYB re-probe closed the
+  historical door honestly: the DYB's economic-characteristic tables
+  were dropped before the live XLS archive begins (the wired 2011-2024
+  editions carry none; the archive's 2001-2006 editions carry none
+  either) — Todd's c.1880/c.1970 faces are book tables, curated
+  territory. agricultural_employment_share (2 citations) rides the
+  same door one nace pin away (A: FR 1995 = 4.4 -> 2024 = 2.3).
+- **tertiary + secondary education (13 + 8 citations):** UNESCO UIS —
+  the world's education collector and the pair's natural un_dyb — has
+  NO live machine door in 2026 (probed: api.uis.unesco.org answers
+  every SDMX path with a 98-byte JSON 404 shell, the old bulk
+  endpoints DNS-dead). The collector tier the pair CAN reach: the LFS
+  attainment table (edat_lfse_03 — one questionnaire, the labour-force
+  survey, now carrying three Todd metrics: unemployment v17, tertiary
+  and secondary v18). The pins: ED5-8 (tertiary as highest
+  attainment), ED3_4 (upper secondary + post-secondary non-tertiary —
+  the Barro-Lee "secondary" bucket's closest LFS face; the ED3-8
+  at-least face would run ~20 points higher, a misload the pins
+  catch), age Y25-64, sex T, unit PC (the dataset's only unit, pinned
+  and guarded). The tertiary witness: OWID's long-run chart door —
+  the Barro-Lee (2015) + Lee-Lee (2016) panels, 1870+, 153 entities,
+  the corpus's own named source (La Défaite de l'Occident's refs read
+  "(Barro-Lee)"). The chart's own face, read live and documented: the
+  slug says completed-tertiary, the variable column prints "incomplete
+  tertiary", the subtitle "completed OR partially completed" — the
+  some-tertiary face, the seam the root pair displays. Secondary's
+  witness gap: every candidate OWID slug 404s (the collection exposes
+  tertiary and mean-years only) — secondary rides canonical-only with
+  the world face recorded as the Barro-Lee direct door's future
+  wiring.
+- **immigration_stock (11 citations, one book — Le Destin des
+  immigrés, THE Todd question):** the migration questionnaire's stock
+  table (migr_pop3ctb) prints the foreign-born stock per country,
+  pinned c_birth=FOR ("Foreign country") — FR 2008 = 7,076,824 ->
+  2024 = 9,362,105, annual, census-aligned, the door's 45-geo
+  codelist richer than the LFS's (TR/UA/GE/AM/AZ/AD/MC). The Todd
+  BY-ORIGIN face probed and recorded as the future door: the
+  citizenship/birth codelists carry MA/DZ/TN/TR/PT (FR-by-MA 2015 =
+  458,561, DZ 496,064, TR 215,587 — the detailed French slices print
+  2015-2018 only); the UN DESA bilateral matrix is a manual-download
+  dataset (the dataportal's 86 indicators carry net migration only).
+  The witness: WB SM.POP.TOTL (the UN DESA Trends in International
+  Migrant Stock estimates, world 1990-2024 — FR 1990 = 5,890,023; FR
+  2024 = 9,186,757 DESA vs 9,362,105 collector, the estimation seam
+  displayed).
+- **cirrhosis_alcohol_mortality (9 citations, 4 books):** the v13
+  probe note "RUS absent du slice cirrhose (404 NoRecordsFound)" was a
+  PROBE ARTIFACT — the v13 probe omitted the Accept header the
+  connector sends, so the API answered XML and the probe misread it;
+  the full CICDCIRR slice answers 7,089 records through the
+  production machinery (45 areas, 1960-2024, sex-split, FRA 1979 =
+  29.0 — La Chute finale's own France-vs-Sweden calibration pair
+  prints: FRA 29.0 vs SWE 12.2 both-sexes, SWE 17.5 male, the
+  class-and-gender structure the book reads). The honest finding that
+  replaced the artifact: RUS and UKR are GENUINELY absent from this
+  cause's collector slice (they ride DF_COM for assault and suicide)
+  — the WHO-MDB coding story: Russia's alcohol deaths live under
+  different ICD codes (alcoholic cardiomyopathy, the ill-defined
+  cardiovascular basket — the Treml/Nemtsov critique), and the GHE
+  witness carries the modeled redistribution that covers Russia
+  (SA_0000001457: RUS 2019 = 22.5 both at the YEARSALL face the
+  connector keeps, 42.1 male at the 15+ face it drops logged — the
+  SDGSUICIDE Dim2 precedent's second instance).
+- The dead ends, honestly kept: the DYB economic tables (above), UIS
+  (above), the OWID cirrhosis chart candidates (404-class), the UN
+  DESA portal's bilateral matrix (no API). The probe round that never
+  was: the session's first cirrhosis probe crashed on its own probe
+  bugs (XML mistaken for CSV, dict/attribute confusion) — the
+  discipline held: the CONNECTOR's machinery parsed the slice, and the
+  probe errors never reached the wiring.
+
+### Added
+
+- **industrial_employment_share (the SIXTEENTH indicator, the corpus's
+  #4 by citations):** canonical = Eurostat nama_10_a10_e pinned
+  EMP_DC/PC_TOT_PER/B-E (the door's own printed share, the
+  national-accounts questionnaire — root eurostat_na); witness = WB
+  SL.IND.EMPL.ZS (root ilo_modelled, world 1991-2024). THE COMPOUND
+  SEAM THE PAIR DISPLAYS (documented exactly, verified live): the ILO
+  face includes construction AND rides a labor-force-modeled
+  employment concept — FR 2015: 10.8 canonical vs 20.376 witness,
+  a divergence the construction coverage alone does not close.
+- **agricultural_employment_share (the SEVENTEENTH):** the same door
+  at nace A (root eurostat_na); witness WB SL.AGR.EMPL.ZS — the
+  definitional-cleanest pair (agriculture converges on the co-covered
+  core: FR 2015 = 2.7 canonical face vs 2.7445 witness).
+- **tertiary_education_share (the EIGHTEENTH):** canonical = edat_
+  lfse_03/ED5-8/Y25-64/T (root eurostat_lfs — the LFS questionnaire's
+  own table); witness = the Barro-Lee/Lee-Lee long-run panel via
+  OWID's chart door (root barro_lee). The corpus's own named source
+  rides the witness tier; the collector tier is the survey print.
+- **secondary_education_share (the NINETEENTH):** edat_lfse_03/ED3_4/
+  Y25-64/T (root eurostat_lfs). Witnesses: none wired — the probe
+  verdict (no machine-readable secondary-attainment chart exists),
+  the marker/consanguinity shape with the honest difference recorded:
+  a machine-readable world panel EXISTS (Barro-Lee direct), it is
+  simply not yet wired.
+- **immigration_stock (the TWENTIETH, the demography family's first —
+  the Family enum gains `demography`, the corpus's own vocabulary):
+  canonical = migr_pop3ctb/FOR/TOTAL/T (root eurostat_migr); witness
+  = WB SM.POP.TOTL (root un_desa). Unit persons.
+- **cirrhosis_alcohol_mortality (the FIFTEENTH indicator by delivery
+  order, wired sixth this version — the mortality family's fourth
+  cause): canonical = OECD DF_COM/CICDCIRR (root who_mdb, the
+  homicide/suicide architecture one cause-code swap away); witness =
+  GHO SA_0000001457 (root who_ghe). The v13 probe artifact corrected
+  in Investigated; Russia's absence documented as the coding story it
+  is.
+- Roots eurostat_na / ilo_modelled / barro_lee / un_desa /
+  eurostat_migr in the registry (each with its live-verified comment
+  record); EUROSTAT_DATASET_TITLES gains the three new datasets' own
+  API titles (read live, never borrowed).
+- Fixtures GENERATED from the live APIs (scripts/make_v18_fixtures.py,
+  the v16/v17 anchor discipline — every value READ from a saved
+  response, never typed): oecd_cicdcirr_sdmx.csv (the benchmark pair
+  + the KOR 'B'/TUR 'D' flag rows — the flags ride specific areas,
+  the carver learned), gho_cirrhosis_sample.json (RUS/FRA/SWE/ITA x
+  both Dim2 variants), the Eurostat quintet (nama B-E with the EA
+  row, nama A, edat ED5-8/ED3_4 with the 'b' flags, migr FOR with the
+  'b'/'e'/'p' flags), the three WB dedicated pages (the v17
+  discipline: a shared page's per-1,000 prints would contaminate a
+  share's plausible band), owid_education_tertiary_sample.csv (the
+  long-run anchors incl. Russia 1990 = 37.8 and USA 50.2 — La
+  Défaite's own board).
+- 24 tests (278 -> 302): 12 Eurostat connector (the three grammars,
+  the URL pins, the EA aggregate drop, the layout guards across five
+  datasets, the soft-miss pattern on every new dataset, the anchors)
+  + 2 OECD (the benchmark pair + the cause-pin refusal) + 1 GHO (the
+  YEARSALL/15+ grammar's second instance) + 6 integration (the six
+  indicators' two-tier contracts, the corpus pins updated 10 -> 16,
+  the backlog's new head top_income_share 7) + the catalog/dist-file
+  pins.
+
+### Changed
+
+- The Eurostat connector speaks FIVE datasets now (three dispatch
+  decisions added): nama_10_a10_e '{na_item}/{unit}/{nace}',
+  edat_lfse_03 '{isced11}/{age}/{sex}' (+ the implicit unit=PC pin),
+  migr_pop3ctb '{c_birth}/{age}/{sex}' (+ unit=NR) — each with its
+  own layout pin-guard; the sex-pin mapping extends to the three sexed
+  datasets; the per-dataset two-letter-aggregate table handles nama's
+  EA edge.
+- config/sources.yaml: the industrial deferral record REPLACED by the
+  wiring record (the composite question dissolved, the ADR retired
+  unused); the eurostat block carries the five questionnaires; the
+  v18 probe records appended (UIS dead, the DYB economic-tables dead
+  end, the Barro-Lee direct door, the migr by-origin doors, the
+  unwired doors list).
+
+### Fixed
+
+- Nothing inherited (the v17 review came back clean). The wiring's own
+  bug-reports, caught before they could land: (a) the first fixture
+  carver missed the flag rows (they ride KOR/TUR, not the anchor
+  areas — the carver learned to read the live slice before carving);
+  (b) TWO typed anchors in the first test drafts failed against the
+  fixtures' read values (a guessed FR-1979 male split that does not
+  exist in the data, a guessed Poland-2015 value of 30 where the
+  panel prints 23.7) — the anchor discipline held exactly as
+  designed: the tests failed, the values were re-read from the saved
+  evidence, the fix landed in the same session; (c) the industrial
+  config's first seam note attributed the FR 2015 divergence to the
+  construction coverage alone — the witness's own value (20.376 vs
+  the 10.8 canonical) does not close on construction alone, and the
+  note now documents the COMPOUND seam (construction + the ILO
+  modeled employment concept).
+
+### Verified (live, frozen at delivery 2026-09-21)
+
+- Fetch v18: 11/11 source doors, 0 failures — oecd CICDCIRR 7,089
+  records (45 areas, 1960-2024, 48 flagged cells: KOR 'B', TUR 'D'),
+  gho SA_0000001457 540 records (the 15+ slices dropped logged — the
+  YEARSALL face kept), eurostat nama B-E + A (the shares, the EA
+  aggregate dropped logged), edat ED5-8 + ED3_4, migr FOR (the FR
+  annual series 2008-2024), wb SL.IND.EMPL.ZS / SL.AGR.EMPL.ZS /
+  SM.POP.TOTL 14,322 records each (3,168 aggregates skipped), owid
+  tertiary 3,699 rows. (The Eurostat dissemination API went "Server
+  temporarily unavailable" — HTTP 200 with an HTML error page —
+  mid-fetch; the connector's loud parse refusal is the correct
+  behavior and the fetch script's retries carried it through; the
+  connector itself was NEVER weakened.)
+- Rebuild + verify_v18_diff.py: the fourteen old indicators
+  bit-identical; catalog +6 entries only; entities.json identical;
+  corpus = exactly the six designed flips (10 -> 16, the backlog's
+  head moves to top_income_share 7); double rebuild determinism.
+- Stats (the dist's own counters, frozen at delivery): cirrhosis
+  canonical 7,089 points (45 entities, 1960-2024, sex-split — every
+  record a valued point, the 48 flag cells riding as-reported) + the
+  GHE 2019 cross-section witness (540 records, 180 entities); industrial
+  1,132 points (37 entities, 1975-2025 — the door's own starts: FR and
+  Norway 1975, FR 51 annual points; Finland 1980; Germany 1991 the
+  reunification start) + the ILOEST witness; agricultural 1,132 (the
+  same door, 1975-2025); tertiary 1,000 (36 entities, 1992-2025) + the
+  Barro-Lee witness 3,511 points (146 entities, 1870-2020); secondary
+  1,000 (1992-2025, canonical-only); immigration 557 (33 entities,
+  2000-2025 — Ireland 2000, Italy/Spain 2002, France 2007) + the UN
+  DESA witness; corpus: implemented 16/24, the backlog's new head
+  top_income_share 7.
+- The plausible-bound recalibration, on the record: the cirrhosis
+  config's first draft carried max 100 and the REBUILD'S OWN COVERAGE
+  REPORT flagged six cells — Hungary's post-communist alcoholic
+  cirrhosis epidemic, male 104.1 (1992) -> 126.5 (1994) -> 104.7
+  (1999), as-reported history the bound would have hidden; recalibrated
+  to 130 (the GHE witness's Egypt 2019 male 113.3 also riding inside).
+  The verification machinery caught the config, exactly its job.
+- Spot-checks from the live dist: the Todd benchmark pair itself —
+  cirrhosis FRA 1979 = 29.0 vs SWE 12.2 (La Chute finale's
+  calibration anchor, the both-sexes ratio 2.4x while the male rates
+  nearly match: the class-and-gender structure the book reads);
+  industrial FR 16.4 -> 10.1 / DE 23.1 -> 17.5 (the
+  de-industrialization slopes as the accounts print them);
+  agricultural FR 4.4 -> 2.3; tertiary FR 24.5 (2004) -> 43.2 (2024)
+  with the witness's France 1870 = 0.2 and Russia 1990 = 37.8 vs USA
+  50.2 (La Défaite's own board); secondary FR 41.4 / DE 56.7 (the
+  ED3_4 face — the at-least face would run ~20 points higher);
+  immigration FR 7.08M (2008) -> 9.36M (2024) with the DESA seam at
+  9.19M; the crisis-era anchors (HUN 1994 M = 126.5 the canonical's
+  own max — Hungary's post-communist transition epidemic, the cells
+  that recalibrated the plausible bound; ITA 1979 M = 50.0 the
+  Mediterranean cohort-memory tail; BGR 1991 = 45.1 on the industrial
+  witness, the planned-economy tail; BFA 1991 = 81.9 on the
+  agricultural witness, the agrarian South).
+- Tests: 302/302.
+
+### Known limitations
+
+- The industrial/agricultural canonical tier is EU-shaped (the
+  accounts universe: EU + IS/NO/CH/UK + the enlargement countries)
+  — the US/Japan/world face rides the ILOEST witness alone, and the
+  pair's seam is COMPOUND (construction coverage + the modeled
+  employment concept): the two doors display a real definitional
+  divergence, never reconciled. Todd's c.1880 and c.1970 industry
+  maps, and Le Destin des immigrés' 1841 boards, are book tables —
+  curated territory, not living wires.
+- The education pair's collector is EU-shaped the same way (36
+  countries); the world face rides the Barro-Lee witness (tertiary)
+  or nothing yet (secondary — the direct Barro-Lee door recorded).
+  The Todd claims' cohort faces (70-74, the US BA-by-birth-cohort)
+  are panel faces: the witness carries them, the canonical prints the
+  LFS's adult band.
+- immigration_stock: the by-origin decomposition (THE Todd question)
+  is the recorded future door (the codelists print it, the indicator
+  shape does not carry bilateral values); Ukraine rides the migr
+  codelist with zero valued cells; the 1946-1990 boards are book
+  tables.
+- cirrhosis: Russia and Ukraine are absent from the collector slice
+  for this cause (the WHO-MDB coding story) — the Russian alcohol
+  mortality claim rides the GHE witness (modeled, age-standardized)
+  and the book tables; France's 19th-century series is curated
+  territory.
+- The unresolved classes unchanged: Kosovo + Channel Islands, the
+  Byelorussian/Ukrainian SSR and HMD/HFD decisions, the pending
+  product classes the WB/Eurostat Kosovo prints keep surfacing.
+
+
 ## 2026-09-20 — v17: the backlog's head claimed — consanguineous_marriage_rate,
 ## the thirteenth indicator (the curated tier's third family) and
 ## unemployment_rate, the fourteenth (the economy family's first, and the

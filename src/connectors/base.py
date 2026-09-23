@@ -55,11 +55,24 @@ class RawRecord:
     - small_base: the "\u2666" marker (Table 17: "Ratios based on 30 or
       fewer maternal deaths are identified by the symbol ♦" — the printed
       Notes17 text; a small-numbers caveat on the RATIO, as-reported).
+
+    v22 (the bilateral face): origin_raw_name / origin_iso3_raw carry the
+    SECOND axis of a matrix row when the source prints one — Eurostat's
+    migr_pop3ctb c_birth (the by-birth origin of a destination's stock,
+    the ROW door) and the OECD DF_MIG_POPF BIRTH_COUNTRY. On such records
+    entity_raw_name/iso3_raw are the DESTINATION and origin_* the ORIGIN
+    — Todd's Le Destin des immigrés board shape ("the stock of Moroccans
+    IN France"). None on every pre-v22 record: the single-axis face; the
+    pipeline routes on the field's presence (origin set -> the bilateral
+    layer, never the (entity, year) merge key).
     """
     entity_raw_name: str
     iso3_raw: str | None
     year: int
     value: float | None  # None = explicitly missing value (not 0, not interpolated)
+    # v22: the origin axis of a bilateral matrix row (None = single-axis).
+    origin_raw_name: str | None = None
+    origin_iso3_raw: str | None = None
     citation: str | None = None
     definition_note: str | None = None
     sex: str | None = None

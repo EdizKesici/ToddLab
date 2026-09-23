@@ -2,7 +2,7 @@
   {
     "entity_id": "ussr",
     "label": "Soviet Union",
-    "iso3": null,
+    "iso3": "SUN",
     "valid_from": 1922,
     "valid_to": 1991,
     "predecessor": null,
@@ -26,9 +26,33 @@
     "formerly_part_of": null
   },
   {
+    "entity_id": "byelorussian_ssr",
+    "label": "Byelorussian SSR",
+    "iso3": null,
+    "valid_from": 1922,
+    "valid_to": 1991,
+    "predecessor": null,
+    "successors": [
+      "belarus"
+    ],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "ukrainian_ssr",
+    "label": "Ukrainian SSR",
+    "iso3": null,
+    "valid_from": 1922,
+    "valid_to": 1991,
+    "predecessor": null,
+    "successors": [
+      "ukraine"
+    ],
+    "formerly_part_of": null
+  },
+  {
     "entity_id": "czechoslovakia",
     "label": "Czechoslovakia",
-    "iso3": null,
+    "iso3": "CSK",
     "valid_from": 1918,
     "valid_to": 1992,
     "predecessor": null,
@@ -41,7 +65,7 @@
   {
     "entity_id": "yugoslavia_sfr",
     "label": "Socialist Federal Republic of Yugoslavia",
-    "iso3": null,
+    "iso3": "YUG",
     "valid_from": 1945,
     "valid_to": 1992,
     "predecessor": null,
@@ -57,7 +81,7 @@
   {
     "entity_id": "serbia_and_montenegro",
     "label": "Serbia and Montenegro",
-    "iso3": null,
+    "iso3": "SCG",
     "valid_from": 1992,
     "valid_to": 2006,
     "predecessor": "yugoslavia_sfr",
@@ -118,11 +142,24 @@
   {
     "entity_id": "kosovo",
     "label": "Kosovo",
-    "iso3": null,
+    "iso3": "XKX",
     "valid_from": 2008,
     "valid_to": null,
     "predecessor": "serbia",
     "successors": [],
+    "formerly_part_of": null
+  },
+  {
+    "entity_id": "netherlands_antilles",
+    "label": "Netherlands Antilles",
+    "iso3": "ANT",
+    "valid_from": null,
+    "valid_to": 2010,
+    "predecessor": "netherlands",
+    "successors": [
+      "curacao",
+      "bonaire_sint_eustatius_and_saba"
+    ],
     "formerly_part_of": null
   },
   {

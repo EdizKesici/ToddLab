@@ -164,3 +164,138 @@ def test_fetch_raw_parses_and_wraps():
     assert result.provider == "who_gho"
     assert result.source_url == "https://ghoapi.azureedge.net/api/WHOSIS_000015"
     assert len(result.records) == 7
+
+
+# ---------------------------------------------------------------------------
+# v18 — cirrhosis's GHE witness (SA_0000001457): the Dim2 grammar's SECOND
+# instance, and the first where the indicator's own title face ("(15+)")
+# DIFFERS from the series the all-ages rule keeps — the choice documented
+# in the config, exercised here.
+
+CIRRHOSIS = (Path(__file__).parent / "fixtures" / "gho_cirrhosis_sample.json").read_text(encoding="utf-8")
+
+
+def test_parse_cirrhosis_witness_keeps_yearsall_drops_the_15plus_variant(caplog):
+    import logging
+
+    with caplog.at_level(logging.INFO, logger="src.connectors.gho"):
+        records = parse_gho(CIRRHOSIS)
+    got = {(r.iso3_raw, r.year, r.sex): r for r in records}
+
+    # THE LIVE ANCHORS (the fixture was generated from the live API,
+    # 2026-09-21): Russia's modeled cirrhosis — THE RUSSIAN ALCOHOL
+    # STORY'S WITNESS FACE (the collector carries no RUS on this cause):
+    # all-ages age-standardized 22.5 both / 31.1 male / 15.7 female.
+    assert got[("RUS", 2019, None)].value == pytest.approx(22.500966937)
+    assert got[("RUS", 2019, "male")].value == pytest.approx(31.120465336)
+    assert got[("RUS", 2019, "female")].value == pytest.approx(15.724099047)
+    # THE DIM2 GRAMMAR: the indicator prints BOTH an AGEGROUP_YEARS15PLUS
+    # and an AGEGROUP_YEARSALL series per (country, year, sex) — the
+    # connector keeps the ALL-AGES face (the population base comparable
+    # to the OECD canonical's) and drops the 15+ slices LOGGED: the 15+
+    # male value is 42.1, NOT 31.1 — the drop is the record.
+    assert all(
+        r.value != pytest.approx(42.08272182) for r in records
+    )
+    logs = "\n".join(r.message for r in caplog.records)
+    assert "dropped" in logs and "age-disaggregated" in logs
+
+
+# ---------------------------------------------------------------------------
+# v20 — the per-code AGE pin (NCD_BMI_30C, the obesity canonical): the
+# door carries Dim2 = AGEGROUP_YEARS18-PLUS on EVERY row — a single
+# population face, no slices to drop. The YEARSALL default would refuse
+# that whole payload, so the pin table declares the door's own face and
+# the parser ACCEPTS exactly it; anything else is a door change that
+# must stop the parse loudly.
+
+BMI30C = (Path(__file__).parent / "fixtures" / "gho_ncd_bmi_30c.json").read_text(encoding="utf-8")
+PRISON_A2 = (Path(__file__).parent / "fixtures" / "gho_prison_a2.json").read_text(encoding="utf-8")
+
+
+def test_parse_ncd_bmi_30c_accepts_its_pinned_age_frame():
+    records = parse_gho(BMI30C, code="NCD_BMI_30C")
+    got = {(r.iso3_raw, r.year, r.sex): r for r in records}
+
+    # THE LIVE ANCHORS (fixture generated from the live API 2026-09-22):
+    # the health-paradox pair with the full sex split, the Pacific tail
+    # and the Vietnamese floor.
+    assert got[("FRA", 2024, None)].value == pytest.approx(12.524594)
+    assert got[("FRA", 2024, "male")].value == pytest.approx(12.458491)
+    assert got[("FRA", 2024, "female")].value == pytest.approx(12.585108)
+    assert got[("USA", 2024, None)].value == pytest.approx(41.830319)
+    assert got[("USA", 2024, "female")].value == pytest.approx(43.015891)
+    assert got[("JPN", 2024, None)].value == pytest.approx(5.1900275)
+    assert got[("ASM", 2024, "female")].value == pytest.approx(80.890405)
+    assert got[("VNM", 1980, "male")].value == pytest.approx(0.045321116)
+    # THE PIN'S OWN COUNT: every COUNTRY row survives — nothing dropped,
+    # the door's single-face shape (96 records, the carve's own count).
+    assert len(records) == 96
+
+
+def test_parse_ncd_bmi_30c_without_the_code_falls_to_the_yearsall_refusal():
+    # THE UNPINNED CALLER (the pre-v20 grammar) must REFUSE this payload:
+    # the YEARSALL rule drops every 18+ row as an "age slice" and the
+    # zero-COUNTRY-rows guard fires — the pin is what makes the door
+    # parseable, never a silent reinterpretation.
+    with pytest.raises(ValueError, match="zero COUNTRY rows"):
+        parse_gho(BMI30C)
+
+
+def test_parse_ncd_bmi_30c_refuses_an_off_frame_row():
+    # SABOTAGE GUARD: a row from another age frame (YEARSALL injected
+    # under the pinned code) is a DOOR CHANGE — the parse stops loudly,
+    # never ingests.
+    import json
+
+    payload = json.loads(BMI30C)
+    payload["value"][0]["Dim2"] = "AGEGROUP_YEARSALL"
+    with pytest.raises(ValueError, match="age-pinned to 'AGEGROUP_YEARS18-PLUS'"):
+        parse_gho(json.dumps(payload), code="NCD_BMI_30C")
+
+
+def test_parse_ncd_bmi_30c_refuses_a_dim2_less_row():
+    # SABOTAGE GUARD (mirror): a row with NO Dim2 at all under the pinned
+    # code is the same door change — the pin expects its frame on EVERY row.
+    import json
+
+    payload = json.loads(BMI30C)
+    payload["value"][0]["Dim2Type"] = None
+    payload["value"][0]["Dim2"] = None
+    with pytest.raises(ValueError, match="age-pinned"):
+        parse_gho(json.dumps(payload), code="NCD_BMI_30C")
+
+
+def test_parse_prison_a2_coupe_passes_dim2_less():
+    # THE v20 WITNESS COUPE: PRISON_A2 carries NO Dim1 and NO Dim2 — the
+    # collection's own shape, passing through the pre-existing Dim2-less
+    # branch untouched (the unpinned path).
+    records = parse_gho(PRISON_A2, code="PRISON_A2_PRISIONERS_PER100KPOP")
+    got = {(r.iso3_raw, r.year): r for r in records}
+
+    # THE LIVE ANCHORS (the fixture carved from the live 36-country 2020
+    # cross-section): the French print, the post-Soviet European top.
+    assert got[("FRA", 2020)].value == pytest.approx(93.1)
+    assert got[("DEU", 2020)].value == pytest.approx(69.74)
+    assert got[("GBR", 2020)].value == pytest.approx(129.83)
+    assert got[("GEO", 2020)].value == pytest.approx(245.99)
+    assert got[("SMR", 2020)].value == pytest.approx(23.03)
+    assert all(r.sex is None for r in records)
+    assert all(r.year == 2020 for r in records)
+
+
+def test_fetch_raw_passes_the_code_to_the_parser():
+    # THE PIPING GUARD: fetch_raw forwards source_ref as the code — the
+    # pin applies in production exactly as in the parse tests (a pinned
+    # door mocked through the connector's own URL).
+    import json
+
+    class _Session:
+        def get(self, url, headers=None, timeout=None):
+            assert url == "https://ghoapi.azureedge.net/api/NCD_BMI_30C"
+            return _MockResponse(BMI30C)
+
+    result = GhoConnector(session=_Session()).fetch_raw("NCD_BMI_30C", "obesity_rate")
+    got = {(r.iso3_raw, r.year, r.sex): r for r in result.records}
+    assert got[("FRA", 2024, None)].value == pytest.approx(12.524594)
+    assert len(result.records) == 96

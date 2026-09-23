@@ -7437,6 +7437,90 @@
       "source_ref": "demo_find/NMARPCT"
     },
     {
+      "entity_id": "kosovo",
+      "year": 2008,
+      "value": 40.3,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2009,
+      "value": 35.0,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2010,
+      "value": 40.3,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2011,
+      "value": 46.7,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2012,
+      "value": 46.1,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2015,
+      "value": 42.6,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2016,
+      "value": 41.6,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2017,
+      "value": 40.5,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2018,
+      "value": 38.7,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2019,
+      "value": 35.6,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2020,
+      "value": 30.1,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2021,
+      "value": 29.3,
+      "provider": "eurostat",
+      "source_ref": "demo_find/NMARPCT"
+    },
+    {
       "entity_id": "latvia",
       "year": 1960,
       "value": 11.9,

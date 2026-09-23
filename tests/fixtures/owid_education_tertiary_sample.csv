@@ -1,0 +1,50 @@
+Entity,Code,Year,Share of 25-64 year olds with incomplete tertiary education
+France,FRA,1870,0.2
+France,FRA,1950,1.8
+France,FRA,1970,5.2
+France,FRA,1990,13.6
+France,FRA,2010,28.9
+France,FRA,2015,30
+France,FRA,2020,31.9
+Germany,DEU,1870,0.3
+Germany,DEU,1950,3.1
+Germany,DEU,1970,3.6
+Germany,DEU,1990,13.9
+Germany,DEU,2010,26.6
+Germany,DEU,2015,24.5
+Germany,DEU,2020,30.4
+Italy,ITA,1870,0.1
+Italy,ITA,1950,1.6
+Italy,ITA,1970,2.9
+Italy,ITA,1990,6.7
+Italy,ITA,2010,14.6
+Italy,ITA,2015,14.4
+Italy,ITA,2020,15.9
+Poland,POL,1870,0.1
+Poland,POL,1950,2.5
+Poland,POL,1970,6.1
+Poland,POL,1990,8.9
+Poland,POL,2010,23.8
+Poland,POL,2015,23.7
+Poland,POL,2020,24.9
+Russia,RUS,1870,0.1
+Russia,RUS,1950,3.5
+Russia,RUS,1970,7.2
+Russia,RUS,1990,37.8
+Russia,RUS,2010,67.2
+Russia,RUS,2015,67.9
+Russia,RUS,2020,69.8
+Sweden,SWE,1870,0.1
+Sweden,SWE,1950,4.5
+Sweden,SWE,1970,8
+Sweden,SWE,1990,22.5
+Sweden,SWE,2010,32
+Sweden,SWE,2015,30
+Sweden,SWE,2020,30.6
+United States,USA,1870,0.9
+United States,USA,1950,14.5
+United States,USA,1970,23.3
+United States,USA,1990,50.2
+United States,USA,2010,60.3
+United States,USA,2015,60.3
+United States,USA,2020,60.9

@@ -57,6 +57,14 @@ class NormalizedPoint:
     # expectancy Male/Female). None = the source reports no breakdown. Part
     # of the merge key: (entity, year, sex) — see merge.py.
     sex: str | None = None
+    # v22 (the bilateral face): the ORIGIN entity of a matrix point — set
+    # only on points whose raw record carried origin_raw_name (Eurostat's
+    # c_birth ROW doors, the OECD BIRTH_COUNTRY matrix). entity_id is then
+    # the DESTINATION and the bilateral merge key is (entity, origin,
+    # year, sex) — a SEPARATE layer from the (entity, year) key, so the
+    # two faces of one indicator never collide. None = the single-axis
+    # face every pre-v22 source prints.
+    origin_entity_id: str | None = None
     # The collector's own quality annotations (P2), transported as-reported
     # from RawRecord and never interpreted — see base.RawRecord's docs.
     quality_code: str | None = None
@@ -136,10 +144,19 @@ def normalize_indicator(
 
     The third return is new in P2: the footnote legend/texts the source
     printed (currently un_dyb only), extracted from the raw snapshot and
-    written beside the points so the dist can join refs -> texts."""
+    written beside the points so the dist can join refs -> texts.
+
+    v22: raw records carrying the origin axis (origin_raw_name set — the
+    bilateral matrix rows) are routed to a SEPARATE point list written to
+    {indicator}.bilateral.json; the single-axis (entity, year) flow is
+    untouched by construction (no pre-v22 source emits the field, so every
+    other indicator's normalized output stays byte-identical).
+    """
     points: list[NormalizedPoint] = []
+    bilateral_points: list[NormalizedPoint] = []
     unresolved: dict[str, list[str]] = {}
     footnotes_by_source: dict[str, dict] = {}
+    unresolved_origins: dict[str, set[str]] = {}
 
     for source in indicator.sources_by_priority():
         snapshot_path = _latest_snapshot(raw_dir, source.provider.value, indicator.id, source.ref)
@@ -167,6 +184,43 @@ def normalize_indicator(
             value = record["value"]
             if value is not None:  # a gap stays a gap: conversion never invents a value
                 value = _convert_unit(value, source_unit, indicator.unit)
+
+            if record.get("origin_raw_name") is not None:
+                # v22 — the bilateral face: resolve the ORIGIN axis with the
+                # same registry machinery, then route to the separate layer.
+                # The covers_year guard is DELIBERATELY SKIPPED on this axis:
+                # an origin is a BIRTH-PLACE classification (the person was
+                # born there while the entity existed), while a stock point's
+                # year is the MEASUREMENT year — people born in the former
+                # Netherlands Antilles are counted in the 2015 stock exactly
+                # as both questionnaires print them (AN / ANT_F still ride
+                # their withdrawn codes post-dissolution). An origin that
+                # resolves to nothing is dropped with a WARNING (the world
+                # axis is wide open; the connectors pre-drop their residual
+                # vocabularies, so a survivor here is a mapping gap to
+                # surface, never an approximation to attach).
+                origin = entities.resolve_from_source(
+                    source.provider.value, record["origin_raw_name"], record.get("origin_iso3_raw")
+                )
+                if origin is None:
+                    unresolved_origins.setdefault(source.ref, set()).add(record["origin_raw_name"])
+                    continue
+                bilateral_points.append(
+                    NormalizedPoint(
+                        entity_id=entity.entity_id,
+                        year=record["year"],
+                        value=value,
+                        provider=source.provider.value,
+                        source_ref=source.ref,
+                        priority=source.priority,
+                        role=source.role.value,
+                        origin_entity_id=origin.entity_id,
+                        quality_code=record.get("quality_code"),
+                        provisional=record.get("provisional"),
+                    )
+                )
+                continue
+
             points.append(
                 NormalizedPoint(
                     entity_id=entity.entity_id,
@@ -191,7 +245,22 @@ def normalize_indicator(
         if unresolved_names:
             unresolved[source.ref] = sorted(unresolved_names)
 
+    for ref, names in unresolved_origins.items():
+        logging.getLogger(__name__).warning(
+            "%s: %d origin name(s) unresolved on the bilateral axis -> dropped (never "
+            "attached by approximation): %s — see the entities.yaml mapping.",
+            indicator.id, len(names), sorted(names),
+        )
+    _BILATERAL_SCRATCH[indicator.id] = bilateral_points  # picked up by write_normalized via normalize_all
     return points, unresolved, footnotes_by_source
+
+
+# v22: the bilateral points ride alongside the (entity, year) flow without
+# changing normalize_indicator's pinned tuple signature (the integration
+# tests call it directly). One slot per indicator, set by normalize_indicator
+# and consumed by normalize_all's write_normalized call — process-local, the
+# same pattern conftest's seed helpers use for snapshot timestamps.
+_BILATERAL_SCRATCH: dict[str, list[NormalizedPoint]] = {}
 
 
 def classify_unresolved(unresolved: dict[str, list[str]], raw_dir: Path, provider: str, indicator_id: str, source_ref: str) -> dict[str, dict]:
@@ -235,6 +304,7 @@ def write_normalized(
     processed_dir: Path,
     classified_unresolved: dict | None = None,
     footnotes_by_source: dict | None = None,
+    bilateral_points: list[NormalizedPoint] | None = None,
 ) -> None:
     processed_dir.mkdir(parents=True, exist_ok=True)
     data_path = processed_dir / f"{indicator_id}.normalized.json"
@@ -255,12 +325,22 @@ def write_normalized(
     footnotes_path.write_text(
         json.dumps(footnotes_by_source or {}, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    # v22: the bilateral layer's normalized points — always written (the
+    # same stale-file discipline; an empty list for the 27 single-axis
+    # indicators keeps their merge/build paths deterministically absent).
+    bilateral_path = processed_dir / f"{indicator_id}.bilateral.json"
+    bilateral_path.write_text(
+        json.dumps([p.__dict__ for p in (bilateral_points or [])], ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
 
 def normalize_all(
     indicators: dict[str, Indicator], raw_dir: Path, processed_dir: Path, entities: EntityRegistry
 ) -> dict[str, dict]:
-    """Returns a summary {indicator_id: {"n_points": int, "unresolved": {...}}} for the CLI/logs."""
+    """Returns a summary {indicator_id: {"n_points": int, "unresolved": {...}}}
+    for the CLI/logs (v22: plus n_bilateral_points, the by-origin layer's
+    own count — zero for every single-axis indicator)."""
     summary = {}
     for indicator in indicators.values():
         points, unresolved, footnotes_by_source = normalize_indicator(indicator, raw_dir, entities)
@@ -276,9 +356,14 @@ def normalize_all(
                         source.ref,
                     )
                 )
+        bilateral_points = _BILATERAL_SCRATCH.pop(indicator.id, [])
         write_normalized(
             indicator.id, points, unresolved, processed_dir, classified_unresolved=classified,
-            footnotes_by_source=footnotes_by_source,
+            footnotes_by_source=footnotes_by_source, bilateral_points=bilateral_points,
         )
-        summary[indicator.id] = {"n_points": len(points), "unresolved": classified}
+        summary[indicator.id] = {
+            "n_points": len(points),
+            "n_bilateral_points": len(bilateral_points),
+            "unresolved": classified,
+        }
     return summary

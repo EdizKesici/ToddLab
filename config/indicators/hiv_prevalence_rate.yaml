@@ -1,0 +1,110 @@
+id: hiv_prevalence_rate
+label: "HIV prevalence among adults (15-49)"
+family: mortality
+unit: percent
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE TWENTY-THIRD INDICATOR (v20, 1 citation): Où en sommes-nous ?
+  # reads HIV seroprevalence in Africa (women 15-49) as a
+  # patrilineality proxy — the sole metric of the corpus's tail, the
+  # epidemic's own geography mapped onto the family-systems map.
+  #
+  # THE v20 PROBE VERDICT (verified live 2026-09-22, before any
+  # wiring): UNAIDS is the compilation the corpus's own words name
+  # ("WHO/UNAIDS-style data"), and its direct machine door is CLOSED
+  # from this environment — aidsinfo.unaids.org is a client-rendered
+  # SPA (21KB shell, /api 404 "Cannot GET", no discoverable data
+  # path), kbase.unaids.org and api.unaids.org are DNS-dead (the
+  # probe record). The machine face is OWID's chart door:
+  # share-of-the-population-infected-with-hiv, 161 entities,
+  # 1990-2024, single clean column "HIV Prevalence in adults
+  # (15-49)", the chart's own attribution read live from its
+  # metadata: "Joint United Nations Programme on HIV/AIDS (2026) ...
+  # 'Global AIDS Update, Epidemic Indicators' [original data]".
+  # The wid door relation (v19): the compilation has no wire of its
+  # own from here, the chart IS the wire. Root: unaids.
+  #
+  # THE COMPILATION'S OWN COUNTRY UNIVERSE — the honest coverage
+  # finding, verified TWICE: the door carries no United States, no
+  # Russia, no China (the entity list enumerated), and the GHO
+  # redistribution of the same estimates (MDG_0000000029, 145 areas,
+  # 2000-2025) is absent of exactly the same three — the UNAIDS
+  # reporting universe itself, not a door artifact (the big Western
+  # states' estimates ride the regional aggregate "Western & Central
+  # Europe and North America (UNAIDS)", which resolves to nothing
+  # and drops logged, the OWID door's own discipline).
+  #
+  # THE SAME-ROOT DOORS, refused as auto-witnesses and registered
+  # non-wired: the GHO MDG_0000000029 print (the UNAIDS
+  # redistribution at WHO's own 1-decimal rounding — FRA 2024 = 0.3
+  # vs the door's 0.28482) and the WB SH.DYN.AIDS code, whose own
+  # metadata READ LIVE names it "Adults (ages 15+) living with HIV"
+  # — the COUNT face of the same root (FRA 2023 = 180,000), not the
+  # rate, documented as the count door. THE CROSS-ROOT WITNESS
+  # absence: IHME's GBD estimates (the one genuinely different
+  # modeling family) stay behind OWID's 403 — re-confirmed live on
+  # the unaids-vs-ihme chart, the v1 record repeating verbatim
+  # ("non-redistributable data"). hiv_prevalence_rate stands
+  # canonical-alone, the top_income_share precedent.
+  - provider: owid
+    ref: share-of-the-population-infected-with-hiv
+    priority: 1
+    role: canonical
+    root: unaids
+
+coverage_start: 1990
+coverage_end: 2024
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = UNAIDS' own epidemic indicators (the Global AIDS
+  Update's modeled estimates, the Spectrum/EPP framework's central
+  estimates), prevalence among adults 15-49 in percent, 161
+  entities, 1990-2024, reached through OWID's chart door (the
+  direct UNAIDS machine door is closed from this environment — the
+  probe record). A modeled-estimates canonical by necessity: no
+  collector prints a prevalence (seroprevalence surveys feed the
+  model, never the wire). No witness tier — the GHO and WB doors
+  redistribute the same root (refused as auto-witnesses), and the
+  IHME cross-root family is 403-blocked (re-confirmed live). The
+  top_income_share constitution: the compilation the corpus names,
+  displayed as what it is.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 40   # the estimates' own tail is the southern-African peak:
+            # Zimbabwe 1995 = 29.65, Eswatini's plateau 2016-2018 in
+            # the high 20s -> 23.4 by 2024, Botswana 15.7 (verified
+            # live) — the bound swallows the epidemic's real span
+            # while flagging any misload (a fraction read (0.17 for
+            # 17%), a per-10,000 print, or an absolute count (7.7
+            # million) sits immediately outside and gets reviewed).
+
+license: >
+  Mixed, per source (see "sources"): OWID chart door = CC-BY-4.0
+  (OWID's chart-door terms; content: UNAIDS, Global AIDS Update —
+  UNAIDS' own reuse terms apply upstream).
+
+notes: >
+  THE TODD ARC PRINTS ITSELF (todd_refs: 1 citation, Où en
+  sommes-nous ?): the book's Africa face rides the door richly —
+  ESWATINI 1.2 (1990) -> 23.4 (2024) with the high-20s plateau,
+  BOTSWANA 7.7 -> 15.7, SOUTH AFRICA 1.5 -> 17.2, ZAMBIA 9.4 ->
+  9.4 (the flat arc), ZIMBABWE peaking at 29.6 (1995) then falling
+  — the patrilineal-belt geography the book maps, printed as the
+  epidemic's own curves. FRANCE 0.13 (1990) -> 0.28 (2023) prints
+  the low-prevalence European face. THE HONEST LIMITS: the
+  compilation's own universe excludes the USA, Russia and China
+  (verified identically on the GHO redistribution — the reporting
+  shape itself; the regional aggregate that carries them drops
+  logged); the corpus's own face is the WOMEN 15-49 slice (the
+  by-sex estimates live behind the closed aidsinfo door —
+  registered as the future door); the central estimates ride alone
+  without their uncertainty intervals (dropped at parse with every
+  OWID door — the standing record); the pre-1990 history and the
+  count faces are territory curated/registered (the WB count door
+  documented above).

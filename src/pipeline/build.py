@@ -33,6 +33,8 @@ from pathlib import Path
 from src.schema.entity import EntityRegistry
 from src.schema.indicator import (
     EUROSTAT_DATASET_TITLES,
+    IDD_DEFINITION_LABELS,
+    OECD_DATAFLOW_TITLES,
     PROVIDER_CITATION,
     PROVIDER_LAYER,
     PROVIDER_LICENSE,
@@ -81,8 +83,37 @@ def _source_citation(provider: Provider, ref: str) -> str:
         edition, table = ref.split("/table")
         return template.format(edition=edition, table=table)
     if provider == Provider.oecd:
-        _, cause = ref.split("/")
-        return template.format(cause=cause)
+        # v19: the connector speaks THREE dataflows — the citation
+        # dispatches per flow (the same one-flow-one-title rule the
+        # Eurostat titles follow). DF_COM keeps its v10 template
+        # verbatim (bit-compat with every pre-v19 dist).
+        parts = ref.split("/")
+        flow = parts[0]
+        if flow == "DF_IDD":
+            _, measure, methodology, definition = parts
+            return (
+                f"OECD, {OECD_DATAFLOW_TITLES['DF_IDD']} (DSD_WISE_IDD@DF_IDD), "
+                f"measure '{measure}', {methodology}, "
+                f"{IDD_DEFINITION_LABELS[definition]} - national household "
+                "surveys as submitted"
+            )
+        if flow == "DF_SAFETY":
+            _, measure, unit = parts
+            return (
+                f"OECD/ITF, {OECD_DATAFLOW_TITLES['DF_SAFETY']} "
+                f"(DSD_INDICATORS@DF_SAFETY), measure '{measure}', unit {unit} - "
+                "IRTAD road crash registrations as submitted"
+            )
+        if flow == "DF_MIG_POPF":
+            # v22: the migration questionnaire's foreign-born matrix — the
+            # bare-flow ref (the empty-key /all download), the bilateral
+            # witness of immigration_stock.
+            return (
+                f"OECD, {OECD_DATAFLOW_TITLES['DF_MIG_POPF']} (DSD_MIG_F@DF_MIG_POPF), "
+                "the foreign-born stock by country of birth - the migration "
+                "questionnaire's answers as submitted, OECD-compiled"
+            )
+        return template.format(cause=parts[1])
     if provider == Provider.eurostat:
         # 'demo_find/TOTFERRT' (all countries) or 'demo_find/TOTFERRT/FR'
         # (the geo-pinned variant-series door) — the optional third part is
@@ -93,6 +124,14 @@ def _source_citation(provider: Provider, ref: str) -> str:
         # collection, never 'Fertility indicators').
         parts = ref.split("/")
         title = EUROSTAT_DATASET_TITLES[parts[0]]
+        if len(parts) == 3 and parts[1] == "ROW":
+            # v22: the bilateral ROW door — 'migr_pop3ctb/ROW/FR', the
+            # by-origin row of one destination (geo named so the 44 doors
+            # stay distinguishable in the sources block).
+            return (
+                f"{template.format(title=title, dataset=parts[0], code='ROW')}, "
+                f"the by-origin (c_birth) row of geo {parts[2]}"
+            )
         if len(parts) == 3:
             return f"{template.format(title=title, dataset=parts[0], code=parts[1])}, geo {parts[2]}"
         return template.format(title=title, dataset=parts[0], code=parts[1])
@@ -173,6 +212,29 @@ def build_indicator_file(
             out["small_base"] = True
         return out
 
+    def _bilateral_point_dict(p: dict) -> dict:
+        """v22: the by-origin layer's own point shape — the destination named
+        EXPLICITLY (destination_entity_id) so the two axes never read as one
+        field with different meanings, the origin beside it, then the same
+        conditional annotation transport as the single-axis face (the
+        bilateral doors print quality codes and provisional flags, nothing
+        else)."""
+        out = {
+            "destination_entity_id": p["entity_id"],
+            "origin_entity_id": p["origin_entity_id"],
+            "year": p["year"],
+            "value": p["value"],
+            **({"provider": p["provider"]} if p.get("provider") else {}),
+            **({"source_ref": p["source_ref"]} if p.get("source_ref") else {}),
+        }
+        if p.get("sex"):
+            out["sex"] = p["sex"]
+        if p.get("quality_code"):
+            out["quality_code"] = p["quality_code"]
+        if p.get("provisional"):
+            out["provisional"] = True
+        return out
+
     witnesses_payload = [
         {
             "provider": w["provider"],
@@ -196,6 +258,42 @@ def build_indicator_file(
         }
         for w in raw_witnesses
     ]
+
+    # v22 (the bilateral face): the by-origin layer rides BESIDE the
+    # single-axis data/witnesses — its own data (destination x origin x
+    # year) and its own witness series (the OECD matrix). ADDITIVE by
+    # construction: the layer is emitted ONLY when the processed tree
+    # carries bilateral points (merge_indicator writes the pair exactly
+    # then, and unlinks stale copies otherwise), so every single-axis
+    # indicator's dist file stays byte-identical — no key, no change.
+    bilateral_payload = None
+    bilateral_merged_path = processed_dir / f"{indicator.id}.bilateral.merged.json"
+    if bilateral_merged_path.exists():
+        b_points = json.loads(bilateral_merged_path.read_text(encoding="utf-8"))
+        b_witnesses_path = processed_dir / f"{indicator.id}.bilateral.witnesses.json"
+        raw_b_witnesses = (
+            json.loads(b_witnesses_path.read_text(encoding="utf-8")) if b_witnesses_path.exists() else []
+        )
+        bilateral_payload = {
+            "data": [_bilateral_point_dict(p) for p in b_points],
+            "witnesses": [
+                {
+                    "provider": bw["provider"],
+                    "source_ref": bw["source_ref"],
+                    "layer": PROVIDER_LAYER[Provider(bw["provider"])],
+                    "root": root_by_ref[(bw["provider"], bw["source_ref"])],
+                    "root_label": ROOT_LABELS[root_by_ref[(bw["provider"], bw["source_ref"])]],
+                    "unit": indicator.unit,
+                    "native_unit": native_unit_by_ref.get((bw["provider"], bw["source_ref"])),
+                    "citation": _source_citation(Provider(bw["provider"]), bw["source_ref"]),
+                    "url": _source_url(Provider(bw["provider"]), bw["source_ref"]),
+                    "license": PROVIDER_LICENSE[Provider(bw["provider"])],
+                    "n_points": len(bw["data"]),
+                    "data": [_bilateral_point_dict(p) for p in bw["data"]],
+                }
+                for bw in raw_b_witnesses
+            ],
+        }
 
     # Restrict each source's footnote block to the refs the emitted points
     # (canonical + witness) actually carry.
@@ -225,6 +323,12 @@ def build_indicator_file(
         "data": [_point_dict(p) for p in points],
         "witnesses": witnesses_payload,
     }
+    # v22 (the bilateral face): the by-origin layer — ADDITIVE, emitted only
+    # when the indicator's processed tree carries it (see above). The field
+    # name is the dist contract's own vocabulary: destination_entity_id x
+    # origin_entity_id x year, the shape of Todd's boards.
+    if bilateral_payload is not None:
+        payload["bilateral"] = bilateral_payload
     # v13 (todd_refs): the corpus entry joins BY ID — when the indicator
     # implements a corpus metric, the "why this metric exists" block rides
     # with the data (books, citations, per-book usage). Absent corpus or no

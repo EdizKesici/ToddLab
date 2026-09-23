@@ -12,12 +12,24 @@
   "reliability_criteria": "Canonical tier = UN DYB Table 9 crude birth rates across 13 editions (2011-2015 + 2017-2024, 2016 FILEPASS-encrypted and unwired), 2007-2024, computed by the UN Statistics Division from the countries' own registered births and republished as reported (rates only for completeness codes C/|, the collector's own editorial rule); witness tier = UN WPP estimates via the World Bank's SP.DYN.CBRT.IN (modeled, ~200 countries, 1960-2024). Authenticity first per ADR-0008: displayed beside each other, never blended.",
   "reclassification_sensitive": false,
   "coverage_declared": {
-    "start": 2007,
+    "start": 1974,
     "end": 2024
   },
   "license": "Mixed, per source (see \"sources\"): UN DYB = UN data reuse policy (attribution required, no endorsement implied); World Bank witness = CC-BY-4.0.",
   "notes": "THE NINTH INDICATOR, THE CBR COMPANION (v15). The corpus's #1 metric (birth_rate_fertility, 111 citations, 16/16 books) is TFR — v14 settled that. But the corpus's own 19th-century rows read the CRUDE birth rate (\"Crude birth rate milestones: France < 30/1 000, Europe 30-38/1 000 (19th c.)\", \"Crude birth rate by community in colonial Algeria\"), the measure the era's statistical offices actually printed — and the two are NOT convertible: CBR (births per 1,000 total population) drags the age structure along (a young country prints high CBR at moderate fertility, an old country prints low CBR at the same TFR), which is precisely why they ride as TWO indicators, never as a unit conversion. This one is todd_core=false on purpose: no corpus metric carries the crude rate as its own id — the 19th-century CBR rows live under birth_rate_fertility's umbrella, and the companion_indicators link carries the relationship (the board reads them side by side).\nCANONICAL TIER: the collector's own natalité print, DYB Table 9 — the same wide layout as Table 15 (Total/Urban/Rural rows, quality-code column, 5-year windows per edition, footnotes worksheet), 13 editions 2007-2024 with the standard vintage arbitration. The collector's honest degradations ride as-reported: \"U\"-coded countries print birth counts with \"...\" rates (explicit gap points), the '*' provisional flag and glued '*NN' star-plus-ref markers travel on the points (the v15 grammar find: a provisional birth count citing its own note in one cell, 26 live occurrences across editions 2011/2017-2022), and the countries that stop answering freeze (the questionnaire's own gaps — the US absent from recent Table 9s, the same hole as Table 15). THE COLLECTOR'S CROSS-TABLE DEPENDENCY: these same Table 9 births are the denominator of Table 17's maternal mortality ratios — the UNSD computes both from one questionnaire, which is why this table, not a modeled series, is the canonical CBR.\nWITNESS TIER: one door, the minimal honest choice — WDI's WPP redistribution (bare code, 1960-2024, worldwide), the face the collector's honest partiality cannot serve (Todd's Muslim-world and Central-Asia comparisons live here, on the modeled layer). The WPP CBR is structure-carrying and vintage-unpinned (silent revisions, the same limit as the TFR witness); where the tiers agree it is because WPP anchors on the national registration series.\nHONEST SCOPE LIMITS: no 19th-century history on the canonical tier (the wired editions start 2007 — Todd's 30/1 000 France milestone of the 1870s-1910s is BOOK data, territory for the curated tier); no 1991-2006 window (the PDF-era editions, the same deliberate boundary as Table 15); Russia's freeze reads on this table too where the questionnaire stopped.",
   "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "unsd_dyb",
+      "root_label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'dyb1978_vanished_crude_birth_rate' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/dyb1978_vanished_crude_birth_rate.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    },
     {
       "provider": "un_dyb",
       "source_ref": "2024/table09",
@@ -5863,6 +5875,46 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "byelorussian_ssr",
+      "year": 1974,
+      "value": 15.8,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (146,876 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18751); cross-checked: the same edition's Table 4 prints CBR 15.8 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "byelorussian_ssr",
+      "year": 1975,
+      "value": 15.7,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (146,517 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18751); cross-checked: the same edition's Table 4 prints CBR 15.8 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "byelorussian_ssr",
+      "year": 1976,
+      "value": 15.7,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (147,900 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18751); cross-checked: the same edition's Table 4 prints CBR 15.8 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "byelorussian_ssr",
+      "year": 1977,
+      "value": 15.8,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (149,000 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18751); cross-checked: the same edition's Table 4 prints CBR 15.8 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
       "entity_id": "cabo_verde",
       "year": 2007,
       "value": 25.1007795791,
@@ -8302,6 +8354,58 @@
       "quality_code": "C"
     },
     {
+      "entity_id": "czechoslovakia",
+      "year": 1974,
+      "value": 19.9,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (291,800 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18655); cross-checked: the same edition's Table 4 prints CBR 18.4 for 1978",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1975,
+      "value": 19.6,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (289,425 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18655); cross-checked: the same edition's Table 4 prints CBR 18.4 for 1978",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1976,
+      "value": 19.3,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (287,192 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18655); cross-checked: the same edition's Table 4 prints CBR 18.4 for 1978",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1977,
+      "value": 18.7,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (281,722 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18655); cross-checked: the same edition's Table 4 prints CBR 18.4 for 1978; printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1978,
+      "value": 18.4,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (278,250 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18655); cross-checked: the same edition's Table 4 prints CBR 18.4 for 1978; printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
       "entity_id": "denmark",
       "year": 2007,
       "value": 11.7445713767,
@@ -8947,6 +9051,58 @@
       "source_ref": "2024/table09",
       "quality_code": "U",
       "missing_marker": "..."
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1974,
+      "value": 10.6,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (179,127 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18661); cross-checked: the same edition's Table 4 prints CBR 13.9 for 1978. Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1975,
+      "value": 10.8,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (181,798 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18661); cross-checked: the same edition's Table 4 prints CBR 13.9 for 1978. Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1976,
+      "value": 11.6,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (195,483 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18661); cross-checked: the same edition's Table 4 prints CBR 13.9 for 1978. Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1977,
+      "value": 13.3,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (223,152 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18661); cross-checked: the same edition's Table 4 prints CBR 13.9 for 1978. Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1978,
+      "value": 13.9,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (232,151 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18661); cross-checked: the same edition's Table 4 prints CBR 13.9 for 1978. Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status); printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
     },
     {
       "entity_id": "ecuador",
@@ -30494,6 +30650,46 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "ukrainian_ssr",
+      "year": 1974,
+      "value": 15.2,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (736,616 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18753); cross-checked: the same edition's Table 4 prints CBR 14.7 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "ukrainian_ssr",
+      "year": 1975,
+      "value": 15.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (738,857 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18753); cross-checked: the same edition's Table 4 prints CBR 14.7 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "ukrainian_ssr",
+      "year": 1976,
+      "value": 15.2,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (747,069 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18753); cross-checked: the same edition's Table 4 prints CBR 14.7 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "ukrainian_ssr",
+      "year": 1977,
+      "value": 14.7,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (726,217 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18753); cross-checked: the same edition's Table 4 prints CBR 14.7 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
       "entity_id": "united_arab_emirates",
       "year": 2007,
       "value": null,
@@ -31166,6 +31362,46 @@
       "source_ref": "2024/table09",
       "quality_code": "C",
       "missing_marker": "..."
+    },
+    {
+      "entity_id": "ussr",
+      "year": 1974,
+      "value": 18.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (4,546,095 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18750); cross-checked: the same edition's Table 4 prints CBR 18.1 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "ussr",
+      "year": 1975,
+      "value": 18.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (4,611,453 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18750); cross-checked: the same edition's Table 4 prints CBR 18.1 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "ussr",
+      "year": 1976,
+      "value": 18.4,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (4,719,655 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18750); cross-checked: the same edition's Table 4 prints CBR 18.1 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "ussr",
+      "year": 1977,
+      "value": 18.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (4,693,369 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18750); cross-checked: the same edition's Table 4 prints CBR 18.1 for 1977. Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "quality_code": "C"
     },
     {
       "entity_id": "uzbekistan",
@@ -32165,6 +32401,58 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1974,
+      "value": 18.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (382,947 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18717); cross-checked: the same edition's Table 4 prints CBR 17.4 for 1978",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1975,
+      "value": 18.2,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (388,037 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18717); cross-checked: the same edition's Table 4 prints CBR 17.4 for 1978",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1976,
+      "value": 18.1,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (390,487 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18717); cross-checked: the same edition's Table 4 prints CBR 17.4 for 1978",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1977,
+      "value": 17.7,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (384,808 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18717); cross-checked: the same edition's Table 4 prints CBR 17.4 for 1978; printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1978,
+      "value": 17.4,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_crude_birth_rate",
+      "citation": "UN Demographic Yearbook 1978, Table 9 (Live births and crude live-birth rates by urban/rural residence, 1974-1978), the entity's Total row as printed (380,816 live births); rate per 1,000 population as printed by the UNSD",
+      "definition_note": "Text-layer read verified (row line 18717); cross-checked: the same edition's Table 4 prints CBR 17.4 for 1978; printed with '*' = provisional (the edition's own legend)",
+      "quality_code": "C",
+      "provisional": true
+    },
+    {
       "entity_id": "zambia",
       "year": 2009,
       "value": null,
@@ -32415,7 +32703,7 @@
       "citation": "World Bank Open Data API, indicator 'SP.DYN.CBRT.IN'",
       "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.CBRT.IN?format=json&per_page=5000",
       "license": "CC-BY-4.0",
-      "n_points": 14190,
+      "n_points": 14208,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -66404,6 +66692,96 @@
         },
         {
           "entity_id": "korea_republic_of",
+          "year": 2025,
+          "value": null
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 19.733
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 19.623
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 18.83
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 17.137
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 16.516
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 16.453
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 15.797
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 14.723
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 13.172
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 12.962
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 12.736
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 12.618
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 12.335
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 12.546
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 12.275
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 12.067
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 11.852
+        },
+        {
+          "entity_id": "kosovo",
           "year": 2025,
           "value": null
         },

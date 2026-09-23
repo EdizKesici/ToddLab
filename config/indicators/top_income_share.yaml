@@ -1,0 +1,125 @@
+id: top_income_share
+label: "Top 1% pre-tax income share"
+family: economy
+unit: percent
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE SEVENTEENTH INDICATOR (v19), the backlog's head claimed (7
+  # citations, the highest of what remained). Todd's inequality metric
+  # across five books: L'illusion économique's US quintile shares
+  # 1973-1990, Après l'Empire's US top-5% 1980-2000, Qui est Charlie ?'s
+  # OECD reading of France's top 1% pulling away, Où en sommes-nous ?'s
+  # Atkinson-Piketty six-country 1900-2000 table, and La Défaite de
+  # l'Occident's own reading: "Russia/USA/France, WID data", pre-tax
+  # top 1% and next 9% — the corpus NAMES the source.
+  #
+  # THE v19 PROBE VERDICT (verified live 2026-09-21, before any wiring):
+  # WID.World is the authoritative compilation the corpus names, and NO
+  # direct machine door to it exists from this environment — api.wid.
+  # world's extractor (the endpoint the R and Stata packages ride)
+  # answers 403 CloudFront on EVERY request shape probed (GET query-
+  # string, POST form, POST raw, browser headers), the new portal's
+  # country pages are WordPress views carrying no data files, and the
+  # bulk-download path of the old site is gone (404). The machine-
+  # readable face of the compilation is OWID's chart door —
+  # incomes-of-the-richest, 165 entities, 1820-2024, single clean
+  # column "Share (richest 1%, before tax)", the chart's own
+  # attribution "WID.world (2026) - World Inequality Database" (read
+  # from the chart metadata, the v16 attribution discipline). The same
+  # door-relation oecd_family holds: the compilation has no wire of
+  # its own, the chart IS the wire. Root: wid (the registry's own
+  # entry — a research harmonization serving as CANONICAL, the
+  # consanguinity_studies constitution: no collector anywhere prints
+  # a top-1% national income share, the metric is by construction a
+  # constructed series, so the compilation the corpus names is the
+  # origin tier).
+  #
+  # THE ANTI-DERIVATION LINE, drawn at the sibling door: OWID also
+  # carries income-share-top-1-before-tax-wid-extrapolations (227
+  # entities — WID's own nowcast/projection extensions, the provider
+  # itself flagging them "(Projected)" in a second column). That door
+  # is deliberately NOT wired: extrapolated values are modeled future,
+  # the same tier age-standardized rates hold — the observed series
+  # (this door) is the as-reported face, and the projected column
+  # would smuggle estimates into the canonical tier.
+  #
+  # NO WITNESS — the honest absence, recorded: the OECD IDD (the gini
+  # canonical's own dataflow, 35 measures enumerated live) prints NO
+  # top-income-share measure (quintile ratios, Palma, decile ratios —
+  # no top-fractile share); LIS publishes no top-1% chart door; the
+  # Atkinson-Piketty historical face OWID still charts (declining-
+  # share-of-the-top-1..., 8 entities 1871-2019) is the SAME WID root
+  # (the series were folded into WID — the chart's own attribution
+  # says so), a self-witness, not a cross-check. top_income_share
+  # stands canonical-alone, the secondary_education_share precedent
+  # (v18) for the witness tier's honest absence.
+  - provider: owid
+    ref: incomes-of-the-richest
+    priority: 1
+    role: canonical
+    root: wid
+
+coverage_start: 1820
+coverage_end: 2024
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = the World Inequality Database's pre-tax national
+  income top-1% share (DINA research harmonization: fiscal microdata +
+  household surveys + national accounts blended per the 2020/2025
+  guidelines), reached through OWID's chart door (165 entities,
+  1820-2024, the chart's own attribution naming WID.world; the direct
+  WID API probed and refused from this environment — every extractor
+  shape 403, the record in sources.yaml). A research-harmonization
+  canonical by necessity: no collector prints the metric anywhere (the
+  probe record). No witness tier — no cross-root machine door exists
+  (the IDD's measure list enumerated live, the extrapolations door
+  refused as same-root modeled). Authenticity first per ADR-0008: the
+  compilation the corpus itself names, displayed as what it is.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 70   # the observed series' own tail is the African extreme-
+             # inequality print: Malawi 1997 = 64.09, 1978 = 57.95,
+             # 1979 = 56.06 (verified live) — the bound swallows the
+             # compilation's real span while flagging any misload (a
+             # fraction read as 0.2 for 20% sits at the floor; a
+             # per-1,000 print or a doubled column flags immediately).
+
+license: >
+  Mixed, per source (see "sources"): OWID chart door = CC-BY-4.0
+  (OWID's chart-door terms; content: World Inequality Database, WID.
+  world's own reuse terms apply upstream).
+
+notes: >
+  THE TODD ARCS PRINT THEMSELVES (todd_refs: 7 citations, 5 books).
+  La Défaite de l'Occident's own board — Russia/USA/France, the WID
+  reading the corpus names — rides the door directly: USA 1913 = 20.43
+  -> 2024 = 20.73 (the full U-shape L'illusion économique and Après
+  l'Empire read the rising half of: quintile concentration 1973-1990,
+  top-5% 1980-2000), FRANCE 1910 = 22.73 -> 2022 = 12.1 (the European
+  decline, the arc Où en sommes-nous ? reads through Atkinson-Piketty
+  — whose series now live INSIDE WID, the same root this door
+  carries), RUSSIA 1820-2017 in 46 points including the Soviet low
+  and the 2017 = 20.0 return (the arc La Défaite reads as the
+  post-Soviet oligarchy). Qui est Charlie ?'s "OECD reading, France,
+  top 1% pulling away" is the 1990s-2010s French segment (12-13%
+  band, printed). THE HONEST LIMITS: a single research compilation,
+  no witness tier (the absence recorded above — the IDD prints no
+  top-share, the extrapolations door refused); the provider's own
+  pre-tax concept (income BEFORE taxes and transfers — a
+  distributional-national-accounts construct, not a survey or tax
+  statistic); the "next 9%" of La Défaite's own table (p90p99, the
+  9% under the top 1%) is NOT printed by this door — the WID
+  percentile vocabulary lives behind the blocked API, registered as
+  the future door; the aggregate rows (World, OWID_WRL) resolve to
+  no registry entity and drop logged, the same discipline every OWID
+  door applies; GDR rides as its own entity (OWID_GDR — the East
+  German print, the communist-era low the German seam's family
+  story already carries). The 19th-century tails (pre-1900 values)
+  are the compilation's own historical reconstructions — the layer
+  judgment rides the root label, displayed never hidden.

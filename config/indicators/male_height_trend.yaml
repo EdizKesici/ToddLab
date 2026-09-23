@@ -1,0 +1,125 @@
+id: male_height_trend
+label: "Mean male height by birth cohort"
+family: society
+unit: centimeters
+higher_is_better: true
+todd_core: true
+
+sources:
+  # THE TWENTY-FOURTH INDICATOR (v20, 1 citation) — THE METRIC THAT
+  # CLOSES THE CORPUS (24/24): Après la démocratie reads the average
+  # height of 20-year-old French men, +10cm, 1900-2005 — the
+  # living-standard curve the book sets beside the fertility and
+  # education arcs as the Third-Republic's own scoreboard.
+  #
+  # THE v20 PROBE VERDICT (verified live 2026-09-22, before any
+  # wiring): the NCD Risk Factor Collaboration's 2016 eLife
+  # compilation ("A century of trends in adult human height" —
+  # 1,472 population-based studies re-analyzed into mean height AT
+  # AGE 18 by birth cohort, 200 countries, 1896-1996) is the
+  # anthropometric standard, and its machine face is OWID's chart
+  # door: average-height-of-men, 208 entities, single clean column
+  # "Mean male height (cm)", the chart's own attribution read live
+  # from its metadata: "NCD Risk Factor Collaboration (2016) ...
+  # 'Human height' [original data]". ncdrisc.org's own downloads
+  # page carries only the 2020 child/adolescent study files today
+  # (read live — the adult 2016 eLife files no longer listed), so
+  # the chart IS the wire. Root: ncd_risc_height.
+  #
+  # THE FRAMING SEAMS, drawn and documented: the door prints HEIGHT
+  # AT AGE 18 BY BIRTH YEAR (the chart's own subtitle) while Todd's
+  # face is 20-year-old men by CALENDAR year — the 20-year-old of
+  # 2005 was born in 1985, the cohort read and the calendar read
+  # slide by two decades, and the age-18 vs age-20 two-year seam
+  # rides the same block; displayed never reconciled (the road
+  # door's per-100k-vs-per-vehicle precedent, v19).
+  #
+  # THE WITNESS: the Baten & Blum (2015) compilation through
+  # Clio-Infra's "Biological Standards of Living" — the economic-
+  # history reconstruction from the anthropometric record states
+  # kept before surveys existed (militia rolls, army recruits,
+  # conscripts), 153 entities, 1550-2000, sparse by nature. A
+  # genuinely CROSS-ROOT door (the historical-record compilation vs
+  # the measured-survey re-analysis — different source bases,
+  # different methods), the barro_lee relation (v18): the cm-level
+  # seams on the overlapping cohorts (FRA 1900: Baten-Blum 166.8 vs
+  # NCD-RisC 166.9-167.7; FRA 1980: 176.5 vs 175.6) are displayed,
+  # never reconciled — and the witness carries the pre-1896 tail
+  # the canonical's own design cannot (FRA 1660 = 162.6, DEU 1550
+  # = 167.8, the 19th-century living-standard record).
+  #
+  # THE AUTO-WITNESS, refused: the sibling chart average-height-by-
+  # year-of-birth (the Men+Women columns) is the SAME NCD-RisC root
+  # — the Women column is the registered future door (no corpus
+  # metric demands it today).
+  - provider: owid
+    ref: average-height-of-men
+    priority: 1
+    role: canonical
+    root: ncd_risc_height
+  - provider: owid
+    ref: average-height-of-men-by-year-of-birth
+    priority: 2
+    role: witness
+    root: baten_blum
+
+coverage_start: 1896
+coverage_end: 1996
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = the NCD Risk Factor Collaboration's 2016 eLife
+  compilation (1,472 population-based measurement studies
+  re-analyzed; mean height at age 18 by birth cohort, 200 entities,
+  1896-1996) via OWID's chart door, single-column clean. Witness
+  tier = Baten & Blum (2015) via Clio-Infra (the historical
+  anthropometric record, 153 entities, 1550-2000) — a genuinely
+  cross-root compilation agreeing at the cm level on the
+  overlapping cohorts. Authenticity first per ADR-0008: two
+  independent compilations displayed beside each other, never
+  blended.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 145
+  max: 190  # both doors' own spans: NCD-RisC 152.88 (Laos 1896) to
+            # 182.57 (Netherlands 1984-1985), Baten-Blum 152.36
+            # (Papua New Guinea 1880) to 183.2 (Denmark 1980) —
+            # the bound swallows both compilations' real spans
+            # while flagging any misload (a meters read (1.77), an
+            # inches read (~70), or a female-face crossload rides
+            # immediately outside and gets reviewed).
+
+license: >
+  Mixed, per source (see "sources"): OWID chart doors = CC-BY-4.0
+  (OWID's chart-door terms; content: NCD Risk Factor Collaboration
+  (2016), and Baten & Blum (2015) via Clio-Infra — the
+  compilations' own reuse terms apply upstream).
+
+notes: >
+  THE TODD ARC PRINTS ITSELF (todd_refs: 1 citation, Après la
+  démocratie): the book's +10cm French century prints BIGGER —
+  FRANCE birth-1896 = 166.41 -> birth-1996 = 179.74 (+13.3cm, 101
+  annual cohort points), the Third-Republic's own scoreboard curve;
+  read on Todd's calendar framing the 1900-to-2005 window maps to
+  the birth-1880-to-1985 cohorts, the seam documented in sources.
+  The catch-up arcs the living-standard literature leans on print
+  alongside: SOUTH KOREA 159.75 -> 174.95 (+15.2cm, the biggest
+  gain in the compilation), JAPAN 156.17 -> 170.82 (+14.7),
+  NETHERLANDS 169.43 -> 182.54 (the tallest, the postwar protein
+  curve), UNITED STATES 171.08 -> 177.13, RUSSIA 166.97 -> 176.46.
+  THE WITNESS'S OWN REACH: the pre-1896 tail (FRA 1660 = 162.6,
+  RUS 1700 = 163.9) carries the early-modern record the canonical
+  cannot — the barro_lee relation, the historical face on the
+  witness tier. THE HONEST LIMITS: the framing seams (birth-cohort
+  vs calendar year; age 18 vs Todd's age 20 — both documented,
+  never reconciled); the 1996+ cohorts live behind the 2020
+  child/adolescent study (a different publication, registered as
+  the future door); the Women column (the same door's second
+  column) is the registered future door for a female face no
+  corpus metric yet demands; the pre-1550 and the regional
+  (French départemental) faces are BOOK/curated territory; the
+  Baten-Blum witness is sparse by nature (27 French points across
+  340 years — the compilation's own density, displayed as what it
+  is).

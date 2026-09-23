@@ -27,6 +27,16 @@ carry sex=None, so their keys are unchanged; a both-sexes witness series
 and a sex-split canonical series coexist on the same (entity, year)
 without colliding.
 
+v22 (the bilateral face): {indicator}.bilateral.json (the by-origin
+points normalize routed out of the single-axis flow) merges under its OWN
+key — (destination, origin, year, sex) — into
+{indicator}.bilateral.merged.json + {indicator}.bilateral.witnesses.json,
+with the same two rules verbatim (within-bilateral-tier arbitration by
+priority; the bilateral witnesses kept per-source, never merged). The two
+layers never collide BY CONSTRUCTION: single-axis points carry
+origin_entity_id=None, bilateral points always carry it; a (destination,
+origin) pair can never masquerade as an (entity, year) key.
+
 Witness points with value=None are KEPT as points (an explicit "reported
 to the collector but no value computed" gap — e.g. DYB rates for "U"
 data), distinct from absent points (no row at all). Since v9 the SAME
@@ -49,6 +59,21 @@ def _key(point: NormalizedPoint | "MergedPoint") -> tuple[str, int, str | None]:
     return (point.entity_id, point.year, getattr(point, "sex", None))
 
 
+def _bilateral_key(point: NormalizedPoint | "MergedPoint") -> tuple[str, str, int, str | None]:
+    """v22: the by-origin layer's own merge key — (destination, origin,
+    year, sex). The origin is always set on this layer's points (normalize
+    routes on its presence); a point reaching here without one is a
+    pipeline bug, refused loudly rather than silently merged into the
+    single-axis key space."""
+    origin = getattr(point, "origin_entity_id", None)
+    if origin is None:
+        raise ValueError(
+            f"bilateral merge received a point without origin_entity_id ({point.entity_id}, "
+            f"{point.year}) — the single-axis flow must never reach this path."
+        )
+    return (point.entity_id, origin, point.year, getattr(point, "sex", None))
+
+
 @dataclass
 class MergedPoint:
     entity_id: str
@@ -63,6 +88,10 @@ class MergedPoint:
     # Demographic breakdown printed by the source (DYB Table 4: male /
     # female life expectancy). None = no breakdown reported.
     sex: str | None = None
+    # v22 (the bilateral face): the ORIGIN entity — set on every point of
+    # the bilateral layer (entity_id = the destination); None on every
+    # single-axis point.
+    origin_entity_id: str | None = None
     # The collector's own quality annotations (P2) — carried from the WINNING
     # source's point, as-reported (see base.RawRecord's docs). Note they are
     # the winner's OWN annotations: when arbitration keeps a later edition's
@@ -155,6 +184,62 @@ def merge_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list
     return merged, provenance_log
 
 
+def merge_bilateral_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list[dict]]:
+    """v22: the bilateral layer's canonical merge — the same two rules as
+    merge_points, under the (destination, origin, year, sex) key. In the
+    wired shape the Eurostat ROW doors are disjoint by destination, so the
+    within-tier arbitration never fires across them — the machinery exists
+    for the same reason the single-axis one does: a future bilateral
+    canonical door colliding on a (destination, origin, year) must be
+    arbitrated by priority and LOGGED, never silently shadowed."""
+    by_key: dict[tuple[str, str, int, str | None], list[NormalizedPoint]] = {}
+    for p in points:
+        by_key.setdefault(_bilateral_key(p), []).append(p)
+
+    merged: list[MergedPoint] = []
+    provenance_log: list[dict] = []
+
+    for (entity_id, origin_entity_id, year, sex), candidates in by_key.items():
+        usable = [c for c in candidates if c.value is not None]
+        if usable:
+            usable.sort(key=lambda c: c.priority)
+            winner = usable[0]
+        else:
+            candidates.sort(key=lambda c: c.priority)
+            winner = candidates[0]  # the explicit-gap semantics, verbatim
+        merged.append(
+            MergedPoint(
+                entity_id=entity_id,
+                year=year,
+                value=winner.value,
+                provider=winner.provider,
+                source_ref=winner.source_ref,
+                sex=sex,
+                origin_entity_id=origin_entity_id,
+                quality_code=winner.quality_code,
+                provisional=winner.provisional,
+            )
+        )
+        if usable and len(usable) > 1:
+            provenance_log.append(
+                {
+                    "role": "canonical",
+                    "layer": "bilateral",
+                    "entity_id": entity_id,
+                    "origin_entity_id": origin_entity_id,
+                    "year": year,
+                    "retained": {"provider": winner.provider, "source_ref": winner.source_ref, "value": winner.value},
+                    "discarded": [
+                        {"provider": c.provider, "source_ref": c.source_ref, "value": c.value}
+                        for c in usable[1:]
+                    ],
+                }
+            )
+
+    merged.sort(key=lambda m: (m.entity_id, m.origin_entity_id or "", m.year, m.sex or ""))
+    return merged, provenance_log
+
+
 def build_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, list[dict]]:
     """One witness source's points -> one series + provenance entries for
     the duplicate reductions (first non-null value wins; all-null duplicates
@@ -210,6 +295,60 @@ def build_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, l
     return WitnessSeries(provider=provider, source_ref=source_ref, points=points), provenance_log
 
 
+def build_bilateral_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, list[dict]]:
+    """v22: the bilateral witness twin — one (provider, source_ref)'s
+    by-origin points as one series, duplicates reduced under the
+    (destination, origin, year) key and logged, all-null keys kept as
+    explicit gap points. The OECD DF_MIG_POPF matrix is its first rider
+    (one row per destination-origin-year — no duplicates by construction,
+    the machinery guards the day a second bilateral witness arrives)."""
+    provider, source_ref = group[0].provider, group[0].source_ref
+    by_key: dict[tuple[str, str, int, str | None], list[NormalizedPoint]] = {}
+    for p in group:
+        by_key.setdefault(_bilateral_key(p), []).append(p)
+
+    points: list[MergedPoint] = []
+    provenance_log: list[dict] = []
+    for (entity_id, origin_entity_id, year, sex), candidates in by_key.items():
+        candidates.sort(key=lambda c: c.priority)
+        non_null = [c for c in candidates if c.value is not None]
+        if non_null:
+            winner = non_null[0]
+        else:
+            winner = candidates[0]  # an all-null key stays as ONE explicit gap point
+        points.append(
+            MergedPoint(
+                entity_id=entity_id,
+                year=year,
+                value=winner.value,
+                provider=provider,
+                source_ref=source_ref,
+                sex=sex,
+                origin_entity_id=origin_entity_id,
+                quality_code=winner.quality_code,
+                provisional=winner.provisional,
+            )
+        )
+        if len(candidates) > 1:
+            provenance_log.append(
+                {
+                    "role": "witness",
+                    "layer": "bilateral",
+                    "entity_id": entity_id,
+                    "origin_entity_id": origin_entity_id,
+                    "year": year,
+                    "witness": f"{provider}:{source_ref}",
+                    "retained": {"value": winner.value, "n_candidate_rows": len(candidates)},
+                    "discarded": [
+                        {"value": c.value, "priority": c.priority} for c in candidates if c is not winner
+                    ],
+                }
+            )
+
+    points.sort(key=lambda m: (m.entity_id, m.origin_entity_id or "", m.year, m.sex or ""))
+    return WitnessSeries(provider=provider, source_ref=source_ref, points=points), provenance_log
+
+
 def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[MergedPoint], list[dict]]:
     normalized_path = processed_dir / f"{indicator_id}.normalized.json"
     raw_points = json.loads(normalized_path.read_text(encoding="utf-8"))
@@ -246,6 +385,56 @@ def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[Merged
             }
         )
 
+    # v22 (the bilateral face): the by-origin layer merges under its own
+    # key BEFORE the provenance file is written, so one trail carries both
+    # layers' entries (each self-describing — the bilateral ones carry
+    # layer: "bilateral" and origin_entity_id). The files are written only
+    # when the layer has points, and UNLINKED when it does not — a stale
+    # bilateral.merged.json from a previous run must never survive a clean
+    # run of an indicator whose bilateral sources stopped printing (the
+    # same discipline the always-written witnesses.json follows, expressed
+    # as removal because an absent file is what build reads as "no layer").
+    bilateral_path = processed_dir / f"{indicator_id}.bilateral.json"
+    if bilateral_path.exists():
+        bilateral_raw = json.loads(bilateral_path.read_text(encoding="utf-8"))
+        if bilateral_raw:
+            bilateral_points = [NormalizedPoint(**p) for p in bilateral_raw]
+            b_canonical, b_witness_groups = _split_by_role(bilateral_points)
+            b_merged, b_provenance = merge_bilateral_points(b_canonical)
+            provenance.extend(b_provenance)
+
+            b_witness_payload = []
+            for group in b_witness_groups:
+                b_series, b_series_provenance = build_bilateral_witness_series(group)
+                provenance.extend(b_series_provenance)
+                b_witness_payload.append(
+                    {
+                        "provider": b_series.provider,
+                        "source_ref": b_series.source_ref,
+                        "data": [
+                            {
+                                "entity_id": p.entity_id,
+                                "year": p.year,
+                                "origin_entity_id": p.origin_entity_id,
+                                "value": p.value,
+                                **({"sex": p.sex} if p.sex else {}),
+                                **({"quality_code": p.quality_code} if p.quality_code else {}),
+                                **({"provisional": True} if p.provisional else {}),
+                            }
+                            for p in b_series.points
+                        ],
+                    }
+                )
+            (processed_dir / f"{indicator_id}.bilateral.merged.json").write_text(
+                json.dumps([m.__dict__ for m in b_merged], ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+            (processed_dir / f"{indicator_id}.bilateral.witnesses.json").write_text(
+                json.dumps(b_witness_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+        else:
+            for stale in ("bilateral.merged.json", "bilateral.witnesses.json"):
+                (processed_dir / f"{indicator_id}.{stale}").unlink(missing_ok=True)
+
     (processed_dir / f"{indicator_id}.merged.json").write_text(
         json.dumps([m.__dict__ for m in merged], ensure_ascii=False, indent=2), encoding="utf-8"
     )
@@ -258,6 +447,12 @@ def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[Merged
         (processed_dir / f"{indicator_id}.provenance.json").write_text(
             json.dumps(provenance, ensure_ascii=False, indent=2), encoding="utf-8"
         )
+    else:
+        # v22 corollary of the stale-file discipline: a clean run with zero
+        # arbitrations removes a stale provenance file too (previously the
+        # file simply stopped being rewritten — the last run's trail would
+        # have survived every subsequent clean run unread).
+        (processed_dir / f"{indicator_id}.provenance.json").unlink(missing_ok=True)
     return merged, provenance
 
 

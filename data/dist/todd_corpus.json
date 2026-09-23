@@ -6,7 +6,7 @@
     "metrics": 24,
     "books": 16,
     "total_citations": 483,
-    "implemented_metrics": 10
+    "implemented_metrics": 24
   },
   "metrics": [
     {
@@ -440,7 +440,7 @@
           "note": "Eastern Europe vs France/South Europe comparison."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "life_expectancy",
@@ -755,7 +755,7 @@
           "note": "Barro-Lee panel, Russia/USA/Poland."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "immigration_stock",
@@ -771,7 +771,7 @@
           "note": "France/UK/Germany immigrant population by origin, 1946-1990, official censuses."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "cirrhosis_alcohol_mortality",
@@ -809,7 +809,7 @@
           "note": "Russia 2000-2017, rate and counts."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "secondary_education_share",
@@ -839,7 +839,7 @@
           "note": "Barro-Lee panel, Poland/Hungary."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "top_income_share",
@@ -883,7 +883,7 @@
           "note": "Russia/USA/France, WID data."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "universal_suffrage_introduction_year",
@@ -922,7 +922,7 @@
           "note": "Distribution measure (not level); US-focused citation."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "road_accident_mortality",
@@ -938,7 +938,7 @@
           "note": "WHO 13-country table, 1974, per 1M vehicles."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "incarceration_rate",
@@ -968,7 +968,7 @@
           "note": "6-country comparison (US/Russia/UK/France/Germany/Japan)."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "math_test_scores",
@@ -984,7 +984,7 @@
           "note": "TIMSS 8th-grade, 19 countries, OECD source."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "obesity_rate",
@@ -1000,7 +1000,7 @@
           "note": "CDC-sourced, US health-paradox argument."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "agricultural_employment_share",
@@ -1016,7 +1016,7 @@
           "note": "UK/USA/Turkey, 1841-1985."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "hiv_prevalence_rate",
@@ -1032,7 +1032,7 @@
           "note": "WHO/UNAIDS-style data, used by Todd as a patrilineality proxy."
         }
       ],
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "male_height_trend",
@@ -1048,7 +1048,7 @@
           "note": "Average height of French men, +10cm, 1900-2005."
         }
       ],
-      "implemented": false
+      "implemented": true
     }
   ]
 }

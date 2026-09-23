@@ -122,7 +122,7 @@ def test_stats_carries_the_roots_line_the_genealogy_of_agreement(tmp_path, real_
     )
     # IMR: the roots line follows its canonical line (order of file lines).
     imr_block = out.split("infant_mortality:")[1].split("\nlife_expectancy:")[0]
-    assert "roots canonical: soviet_official (curated) + unsd_dyb (un_dyb x13); witness: un_igme (owid, who_gho, worldbank x2)" in imr_block
+    assert "roots canonical: soviet_official (curated) + unsd_dyb (curated, un_dyb x13); witness: un_igme (owid, who_gho, worldbank x2)" in imr_block
 
     le_block = out.split("life_expectancy:")[1].split("\nmaternal")[0] if "\nmaternal" in out else out.split("life_expectancy:")[1]
     assert "witness: owid_longrun_composite (owid) + un_wpp (worldbank x2)" in le_block

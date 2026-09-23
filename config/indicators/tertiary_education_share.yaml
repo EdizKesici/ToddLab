@@ -1,0 +1,116 @@
+id: tertiary_education_share
+label: "Tertiary education share"
+family: society
+unit: percent
+higher_is_better: true
+todd_core: true
+
+sources:
+  # THE EIGHTEENTH INDICATOR (v18) — 13 citations, 2 books (La Défaite
+  # de l'Occident's Barro-Lee panel reads at 8: "Tertiary-educated
+  # share of age cohort 70-74" for Russia/USA/Poland; L'illusion
+  # économique's US BA-share by birth cohort at 5). The corpus's own
+  # named source is the Barro-Lee panel — and the v18 probe verdict
+  # that shaped this wiring: UNESCO UIS, the world's education
+  # collector, has NO live API (probed 2026-09-21: api.uis.unesco.org
+  # a dead JSON shell, every SDMX path 404, the old bulk endpoints
+  # DNS-dead — the record in sources.yaml), so the collector tier
+  # rides the LFS attainment table the education pair CAN reach, and
+  # the scholarly panel rides as the WITNESS through OWID's long-run
+  # chart door.
+  #
+  # Canonical = Eurostat edat_lfse_03/ED5-8/Y25-64/T — the labour-force
+  # questionnaire's own attainment table ("Population in private
+  # households by educational attainment level"): the share of the
+  # adult population whose highest attainment is tertiary (ISCED
+  # 2011 levels 5-8), printed directly by each country's own survey.
+  - provider: eurostat
+    ref: edat_lfse_03/ED5-8/Y25-64/T
+    priority: 1
+    role: canonical
+    unit: percent
+    root: eurostat_lfs
+
+  # THE WITNESS (the world + the long run): OWID's
+  # share-of-the-population-with-completed-tertiary-education — the
+  # Barro-Lee (2015) + Lee-Lee (2016) panels, 1870-2010+, 153
+  # entities, the chart's own attribution "Barro and Lee (2015); Lee
+  # and Lee (2016)". THE CHART'S OWN FACE (read live, documented
+  # exactly): the slug says "completed" but the variable column
+  # prints "Share of 25-64 year olds with incomplete tertiary
+  # education" and the subtitle "completed OR PARTIALLY completed" —
+  # the some-tertiary face, the definitional seam between the
+  # canonical's ISCED 5-8 highest-attainment print and the panel's
+  # partial-tertiary bucket, displayed by the root pair, never
+  # reconciled. THE COHORT FACE: Todd's 70-74 age-cohort reads ride
+  # this tier (the LFS prints broad adult bands, not cohorts) — the
+  # same world-face/historical-face division unemployment and
+  # cirrhosis carry.
+  - provider: owid
+    ref: share-of-the-population-with-completed-tertiary-education
+    priority: 2
+    role: witness
+    root: barro_lee
+
+coverage_start: 1870
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat edat_lfse_03 pinned isced11=ED5-8
+  (tertiary as highest attainment), age=Y25-64 (the LFS's adult
+  band), sex=T, unit=PC (the dataset's only unit, pinned and
+  guarded): 36 countries (EU + EFTA + the Balkans + Türkiye; no XK),
+  the door's own per-country starts (Belgium/Denmark/Germany/Greece/
+  Ireland 1992, France 1993 — the attainment series reach deeper than
+  the probe's pinned window), the collector's b/e/p flags transported
+  as-reported. Witness tier =
+  the Barro-Lee/Lee-Lee long-run panel via OWID's chart door, 153
+  entities 1870-2010+, 5-year steps. Root pair eurostat_lfs/
+  barro_lee: the survey print and the reconciled scholarly panel —
+  on the co-covered core they print the same levels to a few points
+  (the panel's partial-tertiary bucket running above the LFS's
+  completed-only face by construction), the seam documented, never
+  blended.
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 80    # the canonical's own span tops in the 50s (the
+             # high-attainment EU geos of the 2020s); the panel's
+             # long-run face prints 0 for the 1870-1900 cohorts of
+             # every country (the true zero — literacy-era); 80 admits
+             # the South-Korean-class tail (the world's highest
+             # young-adult attainment) while a unit error or a
+             # misload of an ED0-2 face flags immediately.
+
+license: >
+  Eurostat reuse policy (attribution required, no endorsement implied);
+  OWID chart data CC-BY-4.0 (source: Barro and Lee (2015); Lee and Lee
+  (2016)) — see docs/licenses.md.
+
+notes: >
+  THE EDUCATION COLLECTOR GAP (the v18 probe record, sources.yaml):
+  UNESCO UIS — the questionnaire collector that would be this metric's
+  un_dyb — carries no live machine door in 2026 (the SDMX API
+  decommissioned; the databrowser exposes per-indicator CSV exports
+  with no clean wire). The LFS attainment table is the collector print
+  the pair CAN reach: one questionnaire (the labour-force survey),
+  three Todd metrics (unemployment v17, tertiary and secondary v18).
+  THE ISCED CHOICE: ED5-8 = tertiary as HIGHEST attainment (the
+  completed face); ED3-8 "at least upper secondary", ED34_44/ED35_45
+  (the survey-variant recodes) and the M/F sex splits are recorded
+  unwired in sources.yaml, one ref away each. Todd's US-cohort BA
+  board (L'illusion) and the 70-74 cohort reads (La Défaite) are
+  panel faces — the witness carries them; the canonical's Y25-64 band
+  is the LFS's own adult window, not a cohort decomposition. The
+  mean-years-of-schooling-long-run chart (the same OWID collection)
+  is deliberately NOT wired — one witness door is the minimal honest
+  choice, the v13 precedent. SECONDARY'S WITNESS GAP (the sibling
+  config's note, recorded here because the pair reads together): the
+  OWID door exposes tertiary and mean-years only — no machine-
+  readable secondary-attainment chart exists (probed 2026-09-21, all
+  candidate slugs 404), so secondary rides canonical-only, the world
+  face waiting on a Barro-Lee direct door (the site is live, the
+  data files are manual downloads — recorded in sources.yaml as the
+  future wiring).

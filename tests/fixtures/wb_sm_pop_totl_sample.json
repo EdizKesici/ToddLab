@@ -1,0 +1,6348 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 20000,
+  "total": 17490,
+  "sourceid": "2",
+  "lastupdated": "2026-07-13"
+ },
+ [
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2024",
+   "value": 9186757,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2020",
+   "value": 8610719,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2015",
+   "value": 7978076,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2010",
+   "value": 7322210,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2005",
+   "value": 6839877,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "2000",
+   "value": 6141350,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1995",
+   "value": 5936326,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1990",
+   "value": 5890023,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "FR",
+    "value": "France"
+   },
+   "countryiso3code": "FRA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2024",
+   "value": 16750084,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2020",
+   "value": 15021300,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2015",
+   "value": 12646813,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2010",
+   "value": 11665950,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2005",
+   "value": 11210590,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "2000",
+   "value": 10397459,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1995",
+   "value": 9637208,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1990",
+   "value": 6960112,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "DE",
+    "value": "Germany"
+   },
+   "countryiso3code": "DEU",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2024",
+   "value": 3409529,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2020",
+   "value": 3289042,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2015",
+   "value": 2577487,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2010",
+   "value": 2161780,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2005",
+   "value": 1976528,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "2000",
+   "value": 1651869,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1995",
+   "value": 1331094,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1990",
+   "value": 1050475,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "JP",
+    "value": "Japan"
+   },
+   "countryiso3code": "JPN",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2024",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2020",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2015",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2010",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2005",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "2000",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1995",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1990",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "XK",
+    "value": "Kosovo"
+   },
+   "countryiso3code": "XKX",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2024",
+   "value": 8157000,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2020",
+   "value": 7184000,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2015",
+   "value": 6859000,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2010",
+   "value": 5446000,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2005",
+   "value": 3218730,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "2000",
+   "value": 2373577,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1995",
+   "value": 1795514,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1990",
+   "value": 1302298,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "AE",
+    "value": "United Arab Emirates"
+   },
+   "countryiso3code": "ARE",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2024",
+   "value": 52375047,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2023",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2022",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2021",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2020",
+   "value": 50471028,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2019",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2018",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2017",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2016",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2015",
+   "value": 47942986,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2014",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2013",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2012",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2011",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2010",
+   "value": 43947211,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2009",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2008",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2007",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2006",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2005",
+   "value": 39545828,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2004",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2003",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2002",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2001",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "2000",
+   "value": 34806848,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1999",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1998",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1997",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1996",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1995",
+   "value": 28525723,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1994",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1993",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1992",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1991",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1990",
+   "value": 23266147,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1989",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1988",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1987",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1986",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1985",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1984",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1983",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1982",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1981",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1980",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1979",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1978",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1977",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1976",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1975",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1974",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1973",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1972",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1971",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1970",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1969",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1968",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1967",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1966",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1965",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1964",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1963",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1962",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1961",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SM.POP.TOTL",
+    "value": "International migrant stock, total"
+   },
+   "country": {
+    "id": "US",
+    "value": "United States"
+   },
+   "countryiso3code": "USA",
+   "date": "1960",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  }
+ ]
+]

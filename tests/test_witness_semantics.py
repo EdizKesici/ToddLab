@@ -135,6 +135,10 @@ def test_merge_indicator_writes_both_files(tmp_path):
             "entity_id": "ussr", "year": 1974, "value": 27.9, "provider": "curated",
             "source_ref": "ussr_series", "citation": "TsSU yearbooks (Kalabekov)",
             "definition_note": "Soviet definition", "sex": None,
+            # v22: the bilateral axis — present-but-None on every single-axis
+            # point (the full dataclass is serialized, like sex above); the
+            # DIST omits it, see build.py's _point_dict.
+            "origin_entity_id": None,
             # P2 quality-annotation fields: present-but-None on the wire (the
             # full dataclass is serialized, like sex above); the DIST omits
             # them for plain points, see build.py.
@@ -148,6 +152,12 @@ def test_merge_indicator_writes_both_files(tmp_path):
     assert witnesses[0]["source_ref"] == "infant-mortality"
     assert witnesses[0]["data"] == [{"entity_id": "russia", "year": 1974, "value": 21.9}]
     assert provenance == []
+    # v22: a single-axis indicator's merge leaves NO bilateral artifacts —
+    # the stale-file discipline (an imr.bilateral.json absent here, so no
+    # bilateral.merged/witnesses pair and no stale survivors from any
+    # previous run can outlive the clean one).
+    assert not (tmp_path / "imr.bilateral.merged.json").exists()
+    assert not (tmp_path / "imr.bilateral.witnesses.json").exists()
 
 
 # --- Unit conversion: declared table only, never a guessed factor --------------

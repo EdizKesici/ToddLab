@@ -1,0 +1,161 @@
+id: gini_index
+label: "Gini index of income inequality"
+family: economy
+unit: gini_coefficient_0_to_1
+higher_is_better: false
+todd_core: true
+
+sources:
+  # THE EIGHTEENTH INDICATOR (v19, 4 citations). Todd's distribution
+  # measure: L'illusion économique's 1995 fifteen-country OECD table
+  # (the book's own inequality reading) and La Défaite de l'Occident's
+  # US-focused citation. A DISTRIBUTION measure, not a level — the
+  # corpus's own note.
+  #
+  # THE v19 PROBE VERDICT (verified live 2026-09-21, before any
+  # wiring): the OECD Income Distribution Database rides the SDMX wire
+  # as DSD_WISE_IDD@DF_IDD (OECD.WISE.INE) — the national household-
+  # survey microdata AS SUBMITTED by member statistical offices,
+  # equivalized disposable income, MEASURE=INC_DISP_GINI on unit
+  # 0_TO_1: 45 areas, 1974-2025, RUS carried 2008-2017 (the RLMS
+  # survey window). THE COLLECTOR judgment for content — survey
+  # tabulations redistributed, never modeled — and the CONCEPT
+  # LINEAGE: the 1995 table L'illusion économique read was this same
+  # OECD collection's print (USA 1995 = 0.361 in the live slice, the
+  # book's own year on the door's own series).
+  #
+  # THE STITCHING GRAMMAR (the dataflow's own vintage discipline, the
+  # quatuor pattern v16 built for the German seam): the IDD prints
+  # the same (country, year) under METHODOLOGY x DEFINITION vintages —
+  # METH2012 (the current computation) vs METH2011 (the pre-revision
+  # history), D_CUR ("current definition") vs D_PREV ("previous
+  # definition - with overlap year") vs D_INC ("previous definition -
+  # without overlap year" — the same back-series minus the overlap
+  # print; the labels read live from the DSD's own CL_DEFINITION).
+  # Four doors in a priority chain, the OECD Data Explorer's own
+  # chained display made explicit: the current print first, the
+  # definition back-series filling the years before each break, the
+  # METH2011 vintage carrying the pre-revision history. FRANCE SEWS
+  # THREE TIMES (verified live on the full slice): 1996-2011 on
+  # METH2011 (0.277 -> 0.309), 2011-2020 on METH2012-D_PREV (0.305 ->
+  # 0.281), 2020-2023 on METH2012-D_CUR (0.278 -> 0.299) — every
+  # collision a logged provenance discard, the merge's own record.
+  # Simulated on the full live slice before wiring: 906 (area, year)
+  # keys, zero unresolved, every key resolving through the chain.
+  - provider: oecd
+    ref: DF_IDD/INC_DISP_GINI/METH2012/D_CUR
+    priority: 1
+    role: canonical
+    root: oecd_idd
+  # The definition back-series, with the overlap year (the door that
+  # carries the pre-break years for the areas whose income definition
+  # was revised — France's 2020 EU-SILC change among them).
+  - provider: oecd
+    ref: DF_IDD/INC_DISP_GINI/METH2012/D_PREV
+    priority: 2
+    role: canonical
+    root: oecd_idd
+  # The definition back-series, without the overlap year (the variant
+  # some areas print instead of D_PREV — Brazil among them: BRA 2006
+  # = 0.5088 rides this door, verified live through the door's own
+  # pinned URL).
+  - provider: oecd
+    ref: DF_IDD/INC_DISP_GINI/METH2012/D_INC
+    priority: 3
+    role: canonical
+    root: oecd_idd
+  # The METH2011 history: the pre-revision computation vintage, the
+  # only door carrying 1996-2011 for France, 1975-2010 for the UK,
+  # 1993-2012 for the USA (each verified live on the full slice).
+  # METH2011-D_PREV never wins a key (every such year carries a
+  # D_CUR row on the same vintage) — not wired, the minimal-chain
+  # discipline.
+  - provider: oecd
+    ref: DF_IDD/INC_DISP_GINI/METH2011/D_CUR
+    priority: 4
+    role: canonical
+    root: oecd_idd
+  # THE WITNESS: the WID pre-tax Gini through OWID's chart door
+  # (gini-coefficient-wid, 165 entities, 1820-2024, attribution
+  # "WID.world (2026)" read live from the chart metadata) — the
+  # long-run world face on the OTHER income concept: pre-tax national
+  # income (DINA) vs the canonical's equivalized disposable income.
+  # THE CONCEPT SEAM, never reconciled and displayed as such (the
+  # industrial composite seam's precedent): France 2022 prints 0.299
+  # disposable (canonical) vs 0.4592 pre-tax (witness) — the
+  # redistribution the tax system performs IS the gap, the two-door
+  # story the divergence view exists to tell.
+  - provider: owid
+    ref: gini-coefficient-wid
+    priority: 5
+    role: witness
+    root: wid
+
+coverage_start: 1974
+coverage_end: 2025
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = the OECD Income Distribution Database (IDD) via
+  SDMX (DSD_WISE_IDD@DF_IDD), the Gini of equivalized disposable
+  income as submitted by member statistical offices (national
+  household surveys), 45 areas, 1974-2025, unit 0_TO_1, AGE=_T, four
+  vintage doors in a priority chain (METH2012-D_CUR > METH2012-D_PREV
+  > METH2012-D_INC > METH2011-D_CUR — the OECD explorer's own
+  chained display; 906 country-year keys, zero unresolved, every
+  collision a logged provenance discard). Witness tier = the WID
+  pre-tax Gini via OWID's chart door (165 entities, 1820-2024, the
+  DINA research harmonization — a different income concept, the gap
+  displayed never reconciled). Authenticity first per ADR-0008:
+  collector print beside research harmonization, never blended.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 1   # the Gini's own mathematical domain: a distribution index
+            # where 0 = perfect equality and 1 = one holder of all
+            # income. The live tails ride well inside (canonical:
+            # ZAF 2015 = 0.626, MEX 1994 = 0.519; witness: Malawi
+            # 1997 = 0.8414, Namibia 1993 = 0.8269 — the African
+            # extreme-inequality prints, verified live) — anything
+            # outside 0-1 is a unit error by construction (a percent-
+            # scale print reads 45, a misload flags immediately).
+
+license: >
+  Mixed, per source (see "sources"): OECD IDD = OECD Terms and
+  Conditions, attribution required; OWID/WID witness = CC-BY-4.0
+  (OWID's chart-door terms; content: World Inequality Database).
+
+notes: >
+  THE TODD ANCHORS PRINT THEMSELVES (todd_refs: 4 citations, 2
+  books). L'illusion économique's 1995 fifteen-country OECD table is
+  the canonical's own concept on its own year: USA 1995 = 0.361, the
+  exact table the book read (the door's lineage — this same OECD
+  collection's print, 30 years deeper). La Défaite de l'Occident's
+  US-focused reading rides both tiers: USA 1993 = 0.369 -> 2023 =
+  0.394 on the canonical (the survey arc), 1913 = 0.5557 -> 2024 =
+  0.5869 on the witness (the pre-tax arc — the two-door US story:
+  redistribution compresses the level, the trend prints on both).
+  THE CONCEPT SEAM (the indicator's own display case): France 2022 =
+  0.299 disposable vs 0.4592 pre-tax, Sweden 2023 = 0.289 disposable
+  vs ~0.4x pre-tax — the gap IS the tax-and-transfer system, the
+  distributional question Todd's Qui est Charlie ? inequality
+  structure asks, printed by two doors that never reconcile. THE
+  STITCHING (the quatuor's own story, every seam in the coverage
+  report): France sews at 2011 and 2020, Germany at 2011, the USA at
+  2013, the UK at 2002 — METH2012 wherever it prints, the definition
+  back-series before each break, METH2011 carrying the history.
+  RUSSIA: 5 points 2008-2017 (0.428 -> 0.317, the RLMS survey
+  window — the canonical's own honest freeze; the witness carries
+  the WID arc 1820-2017 including the Soviet low). BRAZIL rides the
+  D_INC door (2006 = 0.5088 — the back-series variant it prints).
+  THE HONEST LIMITS: 45 areas canonical (OECD+ — the world face
+  rides the witness tier alone, the same tier split every indicator
+  carries); no sex dimension (the flow prints none — a household-
+  distribution index); the IDD's non-gini measures (decile ratios,
+  Palma, poverty rates) enumerated and left as the recorded non-wired
+  doors; the WB Gini chart (gini-coefficient-wb, 183 entities
+  1963-2025, the PIP survey face) and the LIS chart probed live —
+  same-root alternatives to the witness door, not wired (one
+  witness, the minimal-door discipline).

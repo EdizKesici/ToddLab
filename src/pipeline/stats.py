@@ -139,11 +139,49 @@ def _corpus_block(dist_dir: Path) -> list[str]:
     return lines
 
 
+def _bilateral_lines(payload: dict) -> list[str]:
+    """v22: the by-origin layer's own lines — the canonical matrix's size
+    (points, pairs, destinations x origins, the year range — the same
+    re-verifiable counts the single-axis line carries, on the layer where
+    every point's year is a MEASUREMENT year, never a birth year) and one
+    line per bilateral witness (the OECD matrix's world face)."""
+    b = payload.get("bilateral")
+    if not b:
+        return []
+    lines = []
+    data = b["data"]
+    valued = [p for p in data if p["value"] is not None]
+    pairs = {(p["destination_entity_id"], p["origin_entity_id"]) for p in data}
+    dests = {p["destination_entity_id"] for p in data}
+    origins = {p["origin_entity_id"] for p in data}
+    rng = _year_range(data)
+    lines.append(
+        f"  bilateral (by-origin): {_fmt(len(data))} points = {_fmt(len(valued))} valued + "
+        f"{_fmt(len(data) - len(valued))} explicit gaps; {_fmt(len(pairs))} (destination x origin) pairs; "
+        f"{_fmt(len(dests))} destinations x {_fmt(len(origins))} distinct origins"
+        + (f"; reference years {rng}" if rng else "")
+    )
+    for w in b.get("witnesses", []):
+        wpts = w["data"]
+        wrng = _year_range(wpts)
+        wdests = len({p["destination_entity_id"] for p in wpts})
+        worigins = len({p["origin_entity_id"] for p in wpts})
+        wpairs = len({(p["destination_entity_id"], p["origin_entity_id"]) for p in wpts})
+        lines.append(
+            f"  bilateral witness {w['provider']}:{w['source_ref']}: "
+            f"{_fmt(len(wpts))} points, {_fmt(wpairs)} pairs, {_fmt(wdests)} destinations, "
+            f"{_fmt(worigins)} origins" + (f", {wrng}" if wrng else "")
+        )
+    return lines
+
+
 def render_stats(dist_dir: Path) -> str:
     """One canonical line + one line per witness for every indicator file
     in dist/indicators/, sorted by filename. Witness lines carry the
     coverage (points, entities, year range) — the line that makes
-    "the witness carries <value> for <year>" claims checkable at a glance."""
+    "the witness carries <value> for <year>" claims checkable at a glance.
+    v22: indicators carrying a `bilateral` layer get its own lines too —
+    the by-origin matrix's counts, canonical and witness."""
     lines: list[str] = []
     for f in sorted((dist_dir / "indicators").glob("*.json")):
         payload = json.loads(f.read_text(encoding="utf-8"))
@@ -165,5 +203,6 @@ def render_stats(dist_dir: Path) -> str:
             )
         if not witnesses:
             lines.append("  witnesses: none")
+        lines.extend(_bilateral_lines(payload))
     lines.extend(_corpus_block(dist_dir))
     return "\n".join(lines)

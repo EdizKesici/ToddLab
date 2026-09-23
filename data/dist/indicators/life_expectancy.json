@@ -10,12 +10,24 @@
   "reliability_criteria": "Canonical tier = UN DYB Table 4, national official statistics as reported, 13 editions (2015 recovered v10), 2007-2024, sex-split (Male/Female) as printed by the collector; witness tier = OWID \"life expectancy\" (the mixed long-run compilation — Riley, HMD, UN WPP — both sexes) and the World Bank SP.DYN.LE00.MA/FE codes (pure UN WPP, sex-split), near-global. Authenticity first per ADR-0008: displayed beside each other, never blended.",
   "reclassification_sensitive": false,
   "coverage_declared": {
-    "start": 2007,
+    "start": 1971,
     "end": 2024
   },
   "license": "Mixed, per source (see \"sources\"): UN DYB = UN data reuse policy (attribution required, no endorsement implied); OWID witness = CC-BY-4.0; World Bank witness = CC-BY-4.0.",
   "notes": "THE SEX DIMENSION (the honest cost of the as-reported route): the DYB collector prints life expectancy at birth for Male and Female separately — there is no \"both sexes\" column to report, and averaging the two would be a derivation (the canonical tier reports, it does not derive). Every canonical point therefore carries sex=\"male\"|\"female\" and (entity, year, sex) is the merge key. The OWID witness is both-sexes: it stays comparable at the SERIES level (its both-sexes level sits between the two canonical curves), not pointwise. Since v11 the World Bank witnesses ARE sex-split (SP.DYN.LE00.MA/FE): the male/female witness curves the sex-split canonical lacked — the Russian sex gap in life expectancy, one of Todd's standing exhibits, can now be read collector-vs-model curve to curve, not only against a both-sexes line. A both-sexes canonical series would be a derived product, explicitly out of scope until a separate decision says otherwise.\nCANONICAL TIER: un_dyb Table 4, editions 2011-2015 + 2017-2024 (the 2015 vintage recovered in v10 via the legacy URL pattern) — as-reported LE at birth over 2007-2024, overlapping windows reconstructed edition by edition, intra-tier arbitration (later vintage wins, logged in provenance.json). Collector holes are data: countries absent from the table's windows (no questionnaire response or no civil-registration LE that year) stay absent — Russia included, which is why the WPP witness (WB codes) carries Russia's full series where the collector freezes. The pre-2007 as-reported history lives in the PDF-era editions — deliberately NOT in this loop (ADR-0007's PDF-route gate).\nWITNESS TIER: two DIFFERENT harmonized roots, deliberately both wired: - owid `life-expectancy` — \"over the long-run\" series combining\n  historical reconstructions (Riley, HMD) with UN WPP estimates,\n  methodologically heterogeneous by period (root:\n  owid_longrun_composite); check n_missing_within_span per country in\n  reports/coverage_report.md before using this series for a given\n  country over a long span.\n- worldbank SP.DYN.LE00.MA.IN / SP.DYN.LE00.FE.IN — pure UN WPP\n  (root: un_wpp), sex-split, 1960-2024, rounded to one decimal (the\n  WDI print). Where the two witnesses disagree, the difference is the\n  Riley/HMD-vs-WPP genealogy showing — display material, not an error\n  to reconcile.\n\nLife expectancy at 60 is its own indicator since v10 (life_expectancy_60, DYB Tables 21/22 + a GHO witness) — see its config for the cross-section semantics of the by-age tables.",
   "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "unsd_dyb",
+      "root_label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'dyb1978_vanished_life_expectancy' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/dyb1978_vanished_life_expectancy.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    },
     {
       "provider": "un_dyb",
       "source_ref": "2024/table04",
@@ -9469,6 +9481,28 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "byelorussian_ssr",
+      "year": 1971,
+      "value": 76.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8271); reference period as printed: 1970-1971; the point's year = the period's END year (the Table 21/22 convention); no Table 22 corroboration: the USSR and the two SSRs do not print in Table 22 (only Table 4 carries their life expectancy, at the print's integer precision). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "sex": "female",
+      "reference_range": "1970-1971"
+    },
+    {
+      "entity_id": "byelorussian_ssr",
+      "year": 1971,
+      "value": 68.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8271); reference period as printed: 1970-1971; the point's year = the period's END year (the Table 21/22 convention); no Table 22 corroboration: the USSR and the two SSRs do not print in Table 22 (only Table 4 carries their life expectancy, at the print's integer precision). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "sex": "male",
+      "reference_range": "1970-1971"
+    },
+    {
       "entity_id": "cabo_verde",
       "year": 2007,
       "value": null,
@@ -14127,6 +14161,28 @@
       "missing_marker": "..."
     },
     {
+      "entity_id": "czechoslovakia",
+      "year": 1976,
+      "value": 74.05,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8164); reference period as printed: 1976; the point's year = the period's END year (the Table 21/22 convention); corroborated by Table 22's age-0 print at line 30810 (66.99/74.05 for the same period)",
+      "sex": "female",
+      "reference_range": "1976"
+    },
+    {
+      "entity_id": "czechoslovakia",
+      "year": 1976,
+      "value": 66.99,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8164); reference period as printed: 1976; the point's year = the period's END year (the Table 21/22 convention); corroborated by Table 22's age-0 print at line 30810 (66.99/74.05 for the same period)",
+      "sex": "male",
+      "reference_range": "1976"
+    },
+    {
       "entity_id": "denmark",
       "year": 2007,
       "value": 80.4787495,
@@ -15219,6 +15275,28 @@
       "provider": "un_dyb",
       "source_ref": "2024/table04",
       "sex": "male"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1976,
+      "value": 74.42,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8170); reference period as printed: 1976; the point's year = the period's END year (the Table 21/22 convention); corroborated by Table 22's age-0 print at line 30826 (68.82/74.42 for the same period). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "sex": "female",
+      "reference_range": "1976"
+    },
+    {
+      "entity_id": "east_germany",
+      "year": 1976,
+      "value": 68.82,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8170); reference period as printed: 1976; the point's year = the period's END year (the Table 21/22 convention); corroborated by Table 22's age-0 print at line 30826 (68.82/74.42 for the same period). Berlin as printed (Table 15 footnote 24: FRG and GDR data include the relevant Berlin data for which separate data have not been supplied, without prejudice to any question of status)",
+      "sex": "male",
+      "reference_range": "1976"
     },
     {
       "entity_id": "ecuador",
@@ -52951,6 +53029,28 @@
       ]
     },
     {
+      "entity_id": "ukrainian_ssr",
+      "year": 1971,
+      "value": 74.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8273); reference period as printed: 1970-1971; the point's year = the period's END year (the Table 21/22 convention); no Table 22 corroboration: the USSR and the two SSRs do not print in Table 22 (only Table 4 carries their life expectancy, at the print's integer precision). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "sex": "female",
+      "reference_range": "1970-1971"
+    },
+    {
+      "entity_id": "ukrainian_ssr",
+      "year": 1971,
+      "value": 67.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8273); reference period as printed: 1970-1971; the point's year = the period's END year (the Table 21/22 convention); no Table 22 corroboration: the USSR and the two SSRs do not print in Table 22 (only Table 4 carries their life expectancy, at the print's integer precision). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "sex": "male",
+      "reference_range": "1970-1971"
+    },
+    {
       "entity_id": "united_arab_emirates",
       "year": 2007,
       "value": null,
@@ -54283,6 +54383,28 @@
       "provider": "un_dyb",
       "source_ref": "2024/table04",
       "sex": "male"
+    },
+    {
+      "entity_id": "ussr",
+      "year": 1972,
+      "value": 74.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8270); reference period as printed: 1971-1972; the point's year = the period's END year (the Table 21/22 convention); no Table 22 corroboration: the USSR and the two SSRs do not print in Table 22 (only Table 4 carries their life expectancy, at the print's integer precision). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "sex": "female",
+      "reference_range": "1971-1972"
+    },
+    {
+      "entity_id": "ussr",
+      "year": 1972,
+      "value": 64.0,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8270); reference period as printed: 1971-1972; the point's year = the period's END year (the Table 21/22 convention); no Table 22 corroboration: the USSR and the two SSRs do not print in Table 22 (only Table 4 carries their life expectancy, at the print's integer precision). Soviet live-birth definition (UN DYB 1978 Table 9 footnote 37 / Table 15 footnote 33: excludes infants born alive after less than 28 weeks' gestation, under 1 000 g, under 35 cm, dying within seven days of birth) - the same definitional caveat as the curated official USSR IMR series",
+      "sex": "male",
+      "reference_range": "1971-1972"
     },
     {
       "entity_id": "uzbekistan",
@@ -56003,6 +56125,28 @@
       "source_ref": "2024/table04",
       "sex": "male",
       "missing_marker": "..."
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1972,
+      "value": 70.22,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8227); reference period as printed: 1970-1972; the point's year = the period's END year (the Table 21/22 convention); corroborated by Table 22's age-0 print at line 31010 (65.42/70.22 for the same period)",
+      "sex": "female",
+      "reference_range": "1970-1972"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1972,
+      "value": 65.42,
+      "provider": "curated",
+      "source_ref": "dyb1978_vanished_life_expectancy",
+      "citation": "UN Demographic Yearbook 1978, Table 4 (Vital statistics rates, natural increase rates and expectation of life at birth: latest available year), the entity's expectation-of-life columns as printed",
+      "definition_note": "Text-layer read verified (row line 8227); reference period as printed: 1970-1972; the point's year = the period's END year (the Table 21/22 convention); corroborated by Table 22's age-0 print at line 31010 (65.42/70.22 for the same period)",
+      "sex": "male",
+      "reference_range": "1970-1972"
     },
     {
       "entity_id": "zambia",
@@ -153430,7 +153574,7 @@
       "citation": "World Bank Open Data API, indicator 'SP.DYN.LE00.FE.IN'",
       "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.LE00.FE.IN?format=json&per_page=5000",
       "license": "CC-BY-4.0",
-      "n_points": 14190,
+      "n_points": 14208,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -194216,6 +194360,114 @@
         },
         {
           "entity_id": "korea_republic_of",
+          "year": 2025,
+          "value": null,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 76.902,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 76.961,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 76.946,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 77.535,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 77.908,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 78.38,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 78.501,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 78.306,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 78.864,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 79.056,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 79.177,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 79.363,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 76.635,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 76.996,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 79.811,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 80.118,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 80.281,
+          "sex": "female"
+        },
+        {
+          "entity_id": "kosovo",
           "year": 2025,
           "value": null,
           "sex": "female"
@@ -238585,7 +238837,7 @@
       "citation": "World Bank Open Data API, indicator 'SP.DYN.LE00.MA.IN'",
       "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.LE00.MA.IN?format=json&per_page=5000",
       "license": "CC-BY-4.0",
-      "n_points": 14190,
+      "n_points": 14208,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -279371,6 +279623,114 @@
         },
         {
           "entity_id": "korea_republic_of",
+          "year": 2025,
+          "value": null,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2008,
+          "value": 72.546,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2009,
+          "value": 72.646,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2010,
+          "value": 72.326,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2011,
+          "value": 73.135,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2012,
+          "value": 73.606,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2013,
+          "value": 74.276,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2014,
+          "value": 73.877,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2015,
+          "value": 73.742,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2016,
+          "value": 74.59,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2017,
+          "value": 75.086,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2018,
+          "value": 74.993,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2019,
+          "value": 75.064,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2020,
+          "value": 71.865,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2021,
+          "value": 72.916,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2022,
+          "value": 75.34,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2023,
+          "value": 75.804,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
+          "year": 2024,
+          "value": 76.008,
+          "sex": "male"
+        },
+        {
+          "entity_id": "kosovo",
           "year": 2025,
           "value": null,
           "sex": "male"
