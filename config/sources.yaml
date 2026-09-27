@@ -269,9 +269,15 @@ oecd:
   # ISO3 codes the entities declare, the v21 admission's by-origin
   # face), and the residual drops (W "the World-total row", W_X "World
   # unspecified", EEA, EU15, A4 "Caribbean", STLS "Stateless").
-  # THE SIBLING FLOW, recorded unwired: DSD_MIG@DF_MIG ("International
-  # migration database") carries CITIZENSHIP at position 2 — the
-  # legal face, the mirror of Eurostat's migr_pop1ctz.
+  # THE SIBLING FLOW, WIRED (v23): DSD_MIG@DF_MIG, "International
+  # migration database" (read live from the SDMX registry) — the LEGAL
+  # face, the mirror of Eurostat's migr_pop1ctz: the stock of FOREIGN
+  # CITIZENS by nationality (the flow's own description), REF_AREA x
+  # CITIZENSHIP, measure B15. THE ACCESS MIRROR of the B14 quirk
+  # (probed live 2026-09-25): /all answers 404 on this flow but the
+  # positional wildcard key '..A.B15.._Z._Z.PS' serves the FULL matrix
+  # (216,120 data rows / 18.4 MB) — one wire per face, each verified
+  # live before the wiring.
   notes: >
     Layer: COLLECTOR (P3 judgment) — the "Causes of mortality" dataflow
     (DSD_HEALTH_STAT@DF_COM, agency OECD.ELS.HD) redistributes the WHO
@@ -640,13 +646,25 @@ eurostat:
 #   provider block), root oecd_mig; the seam FR<-MAR 2015 = 954,742
 #   on BOTH doors (verified to the unit), the extension 2019-2021,
 #   the world face (US<-MEX 12,383,868 in 2024).
-# - The v18 anchor disambiguated: "MA 2015 = 458,561" was the
-#   CITIZENSHIP face (migr_pop1ctz); the BIRTH face prints 954,742 —
-#   two legalities of the same stock, both recorded.
-# - The remaining unwired faces, recorded: by-sex (both doors), age
-#   bands (Eurostat), the citizenship face (migr_pop1ctz +
-#   DSD_MIG@DF_MIG — both DSDs documented), the OWID US-by-CoB
-#   historical chart (1850+, the census-era US face).
+# - The v18 anchor disambiguated, LANDED (v23): "MA 2015 = 458,561"
+#   was the CITIZENSHIP face (migr_pop1ctz) — now wired, its own
+#   bilateral_citizenship layer (ADR-0010, the parallel faces never
+#   merged); the BIRTH face prints 954,742 — two legalities of the
+#   same stock, both carried, the CONVERGE/DIVERGE contrast anchors
+#   the pair exists to display (FR<-PT 2015: 648,112 vs 541,867;
+#   FR<-MA: 954,742 vs 458,561 — all four live-verified).
+# - The v24 BY-SEX FACE, WIRED: the M/F ventilations of the same rows
+#   (migr_pop{3ctb,1ctz}/ROW/{geo}/{sex}, 124 doors) riding the same
+#   bilateral layers under the merge key's sex term — M + F = the _T
+#   print to the unit, verified live; the OECD F rows un-blocked (the
+#   flows print NO male face: _T + F their whole vocabulary, the
+#   female witnesses kept; the seams verified to the unit against the
+#   Eurostat F doors on both faces).
+# - The remaining unwired faces, recorded: Croatia's M/F ventilation
+#   (prints the _T detail, no M/F — the honest absence), age bands
+#   (Eurostat), the single-axis ctz foreigners-total door
+#   (migr_pop1ctz/FOR-class pins), the OWID US-by-CoB historical
+#   chart (1850+, the census-era US face).
 # - The UN DESA bilateral matrix (the world face's own compilation)
 #   stays manual-download (no API: the population.un.org dataportal's
 #   86 indicators carry net migration only, re-probed 2026-09-22) —
@@ -687,7 +705,8 @@ eurostat:
 #   points higher), ED0-2, ED34_44/ED35_45 (the survey recodes), the
 #   M/F sex splits, the other age bands.
 # - Eurostat migr_pop3ctb/pop1ctz: NAT/TOTAL c_birth doors, the
-#   by-citizenship dataset, the detailed bilateral slices (above).
+#   by-citizenship dataset's SINGLE-AXIS total door (wired ROW only,
+#   v23), the detailed bilateral slices (above).
 # - WB SL.SRV.EMPL.ZS (the services share — the economy family's
 #   residual door), SL.IND.EMPL.MA/FE.ZS (the sex-split witnesses).
 # - ILOSTAT 2EMP/5EMP/DEAP employment families wholesale

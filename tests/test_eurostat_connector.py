@@ -689,3 +689,210 @@ def test_row_requires_a_resolvable_origin_codelist(caplog=None):
     payload["value"][str(ad_idx * 28 + t2015)] = 1234
     with pytest.raises(ValueError, match="neither in the origin override tables"):
         parse_eurostat(json.dumps(payload), expected_ref=ROW_FR_REF)
+
+
+# --- v23: the bilateral citizenship ROW door (migr_pop1ctz/ROW/{geo}) --------
+
+CTZ_FR = (FIXTURES / "eurostat_migr1ctz_row_fr_sample.json").read_text(encoding="utf-8")
+CTZ_FR_REF = "migr_pop1ctz/ROW/FR"
+
+
+def test_ctz_build_url_pins_the_row_query_shape():
+    # The citizenship twin of the ROW grammar: geo PINNED in the URL,
+    # citizen deliberately ABSENT (the by-citizenship codelist as printed
+    # — 287 codes), the same frame pins age/sex/unit riding beside.
+    assert build_url(CTZ_FR_REF) == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+        "migr_pop1ctz?format=JSON&lang=EN&geo=FR&age=TOTAL&sex=T&unit=NR"
+    )
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    [
+        "migr_pop1ctz/ROW/",           # no geo
+        "migr_pop1ctz/ROW/fr",         # lowercase geo
+        "migr_pop1ctz/FOR/TOTAL/T",    # the single-axis ctz door: unwired, refused
+        "migr_pop1ctz/ROW/FR/extra",   # four segments = the pinned grammar
+    ],
+)
+def test_ctz_row_ref_format_is_the_one_grammar_the_door_speaks(bad_ref):
+    # The citizenship face speaks the ROW grammar ONLY — the single-axis
+    # foreigners-total door stays unwired, recorded in sources.yaml (the
+    # refusal message says so).
+    with pytest.raises(ValueError, match="Invalid Eurostat source_ref"):
+        build_url(bad_ref)
+
+
+def test_parse_ctz_row_reads_the_bilateral_face_with_the_drop_classes(caplog):
+    with caplog.at_level(logging.INFO):
+        records = parse_eurostat(CTZ_FR, expected_ref=CTZ_FR_REF)
+    # THE ARITHMETIC OF THE DOOR, exact: 927 non-empty cells =
+    # 714 emitted + 143 aggregate/region + 53 summary codes + 12 STLS
+    # stateless + 5 diagonal (read live 2026-09-25, the fixture IS the
+    # live response — every count the v23 probe measured).
+    assert len(records) == 714
+    logged = " ".join(rec.getMessage() for rec in caplog.records)
+    assert "dropped 143 aggregate/region origin cell(s)" in logged
+    assert "dropped 53 summary-code cell(s)" in logged
+    assert "dropped 5 diagonal cell(s)" in logged
+    # every emitted record carries BOTH axes (the destination pinned FR)
+    # and the FACE routing key: origin_axis="citizenship", never None.
+    assert all(r.iso3_raw == "FRA" and r.entity_raw_name == "France" for r in records)
+    assert all(r.origin_raw_name and r.origin_iso3_raw for r in records)
+    assert all(r.origin_axis == "citizenship" for r in records)
+    assert all(r.sex is None for r in records)  # the T pin
+    assert len({r.origin_iso3_raw for r in records}) == 127  # the FR row's origins
+
+
+def test_ctz_stateless_is_its_own_drop_class(caplog):
+    # STLS is the citizenship axis's own residual — a nationality without
+    # a state, 12 cells on the FR row — dropped LOGGED as its own class
+    # (the birth face's codelist never printed the code).
+    with caplog.at_level(logging.INFO):
+        parse_eurostat(CTZ_FR, expected_ref=CTZ_FR_REF)
+    logged = " ".join(rec.getMessage() for rec in caplog.records)
+    assert "dropped 12 stateless cell(s)" in logged
+    assert "STLS" in logged
+
+
+def test_parse_ctz_row_carries_the_v18_anchor_disambiguation():
+    records = parse_eurostat(CTZ_FR, expected_ref=CTZ_FR_REF)
+    got = {(r.origin_iso3_raw, r.year): r.value for r in records}
+    # THE v18 ANCHORS, landed on the face they always belonged to: the
+    # "MA 2015 = 458,561" of the v18 probe record was the CITIZENSHIP
+    # print — re-read live 2026-09-25, the four-year series exact.
+    assert got[("MAR", 2015)] == pytest.approx(458561)
+    assert got[("MAR", 2016)] == pytest.approx(465230)
+    assert got[("MAR", 2017)] == pytest.approx(472843)
+    assert got[("MAR", 2018)] == pytest.approx(480600)
+    # THE CONTRAST PAIR (§5.4, labels corrected): the birth face prints
+    # FR<-PT 2015 = 648,112; the citizenship face prints 541,867 —
+    # CONVERGE, the Portuguese rarely naturalizing before the census.
+    assert got[("PRT", 2015)] == pytest.approx(541867)
+    # THE SHARED-OVERRIDE PATH: EL (Greece, Eurostat's own code) resolves
+    # through the geo table onto GRC — the origin axis inherits it, on
+    # the citizenship face exactly as on the birth face.
+    assert got[("GRC", 2015)] == pytest.approx(7565)
+    # the census-round coverage cliff rides this face too: the Maghreb
+    # citizenship slices stop at 2018 while Portugal prints through 2025.
+    assert not any(y > 2018 for (o, y) in got if o == "MAR")
+    assert any(y == 2025 for (o, y) in got if o == "PRT")
+
+
+def test_ctz_row_pin_guards_refuse_slices_we_did_not_ask_for():
+    # the layout guard: the citizen dimension renamed to c_birth — the
+    # response is not the migr_pop1ctz layout, refused loudly (a door
+    # change is never silently re-interpreted).
+    payload = json.loads(CTZ_FR)
+    payload["id"] = ["freq", "c_birth", "age", "unit", "sex", "geo", "time"]
+    payload["dimension"]["c_birth"] = payload["dimension"].pop("citizen")
+    with pytest.raises(ValueError, match="not the migr_pop1ctz layout"):
+        parse_eurostat(json.dumps(payload), expected_ref=CTZ_FR_REF)
+    # the age pin: swapped — refused (the ROW frame is TOTAL, always).
+    payload = json.loads(CTZ_FR)
+    payload["dimension"]["age"]["category"]["index"] = {"Y15-64": 0}
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(json.dumps(payload), expected_ref=CTZ_FR_REF)
+    # the sex pin: swapped — refused.
+    payload = json.loads(CTZ_FR)
+    payload["dimension"]["sex"]["category"]["index"] = {"F": 0}
+    with pytest.raises(ValueError, match="does not match the requested"):
+        parse_eurostat(json.dumps(payload), expected_ref=CTZ_FR_REF)
+
+
+def test_ctz_soft_miss_is_a_loud_failure():
+    payload = json.loads(CTZ_FR)
+    payload["value"] = {}
+    with pytest.raises(ValueError, match="zero country rows"):
+        parse_eurostat(json.dumps(payload), expected_ref=CTZ_FR_REF)
+
+
+def test_the_shared_row_grammar_routes_the_face_by_dataset():
+    # ONE grammar, TWO faces: the dataset part of the capture chooses the
+    # origin dimension (c_birth vs citizen) and the routing key
+    # (origin_axis) — the birth face parses with "birth", the citizenship
+    # face with "citizenship", never confused, never merged.
+    birth = parse_eurostat(ROW_FR, expected_ref=ROW_FR_REF)
+    ctz = parse_eurostat(CTZ_FR, expected_ref=CTZ_FR_REF)
+    assert {r.origin_axis for r in birth} == {"birth"}
+    assert {r.origin_axis for r in ctz} == {"citizenship"}
+    # the same pair, two faces, two values: FR<-MA 2015 prints 954,742
+    # born and 458,561 citizens — the two legalities of the same stock,
+    # the ADR-0010 discipline in one assertion.
+    birth_got = {(r.origin_iso3_raw, r.year): r.value for r in birth}
+    ctz_got = {(r.origin_iso3_raw, r.year): r.value for r in ctz}
+    assert birth_got[("MAR", 2015)] == pytest.approx(954742)
+    assert ctz_got[("MAR", 2015)] == pytest.approx(458561)
+
+
+# --- v24: the by-sex ROW doors (migr_pop{3ctb,1ctz}/ROW/{geo}/{sex}) ----------
+
+ROW_FR_M = (FIXTURES / "eurostat_migr3ctb_row_fr_m_sample.json").read_text(encoding="utf-8")
+CTZ_FR_F = (FIXTURES / "eurostat_migr1ctz_row_fr_f_sample.json").read_text(encoding="utf-8")
+
+
+def test_row_sex_build_url_pins_the_query_shape():
+    # The BY-SEX twin of the ROW grammar: the sex pin swapped from T to M/F,
+    # everything else identical — geo PINNED, the origin dimension ABSENT.
+    assert build_url("migr_pop3ctb/ROW/FR/M") == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+        "migr_pop3ctb?format=JSON&lang=EN&geo=FR&age=TOTAL&sex=M&unit=NR"
+    )
+    assert build_url("migr_pop1ctz/ROW/FR/F") == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+        "migr_pop1ctz?format=JSON&lang=EN&geo=FR&age=TOTAL&sex=F&unit=NR"
+    )
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    [
+        # (note: 'migr_pop3ctb/ROW/FR/T' is NOT refused here — the 4-segment
+        # space is shared with the pre-v22 pinned-c_birth grammar, whose
+        # c_birth position accepts any uppercase code: ROW/FR/T parses as
+        # c_birth=ROW, age=FR, sex=T, a nonsense ref whose fetch fails the
+        # soft-miss guard loudly. The ROW-SEX grammar itself speaks M/F
+        # only — T rides the BARE form.)
+        "migr_pop3ctb/ROW/FR/X",    # an unknown sex code (the sex class is [TMF])
+        "migr_pop1ctz/ROW/FR/M/X",  # five segments
+        "migr_pop1ctz/ROW/fr/M",    # lowercase geo
+    ],
+)
+def test_row_sex_ref_is_the_one_grammar_the_ventilation_speaks(bad_ref):
+    with pytest.raises(ValueError, match="Invalid Eurostat source_ref"):
+        build_url(bad_ref)
+
+
+def test_parse_row_sex_reads_the_male_ventilation_of_the_birth_face():
+    records = parse_eurostat(ROW_FR_M, expected_ref="migr_pop3ctb/ROW/FR/M")
+    # 1,220 records — the same row as the _T door, ventilated: every record
+    # carries sex="male" and the birth-face routing key.
+    assert len(records) == 1220
+    assert all(r.sex == "male" for r in records)
+    assert all(r.origin_axis == "birth" for r in records)
+    got = {(r.origin_iso3_raw, r.year): r.value for r in records}
+    # THE ARITHMETIC ANCHOR (verified live 2026-09-25): M + F = the _T print
+    # to the unit — 479,354 + 475,388 = 954,742, the v22 fixture's own
+    # FR<-MA 2015 anchor.
+    assert got[("MAR", 2015)] == pytest.approx(479354)
+    assert got[("MAR", 2018)] == pytest.approx(492723)
+    assert got[("PRT", 2015)] == pytest.approx(331297)
+    # the vanished-origin admission rides the ventilation too (the M row's
+    # own print — read live: 32; the _T face's 78 = M 32 + F 46, the same
+    # arithmetic coherence at the vanished origin).
+    assert got[("ANT", 1999)] == pytest.approx(32)
+
+
+def test_parse_row_sex_reads_the_female_ventilation_of_the_citizenship_face():
+    records = parse_eurostat(CTZ_FR_F, expected_ref="migr_pop1ctz/ROW/FR/F")
+    assert len(records) == 714
+    assert all(r.sex == "female" for r in records)
+    assert all(r.origin_axis == "citizenship" for r in records)
+    got = {(r.origin_iso3_raw, r.year): r.value for r in records}
+    # THE SEAM ON THE F FACE (verified live): the OECD B15 F print agrees
+    # to the unit — FR<-MAR F 2015 = 226,668 on both doors; and M + F =
+    # the _T print: 231,893 + 226,668 = 458,561.
+    assert got[("MAR", 2015)] == pytest.approx(226668)
+    assert got[("MAR", 2018)] == pytest.approx(243044)
+    assert got[("PRT", 2015)] == pytest.approx(252472)

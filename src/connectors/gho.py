@@ -53,7 +53,7 @@ API SHAPE (verified live 2026-09-13, WHOSIS_000015: 12,936 rows):
   are stored nowhere — the log line is the record of the drop,
   re-fetchable from source_url. A Dim2Type OTHER than AGEGROUP is not
   silently interpreted: it raises (layout change → a human decides).
-  Dim2-less indicators (WHOSIS_000015, MDG_0000000001) pass untouched.
+  Dim2-less indicators (WHOSIS_000015, PRISON_A2_*) pass untouched.
 - v20 — the per-code AGE pin: NCD_BMI_30C (the obesity canonical)
   disaggregates by AGE too, but as a SINGLE population face printed on
   every row (Dim2 = AGEGROUP_YEARS18-PLUS — the 18+ adult frame, read
@@ -65,6 +65,21 @@ API SHAPE (verified live 2026-09-13, WHOSIS_000015: 12,936 rows):
   row from another age frame = a door change, a human decides); an
   unpinned code keeps the YEARSALL rule verbatim (SDGSUICIDE's
   drop-the-slices grammar — bit-compat with every pre-v20 parse).
+- v23 — the MDG_0000000001 DOOR CHANGE, pinned: on 2026-09-25 the live
+  payload recoded its age frame — every one of the 39,279 COUNTRY rows
+  now carries Dim2 = AGEGROUP_MONTHS0-11 (the 0-11-months frame, the
+  door's own semantically-exact face for an under-1 mortality rate;
+  the Indicator metadata still declares Dim2Type null, out of sync with
+  the data). At v22 the rows rode Dim2-less and passed untouched; the
+  YEARSALL default would now refuse the WHOLE payload as age slices.
+  Verified live before any fix: the 39,210 dist-point keys are all
+  present with ZERO value divergence, and the 69 extra rows are all
+  Kosovo pre-2008 (dropped by the entity validity guard in normalize —
+  the same rows the v22 build dropped). The pin is therefore the v20
+  machinery applied to a door change: MDG_0000000001 ACCEPTS exactly
+  AGEGROUP_MONTHS0-11 now, and raises on anything else (a future
+  re-coding is a door change again, a human decides — never a silent
+  re-interpretation).
 - NumericValue is the estimate; "Value" is its formatted string
   ("15.9 [15.3-16.8]") and Low/High the uncertainty interval. The
   RawRecord schema carries only the estimate: the formatted string and
@@ -93,9 +108,16 @@ _SEX_DIM = {"SEX_MLE": "male", "SEX_FMLE": "female", "SEX_BTSX": None}
 # frame (no slices beside it) declares that frame here, and the parser
 # accepts exactly it (anything else raises). Codes not listed keep the
 # YEARSALL drop-the-slices grammar (SDGSUICIDE) or the Dim2-less pass
-# (WHOSIS_000015, MDG_0000000001, PRISON_A2_*).
+# (WHOSIS_000015, PRISON_A2_*). v23: MDG_0000000001 joins the pin table
+# — the provider recoded its frame (see the docstring above); the pin
+# keeps the door's own face explicit instead of letting the YEARSALL
+# default silently refuse the whole payload.
 _CODE_AGE_PIN: dict[str, str] = {
     "NCD_BMI_30C": "AGEGROUP_YEARS18-PLUS",  # read live 2026-09-22 on the full 28,350-row slice
+    # v23: read live 2026-09-25 on the full 44,424-row payload (39,279
+    # COUNTRY rows, every one carrying the 0-11-months frame; the v22
+    # dist reproduced bit-identically through the pin — see CHANGELOG).
+    "MDG_0000000001": "AGEGROUP_MONTHS0-11",
 }
 
 

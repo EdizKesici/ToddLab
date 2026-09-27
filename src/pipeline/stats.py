@@ -144,34 +144,40 @@ def _bilateral_lines(payload: dict) -> list[str]:
     (points, pairs, destinations x origins, the year range — the same
     re-verifiable counts the single-axis line carries, on the layer where
     every point's year is a MEASUREMENT year, never a birth year) and one
-    line per bilateral witness (the OECD matrix's world face)."""
-    b = payload.get("bilateral")
-    if not b:
-        return []
+    line per bilateral witness (the OECD matrix's world face).
+    v23: the citizenship face emits the SAME lines under its own key —
+    the two faces print side by side, never blended (ADR-0010)."""
     lines = []
-    data = b["data"]
-    valued = [p for p in data if p["value"] is not None]
-    pairs = {(p["destination_entity_id"], p["origin_entity_id"]) for p in data}
-    dests = {p["destination_entity_id"] for p in data}
-    origins = {p["origin_entity_id"] for p in data}
-    rng = _year_range(data)
-    lines.append(
-        f"  bilateral (by-origin): {_fmt(len(data))} points = {_fmt(len(valued))} valued + "
-        f"{_fmt(len(data) - len(valued))} explicit gaps; {_fmt(len(pairs))} (destination x origin) pairs; "
-        f"{_fmt(len(dests))} destinations x {_fmt(len(origins))} distinct origins"
-        + (f"; reference years {rng}" if rng else "")
-    )
-    for w in b.get("witnesses", []):
-        wpts = w["data"]
-        wrng = _year_range(wpts)
-        wdests = len({p["destination_entity_id"] for p in wpts})
-        worigins = len({p["origin_entity_id"] for p in wpts})
-        wpairs = len({(p["destination_entity_id"], p["origin_entity_id"]) for p in wpts})
+    for layer_key, layer_label in (
+        ("bilateral", "bilateral (by-origin)"),
+        ("bilateral_citizenship", "bilateral (by-citizenship)"),
+    ):
+        b = payload.get(layer_key)
+        if not b:
+            continue
+        data = b["data"]
+        valued = [p for p in data if p["value"] is not None]
+        pairs = {(p["destination_entity_id"], p["origin_entity_id"]) for p in data}
+        dests = {p["destination_entity_id"] for p in data}
+        origins = {p["origin_entity_id"] for p in data}
+        rng = _year_range(data)
         lines.append(
-            f"  bilateral witness {w['provider']}:{w['source_ref']}: "
-            f"{_fmt(len(wpts))} points, {_fmt(wpairs)} pairs, {_fmt(wdests)} destinations, "
-            f"{_fmt(worigins)} origins" + (f", {wrng}" if wrng else "")
+            f"  {layer_label}: {_fmt(len(data))} points = {_fmt(len(valued))} valued + "
+            f"{_fmt(len(data) - len(valued))} explicit gaps; {_fmt(len(pairs))} (destination x origin) pairs; "
+            f"{_fmt(len(dests))} destinations x {_fmt(len(origins))} distinct origins"
+            + (f"; reference years {rng}" if rng else "")
         )
+        for w in b.get("witnesses", []):
+            wpts = w["data"]
+            wrng = _year_range(wpts)
+            wdests = len({p["destination_entity_id"] for p in wpts})
+            worigins = len({p["origin_entity_id"] for p in wpts})
+            wpairs = len({(p["destination_entity_id"], p["origin_entity_id"]) for p in wpts})
+            lines.append(
+                f"  {layer_label} witness {w['provider']}:{w['source_ref']}: "
+                f"{_fmt(len(wpts))} points, {_fmt(wpairs)} pairs, {_fmt(wdests)} destinations, "
+                f"{_fmt(worigins)} origins" + (f", {wrng}" if wrng else "")
+            )
     return lines
 
 
@@ -181,7 +187,8 @@ def render_stats(dist_dir: Path) -> str:
     coverage (points, entities, year range) — the line that makes
     "the witness carries <value> for <year>" claims checkable at a glance.
     v22: indicators carrying a `bilateral` layer get its own lines too —
-    the by-origin matrix's counts, canonical and witness."""
+    the by-origin matrix's counts, canonical and witness. v23: the
+    `bilateral_citizenship` face prints its own lines the same way."""
     lines: list[str] = []
     for f in sorted((dist_dir / "indicators").glob("*.json")):
         payload = json.loads(f.read_text(encoding="utf-8"))

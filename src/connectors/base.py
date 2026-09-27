@@ -65,6 +65,18 @@ class RawRecord:
     IN France"). None on every pre-v22 record: the single-axis face; the
     pipeline routes on the field's presence (origin set -> the bilateral
     layer, never the (entity, year) merge key).
+
+    v23 (the citizenship face): origin_axis names WHICH bilateral axis
+    the record rides — "birth" (the place-of-birth legality: Eurostat
+    migr_pop3ctb, OECD DF_MIG_POPF) or "citizenship" (the legal face:
+    Eurostat migr_pop1ctz, OECD DSD_MIG@DF_MIG measure B15 — étrangers
+    vs immigrés, Todd's own two boards of the same stock). None on every
+    pre-v23 record and on every single-axis record: the birth face is the
+    default by construction, so v22 snapshots (which carry no origin_axis)
+    keep routing to the bilateral layer bit-identically. The two faces
+    PARALLEL, never merged (ADR-0010): normalize routes citizenship rows
+    to {indicator}.bilateral_citizenship.json, a separate layer with its
+    own merge key space and its own dist block.
     """
     entity_raw_name: str
     iso3_raw: str | None
@@ -73,6 +85,9 @@ class RawRecord:
     # v22: the origin axis of a bilateral matrix row (None = single-axis).
     origin_raw_name: str | None = None
     origin_iso3_raw: str | None = None
+    # v23: WHICH bilateral axis this row rides — "birth" | "citizenship"
+    # (None = single-axis, or a pre-v23 bilateral snapshot: the birth face).
+    origin_axis: str | None = None
     citation: str | None = None
     definition_note: str | None = None
     sex: str | None = None

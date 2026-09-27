@@ -90,50 +90,70 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   (10P4VEH_MOT_ROAD — the exact denominator of Todd's own 1974 WHO
   table in Le Fou et le Prolétaire) and the per-vehicle-km face stay
   registered non-wired doors, one config line away.
-- **OECD, THE MIGRATION QUESTIONNAIRE'S MATRIX** (collector tier,
-  v22 — the fourth dataflow, DSD_MIG_F@DF_MIG_POPF "International
-  migration database - stocks of foreign-born population", OECD.ELS.IMD)
-  — the bilateral WITNESS of immigration_stock's new by-origin face:
-  REF_AREA x BIRTH_COUNTRY, both axes ISO3, 38 destinations x 242
-  origin codes, the OECD-COMPILED face of the same national
-  registrations (the oecd_family relation — the IMD's own foreign-born
-  face). THE ACCESS QUIRK: the flow refuses positional keys (every
-  dotted key 404s — the observation dimension carries TIME), so the
-  door serves only through the empty-key /all download: 197,570 rows /
-  18.2 MB in one call, already the pinned frame (MEASURE=B14 only,
-  FREQ=A only, PS only — the flow's whole vocabulary, hard-verified per
-  row), both sexes riding for the parser to split (the _T frame kept,
-  the F rows dropped logged — the by-sex face recorded unwired). THE
-  SEAM, verified to the unit: the questionnaire prints the SAME number
-  the Eurostat c_birth face prints (FR<-MAR 2015 = 954,742 on both
-  doors) — the agreement the root field exists to explain, both doors
-  walking back to the same national registrations; and the OECD face
-  EXTENDS the canonical universe: the FR Maghreb series 2019-2021 past
-  the Eurostat cutoff, the vanished-entity origins (CSK_F/SUN_F/
-  YUG_F/ANT_F/SCG_F — the by-origin face of the v21 admission), and
-  the world's non-European destinations the Eurostat codelist
-  structurally cannot print (US<-MEX 12,383,868 in 2024, US<-W
-  51,226,993 the World-total row dropped logged).
-- **Eurostat, THE BY-ORIGIN ROW DOORS** (collector tier, v22 — the
-  bilateral face of the migration questionnaire, migr_pop3ctb/ROW/
-  {geo}): one geo-pinned call per destination, c_birth deliberately
-  UNPINNED — the by-birth codelist AS PRINTED (307 codes: 243
-  countries + the door's 64 aggregate/summary codes, dropped logged
-  per class; the c_birth == geo diagonal — the native face — drops
-  logged too). THE HONEST COVERAGE LIMIT: 30 of the codelist's 44
-  country geos print the by-origin detail (91,230 canonical points, 30
-  destinations x 243 origins, 1998-2025); 14 print only their totals
-  (DE, EL, MT, ME, MD, MK, GE, AL, RS, UA, AD, MC, AM, AZ — Germany's
-  row carries 184 cells, every one an aggregate or summary code) —
-  unwired, recorded, the Ukraine-on-the-FOR-door class of honest
-  absence. THE TODD BOARD'S OWN CELLS ride it: FR<-DZ 1999 =
-  1,246,706 -> 2018 = 1,390,284, FR<-MA 2015 = 954,742, FR<-PT 2025 =
-  599,492, the Maghreb/Turkey slices on the census rounds (the
-  coverage cliff as-printed), the UK row 1998-2004. THE VANISHED
-  ORIGIN: Eurostat keeps printing the Netherlands Antilles' withdrawn
-  alpha-2 AN as a birth place (FR<-AN 1999 = 78) — the
-  netherlands_antilles entity (iso3 ANT) carries it, the kosovo/XKX
-  precedent on the birth-place axis.
+- **OECD, THE MIGRATION QUESTIONNAIRE'S TWO MATRICES** (collector
+  tier, v22 + v23 — the fifth dataflow, the fourth connector's second
+  migration door) — the bilateral WITNESS pair of immigration_stock's
+  by-origin and by-citizenship faces, the SAME questionnaire's two
+  legalities (the oecd_mig root's two doors): the foreign-born matrix
+  (DSD_MIG_F@DF_MIG_POPF "International migration database - stocks of
+  foreign-born population", OECD.ELS.IMD — REF_AREA x BIRTH_COUNTRY,
+  both axes ISO3, 38 destinations x 242 origin codes) and its LEGAL
+  twin (DSD_MIG@DF_MIG "International migration database", measure
+  B15 — REF_AREA x CITIZENSHIP, 36 destinations x 236 origins after
+  the drops). THE ACCESS MIRRORS (each verified live): the B14 flow
+  refuses positional keys and serves only the empty-key /all download
+  (197,570 rows / 18.2 MB); the B15 flow REFUSES /all and serves the
+  positional wildcard key '..A.B15.._Z._Z.PS' (216,120 rows / 18.4 MB)
+  — one wire per face. Both downloads already the pinned frame
+  (FREQ=A, the measure, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z, UNIT=PS —
+  hard-verified per row), both sexes riding for the parser to split
+  (the _T frame kept, the F rows dropped logged — the by-sex face
+  recorded unwired, the V24 hook: B15's 104,009 F rows already
+  downloaded). THE SEAMS, verified to the unit: the questionnaires
+  agree with the Eurostat doors on BOTH faces (FR<-MAR _T 2015 =
+  954,742 born on B14 and 458,561 citizens on B15 — each its Eurostat
+  print exactly), and the OECD faces extend the canonical universe
+  (the FR Maghreb series 2019-2021, the vanished-entity origins, the
+  world's non-European destinations: US<-MEX 2024 = 12,383,868 born
+  vs 8,226,106 citizens — the naturalization gap the pair exists to
+  display). SINCE v24 THE FEMALE FACE rides both matrices (the flows'
+  whole vocabulary is _T + F — NO male face, verified live): the F
+  rows kept as sex="female" points (B14 +94,952, B15 +101,829), the
+  seams verified to the unit against the Eurostat F doors (FR<-MAR F
+  2015 = 475,388 born / 226,668 citizens on both sides of each pair).
+- **Eurostat, THE TWO BY-ORIGIN ROW FACES** (collector tier, v22 +
+  v23 — the bilateral decomposition of the migration questionnaire,
+  migr_pop{3ctb,1ctz}/ROW/{geo}: one geo-pinned call per destination,
+  the origin dimension deliberately UNPINNED): the BIRTH face
+  (migr_pop3ctb — the foreign-born stock, immigrés) and its LEGAL twin
+  (migr_pop1ctz — the stock of foreign citizens, étrangers), the two
+  boards of Le Destin des immigrés themselves — the same migrants read
+  through two legalities, DIVERGING exactly where naturalization runs
+  ahead of the census (FR<-MA 2015: 954,742 born vs 458,561 citizens)
+  and CONVERGING where it rarely does (FR<-PT 2015: 648,112 vs
+  541,867). The two faces ride the dist as PARALLEL layers, never
+  merged (ADR-0010): `bilateral` and `bilateral_citizenship`, the
+  routing key RawRecord.origin_axis. THE HONEST COVERAGE LIMITS, each
+  face its own: the birth face — 30 of the codelist's 44 country geos
+  print the by-birth detail (91,230 canonical points, 30 x 243
+  origins, 1998-2025; 14 print only their totals, unwired, recorded);
+  the citizenship face — 34 print the by-citizenship detail (112,058
+  canonical points, 34 x 226 origins, 1998-2025), GERMANY joining (its
+  birth-face row never printed the detail) and CYPRUS leaving (the
+  totals-only class) — the registration's own asymmetry, carried
+  as-printed, never "corrected". THE DROP DISCIPLINE, shared with one
+  axis-specific class: the summary codes, the aggregates/regions and
+  the native diagonal drop logged per class; the citizenship face adds
+  STLS (stateless — a nationality without a state, an axis residual
+  the birth face never printed). THE VANISHED ORIGINS ride the shared
+  override tables on both faces (AN -> ANT, XK -> XKX — the kosovo/
+  XKX precedent, people born in or still citizens of the former
+  entities, the as-printed classification). SINCE v24 THE BY-SEX FACE
+  rides the same layers (migr_pop{3ctb,1ctz}/ROW/{geo}/{sex} — the
+  M/F ventilations of the SAME rows under the merge key's own sex
+  term, M + F = the _T print to the unit on every anchor: FR<-MA
+  birth 2015 = 479,354 + 475,388 = 954,742; 29 birth + 33 ctz
+  destinations print it, Croatia the honest absence).
 - **World Inequality Database, via OWID's chart door** (research-
   harmonization tier serving as CANONICAL, v19) — the corpus NAMES the
   source for La Défaite de l'Occident's own inequality board

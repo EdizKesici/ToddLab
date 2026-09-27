@@ -22,7 +22,7 @@ from tests.conftest import (
 from src.config_loader import cross_validate_todd_core, load_todd_refs
 from src.pipeline.build import build_all
 from src.pipeline.merge import merge_all
-from src.pipeline.normalize import normalize_all
+from src.pipeline.normalize import _BILATERAL_SCRATCH, normalize_all, normalize_indicator
 from src.pipeline.validate import validate_all
 from tests.conftest import CONFIG_DIR
 
@@ -73,13 +73,19 @@ def _run_pipeline(tmp_path: Path, real_indicators, real_entities):
     seed_gho_snapshot(raw_dir, "suicide_rate", "SDGSUICIDE", fixture="gho_sdgsuicide_sample.json")
     # v11 (P5): the World Bank doors — IMR sex-split (MA/FE) + LE
     # sex-split (MA/FE), and the third IGME door on IMR (GHO
-    # MDG_0000000001, seeded through the same GHO fixture: the connector
-    # is code-agnostic, the rows are).
+    # MDG_0000000001, seeded through its OWN live-generated fixture
+    # since v23: the provider recoded the door's age frame — every row
+    # now carries Dim2=AGEGROUP_MONTHS0-11 — and the per-code AGE pin
+    # accepts exactly that; the WHOSIS fixture's Dim2-less rows would
+    # be refused as a door change, loudly, by design).
     seed_wb_snapshot(raw_dir, "infant_mortality", "SP.DYN.IMRT.MA.IN")
     seed_wb_snapshot(raw_dir, "infant_mortality", "SP.DYN.IMRT.FE.IN")
     seed_wb_snapshot(raw_dir, "life_expectancy", "SP.DYN.LE00.MA.IN")
     seed_wb_snapshot(raw_dir, "life_expectancy", "SP.DYN.LE00.FE.IN")
-    seed_gho_snapshot(raw_dir, "infant_mortality", "MDG_0000000001")
+    seed_gho_snapshot(
+        raw_dir, "infant_mortality", "MDG_0000000001",
+        fixture="gho_mdg_0000000001_sample.json",
+    )
     # v12 (the maternal bloc): the two WDI maternal doors.
     seed_wb_snapshot(raw_dir, "maternal_mortality_ratio", "SH.STA.MMRT")
     seed_wb_snapshot(raw_dir, "maternal_deaths", "SH.MMR.DTHS")
@@ -1936,16 +1942,26 @@ def test_immigration_stock_is_two_tier_with_un_desa(tmp_path, real_indicators, r
     assert {r["root"] for r in roots["canonical"]} == {"eurostat_migr"}
     # v22: the by-origin face adds the OECD matrix's root to the witness
     # genealogy (the 44 Eurostat ROW doors ride the SAME canonical root —
-    # the doors count grows, the root does not).
+    # the doors count grows, the root does not). v23: the citizenship
+    # twin adds its 34 ctz ROW doors to the SAME root and the B15 matrix
+    # to the SAME OECD witness root — the roots stay two, the doors count
+    # alone tells the story (the catalog's own genealogy arithmetic).
     assert {r["root"] for r in roots["witness"]} == {"un_desa", "oecd_mig"}
     row_doors = next(r for r in roots["canonical"] if r["root"] == "eurostat_migr")
-    assert row_doors["doors"] == 31  # the FOR total + the 30 by-origin ROW doors that print
+    # v23: the FOR total + 30 by-origin ROW doors + 34 by-citizenship ROW
+    # doors; v24: + the 124 by-sex ROW doors (29 M + 29 F birth, 33 M +
+    # 33 F citizenship) = 189 doors on the one eurostat_migr root.
+    assert row_doors["doors"] == 189
+    oecd_doors = next(r for r in roots["witness"] if r["root"] == "oecd_mig")
+    assert oecd_doors["doors"] == 2  # v23: the B14 birth matrix + the B15 citizenship matrix
     # v22: THE ADDITIVE DISCIPLINE — this harness seeds only the two v18
     # sources (no ROW / OECD snapshots), so the dist carries NO bilateral
     # layer at all: every pre-existing key bit-identical, the honest
     # absence of the layer an indicator without by-origin snapshots
     # prints. The live rebuild emits it (see the v22 integration test).
+    # v23: the citizenship twin's absence rides the same discipline.
     assert "bilateral" not in payload
+    assert "bilateral_citizenship" not in payload
 
 
 # --- v19: the three-indicator delivery ------------------------------------
@@ -2564,30 +2580,39 @@ def test_immigration_stock_carries_the_bilateral_layer_end_to_end(
     assert (bw["provider"], bw["source_ref"]) == ("oecd", "DF_MIG_POPF")
     assert bw["root"] == "oecd_mig"
     assert bw["n_points"] == len(bw["data"])
+    # v24: the witness series now carries BOTH faces of the flow's print —
+    # the both-sexes points (sex=None) and the female points (sex="female",
+    # the by-sex door wired v24) — so the map keys carry the merge key's
+    # sex component, the shape the layer itself uses.
     wpts = {
-        (d["destination_entity_id"], d["origin_entity_id"], d["year"]): d["value"]
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
         for d in bw["data"]
     }
     # THE SEAM, both doors in ONE dist: the witness prints the SAME unit
     # the canonical prints on the co-covered core — the compilation seam
     # displayed, never reconciled...
-    assert wpts[("france", "morocco", 2015)] == pytest.approx(954742)
-    assert wpts[("france", "morocco", 2018)] == pytest.approx(992120)
+    assert wpts[("france", "morocco", 2015, None)] == pytest.approx(954742)
+    assert wpts[("france", "morocco", 2018, None)] == pytest.approx(992120)
     # ...and EXTENDS the FR Maghreb series past the Eurostat 2018 cutoff.
-    assert wpts[("france", "morocco", 2019)] == pytest.approx(1009605)
-    assert wpts[("france", "morocco", 2021)] == pytest.approx(1036133)
+    assert wpts[("france", "morocco", 2019, None)] == pytest.approx(1009605)
+    assert wpts[("france", "morocco", 2021, None)] == pytest.approx(1036133)
     assert ("france", "morocco", 2019) not in bpts  # the extension is WITNESS-side
     # THE WORLD FACE the Eurostat universe cannot print:
-    assert wpts[("united_states", "mexico", 2024)] == pytest.approx(12383867.87)
+    assert wpts[("united_states", "mexico", 2024, None)] == pytest.approx(12383867.87)
+    # v24: THE FEMALE FACE of the same witness — the flow's F rows kept
+    # (the Eurostat birth-face F doors' own print, verified to the unit:
+    # FR<-MAR F 2015 = 475,388).
+    assert wpts[("france", "morocco", 2015, "female")] == pytest.approx(475388)
+    assert wpts[("france", "morocco", 2018, "female")] == pytest.approx(499397)
     # THE VANISHED ORIGINS, landed on their entities (the _F prints):
     assert ("france", "netherlands_antilles", 2015) in wpts or any(
-        orig == "netherlands_antilles" for (_, orig, _) in wpts
+        orig == "netherlands_antilles" for (_, orig, _, _) in wpts
     )
     # (the entity_ids: the USSR's id is `ussr`, its label is Soviet Union)
     for vanished in ("czechoslovakia", "ussr", "yugoslavia_sfr", "serbia_and_montenegro", "kosovo"):
-        assert any(orig == vanished for (_, orig, _) in wpts), vanished
+        assert any(orig == vanished for (_, orig, _, _) in wpts), vanished
     # the residual vocabulary never enters the witness series
-    assert not any(orig in ("world",) for (_, orig, _) in wpts)
+    assert not any(orig in ("world",) for (_, orig, _, _) in wpts)
 
     # --- THE SOURCES BLOCK: the by-origin doors declared, the citations
     # carrying the flow's own title and the ROW grammar's own wording.
@@ -2630,12 +2655,350 @@ def test_immigration_stock_carries_the_bilateral_layer_end_to_end(
     assert not any(m["id"] == "immigration_stock" and not m["implemented"] for m in corpus["metrics"])
 
     # --- THE CATALOG: the roots summary counts the CONFIG's declared doors
-    # (all 31 Eurostat sources — the FOR total + the 30 printing ROW refs —
-    # ride the SAME canonical root; the seeded subset does not shrink the
-    # declared wiring, the summary is a statement about the config, not the
-    # snapshot).
+    # (all 189 Eurostat sources — the FOR total + the 30 printing by-origin
+    # ROW refs + the 34 by-citizenship ROW refs since v23 + the 124 by-sex
+    # ROW refs since v24 — ride the SAME canonical root; the seeded subset
+    # does not shrink the declared wiring, the summary is a statement about
+    # the config, not the snapshot).
     catalog = {c["id"]: c for c in json.loads((dist_dir / "catalog.json").read_text())}
     roots = catalog["immigration_stock"]["roots"]
     eurostat_migr_canonical = next(r for r in roots["canonical"] if r["root"] == "eurostat_migr")
-    assert eurostat_migr_canonical["doors"] == 31
+    assert eurostat_migr_canonical["doors"] == 189
     assert {r["root"] for r in roots["witness"]} == {"un_desa", "oecd_mig"}
+
+
+# --- v23: the citizenship face (the bilateral_citizenship layer) ---------------
+
+
+def test_normalize_routes_the_bilateral_face_on_origin_axis(
+    tmp_path, real_indicators, real_entities
+):
+    # THE ROUTING KEY (§ the v23 architecture): origin_axis decides which
+    # PARALLEL layer a bilateral row rides — "citizenship" ->
+    # {id}.bilateral_citizenship.json, "birth" OR ABSENT (a pre-v23
+    # snapshot, the bit-compat guarantee) -> {id}.bilateral.json. The two
+    # lists never mix (ADR-0010), and the single-axis flow is untouched.
+    from tests.conftest import (
+        seed_eurostat_row_snapshot,
+        seed_oecd_mig_snapshot,
+        seed_oecd_migf_snapshot,
+    )
+
+    raw_dir = tmp_path / "raw"
+    processed_dir = tmp_path / "processed"
+    seed_eurostat_row_snapshot(raw_dir, "immigration_stock", "migr_pop3ctb/ROW/FR")
+    seed_eurostat_row_snapshot(
+        raw_dir, "immigration_stock", "migr_pop1ctz/ROW/FR",
+        fixture="eurostat_migr1ctz_row_fr_sample.json",
+    )
+    seed_oecd_migf_snapshot(raw_dir, "immigration_stock", "DF_MIG_POPF")
+    seed_oecd_mig_snapshot(raw_dir, "immigration_stock", "DF_MIG/B15")
+
+    ind = real_indicators["immigration_stock"]
+    points, unresolved, _ = normalize_indicator(ind, raw_dir, real_entities)
+    bilateral = _BILATERAL_SCRATCH[ind.id]["birth"]
+    citizenship = _BILATERAL_SCRATCH[ind.id]["citizenship"]
+
+    # the single-axis flow untouched: no seeded FOR door -> no points.
+    assert points == []
+    # the birth face: the v22 door's records (1,220) + the OECD B14
+    # witness's — every source_ref the v22 wiring knows.
+    assert {p.source_ref for p in bilateral} == {"migr_pop3ctb/ROW/FR", "DF_MIG_POPF"}
+    # the citizenship face: the v23 doors only, its own key space.
+    assert {p.source_ref for p in citizenship} == {"migr_pop1ctz/ROW/FR", "DF_MIG/B15"}
+    # THE ADR-0010 PIN: the same (destination, origin, year) key rides
+    # BOTH layers with DIFFERENT values — never merged, never arbitrated.
+    birth_map = {(p.entity_id, p.origin_entity_id, p.year): p.value for p in bilateral}
+    ctz_map = {(p.entity_id, p.origin_entity_id, p.year): p.value for p in citizenship}
+    assert birth_map[("france", "morocco", 2015)] == pytest.approx(954742)
+    assert ctz_map[("france", "morocco", 2015)] == pytest.approx(458561)
+
+    # THE BIT-COMPAT GUARANTEE: a pre-v23 snapshot (origin_axis absent)
+    # keeps routing to the birth layer — the v22 raw tree rebuilt on the
+    # v23 code stays byte-identical.
+    import dataclasses
+    import json as _json
+
+    snap_dir = raw_dir / "eurostat" / "immigration_stock" / "migr_pop1ctz_ROW_FR"
+    legacy_path = sorted(snap_dir.glob("*.json"))[-1]
+    legacy = _json.loads(legacy_path.read_text(encoding="utf-8"))
+    for rec in legacy["records"]:
+        rec.pop("origin_axis", None)  # the pre-v23 shape
+    legacy_path.write_text(_json.dumps(legacy, ensure_ascii=False, indent=2), encoding="utf-8")
+    _BILATERAL_SCRATCH.pop(ind.id, None)
+    normalize_indicator(ind, raw_dir, real_entities)
+    bilateral2 = _BILATERAL_SCRATCH[ind.id]["birth"]
+    citizenship2 = _BILATERAL_SCRATCH[ind.id]["citizenship"]
+    # the origin_axis-less rows joined the BIRTH layer (the legacy default),
+    # the B15 witness kept its citizenship routing (its axis is explicit).
+    refs2 = {p.source_ref for p in bilateral2}
+    assert "migr_pop1ctz/ROW/FR" in refs2  # the legacy rows, defaulted to birth
+    assert all(p.source_ref == "DF_MIG/B15" for p in citizenship2)
+    assert dataclasses  # (import kept honest — no unused-import games)
+
+
+def test_immigration_stock_carries_the_bilateral_citizenship_layer_end_to_end(
+    tmp_path, real_indicators, real_entities, real_todd_refs
+):
+    # THE LEGAL TWIN WIRED (v23): étrangers vs immigrés — the second board
+    # of Le Destin des immigrés. This test seeds the indicator's SIX doors
+    # (the v18 FOR total + the UN DESA witness + the v22 FR birth row +
+    # the v22 OECD B14 matrix + the v23 FR citizenship row + the v23 OECD
+    # B15 matrix, the four fixtures carved from the live responses by
+    # scripts/make_v22_fixtures.py and scripts/make_v23_fixtures.py) and
+    # runs the real pipeline on the real committed config.
+    from tests.conftest import (
+        seed_eurostat_row_snapshot,
+        seed_oecd_mig_snapshot,
+        seed_oecd_migf_snapshot,
+    )
+
+    raw_dir = tmp_path / "raw"
+    processed_dir = tmp_path / "processed"
+    dist_dir = tmp_path / "dist"
+    reports_dir = tmp_path / "reports"
+    seed_eurostat_snapshot(raw_dir, "immigration_stock", "migr_pop3ctb/FOR/TOTAL/T", fixture="eurostat_migr_for_sample.json")
+    seed_wb_snapshot(raw_dir, "immigration_stock", "SM.POP.TOTL")
+    seed_eurostat_row_snapshot(raw_dir, "immigration_stock", "migr_pop3ctb/ROW/FR")
+    seed_oecd_migf_snapshot(raw_dir, "immigration_stock", "DF_MIG_POPF")
+    seed_eurostat_row_snapshot(
+        raw_dir, "immigration_stock", "migr_pop1ctz/ROW/FR",
+        fixture="eurostat_migr1ctz_row_fr_sample.json",
+    )
+    seed_oecd_mig_snapshot(raw_dir, "immigration_stock", "DF_MIG/B15")
+
+    normalize_all(real_indicators, raw_dir, processed_dir, real_entities)
+    merge_all(list(real_indicators.keys()), processed_dir)
+    validate_results = validate_all(real_indicators, processed_dir, real_entities, reports_dir)
+    build_all(real_indicators, processed_dir, dist_dir, real_entities, todd_refs=real_todd_refs)
+
+    payload = json.loads((dist_dir / "indicators" / "immigration_stock.json").read_text())
+
+    # --- THE ADDITIVE CONTRACT ACROSS VERSIONS: the single-axis face and
+    # the v22 birth layer are UNTOUCHED by the v23 wiring — the
+    # citizenship layer rides BESIDE them, never through.
+    canon = {(d["entity_id"], d["year"]): d for d in payload["data"]}
+    assert canon[("france", 2008)]["value"] == pytest.approx(7076824)
+    assert canon[("france", 2024)]["value"] == pytest.approx(9362105)
+    assert len(payload["witnesses"]) == 1
+    birth = payload["bilateral"]
+    bpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"]): d["value"]
+        for d in birth["data"]
+    }
+    assert bpts[("france", "morocco", 2015)] == pytest.approx(954742)  # the v22 anchor, intact
+    assert bpts[("france", "netherlands_antilles", 1999)] == pytest.approx(78)
+    assert len(birth["witnesses"]) == 1  # the B14 matrix, its own layer
+
+    # --- THE CITIZENSHIP LAYER: the dist's own second matrix — the same
+    # point shape on the legal axis, its own witnesses, never merged.
+    ctz = payload["bilateral_citizenship"]
+    assert ctz and ctz["data"]
+    cpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"]): d
+        for d in ctz["data"]
+    }
+    assert all(set(d) <= {"destination_entity_id", "origin_entity_id", "year", "value", "provider", "source_ref", "sex", "quality_code", "provisional"} for d in ctz["data"])
+    # THE v18 ANCHOR DISAMBIGUATION, landed: the citizenship print of the
+    # FR<-MA stock, the four-year series exact (the birth face prints
+    # 954,742 — two legalities of the same stock, ADR-0010).
+    assert cpts[("france", "morocco", 2015)]["value"] == pytest.approx(458561)
+    assert cpts[("france", "morocco", 2016)]["value"] == pytest.approx(465230)
+    assert cpts[("france", "morocco", 2017)]["value"] == pytest.approx(472843)
+    assert cpts[("france", "morocco", 2018)]["value"] == pytest.approx(480600)
+    assert cpts[("france", "morocco", 2015)]["source_ref"] == "migr_pop1ctz/ROW/FR"
+    # THE CONTRAST ANCHOR (§5.4, labels corrected live): CONVERGE —
+    # FR<-PT 2015 = 648,112 born vs 541,867 citizens.
+    assert cpts[("france", "portugal", 2015)]["value"] == pytest.approx(541867)
+    assert bpts[("france", "portugal", 2015)] == pytest.approx(648112)
+    # the diagonal and the stateless NEVER enter the layer
+    assert not any(dest == orig for (dest, orig, _) in cpts)
+    assert all(d["value"] is not None for d in ctz["data"])
+
+    # --- THE CITIZENSHIP WITNESS: the OECD B15 matrix, its own series in
+    # its own layer (the B14 witness stays in the birth layer's).
+    assert len(ctz["witnesses"]) == 1
+    cw = ctz["witnesses"][0]
+    assert (cw["provider"], cw["source_ref"]) == ("oecd", "DF_MIG/B15")
+    assert cw["root"] == "oecd_mig"
+    # v24: the witness carries both faces of the flow's print — the map
+    # keys carry the merge key's sex component.
+    wpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
+        for d in cw["data"]
+    }
+    # THE SEAM, both doors in ONE dist: the questionnaire prints the SAME
+    # unit the Eurostat ctz door prints — 458,561 at 2015 exactly.
+    assert wpts[("france", "morocco", 2015, None)] == pytest.approx(458561)
+    # v24: THE FEMALE FACE of the same witness, agreeing with the
+    # Eurostat ctz F doors to the unit (FR<-MAR F 2015 = 226,668).
+    assert wpts[("france", "morocco", 2015, "female")] == pytest.approx(226668)
+    # THE WORLD FACE, on the pair the naturalization gap widens:
+    # US<-MEX 2024 = 8,226,106 citizens vs the birth face's 12,383,868
+    # (the B14 witness's own print, one dist away).
+    assert wpts[("united_states", "mexico", 2024, None)] == pytest.approx(8226106.247)
+    assert wpts[("united_states", "mexico", 2024, "female")] == pytest.approx(3752511.161)
+    birth_wpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
+        for d in birth["witnesses"][0]["data"]
+    }
+    assert birth_wpts[("united_states", "mexico", 2024, None)] == pytest.approx(12383867.87)
+    # THE VANISHED ORIGINS, landed on their entities (the _F prints, the
+    # SAME admission as the birth face).
+    for vanished in ("czechoslovakia", "ussr", "yugoslavia_sfr", "serbia_and_montenegro", "kosovo"):
+        assert any(orig == vanished for (_, orig, _, _) in wpts), vanished
+    # the residual vocabulary never enters the witness series
+    assert not any(orig in ("world",) for (_, orig, _, _) in wpts)
+
+    # --- THE SOURCES BLOCK: the ctz doors declared, the citations carrying
+    # the questionnaire's own title and the citizenship axis's own wording.
+    sources = {(s["provider"], s["source_ref"]): s for s in payload["sources"]}
+    ctz_src = sources[("eurostat", "migr_pop1ctz/ROW/FR")]
+    assert ctz_src["role"] == "canonical"
+    assert ctz_src["root"] == "eurostat_migr"
+    assert "the by-citizenship (citizen) row of geo FR" in ctz_src["citation"]
+    assert "Population on 1 January by age group, sex and citizenship" in ctz_src["citation"]
+    b15_src = sources[("oecd", "DF_MIG/B15")]
+    assert b15_src["role"] == "witness"
+    assert b15_src["root"] == "oecd_mig"
+    assert "International migration database (DSD_MIG@DF_MIG)" in b15_src["citation"]
+    assert "nationality" in b15_src["citation"]
+
+    # --- VALIDATION: the citizenship section, its own key, its own checks.
+    imm = next(r for r in validate_results if r["indicator_id"] == "immigration_stock")
+    c = imm["bilateral_citizenship"]
+    assert c["range_violations"] == []
+    assert c["duplicate_entity_year"] == []
+    assert c["n_destinations"] == 1  # this seed wires the FR row only
+    assert c["n_origins"] == 127     # the FR row's country origins, live-read
+    assert all(not cwv["range_violations"] for cwv in c["witnesses"])
+    # the birth section untouched, its own key.
+    assert imm["bilateral"]["n_destinations"] == 1
+
+    # --- THE CORPUS: 24/24, BIT-IDENTICAL (v23 adds a FACE to an existing
+    # indicator — zero flips, the v21/v22 discipline).
+    corpus = json.loads((dist_dir / "todd_corpus.json").read_text())
+    assert corpus["meta"]["implemented_metrics"] == 24
+    assert not any(m["id"] == "immigration_stock" and not m["implemented"] for m in corpus["metrics"])
+
+
+# --- v24: the by-sex face (the ventilations of the same rows) ------------------
+
+
+def test_immigration_stock_carries_the_by_sex_face_end_to_end(
+    tmp_path, real_indicators, real_entities, real_todd_refs
+):
+    # THE VENTILATIONS WIRED (v24, Ediz's approved direction): the M/F
+    # splits of the two questionnaires' matrices riding the SAME bilateral
+    # layers under the merge key's sex component — this test seeds the
+    # indicator's EIGHT doors (the v18 FOR total + the UN DESA witness +
+    # the FR rows of both faces on all three sexes + the two OECD
+    # matrices) and runs the real pipeline on the real committed config.
+    from tests.conftest import (
+        seed_eurostat_row_snapshot,
+        seed_oecd_mig_snapshot,
+        seed_oecd_migf_snapshot,
+    )
+
+    raw_dir = tmp_path / "raw"
+    processed_dir = tmp_path / "processed"
+    dist_dir = tmp_path / "dist"
+    reports_dir = tmp_path / "reports"
+    seed_eurostat_snapshot(raw_dir, "immigration_stock", "migr_pop3ctb/FOR/TOTAL/T", fixture="eurostat_migr_for_sample.json")
+    seed_wb_snapshot(raw_dir, "immigration_stock", "SM.POP.TOTL")
+    seed_eurostat_row_snapshot(raw_dir, "immigration_stock", "migr_pop3ctb/ROW/FR")
+    seed_eurostat_row_snapshot(
+        raw_dir, "immigration_stock", "migr_pop3ctb/ROW/FR/M",
+        fixture="eurostat_migr3ctb_row_fr_m_sample.json",
+    )
+    seed_eurostat_row_snapshot(
+        raw_dir, "immigration_stock", "migr_pop1ctz/ROW/FR",
+        fixture="eurostat_migr1ctz_row_fr_sample.json",
+    )
+    seed_eurostat_row_snapshot(
+        raw_dir, "immigration_stock", "migr_pop1ctz/ROW/FR/F",
+        fixture="eurostat_migr1ctz_row_fr_f_sample.json",
+    )
+    seed_oecd_migf_snapshot(raw_dir, "immigration_stock", "DF_MIG_POPF")
+    seed_oecd_mig_snapshot(raw_dir, "immigration_stock", "DF_MIG/B15")
+
+    normalize_all(real_indicators, raw_dir, processed_dir, real_entities)
+    merge_all(list(real_indicators.keys()), processed_dir)
+    validate_results = validate_all(real_indicators, processed_dir, real_entities, reports_dir)
+    build_all(real_indicators, processed_dir, dist_dir, real_entities, todd_refs=real_todd_refs)
+
+    payload = json.loads((dist_dir / "indicators" / "immigration_stock.json").read_text())
+
+    # --- THE SINGLE-AXIS FACE UNTOUCHED (the by-sex wiring touches only
+    # the bilateral layers).
+    canon = {(d["entity_id"], d["year"]): d for d in payload["data"]}
+    assert canon[("france", 2024)]["value"] == pytest.approx(9362105)
+    assert len(payload["witnesses"]) == 1
+
+    # --- THE BIRTH LAYER: three sexes on the same (destination, origin,
+    # year) space — the both-sexes points bit-identical, the M points
+    # riding beside them, the M + F = _T arithmetic anchor exact.
+    birth = payload["bilateral"]
+    bpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
+        for d in birth["data"]
+    }
+    assert bpts[("france", "morocco", 2015, None)] == pytest.approx(954742)
+    assert bpts[("france", "morocco", 2015, "male")] == pytest.approx(479354)
+    # M + F = _T to the unit (the F door not seeded in this harness — the
+    # male print + the both-sexes print pin the arithmetic's two knowns).
+    assert bpts[("france", "portugal", 2015, "male")] == pytest.approx(331297)
+    assert bpts[("france", "portugal", 2015, None)] == pytest.approx(648112)
+    assert bpts[("france", "netherlands_antilles", 1999, "male")] == pytest.approx(32)
+    # the per-point provenance: the M points carry their own door
+    src_by_key = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d.get("source_ref")
+        for d in birth["data"]
+    }
+    assert src_by_key[("france", "morocco", 2015, "male")] == "migr_pop3ctb/ROW/FR/M"
+    assert src_by_key[("france", "morocco", 2015, None)] == "migr_pop3ctb/ROW/FR"
+
+    # --- THE CITIZENSHIP LAYER: the F ventilation riding its own face.
+    ctz = payload["bilateral_citizenship"]
+    cpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
+        for d in ctz["data"]
+    }
+    assert cpts[("france", "morocco", 2015, None)] == pytest.approx(458561)
+    assert cpts[("france", "morocco", 2015, "female")] == pytest.approx(226668)
+    # M + F = _T on the citizenship face too (the M door not seeded — the
+    # F print + the both-sexes print pin the arithmetic's two knowns).
+    assert cpts[("france", "portugal", 2015, "female")] == pytest.approx(252472)
+    assert cpts[("france", "portugal", 2015, None)] == pytest.approx(541867)
+
+    # --- THE OECD WITNESSES: the F faces kept (the V23 pull's rows
+    # un-blocked), riding the same series under the sex component.
+    bw = birth["witnesses"][0]
+    wpts = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
+        for d in bw["data"]
+    }
+    assert wpts[("france", "morocco", 2015, None)] == pytest.approx(954742)
+    assert wpts[("france", "morocco", 2015, "female")] == pytest.approx(475388)
+    # THE SEAM ON THE F FACE: the OECD B14 F print agrees with the
+    # Eurostat birth-face F print to the unit.
+    cw = ctz["witnesses"][0]
+    wpts_c = {
+        (d["destination_entity_id"], d["origin_entity_id"], d["year"], d.get("sex")): d["value"]
+        for d in cw["data"]
+    }
+    assert wpts_c[("france", "morocco", 2015, None)] == pytest.approx(458561)
+    assert wpts_c[("france", "morocco", 2015, "female")] == pytest.approx(226668)
+    assert wpts_c[("united_states", "mexico", 2024, "female")] == pytest.approx(3752511.161)
+
+    # --- VALIDATION: both layers' sections, no duplicates across the
+    # three-sex key space.
+    imm = next(r for r in validate_results if r["indicator_id"] == "immigration_stock")
+    for layer in ("bilateral", "bilateral_citizenship"):
+        assert imm[layer]["duplicate_entity_year"] == []
+        assert imm[layer]["range_violations"] == []
+        assert all(not w["range_violations"] for w in imm[layer]["witnesses"])
+
+    # --- THE CORPUS: 24/24 (a face again — zero flips).
+    corpus = json.loads((dist_dir / "todd_corpus.json").read_text())
+    assert corpus["meta"]["implemented_metrics"] == 24

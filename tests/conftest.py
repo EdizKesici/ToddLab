@@ -463,3 +463,37 @@ def seed_oecd_migf_snapshot(
         records=records,
     )
     return _write_snapshot(raw_dir, result)
+
+
+def seed_oecd_mig_snapshot(
+    raw_dir: Path,
+    indicator_id: str,
+    source_ref: str = "DF_MIG/B15",
+    *,
+    fixture: str = "oecd_mig_b15_sample.csv",
+) -> Path:
+    """oecd DF_MIG/B15 (v23, the migration questionnaire's CITIZENSHIP
+    matrix): a REAL slice of the keyed wildcard download (rows copied
+    byte-for-byte by scripts/make_v23_fixtures.py, never typed — 16,285
+    lines = 8,283 _T + 8,002 F) — the complete FR and US rows on both
+    sexes (the F rows exercising the logged by-sex drop, the V24 hook),
+    every residual code (STLS/W/W_X/EEA/EU15/A4), every vanished-entity
+    code (XKV/ANT_F/CSK_F/SCG_F/SUN_F/YUG_F) riding the shared override
+    table onto their withdrawn ISO3 entities, the diagonals. The parser
+    pins the _T frame and the B15 frame pins, drops the classes logged,
+    and stamps origin_axis="citizenship" on every record; the seam
+    anchors ride it (FR<-MAR _T 2015 = 458,561 = the Eurostat
+    migr_pop1ctz print exactly; US<-MEX 2024 = 8,226,106.247)."""
+    from src.connectors.oecd import parse_mig_csv
+
+    csv_text = (FIXTURES_DIR / fixture).read_text(encoding="utf-8")
+    records = parse_mig_csv(csv_text)
+    result = RawFetchResult(
+        provider="oecd",
+        source_ref=source_ref,
+        indicator_id=indicator_id,
+        fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
+        source_url="test://fixture-oecd-mig",
+        records=records,
+    )
+    return _write_snapshot(raw_dir, result)
