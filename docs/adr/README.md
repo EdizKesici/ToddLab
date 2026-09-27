@@ -27,6 +27,7 @@ they ever need revisiting:
 | [0007](0007-source-of-record-and-witnesses.md) | Source-of-record per layer, witnesses, and the curation gate | Accepted (2026-09-06) |
 | [0008](0008-todd-board-canonical-layer.md) | The Todd board's canonical layer is the as-reported tier (Technique A) | Accepted (2026-09-06) |
 | [0009](0009-todd-corpus-as-first-class-metadata.md) | The Todd corpus as first-class metadata (todd_refs) | Accepted (2026-09-19) |
+| [0010](0010-bilateral-faces-parallel-never-merged.md) | The two bilateral faces (birth / citizenship) are parallel layers, never merged | Accepted (2026-09-25) |
 
 ## Format
 

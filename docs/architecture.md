@@ -257,9 +257,44 @@ reports a demographic breakdown carries it through the whole pipeline:
   canonical points, 30 destinations x 243 origins, the 64-code
   aggregate/summary vocabulary and the native diagonal dropped logged
   per class) + the OECD witness (99,225 points, 38 destinations, the
-  world face US<-MEX 12,383,868). The registry holds 32 roots now;
-  one new provider door rode in (the OECD connector's fourth
-  dataflow, the empty-key /all download).
+  world face US<-MEX 12,383,868). v23 adds the LEGAL TWIN of the
+  layer (ADR-0010, the parallel-faces decision): `bilateral_citizenship`
+  — the stock of FOREIGN CITIZENS by nationality (étrangers), the
+  second board of Le Destin des immigrés — carried BESIDE the birth
+  face, never merged with it (the routing key RawRecord.origin_axis,
+  "birth" | "citizenship", additive; the merge key shared verbatim in
+  SEPARATE key spaces): the 34 Eurostat ctz ROW doors
+  (migr_pop1ctz/ROW/{geo}, citizen unpinned — 112,058 canonical
+  points, 34 destinations x 226 origins, 1998-2025; Germany joins
+  this face, Cyprus leaves it — the registration's own asymmetry,
+  carried as-printed) + the OECD B15 witness (DSD_MIG@DF_MIG, the
+  keyed wildcard download — the ACCESS MIRROR of B14's /all-only
+  quirk; 109,763 points, 36 x 236, 1995-2024; the seam FR<-MAR 2015
+  = 458,561 = the Eurostat ctz print exactly). The two faces'
+  contrast anchors, live-verified: CONVERGE FR<-PT 2015 = 648,112
+  born vs 541,867 citizens; DIVERGE FR<-MA 2015 = 954,742 vs
+  458,561 — the naturalization gap the pair exists to display. The
+  registry still holds 32 roots; the catalog's door counts alone move
+  (eurostat_migr 31 -> 65, oecd_mig 1 -> 2 — the OECD connector's
+  fifth door, the keyed wildcard). Two provider-side events surfaced
+  by the session's recovery fetch, both audited: the GHO
+  MDG_0000000001 door change (its age frame recoded to
+  AGEGROUP_MONTHS0-11 on every row — the v20 per-code AGE PIN
+  applied, the dist bit-identical through it) and one Eurostat
+  rounding revision (Moldova NMARPCT 2022: 18.3 -> 18.2 — the single
+  re-point between the v22 and v23 dists, pinned by the verify
+  script, reviewable in the commit). v24 wires the BY-SEX face on the
+  same layers (Ediz's approved direction): the M/F ventilations of the
+  same rows under the merge key's own fourth term — (destination,
+  origin, year, SEX), the component v22 carried as None — M + F = the
+  _T print to the unit on every probed anchor (the disaggregation is
+  the registration's own, never a derivation). The Eurostat ROW-SEX
+  grammar (124 doors: 29+29 birth, 33+33 ctz, Croatia the honest
+  absence) + the OECD F rows un-blocked (the flows print NO male face
+  — _T + F their whole vocabulary, the female witnesses kept beside
+  the both-sexes ones). Layer totals: bilateral 273,708 canonical /
+  194,177 witness; bilateral_citizenship 331,778 / 211,592; the
+  catalog's eurostat_migr count 65 -> 189 doors.
   Per-point provenance for the
   collector tier (v8: DYB quality codes, footnote texts, LE reference
   ranges, missing markers, provisional flags — as-reported, joined into

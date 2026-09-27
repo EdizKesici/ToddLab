@@ -338,3 +338,54 @@ from the response bytes, never typed):
   605 / 2021 = 1,036,133, US<-MEX 2024 = 12,383,867.87, and the
   vanished origins landed on their entities (CSK/SUN/YUG/SCG/ANT/
   XKX).
+
+## v23 fixtures (generated live by scripts/make_v23_fixtures.py)
+
+- `gho_mdg_0000000001_sample.json` — a REAL slice of the GHO
+  MDG_0000000001 payload as the API serves it SINCE THE DOOR CHANGE
+  (verified live 2026-09-25: every row now carries Dim2 =
+  AGEGROUP_MONTHS0-11 — the 0-11-months frame, the per-code AGE pin's
+  own face): the FRA 2019-2020 rows on the three sexes (the
+  integration test's ("france", 2020, male/None) assertions), one
+  REGION row (the non-COUNTRY skip), one XKX 1986 row (the entity
+  validity guard's drop in normalize). Replaces the WHOSIS-shape
+  seeding of the MDG door (the pin would refuse the old shape loudly
+  — by design).
+- `eurostat_migr1ctz_row_fr_sample.json` — the REAL 26,577-byte FR
+  response of migr_pop1ctz/ROW/FR as the API served it: the 287-code
+  by-citizenship codelist, the 927 non-empty cells = 714 emitted +
+  143 aggregate/region + 53 summary + 12 STLS stateless + 5 diagonal
+  (each class dropped logged). The anchors: FR<-MA ctz 2015-2018 =
+  458,561/465,230/472,843/480,600 (the v18 anchor disambiguation,
+  the citizenship print), FR<-PRT ctz 2015 = 541,867 (the CONVERGE
+  contrast face), EL resolving through the shared geo table onto GRC.
+- `oecd_mig_b15_sample.csv` — a REAL slice of the DSD_MIG@DF_MIG
+  keyed wildcard download (16,285 lines = 8,283 _T + 8,002 F, copied
+  byte-for-byte — the frozen design's own composition rule, the v22
+  fixture's: the complete FRA and USA rows on both sexes — the F rows
+  exercising the logged by-sex drop, the V24 hook — every residual
+  code (STLS/W/W_X/EEA/EU15/A4), every vanished-entity code (XKV/
+  ANT_F/CSK_F/SCG_F/SUN_F/YUG_F) of the other destinations, and the
+  DEU/ESP/ITA/GBR diagonals. The seam anchors: FR<-MAR _T 2015 =
+  458,561 = the Eurostat ctz print EXACTLY (2016-2018 both sides),
+  US<-MEX 2024 = 8,226,106.247 (the citizenship face — the birth
+  face's 12,383,867.87 riding the B14 fixture one block above), and
+  the vanished origins landed on their entities (XKX/ANT/CSK/SCG/
+  SUN/YUG).
+
+
+## v24 fixtures (generated live by scripts/make_v24_fixtures.py)
+
+- `eurostat_migr3ctb_row_fr_m_sample.json` — the REAL 32,525-byte FR
+  response of migr_pop3ctb/ROW/FR/M (sex=M pinned in the URL, the
+  rest identical to the both-sexes door): 1,220 records, sex="male",
+  origin_axis="birth". The anchors: FR<-MA M 2015/2018 =
+  479,354/492,723 (M + F = the _T print: 479,354 + 475,388 =
+  954,742, the v22 fixture's own anchor), FR<-PRT M 2015 = 331,297,
+  FR<-ANT M 1999 = 32 (the vanished origin's own ventilation).
+- `eurostat_migr1ctz_row_fr_f_sample.json` — the REAL 26,247-byte FR
+  response of migr_pop1ctz/ROW/FR/F: 714 records, sex="female",
+  origin_axis="citizenship". The anchors: FR<-MA F 2015/2018 =
+  226,668/243,044 — the OECD B15 F print agreeing to the unit (the
+  seam on the ventilated face), and M + F = the _T print: 231,893 +
+  226,668 = 458,561.

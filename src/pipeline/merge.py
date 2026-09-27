@@ -37,6 +37,14 @@ layers never collide BY CONSTRUCTION: single-axis points carry
 origin_entity_id=None, bilateral points always carry it; a (destination,
 origin) pair can never masquerade as an (entity, year) key.
 
+v23 (the citizenship face): {indicator}.bilateral_citizenship.json — the
+PARALLEL face normalize routed on origin_axis — merges under the SAME key
+shape into {indicator}.bilateral_citizenship.merged.json + .witnesses.json
+(ADR-0010: the two faces are different legal questions, never merged,
+never arbitrated across — the merge machinery is shared, the KEY SPACES
+are separate files). The layer label rides every provenance entry so one
+trail can carry both faces self-describing.
+
 Witness points with value=None are KEPT as points (an explicit "reported
 to the collector but no value computed" gap — e.g. DYB rates for "U"
 data), distinct from absent points (no row at all). Since v9 the SAME
@@ -184,14 +192,18 @@ def merge_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list
     return merged, provenance_log
 
 
-def merge_bilateral_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list[dict]]:
+def merge_bilateral_points(
+    points: list[NormalizedPoint], layer_label: str = "bilateral"
+) -> tuple[list[MergedPoint], list[dict]]:
     """v22: the bilateral layer's canonical merge — the same two rules as
     merge_points, under the (destination, origin, year, sex) key. In the
     wired shape the Eurostat ROW doors are disjoint by destination, so the
     within-tier arbitration never fires across them — the machinery exists
     for the same reason the single-axis one does: a future bilateral
     canonical door colliding on a (destination, origin, year) must be
-    arbitrated by priority and LOGGED, never silently shadowed."""
+    arbitrated by priority and LOGGED, never silently shadowed.
+    v23: shared verbatim by the citizenship face (its own file, its own
+    key space — the same two rules, the same machinery)."""
     by_key: dict[tuple[str, str, int, str | None], list[NormalizedPoint]] = {}
     for p in points:
         by_key.setdefault(_bilateral_key(p), []).append(p)
@@ -224,7 +236,7 @@ def merge_bilateral_points(points: list[NormalizedPoint]) -> tuple[list[MergedPo
             provenance_log.append(
                 {
                     "role": "canonical",
-                    "layer": "bilateral",
+                    "layer": layer_label,
                     "entity_id": entity_id,
                     "origin_entity_id": origin_entity_id,
                     "year": year,
@@ -295,13 +307,17 @@ def build_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, l
     return WitnessSeries(provider=provider, source_ref=source_ref, points=points), provenance_log
 
 
-def build_bilateral_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, list[dict]]:
+def build_bilateral_witness_series(
+    group: list[NormalizedPoint], layer_label: str = "bilateral"
+) -> tuple[WitnessSeries, list[dict]]:
     """v22: the bilateral witness twin — one (provider, source_ref)'s
     by-origin points as one series, duplicates reduced under the
     (destination, origin, year) key and logged, all-null keys kept as
     explicit gap points. The OECD DF_MIG_POPF matrix is its first rider
     (one row per destination-origin-year — no duplicates by construction,
-    the machinery guards the day a second bilateral witness arrives)."""
+    the machinery guards the day a second bilateral witness arrives).
+    v23: the OECD DF_MIG/B15 matrix rides the citizenship face's own
+    witness file through this same function."""
     provider, source_ref = group[0].provider, group[0].source_ref
     by_key: dict[tuple[str, str, int, str | None], list[NormalizedPoint]] = {}
     for p in group:
@@ -333,7 +349,7 @@ def build_bilateral_witness_series(group: list[NormalizedPoint]) -> tuple[Witnes
             provenance_log.append(
                 {
                     "role": "witness",
-                    "layer": "bilateral",
+                    "layer": layer_label,
                     "entity_id": entity_id,
                     "origin_entity_id": origin_entity_id,
                     "year": year,
@@ -347,6 +363,64 @@ def build_bilateral_witness_series(group: list[NormalizedPoint]) -> tuple[Witnes
 
     points.sort(key=lambda m: (m.entity_id, m.origin_entity_id or "", m.year, m.sex or ""))
     return WitnessSeries(provider=provider, source_ref=source_ref, points=points), provenance_log
+
+
+def _merge_bilateral_layer(
+    indicator_id: str, processed_dir: Path, layer: str, provenance: list[dict]
+) -> None:
+    """v22 (as the inline block) / v23 (extracted, parameterized): one
+    bilateral FACE's merge — reads {indicator}.{layer}.json (the layer's
+    normalized points), merges the canonical tier under the (destination,
+    origin, year, sex) key, builds the per-source witness series, and
+    writes {indicator}.{layer}.merged.json + .witnesses.json. The files
+    are written only when the layer has points, and UNLINKED when it does
+    not — a stale file from a previous run must never survive a clean run
+    of an indicator whose layer sources stopped printing (the same
+    discipline the always-written witnesses.json follows, expressed as
+    removal because an absent file is what build reads as "no layer").
+    layer: "bilateral" (the birth face, v22) | "bilateral_citizenship"
+    (v23) — the label rides every provenance entry the layer emits."""
+    layer_path = processed_dir / f"{indicator_id}.{layer}.json"
+    if not layer_path.exists():
+        return
+    layer_raw = json.loads(layer_path.read_text(encoding="utf-8"))
+    if not layer_raw:
+        for stale in (f"{layer}.merged.json", f"{layer}.witnesses.json"):
+            (processed_dir / f"{indicator_id}.{stale}").unlink(missing_ok=True)
+        return
+    layer_points = [NormalizedPoint(**p) for p in layer_raw]
+    b_canonical, b_witness_groups = _split_by_role(layer_points)
+    b_merged, b_provenance = merge_bilateral_points(b_canonical, layer_label=layer)
+    provenance.extend(b_provenance)
+
+    b_witness_payload = []
+    for group in b_witness_groups:
+        b_series, b_series_provenance = build_bilateral_witness_series(group, layer_label=layer)
+        provenance.extend(b_series_provenance)
+        b_witness_payload.append(
+            {
+                "provider": b_series.provider,
+                "source_ref": b_series.source_ref,
+                "data": [
+                    {
+                        "entity_id": p.entity_id,
+                        "year": p.year,
+                        "origin_entity_id": p.origin_entity_id,
+                        "value": p.value,
+                        **({"sex": p.sex} if p.sex else {}),
+                        **({"quality_code": p.quality_code} if p.quality_code else {}),
+                        **({"provisional": True} if p.provisional else {}),
+                    }
+                    for p in b_series.points
+                ],
+            }
+        )
+    (processed_dir / f"{indicator_id}.{layer}.merged.json").write_text(
+        json.dumps([m.__dict__ for m in b_merged], ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    (processed_dir / f"{indicator_id}.{layer}.witnesses.json").write_text(
+        json.dumps(b_witness_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
 
 
 def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[MergedPoint], list[dict]]:
@@ -385,55 +459,15 @@ def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[Merged
             }
         )
 
-    # v22 (the bilateral face): the by-origin layer merges under its own
-    # key BEFORE the provenance file is written, so one trail carries both
-    # layers' entries (each self-describing — the bilateral ones carry
-    # layer: "bilateral" and origin_entity_id). The files are written only
-    # when the layer has points, and UNLINKED when it does not — a stale
-    # bilateral.merged.json from a previous run must never survive a clean
-    # run of an indicator whose bilateral sources stopped printing (the
-    # same discipline the always-written witnesses.json follows, expressed
-    # as removal because an absent file is what build reads as "no layer").
-    bilateral_path = processed_dir / f"{indicator_id}.bilateral.json"
-    if bilateral_path.exists():
-        bilateral_raw = json.loads(bilateral_path.read_text(encoding="utf-8"))
-        if bilateral_raw:
-            bilateral_points = [NormalizedPoint(**p) for p in bilateral_raw]
-            b_canonical, b_witness_groups = _split_by_role(bilateral_points)
-            b_merged, b_provenance = merge_bilateral_points(b_canonical)
-            provenance.extend(b_provenance)
-
-            b_witness_payload = []
-            for group in b_witness_groups:
-                b_series, b_series_provenance = build_bilateral_witness_series(group)
-                provenance.extend(b_series_provenance)
-                b_witness_payload.append(
-                    {
-                        "provider": b_series.provider,
-                        "source_ref": b_series.source_ref,
-                        "data": [
-                            {
-                                "entity_id": p.entity_id,
-                                "year": p.year,
-                                "origin_entity_id": p.origin_entity_id,
-                                "value": p.value,
-                                **({"sex": p.sex} if p.sex else {}),
-                                **({"quality_code": p.quality_code} if p.quality_code else {}),
-                                **({"provisional": True} if p.provisional else {}),
-                            }
-                            for p in b_series.points
-                        ],
-                    }
-                )
-            (processed_dir / f"{indicator_id}.bilateral.merged.json").write_text(
-                json.dumps([m.__dict__ for m in b_merged], ensure_ascii=False, indent=2), encoding="utf-8"
-            )
-            (processed_dir / f"{indicator_id}.bilateral.witnesses.json").write_text(
-                json.dumps(b_witness_payload, ensure_ascii=False, indent=2), encoding="utf-8"
-            )
-        else:
-            for stale in ("bilateral.merged.json", "bilateral.witnesses.json"):
-                (processed_dir / f"{indicator_id}.{stale}").unlink(missing_ok=True)
+    # v22 (the bilateral face) / v23 (the citizenship face): each by-origin
+    # FACE merges under its own key BEFORE the provenance file is written,
+    # so one trail carries all the layers' entries (each self-describing —
+    # every bilateral entry carries layer: "bilateral" or
+    # "bilateral_citizenship" and origin_entity_id). The two faces are
+    # PARALLEL, never merged (ADR-0010) — separate files, separate key
+    # spaces, the shared machinery.
+    _merge_bilateral_layer(indicator_id, processed_dir, "bilateral", provenance)
+    _merge_bilateral_layer(indicator_id, processed_dir, "bilateral_citizenship", provenance)
 
     (processed_dir / f"{indicator_id}.merged.json").write_text(
         json.dumps([m.__dict__ for m in merged], ensure_ascii=False, indent=2), encoding="utf-8"

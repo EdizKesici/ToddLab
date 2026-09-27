@@ -9721,11 +9721,9 @@
     {
       "entity_id": "moldova_republic_of",
       "year": 2022,
-      "value": 18.3,
+      "value": 18.2,
       "provider": "eurostat",
-      "source_ref": "demo_find/NMARPCT",
-      "quality_code": "p",
-      "provisional": true
+      "source_ref": "demo_find/NMARPCT"
     },
     {
       "entity_id": "moldova_republic_of",

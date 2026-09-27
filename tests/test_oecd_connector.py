@@ -395,24 +395,16 @@ def test_parse_migf_pins_the_t_frame_and_drops_the_classes_logged(caplog):
 
     with caplog.at_level(logging.INFO):
         records = parse_migf_csv(MIGF)
-    # every record rides the _T frame (sex=None) with BOTH axes carried
-    assert records
-    assert all(r.sex is None for r in records)
-    assert all(r.origin_raw_name and r.origin_iso3_raw for r in records)
+    # v24: THE BY-SEX DOOR WIRED — the flow's F rows are KEPT (sex="female")
+    # instead of dropped: the fixture yields 9,175 both-sexes + 8,779 female
+    # records, the residual vocabulary and the diagonals dropped logged per
+    # class (the F rows' own residual/diagonal rows dropping with them).
     logged = " ".join(rec.getMessage() for rec in caplog.records)
-    # THE BY-SEX FACE, dropped logged (the fixture carries both sexes'
-    # rows verbatim — the F rows are the drop class)
-    assert "dropped" in logged and "by-sex row(s)" in logged
-    # THE RESIDUAL VOCABULARY, one line per code
-    for code in ("'W'", "'W_X'", "'EEA'", "'EU15'", "'A4'", "'STLS'"):
-        assert code in logged
-    # THE DIAGONAL, dropped logged (the native face — the fixture carries
-    # FR<-FR, US<-US and the four other-destination diagonals)
-    assert "diagonal row(s)" in logged
-    # and nothing of the classes leaked into the records
-    assert not any(r.origin_iso3_raw in ("W", "W_X", "EEA", "EU15", "A4", "STLS") for r in records)
-    assert not any(r.iso3_raw == r.origin_iso3_raw for r in records)
-
+    assert "kept 8779 female-face record(s)" in logged
+    assert "dropped 34 diagonal row(s)" in logged
+    assert all(r.sex in (None, "female") for r in records)
+    assert sum(1 for r in records if r.sex == "female") == 8779
+    assert len(records) == 17954
 
 def test_parse_migf_carries_the_seam_and_the_world_face():
     records = parse_migf_csv(MIGF)
@@ -469,3 +461,140 @@ def test_parse_migf_refuses_non_sdmx_bodies():
         parse_migf_csv("Entity,Code,Year,Value\nFrance,FRA,2000,1.0\n")
     with pytest.raises(ValueError, match="No data rows"):
         parse_migf_csv(MIGF.splitlines()[0] + "\n")
+
+
+# --- v23: the bilateral citizenship matrix (DF_MIG/B15, the keyed wildcard) ---
+
+from src.connectors.oecd import build_url as oecd_build_url  # noqa: E402
+from src.connectors.oecd import parse_mig_csv  # noqa: E402
+
+MIG_B15 = (Path(__file__).parent / "fixtures" / "oecd_mig_b15_sample.csv").read_text(encoding="utf-8")
+
+
+def test_build_url_pins_the_mig_keyed_wildcard_shape():
+    # The ACCESS MIRROR of the B14 quirk: DSD_MIG@DF_MIG refuses /all but
+    # serves the positional wildcard — REF_AREA and CITIZENSHIP open, the
+    # frame pinned at FREQ/MEASURE/BIRTH_PLACE/EDUCATION_LEV/UNIT_MEASURE,
+    # SEX open for the parser to split.
+    assert oecd_build_url("DF_MIG/B15") == (
+        "https://sdmx.oecd.org/public/rest/data/"
+        "OECD.ELS.IMD,DSD_MIG@DF_MIG,1.0/..A.B15.._Z._Z.PS"
+        "?dimensionAtObservation=AllDimensions"
+    )
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    [
+        "DF_MIG",        # the bare flow: this door refuses /all — the keyed grammar only
+        "DF_MIG/B14",    # the birth measure lives on DF_MIG_POPF, not here
+        "DF_MIG/B16",    # an unwired measure — wire it deliberately, never guess
+        "DF_MIG/B15/x",  # trailing segment
+    ],
+)
+def test_mig_ref_is_the_keyed_b15_grammar(bad_ref):
+    with pytest.raises(ValueError, match="Invalid OECD source_ref"):
+        oecd_build_url(bad_ref)
+
+
+def test_parse_mig_pins_the_t_frame_and_drops_the_classes_logged(caplog):
+    import logging
+
+    with caplog.at_level(logging.INFO):
+        records = parse_mig_csv(MIG_B15)
+    # v24: THE BY-SEX DOOR WIRED — the V23 pull's F rows un-blocked: the
+    # fixture yields 6,115 both-sexes + 5,999 female records (the 8,002 F
+    # lines minus the 10 attribute-only rows and the F rows' own residual/
+    # diagonal drops), the residual vocabulary and the diagonals dropped
+    # logged per class.
+    logged = " ".join(rec.getMessage() for rec in caplog.records)
+    assert "kept 5999 female-face record(s)" in logged
+    # the fixture carries the diagonals of FRA/USA (inside their complete
+    # rows) + the four v22 destinations: 59 _T+F diagonal rows drop logged.
+    assert "dropped 59 diagonal row(s)" in logged
+    # the residual classes, each with the FULL download's own count (the
+    # fixture carries every residual row of the keyed download):
+    assert "dropped 896 origin row(s) carrying code 'STLS'" in logged
+    assert "dropped 1564 origin row(s) carrying code 'W'" in logged
+    assert "dropped 784 origin row(s) carrying code 'W_X'" in logged
+    assert "dropped 226 origin row(s) carrying code 'EEA'" in logged
+    assert "dropped 392 origin row(s) carrying code 'EU15'" in logged
+    assert "dropped 224 origin row(s) carrying code 'A4'" in logged
+    # every kept record carries the routing key of the citizenship face,
+    # and the female face rides the SAME routing (sex="female" beside
+    # sex=None on the same series).
+    assert all(r.origin_axis == "citizenship" for r in records)
+    assert all(r.origin_raw_name and r.origin_iso3_raw for r in records)
+    assert all(r.sex in (None, "female") for r in records)
+    assert len(records) == 12114
+
+def test_parse_mig_carries_the_seam_and_the_contrast_anchors():
+    records = parse_mig_csv(MIG_B15)
+    got = {(r.iso3_raw, r.origin_iso3_raw, r.year): r.value for r in records}
+    # THE SEAM, verified to the unit: the questionnaire prints the SAME
+    # number the Eurostat ctz door prints — FR<-MAR _T 2015 = 458,561
+    # (and the 2016-2018 series beside it, both doors exact).
+    assert got[("FRA", "MAR", 2015)] == pytest.approx(458561)
+    assert got[("FRA", "MAR", 2016)] == pytest.approx(465230)
+    assert got[("FRA", "MAR", 2017)] == pytest.approx(472843)
+    assert got[("FRA", "MAR", 2018)] == pytest.approx(480600)
+    # THE WORLD FACE the Eurostat universe cannot print, on the pair the
+    # naturalization gap widens: US<-MEX 2024 = 8,226,106 citizens vs
+    # 12,383,868 born (the B14 witness's own print, the divergence the
+    # two faces exist to display).
+    assert got[("USA", "MEX", 2024)] == pytest.approx(8226106.247)
+    # THE CONTRAST (§5.4): FR<-PRT citizens = 541,867 at 2015, the
+    # CONVERGE face of the pair.
+    assert got[("FRA", "PRT", 2015)] == pytest.approx(541867)
+
+
+def test_parse_mig_lands_the_vanished_origins_on_their_entities():
+    # The vanished-entity codes ride the SHARED override table (the same
+    # admission as the birth face): XKV -> XKX Kosovo, the _F prints ->
+    # their withdrawn ISO3 entities — people still holding the former
+    # nationality, counted exactly as the questionnaire prints them.
+    records = parse_mig_csv(MIG_B15)
+    origins = {r.origin_iso3_raw for r in records}
+    for iso3 in ("XKX", "ANT", "CSK", "SCG", "SUN", "YUG"):
+        assert iso3 in origins, iso3
+    # the residual vocabulary never enters the layer (STLS is a drop, not
+    # a mapping — a nationality without a state has no entity to carry it).
+    assert "STLS" not in origins
+    assert "W" not in origins
+
+
+def test_mig_frame_pin_guards_refuse_slices_we_did_not_ask_for():
+    # trust the URL, verify the response: a row from another measure
+    # (B14) under the B15 door is refused loudly, never ingested.
+    lines = MIG_B15.splitlines()
+    header, first = lines[0], lines[1].split(",")
+    swapped = first[:]
+    for i, col in enumerate(header.split(",")):
+        if col == "MEASURE":
+            swapped[i] = "B14"
+    doctored = "\n".join([header, ",".join(swapped)] + lines[2:])
+    with pytest.raises(ValueError, match="MEASURE='B14'.*pinned frame is 'B15'"):
+        parse_mig_csv(doctored)
+    # the UNIT_MEASURE pin: swapped — refused.
+    swapped2 = first[:]
+    for i, col in enumerate(header.split(",")):
+        if col == "UNIT_MEASURE":
+            swapped2[i] = "PS_"
+    doctored2 = "\n".join([header, ",".join(swapped2)] + lines[2:])
+    with pytest.raises(ValueError, match="UNIT_MEASURE='PS_'.*pinned frame is 'PS'"):
+        parse_mig_csv(doctored2)
+
+
+def test_mig_sex_guard_refuses_unknown_codes():
+    # the download structurally carries _T AND F; a third code is a
+    # layout change, loudly refused.
+    lines = MIG_B15.splitlines()
+    header, first = lines[0], lines[1].split(",")
+    doctored_row = first[:]
+    for i, col in enumerate(header.split(",")):
+        if col == "SEX":
+            doctored_row[i] = "M"
+    doctored = "\n".join([header, ",".join(doctored_row)] + lines[2:])
+    with pytest.raises(ValueError, match="Unexpected SDMX SEX code 'M'"):
+        parse_mig_csv(doctored)
+

@@ -113,6 +113,15 @@ def _source_citation(provider: Provider, ref: str) -> str:
                 "the foreign-born stock by country of birth - the migration "
                 "questionnaire's answers as submitted, OECD-compiled"
             )
+        if flow == "DF_MIG":
+            # v23: the SAME questionnaire's citizenship matrix — the keyed
+            # wildcard download (measure B15), the bilateral witness of the
+            # by-citizenship face.
+            return (
+                f"OECD, {OECD_DATAFLOW_TITLES['DF_MIG']} (DSD_MIG@DF_MIG), "
+                "the stock of foreign population by nationality (measure B15) - "
+                "the migration questionnaire's answers as submitted, OECD-compiled"
+            )
         return template.format(cause=parts[1])
     if provider == Provider.eurostat:
         # 'demo_find/TOTFERRT' (all countries) or 'demo_find/TOTFERRT/FR'
@@ -125,12 +134,15 @@ def _source_citation(provider: Provider, ref: str) -> str:
         parts = ref.split("/")
         title = EUROSTAT_DATASET_TITLES[parts[0]]
         if len(parts) == 3 and parts[1] == "ROW":
-            # v22: the bilateral ROW door — 'migr_pop3ctb/ROW/FR', the
-            # by-origin row of one destination (geo named so the 44 doors
-            # stay distinguishable in the sources block).
+            # v22/v23: the bilateral ROW doors — 'migr_pop3ctb/ROW/FR' (the
+            # by-origin row of one destination, c_birth open) and
+            # 'migr_pop1ctz/ROW/FR' (the by-citizenship twin, citizen open):
+            # geo named so the doors stay distinguishable in the sources
+            # block, the axis named so the two faces read as what they are.
+            axis = "by-origin (c_birth)" if parts[0] == "migr_pop3ctb" else "by-citizenship (citizen)"
             return (
                 f"{template.format(title=title, dataset=parts[0], code='ROW')}, "
-                f"the by-origin (c_birth) row of geo {parts[2]}"
+                f"the {axis} row of geo {parts[2]}"
             )
         if len(parts) == 3:
             return f"{template.format(title=title, dataset=parts[0], code=parts[1])}, geo {parts[2]}"
@@ -259,22 +271,25 @@ def build_indicator_file(
         for w in raw_witnesses
     ]
 
-    # v22 (the bilateral face): the by-origin layer rides BESIDE the
-    # single-axis data/witnesses — its own data (destination x origin x
-    # year) and its own witness series (the OECD matrix). ADDITIVE by
-    # construction: the layer is emitted ONLY when the processed tree
-    # carries bilateral points (merge_indicator writes the pair exactly
+    # v22 (the bilateral face) / v23 (the citizenship face): each by-origin
+    # FACE rides BESIDE the single-axis data/witnesses — its own data
+    # (destination x origin x year) and its own witness series. ADDITIVE by
+    # construction: each layer is emitted ONLY when the processed tree
+    # carries that layer's points (merge_indicator writes the pair exactly
     # then, and unlinks stale copies otherwise), so every single-axis
-    # indicator's dist file stays byte-identical — no key, no change.
-    bilateral_payload = None
-    bilateral_merged_path = processed_dir / f"{indicator.id}.bilateral.merged.json"
-    if bilateral_merged_path.exists():
-        b_points = json.loads(bilateral_merged_path.read_text(encoding="utf-8"))
-        b_witnesses_path = processed_dir / f"{indicator.id}.bilateral.witnesses.json"
+    # indicator's dist file stays byte-identical — no key, no change. The
+    # two faces are PARALLEL, never merged (ADR-0010): `bilateral` = the
+    # place-of-birth legality (immigrés), `bilateral_citizenship` = the
+    # legal face (étrangers).
+    def _bilateral_layer_payload(merged_path: Path) -> dict | None:
+        if not merged_path.exists():
+            return None
+        b_points = json.loads(merged_path.read_text(encoding="utf-8"))
+        b_witnesses_path = merged_path.parent / merged_path.name.replace(".merged.json", ".witnesses.json")
         raw_b_witnesses = (
             json.loads(b_witnesses_path.read_text(encoding="utf-8")) if b_witnesses_path.exists() else []
         )
-        bilateral_payload = {
+        return {
             "data": [_bilateral_point_dict(p) for p in b_points],
             "witnesses": [
                 {
@@ -294,6 +309,13 @@ def build_indicator_file(
                 for bw in raw_b_witnesses
             ],
         }
+
+    bilateral_payload = _bilateral_layer_payload(
+        processed_dir / f"{indicator.id}.bilateral.merged.json"
+    )
+    bilateral_citizenship_payload = _bilateral_layer_payload(
+        processed_dir / f"{indicator.id}.bilateral_citizenship.merged.json"
+    )
 
     # Restrict each source's footnote block to the refs the emitted points
     # (canonical + witness) actually carry.
@@ -327,8 +349,13 @@ def build_indicator_file(
     # when the indicator's processed tree carries it (see above). The field
     # name is the dist contract's own vocabulary: destination_entity_id x
     # origin_entity_id x year, the shape of Todd's boards.
+    # v23 (the citizenship face): the PARALLEL twin — `bilateral_citizenship`,
+    # the same point shape on the legal axis (ADR-0010: never merged with
+    # the birth face, never arbitrated across).
     if bilateral_payload is not None:
         payload["bilateral"] = bilateral_payload
+    if bilateral_citizenship_payload is not None:
+        payload["bilateral_citizenship"] = bilateral_citizenship_payload
     # v13 (todd_refs): the corpus entry joins BY ID — when the indicator
     # implements a corpus metric, the "why this metric exists" block rides
     # with the data (books, citations, per-book usage). Absent corpus or no

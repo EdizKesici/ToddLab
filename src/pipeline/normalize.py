@@ -151,9 +151,19 @@ def normalize_indicator(
     {indicator}.bilateral.json; the single-axis (entity, year) flow is
     untouched by construction (no pre-v22 source emits the field, so every
     other indicator's normalized output stays byte-identical).
+
+    v23: the routing key gains the FACE — records carrying
+    origin_axis="citizenship" (Eurostat migr_pop1ctz ROW, OECD DF_MIG/B15)
+    route to {indicator}.bilateral_citizenship.json instead, a SECOND
+    parallel layer (ADR-0010: the two faces of the stock are different
+    legal questions — immigrés vs étrangers — never merged, never
+    arbitrated across). Records with origin_axis="birth" or None (the
+    pre-v23 snapshots) keep routing to the bilateral layer
+    bit-identically.
     """
     points: list[NormalizedPoint] = []
     bilateral_points: list[NormalizedPoint] = []
+    bilateral_citizenship_points: list[NormalizedPoint] = []
     unresolved: dict[str, list[str]] = {}
     footnotes_by_source: dict[str, dict] = {}
     unresolved_origins: dict[str, set[str]] = {}
@@ -188,13 +198,15 @@ def normalize_indicator(
             if record.get("origin_raw_name") is not None:
                 # v22 — the bilateral face: resolve the ORIGIN axis with the
                 # same registry machinery, then route to the separate layer.
+                # v23 — the FACE routing: "citizenship" rows ride their OWN
+                # layer (bilateral_citizenship), parallel to the birth face's
+                # (ADR-0010); anything else ("birth" or the None of a
+                # pre-v23 snapshot) keeps the v22 routing bit-identically.
                 # The covers_year guard is DELIBERATELY SKIPPED on this axis:
-                # an origin is a BIRTH-PLACE classification (the person was
-                # born there while the entity existed), while a stock point's
-                # year is the MEASUREMENT year — people born in the former
-                # Netherlands Antilles are counted in the 2015 stock exactly
-                # as both questionnaires print them (AN / ANT_F still ride
-                # their withdrawn codes post-dissolution). An origin that
+                # an origin is a CLASSIFICATION, not a measurement date — a
+                # birth place while the entity existed, a citizenship still
+                # held after the state dissolved (the _F prints) — while a
+                # stock point's year is the MEASUREMENT year. An origin that
                 # resolves to nothing is dropped with a WARNING (the world
                 # axis is wide open; the connectors pre-drop their residual
                 # vocabularies, so a survivor here is a mapping gap to
@@ -205,7 +217,12 @@ def normalize_indicator(
                 if origin is None:
                     unresolved_origins.setdefault(source.ref, set()).add(record["origin_raw_name"])
                     continue
-                bilateral_points.append(
+                target = (
+                    bilateral_citizenship_points
+                    if record.get("origin_axis") == "citizenship"
+                    else bilateral_points
+                )
+                target.append(
                     NormalizedPoint(
                         entity_id=entity.entity_id,
                         year=record["year"],
@@ -215,6 +232,12 @@ def normalize_indicator(
                         priority=source.priority,
                         role=source.role.value,
                         origin_entity_id=origin.entity_id,
+                        # v24: the by-sex ventilations ride the SAME layers —
+                        # the merge key's sex component (destination, origin,
+                        # year, sex) discriminates them from the both-sexes
+                        # points (sex=None); the v22 field was always None
+                        # until the M/F doors were wired.
+                        sex=record.get("sex"),
                         quality_code=record.get("quality_code"),
                         provisional=record.get("provisional"),
                     )
@@ -251,7 +274,10 @@ def normalize_indicator(
             "attached by approximation): %s — see the entities.yaml mapping.",
             indicator.id, len(names), sorted(names),
         )
-    _BILATERAL_SCRATCH[indicator.id] = bilateral_points  # picked up by write_normalized via normalize_all
+    _BILATERAL_SCRATCH[indicator.id] = {
+        "birth": bilateral_points,
+        "citizenship": bilateral_citizenship_points,
+    }  # picked up by write_normalized via normalize_all
     return points, unresolved, footnotes_by_source
 
 
@@ -260,7 +286,9 @@ def normalize_indicator(
 # tests call it directly). One slot per indicator, set by normalize_indicator
 # and consumed by normalize_all's write_normalized call — process-local, the
 # same pattern conftest's seed helpers use for snapshot timestamps.
-_BILATERAL_SCRATCH: dict[str, list[NormalizedPoint]] = {}
+# v23: the slot becomes a FACE-keyed dict ("birth" | "citizenship") — the
+# two parallel layers never touch each other's lists (ADR-0010).
+_BILATERAL_SCRATCH: dict[str, dict[str, list[NormalizedPoint]]] = {}
 
 
 def classify_unresolved(unresolved: dict[str, list[str]], raw_dir: Path, provider: str, indicator_id: str, source_ref: str) -> dict[str, dict]:
@@ -305,6 +333,7 @@ def write_normalized(
     classified_unresolved: dict | None = None,
     footnotes_by_source: dict | None = None,
     bilateral_points: list[NormalizedPoint] | None = None,
+    bilateral_citizenship_points: list[NormalizedPoint] | None = None,
 ) -> None:
     processed_dir.mkdir(parents=True, exist_ok=True)
     data_path = processed_dir / f"{indicator_id}.normalized.json"
@@ -328,9 +357,19 @@ def write_normalized(
     # v22: the bilateral layer's normalized points — always written (the
     # same stale-file discipline; an empty list for the 27 single-axis
     # indicators keeps their merge/build paths deterministically absent).
+    # v23: the citizenship face's own file, same discipline — the two
+    # PARALLEL layers (ADR-0010), each always written so a stale file from
+    # a previous run can never survive a clean one.
     bilateral_path = processed_dir / f"{indicator_id}.bilateral.json"
     bilateral_path.write_text(
         json.dumps([p.__dict__ for p in (bilateral_points or [])], ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    bilateral_ctz_path = processed_dir / f"{indicator_id}.bilateral_citizenship.json"
+    bilateral_ctz_path.write_text(
+        json.dumps(
+            [p.__dict__ for p in (bilateral_citizenship_points or [])], ensure_ascii=False, indent=2
+        ),
         encoding="utf-8",
     )
 
@@ -340,7 +379,8 @@ def normalize_all(
 ) -> dict[str, dict]:
     """Returns a summary {indicator_id: {"n_points": int, "unresolved": {...}}}
     for the CLI/logs (v22: plus n_bilateral_points, the by-origin layer's
-    own count — zero for every single-axis indicator)."""
+    own count — zero for every single-axis indicator; v23: plus
+    n_bilateral_citizenship_points, the parallel face's own count)."""
     summary = {}
     for indicator in indicators.values():
         points, unresolved, footnotes_by_source = normalize_indicator(indicator, raw_dir, entities)
@@ -356,14 +396,17 @@ def normalize_all(
                         source.ref,
                     )
                 )
-        bilateral_points = _BILATERAL_SCRATCH.pop(indicator.id, [])
+        bilateral = _BILATERAL_SCRATCH.pop(indicator.id, {"birth": [], "citizenship": []})
         write_normalized(
             indicator.id, points, unresolved, processed_dir, classified_unresolved=classified,
-            footnotes_by_source=footnotes_by_source, bilateral_points=bilateral_points,
+            footnotes_by_source=footnotes_by_source,
+            bilateral_points=bilateral.get("birth", []),
+            bilateral_citizenship_points=bilateral.get("citizenship", []),
         )
         summary[indicator.id] = {
             "n_points": len(points),
-            "n_bilateral_points": len(bilateral_points),
+            "n_bilateral_points": len(bilateral.get("birth", [])),
+            "n_bilateral_citizenship_points": len(bilateral.get("citizenship", [])),
             "unresolved": classified,
         }
     return summary

@@ -688,7 +688,7 @@
     "todd_core": true,
     "companion_indicators": [],
     "reliability": "high",
-    "reliability_criteria": "Canonical tier = Eurostat migr_pop3ctb pinned c_birth=FOR (the foreign-born total — \"Foreign country\"), age=TOTAL, sex=T, unit=NR (the dataset's only unit, pinned and guarded): 44 countries (aggregates dropped logged), the door's own per-country starts (Ireland 2000, Italy/Lithuania/Spain 2002, France 2007 — the FR series annual 2007-2025, census-aligned) with the collector's b/e/p flags as-reported. Since v22 the SAME collector tier carries the by-origin face: the 44 geo-pinned ROW doors (c_birth open, the 307-code by-birth codelist as printed; aggregates, the FOR/NAT/TOTAL/OTH/UNK/RNC summary codes and the native diagonal dropped logged per class), as each country's own registration prints it. Witness tiers = the UN DESA migrant-stock estimates via WDI (world 1990-2024, the total face) and — since v22, the by-origin face — the OECD migration questionnaire's foreign-born matrix (38 destinations x the BIRTH_COUNTRY codelist, SEX=_T; the two questionnaires agreeing to the unit on the co-covered core). Root pair eurostat_migr/un_desa/oecd_mig: the registrations, the compiled estimates of the same stock, and the OECD-compiled questionnaire answers — one estimation/compilation step apart each.",
+    "reliability_criteria": "Canonical tier = Eurostat migr_pop3ctb pinned c_birth=FOR (the foreign-born total — \"Foreign country\"), age=TOTAL, sex=T, unit=NR (the dataset's only unit, pinned and guarded): 44 countries (aggregates dropped logged), the door's own per-country starts (Ireland 2000, Italy/Lithuania/Spain 2002, France 2007 — the FR series annual 2007-2025, census-aligned) with the collector's b/e/p flags as-reported. Since v22 the SAME collector tier carries the by-origin face: the 30 wired Eurostat ROW doors (c_birth open, the 307-code by-birth codelist as printed; aggregates, the FOR/NAT/TOTAL/OTH/UNK/RNC summary codes and the native diagonal dropped logged per class), as each country's own registration prints it. Since v23 the LEGAL twin rides beside it on the same collector judgment: the 34 Eurostat migr_pop1ctz ROW doors (citizen open, the 287-code by-citizenship codelist as printed; aggregates, the NAT/RNC/TOTAL/OTH/UNK summary codes, STLS stateless and the native diagonal dropped logged per class) — the face's own geography (Germany in, Cyprus out) carried as-printed. Witness tiers = the UN DESA migrant-stock estimates via WDI (world 1990-2024, the total face), the OECD migration questionnaire's foreign-born matrix (v22, DSD_MIG_F@DF_MIG_POPF, 38 destinations x the BIRTH_COUNTRY codelist, SEX=_T) and its citizenship twin (v23, DSD_MIG@DF_MIG measure B15, 36 destinations x the CITIZENSHIP codelist, SEX=_T — the two questionnaires agreeing to the unit on the co-covered core). Root pair eurostat_migr/un_desa/oecd_mig: the registrations, the compiled estimates of the same stock, and the OECD-compiled questionnaire answers — one estimation/ compilation step apart each.",
     "reclassification_sensitive": false,
     "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0; OECD Terms and Conditions, attribution required — see docs/licenses.md.",
     "roots": {
@@ -696,14 +696,14 @@
         {
           "root": "eurostat_migr",
           "label": "Eurostat migration statistics (migr_pop3ctb — foreign-born stock by country of birth, as each country reports)",
-          "doors": 31
+          "doors": 189
         }
       ],
       "witness": [
         {
           "root": "oecd_mig",
           "label": "OECD International Migration Database (DSD_MIG_F@DF_MIG_POPF — the questionnaire's foreign-born matrix, OECD-compiled)",
-          "doors": 1
+          "doors": 2
         },
         {
           "root": "un_desa",

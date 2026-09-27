@@ -12,3 +12,6 @@ venv/
 data/raw/
 data/processed/
 reports/
+
+# v23: probe scratch material (the B15 full download cache)
+data/tmp/

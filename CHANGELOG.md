@@ -191,6 +191,380 @@ since v18.
   print; the day one starts, its fetch fails loudly (the soft-miss
   guard doubles as the change detector).
 
+## 2026-09-25 — v24: the by-sex face — the M/F ventilations of the two
+## migration matrices wired on BOTH faces (Ediz's approved direction),
+## the OECD F rows un-blocked instead of re-downloaded, and the whole
+## face riding the SAME bilateral layers under the merge key's own sex
+## term
+
+**No dist contract break (additive, one indicator):** the 27 other
+indicator files, entities.json and todd_corpus.json are byte-identical
+to the v23 commit; catalog.json moves only immigration_stock's roots
+summary (canonical eurostat_migr doors 65 -> 189 — the +124 by-sex ROW
+doors; the OECD witness doors unchanged at 2). immigration_stock.json
+keeps every pre-existing key bit-identical (the 557-point (entity,
+year) data, the UN DESA witness, the todd_refs block, the 68 v23-era
+sources[] entries, and — the v24 contract's own heart — every
+sex=None point of both bilateral layers and every _T point of both
+OECD witnesses) modulo the designed additions: 124 new sources[]
+entries (the M/F ROW doors, priorities 69-192) and the by-sex points
+themselves — birth +182,478 canonical (M 91,249 + F 91,229),
+citizenship +219,720 (M 109,906 + F 109,814), the B14 witness +94,952
+female points (the flow's F rows kept), the B15 witness +101,829 (the
+V23 pull's 104,009 rows un-blocked). Layer totals: bilateral 273,708
+canonical / 194,177 witness; bilateral_citizenship 331,778 / 211,592.
+
+### Context
+
+Ediz pre-approved the direction and asked for the launch without
+waiting ("Ediz a donné son feu vert et demandé à lancer la V24 sans
+attendre davantage"): the by-sex face of the migration matrix — the
+M/F ventilations of the SAME rows on both faces, the OECD F rows
+already in the V23 pull to be un-blocked rather than re-downloaded.
+The detailed design was frozen AFTER the probes (the §9 protocol),
+then executed with the v23 method.
+
+### Investigated (live, before any wiring — the v24 probe record)
+
+- **The Eurostat ventilations (probes A-B, all 64 wired doors x 2
+  sexes):** the M/F rows print on the SAME frame as the _T doors —
+  FR birth M: 1,220 records / F: 1,219; FR ctz M/F: 714 each; the
+  M/F perimeter = the _T perimeter minus CROATIA (29/30 birth, 33/34
+  ctz — HR prints the _T detail but NO ventilation, the honest
+  absence, unwired and recorded). THE ARITHMETIC, verified to the unit
+  on every probed anchor: M + F = the _T print exactly (FR<-MA birth
+  2015: 479,354 + 475,388 = 954,742; ctz: 231,893 + 226,668 =
+  458,561; FR<-PT both faces; 2018 likewise) — the disaggregation is
+  the registration's own, not a derivation.
+- **The OECD F faces (probes C-D):** the flows print NO male face —
+  their whole vocabulary is _T + F (B14: 100,944 + 96,570 data rows;
+  B15: 112,111 + 104,009), the female face beside the both-sexes face,
+  verified live on the full downloads. THE SEAMS, verified to the
+  unit: B14's F print agrees with the Eurostat birth-face F doors
+  (FR<-MAR F 2015 = 475,388 on both sides; 2018 = 499,397; FR<-PRT F
+  2015 = 316,815), B15's with the ctz F doors (226,668 / 243,044 /
+  252,472) — the questionnaire pair agreeing on the ventilated face
+  exactly as it agrees on the both-sexes face. US<-MEX F 2024 =
+  3,752,511 (the B14 F face carrying no US<-MEX row at all — the
+  as-printed shape, documented). After the drop vocabulary: B14 F
+  94,952 points (38 x 236, 1995-2024), B15 F 101,829 (35 x 236).
+
+### Added
+
+- **The by-sex face on the SAME bilateral layers**: the M/F points
+  ride `bilateral` and `bilateral_citizenship` under the merge key's
+  own fourth term — (destination, origin, year, SEX) — the component
+  the v22 key carried as None until now (the base.py docstring's own
+  "the sex-split doors, when ever wired, coexist without colliding"
+  anticipation, landed). No new layer, no new key space: a
+  (destination, origin, year) that prints on all three sexes exists
+  three times, once per sex, M + F = _T the arithmetic the layer now
+  displays.
+- **The Eurostat ROW-SEX grammar** `migr_pop{3ctb,1ctz}/ROW/{geo}/
+  {sex}` (sex in {M, F} — four segments with parts[1] == "ROW", a
+  reserved position the pre-v22 pinned grammar's c_birth can never
+  print): the same frame pins with the sex pin swapped, the same drop
+  classes, the same origin-axis routing; records carry sex="male"/
+  "female" through the shared _UNE_RT_A_SEX_TO_PROJECT table.
+- **The OECD F rows un-blocked**: parse_migf_csv and parse_mig_csv now
+  KEEP the F rows (sex="female") instead of dropping them logged —
+  "débloquer plutôt que re-télécharger" read literally: no new door,
+  no new download shape, the SAME single pull serving both faces (the
+  re-fetch is the routine snapshot refresh; the F rows never lived in
+  the snapshots, only in the responses). The M row guard stays loud:
+  the flows print no male face, an M row is a door change, a human
+  decides.
+- **The config**: 124 doors (29 birth M + 29 birth F, priorities
+  69-126; 33 ctz M + 33 ctz F, priorities 127-192 — HR unwired on
+  both faces, recorded) — 192 sources total on the indicator, the
+  targeted fetch's own count. Catalog: eurostat_migr 65 -> 189 doors.
+- **Tests: 384 -> 391** (+1 build_url M/F, +3 the ROW-SEX grammar
+  refusals, +1 the birth M fixture's anchors (M+F=_T arithmetic), +1
+  the ctz F fixture's anchors (the OECD seam), +1 the by-sex
+  end-to-end integration; four v22/v23-era tests extended — the
+  door counts 65 -> 189, the witness maps keyed by the merge key's
+  sex component, the OECD fixture counts re-read with the F rows
+  kept). The fixtures GENERATED live (scripts/make_v24_fixtures.py:
+  the FR M row of the birth face at 1,220 records, the FR F row of
+  the citizenship face at 714 — every anchor read from the response
+  bytes).
+- **scripts/v24_probe.py** and **scripts/verify_v24_diff.py** (the
+  four probes and the 27-check delivery verification, committed with
+  the code).
+
+### Changed
+
+- config/sources.yaml, README, docs/architecture.md: the by-sex face
+  now WIRED (the "by-sex (both doors)" unwired record resolved); the
+  no-male-face OECD shape documented; the remaining unwired faces
+  re-listed (the age bands, the single-axis ctz total door, the DESA
+  matrix, the OWID US historical chart).
+
+### Verified (live, frozen at delivery time)
+
+- Fetch ciblé: 192/192 sources, 0 failures (the 124 new M/F doors +
+  the 68 v23 doors re-fetched, the two OECD matrices included — the
+  snapshots now carrying the F records).
+- Rebuild ×2 + verify_v24_diff.py: **27 PASS / 0 FAIL** — the 27 other
+  files byte-identical to the v23 commit; every pre-existing point of
+  both layers and both witnesses bit-identical; the by-sex counts
+  exact (91,249/91,229/109,906/109,814 canonical; 94,952/101,829
+  witness); M+F=_T to the unit on the six anchor pairs; the F seams on
+  both matrices; the vanished origins carrying their ventilations
+  (Eurostat M/F, OECD female); HR's honest absence; double rebuild
+  deterministic (31/31 md5); corpus 24/24; `cli check-config` OK.
+- Stats v24: bilateral (by-origin) 273,708 points on 6,306 pairs; the
+  witness 194,177; bilateral (by-citizenship) 331,778 on 6,627 pairs;
+  the witness 211,592. The 11 other counters unchanged.
+- Tests: 391/391.
+
+### Known limitations
+
+- The OECD matrices print NO male face (verified live on both full
+  downloads — the flows' whole vocabulary is _T + F): the by-sex
+  witness coverage is female-only, the honest as-printed shape; the
+  male face lives on the Eurostat canonical doors only.
+- Croatia prints the _T by-origin detail but NO M/F ventilation on
+  either face — the by-sex doors stay unwired, recorded; the day they
+  print, their fetch fails loudly.
+- The age bands (Eurostat migr_pop's own dimension) stay unwired,
+  recorded; same for the single-axis ctz foreigners-total door, the
+  DESA bilateral matrix (manual-download), and the OWID US-by-CoB
+  historical chart.
+
+## 2026-09-25 — v23: the citizenship face — the bilateral decomposition's
+## LEGAL twin (étrangers vs immigrés, the two boards of Le Destin des
+## immigrés), the OECD questionnaire's B15 matrix as its witness, and the
+## two faces carried as PARALLEL layers, never merged (ADR-0010)
+
+**No dist contract break (additive, one indicator):** the 27 other
+indicator files are byte-identical to the v22 commit EXCEPT ONE
+DESIGNED PROVIDER REVISION — illegitimate_births carries exactly one
+re-point (Moldova 2022: 18.3 -> 18.2, the collector's own rounding
+correction re-read live twice, flagged to Ediz; see Fixed);
+entities.json, todd_corpus.json are byte-identical; catalog.json moves
+only immigration_stock's roots summary (canonical eurostat_migr doors
+31 -> 65; witness +oecd_mig doors 1 -> 2). immigration_stock.json keeps
+every pre-existing key bit-identical (the 557-point (entity, year)
+data, the UN DESA witness, the todd_refs block, the 33 pre-existing
+sources[] entries, the whole `bilateral` birth layer — 91,230 canonical
+points + the B14 witness 99,225) modulo the designed additions: 35 new
+sources[] entries (34 migr_pop1ctz ROW doors + the OECD DF_MIG/B15
+witness) and the `bilateral_citizenship` layer — 112,058 canonical
+points on 6,627 (destination x origin) pairs, 34 destinations x 226
+origins, 1998-2025, plus the OECD B15 witness series (109,763 points,
+36 destinations, 236 origins, 1995-2024).
+
+### Context
+
+The fifth session-loss recovery, and the cleanest: the GitHub repo
+itself was the base (HEAD at a7cd073, the V22 commit — the delivery
+this entry follows). The session re-fetched the FULL raw tree live (169
+sources at the v22 config — the v18 recovery pattern), rebuilt, and
+certified the dist against the GitHub state before any v23 work began:
+30 of 31 files bit-for-bit, the one exception the Moldova rounding
+revision above (investigated live: the Eurostat API prints 18.2 today,
+the v22 snapshot had printed 18.3 — a provider revision between the
+deliveries, surfaced not buried). On that certified base the v23 design
+(the frozen dossier of the lost session, re-verified anchor by anchor
+before any wiring) executed in the probe-wire-verify order.
+
+### Investigated (live, before any wiring — the v23 probe record)
+
+- **The Eurostat citizenship face (probes A-C):** migr_pop1ctz/ROW/FR
+  answers 26,577 bytes, 927 non-empty cells, the SAME frame pins as the
+  birth face (age=TOTAL, sex=T, unit=NR — the only unit) and the same
+  layout with `citizen` in c_birth's stride. The 287-code by-citizenship
+  codelist: 226 country codes + NAT/RNC/TOTAL/OTH/UNK summary + STLS
+  stateless + 55 aggregates/regions (each class dropped logged). THE
+  v18 ANCHORS, landed on the face they always belonged to: FR<-MA ctz
+  2015-2018 = 458,561/465,230/472,843/480,600 — the "MA 2015 =
+  458,561" of the v18 probe record was the citizenship print all
+  along, re-read live exact. FR<-PT ctz 2015 = 541,867.
+- **The face's own geography (probe D, all 44 candidate geos):** 34
+  destinations print the by-citizenship detail — GERMANY JOINS (6,400
+  cells, 5,498 country cells — the citizenship questionnaire carries
+  what the birth questionnaire's honest absence never printed) while
+  CYPRUS LEAVES (222 cells, every one an aggregate or summary); EL/ME/
+  MD/AD join as census cross-sections; the sums over the 34 doors:
+  112,058 country cells, 6,627 pairs, 226 origins, 1998-2025 — every
+  anchor exact. The asymmetry is the registration's own shape, never
+  "corrected".
+- **The OECD finding (probe E):** the SIBLING flow the v22 record kept
+  unwired at "CITIZENSHIP at position 2" is DSD_MIG@DF_MIG, and it is
+  the ACCESS MIRROR of the B14 quirk — it REFUSES the empty-key /all
+  download but SERVES the positional wildcard key '..A.B15.._Z._Z.PS':
+  18,435,034 bytes / 216,120 data rows in ONE call, the frame pins
+  (FREQ=A, MEASURE=B15, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z,
+  UNIT_MEASURE=PS) hard-verified per row with ZERO violations. SEX
+  carries _T (112,111) + F (104,009 — the V24 hook, drop logged).
+  THE DROP-VOCABULARY ARITHMETIC, read live and exact: 112,111 _T rows
+  - STLS 455 - W 832 - W_X 397 - EEA 115 - EU15 210 - A4 114 -
+  diagonal 225 = 109,763 points on 236 origins x 36 destinations,
+  1995-2024 — the vanished-entity codes (XKV, the _F prints) are KEPT
+  and mapped onto their withdrawn ISO3 entities (the same admission as
+  the birth face), the residual vocabulary drops logged per class. THE
+  SEAM, verified to the unit: OECD FR<-MAR _T 2015 = 458,561 = the
+  Eurostat ctz print EXACTLY (2016-2018 both sides); the world face
+  US<-MEX 2024 = 8,226,106 (citizenship) vs 12,383,868 (birth) — the
+  two faces diverging naturally on the pair the naturalization gap
+  widens.
+- **TWO PROMPT DIVERGENCES, investigated and flagged to Ediz (never
+  silently adapted):** (1) the frozen design's §5.4 contrast anchor
+  carried its face labels SWAPPED — live reads settle it: 648,112 is
+  the BIRTH face of FR<-PT 2015 (Eurostat and OECD B14 agreeing to the
+  unit), 541,867 the CITIZENSHIP face; the CONVERGE story itself is
+  real and rides the corrected labels everywhere in this entry and the
+  config. (2) the frozen design's §3 drop list named the
+  vanished-entity codes as "always dropped" — the anchors' own
+  arithmetic (109,763/236 OECD, 112,058/226 Eurostat) proves the
+  OPPOSITE treatment: the codes are kept and mapped, the v22 discipline
+  verbatim; the §3 sentence is the memory slip of a residual list (the
+  actual drops: STLS/W/W_X/EEA/EU15/A4). The repo's structural truth
+  and the anchors win; both divergences are flagged in the delivery
+  message.
+
+### Added
+
+- **The `bilateral_citizenship` dist layer** (ADR-0010): the LEGAL twin
+  of the by-origin face — the stock of FOREIGN CITIZENS (étrangers) by
+  nationality, in mirror of the birth face's foreign-born (immigrés).
+  PARALLEL, never merged: separate normalized/merged/witnesses files,
+  the same (destination, origin, year, sex) merge key in separate key
+  spaces, its own dist block with its own witnesses. A pair printing on
+  both faces exists TWICE (FR<-MA 2015: 954,742 born in `bilateral`,
+  458,561 citizens in `bilateral_citizenship`) — the divergence IS the
+  display.
+- **`RawRecord.origin_axis`** (additive field): "birth" |
+  "citizenship" | None — the routing key normalize reads (None and
+  "birth" keep the v22 routing, so pre-v23 snapshots rebuild
+  bit-identically); stamped by the connectors (migr_pop3ctb ROW and
+  DF_MIG_POPF -> birth; migr_pop1ctz ROW and DF_MIG/B15 ->
+  citizenship).
+- **The shared Eurostat ROW grammar** `migr_pop{3ctb,1ctz}/ROW/{geo}`:
+  one regex, the DATASET capture choosing the origin dimension
+  (c_birth vs citizen), the layout (both verified live), the pins and
+  the dist layer; the citizenship face's own drop class — STLS
+  (stateless), logged; the 4-segment pinned-citizen grammar REFUSED
+  (the single-axis ctz door stays unwired, recorded in sources.yaml).
+- **The OECD DF_MIG/B15 grammar**: the keyed wildcard
+  '..A.B15.._Z._Z.PS' (the access mirror), the frame pins per row, the
+  SEX split (the 104,009 F rows drop logged — the V24 hook), the
+  residual drops per class (STLS/W/W_X/EEA/EU15/A4 + the NAT/TOTAL/UNK
+  guard, 0 rows live), the vanished-entity mapping (shared override
+  table), origin_axis="citizenship".
+- **The pipeline plumbing for the second layer**: normalize routes on
+  origin_axis and always writes both layer files (stale-file
+  discipline); merge's bilateral block extracted and parameterized
+  (one helper, two calls — v22 behavior byte-identical, provenance
+  entries self-describing with layer labels); validate's bilateral
+  checks per layer; build emits the block with its own citations (the
+  ctz door's citation carries the citizenship questionnaire's own API
+  title, the B15 entry the registry's own flow title, both read live);
+  stats prints both faces' lines.
+- **The config**: 34 migr_pop1ctz ROW doors (priorities 34-67, the
+  birth-face order minus CY plus DE/EL/ME/MD/AD) + the OECD DF_MIG/B15
+  witness (priority 68) — 68 doors total on the indicator, the
+  targeted fetch's own count. Catalog: eurostat_migr 31 -> 65 doors,
+  oecd_mig 1 -> 2.
+- **ADR-0010** (the parallel-faces decision, the §3 requirement: no
+  prior ADR covered it) and the fixtures' README entries.
+- **Tests: 361 -> 384** (+11 Eurostat ctz ROW incl. the shared-grammar
+  routing pin, +10 OECD B15, +1 the origin_axis routing test with the
+  pre-v23 bit-compat guarantee, +1 the citizenship end-to-end
+  integration; two v22-era tests extended — the doors-count and the
+  additivity pins), the fixtures GENERATED live
+  (scripts/make_v23_fixtures.py: the FR ctz row whole at 927 cells,
+  the B15 slice at 16,285 lines = 8,283 _T + 8,002 F — the frozen
+  design's own anchor, reproduced exactly, every drop class and
+  override code riding).
+- **scripts/v23_probe.py** and **scripts/verify_v23_diff.py** (the
+  five probes and the 33-check delivery verification, committed with
+  the code).
+
+### Changed
+
+- config/sources.yaml: the migration blocks rewritten — the
+  citizenship face now WIRED on both providers (the sibling-flow note
+  resolved), the two flows' access-mirror relationship documented, the
+  remaining unwired faces re-listed (by-sex — the V24 hook, age bands,
+  the single-axis ctz total door, the DESA matrix, the OWID US
+  historical chart).
+- README and docs/architecture.md: the migration sections carry the
+  citizenship face (the two-boards story, the anchors, the
+  asymmetry).
+
+### Fixed
+
+- **The GHO MDG_0000000001 door change (a provider-side recoding
+  caught by the recovery fetch):** the live payload now prints
+  Dim2=AGEGROUP_MONTHS0-11 on every one of its 39,279 COUNTRY rows (at
+  v22 the rows rode Dim2-less; the Indicator metadata still declares
+  Dim2Type null, out of sync with the data). The YEARSALL default
+  would have refused the WHOLE payload as age slices. Verified live
+  before any fix: the 39,210 dist-point keys all present with ZERO
+  value divergence, the 69 extra rows all Kosovo pre-2008 (dropped by
+  the entity validity guard, the same rows the v22 build dropped). The
+  fix is the v20 per-code AGE PIN applied to a door change:
+  MDG_0000000001 pinned to AGEGROUP_MONTHS0-11 (one deliberate line,
+  the loud-guard discipline kept — a future re-coding is a door change
+  again, a human decides). The rebuilt infant_mortality.json is
+  byte-identical through the pin; a live-generated fixture
+  (gho_mdg_0000000001_sample.json) replaces the WHOSIS-shape seeding.
+- **One provider data revision, surfaced not buried:** Moldova 2022 on
+  NMARPCT prints 18.2 today (verified twice: the fresh snapshot and a
+  direct API call, no status flag) where the v22 dist carried 18.3 — a
+  Eurostat rounding correction between 2026-09-22 and 2026-09-25. The
+  rebuild carries the live print; the verify script pins the exact
+  one-point diff so the revision is reviewable in the commit itself.
+  Flagged to Ediz.
+
+### Verified (live, frozen at delivery time)
+
+- Fetch ciblé: 68/68 sources, 0 failures (the 34 new ctz doors + the
+  33 existing doors re-fetched + the B15 keyed download — 18.4 MB in
+  one call).
+- Rebuild ×2 + verify_v23_diff.py: **33 PASS / 0 FAIL** — the 26 other
+  indicator files byte-identical to the v22 commit; the Moldova
+  one-point revision pinned exactly; entities/todd_corpus
+  byte-identical; catalog one entry's roots summary; the pre-existing
+  keys and the whole birth layer bit-identical; the citizenship
+  layer's anchors exact; double rebuild deterministic (31/31 md5).
+- Stats v23: bilateral (by-citizenship) canonical 112,058 points =
+  112,058 valued + 0 explicit gaps; 6,627 pairs; 34 destinations x 226
+  origins; 1998-2025. The witness: 109,763 points, 7,247 pairs, 36
+  destinations, 236 origins, 1995-2024 — the seam (FR<-MAR 2015 =
+  458,561 on BOTH doors), the world face (US<-MEX 2024 = 8,226,106
+  citizens vs the birth face's 12,383,868), the vanished origins
+  (XKX/ANT/CSK/SCG/SUN/YUG all landed on their entities). The 11 other
+  counters unchanged; corpus 24/24; `cli check-config` OK.
+- Tests: 384/384.
+
+### Known limitations
+
+- The by-sex face of all four doors stays unwired (recorded: the
+  Eurostat M/F sex doors; the OECD B14 F rows and B15's 104,009 F rows
+  drop logged — the V24 hook, already downloaded, un-blocking beats
+  re-fetching).
+- The two faces' coverage differs (34 vs 30 Eurostat destinations; the
+  witness pair 36 vs 38 OECD destinations) — the asymmetry is carried
+  as-printed, explained wherever the pair is displayed; a derived
+  "naturalization gap" product would be a derivation, deliberately out
+  of scope (the ADR-0010 accepted cost).
+- The single-axis ctz foreigners-total door (migr_pop1ctz/FOR-class
+  pins) stays unwired, recorded in sources.yaml; same for the age
+  bands, the DESA bilateral matrix (manual-download), and the OWID
+  US-by-CoB historical chart.
+- ERRATUM V21, kept noted (the tally was not re-edited by this
+  version): the v21 tally prints +285 witness points; the corrected
+  value is +267 — the GHO Kosovo rows 2002-2007 were rejected by a
+  valid_from=2008 bound, 18 rows overcounted. The corrected Kosovo
+  arithmetic now prints through the live GHO door change: the
+  MDG_0000000001 payload carries exactly 69 Kosovo rows, all
+  pre-2008, all dropped by the same guard (the honest count behind
+  both numbers).
+
+
 ## 2026-09-22 — v21: the entities version — the DYB 1978
 ## vanished-entity tables (the PDF route the XLS loop cannot reach), the
 ## Byelorussian and Ukrainian SSR admitted as the UN's own member rows,

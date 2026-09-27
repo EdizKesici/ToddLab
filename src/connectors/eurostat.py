@@ -116,6 +116,38 @@ make exactly that decision three more times):
   estimates, worldwide 1990-2024, the same harmonized-estimate relation
   WPP/GHE hold to their collectors).
 
+- migr_pop1ctz, "Population on 1 January by age group, sex and
+  citizenship" (v23): the SAME migration questionnaire's LEGAL face —
+  the stock of FOREIGN CITIZENS (étrangers) each country's registration
+  prints, the mirror of migr_pop3ctb's foreign-born face (immigrés).
+  Todd's own pair: the two boards of Le Destin des immigrés read the
+  SAME migrants through two legalities — born-abroad vs holding-the-
+  nationality — and the two faces DIVERGE exactly where naturalization
+  runs ahead of the census (FR<-MA 2015: 954,742 born vs 458,561
+  citizens, both live-verified on their doors) and CONVERGE where they
+  rarely do (FR<-PT 2015: 648,112 vs 541,867). v23 wires the BILATERAL
+  face only — the ROW grammar (one geo-pinned door per destination,
+  citizen UNPINNED, the 287-code by-citizenship codelist as printed:
+  226 country codes + NAT/RNC/TOTAL/OTH/UNK summary + STLS stateless +
+  55 aggregates/regions, each class dropped logged); the single-axis
+  foreigners-total door (migr_pop1ctz/FOR-class pins) stays unwired,
+  recorded in sources.yaml. PINS (verified live 2026-09-25, the v23
+  probe): age TOTAL, sex T, unit NR (the dataset's only unit), layout
+  [freq, citizen, age, unit, sex, geo, time] — the migr_pop3ctb layout
+  with citizen in c_birth's stride. THE FACE'S OWN GEOGRAPHY (probed
+  live, all 44 candidate geos): 34 destinations print the by-citizenship
+  detail (112,058 cells = the canonical points, 6,627 pairs, 226
+  origins, 1998-2025) — GERMANY JOINS this face (6,400 cells, 5,498
+  country cells: the citizenship questionnaire carries what the birth
+  questionnaire's honest absence never printed) while CYPRUS LEAVES it
+  (222 cells, every one an aggregate or summary — the totals-only
+  class); EL/ME/MD/AD join as census-cross-section rows (413/221/61/92
+  country cells); 10 geos print totals only (CY, MT, MK, GE, AL, RS,
+  UA, MC, AM, AZ). The asymmetry is the registration's own shape,
+  never "corrected". Root: eurostat_migr (the same questionnaire — the
+  catalog counts its doors); witness = the OECD DSD_MIG@DF_MIG B15
+  matrix (root oecd_mig, its second door).
+
 THE une_rt_a PINS (verified live 2026-09-20, the probe record):
 - age: the codelist carries SEVEN bands (Y15-24 ... Y55-74) and NO
   TOTAL — a query for age=TOTAL returns HTTP 200 with an EMPTY value
@@ -227,9 +259,37 @@ convention extended):
                                     307 codes, age=TOTAL/sex=T/unit=NR
                                     pinned and verified). Each record
                                     carries the origin axis (RawRecord
-                                    origin_raw_name/origin_iso3_raw); the
-                                    64 non-country codes and the diagonal
-                                    drop logged per class.
+                                    origin_raw_name/origin_iso3_raw) with
+                                    origin_axis="birth"; the 64 non-country
+                                    codes and the diagonal drop logged per
+                                    class.
+    migr_pop{3ctb,1ctz}/ROW/{geo}/{sex}
+                                 -> v24: the BY-SEX ventilation of the same
+                                    row (sex M or F — the same codelist,
+                                    the same drops, records carrying
+                                    sex="male"/"female" into the SAME
+                                    bilateral layers).
+    migr_pop1ctz/ROW/{geo}       -> v23: the BILATERAL row of one
+                                    destination on the CITIZENSHIP face
+                                    (e.g. migr_pop1ctz/ROW/FR — geo
+                                    pinned, citizen UNPINNED: the full
+                                    287-code by-citizenship codelist as
+                                    printed, age=TOTAL/sex=T/unit=NR
+                                    pinned and verified). Same grammar,
+                                    same pins, same drop discipline — the
+                                    DATASET part of the ref chooses the
+                                    origin dimension (citizen vs c_birth)
+                                    and the dist layer (records carry
+                                    origin_axis="citizenship" -> the
+                                    bilateral_citizenship layer, never the
+                                    birth layer). STLS (stateless — a
+                                    nationality without a state, a
+                                    citizenship-axis residual the birth
+                                    axis never printed) drops logged as
+                                    its own class. The 4-segment
+                                    pinned-citizen grammar is REFUSED:
+                                    the single-axis ctz door stays
+                                    unwired, recorded in sources.yaml.
 The dataset part selects the dispatch; the pins are validated against
 the response (a pinned request must return EXACTLY what it asked for —
 never ingest a slice we didn't ask for).
@@ -271,11 +331,13 @@ from src.connectors.base import Connector, RawFetchResult, RawRecord
 EUROSTAT_API_URL = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
 
 # The one-ref grammar per dataset (v17: the second dispatch decision;
-# v18: three more — nama, edat, migr).
+# v18: three more — nama, edat, migr; v23: the citizenship twin).
 # demo_find: {indic_de}[/{geo}]           une_rt_a: {age}/{unit}/{sex}
 # nama_10_a10_e: {na_item}/{unit}/{nace}  edat_lfse_03: {isced11}/{age}/{sex}
-# migr_pop3ctb: {c_birth}/{age}/{sex}
-_EUROSTAT_DATASETS = ("demo_find", "une_rt_a", "nama_10_a10_e", "edat_lfse_03", "migr_pop3ctb")
+# migr_pop3ctb: {c_birth}/{age}/{sex}     migr_pop1ctz: ROW/{geo} ONLY (v23)
+_EUROSTAT_DATASETS = (
+    "demo_find", "une_rt_a", "nama_10_a10_e", "edat_lfse_03", "migr_pop3ctb", "migr_pop1ctz",
+)
 
 # v18 (nama_10_a10_e): the Euro-area aggregate prints as the bare
 # two-letter code "EA" in this dataset's geo codelist (verified live
@@ -291,8 +353,9 @@ _DATASET_TWO_LETTER_AGGREGATES: dict[str, frozenset[str]] = {
 }
 
 # The datasets whose grammar pins a SEX code (T/M/F) mapped through the
-# shared table below: une_rt_a (v17), edat_lfse_03 and migr_pop3ctb (v18).
-_SEXED_DATASETS = frozenset({"une_rt_a", "edat_lfse_03", "migr_pop3ctb"})
+# shared table below: une_rt_a (v17), edat_lfse_03 and migr_pop3ctb (v18),
+# migr_pop1ctz (v23 — the citizenship twin carries the same pin).
+_SEXED_DATASETS = frozenset({"une_rt_a", "edat_lfse_03", "migr_pop3ctb", "migr_pop1ctz"})
 
 # The provider's own geo codelist quirks pycountry cannot answer (verified
 # live 2026-09-19: pycountry returns nothing for FX/UK/EL/XK). XK (Kosovo)
@@ -322,6 +385,14 @@ EUROSTAT_GEO_TO_ISO3: dict[str, str] = {
 # ride the pinned c_birth=FOR door, and the ROW slice exists to carry the
 # per-origin decomposition, never to duplicate the total.
 _MIGR_SUMMARY_CODES = frozenset({"FOR", "NAT", "TOTAL", "OTH", "UNK", "RNC"})
+
+# v23: the CITIZENSHIP axis's own residual — STLS, "Stateless" (the
+# codelist's own label, read live 2026-09-25). A nationality without a
+# state is a population the citizenship questionnaire genuinely counts
+# (12 cells on the FR row, 455 _T rows on the OECD B15 face) — but it is
+# NOT a country the entity table could ever carry, the same class the
+# OECD residual vocabulary drops. Dropped LOGGED as its own class.
+_MIGR_STATELESS_CODES = frozenset({"STLS"})
 
 # v22: the ORIGIN-axis override (the c_birth codelist's own country quirks
 # pycountry cannot answer — the same discipline as EUROSTAT_GEO_TO_ISO3
@@ -354,14 +425,22 @@ _UNE_REF_RE = re.compile(
 # (ED3_4, ED34_44); migr's c_birth codes are plain (FOR/NAT/TOTAL) and
 # its age pin reuses the TOTAL/Y25-64 shape (TOTAL is not matched by
 # the Y..-.. pattern, hence its own class).
-# v22: the ROW grammar — migr_pop3ctb/ROW/{geo}, the bilateral row of one
-# destination (geo pinned, c_birth OPEN). Three segments, so it cannot
-# collide with the four-segment pinned-c_birth grammar above; checked
-# first so a future codelist code literally named 'ROW' (none exists —
-# the codelist is countries + the 64 printed non-country codes) would
-# never shadow the door.
+# v22: the ROW grammar — migr_pop{3ctb,1ctz}/ROW/{geo}, the bilateral row
+# of one destination (geo pinned, origin dimension OPEN). Three segments,
+# so it cannot collide with the four-segment pinned-c_birth grammar above;
+# checked first so a future codelist code literally named 'ROW' (none exists
+# — the codelist is countries + the printed non-country codes) would never
+# shadow the door. v23: the DATASET capture chooses the origin dimension
+# (migr_pop3ctb -> c_birth / migr_pop1ctz -> citizen) and the dist layer
+# (origin_axis birth vs citizenship) — the same grammar, the same pins.
 _MIGR_ROW_REF_RE = re.compile(
-    r"^(?P<dataset>migr_pop3ctb)/ROW/(?P<geo>[A-Z0-9_]+)$"
+    r"^(?P<dataset>migr_pop3ctb|migr_pop1ctz)/ROW/(?P<geo>[A-Z0-9_]+)$"
+)
+# v24: the BY-SEX twin — migr_pop{3ctb,1ctz}/ROW/{geo}/{sex}, sex in {M, F}
+# (four segments with parts[1] == "ROW", a reserved position the pinned
+# grammar's c_birth can never print; the ventilations of the SAME rows).
+_MIGR_ROW_SEX_REF_RE = re.compile(
+    r"^(?P<dataset>migr_pop3ctb|migr_pop1ctz)/ROW/(?P<geo>[A-Z0-9_]+)/(?P<sex>[MF])$"
 )
 _NAMA_REF_RE = re.compile(
     r"^(?P<dataset>nama_10_a10_e)/(?P<na_item>[A-Z_]+)/(?P<unit>[A-Z_]+)/(?P<nace>[A-Z0-9][A-Z0-9_\-]*)$"
@@ -429,21 +508,50 @@ def _parse_ref(source_ref: str) -> dict:
             },
             "geo": None,
         }
+    m = _MIGR_ROW_SEX_REF_RE.match(source_ref)
+    if m:
+        dataset = m.group("dataset")
+        # v24: the BY-SEX twin of the ROW grammar — same door, same codelist,
+        # the sex pin swapped from T to M or F (the ventilations of the same
+        # registration rows; verified live 2026-09-25: M + F = the _T print
+        # to the unit on every probed anchor). Records carry sex="male"/
+        # "female" through the shared table, riding the SAME bilateral
+        # layers under the (destination, origin, year, sex) merge key.
+        return {
+            "dataset": dataset,
+            "pins": {
+                "age": "TOTAL",
+                "sex": m.group("sex"),
+                "unit": "NR",
+            },
+            "geo": m.group("geo"),
+            "bilateral": True,
+            "origin_dim": "c_birth" if dataset == "migr_pop3ctb" else "citizen",
+            "origin_axis": "birth" if dataset == "migr_pop3ctb" else "citizenship",
+        }
     m = _MIGR_ROW_REF_RE.match(source_ref)
     if m:
+        dataset = m.group("dataset")
+        # v23: the dataset capture routes the face — migr_pop3ctb reads
+        # its c_birth dimension (origin_axis="birth"), migr_pop1ctz its
+        # citizen dimension (origin_axis="citizenship"). Same frame pins
+        # for both (verified live on each door's own probe).
         return {
-            "dataset": "migr_pop3ctb",
+            "dataset": dataset,
             "pins": {
-                # the ROW frame (verified live 2026-09-22, the v22 probe):
-                # age=TOTAL, sex=T, unit=NR — pinned in the URL and verified
-                # by the layout guard; c_birth is deliberately UNPINNED (the
-                # by-birth codelist as printed, 307 codes).
+                # the ROW frame (verified live 2026-09-22 on the birth face,
+                # 2026-09-25 on the citizenship face): age=TOTAL, sex=T,
+                # unit=NR — pinned in the URL and verified by the layout
+                # guard; the origin dimension (c_birth / citizen) is
+                # deliberately UNPINNED (the codelist as printed).
                 "age": "TOTAL",
                 "sex": "T",
                 "unit": "NR",
             },
             "geo": m.group("geo"),
             "bilateral": True,
+            "origin_dim": "c_birth" if dataset == "migr_pop3ctb" else "citizen",
+            "origin_axis": "birth" if dataset == "migr_pop3ctb" else "citizenship",
         }
     m = _MIGR_REF_RE.match(source_ref)
     if m:
@@ -471,7 +579,15 @@ def _parse_ref(source_ref: str) -> dict:
         f"'migr_pop3ctb/<c_birth>/<age>/<sex>' (the foreign-born stock "
         f"slice, e.g. migr_pop3ctb/FOR/TOTAL/T), or "
         f"'migr_pop3ctb/ROW/<geo>' (the bilateral by-origin row of one "
-        f"destination, e.g. migr_pop3ctb/ROW/FR — v22)."
+        f"destination, e.g. migr_pop3ctb/ROW/FR — v22), or "
+        f"'migr_pop1ctz/ROW/<geo>' (the bilateral by-citizenship row of "
+        f"one destination, e.g. migr_pop1ctz/ROW/FR — v23; the citizenship "
+        f"face speaks the ROW grammar ONLY: the single-axis foreigners-total "
+        f"door stays unwired, recorded in config/sources.yaml), or "
+        f"'migr_pop3ctb/ROW/<geo>/<sex>' or 'migr_pop1ctz/ROW/<geo>/<sex>' "
+        f"(the BY-SEX ventilation of "
+        f"the same row, sex M or F — v24; the sex-split doors ride the same "
+        f"bilateral layers under the merge key's sex component)."
     )
 
 
@@ -497,10 +613,13 @@ def build_url(source_ref: str) -> str:
             f"&sex={ref['pins']['sex']}"
             f"&unit={ref['pins']['unit']}"
         )
-    elif ref.get("bilateral"):  # migr_pop3ctb/ROW/{geo}: geo PINNED in the
-        # URL, c_birth deliberately absent (the by-birth codelist as
-        # printed) — verified live 2026-09-22: 32,976 bytes for FR, 1,450
-        # non-empty cells, the 307-code c_birth dimension riding along.
+    elif ref.get("bilateral"):  # migr_pop{3ctb,1ctz}/ROW/{geo}: geo PINNED in the
+        # URL, the origin dimension (c_birth / citizen) deliberately absent
+        # (the codelist as printed) — verified live 2026-09-22 on the birth
+        # face (32,976 bytes for FR, 1,450 non-empty cells, the 307-code
+        # c_birth dimension riding along) and 2026-09-25 on the citizenship
+        # face (26,577 bytes for FR, 927 non-empty cells, the 287-code
+        # citizen dimension riding along).
         params += (
             f"&geo={ref['geo']}"
             f"&age={ref['pins']['age']}"
@@ -540,6 +659,10 @@ def _validate_layout(payload: dict, ref: dict) -> dict:
         "nama_10_a10_e": ["freq", "unit", "nace_r2", "na_item", "geo", "time"],
         "edat_lfse_03": ["freq", "sex", "age", "unit", "isced11", "geo", "time"],
         "migr_pop3ctb": ["freq", "c_birth", "age", "unit", "sex", "geo", "time"],
+        # v23 (verified live 2026-09-25, the v23 probe): the citizenship
+        # twin prints `citizen` where the birth face prints c_birth — the
+        # same stride, the same layout guard.
+        "migr_pop1ctz": ["freq", "citizen", "age", "unit", "sex", "geo", "time"],
     }
     expected_dims = _DATASET_LAYOUTS[dataset]
     dim_order = payload.get("id")
@@ -605,7 +728,15 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
     carrying the origin axis (origin_raw_name/origin_iso3_raw), with the
     door's own non-country c_birth classes dropped logged per class
     (aggregates/regions, the FOR/NAT/TOTAL/OTH/UNK/RNC summary codes,
-    and the c_birth == geo diagonal — the native face)."""
+    and the c_birth == geo diagonal — the native face).
+
+    v23 (the citizenship twin): a `migr_pop1ctz/ROW/{geo}` response
+    yields the same bilateral row shape on the CITIZENSHIP face — every
+    record carrying origin_axis="citizenship" (the routing key that
+    sends it to the bilateral_citizenship layer, never the birth layer),
+    the citizen dimension read where the birth face reads c_birth, and
+    the face's own extra drop class: STLS (stateless — a nationality
+    without a state, 12 cells on the FR row, dropped logged)."""
     ref = _parse_ref(expected_ref)
     bilateral = bool(ref.get("bilateral"))
 
@@ -644,22 +775,25 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
         else None
     )
 
-    # v22 (the ROW grammar): the c_birth dimension is OPEN (the by-birth
-    # codelist as printed — 307 codes on the FR row, verified live
-    # 2026-09-22). Its index/labels are read here with the same loud-
+    # v22 (the ROW grammar): the origin dimension is OPEN (the codelist
+    # as printed — 307 c_birth codes on the birth face's FR row, 287
+    # citizen codes on the citizenship face's, verified live 2026-09-22
+    # / 2026-09-25). Its index/labels are read here with the same loud-
     # failure discipline as the shared dimensions; the record loop then
     # decodes the origin axis per cell (row-major over the response's own
     # dimension order — the general (position // stride) % size decode,
-    # required here because c_birth and geo sit at DIFFERENT strides than
-    # the pinned-c_birth layout the historical arithmetic assumed).
+    # required here because the origin dimension and geo sit at DIFFERENT
+    # strides than the pinned-c_birth layout the historical arithmetic
+    # assumed).
+    origin_dim = ref.get("origin_dim") or "c_birth"
     inv_cb: dict[int, str] = {}
     cb_labels: dict[str, str] = {}
     if bilateral:
         try:
-            c_birth_index = payload["dimension"]["c_birth"]["category"]["index"]
-            cb_labels = payload["dimension"]["c_birth"]["category"]["label"]
+            c_birth_index = payload["dimension"][origin_dim]["category"]["index"]
+            cb_labels = payload["dimension"][origin_dim]["category"]["label"]
         except (KeyError, TypeError) as exc:
-            raise ValueError(f"Eurostat response with an incomplete c_birth block: {exc}") from None
+            raise ValueError(f"Eurostat response with an incomplete {origin_dim} block: {exc}") from None
         inv_cb = {position: code for code, position in c_birth_index.items()}
 
     records: list[RawRecord] = []
@@ -667,26 +801,28 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
     dropped_german_variant = 0
     dropped_france_variants = 0
     # v22: the ROW slice's own drop classes (per-cell, see the classification
-    # below — each logged with its own count after the loop).
+    # below — each logged with its own count after the loop); v23 adds the
+    # citizenship face's stateless class.
     dropped_origin_aggregates = 0
     dropped_origin_summary = 0
     dropped_diagonal = 0
+    dropped_stateless = 0
     for position_text, value in values.items():
         try:
             position = int(position_text)
         except (TypeError, ValueError):
             raise ValueError(f"Eurostat value position {position_text!r} is not an integer.") from None
         if bilateral:
-            # The ROW layout is [freq, c_birth, age, unit, sex, geo, time]
-            # with ONLY c_birth open besides time — the general row-major
-            # decode below is exact for it (and equivalent to the pinned
-            # layout's arithmetic on every pre-v22 grammar, which keeps its
-            # own historical branch below untouched).
-            c_birth = inv_cb.get((position // strides["c_birth"]) % sizes["c_birth"])
+            # The ROW layout is [freq, {c_birth|citizen}, age, unit, sex,
+            # geo, time] with ONLY the origin dimension open besides time —
+            # the general row-major decode below is exact for it (and
+            # equivalent to the pinned layout's arithmetic on every pre-v22
+            # grammar, which keeps its own historical branch below untouched).
+            c_birth = inv_cb.get((position // strides[origin_dim]) % sizes[origin_dim])
             geo = inv_geo.get((position // strides["geo"]) % sizes["geo"])
             year = inv_time.get((position // strides["time"]) % sizes["time"])
             if geo is None or year is None or c_birth is None:
-                raise ValueError(f"Eurostat value position {position} decodes to no (geo, c_birth, time).")
+                raise ValueError(f"Eurostat value position {position} decodes to no (geo, {origin_dim}, time).")
         else:
             geo = inv_geo.get(position // strides["geo"])
             year = inv_time.get((position % strides["geo"]) // strides["time"])
@@ -736,17 +872,23 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
         # v22 (the ROW grammar): classify the ORIGIN axis before emitting.
         # The three drop classes are the door's own printed vocabulary
         # (verified live 2026-09-22, the 64 non-country codes enumerated in
-        # the probe): aggregates/regions (EUR, EU*, EFTA, AFR_*, AME_*,
+        # the probe): aggregates/regions (EUR, EU*, EFTA, AFR_*, AME_,
         # ASI_*, OCE_*, the FR91-94 French regions, the *_FOR variants,
         # CC*/EXT/EX_* constructions), the summary codes (FOR/NAT/TOTAL/
         # OTH/UNK/RNC — the totals ride the pinned c_birth=FOR door), and
         # the diagonal (c_birth == geo — the native-born face: FR<-FR is
         # NAT's mirror per origin, 58,610,164 at FR 2016, verified live).
+        # v23: the citizenship face adds a fourth class — STLS, the
+        # stateless residual (see _MIGR_STATELESS_CODES), which the birth
+        # axis's codelist never carried.
         origin_raw_name: str | None = None
         origin_iso3: str | None = None
         if bilateral:
             if c_birth == geo:
                 dropped_diagonal += 1
+                continue
+            if c_birth in _MIGR_STATELESS_CODES:
+                dropped_stateless += 1
                 continue
             is_origin_country = (
                 len(c_birth) == 2 and c_birth.isalpha() and c_birth.isupper()
@@ -760,7 +902,7 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
                 continue
             origin_label = cb_labels.get(c_birth)
             if not isinstance(origin_label, str) or not origin_label:
-                raise ValueError(f"Eurostat c_birth code {c_birth!r} without a label: unexpected API shape.")
+                raise ValueError(f"Eurostat {origin_dim} code {c_birth!r} without a label: unexpected API shape.")
             origin_iso3 = _MIGR_ORIGIN_TO_ISO3.get(c_birth) or EUROSTAT_GEO_TO_ISO3.get(c_birth)
             if origin_iso3 is None:
                 import pycountry  # local import: same discipline as the geo axis
@@ -770,10 +912,12 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
             if origin_iso3 is None:
                 # A two-letter origin code neither table nor pycountry
                 # answers is a codelist surprise (AN rides the origin
-                # override table, v22; EL/UK/XK ride the shared geo table)
-                # — loud failure, never a guess.
+                # override table, v22; EL/UK/XK ride the shared geo table —
+                # XK prints on BOTH faces' origin codelists, the Kosovo
+                # user-assigned code resolving to XKX) — loud failure,
+                # never a guess.
                 raise ValueError(
-                    f"Eurostat c_birth code {c_birth!r} is neither in the origin override tables "
+                    f"Eurostat {origin_dim} code {c_birth!r} is neither in the origin override tables "
                     "nor resolvable by pycountry — extend _MIGR_ORIGIN_TO_ISO3 deliberately."
                 )
             origin_raw_name = origin_label
@@ -810,6 +954,10 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
                 value=float(value) if value is not None else None,
                 origin_raw_name=origin_raw_name,
                 origin_iso3_raw=origin_iso3,
+                # v23: the face this row rides — "birth" on migr_pop3ctb ROW
+                # doors, "citizenship" on migr_pop1ctz ROW doors; None on
+                # every single-axis record (the pre-v23 default).
+                origin_axis=ref.get("origin_axis") if bilateral else None,
                 sex=sex_from_pin,
                 quality_code=flag or None,
                 provisional=bool(flag) and "p" in flag,
@@ -877,9 +1025,19 @@ def parse_eurostat(json_text: str, expected_ref: str) -> list[RawRecord]:
         if dropped_diagonal:
             logger.info(
                 "Eurostat: dropped %d diagonal cell(s) from the ROW slice of geo %s "
-                "(c_birth == geo — the native-born face of the destination, NAT's mirror "
-                "per origin; the by-origin layer carries the FOREIGN-born decomposition only).",
+                "(the origin code == geo — the native face of the destination, NAT's mirror "
+                "per origin; the by-origin layer carries the FOREIGN decomposition only).",
                 dropped_diagonal,
+                ref["geo"],
+            )
+        # v23: the citizenship face's own residual — logged as its own class.
+        if dropped_stateless:
+            logger.info(
+                "Eurostat: dropped %d stateless cell(s) from the ROW slice of geo %s "
+                "(STLS — a nationality without a state, a population the citizenship "
+                "questionnaire genuinely counts but no entity can carry; the birth "
+                "face's codelist never printed the class — verified live 2026-09-25).",
+                dropped_stateless,
                 ref["geo"],
             )
     if not records:

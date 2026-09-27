@@ -276,6 +276,1030 @@ sources:
     unit: persons
     root: oecd_mig
 
+  # THE BY-CITIZENSHIP FACE (v23) — the LEGAL twin of the by-origin face:
+  # the bilateral (destination x citizenship) decomposition of the FOREIGN
+  # POPULATION (étrangers), in mirror of the by-birth face above
+  # (immigrés). Todd's own pair of boards: the two legalities of the same
+  # stock — born-abroad vs holding-the-nationality — DIVERGE exactly where
+  # naturalization runs ahead of the census (FR<-MA 2015: 954,742 born vs
+  # 458,561 citizens, both verified live) and CONVERGE where it rarely
+  # does (FR<-PT 2015: 648,112 born vs 541,867 citizens). Canonical = the
+  # 34 destination ROWS of migr_pop1ctz that PRINT the by-citizenship
+  # detail (one geo-pinned ref each, citizen UNPINNED = the 287-code
+  # by-citizenship codelist as printed: 226 country codes + the
+  # NAT/RNC/TOTAL/OTH/UNK summary codes + STLS stateless + 55 aggregates/
+  # regions, each dropped logged per class; the diagonal citizen == geo
+  # — the native-CITIZEN face — drops logged too). THE FACE'S OWN
+  # GEOGRAPHY, verified live 2026-09-25 (all 44 candidate geos probed):
+  # 34 destinations print the detail — 29 of the birth face's 30 (Cyprus
+  # leaves: 222 cells, every one an aggregate or summary — the totals-
+  # only class) + Germany (JOINS: 6,400 cells, 5,498 country cells — the
+  # citizenship questionnaire carries what the birth questionnaire's
+  # honest absence never printed) + EL/ME/MD/AD (census-cross-section
+  # rows: 413/221/61/92 country cells). The asymmetry is the
+  # registration's own shape, never "corrected". As on the birth face the
+  # priorities are nominal (rows disjoint by destination, arbitration
+  # never fires across them); the merge key (destination, origin, year,
+  # sex) lives in its own layer — bilateral_citizenship, PARALLEL to the
+  # birth face's bilateral layer, never merged with it (ADR-0010). The
+  # FR row answers 127 country origins on this face (FR<-MA ctz 2015-2018
+  # = 458,561/465,230/472,843/480,600 — the v18 anchor disambiguation,
+  # re-verified live 2026-09-25; the identity codes ride the shared
+  # override tables: AN->ANT the withdrawn Antillean code, XK->XKX
+  # Kosovo's user-assigned code, EL/UK the Eurostat spellings).
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/BE
+    priority: 34
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/BG
+    priority: 35
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/CZ
+    priority: 36
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/DK
+    priority: 37
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/EE
+    priority: 38
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IE
+    priority: 39
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/ES
+    priority: 40
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/FR
+    priority: 41
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/HR
+    priority: 42
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IT
+    priority: 43
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LV
+    priority: 44
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LT
+    priority: 45
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LU
+    priority: 46
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/HU
+    priority: 47
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/NL
+    priority: 48
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/AT
+    priority: 49
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/PL
+    priority: 50
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/PT
+    priority: 51
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/RO
+    priority: 52
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SI
+    priority: 53
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SK
+    priority: 54
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/FI
+    priority: 55
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SE
+    priority: 56
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IS
+    priority: 57
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LI
+    priority: 58
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/NO
+    priority: 59
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/CH
+    priority: 60
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/UK
+    priority: 61
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/TR
+    priority: 62
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  # The four faces the birth face never printed (verified live
+  # 2026-09-25): Germany's full row, and the census-cross-section rows
+  # of Greece / Montenegro / Moldova / Andorra.
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/DE
+    priority: 63
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/EL
+    priority: 64
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/ME
+    priority: 65
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/MD
+    priority: 66
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/AD
+    priority: 67
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+
+  # THE BY-CITIZENSHIP WITNESS (v23): OECD DSD_MIG@DF_MIG, measure B15 —
+  # "International migration database", the SAME questionnaire's LEGAL
+  # face ("stocks of foreign population by nationality" — the flow's own
+  # description, read live from the SDMX registry), REF_AREA x
+  # CITIZENSHIP, both axes ISO3. THE ACCESS MIRROR of the B14 quirk
+  # (verified live 2026-09-25): DSD_MIG@DF_MIG refuses the empty-key /all
+  # download but SERVES the positional wildcard key '..A.B15.._Z._Z.PS' —
+  # one 18.4 MB call, 216,120 data rows, FREQ=A/BIRTH_PLACE=_Z/
+  # EDUCATION_LEV=_Z/UNIT_MEASURE=PS pinned and hard-verified per row.
+  # The parser pins the SEX=_T frame (the 104,009 F rows drop logged —
+  # the by-sex door, the V24 hook) and drops the origin residual
+  # vocabulary logged per class (STLS/W/W_X/EEA/EU15/A4; the NAT/TOTAL/
+  # UNK aggregate guard carries 0 rows live), while the vanished-entity
+  # codes (XKV, ANT_F/CSK_F/SCG_F/SUN_F/YUG_F) ride the shared override
+  # table onto their withdrawn ISO3 entities — the same admission as the
+  # birth face. THE SEAM, verified to the unit: OECD FR<-MAR _T 2015 =
+  # 458,561 = the Eurostat migr_pop1ctz print EXACTLY (2016-2018:
+  # 465,230/472,843/480,600 both sides); the world face the Eurostat
+  # universe cannot print: US<-MEX 2024 = 8,226,106 (citizenship) vs
+  # 12,383,868 (birth) — the two faces diverging naturally on the pair
+  # the naturalization gap widens.
+  - provider: oecd
+    ref: DF_MIG/B15
+    priority: 68
+    role: witness
+    unit: persons
+    root: oecd_mig
+  # THE BY-SEX FACE (v24) — the ventilations of the SAME rows, Ediz's
+  # approved direction: the M/F splits of the two questionnaires' matrices
+  # wired on BOTH faces (birth and citizenship), riding the SAME bilateral
+  # layers under the merge key's sex component ((destination, origin,
+  # year, sex) — the v22 key's own fourth term, None until now). Verified
+  # live 2026-09-25 (the v24 probe): M + F = the _T print to the unit on
+  # every anchor (FR<-MA birth 2015: 479,354 + 475,388 = 954,742; ctz:
+  # 231,893 + 226,668 = 458,561; FR<-PT both faces, 2018 likewise); the
+  # M/F perimeter = the _T perimeter minus Croatia (HR prints the _T
+  # by-origin detail but NO ventilation — the registration's own honest
+  # absence, unwired, recorded here; the day it prints, its fetch fails
+  # loudly). 29 birth M doors + 29 birth F doors + 33 ctz M doors + 33
+  # ctz F doors = 124 doors, priorities 69-192.
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/BE/M
+    priority: 69
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/BG/M
+    priority: 70
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CZ/M
+    priority: 71
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/DK/M
+    priority: 72
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/EE/M
+    priority: 73
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IE/M
+    priority: 74
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/ES/M
+    priority: 75
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/FR/M
+    priority: 76
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IT/M
+    priority: 77
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CY/M
+    priority: 78
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LV/M
+    priority: 79
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LT/M
+    priority: 80
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LU/M
+    priority: 81
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/HU/M
+    priority: 82
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/NL/M
+    priority: 83
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/AT/M
+    priority: 84
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/PL/M
+    priority: 85
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/PT/M
+    priority: 86
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/RO/M
+    priority: 87
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SI/M
+    priority: 88
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SK/M
+    priority: 89
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/FI/M
+    priority: 90
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SE/M
+    priority: 91
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IS/M
+    priority: 92
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LI/M
+    priority: 93
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/NO/M
+    priority: 94
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CH/M
+    priority: 95
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/UK/M
+    priority: 96
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/TR/M
+    priority: 97
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/BE/F
+    priority: 98
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/BG/F
+    priority: 99
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CZ/F
+    priority: 100
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/DK/F
+    priority: 101
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/EE/F
+    priority: 102
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IE/F
+    priority: 103
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/ES/F
+    priority: 104
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/FR/F
+    priority: 105
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IT/F
+    priority: 106
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CY/F
+    priority: 107
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LV/F
+    priority: 108
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LT/F
+    priority: 109
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LU/F
+    priority: 110
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/HU/F
+    priority: 111
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/NL/F
+    priority: 112
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/AT/F
+    priority: 113
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/PL/F
+    priority: 114
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/PT/F
+    priority: 115
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/RO/F
+    priority: 116
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SI/F
+    priority: 117
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SK/F
+    priority: 118
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/FI/F
+    priority: 119
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/SE/F
+    priority: 120
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/IS/F
+    priority: 121
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/LI/F
+    priority: 122
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/NO/F
+    priority: 123
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/CH/F
+    priority: 124
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/UK/F
+    priority: 125
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop3ctb/ROW/TR/F
+    priority: 126
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/BE/M
+    priority: 127
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/BG/M
+    priority: 128
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/CZ/M
+    priority: 129
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/DK/M
+    priority: 130
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/EE/M
+    priority: 131
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IE/M
+    priority: 132
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/ES/M
+    priority: 133
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/FR/M
+    priority: 134
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IT/M
+    priority: 135
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LV/M
+    priority: 136
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LT/M
+    priority: 137
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LU/M
+    priority: 138
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/HU/M
+    priority: 139
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/NL/M
+    priority: 140
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/AT/M
+    priority: 141
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/PL/M
+    priority: 142
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/PT/M
+    priority: 143
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/RO/M
+    priority: 144
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SI/M
+    priority: 145
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SK/M
+    priority: 146
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/FI/M
+    priority: 147
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SE/M
+    priority: 148
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IS/M
+    priority: 149
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LI/M
+    priority: 150
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/NO/M
+    priority: 151
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/CH/M
+    priority: 152
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/UK/M
+    priority: 153
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/TR/M
+    priority: 154
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/DE/M
+    priority: 155
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/EL/M
+    priority: 156
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/ME/M
+    priority: 157
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/MD/M
+    priority: 158
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/AD/M
+    priority: 159
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/BE/F
+    priority: 160
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/BG/F
+    priority: 161
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/CZ/F
+    priority: 162
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/DK/F
+    priority: 163
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/EE/F
+    priority: 164
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IE/F
+    priority: 165
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/ES/F
+    priority: 166
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/FR/F
+    priority: 167
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IT/F
+    priority: 168
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LV/F
+    priority: 169
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LT/F
+    priority: 170
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LU/F
+    priority: 171
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/HU/F
+    priority: 172
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/NL/F
+    priority: 173
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/AT/F
+    priority: 174
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/PL/F
+    priority: 175
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/PT/F
+    priority: 176
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/RO/F
+    priority: 177
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SI/F
+    priority: 178
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SK/F
+    priority: 179
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/FI/F
+    priority: 180
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/SE/F
+    priority: 181
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/IS/F
+    priority: 182
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/LI/F
+    priority: 183
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/NO/F
+    priority: 184
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/CH/F
+    priority: 185
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/UK/F
+    priority: 186
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/TR/F
+    priority: 187
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/DE/F
+    priority: 188
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/EL/F
+    priority: 189
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/ME/F
+    priority: 190
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/MD/F
+    priority: 191
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+  - provider: eurostat
+    ref: migr_pop1ctz/ROW/AD/F
+    priority: 192
+    role: canonical
+    unit: persons
+    root: eurostat_migr
+
 coverage_start: 1990
 coverage_end: 2025
 
@@ -288,18 +1312,26 @@ reliability_criteria: >
   (Ireland 2000, Italy/Lithuania/Spain 2002, France 2007 — the FR
   series annual 2007-2025, census-aligned) with the collector's
   b/e/p flags as-reported. Since v22 the SAME collector tier carries
-  the by-origin face: the 44 geo-pinned ROW doors (c_birth open, the
-  307-code by-birth codelist as printed; aggregates, the
+  the by-origin face: the 30 wired Eurostat ROW doors (c_birth open,
+  the 307-code by-birth codelist as printed; aggregates, the
   FOR/NAT/TOTAL/OTH/UNK/RNC summary codes and the native diagonal
   dropped logged per class), as each country's own registration
-  prints it. Witness tiers = the UN DESA migrant-stock estimates via
-  WDI (world 1990-2024, the total face) and — since v22, the
-  by-origin face — the OECD migration questionnaire's foreign-born
-  matrix (38 destinations x the BIRTH_COUNTRY codelist, SEX=_T;
-  the two questionnaires agreeing to the unit on the co-covered
-  core). Root pair eurostat_migr/un_desa/oecd_mig: the registrations,
-  the compiled estimates of the same stock, and the OECD-compiled
-  questionnaire answers — one estimation/compilation step apart each.
+  prints it. Since v23 the LEGAL twin rides beside it on the same
+  collector judgment: the 34 Eurostat migr_pop1ctz ROW doors
+  (citizen open, the 287-code by-citizenship codelist as printed;
+  aggregates, the NAT/RNC/TOTAL/OTH/UNK summary codes, STLS stateless
+  and the native diagonal dropped logged per class) — the face's own
+  geography (Germany in, Cyprus out) carried as-printed. Witness
+  tiers = the UN DESA migrant-stock estimates via WDI (world
+  1990-2024, the total face), the OECD migration questionnaire's
+  foreign-born matrix (v22, DSD_MIG_F@DF_MIG_POPF, 38 destinations x
+  the BIRTH_COUNTRY codelist, SEX=_T) and its citizenship twin (v23,
+  DSD_MIG@DF_MIG measure B15, 36 destinations x the CITIZENSHIP
+  codelist, SEX=_T — the two questionnaires agreeing to the unit on
+  the co-covered core). Root pair eurostat_migr/un_desa/oecd_mig:
+  the registrations, the compiled estimates of the same stock, and
+  the OECD-compiled questionnaire answers — one estimation/
+  compilation step apart each.
 reclassification_sensitive: false
 
 plausible_range:
@@ -323,7 +1355,7 @@ notes: >
   France/Germany/UK — and the indicator now carries the matrix beside
   its total: the dist's `bilateral` layer (destination_entity_id x
   origin_entity_id x year, additive — the (entity, year) data and
-  witnesses stay bit-identical). Canonical = the 44 Eurostat ROW
+  witnesses stay bit-identical). Canonical = the 30 Eurostat ROW
   doors; witness = the OECD matrix. THE SEAM, verified to the unit:
   the two questionnaires agree exactly on the co-covered core
   (FR<-MA 2015 = 954,742 on BOTH doors; 2018 = 992,120 both sides)
@@ -341,18 +1373,37 @@ notes: >
   stock point's year is the MEASUREMENT year, never the birth year,
   so the origin axis deliberately skips the entity validity guard
   (people born in Czechoslovakia, counted in Germany in 2015, are
-  the as-printed classification). The v18 disambiguation now wired:
-  the citizenship face (migr_pop1ctz, DSD_MIG@DF_MIG) stays
-  unwired, both DSDs documented in sources.yaml. THE HISTORICAL
-  FACE: Todd's 1946-1990 boards are census-era BOOK tables (the
-  censuses themselves are the collector, print-era), territory
+  the as-printed classification). THE CITIZENSHIP FACE, WIRED (v23):
+  the LEGAL twin — étrangers vs immigrés, the second board of Le
+  Destin des immigrés — rides the dist's `bilateral_citizenship`
+  layer, PARALLEL to the birth face and NEVER merged with it
+  (ADR-0010: the two faces are different legal questions; the merge
+  key (destination, origin, year, sex) is shared, the key SPACES are
+  separate). Canonical = the 34 Eurostat migr_pop1ctz ROW doors; the
+  v18 anchor disambiguation landed: FR<-MA ctz 2015 = 458,561 (the
+  birth face prints 954,742 — two legalities of the same stock).
+  Witness = the OECD DSD_MIG@DF_MIG B15 matrix (the sibling flow's
+  citizenship face; the two questionnaires agreeing to the unit,
+  FR<-MAR _T 2015 = 458,561 on both doors). THE CONTRAST ANCHORS the
+  two faces exist to display (both live-verified 2026-09-25):
+  CONVERGE FR<-PT 2015 = 648,112 born vs 541,867 citizens; DIVERGE
+  FR<-MA 2015 = 954,742 born vs 458,561 citizens; the world face
+  US<-MEX 2024 = 12,383,868 born vs 8,226,106 citizens. THE FACE'S
+  OWN GEOGRAPHY, as-printed (never "corrected"): Germany joins the
+  citizenship face (the birth face's totals-only honest absence),
+  Cyprus leaves it; EL/ME/MD/AD print census cross-sections; the
+  stateless residual (STLS) and the same vanished-entity admission
+  (AN, the OECD _F prints) ride the shared override tables. THE
+  HISTORICAL FACE: Todd's 1946-1990 boards are census-era BOOK tables
+  (the censuses themselves are the collector, print-era), territory
   curated. THE UK COVERAGE: the door carries the UK through the
   post-Brexit years with its own honest gaps (per-geo start years
   vary — the same coverage-cliff discipline unemployment's UK
   carries); the by-origin detail thins post-2018 (~26 origins
   printing for FR against 138 in 2015) while the totals keep
   printing — the honest as-printed shape. THE REMAINING UNWIRED
-  FACES, recorded: by-sex (both doors print it), age bands
-  (Eurostat), the citizenship face (both DSDs), the DESA bilateral
-  matrix (manual-download), the OWID US-by-CoB historical chart
-  (1850+, the census-era US face).
+  FACES, recorded: by-sex (both doors print it — the OECD B15 pull
+  already carries the 104,009 F rows, the V24 hook), age bands
+  (Eurostat), the single-axis ctz foreigners-total door, the DESA
+  bilateral matrix (manual-download), the OWID US-by-CoB historical
+  chart (1850+, the census-era US face).

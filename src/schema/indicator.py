@@ -534,6 +534,9 @@ EUROSTAT_DATASET_TITLES: dict[str, str] = {
     "nama_10_a10_e": "Employment by main industry (NACE Rev.2) - national accounts - annual data",
     "edat_lfse_03": "Population in private households by educational attainment level",
     "migr_pop3ctb": "Population on 1 January by age group, sex and country of birth",
+    # v23: read live from the API label (2026-09-25, the v23 probe) — the
+    # citizenship questionnaire's own title, one-questionnaire-one-title.
+    "migr_pop1ctz": "Population on 1 January by age group, sex and citizenship",
 }
 # v19: the OECD connector's three dataflows — titles read from the live
 # SDMX registry (2026-09-21), the same one-questionnaire-one-title rule as
@@ -547,6 +550,12 @@ OECD_DATAFLOW_TITLES: dict[str, str] = {
     # v22: read live from the SDMX registry (2026-09-22) — the migration
     # questionnaire's foreign-born face, one-flow-one-title as ever.
     "DF_MIG_POPF": "International migration database - stocks of foreign-born population",
+    # v23: read live from the SDMX registry (2026-09-25, the v23 probe —
+    # the registry's own `name` field on DSD_MIG@DF_MIG 1.0): the SIBLING
+    # flow's plain title, the questionnaire's umbrella name. Its own
+    # description names the citizenship content: "stocks of foreign
+    # population by nationality".
+    "DF_MIG": "International migration database",
 }
 # v19: the IDD DEFINITION dimension's own codelist labels (read live from
 # the DSD, CL_DEFINITION) — the citation names the vintage a door carries
