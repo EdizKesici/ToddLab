@@ -15,3 +15,4 @@ reports/
 
 # v23: probe scratch material (the B15 full download cache)
 data/tmp/
+data/dist/indicators/immigration_stock.json
