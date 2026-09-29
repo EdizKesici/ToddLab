@@ -60,6 +60,14 @@ class Provider(str, Enum):
     curated = "curated"
     oecd = "oecd"
     eurostat = "eurostat"
+    # v25 (unemployment_rate segment-layer witness): the ILO's own SDMX
+    # wire, sdmx.ilo.org — the LFS database's class-decomposition rate
+    # flows (DF_UNE_DEAP_SEX_AGE_{CCT,CBR}_RT) read directly, no WDI
+    # redistribution in between. Harmonized-tier content (the v17 probe
+    # verdict on the whole DEAP family stands: ILO-processed surveys,
+    # "Repository: ILO-STATISTICS - Micro data processing") — the layer
+    # map says so, the same judgment owid/worldbank carry.
+    ilostat = "ilostat"
 
 
 # Root genealogy (v11, P5 — the-measurement-problem.md section 5.1): the
@@ -172,8 +180,17 @@ ROOT_LABELS: dict[str, str] = {
     # harmonization step apart — the root pair that keeps the FR 2024
     # 7.436-vs-7.4 rounding seam and the DE 2005 11.193-vs-ABSENT
     # coverage seam reading as two doors, never a contradiction.
+    # v25: the same root's DIRECT face — the DEAP class-decomposition
+    # rate flows on sdmx.ilo.org (DF_UNE_DEAP_SEX_AGE_CCT_RT / _CBR_RT,
+    # citizenship and place-of-birth), the ILMS microdata harmonization
+    # itself with no WDI step in between, wired as the segment layers'
+    # witness. The flow restructure of 2026-09-24 (the probe record in
+    # config/sources.yaml) took the per-country face away and left the
+    # CITIZEN/NONCIT and NATIVE/FOREIGN class prints — the world
+    # cross-section the witness now carries.
     "ilo_lfs": (
-        "ILOSTAT LFS database (ILO-processed national labour-force surveys; redistributed by World Bank WDI as national estimate)"
+        "ILOSTAT LFS database (ILO-processed national labour-force surveys; class-decomposition "
+        "rate flows on the ILO's own SDMX wire, redistributed by World Bank WDI as national estimate)"
     ),
     # v18 (industrial/agricultural employment canonical): Eurostat's
     # national-accounts collection — employment by industry AS EACH
@@ -516,6 +533,10 @@ PROVIDER_LAYER: dict["Provider", str] = {
     Provider.owid: "harmonized",
     Provider.worldbank: "harmonized",
     Provider.who_gho: "harmonized",
+    # v25: the ILO's own wire carries the same harmonized-family content
+    # the WDI redistribution of it does (the v17 DEAP verdict) — the
+    # layer map states the tier, never the door's brand.
+    Provider.ilostat: "harmonized",
 }
 
 # How each provider's sources are cited in the dist (P2, the witness-
@@ -537,6 +558,11 @@ EUROSTAT_DATASET_TITLES: dict[str, str] = {
     # v23: read live from the API label (2026-09-25, the v23 probe) — the
     # citizenship questionnaire's own title, one-questionnaire-one-title.
     "migr_pop1ctz": "Population on 1 January by age group, sex and citizenship",
+    # v25: read live from the API labels (2026-09-27, the v25 probe) — the
+    # LFS questionnaire's own by-nationality rate titles, the same
+    # one-questionnaire-one-title rule.
+    "lfsa_urgan": "Unemployment rates by citizenship",
+    "lfsa_urgacob": "Unemployment rates by country of birth",
 }
 # v19: the OECD connector's three dataflows — titles read from the live
 # SDMX registry (2026-09-21), the same one-questionnaire-one-title rule as
@@ -566,6 +592,16 @@ IDD_DEFINITION_LABELS: dict[str, str] = {
     "D_PREV": "previous definition, with overlap year",
     "D_INC": "previous definition, without overlap year",
 }
+# v25: the ILOSTAT flows' own titles, read live from the SDMX registry
+# (2026-09-27, the v25 probe — the dataflow's own English `common:Name`):
+# one-flow-one-title, the same rule EUROSTAT_DATASET_TITLES and
+# OECD_DATAFLOW_TITLES enforce. The citation builder dispatches on the
+# flow part of the source_ref.
+ILOSTAT_DATAFLOW_TITLES: dict[str, str] = {
+    "DF_UNE_DEAP_SEX_AGE_CCT_RT": "Unemployment rate by sex, age and citizenship",
+    "DF_UNE_DEAP_SEX_AGE_CBR_RT": "Unemployment rate by sex, age and place of birth",
+}
+
 PROVIDER_CITATION: dict["Provider", str] = {
     Provider.curated: "Hand-curated series '{ref}' (catalog/curated/, one citation per point)",
     Provider.un_dyb: "United Nations Statistics Division, Demographic Yearbook {edition}, Table {table}",
@@ -574,6 +610,9 @@ PROVIDER_CITATION: dict["Provider", str] = {
     Provider.who_gho: "WHO Global Health Observatory (GHO) API, indicator '{ref}'",
     Provider.oecd: "OECD, Causes of mortality (DF_COM), death cause '{cause}' - WHO Mortality Database redistribution",
     Provider.eurostat: "Eurostat, {title} (dataset {dataset}), series '{code}'",
+    # v25: the ILO's own SDMX wire — the flow's own registry title carries
+    # the citation, one-flow-one-title.
+    Provider.ilostat: "ILOSTAT, {title} (dataflow {flow}, SDMX wire)",
 }
 PROVIDER_LICENSE: dict["Provider", str] = {
     Provider.curated: "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md",
@@ -583,6 +622,9 @@ PROVIDER_LICENSE: dict["Provider", str] = {
     Provider.who_gho: "CC-BY-3.0-IGO",
     Provider.oecd: "OECD Terms and Conditions, attribution required (content: WHO Mortality Database)",
     Provider.eurostat: "Eurostat reuse policy (attribution required, no endorsement implied)",
+    # v25: ILOSTAT's own terms — CC-BY-4.0 with attribution per the ILO's
+    # data reuse notice (ilostat.ilo.org — read on the site's terms page).
+    Provider.ilostat: "ILOSTAT data reuse policy (CC-BY-4.0, attribution required, no endorsement implied)",
 }
 
 

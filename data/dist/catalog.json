@@ -74,7 +74,7 @@
         }
       ]
     },
-    "n_points": 1957,
+    "n_points": 1958,
     "n_witness_points": 14208,
     "todd_refs": {
       "family": "society",
@@ -1340,7 +1340,9 @@
     "unit": "deaths_per_100000_population",
     "higher_is_better": false,
     "todd_core": true,
-    "companion_indicators": [],
+    "companion_indicators": [
+      "road_accident_mortality_per_vehicle"
+    ],
     "reliability": "high",
     "reliability_criteria": "Canonical tier = ITF/IRTAD road-safety statistics via SDMX (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 100,000 population as submitted by the member countries' police crash registration systems (FATALITIES/10P5HB, TRANSPORT_MODE=ROAD, all vehicle types, annual rows only — the monthly/quarterly prints the same flow carries are pinned out at the URL), 55 areas, 1994-2025. Witness tier = the WHO Global status report on road safety via GHO (RS_198, modeled estimates, 197 countries at the single 2021 vintage — no multi-year series on the API, probed and recorded). Authenticity first per ADR-0008: as-reported registrations beside modeled estimates, never blended.",
     "reclassification_sensitive": false,
@@ -1377,6 +1379,33 @@
         }
       ]
     }
+  },
+  {
+    "id": "road_accident_mortality_per_vehicle",
+    "label": "Road accident mortality (per registered motor vehicles)",
+    "family": "mortality",
+    "unit": "deaths_per_10000_vehicles",
+    "higher_is_better": false,
+    "todd_core": false,
+    "companion_indicators": [
+      "road_accident_mortality"
+    ],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = ITF/IRTAD road-safety statistics via SDMX (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 10,000 registered motor vehicles as submitted by the member countries' police crash registration systems (FATALITIES/10P4VEH_MOT_ROAD, TRANSPORT_MODE=ROAD, all vehicle types, annual rows only — the same frame pins as the per-100k face, the unit the 1974 table's own denominator's descendant), 38 areas, 1994-2024 as the union window with HETEROGENEOUS per-area arrival (CHE 1994-2024 the longest series; FRA 2010-2024; most Western European windows 2013+; the per-vehicle registration counts arrived late — the coverage cliff carried as-printed, the honest shape this face's own notes document). No witness tier: no other machine door prints a per-vehicle road-death rate (the probe record — the top_income_share constitution, witnessless by necessity not by omission).",
+    "reclassification_sensitive": false,
+    "license": "OECD/ITF Terms and Conditions, attribution required — see docs/licenses.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "itf_irtad",
+          "label": "ITF/IRTAD road safety statistics (police-reported crash registrations as submitted; OECD.ITF DSD_INDICATORS@DF_SAFETY on the SDMX wire)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 534,
+    "n_witness_points": 0
   },
   {
     "id": "same_sex_marriage_legalization_year",
@@ -1714,26 +1743,26 @@
     "todd_core": true,
     "companion_indicators": [],
     "reliability": "high",
-    "reliability_criteria": "Canonical tier = Eurostat une_rt_a pinned age=Y15-74/unit=PC_ACT/ sex=T (the LFS questionnaire's own broadest band — the codelist carries no TOTAL; unit PC_ACT is the rate's own denominator, not PC_POP; 1-decimal as published), 38 geos (EU + EFTA + Western Balkans + Turkiye; no UK — post-Brexit the door stopped carrying it), 2003-2025, 635 valued cells, the collector's b/d flags transported as-reported on quality_code (d on FR and ES 2021-2025: the 2021 LFS questionnaire redesign — a definitional seam the connector surfaces, not a geo seam; b = break in series; no provisional codes in this dataset). Witness tier = the WB national-estimate line, 208 countries 1990-2025, 0-3 decimals as printed. Root pair eurostat_lfs/ilo_lfs: same underlying national surveys, one harmonization step apart — on the co-covered core they print the same rates to rounding (FR 2015: 10.4 vs 10.354), and the seams the pair displays (FR 2024 7.436 vs 7.4 rounding; DE 2005 11.193 on the witness vs ABSENT on the collector) read as two doors, never a contradiction.",
+    "reliability_criteria": "Canonical tier = Eurostat une_rt_a pinned age=Y15-74/unit=PC_ACT/ sex=T (the LFS questionnaire's own broadest band — the codelist carries no TOTAL; unit PC_ACT is the rate's own denominator, not PC_POP; 1-decimal as published), 38 geos (EU + EFTA + Western Balkans + Turkiye; no UK — post-Brexit the door stopped carrying it), 2003-2025, 635 valued cells, the collector's b/d flags transported as-reported on quality_code (d on FR and ES 2021-2025: the 2021 LFS questionnaire redesign — a definitional seam the connector surfaces, not a geo seam; b = break in series; no provisional codes in this dataset), PLUS the M/F ventilations of the same door (v25: the sex merge-key rows, one pin away each — FR M 2015 = 10.8, F = 9.9) and the two CLASS-decomposition canonical doors (v25: lfsa_urgacob and lfsa_urgan at the same Y15-74 pin, unit PC the datasets' only unit, the class dimension open — 36/35 printing geos, 1995-2025, the étrangers/immigrés boards of Le Destin des immigrés at the collector tier). Witness tier = the WB national-estimate line, 208 countries 1990-2025, 0-3 decimals as printed, PLUS the ILOSTAT class cross-sections (v25: CITIZEN/NONCIT and NATIVE/FOREIGN at 15+, 137/145 areas, ~1 observation per series — the coupe pattern, SOURCE \"LFS - Enquête sur l'emploi\" and the micro-data-processing repository mix the flow's own annotations carry). Root pair eurostat_lfs/ilo_lfs: same underlying national surveys, one harmonization step apart — on the co-covered core they print the same rates to rounding (FR 2015: 10.4 vs 10.354), and the seams the pair displays (FR 2024 7.436 vs 7.4 rounding; DE 2005 11.193 on the witness vs ABSENT on the collector) read as two doors, never a contradiction.",
     "reclassification_sensitive": false,
-    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0 — see docs/licenses.md.",
+    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0; ILOSTAT data reuse policy (CC-BY-4.0, attribution required) — see docs/licenses.md.",
     "roots": {
       "canonical": [
         {
           "root": "eurostat_lfs",
           "label": "Eurostat labour-force statistics (une_rt_a — national official unemployment rates collected by Eurostat)",
-          "doors": 1
+          "doors": 5
         }
       ],
       "witness": [
         {
           "root": "ilo_lfs",
-          "label": "ILOSTAT LFS database (ILO-processed national labour-force surveys; redistributed by World Bank WDI as national estimate)",
-          "doors": 1
+          "label": "ILOSTAT LFS database (ILO-processed national labour-force surveys; class-decomposition rate flows on the ILO's own SDMX wire, redistributed by World Bank WDI as national estimate)",
+          "doors": 3
         }
       ]
     },
-    "n_points": 584,
+    "n_points": 1752,
     "n_witness_points": 14208,
     "todd_refs": {
       "family": "economy",

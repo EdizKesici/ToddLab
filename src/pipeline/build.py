@@ -32,6 +32,7 @@ from pathlib import Path
 
 from src.schema.entity import EntityRegistry
 from src.schema.indicator import (
+    ILOSTAT_DATAFLOW_TITLES,
     EUROSTAT_DATASET_TITLES,
     IDD_DEFINITION_LABELS,
     OECD_DATAFLOW_TITLES,
@@ -67,6 +68,15 @@ def _source_url(provider: Provider, ref: str, field: str | None = None) -> str |
         from src.connectors.worldbank import build_url as wb_build_url  # idem
 
         return wb_build_url(ref)
+    if provider == Provider.ilostat:
+        from src.connectors.ilostat import build_url as ilo_build_url  # idem
+
+        return ilo_build_url(ref)
+    # NOTE (v25): eurostat sources intentionally keep url=None here — the
+    # pre-v25 dists never carried a Eurostat URL, and wiring one now would
+    # touch every Eurostat-sourced indicator's dist file (a cross-cutting
+    # change this version refuses to smuggle in; recorded in the v25
+    # changelog's known limitations as its own reviewable decision).
     if provider == Provider.owid:
         return f"https://ourworldindata.org/grapher/{ref}"
     if provider == Provider.curated:
@@ -146,7 +156,23 @@ def _source_citation(provider: Provider, ref: str) -> str:
             )
         if len(parts) == 3:
             return f"{template.format(title=title, dataset=parts[0], code=parts[1])}, geo {parts[2]}"
+        if len(parts) == 2 and parts[0] in ("lfsa_urgan", "lfsa_urgacob"):
+            # v25: the class-decomposition twins — 'lfsa_urgan/Y15-74/T'
+            # (age/sex pins, the class dimension open): the axis named so
+            # the two faces read as what they are, the pins named so the
+            # door stays distinguishable from its M/F siblings.
+            axis = "by citizenship (citizen open)" if parts[0] == "lfsa_urgan" else "by country of birth (c_birth open)"
+            return (
+                f"{template.format(title=title, dataset=parts[0], code=parts[1])}, "
+                f"the class decomposition {axis}"
+            )
         return template.format(title=title, dataset=parts[0], code=parts[1])
+    if provider == Provider.ilostat:
+        # v25: the bare-flow refs — the ILO's own SDMX wire, the flow's own
+        # registry title riding the citation (one-flow-one-title).
+        return template.format(
+            title=ILOSTAT_DATAFLOW_TITLES[ref], flow=ref
+        )
     return template.format(ref=ref)
 
 
@@ -247,6 +273,31 @@ def build_indicator_file(
             out["provisional"] = True
         return out
 
+    def _segment_point_dict(p: dict) -> dict:
+        """v25: the population-segment layer's own point shape — the class
+        named EXPLICITLY (population_class, the layer-scoped project
+        vocabulary: natives/foreign_born/eu_born/non_eu_born on the birth
+        face, nationals/foreigners/eu_foreigners/non_eu_foreigners on the
+        citizenship face), then the same conditional annotation transport
+        as the other faces (the class doors print quality codes, nothing
+        else). The entity stays entity_id — a segment point is one
+        country's own rate on one of ITS population segments."""
+        out = {
+            "entity_id": p["entity_id"],
+            "population_class": p["population_class"],
+            "year": p["year"],
+            "value": p["value"],
+            **({"provider": p["provider"]} if p.get("provider") else {}),
+            **({"source_ref": p["source_ref"]} if p.get("source_ref") else {}),
+        }
+        if p.get("sex"):
+            out["sex"] = p["sex"]
+        if p.get("quality_code"):
+            out["quality_code"] = p["quality_code"]
+        if p.get("provisional"):
+            out["provisional"] = True
+        return out
+
     witnesses_payload = [
         {
             "provider": w["provider"],
@@ -317,6 +368,50 @@ def build_indicator_file(
         processed_dir / f"{indicator.id}.bilateral_citizenship.merged.json"
     )
 
+    # v25 (the population-segment face): the same ADDITIVE-by-construction
+    # emission for the two CLASS faces — each rides BESIDE the single-axis
+    # data/witnesses and the bilateral faces with its own data
+    # (entity x class x year) and its own witness series, emitted ONLY when
+    # the processed tree carries that layer's points. The two faces are
+    # PARALLEL (ADR-0010): `segments` = the birth-axis classes (immigrés),
+    # `segments_citizenship` = the legal classes (étrangers) — never merged,
+    # never arbitrated across, the class vocabularies layer-scoped.
+    def _segments_layer_payload(merged_path: Path) -> dict | None:
+        if not merged_path.exists():
+            return None
+        s_points = json.loads(merged_path.read_text(encoding="utf-8"))
+        s_witnesses_path = merged_path.parent / merged_path.name.replace(".merged.json", ".witnesses.json")
+        raw_s_witnesses = (
+            json.loads(s_witnesses_path.read_text(encoding="utf-8")) if s_witnesses_path.exists() else []
+        )
+        return {
+            "data": [_segment_point_dict(p) for p in s_points],
+            "witnesses": [
+                {
+                    "provider": sw["provider"],
+                    "source_ref": sw["source_ref"],
+                    "layer": PROVIDER_LAYER[Provider(sw["provider"])],
+                    "root": root_by_ref[(sw["provider"], sw["source_ref"])],
+                    "root_label": ROOT_LABELS[root_by_ref[(sw["provider"], sw["source_ref"])]],
+                    "unit": indicator.unit,
+                    "native_unit": native_unit_by_ref.get((sw["provider"], sw["source_ref"])),
+                    "citation": _source_citation(Provider(sw["provider"]), sw["source_ref"]),
+                    "url": _source_url(Provider(sw["provider"]), sw["source_ref"]),
+                    "license": PROVIDER_LICENSE[Provider(sw["provider"])],
+                    "n_points": len(sw["data"]),
+                    "data": [_segment_point_dict(p) for p in sw["data"]],
+                }
+                for sw in raw_s_witnesses
+            ],
+        }
+
+    segments_payload = _segments_layer_payload(
+        processed_dir / f"{indicator.id}.segments.merged.json"
+    )
+    segments_citizenship_payload = _segments_layer_payload(
+        processed_dir / f"{indicator.id}.segments_citizenship.merged.json"
+    )
+
     # Restrict each source's footnote block to the refs the emitted points
     # (canonical + witness) actually carry.
     _join_footnotes(sources_meta, points, witnesses_payload)
@@ -356,6 +451,17 @@ def build_indicator_file(
         payload["bilateral"] = bilateral_payload
     if bilateral_citizenship_payload is not None:
         payload["bilateral_citizenship"] = bilateral_citizenship_payload
+    # v25 (the population-segment faces): ADDITIVE, the same rule — emitted
+    # only when the indicator's processed tree carries the layer. The field
+    # names are the dist contract's own vocabulary: `segments` (the birth
+    # classes — natives/foreign_born/eu_born/non_eu_born) and
+    # `segments_citizenship` (the legal classes — nationals/foreigners/
+    # eu_foreigners/non_eu_foreigners), the shape of Le Destin des
+    # immigrés' own étrangers/immigrés boards.
+    if segments_payload is not None:
+        payload["segments"] = segments_payload
+    if segments_citizenship_payload is not None:
+        payload["segments_citizenship"] = segments_citizenship_payload
     # v13 (todd_refs): the corpus entry joins BY ID — when the indicator
     # implements a corpus metric, the "why this metric exists" block rides
     # with the data (books, citations, per-book usage). Absent corpus or no

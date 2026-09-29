@@ -5,7 +5,9 @@
   "unit": "deaths_per_100000_population",
   "higher_is_better": false,
   "todd_core": true,
-  "companion_indicators": [],
+  "companion_indicators": [
+    "road_accident_mortality_per_vehicle"
+  ],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = ITF/IRTAD road-safety statistics via SDMX (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 100,000 population as submitted by the member countries' police crash registration systems (FATALITIES/10P5HB, TRANSPORT_MODE=ROAD, all vehicle types, annual rows only — the monthly/quarterly prints the same flow carries are pinned out at the URL), 55 areas, 1994-2025. Witness tier = the WHO Global status report on road safety via GHO (RS_198, modeled estimates, 197 countries at the single 2021 vintage — no multi-year series on the API, probed and recorded). Authenticity first per ADR-0008: as-reported registrations beside modeled estimates, never blended.",
   "reclassification_sensitive": false,

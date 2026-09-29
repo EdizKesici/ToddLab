@@ -497,3 +497,34 @@ def seed_oecd_mig_snapshot(
         records=records,
     )
     return _write_snapshot(raw_dir, result)
+
+
+def seed_ilostat_snapshot(
+    raw_dir: Path,
+    indicator_id: str,
+    source_ref: str,
+    *,
+    fixture: str,
+) -> Path:
+    """ilostat (v25, the ILO's own SDMX wire — the DEAP
+    class-decomposition rate flows): the REAL full-flow responses as
+    the API served them (carved byte-for-byte by
+    scripts/make_v25_fixtures.py, never typed) — the class prints
+    (CITIZEN/NONCIT on CCT, NATIVE/FOREIGN on CBR), both sexes' rows,
+    the KOS->XKX quirk, the OBS_STATUS quality codes, the TOTAL/X class
+    drops exercising the logged per-class discipline. Runs the real
+    parser (the frame guards: FREQ/MEASURE/AGE pins, the dimension
+    layout), snapshots through the production writer."""
+    from src.connectors.ilostat import parse_ilostat
+
+    json_text = (FIXTURES_DIR / fixture).read_text(encoding="utf-8")
+    records = parse_ilostat(json_text, expected_ref=source_ref)
+    result = RawFetchResult(
+        provider="ilostat",
+        source_ref=source_ref,
+        indicator_id=indicator_id,
+        fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
+        source_url="test://fixture-ilostat",
+        records=records,
+    )
+    return _write_snapshot(raw_dir, result)

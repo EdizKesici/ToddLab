@@ -389,3 +389,53 @@ from the response bytes, never typed):
   226,668/243,044 — the OECD B15 F print agreeing to the unit (the
   seam on the ventilated face), and M + F = the _T print: 231,893 +
   226,668 = 458,561.
+
+
+## v25 fixtures (generated live by scripts/make_v25_fixtures.py)
+
+- `eurostat_lfsa_urgacob_t_sample.json` — the REAL 74,125-byte full
+  response of lfsa_urgacob/Y15-74/T (the LFS questionnaire's own
+  UNEMPLOYMENT RATES BY COUNTRY OF BIRTH — the collector door the v25
+  probe found, the v17 registry's "future Destin door" settled at the
+  collector tier): 4,444 non-empty cells -> 3,023 records across the
+  four birth classes {natives, foreign_born, eu_born, non_eu_born},
+  segment_axis="birth", 36 printing geos, 1995-2025 (the class
+  tables' 31-year memory), the TOTAL/NRP cells dropping logged. The
+  anchors: FR 2015 natives 9.4 / foreign_born 17.1 / eu_born 10.7 /
+  non_eu_born 19.0 — the Destin contrast at the aggregate level.
+- `eurostat_lfsa_urgan_t_sample.json` — the REAL 80,356-byte full
+  response of lfsa_urgan/Y15-74/T (unemployment rates by CITIZENSHIP,
+  the étrangers face): 4,187 cells -> 2,710 records across
+  {nationals, foreigners, eu_foreigners, non_eu_foreigners},
+  segment_axis="citizenship", 35 geos, 1995-2025, the TOTAL/STLS/NRP
+  drops logged. The anchors: FR 2015 nationals 9.7 / foreigners 20.5 /
+  eu_foreigners 12.6 / non_eu_foreigners 24.5 — the de-facto Destin
+  board. The UK rides (lost to une_rt_a at Brexit).
+- `eurostat_unert_m_sample.json` / `eurostat_unert_f_sample.json` —
+  the REAL 11,616/11,636-byte full responses of the une_rt_a M/F doors
+  (the v17 registry's "one ref away" by-sex ventilations of the plain
+  rate): 635 cells -> 584 records each, sex="male"/"female". The
+  anchors: FR 2015 M = 10.8 / F = 9.9 (the v17 probe anchors, now
+  wired), FR 2024 M = 7.6 / F = 7.3.
+- `ilostat_cct_sample.json` / `ilostat_cbr_sample.json` — the REAL
+  1,691,847/1,902,954-byte FULL flow responses on the ILO's own SDMX
+  wire (the wired key `.A.UNE_DEAP_RT..AGE_AGGREGATE_YGE15.`), as the
+  API served them the day of the v25 probe: the class cross-sections
+  the 2026-09-24 restructure left (CCT 822 records = 411 nationals +
+  411 foreigners over 137 areas; CBR 867 records over 145 areas), both
+  sexes' rows, OBS_STATUS U/B riding quality_code, the KOS->XKX quirk
+  (CCT Kosovo 2024 rides; CBR Kosovo prints the pre-independence 2000
+  rows the entity's valid_from floor drops honestly), the TOTAL/X
+  class drops logged. The anchors: FR 2025 CCT nationals 7.162 /
+  foreigners 13.902 (M 12.961 / F 15.058); CBR natives 7.023 /
+  foreign_born 12.003 (M 11.245 / F 12.846). The flow's own odd
+  Italian vintage rides as-reported (ITA 2001 ~ 73.8-78.5 every
+  class — the outlier the widened plausible bound documents).
+- `itf_10p4veh_sample.csv` — the REAL 65,269-byte FULL response of
+  DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD (the ITF per-vehicle face,
+  Todd's own 1974 denominator — the v19 registry's "one config line
+  away" taken): 534 rows, 38 areas, 1994-2024 the union window with
+  the heterogeneous per-area arrival. The anchors: FRA 2010 = 0.9497
+  -> 2024 = 0.6512, CHE 1994 = 1.6303 the longest series' start, CHL
+  1998 = 13.1494 the slice's own tail; the USA ABSENT (the IRTAD
+  questionnaire never carried the US vehicle-registration series).

@@ -18,178 +18,271 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
-## 2026-09-22 — v22: the by-origin face — the bilateral
-## decomposition of immigration_stock (THE Todd question, the book's own
-## table shape), the OECD migration questionnaire's matrix as its
-## witness, and the vanished origins admitted on the birth-place axis
+## 2026-09-27 — v25: the by-nationality face of unemployment (THE Destin
+## question found at the collector tier — the class decomposition of the
+## rate on the LFS's own tables, the ILOSTAT per-country door's death
+## recorded, and the class cross-sections as witnesses), Todd's own 1974
+## per-vehicle denominator wired, and the by-sex face of the plain rate
 
-**No dist contract break (additive, one indicator):** the 27 other
-indicator files are byte-identical; immigration_stock.json keeps every
-pre-existing key bit-identical (the 557-point (entity, year) data, the
-UN DESA witness series, the todd_refs block) modulo the designed
-additions — 31 new sources[] entries (30 Eurostat ROW doors + the OECD
-witness) and the `bilateral` layer: 91,230 canonical points on 6,282
-(destination x origin) pairs, 30 destinations x 243 origins, 1998-2025,
-plus the OECD witness series (99,225 points, 38 destinations, 236
-origins, 1995-2024). entities.json gains exactly one record
-(netherlands_antilles, iso3 ANT) and four iso3 field changes (ussr SUN,
-czechoslovakia CSK, yugoslavia_sfr YUG, serbia_and_montenegro SCG —
-the withdrawn codes, declared). catalog.json moves only
-immigration_stock's roots summary (canonical eurostat_migr doors 1 ->
-31; witness +oecd_mig). todd_corpus.json is BIT-IDENTICAL: v22 adds a
-FACE to an existing indicator, the corpus stays 24/24 with zero flips
-(the v21 discipline).
+**No dist contract break (additive, one indicator + one new file):** the
+24 untouched indicator files are byte-identical to the V24 commit
+(66a39df — the pushed state Ediz reviewed); entities.json and
+todd_corpus.json byte-identical; catalog.json moves exactly the three
+designed entries (unemployment_rate's roots summary — eurostat_lfs 1 ->
+5 canonical doors, ilo_lfs 1 -> 3 witness doors; road_accident_
+mortality's companion field; birth_rate_fertility's counts — the ONE
+live drift, below) and gains the per-vehicle face's entry;
+unemployment_rate.json keeps every pre-existing key bit-identical (the
+T rows, the WB witness series, todd_refs, sources[0]) modulo the
+designed additions — 6 new sources[] entries, 1,168 M/F rows on the
+single-axis data under the merge key's own sex term, and the two NEW
+layer blocks `segments` + `segments_citizenship` (3,023 + 2,710
+canonical points, the ILOSTAT witnesses 861 + 822). The verified
+additivity: no other indicator carries a segments key; the corpus stays
+24/24 (a face, zero flips); 420/420 tests; verify_v25_diff.py 43/43
+(32/32 md5 idempotence). Ediz's review fix rides this commit: the v22
+changelog entry moved below v23/v24 (most-recent-first restored).
 
 ### Context
 
-Ediz re-uploaded ToddLab_v21.zip (the session-loss #4 recovery: the
-workspace had reverted to the v16 era, the v20 base was re-certified,
-the v22 probes ran and the design froze — see the v22 design dossier in
-scripts/v22_probe/, Task 33 of the worklog) with the instruction to run
-the wiring start to finish ("Tu peux déjà te lancer dans la v22 en
-attendant la review de la v21"; the zip arrived as "la V21
-(non-review)"). The base was extracted and certified (341/341, the v21
-changelog on top) and the wiring ran on it exactly as designed, probes
-already complete: the by-origin matrix of immigration_stock — the shape
-of Le Destin des immigrés' own boards ("the stock of
-Moroccans/Turks/Portuguese IN France/Germany/UK"), the door the project
-recorded as "THE TODD BY-ORIGIN QUESTION, RECORDED AS THE FUTURE DOOR"
-since v18.
+Ediz pushed V24 to GitHub (EdizKesici/ToddLab — the first push of the
+project's life) and greenlit V25 directly: "je veux que tu applique la
+V25 et que tu me la livre". The session recovered from the workspace
+reset by re-cloning the pushed repo (the history squashed to 5 commits,
+the tree state = V24: 391/391 on the fresh clone). The V25 direction was
+the one Ediz did not contest in the previous session's proposal: the
+main track = the *Destin des immigrés* by-nationality door (the v17
+registry's own "THE FUTURE" entry), the compact track = Todd's 1974
+per-vehicle denominator (the v19 registry's "one config line away")
+plus the une_rt_a M/F doors (the v17 registry's "one ref away each").
+Age bands, the DYB PDF backfill and anomaly detection stay gated
+(V26+), unchanged.
 
-### Investigated (live, before any wiring — the v22 probe record)
+### Investigated
 
-- **The Eurostat bilateral face (probe A):** migr_pop3ctb with geo
-  pinned, c_birth UNPINNED = the FULL bilateral row of a destination in
-  one 33 KB call (FR: 1,450 non-empty cells, 1998-2025, the 307-code
-  by-birth codelist of which 243 are country codes). The v18 anchors
-  disambiguated: the BIRTH face prints FR<-MA 2015 = 954,742 (v18's
-  "MA 2015 = 458,561" was the CITIZENSHIP face, migr_pop1ctz — two
-  legalities of the same stock, now recorded in the config's notes).
-  The door's own arithmetic: NAT + FOR = TOTAL to the unit every year.
-- **The UN DESA matrix (probe B):** still no wire (the dataportal = net
-  migration only, the pages 404) — the witness tier does not need it.
-- **The OECD finding (probes C+D):** the SDMX registry carries 16
-  migration dataflows, among them DSD_MIG_F@DF_MIG_POPF ("International
-  migration database - stocks of foreign-born population", OECD.ELS.IMD)
-  — the questionnaire's own bilateral matrix, REF_AREA x BIRTH_COUNTRY,
-  both axes ISO3. The flow serves ONLY through the empty-key /all
-  download (positional keys 404 — the observation dimension carries
-  TIME): 197,570 rows / 18.2 MB, already the pinned frame (MEASURE=B14
-  only, FREQ=A only, PS only), SEX _T + F. THE SEAM, verified to the
-  unit: OECD FR<-MAR _T 2015 = 954,742 = the Eurostat c_birth print
-  EXACTLY (2018 = 992,120 both sides); the OECD face EXTENDS the FR
-  Maghreb series past the Eurostat 2018 cutoff (2019 = 1,009,605,
-  2021 = 1,036,133) and carries the world's non-European destinations
-  (US<-MEX 12,383,868 in 2024, US<-W 51,226,993) the Eurostat universe
-  structurally cannot print.
-- **The wiring's own finding (the fetch):** 14 of the codelist's 44
-  country geos print ONLY their totals on the by-origin face (DE, EL,
-  MT, ME, MD, MK, GE, AL, RS, UA, AD, MC, AM, AZ — Germany's row
-  carries 184 cells, every one an aggregate or a FOR/NAT/TOTAL/UNK
-  summary code, ZERO country origins) — the registration's own honest
-  absence, the same class as Ukraine's zero cells on the FOR door;
-  those doors stay unwired, recorded in the config's notes.
-- **The origin-axis codelist surprises:** Eurostat prints AN (the
-  Netherlands Antilles' withdrawn alpha-2) as a birth place (FR<-AN
-  1999 = 78, 2005 = 450); the OECD prints the _F vanished-entity codes
-  (ANT_F "Former Netherlands Antilles", CSK_F, SCG_F, SUN_F, YUG_F)
-  and XKV (its own Kosovo code) — plus the residual vocabulary (W,
-  W_X "World unspecified", EEA, EU15, A4 "Caribbean", STLS
-  "Stateless"), each decoded live from the DSD's codelist.
+- THE ILOSTAT DOOR'S DEATH, read live (2026-09-27): the v17-registered
+  DF_UNE_DEAP_SEX_AGE_CCT_RT / _CBR_RT flows — "verified live for FRA
+  2015-2018", the per-country by-nationality rates — were RESTRUCTURED
+  on 2026-09-24 (the flows' own LAST_UPDATE annotation): the class
+  dimension now carries exactly {TOTAL, CITIZEN, NONCIT, X} /
+  {TOTAL, NATIVE, FOREIGN, X} across the whole printing universe
+  (enumerated on the full live CCT flow at SEX_T/AGE_AGGREGATE_
+  YGE15: 460 series, 137 REF_AREAs, 461 observations 1995-2025 — a
+  world cross-section, ~1 observation per series, the coupe pattern).
+  The per-country rate exists NOWHERE on a machine wire anymore: the
+  ILO's own count families (DF_EMP_MFRB/MFRC, DF_POP_MFRC/MFRB —
+  employed and working-age foreign populations by country of birth/
+  citizenship) carry the per-country detail as COUNTS, and no
+  unemployed-by-country counts exist, so the assembly of a per-country
+  rate would be a DERIVATION — the anti-derivation line refuses it
+  (recorded in sources.yaml). The book's own Maghreb/Turkish/Portuguese
+  per-origin boards stay book data, curated territory (the interwar-
+  Austria line); the live wire carries the class contrast.
+- THE COLLECTOR DOOR THE PROBE FOUND (the wiring's own justification):
+  Eurostat lfsa_urgan "Unemployment rates by citizenship" and
+  lfsa_urgacob "Unemployment rates by country of birth" — the LFS
+  questionnaire's own CLASS decomposition of the rate, on the same wire
+  une_rt_a rides, printing 1995-2025 (a 31-year memory, RICHER than
+  the plain rate's own 2003+ collector window), unit PC the only unit,
+  the full sex split, 38-geo codelists (the UK rides here — lost to
+  une_rt_a at Brexit), the class codelists {NAT, FOR, EU27_2020_FOR,
+  NEU27_2020_FOR, STLS, NRP, TOTAL} / {NAT, FOR, EU27_2020_FOR,
+  NEU27_2020_FOR, NRP, TOTAL}. The v17 probe had looked for this
+  decomposition on ILOSTAT and recorded the harmonized family as the
+  future door — the collector print was sitting in the LFS domain all
+  along.
+- THE ILO WIRE'S OWN ANNOTATIONS (the genealogy the configs cite): on
+  the cross-section's 461 observations, SOURCE "LFS - Enquête sur
+  l'emploi" on every one (the v17 probe's own fingerprint), and the
+  NOTE_SOURCE repository mix — 309 "Repository: ILO-STATISTICS - Micro
+  data processing" (the ILMS harmonization) vs 63 "Repository:
+  Eurostat special tabulation" (the European prints republished) vs
+  national-institution notes: the harmonized tier's heterogeneous
+  genealogy, read live, never interpreted.
+- The ITF per-vehicle door re-verified live through the production
+  connector: 534 rows, 38 areas, 1994-2024 the union window with the
+  heterogeneous per-area arrival (CHE 1994-2024 the longest, FRA
+  2010-2024, most Western European windows 2013+); the USA ABSENT (the
+  IRTAD questionnaire never carried the US vehicle-registration series
+  — the 1974 table's own third column has no modern machine face); no
+  other machine door prints a per-vehicle rate anywhere (GHO's road
+  family carries per-100k only) — the top_income_share constitution
+  (witnessless by necessity).
+- The ILO REF_AREA universe classified against the registry: 136 of the
+  137 printing areas resolve by ISO3 directly; KOS (the ILO's own
+  Kosovo code) maps to the user-assigned XKX — the v21 decision, the
+  WB's own code.
 
 ### Added
 
-- **The `bilateral` dist layer** (the additive contract): destination
-  x origin x year points shaped {destination_entity_id,
-  origin_entity_id, year, value, provider, source_ref} + its own
-  witness series — emitted ONLY when the indicator's processed tree
-  carries by-origin points, so every single-axis indicator's dist file
-  stays byte-identical (the honest absence of the layer is itself the
-  additivity guarantee, pinned by the v18-era integration test).
-- **The Eurostat ROW grammar** (migr_pop3ctb/ROW/{geo}): geo pinned in
-  the URL, c_birth deliberately UNPINNED; the frame pins (age=TOTAL,
-  sex=T, unit=NR) verified by the layout guard; the general row-major
-  position decode (c_birth and geo sit at different strides than the
-  pinned-c_birth layout the historical arithmetic assumed); the three
-  drop classes logged per class (aggregates/regions, the
-  FOR/NAT/TOTAL/OTH/UNK/RNC summary codes, the c_birth == geo
-  diagonal — the native face); the origin axis resolved through the
-  shared override tables (EL/UK/XK ride the geo table, AN rides the
-  new origin table).
-- **The OECD DF_MIG_POPF grammar** (the bare-flow ref, the empty-key
-  /all download): the frame pins hard-verified per row (FREQ=A,
-  MEASURE=B14, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z, UNIT=PS — the flow's
-  whole vocabulary); the SEX split (_T kept, F dropped logged — the
-  by-sex face recorded unwired); the residual vocabulary dropped
-  logged per code; the origin overrides (XKV -> XKX, the _F codes ->
-  their withdrawn ISO3).
-- **The pipeline's bilateral plumbing**: normalize routes the origin
-  axis (RawRecord.origin_raw_name/origin_iso3_raw — additive fields)
-  to a separate layer written {id}.bilateral.json (always, the
-  stale-file discipline); merge arbitrates under the (destination,
-  origin, year, sex) key with the same two rules verbatim; validate
-  checks the layer's own plausible bounds, duplicates and coverage;
-  build emits the dist layer with its own citations; stats prints the
-  matrix's counts (the numbers this entry quotes).
-- **The origin-axis covers_year exemption**, documented in code: a
-  stock point's year is the MEASUREMENT year, never the birth year —
-  people born in the former Netherlands Antilles are counted in the
-  2015 stock exactly as both questionnaires print them; the
-  destination axis keeps the guard.
-- **The netherlands_antilles entity** (iso3 ANT, valid_to 2010, the
-  two successors) and the withdrawn ISO3 declarations on ussr (SUN),
-  czechoslovakia (CSK), yugoslavia_sfr (YUG), serbia_and_montenegro
-  (SCG) — the by-origin face of the v21 vanished-entity admission
-  (the kosovo/XKX precedent: a withdrawn code declared on the entity
-  the ISO3-first resolution lands on).
-- **The oecd_mig root** (the OECD migration questionnaire's matrix —
-  the IMD's own foreign-born face, OECD-compiled) and the DF_MIG_POPF
-  title read live from the SDMX registry.
-- **Tests: 341 -> 361** (+10 Eurostat ROW, +9 OECD MIGF, +1 the
-  bilateral end-to-end integration, +1 v18-era test extended with the
-  additivity pin), the fixtures GENERATED live (the v16 discipline:
-  every anchor READ from the response bytes, never typed — the FR row
-  response whole, the OECD CSV a byte-copied slice of the /all
-  download carrying every drop class and override code).
+- THE SEGMENT FACES (the main delivery): the CLASS decomposition of the
+  unemployment rate as TWO PARALLEL population-segment layers on
+  unemployment_rate — a THIRD layer kind beside the single-axis and
+  bilateral faces (the v22/v23 machinery doctrine extended): the class
+  codes are population SEGMENTS, not entities (no fake umbrella
+  entities — the Channel Islands constitution), so the layers key on
+  (entity, class, year, sex), never on (destination, origin).
+  `segments` = the BIRTH face (immigrés — lfsa_urgacob canonical:
+  natives / foreign_born / eu_born / non_eu_born) and
+  `segments_citizenship` = the CITIZENSHIP face (étrangers —
+  lfsa_urgan canonical: nationals / foreigners / eu_foreigners /
+  non_eu_foreigners), the ADR-0010 pair again: never merged, never
+  arbitrated across, the class vocabularies LAYER-SCOPED and disjoint
+  (made executable — the verify script asserts it). The TOTAL class
+  drops (the total rate rides une_rt_a — one door per face, the v22
+  rule); STLS and NRP drop logged per class; the aggregate geos drop
+  logged. RawRecord/NormalizedPoint/MergedPoint gain population_class
+  + segment_axis (None on every pre-v25 record — the additive
+  construction); normalize routes on the class exactly the way it
+  routes on origin_raw_name; merge/build/validate/stats gain the
+  per-layer machinery verbatim (the stale-file discipline included).
+- THE SEGMENT WITNESSES: a NEW provider — ilostat (the ILO's own SDMX
+  wire, sdmx.ilo.org, harmonized tier, root ilo_lfs on its direct
+  door) — with the two class cross-sections as the segment layers'
+  witnesses: DF_UNE_DEAP_SEX_AGE_CBR_RT / _CCT_RT on the wired frame
+  key (.A.UNE_DEAP_RT..AGE_AGGREGATE_YGE15. — REF_AREA/SEX/class open,
+  FREQ/MEASURE/AGE pinned), the SDMX-JSON 2.0 parser with the
+  loud-failure guards (dimension layout, frame pins, class vocabulary,
+  the soft-miss pattern), OBS_STATUS U/B riding quality_code
+  as-reported, the KOS->XKX override. The witnesses carry the two
+  aggregate classes each (CITIZEN/NONCIT, NATIVE/FOREIGN — the EU/non-EU
+  split is the Eurostat canonical's own vocabulary the ILO never
+  printed), at 15+ (the age-base seam against the canonical's Y15-74,
+  the DE-1991-2008 seam's own class), BOTH SEXES in one door (the
+  canonical's T-only asymmetry documented per-config; the M/F segment
+  doors stay unwired, recorded).
+- THE BY-SEX FACE of the plain rate: une_rt_a/Y15-74/PC_ACT/M and /F
+  wired as canonical sources under the merge key's own sex term (the
+  v24 migration pattern applied to the single-axis face — the v17
+  registry's "one ref away" doors taken, the connector grammar had
+  carried the pins since v17).
+- THE 1974 DENOMINATOR: a NEW indicator, road_accident_mortality_per_
+  vehicle (unit deaths_per_10000_vehicles, family mortality,
+  todd_core=false — the corpus closure's own honest answer: the metric
+  is a FACE of the corpus's road-death metric under Le Fou et le
+  Prolétitaire's own table denominator, the notes carrying the
+  fidelity), canonical = the ITF per-vehicle door on the same SDMX
+  frame the per-100k face rides, WITNESSLESS (the probe record). The
+  COMPANION pair declared on BOTH sides with road_accident_mortality —
+  the contract's third pair (v15/v16): the same crash registrations
+  through two different denominators, never a unit conversion of one
+  another.
+- THE FIXTURES (the v16 discipline, generated live by
+  scripts/make_v25_fixtures.py through the connectors' own build_url):
+  the two FULL lfsa responses (74,125 + 80,356 bytes), the une_rt_a
+  M/F doors (11,616/11,636 bytes), the two FULL ILOSTAT flow responses
+  (1,902,954 + 1,691,847 bytes — the doors' own downloads), and the
+  FULL ITF per-vehicle slice (65,269 bytes). 29 new tests (420/420):
+  the ilostat connector suite, the eurostat lfsa/M-F suite, the three
+  end-to-end integration tests (the segment faces with the Destin
+  anchors, the per-vehicle face, the additivity pin), the conftest
+  seed_ilostat_snapshot.
+- THE REGISTRY RECORDS (config/sources.yaml): the ilostat provider
+  block (the harmonized-tier judgment, the restructure record, the
+  annotation genealogy) and the v25 UNWIRED DOORS entries — the dead
+  per-country door (the day the ILO restores it, the true per-origin
+  Destin board arrives), the derivation-gated count families, the
+  segment M/F doors, the lfsa activity/employment siblings, the ILO
+  participation/inactivity twins, une_rt_a's remaining age bands, and
+  the eurostat sources[] url=None gap (the candidate future fix,
+  refused as a smuggled cross-cutting change this version).
 
-### Verified (live, frozen at delivery time)
+### Changed
 
-- Fetch: 31/31 sources, 0 failures (30 ROW doors + the OECD /all
-  download — 18.2 MB, 99,225 records after the sex split and the
-  drops).
-- Rebuild + verify_v22_diff.py: **53 PASS / 0 FAIL** — the 27 other
-  indicator files byte-identical; immigration_stock's pre-existing
-  keys bit-identical; entities.json exactly +1 record and 4 iso3
-  flips; catalog.json one entry's roots summary; todd_corpus.json
-  byte-identical; double rebuild deterministic.
-- Stats v22: bilateral canonical 91,230 points = 91,230 valued + 0
-  explicit gaps; 6,282 pairs; 30 destinations x 243 origins;
-  1998-2025. The FR row: 226 country origins (FR<-DZ 1999 =
-  1,246,706 -> 2018 = 1,390,284, FR<-MA 2015 = 954,742, FR<-PT 2025 =
-  599,492); the Maghreb/Turkey slices ride the census rounds and stop
-  at 2018 for FR (the coverage cliff, as-printed); the UK row prints
-  1998-2004. The witness: 99,225 points, 7,684 pairs, 38 destinations
-  (the USA's row: 210 origins), 236 origins, 1995-2024 — the seam
-  (FR<-MAR 2015 = 954,742 on BOTH doors), the extension (2019-2021),
-  the world face (US<-MEX 2024 = 12,383,867.87), the vanished origins
-  (CSK/SUN/YUG/SCG/ANT/XKX all landed on their entities). The 11 other
-  counters unchanged; corpus 24/24.
+- The ilo_lfs root label (ROOT_LABELS) now names the class-decomposition
+  flows and the ILO's own wire beside the WDI redistribution — the
+  deliberate registry edit; the label rides every ilo_lfs source's
+  root_label in the dist (the WB witness's series-level block included
+  — its DATA bit-identical, verified).
+- unemployment_rate's plausible_range widened 60 -> 90: the ILOSTAT
+  class witnesses carry the tail the old bound excluded — IRQ 2021
+  female foreigners 88.1 (a crisis print) and ITA 2001 = 73.8-78.5 on
+  EVERY class (the ILO flow's own odd Italian vintage, an outlier
+  transported as-reported, shown by the divergence display, never
+  corrected — the bound's own comment documents the evidence).
+- The CHANGELOG section order fixed (Ediz's review finding): the v22
+  entry sat above v23/v24; most-recent-first restored (v24 -> v23 ->
+  v22 -> v21) — the fix riding this commit per Ediz's instruction, no
+  separate release.
+
+### Fixed
+
+- (The changelog ordering fix is the version's one fix — see Changed.)
+  No pipeline bugs found: the full live fetch (335/335 sources, zero
+  failures — the complete corpus re-downloaded from the pushed repo's
+  fresh clone, data/raw having been gitignored) reproduced the V24 dist
+  bit-for-bit on every untouched indicator.
+
+### Verified (live numbers, frozen at delivery time)
+
+- The fetch: 335/335 sources across 29 indicators, 0 failures. The
+  rebuild: 32 dist files, idempotent (double rebuild, 32/32 md5).
+- unemployment_rate: canonical 1,752 points (the T rows bit-identical
+  to V24 + 584 M + 584 F — FR M 2015 = 10.8, F = 9.9, the v17 anchors
+  now wired; FR M 2024 = 7.6 / F = 7.3), 35 entities, 2003-2025; the
+  WB witness 14,208 points bit-identical (216 entities, 1960-2025).
+- The birth face (`segments`): 3,023 canonical points = 4 classes
+  (eu_born, foreign_born, natives, non_eu_born) x 36 entities x
+  1995-2025 — FR 2015: natives 9.4 / foreign_born 17.1 / eu_born 10.7
+  / non_eu_born 19.0 (the Destin contrast at the aggregate level). The
+  ILOSTAT CBR witness: 861 points, 144 entities, 2 classes, both sex
+  faces, 2000-2025 — FR 2025: natives 7.023 / foreign_born 12.003
+  (M 11.245 / F 12.846); Kosovo's CBR rows print 2000 only and drop on
+  the entity's valid_from floor (the honest pre-independence drop, the
+  XKX-2001 discipline).
+- The citizenship face (`segments_citizenship`): 2,710 canonical points
+  = 4 classes (eu_foreigners, foreigners, nationals, non_eu_foreigners)
+  x 35 entities x 1995-2025 — FR 2015: nationals 9.7 / foreigners 20.5
+  / eu_foreigners 12.6 / non_eu_foreigners 24.5 (the de-facto Destin
+  board, the étrangers-over-nationaux ratio). The ILOSTAT CCT witness:
+  822 points, 137 entities, 2001-2025 — FR 2025: nationals 7.162 /
+  foreigners 13.902 (M 12.961 / F 15.058); Kosovo rides the KOS->XKX
+  override (2024 = foreigners 6.929).
+- The class vocabularies of the two faces are DISJOINT (ADR-0010
+  executable, asserted in verify_v25_diff.py); no other indicator
+  carries a segments key (the additivity pin); the corpus 24/24.
+- road_accident_mortality_per_vehicle: 534 canonical points, 38 areas,
+  1994-2024 the union window — FRA 2010 = 0.949683318 -> 2024 =
+  0.651244379 (the sécurité routière arc under its own denominator),
+  CHE 1994 = 1.630302595, CHL 1998 = 13.14939566 the slice's own tail;
+  the USA ABSENT (the honest limit); witnesses: none.
+- The ONE live drift on an untouched indicator: birth_rate_fertility —
+  Moldova's TFR vintage revised by the collector (2022: 1.7 -> 1.71,
+  2023: 1.62 -> 1.68, the provisional flags dropped, 2024 = 1.78 added;
+  19 lines in the dist diff — the data-revision-in-git discipline's own
+  exhibit). The migration dist (rebuilt live, immigration_stock.json
+  regenerable) matches the V24 freeze's counts exactly (bilateral
+  273,708 / B14 witness 194,177 / ctz 331,778 / B15 witness 211,592).
+- The tests: 420/420 (391 + 29 new). The delivery verification:
+  scripts/verify_v25_diff.py 43/43 PASS against the V24 commit.
 
 ### Known limitations
 
-- The by-sex face of both doors stays unwired (recorded: the Eurostat
-  M/F sex doors, the OECD F rows dropped logged); same for the age
-  bands (Eurostat) and the citizenship face (migr_pop1ctz +
-  DSD_MIG@DF_MIG — both DSDs documented in sources.yaml).
-- The UN DESA bilateral matrix (the world face's own compilation)
-  remains manual-download; the OECD matrix carries the non-European
-  destinations in its place.
-- The OWID US-by-CoB historical chart (1850+, the census-era US face
-  of exactly Todd's table class) is recorded as the US historical
-  face's future door.
-- The 14 total-only geos (above) stay unwired until the day they
-  print; the day one starts, its fetch fails loudly (the soft-miss
-  guard doubles as the change detector).
+- The per-origin Destin board (the unemployment rate of Moroccans/
+  Turks/Portuguese in France) has NO machine face anymore: the ILOSTAT
+  2026-09-24 restructure took the per-country rates away, the count
+  families cannot be assembled into rates without a derivation, and
+  the book's own tables are curated territory. The class decomposition
+  (étrangers/immigrés vs nationaux/non-immigrés) is the live wire's
+  whole answer — the aggregate level, honestly labeled.
+- The ILOSTAT witnesses are cross-sections (the coupe pattern: ~1
+  observation per series, mostly the 2025 vintage) with explicit gap
+  points (96 on CBR, 120 on CCT — the flows' own null observations,
+  kept as points per the honest-gap semantics) and the odd Italian
+  2001 vintage (~73.8-78.5 every class) transported as-reported.
+- The canonical segment faces print sex=T only (the M/F segment doors
+  one pin away each, recorded unwired) while the witnesses carry both
+  sexes' rows — the asymmetry documented per-config, the v24 mirror
+  (there the witnesses were F-only).
+- The pre-existing reported range violations ride unchanged (the live
+  tails the V24 build already carried: Burundi's agricultural share
+  1991-1996 ~91-92 on the WB witness, South Sudan IMR 1988 ~475-491 on
+  four witnesses, the OECD B15 matrix's Mexico 2022 = -1 print — the
+  questionnaire's own sentinel, displayed never corrected).
+- Eurostat sources[] still carry url=None in the dist (the pre-v25
+  shape, deliberately preserved — wiring the URLs would touch every
+  Eurostat-sourced indicator's dist file; the candidate future fix,
+  its own reviewable decision, recorded in sources.yaml).
 
 ## 2026-09-25 — v24: the by-sex face — the M/F ventilations of the two
 ## migration matrices wired on BOTH faces (Ediz's approved direction),
@@ -564,6 +657,178 @@ before any wiring) executed in the probe-wire-verify order.
   pre-2008, all dropped by the same guard (the honest count behind
   both numbers).
 
+## 2026-09-22 — v22: the by-origin face — the bilateral
+## decomposition of immigration_stock (THE Todd question, the book's own
+## table shape), the OECD migration questionnaire's matrix as its
+## witness, and the vanished origins admitted on the birth-place axis
+
+**No dist contract break (additive, one indicator):** the 27 other
+indicator files are byte-identical; immigration_stock.json keeps every
+pre-existing key bit-identical (the 557-point (entity, year) data, the
+UN DESA witness series, the todd_refs block) modulo the designed
+additions — 31 new sources[] entries (30 Eurostat ROW doors + the OECD
+witness) and the `bilateral` layer: 91,230 canonical points on 6,282
+(destination x origin) pairs, 30 destinations x 243 origins, 1998-2025,
+plus the OECD witness series (99,225 points, 38 destinations, 236
+origins, 1995-2024). entities.json gains exactly one record
+(netherlands_antilles, iso3 ANT) and four iso3 field changes (ussr SUN,
+czechoslovakia CSK, yugoslavia_sfr YUG, serbia_and_montenegro SCG —
+the withdrawn codes, declared). catalog.json moves only
+immigration_stock's roots summary (canonical eurostat_migr doors 1 ->
+31; witness +oecd_mig). todd_corpus.json is BIT-IDENTICAL: v22 adds a
+FACE to an existing indicator, the corpus stays 24/24 with zero flips
+(the v21 discipline).
+
+### Context
+
+Ediz re-uploaded ToddLab_v21.zip (the session-loss #4 recovery: the
+workspace had reverted to the v16 era, the v20 base was re-certified,
+the v22 probes ran and the design froze — see the v22 design dossier in
+scripts/v22_probe/, Task 33 of the worklog) with the instruction to run
+the wiring start to finish ("Tu peux déjà te lancer dans la v22 en
+attendant la review de la v21"; the zip arrived as "la V21
+(non-review)"). The base was extracted and certified (341/341, the v21
+changelog on top) and the wiring ran on it exactly as designed, probes
+already complete: the by-origin matrix of immigration_stock — the shape
+of Le Destin des immigrés' own boards ("the stock of
+Moroccans/Turks/Portuguese IN France/Germany/UK"), the door the project
+recorded as "THE TODD BY-ORIGIN QUESTION, RECORDED AS THE FUTURE DOOR"
+since v18.
+
+### Investigated (live, before any wiring — the v22 probe record)
+
+- **The Eurostat bilateral face (probe A):** migr_pop3ctb with geo
+  pinned, c_birth UNPINNED = the FULL bilateral row of a destination in
+  one 33 KB call (FR: 1,450 non-empty cells, 1998-2025, the 307-code
+  by-birth codelist of which 243 are country codes). The v18 anchors
+  disambiguated: the BIRTH face prints FR<-MA 2015 = 954,742 (v18's
+  "MA 2015 = 458,561" was the CITIZENSHIP face, migr_pop1ctz — two
+  legalities of the same stock, now recorded in the config's notes).
+  The door's own arithmetic: NAT + FOR = TOTAL to the unit every year.
+- **The UN DESA matrix (probe B):** still no wire (the dataportal = net
+  migration only, the pages 404) — the witness tier does not need it.
+- **The OECD finding (probes C+D):** the SDMX registry carries 16
+  migration dataflows, among them DSD_MIG_F@DF_MIG_POPF ("International
+  migration database - stocks of foreign-born population", OECD.ELS.IMD)
+  — the questionnaire's own bilateral matrix, REF_AREA x BIRTH_COUNTRY,
+  both axes ISO3. The flow serves ONLY through the empty-key /all
+  download (positional keys 404 — the observation dimension carries
+  TIME): 197,570 rows / 18.2 MB, already the pinned frame (MEASURE=B14
+  only, FREQ=A only, PS only), SEX _T + F. THE SEAM, verified to the
+  unit: OECD FR<-MAR _T 2015 = 954,742 = the Eurostat c_birth print
+  EXACTLY (2018 = 992,120 both sides); the OECD face EXTENDS the FR
+  Maghreb series past the Eurostat 2018 cutoff (2019 = 1,009,605,
+  2021 = 1,036,133) and carries the world's non-European destinations
+  (US<-MEX 12,383,868 in 2024, US<-W 51,226,993) the Eurostat universe
+  structurally cannot print.
+- **The wiring's own finding (the fetch):** 14 of the codelist's 44
+  country geos print ONLY their totals on the by-origin face (DE, EL,
+  MT, ME, MD, MK, GE, AL, RS, UA, AD, MC, AM, AZ — Germany's row
+  carries 184 cells, every one an aggregate or a FOR/NAT/TOTAL/UNK
+  summary code, ZERO country origins) — the registration's own honest
+  absence, the same class as Ukraine's zero cells on the FOR door;
+  those doors stay unwired, recorded in the config's notes.
+- **The origin-axis codelist surprises:** Eurostat prints AN (the
+  Netherlands Antilles' withdrawn alpha-2) as a birth place (FR<-AN
+  1999 = 78, 2005 = 450); the OECD prints the _F vanished-entity codes
+  (ANT_F "Former Netherlands Antilles", CSK_F, SCG_F, SUN_F, YUG_F)
+  and XKV (its own Kosovo code) — plus the residual vocabulary (W,
+  W_X "World unspecified", EEA, EU15, A4 "Caribbean", STLS
+  "Stateless"), each decoded live from the DSD's codelist.
+
+### Added
+
+- **The `bilateral` dist layer** (the additive contract): destination
+  x origin x year points shaped {destination_entity_id,
+  origin_entity_id, year, value, provider, source_ref} + its own
+  witness series — emitted ONLY when the indicator's processed tree
+  carries by-origin points, so every single-axis indicator's dist file
+  stays byte-identical (the honest absence of the layer is itself the
+  additivity guarantee, pinned by the v18-era integration test).
+- **The Eurostat ROW grammar** (migr_pop3ctb/ROW/{geo}): geo pinned in
+  the URL, c_birth deliberately UNPINNED; the frame pins (age=TOTAL,
+  sex=T, unit=NR) verified by the layout guard; the general row-major
+  position decode (c_birth and geo sit at different strides than the
+  pinned-c_birth layout the historical arithmetic assumed); the three
+  drop classes logged per class (aggregates/regions, the
+  FOR/NAT/TOTAL/OTH/UNK/RNC summary codes, the c_birth == geo
+  diagonal — the native face); the origin axis resolved through the
+  shared override tables (EL/UK/XK ride the geo table, AN rides the
+  new origin table).
+- **The OECD DF_MIG_POPF grammar** (the bare-flow ref, the empty-key
+  /all download): the frame pins hard-verified per row (FREQ=A,
+  MEASURE=B14, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z, UNIT=PS — the flow's
+  whole vocabulary); the SEX split (_T kept, F dropped logged — the
+  by-sex face recorded unwired); the residual vocabulary dropped
+  logged per code; the origin overrides (XKV -> XKX, the _F codes ->
+  their withdrawn ISO3).
+- **The pipeline's bilateral plumbing**: normalize routes the origin
+  axis (RawRecord.origin_raw_name/origin_iso3_raw — additive fields)
+  to a separate layer written {id}.bilateral.json (always, the
+  stale-file discipline); merge arbitrates under the (destination,
+  origin, year, sex) key with the same two rules verbatim; validate
+  checks the layer's own plausible bounds, duplicates and coverage;
+  build emits the dist layer with its own citations; stats prints the
+  matrix's counts (the numbers this entry quotes).
+- **The origin-axis covers_year exemption**, documented in code: a
+  stock point's year is the MEASUREMENT year, never the birth year —
+  people born in the former Netherlands Antilles are counted in the
+  2015 stock exactly as both questionnaires print them; the
+  destination axis keeps the guard.
+- **The netherlands_antilles entity** (iso3 ANT, valid_to 2010, the
+  two successors) and the withdrawn ISO3 declarations on ussr (SUN),
+  czechoslovakia (CSK), yugoslavia_sfr (YUG), serbia_and_montenegro
+  (SCG) — the by-origin face of the v21 vanished-entity admission
+  (the kosovo/XKX precedent: a withdrawn code declared on the entity
+  the ISO3-first resolution lands on).
+- **The oecd_mig root** (the OECD migration questionnaire's matrix —
+  the IMD's own foreign-born face, OECD-compiled) and the DF_MIG_POPF
+  title read live from the SDMX registry.
+- **Tests: 341 -> 361** (+10 Eurostat ROW, +9 OECD MIGF, +1 the
+  bilateral end-to-end integration, +1 v18-era test extended with the
+  additivity pin), the fixtures GENERATED live (the v16 discipline:
+  every anchor READ from the response bytes, never typed — the FR row
+  response whole, the OECD CSV a byte-copied slice of the /all
+  download carrying every drop class and override code).
+
+### Verified (live, frozen at delivery time)
+
+- Fetch: 31/31 sources, 0 failures (30 ROW doors + the OECD /all
+  download — 18.2 MB, 99,225 records after the sex split and the
+  drops).
+- Rebuild + verify_v22_diff.py: **53 PASS / 0 FAIL** — the 27 other
+  indicator files byte-identical; immigration_stock's pre-existing
+  keys bit-identical; entities.json exactly +1 record and 4 iso3
+  flips; catalog.json one entry's roots summary; todd_corpus.json
+  byte-identical; double rebuild deterministic.
+- Stats v22: bilateral canonical 91,230 points = 91,230 valued + 0
+  explicit gaps; 6,282 pairs; 30 destinations x 243 origins;
+  1998-2025. The FR row: 226 country origins (FR<-DZ 1999 =
+  1,246,706 -> 2018 = 1,390,284, FR<-MA 2015 = 954,742, FR<-PT 2025 =
+  599,492); the Maghreb/Turkey slices ride the census rounds and stop
+  at 2018 for FR (the coverage cliff, as-printed); the UK row prints
+  1998-2004. The witness: 99,225 points, 7,684 pairs, 38 destinations
+  (the USA's row: 210 origins), 236 origins, 1995-2024 — the seam
+  (FR<-MAR 2015 = 954,742 on BOTH doors), the extension (2019-2021),
+  the world face (US<-MEX 2024 = 12,383,867.87), the vanished origins
+  (CSK/SUN/YUG/SCG/ANT/XKX all landed on their entities). The 11 other
+  counters unchanged; corpus 24/24.
+
+### Known limitations
+
+- The by-sex face of both doors stays unwired (recorded: the Eurostat
+  M/F sex doors, the OECD F rows dropped logged); same for the age
+  bands (Eurostat) and the citizenship face (migr_pop1ctz +
+  DSD_MIG@DF_MIG — both DSDs documented in sources.yaml).
+- The UN DESA bilateral matrix (the world face's own compilation)
+  remains manual-download; the OECD matrix carries the non-European
+  destinations in its place.
+- The OWID US-by-CoB historical chart (1850+, the census-era US face
+  of exactly Todd's table class) is recorded as the US historical
+  face's future door.
+- The 14 total-only geos (above) stay unwired until the day they
+  print; the day one starts, its fetch fails loudly (the soft-miss
+  guard doubles as the change detector).
 
 ## 2026-09-22 — v21: the entities version — the DYB 1978
 ## vanished-entity tables (the PDF route the XLS loop cannot reach), the

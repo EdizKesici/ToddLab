@@ -1,0 +1,138 @@
+id: road_accident_mortality_per_vehicle
+label: "Road accident mortality (per registered motor vehicles)"
+family: mortality
+unit: deaths_per_10000_vehicles
+higher_is_better: false
+todd_core: false
+
+companion_indicators:
+  - road_accident_mortality
+
+sources:
+  # THE TWENTY-NINTH INDICATOR (v25) — Todd's OWN 1974 denominator, the
+  # metric Le Fou et le Prolétaire actually tabulated: "deaths per
+  # million vehicles", the WHO thirteen-country comparison Todd read as
+  # the machine-age mortality of the industrial society (France vs
+  # Britain vs the USA, the road as the class-neutral killer of the
+  # automobile century). The modern face of the same denominator is the
+  # ITF/IRTAD per-vehicle registration rate, one door away from the
+  # per-100k-population rate v19 wired (the v19 probe record's own
+  # words: "one config line away the day the by-vehicle comparison is
+  # demanded" — v25 demands it).
+  #
+  # THE COMPANION RELATION (the v15/v16 contract's third pair, declared
+  # on BOTH sides): road_accident_mortality and this indicator read the
+  # SAME crash registrations through DIFFERENT denominators — population
+  # vs registered motor vehicles — never a unit conversion of one
+  # another (the denominators are different measurements with their own
+  # registration universes). The pair displays what each denominator
+  # reveals: the per-100k face the population-wide mortality, the
+  # per-vehicle face the intensity of use (France 2010 = 0.95 deaths
+  # per 10,000 vehicles vs 6.4 per 100,000 population — the same
+  # crashes, two exposures).
+  #
+  # todd_core: FALSE — a deliberate, documented decision: the corpus
+  # (24/24 closed since v20) counts ONE road-death metric
+  # (road_accident_mortality, 4 citations), and this indicator is the
+  # SAME metric under its 1974 table's own denominator — a FACE of the
+  # corpus metric, not a 25th metric. The cross-validation would refuse
+  # todd_core=true (no corpus entry); the notes carry the Todd fidelity
+  # instead: this is the closer of the two faces to Le Fou et le
+  # Prolétaire's own table.
+  #
+  # THE CANONICAL (the only door): OECD.ITF DF_SAFETY/FATALITIES/
+  # 10P4VEH_MOT_ROAD on the same SDMX wire the per-100k face rides
+  # (police-reported crash registrations as the member countries submit
+  # them, deaths per 10,000 registered motor vehicles, annual rows,
+  # TRANSPORT_MODE=ROAD pinned, all vehicle types — the same frame
+  # pins, the unit swapped). Verified live 2026-09-27 (the v25 probe,
+  # the full slice): 534 rows, 38 areas, 1994-2024 (the union window —
+  # the per-vehicle registration series arrive LATE in many countries:
+  # CHE 1994-2024 the longest, FRA 2010-2024, DEU 2013-2024, many
+  # 2013-2024 windows, ALB 2020-2024 — the heterogeneous coverage the
+  # dist carries as-printed). Anchors: FRA 2010 = 0.9497 -> 2024 =
+  # 0.6512 (the sécurité routière arc under its own denominator), CHE
+  # 1994 = 1.6303 -> 2024 = 0.3837, the Chilean peak CHL 1998 = 13.1494
+  # the slice's own tail (the developing-registration crisis).
+  # NO WITNESS: no other machine door prints a per-vehicle road-death
+  # rate anywhere (GHO's road-safety family carries the per-100k
+  # population face only, RS_198 the v19 witness — a DIFFERENT
+  # denominator, not a witness for this one; the WHO Global status
+  # report's per-vehicle tables are print-only) — the top_income_share
+  # constitution (v19): the one authoritative door IS the tier, no
+  # cross-root witness exists, and the absence is the record.
+  - provider: oecd
+    ref: DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD
+    priority: 1
+    role: canonical
+    root: itf_irtad
+
+coverage_start: 1994
+coverage_end: 2024
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = ITF/IRTAD road-safety statistics via SDMX
+  (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 10,000
+  registered motor vehicles as submitted by the member countries'
+  police crash registration systems (FATALITIES/10P4VEH_MOT_ROAD,
+  TRANSPORT_MODE=ROAD, all vehicle types, annual rows only — the same
+  frame pins as the per-100k face, the unit the 1974 table's own
+  denominator's descendant), 38 areas, 1994-2024 as the union window
+  with HETEROGENEOUS per-area arrival (CHE 1994-2024 the longest
+  series; FRA 2010-2024; most Western European windows 2013+; the
+  per-vehicle registration counts arrived late — the coverage cliff
+  carried as-printed, the honest shape this face's own notes document).
+  No witness tier: no other machine door prints a per-vehicle
+  road-death rate (the probe record — the top_income_share
+  constitution, witnessless by necessity not by omission).
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 16  # the live slice's own tail is the Chilean registration
+           # crisis (CHL 1998 = 13.15, verified live on the full
+           # slice) and the early Eastern-European windows (HUN 2005 =
+           # 3.70, MKD 2013 = 4.76, MAR 2015 = 9.91 — Morocco the
+           # IRTAD questionnaire's own Global-South rider); 16 admits
+           # the tail while flagging any misload of the sibling unit
+           # (the per-100k prints: FRA 15.2, LVA 28.4 — most sit
+           # outside, reviewed immediately; the per-100k face's own
+           # 0-35 bound is the mirror image of this one).
+
+license: >
+  OECD/ITF Terms and Conditions, attribution required — see
+  docs/licenses.md.
+
+notes: >
+  THE TODD ARC UNDER ITS OWN DENOMINATOR (todd_refs: the companion
+  metric carries the 4 Le Fou et le Prolétaire citations — this face
+  is the same book's own table shape): the 1974 WHO table Todd read
+  printed deaths per MILLION vehicles; the IRTAD descendant prints per
+  10,000 (a pure unit shift on the same denominator concept — the
+  ratio between the two faces of one registration universe). France
+  2010 = 0.95 -> 2024 = 0.65 per 10,000 vehicles (the threefold fall
+  the per-100k face prints as 9.7 -> 4.7, the same crashes over a
+  growing fleet — the denominator's own story: the fleet grew faster
+  than the population, so the per-vehicle rate fell further).
+
+  THE HONEST LIMITS (each verified live on the full slice): the USA
+  ABSENT (the IRTAD questionnaire never carried the US
+  vehicle-registration series on this flow — the 1974 table's own
+  third column has no modern machine face, the US rides the per-100k
+  face only); RUS absent from the entire ITF flow (the v19 finding,
+  unchanged); the heterogeneous arrival windows (per-area coverage
+  printed as-is, never normalized); no sex dimension (the flow prints
+  none — total road deaths); the 1974 table itself is BOOK data
+  (thirteen countries, the WHO print Todd read — curated territory,
+  the same line the 19th-century French boards hold).
+
+  THE COMPANION DISCIPLINE: the pair is declared on both sides
+  (companion_indicators, the cross-validation's symmetry contract) —
+  two indicators, one crash-registration root (itf_irtad), two
+  denominators that are different measurements, never a conversion of
+  one another. The boards read them side by side: the population face
+  for the cross-metric mortality comparison (the family's own unit),
+  the vehicle face for the machine-age intensity Todd's own table
+  measured.

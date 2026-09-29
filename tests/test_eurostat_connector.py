@@ -896,3 +896,122 @@ def test_parse_row_sex_reads_the_female_ventilation_of_the_citizenship_face():
     assert got[("MAR", 2015)] == pytest.approx(226668)
     assert got[("MAR", 2018)] == pytest.approx(243044)
     assert got[("PRT", 2015)] == pytest.approx(252472)
+
+
+# --- v25: the lfsa class-decomposition twins + the une_rt_a M/F doors ------
+
+LFSA_URGAN = (FIXTURES / "eurostat_lfsa_urgan_t_sample.json").read_text(encoding="utf-8")
+LFSA_URGACOB = (FIXTURES / "eurostat_lfsa_urgacob_t_sample.json").read_text(encoding="utf-8")
+UNERT_M = (FIXTURES / "eurostat_unert_m_sample.json").read_text(encoding="utf-8")
+UNERT_F = (FIXTURES / "eurostat_unert_f_sample.json").read_text(encoding="utf-8")
+
+
+def test_v25_build_url_pins_the_lfsa_query_shape():
+    # The class twins' grammar: age and sex pinned in the URL, unit PC
+    # pinned (the datasets' only unit — the edat discipline), the CLASS
+    # dimension deliberately absent (the codelist as printed — the
+    # ROW-door discipline on the class axis).
+    assert build_url("lfsa_urgan/Y15-74/T") == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+        "lfsa_urgan?format=JSON&lang=EN&age=Y15-74&sex=T&unit=PC"
+    )
+    assert build_url("lfsa_urgacob/Y15-74/M") == (
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+        "lfsa_urgacob?format=JSON&lang=EN&age=Y15-74&sex=M&unit=PC"
+    )
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    ["lfsa_urgan", "lfsa_urgan/Y15-74", "lfsa_urgan/Y15-74/PC/T", "lfsa_urgan/Y15-74/X", "lfsa_urgacob/ROW/FR"],
+)
+def test_v25_lfsa_ref_format_is_the_one_grammar_the_twins_speak(bad_ref):
+    with pytest.raises(ValueError, match="lfsa_urgan/<age>/<sex>' / 'lfsa_urgacob"):
+        build_url(bad_ref)
+
+
+def test_v25_parse_urgan_reads_the_citizenship_classes(caplog):
+    # THE CITIZENSHIP FACE: the LFS questionnaire's own class
+    # decomposition of the rate — every record carrying the class in the
+    # project vocabulary and segment_axis="citizenship", the TOTAL/STLS/
+    # NRP cells dropping logged, the FR 2015 Destin anchors read live.
+    with caplog.at_level(logging.INFO):
+        records = parse_eurostat(LFSA_URGAN, expected_ref="lfsa_urgan/Y15-74/T")
+    assert len(records) == 2710
+    assert {r.segment_axis for r in records} == {"citizenship"}
+    classes = {r.population_class for r in records}
+    assert classes == {"nationals", "foreigners", "eu_foreigners", "non_eu_foreigners"}
+    assert all(r.origin_raw_name is None for r in records)  # never a bilateral record
+    got = {
+        (r.iso3_raw, r.population_class): r.value
+        for r in records if r.iso3_raw == "FRA" and r.year == 2015
+    }
+    assert got[("FRA", "nationals")] == pytest.approx(9.7)
+    assert got[("FRA", "foreigners")] == pytest.approx(20.5)
+    assert got[("FRA", "eu_foreigners")] == pytest.approx(12.6)
+    assert got[("FRA", "non_eu_foreigners")] == pytest.approx(24.5)
+    # the aggregate geos drop logged (the shared discipline), the UK
+    # rides (the class door's own richer codelist).
+    assert any(r.iso3_raw == "GBR" for r in records)
+    assert not any(r.iso3_raw in ("EU27_2020", "EA21") for r in records)
+    drop_logs = " ".join(r.message for r in caplog.records)
+    assert "aggregate" in drop_logs
+    for code in ("TOTAL", "STLS", "NRP"):
+        assert code in drop_logs
+
+
+def test_v25_parse_urgacob_reads_the_birth_classes(caplog):
+    # THE BIRTH FACE: the same grammar on the c_birth dimension, the
+    # birth vocabulary, the FR 2015 anchors.
+    with caplog.at_level(logging.INFO):
+        records = parse_eurostat(LFSA_URGACOB, expected_ref="lfsa_urgacob/Y15-74/T")
+    assert len(records) == 3023
+    assert {r.segment_axis for r in records} == {"birth"}
+    classes = {r.population_class for r in records}
+    assert classes == {"natives", "foreign_born", "eu_born", "non_eu_born"}
+    got = {
+        (r.iso3_raw, r.population_class): r.value
+        for r in records if r.iso3_raw == "FRA" and r.year == 2015
+    }
+    assert got[("FRA", "natives")] == pytest.approx(9.4)
+    assert got[("FRA", "foreign_born")] == pytest.approx(17.1)
+    assert got[("FRA", "eu_born")] == pytest.approx(10.7)
+    assert got[("FRA", "non_eu_born")] == pytest.approx(19.0)
+    # the 31-year memory: the class tables print 1995 (RICHER than the
+    # plain rate's own 2003+ collector window).
+    assert min(r.year for r in records) == 1995
+    # the citizenship face's STLS class never printed here — the birth
+    # codelist's own shape.
+    drop_logs = " ".join(r.message for r in caplog.records)
+    assert "STLS" not in drop_logs
+    assert "TOTAL" in drop_logs and "NRP" in drop_logs
+
+
+def test_v25_lfsa_pin_guards_refuse_slices_we_did_not_ask_for():
+    # A urgan fixture served to an urgacob ref (or vice versa) is a
+    # LOUD failure — the citizen vs c_birth layouts differ.
+    with pytest.raises(ValueError, match="not the lfsa_urgacob layout"):
+        parse_eurostat(LFSA_URGAN, expected_ref="lfsa_urgacob/Y15-74/T")
+    with pytest.raises(ValueError, match="not the lfsa_urgan layout"):
+        parse_eurostat(LFSA_URGACOB, expected_ref="lfsa_urgan/Y15-74/T")
+
+
+def test_v25_parse_unert_m_reads_the_male_ventilation():
+    # THE BY-SEX FACE of the plain rate: the M door's records carry
+    # sex="male" (the project vocabulary), the v17 anchors read live.
+    records = parse_eurostat(UNERT_M, expected_ref="une_rt_a/Y15-74/PC_ACT/M")
+    assert len(records) == 584
+    assert {r.sex for r in records} == {"male"}
+    assert all(r.population_class is None for r in records)  # single-axis, never a segment
+    got = {(r.iso3_raw, r.year): r.value for r in records if r.iso3_raw == "FRA"}
+    assert got[("FRA", 2015)] == pytest.approx(10.8)   # the v17 probe anchor
+    assert got[("FRA", 2024)] == pytest.approx(7.6)
+
+
+def test_v25_parse_unert_f_reads_the_female_ventilation():
+    records = parse_eurostat(UNERT_F, expected_ref="une_rt_a/Y15-74/PC_ACT/F")
+    assert len(records) == 584
+    assert {r.sex for r in records} == {"female"}
+    got = {(r.iso3_raw, r.year): r.value for r in records if r.iso3_raw == "FRA"}
+    assert got[("FRA", 2015)] == pytest.approx(9.9)    # the v17 probe anchor
+    assert got[("FRA", 2024)] == pytest.approx(7.3)

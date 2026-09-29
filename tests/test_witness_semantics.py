@@ -139,6 +139,10 @@ def test_merge_indicator_writes_both_files(tmp_path):
             # point (the full dataclass is serialized, like sex above); the
             # DIST omits it, see build.py's _point_dict.
             "origin_entity_id": None,
+            # v25: the population-segment class — present-but-None on every
+            # single-axis and bilateral point (the same serialization rule);
+            # the DIST omits it, see build.py's _point_dict.
+            "population_class": None,
             # P2 quality-annotation fields: present-but-None on the wire (the
             # full dataclass is serialized, like sex above); the DIST omits
             # them for plain points, see build.py.
@@ -158,6 +162,13 @@ def test_merge_indicator_writes_both_files(tmp_path):
     # previous run can outlive the clean one).
     assert not (tmp_path / "imr.bilateral.merged.json").exists()
     assert not (tmp_path / "imr.bilateral.witnesses.json").exists()
+    # v25: the same single-axis guarantee for the segment layers — a
+    # class-less indicator leaves NO segment artifacts (and no stale
+    # survivors from any previous run can outlive the clean one).
+    assert not (tmp_path / "imr.segments.merged.json").exists()
+    assert not (tmp_path / "imr.segments.witnesses.json").exists()
+    assert not (tmp_path / "imr.segments_citizenship.merged.json").exists()
+    assert not (tmp_path / "imr.segments_citizenship.witnesses.json").exists()
 
 
 # --- Unit conversion: declared table only, never a guessed factor --------------
