@@ -77,6 +77,23 @@ class RawRecord:
     PARALLEL, never merged (ADR-0010): normalize routes citizenship rows
     to {indicator}.bilateral_citizenship.json, a separate layer with its
     own merge key space and its own dist block.
+
+    v25 (the population-segment face): population_class / segment_axis
+    carry the CLASS decomposition of a rate — the questionnaire's own
+    segments of the same entity-year (Eurostat lfsa_urgan's citizen
+    codelist NAT/FOR/EU27_2020_FOR/NEU27_2020_FOR, the ILOSTAT CCT/CBR
+    class codes). NOT a bilateral record: FOR/NAT are population
+    SEGMENTS, not countries — no origin entity exists to resolve, and
+    inventing umbrella entities for them is exactly the move the
+    project's constitution refuses (the Channel Islands decision).
+    population_class carries the PROJECT vocabulary ("foreigners",
+    "nationals"...), mapped from the provider's own codes in the
+    connector — the same discipline the sex codes follow (M -> "male").
+    segment_axis names which legality the class rides — "birth"
+    (immigrés: lfsa_urgacob, ILOSTAT CBR) or "citizenship" (étrangers:
+    lfsa_urgan, ILOSTAT CCT) — the two ADR-0010 faces again, parallel
+    layers never merged. None on every pre-v25 record: the single-axis
+    and bilateral flows are untouched by construction.
     """
     entity_raw_name: str
     iso3_raw: str | None
@@ -88,6 +105,13 @@ class RawRecord:
     # v23: WHICH bilateral axis this row rides — "birth" | "citizenship"
     # (None = single-axis, or a pre-v23 bilateral snapshot: the birth face).
     origin_axis: str | None = None
+    # v25: the population segment of a class-decomposed rate, in the
+    # project's own vocabulary (None = the undecomposed faces).
+    population_class: str | None = None
+    # v25: WHICH legality the segment rides — "birth" | "citizenship"
+    # (None = every pre-v25 record; the birth face is the default by the
+    # same construction origin_axis follows).
+    segment_axis: str | None = None
     citation: str | None = None
     definition_note: str | None = None
     sex: str | None = None

@@ -24,6 +24,7 @@ from src.connectors.curated import CuratedConnector
 from src.connectors.dyb import DybConnector
 from src.connectors.eurostat import EurostatConnector
 from src.connectors.gho import GhoConnector
+from src.connectors.ilostat import IlostattConnector
 from src.connectors.oecd import OecdConnector
 from src.connectors.owid import OwidConnector
 from src.connectors.worldbank import WorldbankConnector
@@ -39,6 +40,9 @@ CONNECTORS: dict[Provider, Connector] = {
     Provider.worldbank: WorldbankConnector(),  # WDI v2 JSON (v11, P5: IGME/WPP witnesses, sex-split codes)
     Provider.eurostat: EurostatConnector(),  # demo_find JSON (v14: TFR collector, the corpus's #1)
     Provider.curated: CuratedConnector(),  # no network: "fetch" = read catalog/curated/{ref}.csv
+    # v25: the ILO's own SDMX wire — the DEAP class-decomposition rate
+    # flows (the segment layers' witness, root ilo_lfs on its direct door).
+    Provider.ilostat: IlostattConnector(),
 }
 # ADR-0007/0008 wiring state: un_dyb (collector tier) and curated (L0-L2)
 # are the CANONICAL sources of infant_mortality (authenticity first), with

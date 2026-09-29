@@ -473,6 +473,52 @@ eurostat:
     pending decision — deliberately NOT wired, recorded below with the
     same status as HMD/CLIO-INFRA.
 
+ilostat:
+  base_url: "https://sdmx.ilo.org/rest/data"
+  auth_required: false
+  license_default: "ILOSTAT data reuse policy (CC-BY-4.0, attribution required, no endorsement implied)"
+  layer: harmonized
+  notes: >
+    Layer: HARMONIZED (v25 wiring judgment) — the ILO's own SDMX wire
+    carries the SAME ILO-processed LFS family the WDI redistribution
+    serves (the v17 probe verdict stands wholesale: "Repository:
+    ILO-STATISTICS - Micro data processing" on the DEAP/ILMS rows, the
+    19th-ICLS and ILOEST families never the national print) — the
+    provider brand changed, the tier did not. Wired in v25 for exactly
+    one purpose: the DEAP class-decomposition rate flows
+    (DF_UNE_DEAP_SEX_AGE_CCT_RT / _CBR_RT, citizenship and place of
+    birth) as the SEGMENT-layer witnesses of unemployment_rate — the
+    same root pair (eurostat_lfs vs ilo_lfs) the plain rate's WB
+    witness holds, read on the direct door.
+
+    No API key. The SDMX 2.1 wire answers partial keys with empty
+    (wildcard) positions and REFUSES short ones (HTTP 422 "Not enough
+    key values in query, expecting 6 got 2" — the v25 probe record);
+    the response format is SDMX-JSON 2.0 via ?format=jsondata (the
+    Accept header enumerates genericdata+xml and data+json — the CSV
+    mime family is NOT in the enumerated list, the connector parses
+    the JSON). THE FLOW RESTRUCTURE OF 2026-09-24 (the flows' own
+    LAST_UPDATE annotation, read live): the per-country
+    citizenship/birth detail is GONE (the class dimension now carries
+    exactly {TOTAL, CITIZEN, NONCIT, X} / {TOTAL, NATIVE, FOREIGN, X}
+    across the whole printing universe — enumerated on the full live
+    CCT flow: 460 series, 137 REF_AREAs, ~1 observation per series),
+    leaving a WORLD CROSS-SECTION in the coupe pattern (RS_198, GHO
+    PRISON_A2). The flow's own observation annotations carry the
+    genealogy the config cites: SOURCE "LFS - Enquête sur l'emploi"
+    (every observation), NOTE_SOURCE "Repository: ILO-STATISTICS -
+    Micro data processing" (309 of 461 cross-section observations) vs
+    "Repository: Eurostat special tabulation" (63) vs national-institution
+    notes — the harmonized tier's own heterogeneous repository story.
+    OBS_STATUS prints U ("Unreliable") / B ("Break in series"),
+    transported as-reported on quality_code.
+
+    THE REF_AREA CODES are ISO3 with one quirk: KOS = Kosovo (the
+    connector maps it to the user-assigned XKX, the v21 decision —
+    136 of the 137 printing areas resolve by ISO3 directly, verified
+    live against the registry).
+
+
 # HMD and CLIO-INFRA deliberately absent (set aside for now, per
 # conversation). The Human FERTILITY Database (HFD) joins that pending
 # class in v14: the collector-tier source with the historical depth the
@@ -929,3 +975,68 @@ eurostat:
 # evidence); Table 22's non-zero age columns (the LE-at-25 prints —
 # LE-60 does not print in the 1978 grid, its ages are 0/1/2/3/4/5/10/
 # 15/20/25).
+
+# --- v25: the by-nationality face, the 1974 denominator, and the
+# registry's own verdicts settled -----------------------------------------
+#
+# unemployment_rate's SEGMENT FACES (v25, WIRED — the Destin question
+# at the collector tier): the v17 record's "THE FUTURE Le Destin des
+# immigrés by-nationality door" settled with TWO findings. FIRST, the
+# collector door was there all along: Eurostat lfsa_urgan "Unemployment
+# rates by citizenship" and lfsa_urgacob "Unemployment rates by country
+# of birth" — the LFS questionnaire's own CLASS decomposition of the
+# rate (NAT/FOR/EU27_2020_FOR/NEU27_2020_FOR classes, unit PC the only
+# unit, 38-geo codelist incl. the UK une_rt_a lost, 1995-2025, full
+# sex split) — wired canonical, one door per face, the TOTAL class
+# dropping (rides une_rt_a). SECOND, the ILOSTAT per-country door the
+# v17 probe verified (FRA 2015-2018 per-country rates) is DEAD: the
+# flows' 2026-09-24 restructure took the per-country detail away and
+# left the class cross-sections — wired as the segment witnesses (the
+# direct ilo_lfs door, CCT/CBR class prints at 15+, both sexes, the
+# world cross-section). The by-nationality question thus lands at the
+# AGGREGATE class level on live wires (étrangers/immigrés vs
+# nationaux/non-immigrés), while the book's own per-origin boards
+# (Maghreb/Turkish/Portuguese rates) are BOOK data — curated territory,
+# the interwar-Austria line.
+#
+# road_accident_mortality_per_vehicle (v25, WIRED — the v19 registry's
+# "one config line away" line taken): the ITF per-vehicle face
+# (DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD, 38 areas, 1994-2024 union
+# window, heterogeneous per-area arrival — CHE 1994-2024 the longest,
+# FRA 2010-2024). todd_core=false by the corpus closure (the metric is
+# a FACE of the corpus's road-death metric, its 1974 table's own
+# denominator); the companion pair declared both sides with
+# road_accident_mortality. WITNESSLESS by the probe record: no other
+# machine door prints a per-vehicle rate (GHO's road-safety family
+# carries per-100k only) — the top_income_share constitution.
+#
+# UNWIRED DOORS RECORDED (v25):
+# - ILOSTAT DF_UNE_DEAP_SEX_AGE_{CCT,CBR}_RT per-country detail (DEAD
+#   since the 2026-09-24 restructure — the record above; the day the
+#   ILO restores it, the true per-origin Destin board arrives with it).
+# - ILOSTAT DF_EMP_MFRB/MFRC + DF_POP_MFRB/MFRC (employed and
+#   working-age foreign populations by country of birth/citizenship —
+#   the per-country COUNTS the restructure left behind; a per-country
+#   rate would need unemployed-by-country counts that do not exist on
+#   any wire, so the derivation gate REFUSES the assembly: the
+#   anti-derivation line, recorded).
+# - Eurostat lfsa_urgan/lfsa_urgacob sex=M/F (the segment faces' own
+#   by-sex ventilations — one pin away each, the v24 pattern; the
+#   ILOSTAT witnesses already carry both sexes' rows, the canonical
+#   T-only asymmetry documented per-config).
+# - Eurostat lfsa_argan/lfsa_argacob (labour-force PARTICIPATION rates
+#   by citizenship/country of birth — the activity-rate siblings of the
+#   wired unemployment-rate twins; no corpus metric demanding them).
+# - Eurostat lfsa_ergan/lfsa_ergacob (EMPLOYMENT rates by citizenship/
+#   country of birth — the third sibling family; same status).
+# - ILOSTAT DF_EAP_DWAP/DF_EIP_DWAP SEX_{CCT,CBR}_RT (the participation
+#   and inactivity class-decomposition rate families — the CCT/CBR
+#   twins' siblings, same coupe shape since the restructure).
+# - Eurostat une_rt_a's remaining age bands (Y15-24 ... Y55-74 — the
+#   youth-unemployment face the corpus's Qui est Charlie ? claim could
+#   one day demand, one pin away each).
+# - Eurostat sources[] url: the dist's sources blocks carry url=None
+#   for every Eurostat door (the pre-v25 shape, preserved deliberately:
+#   wiring the URL would touch every Eurostat-sourced indicator's dist
+#   file — a cross-cutting change this version refuses to smuggle in;
+#   the candidate future fix, its own reviewable decision).

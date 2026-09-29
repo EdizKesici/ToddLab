@@ -12,6 +12,7 @@ from tests.conftest import (
     seed_dyb_table9_snapshot,
     seed_eurostat_snapshot,
     seed_gho_snapshot,
+    seed_ilostat_snapshot,
     seed_oecd_snapshot,
     seed_oecd_idd_snapshot,
     seed_oecd_safety_snapshot,
@@ -142,6 +143,30 @@ def _run_pipeline(tmp_path: Path, real_indicators, real_entities):
     # 1990-2002 years the collector lacks and the rounding seam).
     seed_eurostat_snapshot(raw_dir, "unemployment_rate", "une_rt_a/Y15-74/PC_ACT/T", fixture="eurostat_unert_sample.json")
     seed_wb_snapshot(raw_dir, "unemployment_rate", "SL.UEM.TOTL.NE.ZS")
+    # v25 (the segment faces + the by-sex face): the M/F doors of the
+    # plain rate (the v17 registry's "one ref away" — FR M 2015 = 10.8,
+    # F = 9.9), the two LFS class-decomposition canonical doors (the
+    # collector prints the Destin question: FR 2015 natives 9.4 vs
+    # foreign_born 17.1 on the birth face, nationals 9.7 vs foreigners
+    # 20.5 on the citizenship face — the REAL full responses, carved by
+    # scripts/make_v25_fixtures.py), and the two ILOSTAT class
+    # cross-section witnesses on the ILO's own SDMX wire (FR 2025:
+    # nationals 7.162 vs foreigners 13.902, natives 7.023 vs
+    # foreign_born 12.003 — the coupe, both sexes, the KOS->XKX quirk).
+    seed_eurostat_snapshot(raw_dir, "unemployment_rate", "une_rt_a/Y15-74/PC_ACT/M", fixture="eurostat_unert_m_sample.json")
+    seed_eurostat_snapshot(raw_dir, "unemployment_rate", "une_rt_a/Y15-74/PC_ACT/F", fixture="eurostat_unert_f_sample.json")
+    seed_eurostat_snapshot(raw_dir, "unemployment_rate", "lfsa_urgacob/Y15-74/T", fixture="eurostat_lfsa_urgacob_t_sample.json")
+    seed_eurostat_snapshot(raw_dir, "unemployment_rate", "lfsa_urgan/Y15-74/T", fixture="eurostat_lfsa_urgan_t_sample.json")
+    seed_ilostat_snapshot(raw_dir, "unemployment_rate", "DF_UNE_DEAP_SEX_AGE_CBR_RT", fixture="ilostat_cbr_sample.json")
+    seed_ilostat_snapshot(raw_dir, "unemployment_rate", "DF_UNE_DEAP_SEX_AGE_CCT_RT", fixture="ilostat_cct_sample.json")
+    # v25 (the 1974 denominator): road_accident_mortality_per_vehicle
+    # seeds its single door — the REAL full per-vehicle slice (534 rows,
+    # 38 areas, FRA 2010 = 0.9497 -> 2024 = 0.6512, CHL 1998 = 13.15
+    # the tail, the USA absent).
+    seed_oecd_safety_snapshot(
+        raw_dir, "road_accident_mortality_per_vehicle", "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+        fixture="itf_10p4veh_sample.csv",
+    )
     # v18 (the six-indicator delivery, four doors): cirrhosis seeds the
     # OECD collector (CICDCIRR: the FRA 1979 = 29.0 / SWE 12.2 benchmark
     # pair, ITA 1979 M = 50.0 the live max, the KOR 'B' / TUR 'D' flag
@@ -263,6 +288,8 @@ def test_full_pipeline_produces_the_expected_dist_files(tmp_path, real_indicator
     assert (dist_dir / "indicators" / "top_income_share.json").exists()
     assert (dist_dir / "indicators" / "gini_index.json").exists()
     assert (dist_dir / "indicators" / "road_accident_mortality.json").exists()
+    # v25: Todd's own 1974 denominator — the per-vehicle companion face.
+    assert (dist_dir / "indicators" / "road_accident_mortality_per_vehicle.json").exists()
     assert (dist_dir / "indicators" / "incarceration_rate.json").exists()
     assert (dist_dir / "indicators" / "math_test_scores.json").exists()
     assert (dist_dir / "indicators" / "obesity_rate.json").exists()
@@ -280,6 +307,7 @@ def test_full_pipeline_produces_the_expected_dist_files(tmp_path, real_indicator
         "agricultural_employment_share", "tertiary_education_share",
         "secondary_education_share", "immigration_stock",
         "top_income_share", "gini_index", "road_accident_mortality",
+        "road_accident_mortality_per_vehicle",  # v25: the 1974 denominator
         "incarceration_rate", "math_test_scores", "obesity_rate",
         "hiv_prevalence_rate", "male_height_trend",
     }
@@ -1572,7 +1600,10 @@ def test_unemployment_rate_is_two_tier_with_the_coverage_cliff(tmp_path, real_in
     assert payload["unit"] == "percent"
     assert payload["family"] == "economy"  # the family's first indicator
 
-    canon = {(d["entity_id"], d["year"]): d for d in payload["data"]}
+    # v25: the single-axis face now carries the M/F rows too — the T-row
+    # anchors below read the both-sexes series (the M/F anchors have
+    # their own block below).
+    canon = {(d["entity_id"], d["year"]): d for d in payload["data"] if d.get("sex") is None}
     # THE LIVE ANCHORS: France the door's own start (2003), the 2015
     # print both tiers carry (collector 10.4, witness 10.354 — the
     # rounding seam the root pair explains), the 2023 'd' flag.
@@ -1590,12 +1621,24 @@ def test_unemployment_rate_is_two_tier_with_the_coverage_cliff(tmp_path, real_in
     # THE COVERAGE CLIFF: DE 2005 is ABSENT on the collector (the door
     # starts DE at 2009 — absence is information, no patch).
     assert ("germany", 2005) not in canon
-    # sex=None: the T pin IS the both-sexes rate (the M/F doors are one
-    # ref away, unwired).
-    assert all(d.get("sex") is None for d in payload["data"])
+    # v25 (the by-sex face): the T rows carry sex=None (the both-sexes
+    # convention) while the M/F doors ride the same single-axis data
+    # under the merge key's sex term — FR M 2015 = 10.8, F = 9.9 (the
+    # v17 anchors, now wired).
+    sexes = {d.get("sex") for d in payload["data"]}
+    assert sexes == {None, "male", "female"}
+    canon_mf = {(d["entity_id"], d["year"], d.get("sex")): d["value"] for d in payload["data"]}
+    assert canon_mf[("france", 2015, "male")] == pytest.approx(10.8)
+    assert canon_mf[("france", 2015, "female")] == pytest.approx(9.9)
+    assert canon_mf[("france", 2024, "male")] == pytest.approx(7.6)
+    assert canon_mf[("france", 2024, "female")] == pytest.approx(7.3)
 
-    # THE WITNESS: the WB national-estimate line — worldwide, and
-    # carrying the years the collector lacks.
+    # THE WITNESSES: v25 wires THREE — the WB national-estimate line
+    # (worldwide, carrying the years the collector lacks) plus the two
+    # ILOSTAT class cross-sections riding the SEGMENT layers (the
+    # single-axis witnesses list carries the WB door only — the segment
+    # witnesses ride their own layers' blocks, asserted in the v25
+    # segment test below).
     assert len(payload["witnesses"]) == 1
     witness = payload["witnesses"][0]
     assert (witness["provider"], witness["source_ref"]) == ("worldbank", "SL.UEM.TOTL.NE.ZS")
@@ -3002,3 +3045,217 @@ def test_immigration_stock_carries_the_by_sex_face_end_to_end(
     # --- THE CORPUS: 24/24 (a face again — zero flips).
     corpus = json.loads((dist_dir / "todd_corpus.json").read_text())
     assert corpus["meta"]["implemented_metrics"] == 24
+
+
+# ---------------------------------------------------------------------------
+# v25 — the by-nationality face of unemployment (the Destin door found at
+# the collector tier), the 1974 per-vehicle denominator, and the by-sex
+# face of the plain rate.
+
+
+def test_unemployment_rate_carries_the_segment_faces_end_to_end(
+    tmp_path, real_indicators, real_entities, real_todd_refs
+):
+    # THE MAIN V25 DELIVERY: Le Destin des immigrés' own question wired —
+    # the CLASS decomposition of the unemployment rate, two PARALLEL
+    # layers (ADR-0010: immigrés vs étrangers, never merged, never
+    # arbitrated across, layer-scoped class vocabularies), canonical =
+    # the LFS questionnaire's own class tables (lfsa_urgacob /
+    # lfsa_urgan, the doors the v25 probe found), witness = the ILOSTAT
+    # class cross-sections on the ILO's own SDMX wire (the flows the
+    # 2026-09-24 restructure left in the coupe shape).
+    processed_dir, dist_dir, _, validate_results = _run_pipeline(tmp_path, real_indicators, real_entities)
+    payload = json.loads((dist_dir / "indicators" / "unemployment_rate.json").read_text())
+
+    # --- THE BIRTH FACE (immigrés): the class decomposition's own key
+    # space (entity, class, year, sex), the four classes the
+    # questionnaire prints, the FR 2015 Destin anchors read live.
+    seg = payload["segments"]
+    spts = {
+        (d["entity_id"], d["population_class"], d["year"], d.get("sex")): d["value"]
+        for d in seg["data"]
+    }
+    assert spts[("france", "natives", 2015, None)] == pytest.approx(9.4)
+    assert spts[("france", "foreign_born", 2015, None)] == pytest.approx(17.1)
+    assert spts[("france", "eu_born", 2015, None)] == pytest.approx(10.7)
+    assert spts[("france", "non_eu_born", 2015, None)] == pytest.approx(19.0)
+    # the by-sex rows are NOT on the canonical segment face (the M/F
+    # doors stay unwired, recorded) — sex=None on every point.
+    assert all(d.get("sex") is None for d in seg["data"])
+    birth_classes = {d["population_class"] for d in seg["data"]}
+    assert birth_classes == {"natives", "foreign_born", "eu_born", "non_eu_born"}
+    # the 31-year memory the class tables carry (1995 — RICHER than the
+    # plain rate's own 2003+ collector window).
+    assert min(d["year"] for d in seg["data"]) == 1995
+
+    # --- THE CITIZENSHIP FACE (étrangers): its own vocabulary, never
+    # meeting the birth face's — the de-facto Destin board.
+    ctz = payload["segments_citizenship"]
+    cpts = {
+        (d["entity_id"], d["population_class"], d["year"], d.get("sex")): d["value"]
+        for d in ctz["data"]
+    }
+    assert cpts[("france", "nationals", 2015, None)] == pytest.approx(9.7)
+    assert cpts[("france", "foreigners", 2015, None)] == pytest.approx(20.5)
+    assert cpts[("france", "eu_foreigners", 2015, None)] == pytest.approx(12.6)
+    assert cpts[("france", "non_eu_foreigners", 2015, None)] == pytest.approx(24.5)
+    ctz_classes = {d["population_class"] for d in ctz["data"]}
+    assert ctz_classes == {"nationals", "foreigners", "eu_foreigners", "non_eu_foreigners"}
+    # THE TWO VOCABULARIES NEVER MIX (ADR-0010 made executable).
+    assert not (birth_classes & ctz_classes)
+    # THE UK: the class doors' own richer codelist (une_rt_a lost it at
+    # Brexit; the LFS class tables still print it).
+    assert any(d["entity_id"] == "united_kingdom" for d in seg["data"]) or \
+        any(d["entity_id"] == "united_kingdom" for d in ctz["data"])
+    # the TOTAL class never rides (the total rate's own door is
+    # une_rt_a — one door per face).
+    assert "total" not in birth_classes and "total" not in ctz_classes
+
+    # --- THE ILOSTAT WITNESSES: one per face, the world cross-section in
+    # the coupe shape, the two aggregate classes, BOTH SEXES' rows (the
+    # canonical's T-only asymmetry documented), the KOS->XKX quirk.
+    assert len(seg["witnesses"]) == 1
+    sw = seg["witnesses"][0]
+    assert (sw["provider"], sw["source_ref"]) == ("ilostat", "DF_UNE_DEAP_SEX_AGE_CBR_RT")
+    assert sw["root"] == "ilo_lfs"
+    assert sw["layer"] == "harmonized"  # the provider's own tier
+    wpts = {
+        (d["entity_id"], d["population_class"], d["year"], d.get("sex")): d["value"]
+        for d in sw["data"]
+    }
+    assert wpts[("france", "natives", 2025, None)] == pytest.approx(7.023)
+    assert wpts[("france", "foreign_born", 2025, None)] == pytest.approx(12.003)
+    assert wpts[("france", "foreign_born", 2025, "female")] == pytest.approx(12.846)
+    assert wpts[("france", "foreign_born", 2025, "male")] == pytest.approx(11.245)
+    # Kosovo on the birth witness: the CBR flow's Kosovo rows print 2000
+    # (the pre-independence era) — the entity's valid_from=2008 floor
+    # drops them honestly, the same discipline the WB witness's XKX-2001
+    # point follows.
+    assert not any(k[0] == "kosovo" for k in wpts)
+
+    cw = ctz["witnesses"][0]
+    assert (cw["provider"], cw["source_ref"]) == ("ilostat", "DF_UNE_DEAP_SEX_AGE_CCT_RT")
+    wpts_c = {
+        (d["entity_id"], d["population_class"], d["year"], d.get("sex")): d["value"]
+        for d in cw["data"]
+    }
+    assert wpts_c[("france", "nationals", 2025, None)] == pytest.approx(7.162)
+    assert wpts_c[("france", "foreigners", 2025, None)] == pytest.approx(13.902)
+    assert wpts_c[("france", "foreigners", 2025, "male")] == pytest.approx(12.961)
+    # Kosovo rides the KOS->XKX override (the v21 code) on the
+    # citizenship witness — its rows print 2024, inside the entity's
+    # validity window.
+    assert any(k[0] == "kosovo" for k in wpts_c)
+    assert wpts_c[("kosovo", "foreigners", 2024, None)] == pytest.approx(6.929)
+
+    # --- THE SINGLE-AXIS FACE UNTOUCHED by the segment wiring: the T
+    # rows keep their own anchors (the coverage-cliff test's domain).
+    canon = {(d["entity_id"], d["year"], d.get("sex")): d["value"] for d in payload["data"]}
+    assert canon[("france", 2015, None)] == pytest.approx(10.4)
+
+    # --- VALIDATION: both segment layers' sections, no duplicates across
+    # the (entity, class, year, sex) key, no range violations (the class
+    # rates sit inside 0-60 with the XKX tail).
+    une = next(r for r in validate_results if r["indicator_id"] == "unemployment_rate")
+    for layer in ("segments", "segments_citizenship"):
+        assert une[layer]["duplicate_entity_year"] == []
+        assert une[layer]["range_violations"] == []
+        assert all(not w["range_violations"] for w in une[layer]["witnesses"])
+    assert une["segments"]["n_classes"] == 4
+    assert une["segments_citizenship"]["n_classes"] == 4
+
+    # --- THE ROOTS: the segment canonicals join eurostat_lfs (the same
+    # questionnaire — one questionnaire, four metrics); the ILOSTAT
+    # witnesses join ilo_lfs on its direct door.
+    catalog = {c["id"]: c for c in json.loads((dist_dir / "catalog.json").read_text())}
+    roots = catalog["unemployment_rate"]["roots"]
+    canon_roots = {r["root"] for r in roots["canonical"]}
+    assert canon_roots == {"eurostat_lfs"}
+    wit_roots = {r["root"] for r in roots["witness"]}
+    assert wit_roots == {"ilo_lfs"}
+
+    # --- THE STATS LINES: the segment faces print their own counts.
+    from src.pipeline.stats import render_stats
+
+    stats = render_stats(dist_dir)
+    assert "segments (country-of-birth classes)" in stats
+    assert "segments (citizenship classes)" in stats
+    assert "classes (eu_born, foreign_born, natives, non_eu_born)" in stats
+
+    # --- THE CORPUS: 24/24 still (a FACE added, zero flips).
+    corpus = json.loads((dist_dir / "todd_corpus.json").read_text())
+    assert corpus["meta"]["implemented_metrics"] == 24
+
+
+def test_road_accident_mortality_per_vehicle_is_the_1974_denominator(
+    tmp_path, real_indicators, real_entities
+):
+    # THE COMPACT V25 DELIVERY: Todd's own denominator wired — the
+    # per-vehicle road-death rate (Le Fou et le Prolétaire's 1974 table
+    # shape, deaths per million vehicles then, per 10,000 now), the v19
+    # registry's "one config line away" line taken. todd_core=false by
+    # the corpus closure (a FACE of the corpus's road-death metric, the
+    # notes carrying the fidelity), the companion pair declared on BOTH
+    # sides, WITNESSLESS (no other machine door prints a per-vehicle
+    # rate — the top_income_share constitution).
+    _, dist_dir, _, validate_results = _run_pipeline(tmp_path, real_indicators, real_entities)
+    payload = json.loads((dist_dir / "indicators" / "road_accident_mortality_per_vehicle.json").read_text())
+
+    assert payload["todd_core"] is False  # the corpus closure, documented
+    assert "todd_refs" not in payload     # honest absence — no corpus entry
+    assert payload["unit"] == "deaths_per_10000_vehicles"
+    assert payload["family"] == "mortality"
+    # THE COMPANION PAIR (declared on both sides, the symmetry contract).
+    assert payload["companion_indicators"] == ["road_accident_mortality"]
+    road = json.loads((dist_dir / "indicators" / "road_accident_mortality.json").read_text())
+    assert road["companion_indicators"] == ["road_accident_mortality_per_vehicle"]
+
+    canon = {(d["entity_id"], d["year"]): d for d in payload["data"]}
+    # THE LIVE ANCHORS (read from the carved fixture, never typed):
+    # FRA 2010 = 0.9497 (the door's own French start — the per-vehicle
+    # registration series arrive late), FRA 2024 = 0.6512 (the sécurité
+    # routière arc under its own denominator), CHE 1994 = 1.6303 (the
+    # longest series' start), CHL 1998 = 13.1494 (the slice's own tail —
+    # the Chilean registration crisis).
+    assert canon[("france", 2010)]["value"] == pytest.approx(0.949683318)
+    assert canon[("france", 2024)]["value"] == pytest.approx(0.651244379)
+    assert canon[("switzerland", 1994)]["value"] == pytest.approx(1.630302595)
+    assert canon[("chile", 1998)]["value"] == pytest.approx(13.14939566)
+    # THE HONEST LIMITS: the USA ABSENT (the IRTAD questionnaire never
+    # carried the US vehicle-registration series — the 1974 table's own
+    # third column has no modern machine face), 38 areas, the
+    # heterogeneous windows printed as-is.
+    assert not any(e == "united_states" for (e, _y) in canon)
+    assert len({e for e, _y in canon}) == 38
+    assert min(y for _e, y in canon) == 1994 and max(y for _e, y in canon) == 2024
+
+    # WITNESSLESS: the witnesses list is the honest empty list (the dist
+    # contract's uniform field), the top_income_share constitution.
+    assert payload["witnesses"] == []
+
+    # VALIDATION: no violations (the CHL tail sits inside 0-16), the
+    # sources block carries the single canonical door with its layer.
+    veh = next(r for r in validate_results if r["indicator_id"] == "road_accident_mortality_per_vehicle")
+    assert veh["range_violations"] == []
+    assert veh["witnesses"] == []
+    src = payload["sources"][0]
+    assert (src["provider"], src["source_ref"], src["role"]) == (
+        "oecd", "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD", "canonical"
+    )
+    assert src["root"] == "itf_irtad"
+    assert src["layer"] == "collector"
+
+
+def test_segment_layers_absent_on_class_less_indicators(
+    tmp_path, real_indicators, real_entities
+):
+    # THE ADDITIVITY PIN (the v22 guarantee extended to the segment
+    # layers): every class-less indicator's dist file carries NO segment
+    # keys — the emission is layer-scoped, one indicator carries the
+    # faces, the 28 others stay clean. The life_expectancy payload (the
+    # sex-split single-axis shape) pins the single-axis contract.
+    _, dist_dir, _, _ = _run_pipeline(tmp_path, real_indicators, real_entities)
+    for name in ("life_expectancy", "immigration_stock", "road_accident_mortality"):
+        payload = json.loads((dist_dir / "indicators" / f"{name}.json").read_text())
+        assert "segments" not in payload, name
+        assert "segments_citizenship" not in payload, name

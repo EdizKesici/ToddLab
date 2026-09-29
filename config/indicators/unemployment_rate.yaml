@@ -13,8 +13,8 @@ sources:
   # structural claim and departmental map, Les Luttes de classes'
   # France-9-10%-vs-Germany-3-4% board, Après la démocratie's
   # France-vs-Germany 1975-2008 series, Le Destin des immigrés'
-  # by-nationality FRG-1987 question — the last one a future
-  # ILMS-citizenship door, recorded in sources.yaml).
+  # by-nationality FRG-1987 question — the last one wired in v25, see the
+  # segment faces below).
   #
   # THE CANONICAL FINDING (the v17 probe verdict, verified live
   # 2026-09-20 before any config): NO other wire prints the plain
@@ -40,6 +40,24 @@ sources:
     role: canonical
     root: eurostat_lfs
 
+  # THE BY-SEX FACE (v25, the v17 registry's "one ref away" doors wired):
+  # the M and F ventilations of the SAME rate on the SAME door — the
+  # merge key's sex component discriminates them from the T rows, the
+  # v24 migration pattern applied to the single-axis face. FR 2015
+  # M = 10.8, F = 9.9 (the v17 probe anchors, re-verified live at the
+  # v25 probe). The priorities are nominal (the T/M/F rows are disjoint
+  # by sex, arbitration never fires across them).
+  - provider: eurostat
+    ref: une_rt_a/Y15-74/PC_ACT/M
+    priority: 3
+    role: canonical
+    root: eurostat_lfs
+  - provider: eurostat
+    ref: une_rt_a/Y15-74/PC_ACT/F
+    priority: 4
+    role: canonical
+    root: eurostat_lfs
+
   # THE WITNESS (worldwide): WDI's SL.UEM.TOTL.NE.ZS, "Unemployment,
   # total (% of total labor force) (national estimate)" — the
   # national-estimate line, which the v17 probe fingerprinted as the
@@ -61,6 +79,79 @@ sources:
     role: witness
     root: ilo_lfs
 
+  # THE SEGMENT FACES (v25) — Le Destin des immigrés' own question wired
+  # at the collector tier: the CLASS decomposition of the same rate
+  # (étrangers vs nationaux, immigrés vs non-immigrés), each face its own
+  # dist layer under the (entity, class, year, sex) key, parallel never
+  # merged (the ADR-0010 doctrine). CANONICAL = the LFS questionnaire's
+  # own class tables, the doors the v25 probe found (the v17 registry
+  # had looked for this decomposition on ILOSTAT and recorded the
+  # harmonized family as the future door — the collector print was
+  # sitting in the LFS domain all along):
+  # - lfsa_urgacob "Unemployment rates by country of birth" — the
+  #   BIRTH face (immigrés): natives / foreign_born / eu_born /
+  #   non_eu_born, 36 geos printing at Y15-74/T (3,023 cells),
+  #   1995-2025. FR 2015: natives 9.4 vs foreign_born 17.1, EU-born
+  #   10.7 vs non-EU-born 19.0 (the Destin contrast at the aggregate
+  #   level — the book's Portuguese-vs-Maghreb split in the
+  #   questionnaire's own classes).
+  # - lfsa_urgan "Unemployment rates by citizenship" — the CITIZENSHIP
+  #   face (étrangers): nationals / foreigners / eu_foreigners /
+  #   non_eu_foreigners, 35 geos at Y15-74/T (2,710 cells), 1995-2025.
+  #   FR 2015: nationals 9.7 vs foreigners 20.5, EU-foreigners 12.6 vs
+  #   non-EU-foreigners 24.5 — the étrangers-over-nationals ratio the
+  #   book's unemployment chapters read, the de-facto Destin board.
+  # THE TOTAL class drops on both doors (the total rate rides une_rt_a —
+  # one door per face), STLS/NRP drop logged (the residuals); the UK
+  # prints here (lost to une_rt_a at Brexit — the class door's own
+  # richer codelist). Root: eurostat_lfs (the same questionnaire — one
+  # questionnaire, four metrics now).
+  - provider: eurostat
+    ref: lfsa_urgacob/Y15-74/T
+    priority: 5
+    role: canonical
+    root: eurostat_lfs
+  - provider: eurostat
+    ref: lfsa_urgan/Y15-74/T
+    priority: 6
+    role: canonical
+    root: eurostat_lfs
+
+  # THE SEGMENT WITNESSES (v25): the ILOSTAT class-decomposition flows
+  # on the ILO's own SDMX wire — the SAME ilo_lfs root the plain rate's
+  # WB witness redistributes, read directly. THE FLOW RESTRUCTURE THE
+  # v25 PROBE FOUND (the registry's own verdict): the flows' 2026-09-24
+  # update took the per-country detail away and left the class prints —
+  # CITIZEN/NONCIT on CCT, NATIVE/FOREIGN on CBR — a WORLD CROSS-SECTION
+  # (137 areas on the citizenship flow at SEX_T/YGE15, 145 on the birth
+  # flow, ~1 observation per series: the coupe pattern RS_198 and
+  # PRISON_A2 set). The witnesses carry the two class codes each (the
+  # EU/non-EU split is the Eurostat canonical's own vocabulary the ILO
+  # never printed), at AGE_AGGREGATE_YGE15 (15+ — the age-base seam
+  # against the canonical's Y15-74, the DE-1991-2008 seam's own class),
+  # and BOTH SEXES (SEX open in one door — the by-sex ventilations ride
+  # the witness's own shape while the canonical's M/F segment doors
+  # stay unwired, recorded). FR 2025 anchors (verified live): nationals
+  # 7.162 vs foreigners 13.902 (CCT), natives 7.023 vs foreign_born
+  # 12.003 (CBR) — the same étrangers/immigrés contrast the collector
+  # prints, one harmonization step apart, displayed never reconciled.
+  # The flow's own annotations ride the evidence: SOURCE "LFS - Enquête
+  # sur l'emploi" (the v17 fingerprint), the NOTE_SOURCE repository mix
+  # (309 "ILO-STATISTICS - Micro data processing" vs 63 "Eurostat
+  # special tabulation" on the cross-section's 461 observations — the
+  # harmonized tier's heterogeneous genealogy, read live, never
+  # interpreted).
+  - provider: ilostat
+    ref: DF_UNE_DEAP_SEX_AGE_CBR_RT
+    priority: 7
+    role: witness
+    root: ilo_lfs
+  - provider: ilostat
+    ref: DF_UNE_DEAP_SEX_AGE_CCT_RT
+    priority: 8
+    role: witness
+    root: ilo_lfs
+
 coverage_start: 1990
 coverage_end: 2025
 
@@ -75,8 +166,18 @@ reliability_criteria: >
   as-reported on quality_code (d on FR and ES 2021-2025: the 2021 LFS
   questionnaire redesign — a definitional seam the connector surfaces,
   not a geo seam; b = break in series; no provisional codes in this
-  dataset). Witness tier = the WB national-estimate line, 208 countries
-  1990-2025, 0-3 decimals as printed. Root pair eurostat_lfs/ilo_lfs:
+  dataset), PLUS the M/F ventilations of the same door (v25: the sex
+  merge-key rows, one pin away each — FR M 2015 = 10.8, F = 9.9) and
+  the two CLASS-decomposition canonical doors (v25: lfsa_urgacob and
+  lfsa_urgan at the same Y15-74 pin, unit PC the datasets' only unit,
+  the class dimension open — 36/35 printing geos, 1995-2025, the
+  étrangers/immigrés boards of Le Destin des immigrés at the collector
+  tier). Witness tier = the WB national-estimate line, 208 countries
+  1990-2025, 0-3 decimals as printed, PLUS the ILOSTAT class
+  cross-sections (v25: CITIZEN/NONCIT and NATIVE/FOREIGN at 15+, 137/145
+  areas, ~1 observation per series — the coupe pattern, SOURCE "LFS -
+  Enquête sur l'emploi" and the micro-data-processing repository mix
+  the flow's own annotations carry). Root pair eurostat_lfs/ilo_lfs:
   same underlying national surveys, one harmonization step apart — on
   the co-covered core they print the same rates to rounding (FR 2015:
   10.4 vs 10.354), and the seams the pair displays (FR 2024 7.436 vs
@@ -87,16 +188,22 @@ reclassification_sensitive: false
 plausible_range:
   min: 0     # the floor is structural (any LFS can print a 0.x rate in
              # principle; the observed minimum is single-digit)
-  max: 60    # the observed span: the collector's max is the Greek crisis
-             # (EL 2013 = 27.8, ES 2013 = 26.1); the witness carries the
-             # post-war break values (XKX 2001 = 57.0) and BHR 1998 =
-             # 43.156 — 60 admits the registry-break tail while a unit
-             # error (a count, a share of population) or a misload of
-             # the monthly family flags immediately.
+  max: 90    # the observed span: the collector's max is the Greek crisis
+             # (EL 2013 = 27.8, ES 2013 = 26.1); the single-axis witness
+             # carries the post-war break values (XKX 2001 = 57.0) and
+             # BHR 1998 = 43.156; the v25 ILOSTAT class witnesses extend
+             # the tail further — IRQ 2021 female foreigners = 88.1 (a
+             # crisis print) and ITA 2001 = 73.8-78.5 on every class
+             # (the ILO flow's own odd Italian vintage, an outlier the
+             # divergence display shows as-reported, never corrected) —
+             # 90 admits the whole tail while a unit error (a count, a
+             # share of population) or a misload of the monthly family
+             # flags immediately.
 
 license: >
   Eurostat reuse policy (attribution required, no endorsement implied);
-  World Bank WDI CC-BY-4.0 — see docs/licenses.md.
+  World Bank WDI CC-BY-4.0; ILOSTAT data reuse policy (CC-BY-4.0,
+  attribution required) — see docs/licenses.md.
 
 notes: >
   THE PINS ARE THE INDICATOR (verified live before any wiring): age
@@ -105,10 +212,14 @@ notes: >
   LFS's own labour-force window and the de-facto total rate), unit
   PC_ACT (percentage of the labour force — the rate's denominator;
   PC_POP prints the wrong denominator, FR 2015 = 6.6), sex T (the
-  both-sexes rate; the M/F splits exist — FR M 2015 = 10.8, F = 9.9 —
-  the unwired sex doors, one ref away each), freq A only (the monthly
+  both-sexes rate; the M/F splits wired in v25 under the merge key's
+  sex term — FR M 2015 = 10.8, F = 9.9), freq A only (the monthly
   companion une_rt_m is refused: annualising monthly data is a
-  derivation).
+  derivation). The class doors (v25) pin the SAME age Y15-74 (the
+  lfsa_urgan codelist carries 35 bands and no TOTAL — the same
+  soft-miss shape) and unit PC (the datasets' only unit); the class
+  dimension is open by design (the codelist as printed — the ROW-door
+  discipline).
 
   THE COVERAGE CLIFF (the honest shape, documented per-geo by the
   probe): FR alone runs 2003-2025 (23 points, the only full-length
@@ -128,11 +239,26 @@ notes: >
   redesign — France's series is one continuous 2003-2025 line with a
   definitional seam riding quality_code, NOT a geo seam: FX does not
   exist in this dataset, probed empty). u/bu (low reliability) hit
-  small states only, none on FR/DE. No 'e'/'p' in this cube.
+  small states only, none on FR/DE. No 'e'/'p' in this cube. The
+  ILOSTAT witnesses print OBS_STATUS U ("Unreliable") and B ("Break in
+  series") on part of their observations — transported as-reported,
+  the same discipline.
 
-  THE BY-NATIONALITY DOOR (Le Destin des immigrés' Turks-and-Yugoslavs
-  question, out of scope today): ILOSTAT's citizenship and
-  place-of-born rate flows (DF_UNE_DEAP_SEX_AGE_CCT_RT / _CBR_RT, the
-  ILMS family, verified live for FRA 2015-2018) are the future
-  harmonized-tier door for exactly that question — recorded in
-  sources.yaml with the probe fingerprint.
+  THE SEGMENT FACES' OWN HONEST SHAPE (v25): the class canonicals
+  print 1995-2025 (a full 31-year series, RICHER than the plain
+  rate's own 2003+ collector window — the class tables carry the
+  questionnaire's longer memory), the two faces' class vocabularies
+  never mix (natives/foreign_born/eu_born/non_eu_born on the birth
+  layer, nationals/foreigners/eu_foreigners/non_eu_foreigners on the
+  citizenship layer — ADR-0010's parallel faces), and the witnesses
+  carry ONLY the two aggregate classes (CITIZEN/NONCIT, NATIVE/
+  FOREIGN) at 15+ with both sexes — the ILO's class vocabulary, the
+  age-base seam against the canonical's Y15-74, displayed never
+  reconciled. The v17 registry's "future Destin door" verdict is
+  settled honestly: the per-country by-nationality rate NO LONGER
+  EXISTS on any machine wire (the ILOSTAT 2026-09-24 restructure took
+  it away; the per-country counts remain, derivation-gated — the
+  record in sources.yaml), so the book's own Maghreb/Turkish/
+  Portuguese per-origin boards stay BOOK data (curated territory,
+  the interwar-Austria line), while the questionnaire's class
+  decomposition carries the étrangers/immigrés contrast live.

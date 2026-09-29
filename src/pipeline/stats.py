@@ -181,6 +181,44 @@ def _bilateral_lines(payload: dict) -> list[str]:
     return lines
 
 
+def _segments_lines(payload: dict) -> list[str]:
+    """v25: the population-segment faces' own lines — the class
+    decomposition's size (points, classes, entities, the year range) and
+    one line per segment witness (the ILOSTAT class cross-sections' world
+    face). The two faces print side by side, never blended (ADR-0010)."""
+    lines = []
+    for layer_key, layer_label in (
+        ("segments", "segments (country-of-birth classes)"),
+        ("segments_citizenship", "segments (citizenship classes)"),
+    ):
+        s = payload.get(layer_key)
+        if not s:
+            continue
+        data = s["data"]
+        valued = [p for p in data if p["value"] is not None]
+        classes = {p["population_class"] for p in data}
+        ents = {p["entity_id"] for p in data}
+        rng = _year_range(data)
+        lines.append(
+            f"  {layer_label}: {_fmt(len(data))} points = {_fmt(len(valued))} valued + "
+            f"{_fmt(len(data) - len(valued))} explicit gaps; {_fmt(len(classes))} classes "
+            f"({', '.join(sorted(classes))}); {_fmt(len(ents))} entities"
+            + (f"; reference years {rng}" if rng else "")
+        )
+        for w in s.get("witnesses", []):
+            wpts = w["data"]
+            wrng = _year_range(wpts)
+            wents = len({p["entity_id"] for p in wpts})
+            wclasses = len({p["population_class"] for p in wpts})
+            wsexes = len({p["sex"] for p in wpts if p.get("sex")})
+            lines.append(
+                f"  {layer_label} witness {w['provider']}:{w['source_ref']}: "
+                f"{_fmt(len(wpts))} points, {wents} entities, {wclasses} classes, "
+                f"{wsexes} sex faces" + (f", {wrng}" if wrng else "")
+            )
+    return lines
+
+
 def render_stats(dist_dir: Path) -> str:
     """One canonical line + one line per witness for every indicator file
     in dist/indicators/, sorted by filename. Witness lines carry the
@@ -188,7 +226,9 @@ def render_stats(dist_dir: Path) -> str:
     "the witness carries <value> for <year>" claims checkable at a glance.
     v22: indicators carrying a `bilateral` layer get its own lines too —
     the by-origin matrix's counts, canonical and witness. v23: the
-    `bilateral_citizenship` face prints its own lines the same way."""
+    `bilateral_citizenship` face prints its own lines the same way.
+    v25: the `segments` / `segments_citizenship` faces print their own
+    lines too — the class decompositions' counts."""
     lines: list[str] = []
     for f in sorted((dist_dir / "indicators").glob("*.json")):
         payload = json.loads(f.read_text(encoding="utf-8"))
@@ -211,5 +251,6 @@ def render_stats(dist_dir: Path) -> str:
         if not witnesses:
             lines.append("  witnesses: none")
         lines.extend(_bilateral_lines(payload))
+        lines.extend(_segments_lines(payload))
     lines.extend(_corpus_block(dist_dir))
     return "\n".join(lines)

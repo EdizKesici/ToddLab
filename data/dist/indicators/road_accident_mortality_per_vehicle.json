@@ -1,0 +1,3803 @@
+{
+  "id": "road_accident_mortality_per_vehicle",
+  "label": "Road accident mortality (per registered motor vehicles)",
+  "family": "mortality",
+  "unit": "deaths_per_10000_vehicles",
+  "higher_is_better": false,
+  "todd_core": false,
+  "companion_indicators": [
+    "road_accident_mortality"
+  ],
+  "reliability": "high",
+  "reliability_criteria": "Canonical tier = ITF/IRTAD road-safety statistics via SDMX (OECD.ITF DSD_INDICATORS@DF_SAFETY), road fatalities per 10,000 registered motor vehicles as submitted by the member countries' police crash registration systems (FATALITIES/10P4VEH_MOT_ROAD, TRANSPORT_MODE=ROAD, all vehicle types, annual rows only — the same frame pins as the per-100k face, the unit the 1974 table's own denominator's descendant), 38 areas, 1994-2024 as the union window with HETEROGENEOUS per-area arrival (CHE 1994-2024 the longest series; FRA 2010-2024; most Western European windows 2013+; the per-vehicle registration counts arrived late — the coverage cliff carried as-printed, the honest shape this face's own notes document). No witness tier: no other machine door prints a per-vehicle road-death rate (the probe record — the top_income_share constitution, witnessless by necessity not by omission).",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 1994,
+    "end": 2024
+  },
+  "license": "OECD/ITF Terms and Conditions, attribution required — see docs/licenses.md.",
+  "notes": "THE TODD ARC UNDER ITS OWN DENOMINATOR (todd_refs: the companion metric carries the 4 Le Fou et le Prolétaire citations — this face is the same book's own table shape): the 1974 WHO table Todd read printed deaths per MILLION vehicles; the IRTAD descendant prints per 10,000 (a pure unit shift on the same denominator concept — the ratio between the two faces of one registration universe). France 2010 = 0.95 -> 2024 = 0.65 per 10,000 vehicles (the threefold fall the per-100k face prints as 9.7 -> 4.7, the same crashes over a growing fleet — the denominator's own story: the fleet grew faster than the population, so the per-vehicle rate fell further).\nTHE HONEST LIMITS (each verified live on the full slice): the USA ABSENT (the IRTAD questionnaire never carried the US vehicle-registration series on this flow — the 1974 table's own third column has no modern machine face, the US rides the per-100k face only); RUS absent from the entire ITF flow (the v19 finding, unchanged); the heterogeneous arrival windows (per-area coverage printed as-is, never normalized); no sex dimension (the flow prints none — total road deaths); the 1974 table itself is BOOK data (thirteen countries, the WHO print Todd read — curated territory, the same line the 19th-century French boards hold).\nTHE COMPANION DISCIPLINE: the pair is declared on both sides (companion_indicators, the cross-validation's symmetry contract) — two indicators, one crash-registration root (itf_irtad), two denominators that are different measurements, never a conversion of one another. The boards read them side by side: the population face for the cross-metric mortality comparison (the family's own unit), the vehicle face for the machine-age intensity Todd's own table measured.",
+  "sources": [
+    {
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "role": "canonical",
+      "layer": "collector",
+      "root": "itf_irtad",
+      "root_label": "ITF/IRTAD road safety statistics (police-reported crash registrations as submitted; OECD.ITF DSD_INDICATORS@DF_SAFETY on the SDMX wire)",
+      "native_unit": null,
+      "citation": "OECD/ITF, Transport safety indicators (DSD_INDICATORS@DF_SAFETY), measure 'FATALITIES', unit 10P4VEH_MOT_ROAD - IRTAD road crash registrations as submitted",
+      "url": "https://sdmx.oecd.org/public/rest/data/OECD.ITF,DSD_INDICATORS@DF_SAFETY,1.0/.A.FATALITIES.10P4VEH_MOT_ROAD.ROAD._Z._Z._Z?dimensionAtObservation=AllDimensions",
+      "license": "OECD Terms and Conditions, attribution required (content: WHO Mortality Database)"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "albania",
+      "year": 2020,
+      "value": 2.98556701,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2021,
+      "value": 2.96215657,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2022,
+      "value": 2.286788359,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2023,
+      "value": 2.449795149,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2024,
+      "value": 2.014863939,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 1995,
+      "value": 1.850363821,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 1996,
+      "value": 1.73525642,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 1997,
+      "value": 1.521387112,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 1998,
+      "value": 1.46060365,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 1999,
+      "value": 1.44386437,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2001,
+      "value": 1.397990515,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2002,
+      "value": 1.343201754,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2003,
+      "value": 1.236835919,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2004,
+      "value": 1.174905241,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2005,
+      "value": 1.173928258,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2006,
+      "value": 1.117727089,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2007,
+      "value": 1.089622653,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2008,
+      "value": 0.943535971,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2009,
+      "value": 0.954785339,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2010,
+      "value": 0.843648959,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2011,
+      "value": 0.783672415,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2012,
+      "value": 0.780016131,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2013,
+      "value": 0.692255607,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2014,
+      "value": 0.655099247,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2015,
+      "value": 0.672203541,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2016,
+      "value": 0.707548239,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2017,
+      "value": 0.654221795,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2018,
+      "value": 0.594785799,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2019,
+      "value": 0.611516877,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2020,
+      "value": 0.556619125,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2021,
+      "value": 0.561167395,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2022,
+      "value": 0.573248116,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2023,
+      "value": 0.59839756,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2024,
+      "value": 0.604688083,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "P"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2011,
+      "value": 0.926795884,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2012,
+      "value": 0.924975273,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2013,
+      "value": 0.781888372,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2014,
+      "value": 0.729534438,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2015,
+      "value": 0.802696121,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2016,
+      "value": 0.711684207,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2017,
+      "value": 0.671566507,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2018,
+      "value": 0.651211875,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2019,
+      "value": 0.651185565,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2020,
+      "value": 0.530742241,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2021,
+      "value": 0.549821999,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2022,
+      "value": 0.558282421,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2023,
+      "value": 0.60092839,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2013,
+      "value": 1.131789142,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2014,
+      "value": 1.090040411,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2015,
+      "value": 1.098955934,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2016,
+      "value": 0.949534508,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2017,
+      "value": 0.849341231,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2018,
+      "value": 0.829897526,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2019,
+      "value": 0.875739619,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2020,
+      "value": 0.675127909,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2021,
+      "value": 0.689813935,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2022,
+      "value": 0.718534668,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2023,
+      "value": 0.65713812,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2024,
+      "value": 0.610379464,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2013,
+      "value": 3.925972698,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2014,
+      "value": 3.281968638,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2015,
+      "value": 3.691694236,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2016,
+      "value": 3.35125941,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2017,
+      "value": 3.072977059,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2018,
+      "value": 2.710006042,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2020,
+      "value": 2.337842258,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2021,
+      "value": 2.405961662,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2022,
+      "value": 1.990294858,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2023,
+      "value": 2.17080736,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2024,
+      "value": 1.790722585,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 1998,
+      "value": 13.14939566,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 1999,
+      "value": 10.46460105,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2000,
+      "value": 10.70077107,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2001,
+      "value": 9.638373504,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2002,
+      "value": 9.363552218,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2003,
+      "value": 10.15197003,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2004,
+      "value": 9.991149633,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2005,
+      "value": 8.697531754,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2006,
+      "value": 8.307847496,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2007,
+      "value": 7.786698709,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2008,
+      "value": 7.885701915,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2009,
+      "value": 6.424978675,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2010,
+      "value": 6.31161302,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2011,
+      "value": 5.759405324,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2012,
+      "value": 5.125258776,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2013,
+      "value": 5.077020628,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2014,
+      "value": 4.766770806,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2015,
+      "value": 4.625165413,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2016,
+      "value": 4.514017085,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2017,
+      "value": 3.813180497,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2018,
+      "value": 3.653853449,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2019,
+      "value": 3.543243447,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2020,
+      "value": 3.291533548,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2021,
+      "value": 3.448514038,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2022,
+      "value": 3.495589344,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2023,
+      "value": 3.131360478,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2015,
+      "value": 1.930611172,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2016,
+      "value": 1.643501504,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2017,
+      "value": 1.72027408,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2018,
+      "value": 1.576288641,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2019,
+      "value": 1.425158315,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2020,
+      "value": 1.121772419,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2021,
+      "value": 1.341871065,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2022,
+      "value": 1.228696634,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2023,
+      "value": 1.176869784,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2024,
+      "value": 0.983511573,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2013,
+      "value": 1.033654462,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2015,
+      "value": 1.079924985,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2016,
+      "value": 0.863606315,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2017,
+      "value": 0.784518153,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2018,
+      "value": 0.861809503,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2019,
+      "value": 0.78893983,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2020,
+      "value": 0.647770444,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2021,
+      "value": 0.659870251,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2022,
+      "value": 0.632428262,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2023,
+      "value": 0.582716557,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2024,
+      "value": 0.562357475,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1994,
+      "value": 2.734295578,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1995,
+      "value": 2.792106112,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1996,
+      "value": 2.372613942,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1997,
+      "value": 2.18623308,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1998,
+      "value": 2.168800479,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1999,
+      "value": 2.180406124,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2000,
+      "value": 2.082646785,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2001,
+      "value": 1.777165689,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2002,
+      "value": 1.885670533,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2003,
+      "value": 1.74381008,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2004,
+      "value": 1.459486205,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2005,
+      "value": 1.263106157,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2006,
+      "value": 1.121957927,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2007,
+      "value": 1.441402037,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2008,
+      "value": 1.424703874,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2009,
+      "value": 1.063930271,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2010,
+      "value": 0.889448214,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2011,
+      "value": 0.763441162,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2012,
+      "value": 0.574742115,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2013,
+      "value": 0.651066078,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2014,
+      "value": 0.610775557,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2015,
+      "value": 0.585656162,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2016,
+      "value": 0.676858249,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2017,
+      "value": 0.549998303,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2018,
+      "value": 0.527944308,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2019,
+      "value": 0.606400235,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2020,
+      "value": 0.486503556,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2021,
+      "value": 0.380893112,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2013,
+      "value": 1.060244118,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2014,
+      "value": 0.979354455,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2015,
+      "value": 0.808540114,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2016,
+      "value": 0.820771294,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2017,
+      "value": 0.534891055,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2018,
+      "value": 0.722304215,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2019,
+      "value": 0.525715048,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2020,
+      "value": 0.594098816,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2021,
+      "value": 0.531411748,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2022,
+      "value": 0.469033472,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2023,
+      "value": 0.541943686,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2024,
+      "value": 0.629781548,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 1995,
+      "value": 1.89733156,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 1996,
+      "value": 1.699668565,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 1997,
+      "value": 1.828655024,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 1998,
+      "value": 1.606849033,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 1999,
+      "value": 1.674325443,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2000,
+      "value": 1.495677831,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2001,
+      "value": 1.607015942,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2002,
+      "value": 1.507252609,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2003,
+      "value": 1.323787625,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2004,
+      "value": 1.254082456,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2005,
+      "value": 1.217561542,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2006,
+      "value": 1.037840402,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2007,
+      "value": 1.130852758,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2008,
+      "value": 0.964351513,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2009,
+      "value": 0.754307665,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2010,
+      "value": 0.706143369,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2011,
+      "value": 0.728571635,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2012,
+      "value": 0.617486192,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2013,
+      "value": 0.609170279,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2014,
+      "value": 0.528291875,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2015,
+      "value": 0.609569427,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2016,
+      "value": 0.566901894,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2017,
+      "value": 0.510319496,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2018,
+      "value": 0.501131845,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2019,
+      "value": 0.432111938,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2020,
+      "value": 0.448324653,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2021,
+      "value": 0.446878642,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2022,
+      "value": 0.384992898,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2023,
+      "value": 0.358729299,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2024,
+      "value": 0.343370626,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "france",
+      "year": 2010,
+      "value": 0.949683318,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "france",
+      "year": 2011,
+      "value": 0.930206771,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "france",
+      "year": 2012,
+      "value": 0.813641179,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "france",
+      "year": 2013,
+      "value": 0.724804055,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2014,
+      "value": 0.746674469,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2015,
+      "value": 0.755848737,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2016,
+      "value": 0.749253655,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2017,
+      "value": 0.738763848,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2018,
+      "value": 0.681250546,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2019,
+      "value": 0.680939872,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2020,
+      "value": 0.534157737,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2021,
+      "value": 0.615099875,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2022,
+      "value": 0.673771731,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2023,
+      "value": 0.650834462,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "france",
+      "year": 2024,
+      "value": 0.651244379,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "E"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2013,
+      "value": 0.65730211,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2014,
+      "value": 0.655527055,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2015,
+      "value": 0.660455899,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2016,
+      "value": 0.601378756,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2017,
+      "value": 0.587060316,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2018,
+      "value": 0.595656809,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2019,
+      "value": 0.545900305,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2020,
+      "value": 0.480276447,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2021,
+      "value": 0.448107091,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2022,
+      "value": 0.483796505,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2023,
+      "value": 0.488285382,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2024,
+      "value": 0.473211214,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2018,
+      "value": 0.729421888,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2019,
+      "value": 0.706386463,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2020,
+      "value": 0.588959867,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2021,
+      "value": 0.615148141,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2022,
+      "value": 0.630408293,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2023,
+      "value": 0.608130727,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2005,
+      "value": 3.697335748,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2006,
+      "value": 3.674465482,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2007,
+      "value": 3.398275706,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2008,
+      "value": 2.702323591,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2009,
+      "value": 2.258170415,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2010,
+      "value": 2.050523798,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2011,
+      "value": 1.77308808,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2012,
+      "value": 1.670470092,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2013,
+      "value": 1.601366066,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2014,
+      "value": 1.656960478,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2015,
+      "value": 1.657085675,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2016,
+      "value": 1.508900024,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2017,
+      "value": 1.483955708,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2018,
+      "value": 1.432824307,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2019,
+      "value": 1.301509621,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2020,
+      "value": 0.967090133,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2021,
+      "value": 1.115199264,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2022,
+      "value": 1.07956798,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2023,
+      "value": 0.929880508,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2024,
+      "value": 0.956867789,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 1999,
+      "value": 1.359144128,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2000,
+      "value": 2.005930031,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2001,
+      "value": 1.509984774,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2002,
+      "value": 1.81471168,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2003,
+      "value": 1.393643773,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2004,
+      "value": 1.323611503,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2005,
+      "value": 0.999148095,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2013,
+      "value": 0.82592055,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2014,
+      "value": 0.83008146,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2015,
+      "value": 0.683653342,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2016,
+      "value": 0.749588447,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2017,
+      "value": 0.625498633,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2018,
+      "value": 0.538896649,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2019,
+      "value": 0.540978336,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2020,
+      "value": 0.533297831,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2021,
+      "value": 0.490561704,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "P"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2022,
+      "value": 0.560040795,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "P"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2023,
+      "value": 0.645775528,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "P"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2007,
+      "value": 1.820345497,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2008,
+      "value": 1.814310172,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2009,
+      "value": 1.409512744,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2010,
+      "value": 1.46365853,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2011,
+      "value": 1.425974917,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2012,
+      "value": 1.052041214,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2013,
+      "value": 1.085750006,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2014,
+      "value": 1.077291439,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2015,
+      "value": 1.153300903,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2016,
+      "value": 1.165855825,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2017,
+      "value": 1.080821068,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2018,
+      "value": 0.905474741,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2019,
+      "value": 0.987500469,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2020,
+      "value": 0.828055273,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2021,
+      "value": 0.949467959,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2022,
+      "value": 0.884895291,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2023,
+      "value": 0.881721139,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2002,
+      "value": 1.526443513,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2003,
+      "value": 1.383272732,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2004,
+      "value": 1.289030249,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2008,
+      "value": 0.955418166,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2009,
+      "value": 0.854387127,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2010,
+      "value": 0.825308989,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2011,
+      "value": 0.77318091,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2012,
+      "value": 0.752050299,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2013,
+      "value": 0.681739723,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2014,
+      "value": 0.672426196,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2015,
+      "value": 0.678636565,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2016,
+      "value": 0.640725951,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2017,
+      "value": 0.648445365,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2018,
+      "value": 0.629887131,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2019,
+      "value": 0.592698603,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2020,
+      "value": 0.444625455,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2021,
+      "value": 0.527065114,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2022,
+      "value": 0.572825693,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2023,
+      "value": 0.540565232,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2024,
+      "value": 0.531750106,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2013,
+      "value": 2.30497527,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2014,
+      "value": 2.674984354,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2015,
+      "value": 2.294361728,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2016,
+      "value": 1.968084643,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2017,
+      "value": 1.62978089,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2018,
+      "value": 1.760245269,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2019,
+      "value": 1.527669489,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2020,
+      "value": 1.565923723,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2021,
+      "value": 1.575161643,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2022,
+      "value": 1.196482553,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2023,
+      "value": 1.433267382,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2024,
+      "value": 1.141922442,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2013,
+      "value": 0.555108385,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2014,
+      "value": 0.821602673,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2015,
+      "value": 0.538981863,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2016,
+      "value": 0.0,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2017,
+      "value": 0.519008693,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2018,
+      "value": 0.0,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2019,
+      "value": 0.0,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2020,
+      "value": 0.250563768,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2021,
+      "value": 0.0,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2022,
+      "value": 0.493169601,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2023,
+      "value": 0.0,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2024,
+      "value": 0.721570137,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2013,
+      "value": 1.259696836,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2014,
+      "value": 1.983830666,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2015,
+      "value": 1.738508245,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2016,
+      "value": 1.319431655,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2017,
+      "value": 1.254741412,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2018,
+      "value": 1.074938766,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2019,
+      "value": 1.096793824,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2020,
+      "value": 0.990033847,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2021,
+      "value": 0.798137895,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2022,
+      "value": 0.645359915,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2023,
+      "value": 0.812856546,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2024,
+      "value": 0.612244898,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 1999,
+      "value": 1.829751122,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2000,
+      "value": 2.307862828,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2001,
+      "value": 2.065780349,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2002,
+      "value": 1.771023766,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2003,
+      "value": 1.47832854,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2004,
+      "value": 1.364762913,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2005,
+      "value": 1.250226105,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2006,
+      "value": 1.115529993,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2007,
+      "value": 1.139269349,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2008,
+      "value": 0.863587689,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2009,
+      "value": 1.173631436,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2010,
+      "value": 0.768133963,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2011,
+      "value": 0.772063468,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2012,
+      "value": 0.77374193,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2013,
+      "value": 1.050376035,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2014,
+      "value": 0.794887285,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2015,
+      "value": 0.798592702,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2016,
+      "value": 0.690637545,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2017,
+      "value": 0.731110201,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2018,
+      "value": 0.730494281,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2019,
+      "value": 0.434553309,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2020,
+      "value": 0.503609524,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2021,
+      "value": 0.455933115,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2013,
+      "value": 0.564927423,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2014,
+      "value": 0.30319936,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2015,
+      "value": 0.323067615,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2016,
+      "value": 0.652384181,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2017,
+      "value": 0.519771848,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2018,
+      "value": 0.475659449,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2019,
+      "value": 0.409917965,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2020,
+      "value": 0.303999878,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2021,
+      "value": 0.222681882,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2022,
+      "value": 0.676237031,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2023,
+      "value": 0.375963701,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2024,
+      "value": 0.275001661,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2020,
+      "value": 2.584325486,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2021,
+      "value": 2.597712396,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2022,
+      "value": 2.108388666,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2023,
+      "value": 1.811822968,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2024,
+      "value": 1.793352583,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2016,
+      "value": 3.168089057,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2017,
+      "value": 2.925606018,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "morocco",
+      "year": 2015,
+      "value": 9.909720764,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "morocco",
+      "year": 2016,
+      "value": 9.322517735,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "morocco",
+      "year": 2017,
+      "value": 8.801219982,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "morocco",
+      "year": 2018,
+      "value": 7.533765212,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2006,
+      "value": 0.852688271,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2007,
+      "value": 0.808379513,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2008,
+      "value": 0.745597619,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2009,
+      "value": 0.703783904,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2010,
+      "value": 0.614493364,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2011,
+      "value": 0.625409982,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2012,
+      "value": 0.611235218,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2013,
+      "value": 0.535238004,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2014,
+      "value": 0.531981714,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2015,
+      "value": 0.570944392,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2016,
+      "value": 0.568917118,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2017,
+      "value": 0.543472238,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2018,
+      "value": 0.601703994,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2019,
+      "value": 0.576973855,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2020,
+      "value": 0.524574239,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2021,
+      "value": 0.491485645,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2022,
+      "value": 0.622084501,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2023,
+      "value": 0.564250941,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2024,
+      "value": 0.54771556,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2013,
+      "value": 4.755203105,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2017,
+      "value": 3.110981766,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2018,
+      "value": 2.601522967,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2019,
+      "value": 2.524470148,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2016,
+      "value": 0.376999248,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2017,
+      "value": 0.290874445,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2018,
+      "value": 0.293924739,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2019,
+      "value": 0.288958958,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2020,
+      "value": 0.246904206,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2021,
+      "value": 0.207591141,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2022,
+      "value": 0.302530432,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2023,
+      "value": 0.291303685,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2024,
+      "value": 0.230301785,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2003,
+      "value": 3.78904556,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2004,
+      "value": 3.921546281,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2005,
+      "value": 3.442644462,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2006,
+      "value": 3.075184598,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2007,
+      "value": 3.01021094,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2008,
+      "value": 2.653666807,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2009,
+      "value": 2.157056043,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2010,
+      "value": 1.755670993,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2011,
+      "value": 1.785691982,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2012,
+      "value": 1.476279385,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2013,
+      "value": 1.340058669,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2014,
+      "value": 1.238366577,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2015,
+      "value": 1.09656522,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2016,
+      "value": 1.081576147,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2017,
+      "value": 0.975747992,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2018,
+      "value": 0.948955983,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2019,
+      "value": 0.928553209,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2020,
+      "value": 0.771047348,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2021,
+      "value": 0.674069521,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2022,
+      "value": 0.555910639,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2023,
+      "value": 0.539097482,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2010,
+      "value": 1.329648537,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2011,
+      "value": 1.255818201,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2012,
+      "value": 1.101525521,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2013,
+      "value": 0.962280711,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2014,
+      "value": 0.895609422,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2015,
+      "value": 0.8295095,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2016,
+      "value": 0.76976484,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2017,
+      "value": 0.792467922,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2018,
+      "value": 0.890720827,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2019,
+      "value": 0.83334815,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2020,
+      "value": 0.645398382,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2021,
+      "value": 0.66610584,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2022,
+      "value": 0.716085612,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2023,
+      "value": 0.735369329,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2018,
+      "value": 2.432540962,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2019,
+      "value": 2.274516025,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2013,
+      "value": 1.098886185,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2014,
+      "value": 1.247480196,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2015,
+      "value": 1.256408188,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2016,
+      "value": 1.071588753,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2017,
+      "value": 1.02892855,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2018,
+      "value": 0.929864605,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2019,
+      "value": 0.93857382,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2020,
+      "value": 0.843204573,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2021,
+      "value": 0.824197092,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2022,
+      "value": 0.866017913,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2023,
+      "value": 0.840573706,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2024,
+      "value": 0.800422574,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2013,
+      "value": 0.992582629,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2014,
+      "value": 0.853248388,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2015,
+      "value": 0.934559059,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2016,
+      "value": 0.994145249,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2017,
+      "value": 0.765776844,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2018,
+      "value": 0.651628606,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2019,
+      "value": 0.713445867,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2020,
+      "value": 0.554650397,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2021,
+      "value": 0.775345114,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2022,
+      "value": 0.567685094,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2023,
+      "value": 0.540196124,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2024,
+      "value": 0.43318172,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2014,
+      "value": 0.525070433,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2015,
+      "value": 0.518644646,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2016,
+      "value": 0.56303292,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2017,
+      "value": 0.554538884,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2018,
+      "value": 0.537879782,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2019,
+      "value": 0.513318539,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2020,
+      "value": 0.397694475,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2021,
+      "value": 0.440764969,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2022,
+      "value": 0.496166164,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2023,
+      "value": 0.508395855,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2002,
+      "value": 1.200076548,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2003,
+      "value": 1.117988348,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2004,
+      "value": 0.995579626,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2005,
+      "value": 0.894495114,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2006,
+      "value": 0.885720905,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2007,
+      "value": 0.918464351,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2008,
+      "value": 0.767455703,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2009,
+      "value": 0.687662395,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2010,
+      "value": 0.507614116,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD",
+      "quality_code": "B"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2011,
+      "value": 0.598711138,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2012,
+      "value": 0.529362926,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2013,
+      "value": 0.477838757,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2014,
+      "value": 0.486234871,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2015,
+      "value": 0.457928969,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2016,
+      "value": 0.466969517,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2017,
+      "value": 0.427851866,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2018,
+      "value": 0.545777786,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2019,
+      "value": 0.369863025,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2020,
+      "value": 0.336656329,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2021,
+      "value": 0.343355274,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2022,
+      "value": 0.371070434,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2023,
+      "value": 0.374126154,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2024,
+      "value": 0.347547822,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1994,
+      "value": 1.630302595,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1995,
+      "value": 1.635205115,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1996,
+      "value": 1.44343019,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1997,
+      "value": 1.353781351,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1998,
+      "value": 1.354188287,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1999,
+      "value": 1.292738821,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2000,
+      "value": 1.287834209,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2001,
+      "value": 1.158147858,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2002,
+      "value": 1.071797254,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2003,
+      "value": 1.126535524,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2004,
+      "value": 1.035490945,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2005,
+      "value": 0.820391606,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2006,
+      "value": 0.733513976,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2007,
+      "value": 0.75412382,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2008,
+      "value": 0.694257402,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2009,
+      "value": 0.675165628,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2010,
+      "value": 0.622346108,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2011,
+      "value": 0.595274525,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2012,
+      "value": 0.61626537,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2013,
+      "value": 0.481499069,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2014,
+      "value": 0.427692735,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2015,
+      "value": 0.437045798,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2016,
+      "value": 0.366360383,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2017,
+      "value": 0.384718126,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2018,
+      "value": 0.384207014,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2019,
+      "value": 0.305261168,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2020,
+      "value": 0.365728206,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2021,
+      "value": 0.316699585,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2022,
+      "value": 0.378722461,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2023,
+      "value": 0.366123862,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2024,
+      "value": 0.38371089,
+      "provider": "oecd",
+      "source_ref": "DF_SAFETY/FATALITIES/10P4VEH_MOT_ROAD"
+    }
+  ],
+  "witnesses": []
+}

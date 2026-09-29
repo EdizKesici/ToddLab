@@ -5,6 +5,16 @@ unit: deaths_per_100000_population
 higher_is_better: false
 todd_core: true
 
+# v25: the companion link declared on BOTH sides (the v15/v16 symmetry
+# contract) — road_accident_mortality_per_vehicle is the SAME crash
+# registrations under the 1974 table's own denominator (per registered
+# motor vehicles), a different MEASURE never a unit conversion of this
+# one (the population and the fleet are different registration
+# universes). See the per-vehicle config's own notes for the pair's
+# display discipline.
+companion_indicators:
+  - road_accident_mortality_per_vehicle
+
 sources:
   # THE NINETEENTH INDICATOR (v19, 4 citations — Le Fou et le
   # Prolétaire's own metric). Todd's 1979 table: a WHO thirteen-
