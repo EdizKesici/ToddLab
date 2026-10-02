@@ -27,33 +27,14 @@ carry sex=None, so their keys are unchanged; a both-sexes witness series
 and a sex-split canonical series coexist on the same (entity, year)
 without colliding.
 
-v22 (the bilateral face): {indicator}.bilateral.json (the by-origin
-points normalize routed out of the single-axis flow) merges under its OWN
-key — (destination, origin, year, sex) — into
-{indicator}.bilateral.merged.json + {indicator}.bilateral.witnesses.json,
-with the same two rules verbatim (within-bilateral-tier arbitration by
-priority; the bilateral witnesses kept per-source, never merged). The two
-layers never collide BY CONSTRUCTION: single-axis points carry
-origin_entity_id=None, bilateral points always carry it; a (destination,
-origin) pair can never masquerade as an (entity, year) key.
-
-v23 (the citizenship face): {indicator}.bilateral_citizenship.json — the
-PARALLEL face normalize routed on origin_axis — merges under the SAME key
-shape into {indicator}.bilateral_citizenship.merged.json + .witnesses.json
-(ADR-0010: the two faces are different legal questions, never merged,
-never arbitrated across — the merge machinery is shared, the KEY SPACES
-are separate files). The layer label rides every provenance entry so one
-trail can carry both faces self-describing.
-
 v25 (the population-segment face): {indicator}.segments.json and
 {indicator}.segments_citizenship.json — the CLASS decomposition of a rate
 normalize routed on population_class — merge under their OWN key
 (entity, class, year, sex) into {indicator}.segments.merged.json +
 .witnesses.json (and the citizenship twin), with the same two rules
-verbatim. The three layer kinds never collide BY CONSTRUCTION: a
-class-carrying point never enters the (entity, year, sex) flow, a
-bilateral point never carries a class, and the class vocabularies are
-layer-scoped (the birth face's natives/foreign_born never meet the
+verbatim. The layer kinds never collide BY CONSTRUCTION: a
+class-carrying point never enters the (entity, year, sex) flow, and
+the class vocabularies are layer-scoped (the birth face's natives/foreign_born never meet the
 citizenship face's nationals/foreigners — separate files, separate key
 spaces, the ADR-0010 discipline extended to the segment pair).
 
@@ -79,27 +60,11 @@ def _key(point: NormalizedPoint | "MergedPoint") -> tuple[str, int, str | None]:
     return (point.entity_id, point.year, getattr(point, "sex", None))
 
 
-def _bilateral_key(point: NormalizedPoint | "MergedPoint") -> tuple[str, str, int, str | None]:
-    """v22: the by-origin layer's own merge key — (destination, origin,
-    year, sex). The origin is always set on this layer's points (normalize
-    routes on its presence); a point reaching here without one is a
-    pipeline bug, refused loudly rather than silently merged into the
-    single-axis key space."""
-    origin = getattr(point, "origin_entity_id", None)
-    if origin is None:
-        raise ValueError(
-            f"bilateral merge received a point without origin_entity_id ({point.entity_id}, "
-            f"{point.year}) — the single-axis flow must never reach this path."
-        )
-    return (point.entity_id, origin, point.year, getattr(point, "sex", None))
-
-
 def _segments_key(point: NormalizedPoint | "MergedPoint") -> tuple[str, str, int, str | None]:
     """v25: the population-segment layer's own merge key — (entity, class,
     year, sex). The class is always set on this layer's points (normalize
     routes on its presence); a point reaching here without one is a
-    pipeline bug, refused loudly — the same guard the bilateral key
-    carries."""
+    pipeline bug, refused loudly."""
     pop_class = getattr(point, "population_class", None)
     if pop_class is None:
         raise ValueError(
@@ -123,13 +88,9 @@ class MergedPoint:
     # Demographic breakdown printed by the source (DYB Table 4: male /
     # female life expectancy). None = no breakdown reported.
     sex: str | None = None
-    # v22 (the bilateral face): the ORIGIN entity — set on every point of
-    # the bilateral layer (entity_id = the destination); None on every
-    # single-axis point.
-    origin_entity_id: str | None = None
     # v25 (the population-segment face): the CLASS of a class-decomposed
     # rate — set on every point of the segment layers; None on every
-    # single-axis and bilateral point.
+    # single-axis point.
     population_class: str | None = None
     # The collector's own quality annotations (P2) — carried from the WINNING
     # source's point, as-reported (see base.RawRecord's docs). Note they are
@@ -223,66 +184,6 @@ def merge_points(points: list[NormalizedPoint]) -> tuple[list[MergedPoint], list
     return merged, provenance_log
 
 
-def merge_bilateral_points(
-    points: list[NormalizedPoint], layer_label: str = "bilateral"
-) -> tuple[list[MergedPoint], list[dict]]:
-    """v22: the bilateral layer's canonical merge — the same two rules as
-    merge_points, under the (destination, origin, year, sex) key. In the
-    wired shape the Eurostat ROW doors are disjoint by destination, so the
-    within-tier arbitration never fires across them — the machinery exists
-    for the same reason the single-axis one does: a future bilateral
-    canonical door colliding on a (destination, origin, year) must be
-    arbitrated by priority and LOGGED, never silently shadowed.
-    v23: shared verbatim by the citizenship face (its own file, its own
-    key space — the same two rules, the same machinery)."""
-    by_key: dict[tuple[str, str, int, str | None], list[NormalizedPoint]] = {}
-    for p in points:
-        by_key.setdefault(_bilateral_key(p), []).append(p)
-
-    merged: list[MergedPoint] = []
-    provenance_log: list[dict] = []
-
-    for (entity_id, origin_entity_id, year, sex), candidates in by_key.items():
-        usable = [c for c in candidates if c.value is not None]
-        if usable:
-            usable.sort(key=lambda c: c.priority)
-            winner = usable[0]
-        else:
-            candidates.sort(key=lambda c: c.priority)
-            winner = candidates[0]  # the explicit-gap semantics, verbatim
-        merged.append(
-            MergedPoint(
-                entity_id=entity_id,
-                year=year,
-                value=winner.value,
-                provider=winner.provider,
-                source_ref=winner.source_ref,
-                sex=sex,
-                origin_entity_id=origin_entity_id,
-                quality_code=winner.quality_code,
-                provisional=winner.provisional,
-            )
-        )
-        if usable and len(usable) > 1:
-            provenance_log.append(
-                {
-                    "role": "canonical",
-                    "layer": layer_label,
-                    "entity_id": entity_id,
-                    "origin_entity_id": origin_entity_id,
-                    "year": year,
-                    "retained": {"provider": winner.provider, "source_ref": winner.source_ref, "value": winner.value},
-                    "discarded": [
-                        {"provider": c.provider, "source_ref": c.source_ref, "value": c.value}
-                        for c in usable[1:]
-                    ],
-                }
-            )
-
-    merged.sort(key=lambda m: (m.entity_id, m.origin_entity_id or "", m.year, m.sex or ""))
-    return merged, provenance_log
-
-
 def build_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, list[dict]]:
     """One witness source's points -> one series + provenance entries for
     the duplicate reductions (first non-null value wins; all-null duplicates
@@ -336,122 +237,6 @@ def build_witness_series(group: list[NormalizedPoint]) -> tuple[WitnessSeries, l
 
     points.sort(key=lambda m: (m.entity_id, m.year, m.sex or ""))
     return WitnessSeries(provider=provider, source_ref=source_ref, points=points), provenance_log
-
-
-def build_bilateral_witness_series(
-    group: list[NormalizedPoint], layer_label: str = "bilateral"
-) -> tuple[WitnessSeries, list[dict]]:
-    """v22: the bilateral witness twin — one (provider, source_ref)'s
-    by-origin points as one series, duplicates reduced under the
-    (destination, origin, year) key and logged, all-null keys kept as
-    explicit gap points. The OECD DF_MIG_POPF matrix is its first rider
-    (one row per destination-origin-year — no duplicates by construction,
-    the machinery guards the day a second bilateral witness arrives).
-    v23: the OECD DF_MIG/B15 matrix rides the citizenship face's own
-    witness file through this same function."""
-    provider, source_ref = group[0].provider, group[0].source_ref
-    by_key: dict[tuple[str, str, int, str | None], list[NormalizedPoint]] = {}
-    for p in group:
-        by_key.setdefault(_bilateral_key(p), []).append(p)
-
-    points: list[MergedPoint] = []
-    provenance_log: list[dict] = []
-    for (entity_id, origin_entity_id, year, sex), candidates in by_key.items():
-        candidates.sort(key=lambda c: c.priority)
-        non_null = [c for c in candidates if c.value is not None]
-        if non_null:
-            winner = non_null[0]
-        else:
-            winner = candidates[0]  # an all-null key stays as ONE explicit gap point
-        points.append(
-            MergedPoint(
-                entity_id=entity_id,
-                year=year,
-                value=winner.value,
-                provider=provider,
-                source_ref=source_ref,
-                sex=sex,
-                origin_entity_id=origin_entity_id,
-                quality_code=winner.quality_code,
-                provisional=winner.provisional,
-            )
-        )
-        if len(candidates) > 1:
-            provenance_log.append(
-                {
-                    "role": "witness",
-                    "layer": layer_label,
-                    "entity_id": entity_id,
-                    "origin_entity_id": origin_entity_id,
-                    "year": year,
-                    "witness": f"{provider}:{source_ref}",
-                    "retained": {"value": winner.value, "n_candidate_rows": len(candidates)},
-                    "discarded": [
-                        {"value": c.value, "priority": c.priority} for c in candidates if c is not winner
-                    ],
-                }
-            )
-
-    points.sort(key=lambda m: (m.entity_id, m.origin_entity_id or "", m.year, m.sex or ""))
-    return WitnessSeries(provider=provider, source_ref=source_ref, points=points), provenance_log
-
-
-def _merge_bilateral_layer(
-    indicator_id: str, processed_dir: Path, layer: str, provenance: list[dict]
-) -> None:
-    """v22 (as the inline block) / v23 (extracted, parameterized): one
-    bilateral FACE's merge — reads {indicator}.{layer}.json (the layer's
-    normalized points), merges the canonical tier under the (destination,
-    origin, year, sex) key, builds the per-source witness series, and
-    writes {indicator}.{layer}.merged.json + .witnesses.json. The files
-    are written only when the layer has points, and UNLINKED when it does
-    not — a stale file from a previous run must never survive a clean run
-    of an indicator whose layer sources stopped printing (the same
-    discipline the always-written witnesses.json follows, expressed as
-    removal because an absent file is what build reads as "no layer").
-    layer: "bilateral" (the birth face, v22) | "bilateral_citizenship"
-    (v23) — the label rides every provenance entry the layer emits."""
-    layer_path = processed_dir / f"{indicator_id}.{layer}.json"
-    if not layer_path.exists():
-        return
-    layer_raw = json.loads(layer_path.read_text(encoding="utf-8"))
-    if not layer_raw:
-        for stale in (f"{layer}.merged.json", f"{layer}.witnesses.json"):
-            (processed_dir / f"{indicator_id}.{stale}").unlink(missing_ok=True)
-        return
-    layer_points = [NormalizedPoint(**p) for p in layer_raw]
-    b_canonical, b_witness_groups = _split_by_role(layer_points)
-    b_merged, b_provenance = merge_bilateral_points(b_canonical, layer_label=layer)
-    provenance.extend(b_provenance)
-
-    b_witness_payload = []
-    for group in b_witness_groups:
-        b_series, b_series_provenance = build_bilateral_witness_series(group, layer_label=layer)
-        provenance.extend(b_series_provenance)
-        b_witness_payload.append(
-            {
-                "provider": b_series.provider,
-                "source_ref": b_series.source_ref,
-                "data": [
-                    {
-                        "entity_id": p.entity_id,
-                        "year": p.year,
-                        "origin_entity_id": p.origin_entity_id,
-                        "value": p.value,
-                        **({"sex": p.sex} if p.sex else {}),
-                        **({"quality_code": p.quality_code} if p.quality_code else {}),
-                        **({"provisional": True} if p.provisional else {}),
-                    }
-                    for p in b_series.points
-                ],
-            }
-        )
-    (processed_dir / f"{indicator_id}.{layer}.merged.json").write_text(
-        json.dumps([m.__dict__ for m in b_merged], ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-    (processed_dir / f"{indicator_id}.{layer}.witnesses.json").write_text(
-        json.dumps(b_witness_payload, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
 
 
 def merge_segment_points(
@@ -573,8 +358,8 @@ def build_segment_witness_series(
 def _merge_segments_layer(
     indicator_id: str, processed_dir: Path, layer: str, provenance: list[dict]
 ) -> None:
-    """v25: one population-segment FACE's merge — the _merge_bilateral_layer
-    discipline verbatim on the (entity, class, year, sex) key space: reads
+    """v25: one population-segment FACE's merge — the same layer discipline
+    on the (entity, class, year, sex) key space: reads
     {indicator}.{layer}.json, merges the canonical tier, builds the
     per-source witness series, writes {indicator}.{layer}.merged.json +
     .witnesses.json only when the layer has points (and UNLINKS stale
@@ -662,16 +447,12 @@ def merge_indicator(indicator_id: str, processed_dir: Path) -> tuple[list[Merged
             }
         )
 
-    # v22 (the bilateral face) / v23 (the citizenship face): each by-origin
-    # FACE merges under its own key BEFORE the provenance file is written,
-    # so one trail carries all the layers' entries (each self-describing —
-    # every bilateral entry carries layer: "bilateral" or
-    # "bilateral_citizenship" and origin_entity_id). The two faces are
-    # PARALLEL, never merged (ADR-0010) — separate files, separate key
-    # spaces, the shared machinery.
-    _merge_bilateral_layer(indicator_id, processed_dir, "bilateral", provenance)
-    _merge_bilateral_layer(indicator_id, processed_dir, "bilateral_citizenship", provenance)
-    # v25 (the population-segment face): the same discipline for the two
+    # v25 (the population-segment face): the two CLASS faces merge under
+    # their own keys BEFORE the provenance file is written, so one trail
+    # carries every layer's entries (each self-describing — every segment
+    # entry carries layer: "segments" or "segments_citizenship" and
+    # population_class). The two faces are PARALLEL, never merged
+    # (ADR-0010) — separate files, separate key spaces, shared machinery.
     # CLASS faces — segments (birth, immigrés) and segments_citizenship
     # (citizenship, étrangers), parallel under the ADR-0010 rule, each
     # self-describing in the shared provenance trail.

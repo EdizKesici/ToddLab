@@ -28,13 +28,12 @@ class Family(str, Enum):
     # the GDP-adjacent reads). unemployment_rate is that family's first
     # indicator; the same one-metric-at-a-time narrowing as markers.
     economy = "economy"
-    # v18: the corpus's 'demography' family (the population-stock reads —
-    # immigration_stock 11 citations, Le Destin des immigrés' boards:
-    # the metric that IS the demographic-structure question). The same
-    # one-metric-at-a-time narrowing: immigration_stock is this family's
-    # first indicator (the corpus's birth/fertility metrics ride the
-    # society family — 'demography' in the corpus vocabulary names the
-    # stock/structure reads, not the vital rates).
+    # v18: the corpus's 'demography' family (the population-stock reads).
+    # Its first and only implemented indicator — immigration_stock — was
+    # WITHDRAWN in v26 (the owner's decision, a count of persons not a
+    # rate); the family value stays: the corpus's own family column
+    # carries demography rows (consanguinity, fertility), and the day a
+    # stock/structure metric earns a rate face, it rides here.
     demography = "demography"
     # v20: the corpus's 'education' family (the assessed-learning reads —
     # math_test_scores 3 citations, L'illusion économique's TIMSS table
@@ -217,10 +216,11 @@ ROOT_LABELS: dict[str, str] = {
     "eurostat_na": (
         "Eurostat national accounts (nama_10_a10_e — employment by industry as each country prints it, shares at PC_TOT_PER)"
     ),
-    # v18 (industrial/agricultural employment witness): the ILO modelled
-    # estimates — ILOSTAT's 2EMP family ("Estimaciones modeladas de la
-    # OIT" in the flow registry's own description), redistributed by
-    # World Bank WDI as SL.IND.EMPL.ZS / SL.AGR.EMPL.ZS. The same
+    # v18 (the industrial employment witness; until v26 also the
+    # agricultural twin's): the ILO modelled estimates — ILOSTAT's 2EMP
+    # family ("Estimaciones modeladas de la OIT" in the flow registry's
+    # own description), redistributed by World Bank WDI as SL.IND.EMPL.ZS
+    # (SL.AGR.EMPL.ZS withdrawn with its indicator in v26). The same
     # harmonized-family relation who_ghe/un_wpp hold to their
     # collectors: modeled world coverage on the witness tier, the
     # collector print on the canonical tier, and the definitional seam
@@ -244,76 +244,6 @@ ROOT_LABELS: dict[str, str] = {
     "barro_lee": (
         "Barro-Lee / Lee-Lee educational attainment panels (scholarly compilation, 1870-2010; via OWID's long-run chart door)"
     ),
-    # v18 (immigration_stock witness): the UN Population Division's
-    # Trends in International Migrant Stock — DESA's compiled estimates
-    # of the foreign-born stock per country (census-based, with
-    # estimation for missing years), worldwide 1990-2024, redistributed
-    # by World Bank WDI as SM.POP.TOTL. The harmonized-family witness
-    # for the Eurostat migration collector: same underlying
-    # registrations, one estimation step apart (the WPP relation).
-    "un_desa": (
-        "UN Population Division, Trends in International Migrant Stock (DESA estimates; redistributed by World Bank WDI as SM.POP.TOTL)"
-    ),
-    # v18 (immigration_stock canonical): Eurostat's migration
-    # collection — the foreign-born stock each country's own
-    # registration prints (dataset migr_pop3ctb, pinned c_birth=FOR,
-    # the "Foreign country" total). Distinct questionnaire from
-    # demo_find/lfs/na: the migration/citizenship collection. The Todd
-    # by-origin face (Le Destin des immigrés' Maghreb/Turkish/Portuguese
-    # boards — FR-by-MA/DZ/TN/TR/PT probed live, the codes print
-    # 2015-2018 for the detailed French slices) is the recorded future
-    # door in sources.yaml: the indicator shape carries one value per
-    # entity-year, the bilateral matrix is its own decision.
-    "eurostat_migr": (
-        "Eurostat migration statistics (migr_pop3ctb — foreign-born stock by country of birth, as each country reports)"
-    ),
-    # v22 (immigration_stock by-origin witness): the OECD migration
-    # questionnaire's own bilateral matrix — DSD_MIG_F@DF_MIG_POPF,
-    # "International migration database - stocks of foreign-born
-    # population": the foreign-born stock by country of birth as the
-    # member states submit it (REF_AREA x BIRTH_COUNTRY, both axes
-    # OECD-ISO3). AN OECD-COMPILED WITNESS, not a second collector of
-    # the registrations: the OECD assembles the questionnaire answers
-    # into its International Migration Database (the IMD's own
-    # foreign-born face), the same relation oecd_family (v16) holds to
-    # the national series it standardizes. THE SEAM the root field
-    # exists to display: the two questionnaires agree TO THE UNIT on
-    # the co-covered core (FR<-MAR _T 2015 = 954,742 = the Eurostat
-    # c_birth print exactly, 2018 = 992,120 both sides, verified live
-    # 2026-09-22) — agreement that reads like independent confirmation
-    # unless the genealogy says both doors walk back to the same
-    # national registrations. And the OECD face EXTENDS what the
-    # Eurostat universe prints: the FR Maghreb series 2019-2021 past
-    # the Eurostat cutoff, and the world's non-European destinations
-    # (US<-MEX 12,383,868 in 2024) the 45-geo Eurostat codelist
-    # structurally cannot carry — the compilation seam, shown never
-    # reconciled.
-    "oecd_mig": (
-        "OECD International Migration Database (DSD_MIG_F@DF_MIG_POPF — the questionnaire's foreign-born matrix, OECD-compiled)"
-    ),
-    # v19 (top_income_share canonical): the World Inequality Database —
-    # the DINA research harmonization (distributional national accounts:
-    # fiscal microdata + household surveys + national accounts blended
-    # per the 2020/2025 guidelines) whose pre-tax national-income
-    # concepts Todd himself reads in La Défaite de l'Occident ("WID
-    # data" — the corpus's own words). Reached through OWID's chart
-    # door: probed live 2026-09-21, api.wid.world refuses this
-    # environment on EVERY extractor shape (CloudFront 403 — the
-    # endpoint the R/Stata packages ride), the country pages are
-    # WordPress views without machine files, so the chart door
-    # (incomes-of-the-richest, 165 entities 1820-2024, attribution
-    # "WID.world (2026)") is the machine-readable face of the
-    # compilation — the same door-relation oecd_family holds (v16). A
-    # research-harmonization root serving as CANONICAL: no collector
-    # anywhere prints a top-1% income share (tax administrations
-    # register incomes, never the national share of the top fractile —
-    # the metric is by construction a constructed series), so the
-    # authoritative compilation the corpus names IS the origin — the
-    # consanguinity_studies constitution (v17), not a collector. No
-    # cross-root witness exists on any machine door (the IDD's 35
-    # measures carry no top-share print — the probe record; the OWID
-    # extrapolations chart is the SAME root's modeled extension,
-    # refused by the anti-derivation discipline).
     "wid": (
         "World Inequality Database (WID.world — DINA research harmonization, pre-tax "
         "national income concepts; via OWID's chart door)"
@@ -554,10 +484,9 @@ EUROSTAT_DATASET_TITLES: dict[str, str] = {
     # citation carries the questionnaire's own title, never a borrowed one):
     "nama_10_a10_e": "Employment by main industry (NACE Rev.2) - national accounts - annual data",
     "edat_lfse_03": "Population in private households by educational attainment level",
-    "migr_pop3ctb": "Population on 1 January by age group, sex and country of birth",
-    # v23: read live from the API label (2026-09-25, the v23 probe) — the
-    # citizenship questionnaire's own title, one-questionnaire-one-title.
-    "migr_pop1ctz": "Population on 1 January by age group, sex and citizenship",
+    # v26: the two migr dataset titles withdrew with their indicator — the
+    # datasets still print on the API; the wiring history is in the
+    # CHANGELOG.
     # v25: read live from the API labels (2026-09-27, the v25 probe) — the
     # LFS questionnaire's own by-nationality rate titles, the same
     # one-questionnaire-one-title rule.
@@ -573,15 +502,8 @@ OECD_DATAFLOW_TITLES: dict[str, str] = {
     "DF_COM": "Causes of mortality",
     "DF_IDD": "Income distribution database",
     "DF_SAFETY": "Transport safety indicators",
-    # v22: read live from the SDMX registry (2026-09-22) — the migration
-    # questionnaire's foreign-born face, one-flow-one-title as ever.
-    "DF_MIG_POPF": "International migration database - stocks of foreign-born population",
-    # v23: read live from the SDMX registry (2026-09-25, the v23 probe —
-    # the registry's own `name` field on DSD_MIG@DF_MIG 1.0): the SIBLING
-    # flow's plain title, the questionnaire's umbrella name. Its own
-    # description names the citizenship content: "stocks of foreign
-    # population by nationality".
-    "DF_MIG": "International migration database",
+    # v26: the two migration dataflow titles withdrew with their
+    # indicator — the flows still print on the OECD registry.
 }
 # v19: the IDD DEFINITION dimension's own codelist labels (read live from
 # the DSD, CL_DEFINITION) — the citation names the vintage a door carries

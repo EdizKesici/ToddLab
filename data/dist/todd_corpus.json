@@ -1,12 +1,12 @@
 {
   "source": "todd_core.csv (OCR compilation of Todd's metrics, by Ediz) -> config/todd_refs.yaml (one-way transform, scripts/normalize_todd_refs.py); meta.source_csv_sha256 anchors this dist to the exact CSV vintage.",
   "meta": {
-    "source_csv_sha256": "aac60d216c9bc39ceeeb51697e368f561997d8400aa2ce1892960e3f74547282",
-    "rows": 117,
-    "metrics": 24,
+    "source_csv_sha256": "e30304cf6dca3b7ca1e3923e49e709167444edef42dcb63add656b8a72395d4b",
+    "rows": 115,
+    "metrics": 22,
     "books": 16,
-    "total_citations": 483,
-    "implemented_metrics": 24
+    "total_citations": 470,
+    "implemented_metrics": 22
   },
   "metrics": [
     {
@@ -758,22 +758,6 @@
       "implemented": true
     },
     {
-      "id": "immigration_stock",
-      "family": "demography",
-      "citations": 11,
-      "books": 1,
-      "refs": [
-        {
-          "book": "Le Destin des immigrés",
-          "year": 1994,
-          "citations": 11,
-          "label": "Maghreb, Turkish, Portuguese populations — France/UK/Germany 1946–1990 (+ 4 distribution maps)",
-          "note": "France/UK/Germany immigrant population by origin, 1946-1990, official censuses."
-        }
-      ],
-      "implemented": true
-    },
-    {
       "id": "cirrhosis_alcohol_mortality",
       "family": "mortality",
       "citations": 9,
@@ -998,22 +982,6 @@
           "citations": 3,
           "label": "Obesity among college-educated, US vs France",
           "note": "CDC-sourced, US health-paradox argument."
-        }
-      ],
-      "implemented": true
-    },
-    {
-      "id": "agricultural_employment_share",
-      "family": "economy",
-      "citations": 2,
-      "books": 1,
-      "refs": [
-        {
-          "book": "Le Destin des immigrés",
-          "year": 1994,
-          "citations": 2,
-          "label": "Agricultural employment/population share (Britain 1841, USA 1841, Turkey 1985)",
-          "note": "UK/USA/Turkey, 1841-1985."
         }
       ],
       "implemented": true

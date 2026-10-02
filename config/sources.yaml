@@ -248,36 +248,11 @@ oecd:
   auth_required: false
   license_default: "OECD Terms and Conditions, attribution required (content: WHO Mortality Database)"
   layer: collector
-  # v22: the FOURTH dataflow — DSD_MIG_F@DF_MIG_POPF, "International
-  # migration database - stocks of foreign-born population" (agency
-  # OECD.ELS.IMD, read live from the SDMX registry): the migration
-  # questionnaire's own BILATERAL matrix, REF_AREA x BIRTH_COUNTRY
-  # (38 destinations x 242 origin codes, both axes OECD-ISO3), the
-  # OECD-COMPILED foreign-born face of the International Migration
-  # Database. THE ACCESS QUIRK (probed live 2026-09-22): positional
-  # keys 404 on this flow (the observation dimension carries TIME
-  # under the repo's dimensionAtObservation=AllDimensions convention),
-  # so the door serves ONLY through the empty-key /all download — the
-  # FULL dataset in one 18.2 MB CSV, already the pinned frame
-  # (MEASURE=B14/FREQ=A/BIRTH_PLACE=_Z/EDUCATION_LEV=_Z/UNIT=PS: the
-  # flow's whole vocabulary, hard-verified per row). SEX: _T + F both
-  # ride the download — the wiring pins _T, the F rows drop logged
-  # (the by-sex face recorded unwired). The origin vocabulary's own
-  # quirks, decoded live from the DSD codelist: XKV (the OECD's
-  # Kosovo), the _F vanished-entity prints (ANT_F "Former Netherlands
-  # Antilles", CSK_F, SCG_F, SUN_F, YUG_F — mapped onto the withdrawn
-  # ISO3 codes the entities declare, the v21 admission's by-origin
-  # face), and the residual drops (W "the World-total row", W_X "World
-  # unspecified", EEA, EU15, A4 "Caribbean", STLS "Stateless").
-  # THE SIBLING FLOW, WIRED (v23): DSD_MIG@DF_MIG, "International
-  # migration database" (read live from the SDMX registry) — the LEGAL
-  # face, the mirror of Eurostat's migr_pop1ctz: the stock of FOREIGN
-  # CITIZENS by nationality (the flow's own description), REF_AREA x
-  # CITIZENSHIP, measure B15. THE ACCESS MIRROR of the B14 quirk
-  # (probed live 2026-09-25): /all answers 404 on this flow but the
-  # positional wildcard key '..A.B15.._Z._Z.PS' serves the FULL matrix
-  # (216,120 data rows / 18.4 MB) — one wire per face, each verified
-  # live before the wiring.
+  # v26: the TWO MIGRATION dataflows (DSD_MIG_F@DF_MIG_POPF, the
+  # foreign-born matrix; DSD_MIG@DF_MIG, the citizenship twin) were
+  # WITHDRAWN with their indicator — their access quirks (the /all vs
+  # wildcard-key mirrors) and origin-override tables are history in the
+  # CHANGELOG; the flows still print on the OECD registry.
   notes: >
     Layer: COLLECTOR (P3 judgment) — the "Causes of mortality" dataflow
     (DSD_HEALTH_STAT@DF_COM, agency OECD.ELS.HD) redistributes the WHO
@@ -402,20 +377,18 @@ eurostat:
     for TWO, v18 for FIVE: the connector dispatches by dataset
     (demo_find's ref grammar '{code}[/{geo}]', une_rt_a's
     '{age}/{unit}/{sex}', nama_10_a10_e's '{na_item}/{unit}/{nace}',
-    edat_lfse_03's '{isced11}/{age}/{sex}', migr_pop3ctb's
-    '{c_birth}/{age}/{sex}', each with its own layout pin-guard —
-    another dataset remains another dispatch decision, the
-    one-block-at-a-time scope of the DYB tables) — now serving EIGHT
-    Todd metrics through its five questionnaires. THE v18 ADDITIONS:
-    the NATIONAL ACCOUNTS (nama_10_a10_e) print the industrial and
-    agricultural employment SHARES directly at unit PC_TOT_PER (the
-    finding that dissolved the composite-derived-layer question — the
-    industrial record below); the LFS ATTAINMENT table (edat_lfse_03)
-    prints the tertiary and secondary attainment shares (one
-    questionnaire — the labour-force survey — now carrying THREE Todd
-    metrics: unemployment, tertiary, secondary); the MIGRATION
-    collection (migr_pop3ctb) prints the foreign-born stock per
-    country (pinned c_birth=FOR). THE EA EDGE (v18, nama only): that
+    edat_lfse_03's '{isced11}/{age}/{sex}', each with its own layout
+    pin-guard — another dataset remains another dispatch decision, the
+    one-block-at-a-time scope of the DYB tables) — now serving SIX
+    Todd metrics through its four questionnaires. THE v18 ADDITIONS:
+    the NATIONAL ACCOUNTS (nama_10_a10_e) print the industrial
+    employment SHARE directly at unit PC_TOT_PER (the finding that
+    dissolved the composite-derived-layer question — the industrial
+    record below; the agricultural twin at nace A withdrew with its
+    indicator in v26); the LFS ATTAINMENT table (edat_lfse_03) prints
+    the tertiary and secondary attainment shares (one questionnaire —
+    the labour-force survey — carrying THREE Todd metrics:
+    unemployment, tertiary, secondary). THE EA EDGE (v18, nama only): that
     dataset's geo codelist carries the Euro-area aggregate as the bare
     TWO-LETTER code "EA" (verified live 2026-09-21, the only
     two-letter aggregate in any wired Eurostat codelist) — dropped
@@ -542,9 +515,10 @@ ilostat:
 # freshest years). The collector tier therefore stands WITHOUT any
 # derivation — the composite-derived-layer ADR held in reserve since
 # v15 is RETIRED UNUSED (the reserve decision documented here, never
-# taken). agricultural_employment_share rides the same door at nace A
-# (FR 1995 = 4.4 -> 2024 = 2.3). THE WITNESSES: WB SL.IND.EMPL.ZS /
-# SL.AGR.EMPL.ZS (ILOEST 2EMP, world 1991-2024) — and THE SEAM THE
+# taken). (v26: agricultural_employment_share — the nace-A twin,
+# FR 1995 = 4.4 -> 2024 = 2.3 — was withdrawn with its indicator;
+# its WB witness SL.AGR.EMPL.ZS went with it.) THE WITNESS: WB
+# SL.IND.EMPL.ZS (ILOEST 2EMP, world 1991-2024) — and THE SEAM THE
 # PAIR DISPLAYS IS COMPOUND (documented exactly in the config): the
 # ILO face includes construction AND rides a labor-force-modeled
 # employment concept (FR 2015: 10.8 canonical B-E vs 20.376 witness —
@@ -669,53 +643,21 @@ ilostat:
 # collection exposes tertiary and mean-years-of-schooling-long-run
 # only) — the world face waits on a Barro-Lee direct door.
 #
-# immigration_stock (v18, WIRED through the migration questionnaire):
-# canonical = Eurostat migr_pop3ctb pinned c_birth=FOR (the
-# foreign-born stock per country, FR 2008 = 7,076,824 -> 2024 =
-# 9,362,105 annual); witness = WB SM.POP.TOTL (the UN DESA Trends in
-# International Migrant Stock estimates, world 1990-2024 — FR 1990 =
-# 5,890,023 on the witness; FR 2024: 9,186,757 DESA vs 9,362,105
-# collector, the estimation seam displayed). THE TODD BY-ORIGIN
-# QUESTION (Le Destin des immigrés' Maghreb/Turkish/Portuguese
-# boards), WIRED v22 — the dist's `bilateral` layer:
-# - CANONICAL: the 30 Eurostat ROW doors that print the by-origin
-#   detail (migr_pop3ctb/ROW/{geo}, geo pinned, c_birth UNPINNED =
-#   the by-birth codelist as printed, 307 codes; the 64 aggregate/
-#   summary codes and the native diagonal dropped logged per class).
-#   91,230 canonical points, 30 destinations x 243 origins, 1998-2025
-#   (FR<-MA 2015 = 954,742, FR<-DZ 2018 = 1,390,284, FR<-PT 2025 =
-#   599,492 — the Todd-board anchors). 14 of the codelist's 44 geos
-#   print ONLY their totals (DE, EL, MT, ME, MD, MK, GE, AL, RS, UA,
-#   AD, MC, AM, AZ — the registration's own honest absence, unwired,
-#   recorded; the day one prints, its fetch fails loudly).
-# - WITNESS: the OECD matrix (DSD_MIG_F@DF_MIG_POPF — see the oecd
-#   provider block), root oecd_mig; the seam FR<-MAR 2015 = 954,742
-#   on BOTH doors (verified to the unit), the extension 2019-2021,
-#   the world face (US<-MEX 12,383,868 in 2024).
-# - The v18 anchor disambiguated, LANDED (v23): "MA 2015 = 458,561"
-#   was the CITIZENSHIP face (migr_pop1ctz) — now wired, its own
-#   bilateral_citizenship layer (ADR-0010, the parallel faces never
-#   merged); the BIRTH face prints 954,742 — two legalities of the
-#   same stock, both carried, the CONVERGE/DIVERGE contrast anchors
-#   the pair exists to display (FR<-PT 2015: 648,112 vs 541,867;
-#   FR<-MA: 954,742 vs 458,561 — all four live-verified).
-# - The v24 BY-SEX FACE, WIRED: the M/F ventilations of the same rows
-#   (migr_pop{3ctb,1ctz}/ROW/{geo}/{sex}, 124 doors) riding the same
-#   bilateral layers under the merge key's sex term — M + F = the _T
-#   print to the unit, verified live; the OECD F rows un-blocked (the
-#   flows print NO male face: _T + F their whole vocabulary, the
-#   female witnesses kept; the seams verified to the unit against the
-#   Eurostat F doors on both faces).
-# - The remaining unwired faces, recorded: Croatia's M/F ventilation
-#   (prints the _T detail, no M/F — the honest absence), age bands
-#   (Eurostat), the single-axis ctz foreigners-total door
-#   (migr_pop1ctz/FOR-class pins), the OWID US-by-CoB historical
-#   chart (1850+, the census-era US face).
-# - The UN DESA bilateral matrix (the world face's own compilation)
-#   stays manual-download (no API: the population.un.org dataportal's
-#   86 indicators carry net migration only, re-probed 2026-09-22) —
-#   the OECD matrix carries the non-European destinations in its
-#   place; recorded for the day it gains a wire.
+# immigration_stock: WITHDRAWN v26 (the owner's decision — a count of
+# persons, not a rate: no direction, no composite-score future, and a
+# 228 MB dist file that blocked the GitHub push). The v18-v24 wiring
+# WAS: canonical = Eurostat migr_pop3ctb pinned c_birth=FOR (the
+# foreign-born stock per country); witness = WB SM.POP.TOTL (UN DESA
+# Trends in International Migrant Stock); the bilateral by-origin and
+# by-citizenship matrices (Eurostat migr_pop{3ctb,1ctz} ROW doors +
+# the OECD DF_MIG_POPF / DF_MIG B15 witnesses, ADR-0010's parallel
+# faces) and their M/F ventilations — the full wiring history and its
+# live anchors live in the CHANGELOG's v22/v23/v24 entries. The doors
+# themselves stay open on the collectors' wires; the class-decomposed
+# RATE faces of the same question ride unemployment_rate's segment
+# layers since v25 (lfsa_urgan/urgacob). The remaining unwired faces
+# (NAT/TOTAL doors, age bands, the UN DESA matrix's missing wire)
+# retire with the indicator.
 #
 # cirrhosis_alcohol_mortality (v18, WIRED): the v13 probe note "RUS
 # absent du slice cirrhose (404 NoRecordsFound)" was a PROBE ARTIFACT
@@ -750,9 +692,6 @@ ilostat:
 # - Eurostat edat_lfse_03: ED3-8 (at least upper secondary, ~20
 #   points higher), ED0-2, ED34_44/ED35_45 (the survey recodes), the
 #   M/F sex splits, the other age bands.
-# - Eurostat migr_pop3ctb/pop1ctz: NAT/TOTAL c_birth doors, the
-#   by-citizenship dataset's SINGLE-AXIS total door (wired ROW only,
-#   v23), the detailed bilateral slices (above).
 # - WB SL.SRV.EMPL.ZS (the services share — the economy family's
 #   residual door), SL.IND.EMPL.MA/FE.ZS (the sex-split witnesses).
 # - ILOSTAT 2EMP/5EMP/DEAP employment families wholesale

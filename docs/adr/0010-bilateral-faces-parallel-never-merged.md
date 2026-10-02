@@ -1,6 +1,16 @@
 # ADR-0010: The two bilateral faces are parallel layers, never merged
 
-- **Status**: Accepted (2026-09-25)
+- **Status**: MOOT SINCE v26 (2026-10-02) — the bilateral faces' ONLY rider,
+  `immigration_stock`, was withdrawn entirely by the owner's decision
+  (a count of persons, not a rate — no direction, no composite-score
+  future, and a 228 MB dist file that blocked the GitHub push). The
+  decision itself is not contested: the withdrawal removed the layers,
+  not the reasoning. The ADR's parallel-faces discipline LIVES ON in the
+  segment layers (`segments` / `segments_citizenship`, v25 — the ADR's
+  own vocabulary extended to population classes), and the historical
+  record of the v22-v24 wiring stays in the CHANGELOG. The day a
+  per-origin rate face exists on any wire, this ADR is the record to
+  argue against.
 - **Scope**: how the dist carries the two legal decompositions of the
   immigrant stock (place of birth vs citizenship); what the merge may
   never do across them; the vocabulary that names them

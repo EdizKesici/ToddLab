@@ -181,31 +181,28 @@ living in the drop log, not the tier) — the SDGSUICIDE Dim2 rule's
 second instance, and the first where the indicator's own title face
 differs from the kept series.
 
-The Eurostat quintet (`eurostat_nama_be_sample.json`,
+The Eurostat quartet (`eurostat_nama_be_sample.json`,
 `eurostat_nama_a_sample.json`, `eurostat_edat_ed58_sample.json`,
-`eurostat_edat_ed34_sample.json`, `eurostat_migr_for_sample.json`)
-are carved from the live full slices with the dims/codelists intact
-and only the value/status dictionaries filtered: nama B-E carries the
-EA two-letter aggregate row (the only one in any wired codelist —
-the drop-log path's own test) beside FR/DE/XK-codelist rows and the
-accounts' 'p' flags on 2023-2024; nama A the agrarian-exodus anchors
-(FR 4.4 -> 2.3); edat ED5-8 the attainment climb (FR 24.5 -> 43.2)
-with the 'b' break flags; ED3_4 the completed-secondary face (FR 41.4
-/ DE 56.7 — the at-least face would run ~20 points higher, a misload
-the pin catches); migr FOR the French annual stock (2008 = 7,076,824
--> 2024 = 9,362,105) with the 'b'/'e'/'p' flags and the honest
-absences (Ukraine rides the codelist with zero valued cells).
+`eurostat_edat_ed34_sample.json`) are carved from the live full
+slices with the dims/codelists intact and only the value/status
+dictionaries filtered: nama B-E carries the EA two-letter aggregate
+row (the only one in any wired codelist — the drop-log path's own
+test) beside FR/DE/XK-codelist rows and the accounts' 'p' flags on
+2023-2024; nama A the agrarian-exodus anchors (FR 4.4 -> 2.3 — the
+agricultural indicator withdrawn in v26, the fixture stays as the
+nama grammar's own nace-pin test); edat ED5-8 the attainment climb
+(FR 24.5 -> 43.2) with the 'b' break flags; ED3_4 the completed-
+secondary face (FR 41.4 / DE 56.7 — the at-least face would run ~20
+points higher, a misload the pin catches). (v26: the migr FOR
+fixture withdrew with its indicator.)
 
-The three WB dedicated pages (`wb_sl_ind_empl_sample.json`,
-`wb_sl_agr_empl_sample.json`, `wb_sm_pop_totl_sample.json`) follow
-the v17 dedicated-page discipline (the shared page's per-1,000 prints
-would contaminate a share/stock band): the ILOEST industrial share
-(FRA 1991 = 28.42 -> 2024 = 19.54; BGR 1991 = 45.09 the
-planned-economy tail; JPN/USA the world face), the agricultural share
-(BFA 1991 = 81.91 the agrarian South; FRA 2.39-5.40), and the UN
-DESA migrant stock (FRA 1990 = 5,890,023 -> 2024 = 9,186,757; USA
-2024 = 52.4M the world's largest; ARE the Gulf face) — plus the
-WLD/EMU aggregate rows the provider's own classification drops.
+The WB dedicated page (`wb_sl_ind_empl_sample.json`) follows the v17
+dedicated-page discipline (the shared page's per-1,000 prints would
+contaminate a share band): the ILOEST industrial share (FRA 1991 =
+28.42 -> 2024 = 19.54; BGR 1991 = 45.09 the planned-economy tail;
+JPN/USA the world face) — plus the WLD/EMU aggregate rows the
+provider's own classification drops. (v26: the agricultural and
+migrant-stock pages withdrew with their indicators.)
 
 `owid_education_tertiary_sample.csv` (49 rows vs the live 3,699)
 carries the Barro-Lee witness's long-run anchors: France 1870 = 0.2
@@ -312,32 +309,9 @@ The two GHO carves:
   245.99 the post-Soviet European top, SMR = 23.03 — every point the
   single 2020 vintage, the coupe's own shape.
 
-The two v22 fixtures (the bilateral face — both GENERATED live by
-scripts/make_v22_fixtures.py, the v16 discipline: every anchor READ
-from the response bytes, never typed):
-
-- `eurostat_migr_row_fr_sample.json` — the REAL 32,976-byte FR
-  bilateral-row response as the API served it (the whole body: the
-  307-code c_birth codelist, the 1,450 non-empty cells, the b/e/p
-  flags). The parser reads the door's exact arithmetic off it: 1,220
-  records emitted + 150 aggregate/region cells + 76 summary-code cells
-  + 4 diagonal cells dropped logged. The Todd-board anchors: FR<-MA
-  2015 = 954,742, FR<-DZ 1999 = 1,246,706 -> 2018 = 1,390,284,
-  FR<-PRT 1999 = 579,465 -> 2025 = 599,492 (the full 14-round
-  series), the Maghreb census-round cliff (MAR/DZ/TUN/TR stop at
-  2018), the vanished origin FR<-AN 1999 = 78 (the withdrawn alpha-2,
-  the netherlands_antilles entity), the shared override path FR<-EL
-  1999 = 11,872 (Greece through the geo table).
-- `oecd_migf_sample.csv` — a REAL slice of the DF_MIG_POPF empty-key
-  /all download (21,071 of the 197,570 rows, copied byte-for-byte):
-  the complete FRA and USA rows on both sexes (the F rows exercising
-  the logged by-sex drop), every residual code (W/W_X/EEA/EU15/A4/
-  STLS), every vanished-entity code (XKV/ANT_F/CSK_F/SCG_F/SUN_F/
-  YUG_F), and the diagonals. The seam anchors: FR<-MAR _T 2015 =
-  954,742 = the Eurostat print EXACTLY, the extension 2019 = 1,009,
-  605 / 2021 = 1,036,133, US<-MEX 2024 = 12,383,867.87, and the
-  vanished origins landed on their entities (CSK/SUN/YUG/SCG/ANT/
-  XKX).
+(v26: the v22 bilateral fixtures — `eurostat_migr_row_fr_sample.json`
+and `oecd_migf_sample.csv` — withdrew with the migration indicator;
+the carving history lives in scripts/archive/make_v22_fixtures.py.)
 
 ## v23 fixtures (generated live by scripts/make_v23_fixtures.py)
 
@@ -351,45 +325,14 @@ from the response bytes, never typed):
   validity guard's drop in normalize). Replaces the WHOSIS-shape
   seeding of the MDG door (the pin would refuse the old shape loudly
   — by design).
-- `eurostat_migr1ctz_row_fr_sample.json` — the REAL 26,577-byte FR
-  response of migr_pop1ctz/ROW/FR as the API served it: the 287-code
-  by-citizenship codelist, the 927 non-empty cells = 714 emitted +
-  143 aggregate/region + 53 summary + 12 STLS stateless + 5 diagonal
-  (each class dropped logged). The anchors: FR<-MA ctz 2015-2018 =
-  458,561/465,230/472,843/480,600 (the v18 anchor disambiguation,
-  the citizenship print), FR<-PRT ctz 2015 = 541,867 (the CONVERGE
-  contrast face), EL resolving through the shared geo table onto GRC.
-- `oecd_mig_b15_sample.csv` — a REAL slice of the DSD_MIG@DF_MIG
-  keyed wildcard download (16,285 lines = 8,283 _T + 8,002 F, copied
-  byte-for-byte — the frozen design's own composition rule, the v22
-  fixture's: the complete FRA and USA rows on both sexes — the F rows
-  exercising the logged by-sex drop, the V24 hook — every residual
-  code (STLS/W/W_X/EEA/EU15/A4), every vanished-entity code (XKV/
-  ANT_F/CSK_F/SCG_F/SUN_F/YUG_F) of the other destinations, and the
-  DEU/ESP/ITA/GBR diagonals. The seam anchors: FR<-MAR _T 2015 =
-  458,561 = the Eurostat ctz print EXACTLY (2016-2018 both sides),
-  US<-MEX 2024 = 8,226,106.247 (the citizenship face — the birth
-  face's 12,383,867.87 riding the B14 fixture one block above), and
-  the vanished origins landed on their entities (XKX/ANT/CSK/SCG/
-  SUN/YUG).
+(v26: the v23 migration fixtures — `eurostat_migr1ctz_row_fr_sample.json`
+and `oecd_mig_b15_sample.csv` — withdrew with the migration indicator;
+the carving history lives in scripts/archive/make_v23_fixtures.py.)
 
-
-## v24 fixtures (generated live by scripts/make_v24_fixtures.py)
-
-- `eurostat_migr3ctb_row_fr_m_sample.json` — the REAL 32,525-byte FR
-  response of migr_pop3ctb/ROW/FR/M (sex=M pinned in the URL, the
-  rest identical to the both-sexes door): 1,220 records, sex="male",
-  origin_axis="birth". The anchors: FR<-MA M 2015/2018 =
-  479,354/492,723 (M + F = the _T print: 479,354 + 475,388 =
-  954,742, the v22 fixture's own anchor), FR<-PRT M 2015 = 331,297,
-  FR<-ANT M 1999 = 32 (the vanished origin's own ventilation).
-- `eurostat_migr1ctz_row_fr_f_sample.json` — the REAL 26,247-byte FR
-  response of migr_pop1ctz/ROW/FR/F: 714 records, sex="female",
-  origin_axis="citizenship". The anchors: FR<-MA F 2015/2018 =
-  226,668/243,044 — the OECD B15 F print agreeing to the unit (the
-  seam on the ventilated face), and M + F = the _T print: 231,893 +
-  226,668 = 458,561.
-
+(v26: the v24 by-sex fixtures — `eurostat_migr3ctb_row_fr_m_sample.json`
+and `eurostat_migr1ctz_row_fr_f_sample.json` — withdrew with the
+migration indicator; the carving history lives in
+scripts/archive/make_v24_fixtures.py.)
 
 ## v25 fixtures (generated live by scripts/make_v25_fixtures.py)
 

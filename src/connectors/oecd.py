@@ -1,12 +1,16 @@
-"""OECD SDMX connector — the collector-tier routes (FIVE dataflows).
+"""OECD SDMX connector — the collector-tier routes (THREE dataflows).
 
 WHAT THIS SOURCE IS
 The OECD Data Explorer's SDMX API (no key, CSV responses). v10 wired the
-first flow; v19 adds two more — one per new Todd metric; v22 adds the
-fourth, the migration questionnaire's bilateral face; v23 adds the
-fifth, its citizenship twin. Each flow has its own dimension grammar and
-its own pin guard: trust the URL, verify the response (the v8.1 rule,
-applied per-flow).
+first flow; v19 adds two more — one per new Todd metric. Each flow has
+its own dimension grammar and its own pin guard: trust the URL, verify
+the response (the v8.1 rule, applied per-flow).
+
+(v26: the TWO MIGRATION dataflows — DSD_MIG_F@DF_MIG_POPF and
+DSD_MIG@DF_MIG — were withdrawn with their indicator; their access
+quirks and origin-override tables are history in the CHANGELOG. The
+flows still print on the OECD's registry — the withdrawal record lives
+in config/sources.yaml.)
 
 FLOWS (ref grammar -> agency,dsd@df,version -> dimension layout):
 - DF_COM/{cause}       (v10, 13 dims) "Causes of mortality": the WHO
@@ -44,80 +48,18 @@ FLOWS (ref grammar -> agency,dsd@df,version -> dimension layout):
   1994-2025, 55 areas, zero RUS rows) — the honest coverage limit the
   coverage report displays, while the GHO witness carries Russia's
   modeled face.
-- DF_MIG_POPF   (v22, 8 dims) "International migration database - stocks
-  of foreign-born population" (OECD.ELS.IMD, DSD_MIG_F@DF_MIG_POPF):
-  the OECD migration questionnaire's own BILATERAL matrix — REF_AREA
-  (38 destinations, ISO3) x BIRTH_COUNTRY (242 origin codes), the
-  foreign-born stock by country of birth. THE ACCESS QUIRK (verified
-  live 2026-09-22, the v22 probes): the flow refuses positional keys
-  (every dotted key 404s — the observation dimension carries TIME), so
-  the door serves ONLY through the empty-key /all download — the FULL
-  dataset in one 18.2 MB CSV, already the pinned frame (MEASURE=B14
-  only, FREQ=A only, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z, UNIT=PS only:
-  the flow's whole vocabulary, hard-verified per row). SEX: the download
-  carries _T AND F — the wiring pins _T (the both-sexes face; the F
-  rows drop logged, the by-sex door recorded unwired). THE SEAM,
-  verified to the unit: OECD FR<-MAR _T 2015 = 954,742 = the Eurostat
-  c_birth print EXACTLY; the OECD face extends the FR Maghreb series
-  past the Eurostat 2018 cutoff (2019-2021) and carries the world's
-  non-European destinations (US<-MEX 12,383,868 in 2024) the Eurostat
-  universe structurally cannot print — the compilation seam displayed,
-  never reconciled.
-
-- DF_MIG/B15    (v23, 8 dims) "International migration database"
-  (OECD.ELS.IMD, DSD_MIG@DF_MIG, 1.0 — the SIBLING flow the v22 record
-  kept unwired at "CITIZENSHIP at position 2"): the SAME questionnaire's
-  LEGAL face — the stock of FOREIGN CITIZENS by nationality (étrangers,
-  the mirror of DF_MIG_POPF's foreign-born immigrés), REF_AREA x
-  CITIZENSHIP, both axes ISO3. THE ACCESS SHAPE (verified live
-  2026-09-25, the v23 probe — the MIRROR of the B14 quirk): this flow
-  REFUSES the empty-key /all download but SERVES the positional wildcard
-  key '..A.B15.._Z._Z.PS' — REF_AREA open, CITIZENSHIP open, FREQ=A,
-  MEASURE=B15 (the stock of foreign population by nationality), SEX
-  open (the download carries _T AND F), BIRTH_PLACE=_Z,
-  EDUCATION_LEV=_Z, UNIT_MEASURE=PS — one 18.4 MB call, 216,120 data
-  rows. The parser pins the frame per row (same discipline as B14),
-  keeps the SEX=_T face (the 104,009 F rows drop logged — the by-sex
-  door, the V24 hook), and drops the origin residual vocabulary
-  LOGGED per class: STLS stateless, the diagonals (CITIZENSHIP ==
-  REF_AREA — the native-citizen face), and the §3 aggregates
-  NAT/TOTAL/UNK (0 rows live on this face — the guard exists, the
-  vocabulary doesn't print). The vanished-entity codes (XKV Kosovo,
-  ANT_F/CSK_F/SCG_F/SUN_F/YUG_F "Former ...") ride the SAME override
-  table as the birth face — mapped onto their withdrawn ISO3 entities,
-  the v21/v22 admission's by-citizenship face (people still holding the
-  former nationality, counted exactly as the questionnaire prints
-  them). THE SEAM, verified to the unit: OECD FR<-MAR _T 2015 =
-  458,561 = the Eurostat migr_pop1ctz print EXACTLY (2016-2018:
-  465,230/472,843/480,600 both sides); the world face US<-MEX 2024 =
-  8,226,106 (citizenship) vs 12,383,868 (birth) — the two faces
-  diverging naturally on the pair the naturalization gap widens.
-  Records carry origin_axis="citizenship" — the routing key to the
-  bilateral_citizenship layer.
 
 ACCESS: SDMX 3.0-style REST, no key, CSV responses. NOTE (learned live
 2026-09-21, the v19 probes): the /public/rest/data endpoint REFUSES
 "latest" as the version token ("Invalid version string provided") —
 every flow reference carries its explicit version from the registry.
-NOTE (learned live 2026-09-25, the v23 probe): the two migration flows
-are ACCESS MIRRORS — DSD_MIG_F@DF_MIG_POPF refuses positional keys and
-serves only the /all download, DSD_MIG@DF_MIG refuses /all and serves
-the positional wildcard key. One wire per face, each verified live
-before the wiring.
 
 ENTITY RESOLUTION: REF_AREA codes ARE ISO3 — they ride
 RawRecord.iso3_raw and resolve through the registry's ISO3-first path.
 The SDMX observation-status attributes (OBS_STATUS*) ride quality_code
 when the dataflow prints one (STFAT prints 'P' on its annual rows —
 carried, not interpreted). DF_COM/DF_IDD/DF_SAFETY carry no SEX
-dimension (every row both-sexes, sex=None, documented per indicator);
-DF_MIG_POPF and DF_MIG DO carry one — the pinned _T face maps to
-sex=None, the F rows drop logged before it (the by-sex doors recorded
-unwired — the V24 hook). On the bilateral records the ORIGIN axis
-rides origin_raw_name/origin_iso3_raw (BIRTH_COUNTRY on the birth
-face, CITIZENSHIP on the citizenship face; the OECD origin-code
-overrides — XKV, the _F vanished-entity codes — documented at
-_MIGF_ORIGIN_TO_ISO3 below, shared by both faces).
+dimension (every row both-sexes, sex=None, documented per indicator).
 """
 from __future__ import annotations
 
@@ -128,20 +70,11 @@ import re
 
 from src.connectors.base import Connector, RawFetchResult
 
-logger_migf = logging.getLogger(__name__)
 
 OECD_SDMX_BASE = "https://sdmx.oecd.org/public/rest/data"
 OECD_DF_COM_FLOW = "OECD.ELS.HD,DSD_HEALTH_STAT@DF_COM,1.1"
 OECD_DF_IDD_FLOW = "OECD.WISE.INE,DSD_WISE_IDD@DF_IDD,1.0"
 OECD_DF_SAFETY_FLOW = "OECD.ITF,DSD_INDICATORS@DF_SAFETY,1.0"
-# v22: the migration questionnaire's foreign-born matrix (the bilateral
-# face — the OECD side of the immigration_stock by-origin pair).
-OECD_DF_MIGF_FLOW = "OECD.ELS.IMD,DSD_MIG_F@DF_MIG_POPF,1.0"
-# v23: the SAME questionnaire's citizenship face — the legal twin (the
-# OECD side of the by-citizenship pair). Flow reference read live from
-# the SDMX registry (2026-09-25); the title too (see OECD_DATAFLOW_
-# TITLES in the schema): "International migration database".
-OECD_DF_MIG_FLOW = "OECD.ELS.IMD,DSD_MIG@DF_MIG,1.0"
 # 13 dimension positions of DSD_HEALTH_STAT, pinned to the mortality-by-cause
 # slice: everything empty except FREQ=A, MEASURE=CSEM (mortality), AGE=_T
 # (total), DEATH_CAUSE=<from source_ref>. UNIT_MEASURE is the field selector
@@ -152,75 +85,7 @@ _OECD_IDD_REF_RE = re.compile(
     r"^DF_IDD/(?P<measure>[A-Z0-9_]+)/(?P<methodology>METH[0-9]+)/(?P<definition>D_[A-Z]+)$"
 )
 _OECD_SAFETY_REF_RE = re.compile(r"^DF_SAFETY/(?P<measure>[A-Z0-9_]+)/(?P<unit>[A-Z0-9_]+)$")
-# v22: the bare-flow grammar — the door serves only through the empty-key
-# /all download (positional keys 404, verified live), so the ref carries
-# no key parts at all; the frame pins live in the parser (parse_migf_csv).
-_OECD_MIGF_REF_RE = re.compile(r"^DF_MIG_POPF$")
-# v23: the citizenship face's keyed grammar — the ACCESS MIRROR of the
-# B14 quirk: DSD_MIG@DF_MIG refuses the /all download but serves the
-# positional wildcard key (verified live 2026-09-25). The ref names the
-# flow and the measure; the key and the frame pins live in build_url /
-# parse_mig_csv. B15 = the stock of foreign population by nationality
-# (the sibling of B14's foreign-born stock) — the only measure wired.
-_OECD_MIG_REF_RE = re.compile(r"^DF_MIG/(?P<measure>B15)$")
 _SDMX_SEX = {"M": "male", "F": "female", "_T": None}
-
-# v22: the BIRTH_COUNTRY codelist's own origin quirks — the codes that are
-# neither plain ISO3 nor the drop vocabulary (verified live against the
-# DSD codelist and the full /all download, 2026-09-22):
-# - XKV: the OECD's own code for Kosovo (Eurostat prints XK, the WB XKX —
-#   the kosovo entity declares iso3: XKX, v21);
-# - the _F suffix: the OECD's vanished-entity prints, "Former ..." —
-#   ANT_F Former Netherlands Antilles, CSK_F Former Czechoslovakia,
-#   SCG_F Former Serbia and Montenegro, SUN_F Former USSR, YUG_F Former
-#   Yugoslavia. Each maps to its WITHDRAWN ISO 3166-1 alpha-3 (ANT/CSK/
-#   SCG/SUN/YUG), which the corresponding vanished entity now declares
-#   (the v21 kosovo/XKX precedent — the by-origin face of the v21
-#   vanished-entity admission: people born in the former entity, counted
-#   in the stock wherever they live now, exactly as the questionnaire
-#   prints them).
-_MIGF_ORIGIN_TO_ISO3: dict[str, str] = {
-    "XKV": "XKX",
-    "ANT_F": "ANT",
-    "CSK_F": "CSK",
-    "SCG_F": "SCG",
-    "SUN_F": "SUN",
-    "YUG_F": "YUG",
-}
-
-# v22: the BIRTH_COUNTRY residual vocabulary — codes that are neither a
-# resolvable origin nor an override: the World aggregates (W, W_X "World
-# unspecified"), the supra-national aggregates (EEA, EU15), the region
-# print (A4 "Caribbean") and the stateless residual (STLS "Stateless",
-# nationality/citizenship without a state — a population, not a place of
-# birth the entity table could ever carry). Dropped LOGGED per class.
-_MIGF_ORIGIN_DROPS: dict[str, str] = {
-    "W": "the World-total row (the door's own FOR-equivalent)",
-    "W_X": "World unspecified",
-    "EEA": "the European Economic Area aggregate",
-    "EU15": "the EU15 aggregate",
-    "A4": "the Caribbean region print",
-    "STLS": "the stateless residual (a nationality, not a birth place)",
-}
-
-# v23: the CITIZENSHIP face's own origin drops — the residual vocabulary
-# IS the B14 one (STLS/W/W_X/EEA/EU15/A4 — every code verified present on
-# the B15 download, enumerated live 2026-09-25) PLUS the aggregate guard
-# NAT/TOTAL/UNK: the §3 vocabulary names them, the B15 codelist does not
-# print them (0 rows live — the guard exists so the day the questionnaire
-# starts printing a nationals-total row it DROPS LOGGED, never rides as a
-# phantom origin). The vanished-entity codes (XKV, the _F prints) are NOT
-# drops: they ride _MIGF_ORIGIN_TO_ISO3 onto their withdrawn ISO3
-# entities, the same admission as the birth face (the anchors'
-# arithmetic: 112,111 _T rows - STLS 455 - W 832 - W_X 397 - EEA 115 -
-# EU15 210 - A4 114 - diagonal 225 = 109,763 points on 236 origins,
-# 36 destinations, 1995-2024 — every count read live, none typed).
-_MIG_ORIGIN_DROPS: dict[str, str] = {
-    **_MIGF_ORIGIN_DROPS,
-    "NAT": "the nationals-total aggregate (0 rows live on B15 — the guard)",
-    "TOTAL": "the grand-total aggregate (0 rows live on B15 — the guard)",
-    "UNK": "the unknown-citizenship aggregate (0 rows live on B15 — the guard)",
-}
 
 # The IDD's Gini is printed on the 0_TO_1 unit (the flow's own codelist);
 # the grammar derives the unit from the measure so a future IDD measure
@@ -241,16 +106,6 @@ def build_url(source_ref: str, field: str | None = None) -> str:
     - 'DF_SAFETY/FATALITIES/10P5HB' -> the ITF road-fatality rate (per
       100,000 population) for every country, annual, road mode, all
       vehicle types.
-    - 'DF_MIG_POPF' -> the migration questionnaire's FULL foreign-born
-      matrix (the empty-key /all download: 38 ISO3 destinations x the
-      BIRTH_COUNTRY origin codelist, both sexes' rows — the parser pins
-      the _T face and drops the F rows logged).
-    - 'DF_MIG/B15' -> the SAME questionnaire's FULL citizenship matrix
-      (the positional wildcard key '..A.B15.._Z._Z.PS' — REF_AREA and
-      CITIZENSHIP open, FREQ/MEASURE/BIRTH_PLACE/EDUCATION_LEV/
-      UNIT_MEASURE pinned, both sexes' rows — the parser pins the _T face
-      and drops the F rows logged). The two migration flows are ACCESS
-      MIRRORS: each refuses the wire the other serves (verified live).
     """
     match = _OECD_REF_RE.match(source_ref or "")
     if match:
@@ -289,40 +144,11 @@ def build_url(source_ref: str, field: str | None = None) -> str:
         key = f".A.{safety['measure']}.{safety['unit']}.ROAD._Z._Z._Z"
         return f"{OECD_SDMX_BASE}/{OECD_DF_SAFETY_FLOW}/{key}?dimensionAtObservation=AllDimensions"
 
-    if _OECD_MIGF_REF_RE.match(source_ref or ""):
-        # v22: the EMPTY-KEY download — positional keys 404 on this flow
-        # (verified live 2026-09-22: every dotted key returns 404, the
-        # observation dimension carries TIME under the repo's
-        # dimensionAtObservation=AllDimensions convention), so the door
-        # serves its data through /all: the FULL dataset (197,570 rows,
-        # 18.2 MB) — already the pinned frame (MEASURE=B14/FREQ=A/
-        # BIRTH_PLACE=_Z/EDUCATION_LEV=_Z/UNIT_MEASURE=PS are the flow's
-        # whole vocabulary), carrying both sexes' rows for the parser to
-        # split (the _T face kept, F dropped logged).
-        return f"{OECD_SDMX_BASE}/{OECD_DF_MIGF_FLOW}/all?dimensionAtObservation=AllDimensions"
-
-    if _OECD_MIG_REF_RE.match(source_ref or ""):
-        # v23: the ACCESS MIRROR — DSD_MIG@DF_MIG refuses the /all download
-        # but serves the POSITIONAL wildcard key (verified live
-        # 2026-09-25: /all answers 404, the dotted key answers the full
-        # 18.4 MB / 216,120-row matrix). Eight key positions over the
-        # flow's own dimension order (REF_AREA, CITIZENSHIP, FREQ,
-        # MEASURE, SEX, BIRTH_PLACE, EDUCATION_LEV, UNIT_MEASURE):
-        # REF_AREA and CITIZENSHIP open (the whole matrix), FREQ=A,
-        # MEASURE=B15, SEX open (the parser splits), the three _Z/PS pins
-        # completing the frame.
-        return (
-            f"{OECD_SDMX_BASE}/{OECD_DF_MIG_FLOW}/..A.B15.._Z._Z.PS"
-            "?dimensionAtObservation=AllDimensions"
-        )
-
     raise ValueError(
         f"Invalid OECD source_ref {source_ref!r}: expected 'DF_COM/<death cause code>' "
         "(e.g. 'DF_COM/CICDHOCD' — Assault), 'DF_IDD/<measure>/<methodology>/<definition>' "
         "(e.g. 'DF_IDD/INC_DISP_GINI/METH2012/D_CUR'), "
-        "'DF_SAFETY/<measure>/<unit>' (e.g. 'DF_SAFETY/FATALITIES/10P5HB'), "
-        "'DF_MIG_POPF' (the foreign-born bilateral matrix's empty-key download — v22), "
-        "or 'DF_MIG/B15' (the citizenship matrix's keyed wildcard download — v23)."
+        "'DF_SAFETY/<measure>/<unit>' (e.g. 'DF_SAFETY/FATALITIES/10P5HB')."
     )
 
 
@@ -461,304 +287,6 @@ def parse_safety_csv(csv_text: str, *, measure: str, unit: str) -> list:
     return _walk_sdmx_csv(csv_text, pins)
 
 
-def parse_migf_csv(csv_text: str) -> list:
-    """Pure function: the DF_MIG_POPF empty-key /all download -> RawRecords
-    (v22, the bilateral WITNESS face of immigration_stock).
-
-    One record per (REF_AREA destination, BIRTH_COUNTRY origin, year) on
-    the SEX=_T frame, the origin axis riding origin_raw_name/
-    origin_iso3_raw. The discipline, per class:
-
-    - HARD pins (a row that disagrees is a LOUD failure — the flow's whole
-      vocabulary, verified live 2026-09-22 on the full 197,570-row
-      download): FREQ=A, MEASURE=B14, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z,
-      UNIT_MEASURE=PS. An API change that introduces a second measure or
-      unit is never a silent re-interpretation.
-    - SEX: the /all download structurally carries BOTH faces (_T 100,973
-      rows + F 96,597); the wiring pins _T — the F rows drop LOGGED (the
-      by-sex face recorded unwired, never fetched-and-discarded silently).
-      A code outside {_T, F} is a loud failure (layout change).
-    - The origin drops, LOGGED per class: the residual vocabulary
-      (_MIGF_ORIGIN_DROPS: W/W_X/EEA/EU15/A4/STLS) and the DIAGONAL
-      (BIRTH_COUNTRY == REF_AREA — the native-born face, the same class
-      the Eurostat ROW slice drops).
-    - The origin overrides (_MIGF_ORIGIN_TO_ISO3: XKV Kosovo, the _F
-      vanished-entity prints) map the questionnaire's own codes onto the
-      ISO3 the entity table declares; every other origin code IS ISO3
-      (the codelist's own convention) and rides origin_iso3_raw as-is.
-    """
-    from src.connectors.base import RawRecord
-
-    reader = csv.DictReader(io.StringIO(csv_text))
-    required = {"REF_AREA", "BIRTH_COUNTRY", "SEX", "OBS_VALUE"}
-    if not reader.fieldnames or not required.issubset(reader.fieldnames):
-        raise ValueError(
-            "Not an SDMX-CSV DF_MIG_POPF response (missing "
-            f"{sorted(required - set(reader.fieldnames or []))} columns): "
-            "layout change, or an error page was fetched?"
-        )
-    # The frame pins — hard-verified per row (see docstring).
-    frame_pins = {
-        "FREQ": "A",
-        "MEASURE": "B14",
-        "BIRTH_PLACE": "_Z",
-        "EDUCATION_LEV": "_Z",
-        "UNIT_MEASURE": "PS",
-    }
-    records: list[RawRecord] = []
-    dropped_origin_residuals: dict[str, int] = {}
-    dropped_diagonal = 0
-    for row in reader:
-        ref_area = (row.get("REF_AREA") or "").strip()
-        if not ref_area or ref_area == "REF_AREA":  # preamble/echo rows, never data
-            continue
-        birth_country = (row.get("BIRTH_COUNTRY") or "").strip()
-        sex_raw = (row.get("SEX") or "").strip()
-        year_raw = (row.get("TIME_PERIOD") or "").strip()
-        if not year_raw:
-            # Attribute-only rows (SDMX-CSV dataset/series-level attributes
-            # on observation-less rows): metadata residue, skipped.
-            continue
-        if not re.fullmatch(r"\d{4}", year_raw):
-            raise ValueError(f"Unexpected SDMX TIME_PERIOD {year_raw!r}: layout change?")
-        # THE FRAME PIN GUARD (loud — trust the URL, verify the response):
-        for col, want in frame_pins.items():
-            got = (row.get(col) or "").strip()
-            if got != want:
-                raise ValueError(
-                    f"OECD DF_MIG_POPF data row REF_AREA={ref_area} {year_raw} has "
-                    f"{col}={got!r} but the flow's pinned frame is {want!r}: the API "
-                    "returned a slice we did not ask for — refusing to ingest it. "
-                    "Endpoint behavior change?"
-                )
-        # THE SEX SPLIT (v24): _T kept (the both-sexes face, sex=None) AND
-        # F kept (sex="female" — the flow's female face, THE BY-SEX DOOR
-        # WIRED: 96,570 rows on the live download, verified 2026-09-25 to
-        # agree with the Eurostat birth-face F doors to the unit —
-        # FR<-MAR F 2015 = 475,388 on both sides); the points ride the
-        # same witness series under the (destination, origin, year, sex)
-        # key, never colliding with the both-sexes face. The flow prints
-        # NO male face (verified live — the honest as-printed shape); a
-        # third code is a layout change, loudly refused.
-        # the flow's whole print: _T AND F, NO male face (verified live on
-        # the full download — the as-printed shape); an M row is a door
-        # change, loudly refused, never silently ingested as a third face.
-        if sex_raw == "F":
-            sex = "female"
-        elif sex_raw == "_T":
-            sex = None
-        else:
-            raise ValueError(
-                f"Unexpected SDMX SEX code {sex_raw!r} on DF_MIG_POPF (expected _T or F): "
-                "layout change?"
-            )
-        # THE ORIGIN AXIS: the diagonal and the residual vocabulary drop
-        # logged; the overrides map the questionnaire's own codes onto the
-        # entity table's ISO3; everything else rides as the ISO3 it is.
-        if birth_country == ref_area:
-            dropped_diagonal += 1
-            continue
-        if birth_country in _MIGF_ORIGIN_DROPS:
-            dropped_origin_residuals[birth_country] = dropped_origin_residuals.get(birth_country, 0) + 1
-            continue
-        origin_iso3 = _MIGF_ORIGIN_TO_ISO3.get(birth_country, birth_country)
-        value_raw = (row.get("OBS_VALUE") or "").strip()
-        if value_raw == "":
-            value = None  # an explicit gap in the dataflow, never a zero
-        else:
-            value = float(value_raw)
-        status = (row.get("OBS_STATUS") or "").strip() or None
-        records.append(
-            RawRecord(
-                entity_raw_name=ref_area,
-                iso3_raw=ref_area,
-                year=int(year_raw),
-                value=value,
-                origin_raw_name=birth_country,
-                origin_iso3_raw=origin_iso3,
-                sex=sex,
-                quality_code=status,
-            )
-        )
-    if not records:
-        raise ValueError("No data rows in the DF_MIG_POPF response: refusing an empty fetch.")
-    n_female_records = sum(1 for r in records if r.sex == "female")
-    if n_female_records:
-        logger_migf.info(
-            "OECD DF_MIG_POPF: kept %d female-face record(s) (SEX=F — the by-sex door wired "
-            "v24, riding the same witness series under the merge key's sex component; "
-            "verified live to agree with the Eurostat birth-face F doors to the unit).",
-            n_female_records,
-        )
-    for code, count in sorted(dropped_origin_residuals.items()):
-        logger_migf.info(
-            "OECD DF_MIG_POPF: dropped %d origin row(s) carrying code %r (%s).",
-            count,
-            code,
-            _MIGF_ORIGIN_DROPS[code],
-        )
-    if dropped_diagonal:
-        logger_migf.info(
-            "OECD DF_MIG_POPF: dropped %d diagonal row(s) (BIRTH_COUNTRY == REF_AREA — "
-            "the native-born face; the by-origin layer carries the FOREIGN-born "
-            "decomposition only, the same class the Eurostat ROW slice drops).",
-            dropped_diagonal,
-        )
-    return records
-
-
-def parse_mig_csv(csv_text: str) -> list:
-    """Pure function: the DF_MIG/B15 keyed wildcard download -> RawRecords
-    (v23, the bilateral CITIZENSHIP witness face of immigration_stock).
-
-    One record per (REF_AREA destination, CITIZENSHIP origin, year) on
-    the SEX=_T frame, the origin axis riding origin_raw_name/
-    origin_iso3_raw with origin_axis="citizenship" (the routing key to
-    the bilateral_citizenship layer). The discipline, per class:
-
-    - HARD pins (a row that disagrees is a LOUD failure — verified live
-      2026-09-25 on the full 216,120-row download, zero violations):
-      FREQ=A, MEASURE=B15, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z,
-      UNIT_MEASURE=PS. An API change that introduces a second measure or
-      unit is never a silent re-interpretation.
-    - SEX: the download structurally carries BOTH faces (_T 112,111 rows
-      + F 104,009); the wiring pins _T — the F rows drop LOGGED (the
-      by-sex face recorded unwired, the V24 hook — un-blocking them beats
-      re-downloading). A code outside {_T, F} is a loud failure.
-    - The origin drops, LOGGED per class: the residual vocabulary
-      (_MIG_ORIGIN_DROPS: STLS/W/W_X/EEA/EU15/A4 + the NAT/TOTAL/UNK
-      aggregate guard, 0 rows live) and the DIAGONAL (CITIZENSHIP ==
-      REF_AREA — the native-citizen face, the same class the Eurostat
-      ctz ROW slice drops).
-    - The origin overrides (_MIGF_ORIGIN_TO_ISO3: XKV Kosovo, the _F
-      vanished-entity prints) map the questionnaire's own codes onto the
-      ISO3 the entity table declares — the SAME admission as the birth
-      face (people still holding the former nationality, counted as the
-      questionnaire prints them); every other origin code IS ISO3 (the
-      codelist's own convention) and rides origin_iso3_raw as-is.
-    """
-    from src.connectors.base import RawRecord
-
-    reader = csv.DictReader(io.StringIO(csv_text))
-    required = {"REF_AREA", "CITIZENSHIP", "SEX", "OBS_VALUE"}
-    if not reader.fieldnames or not required.issubset(reader.fieldnames):
-        raise ValueError(
-            "Not an SDMX-CSV DF_MIG response (missing "
-            f"{sorted(required - set(reader.fieldnames or []))} columns): "
-            "layout change, or an error page was fetched?"
-        )
-    # The frame pins — hard-verified per row (see docstring).
-    frame_pins = {
-        "FREQ": "A",
-        "MEASURE": "B15",
-        "BIRTH_PLACE": "_Z",
-        "EDUCATION_LEV": "_Z",
-        "UNIT_MEASURE": "PS",
-    }
-    records: list[RawRecord] = []
-    dropped_origin_residuals: dict[str, int] = {}
-    dropped_diagonal = 0
-    for row in reader:
-        ref_area = (row.get("REF_AREA") or "").strip()
-        if not ref_area or ref_area == "REF_AREA":  # preamble/echo rows, never data
-            continue
-        citizenship = (row.get("CITIZENSHIP") or "").strip()
-        sex_raw = (row.get("SEX") or "").strip()
-        year_raw = (row.get("TIME_PERIOD") or "").strip()
-        if not year_raw:
-            # Attribute-only rows (SDMX-CSV dataset/series-level attributes
-            # on observation-less rows): metadata residue, skipped.
-            continue
-        if not re.fullmatch(r"\d{4}", year_raw):
-            raise ValueError(f"Unexpected SDMX TIME_PERIOD {year_raw!r}: layout change?")
-        # THE FRAME PIN GUARD (loud — trust the URL, verify the response):
-        for col, want in frame_pins.items():
-            got = (row.get(col) or "").strip()
-            if got != want:
-                raise ValueError(
-                    f"OECD DF_MIG data row REF_AREA={ref_area} {year_raw} has "
-                    f"{col}={got!r} but the flow's pinned frame is {want!r}: the API "
-                    "returned a slice we did not ask for — refusing to ingest it. "
-                    "Endpoint behavior change?"
-                )
-        # THE SEX SPLIT (v24): _T kept (the both-sexes face, sex=None) AND
-        # F kept (sex="female" — the flow's female face, THE BY-SEX DOOR
-        # WIRED: the 104,009 rows of the V23 pull un-blocked instead of
-        # re-downloaded, verified live to agree with the Eurostat ctz F
-        # doors to the unit — FR<-MAR F 2015 = 226,668 on both sides); the
-        # points ride the same witness series under the (destination,
-        # origin, year, sex) key. The flow prints NO male face (verified
-        # live); a third code is a layout change, loudly refused.
-        # the flow's whole print: _T AND F, NO male face (verified live on
-        # the full download — the as-printed shape); an M row is a door
-        # change, loudly refused, never silently ingested as a third face.
-        if sex_raw == "F":
-            sex = "female"
-        elif sex_raw == "_T":
-            sex = None
-        else:
-            raise ValueError(
-                f"Unexpected SDMX SEX code {sex_raw!r} on DF_MIG (expected _T or F): "
-                "layout change?"
-            )
-        # THE ORIGIN AXIS: the diagonal and the residual vocabulary drop
-        # logged; the overrides map the questionnaire's own codes onto the
-        # entity table's ISO3; everything else rides as the ISO3 it is.
-        if citizenship == ref_area:
-            dropped_diagonal += 1
-            continue
-        if citizenship in _MIG_ORIGIN_DROPS:
-            dropped_origin_residuals[citizenship] = dropped_origin_residuals.get(citizenship, 0) + 1
-            continue
-        origin_iso3 = _MIGF_ORIGIN_TO_ISO3.get(citizenship, citizenship)
-        value_raw = (row.get("OBS_VALUE") or "").strip()
-        if value_raw == "":
-            value = None  # an explicit gap in the dataflow, never a zero
-        else:
-            value = float(value_raw)
-        status = (row.get("OBS_STATUS") or "").strip() or None
-        records.append(
-            RawRecord(
-                entity_raw_name=ref_area,
-                iso3_raw=ref_area,
-                year=int(year_raw),
-                value=value,
-                origin_raw_name=citizenship,
-                origin_iso3_raw=origin_iso3,
-                # v23: the citizenship face — the routing key that separates
-                # this layer from the birth face's bilateral layer.
-                origin_axis="citizenship",
-                sex=sex,
-                quality_code=status,
-            )
-        )
-    if not records:
-        raise ValueError("No data rows in the DF_MIG response: refusing an empty fetch.")
-    n_female_records = sum(1 for r in records if r.sex == "female")
-    if n_female_records:
-        logger_migf.info(
-            "OECD DF_MIG: kept %d female-face record(s) (SEX=F — the by-sex door wired "
-            "v24, the V23 pull's 104,009 rows un-blocked; riding the same witness "
-            "series under the merge key's sex component).",
-            n_female_records,
-        )
-    for code, count in sorted(dropped_origin_residuals.items()):
-        logger_migf.info(
-            "OECD DF_MIG: dropped %d origin row(s) carrying code %r (%s).",
-            count,
-            code,
-            _MIG_ORIGIN_DROPS[code],
-        )
-    if dropped_diagonal:
-        logger_migf.info(
-            "OECD DF_MIG: dropped %d diagonal row(s) (CITIZENSHIP == REF_AREA — "
-            "the native-citizen face; the by-citizenship layer carries the FOREIGN "
-            "decomposition only, the same class the Eurostat ctz ROW slice drops).",
-            dropped_diagonal,
-        )
-    return records
-
-
 class OecdConnector(Connector):
     provider = "oecd"
 
@@ -793,18 +321,6 @@ class OecdConnector(Connector):
                 methodology=idd["methodology"],
                 definition=idd["definition"],
             )
-        elif _OECD_MIGF_REF_RE.match(source_ref or ""):
-            # v22: the DF_MIG_POPF empty-key download (the timeout rides the
-            # connector's own 120 s default — the full 18.2 MB body arrives
-            # as one stream; the parser splits the sexes and drops the
-            # residual vocabulary logged).
-            records = parse_migf_csv(response.text)
-        elif _OECD_MIG_REF_RE.match(source_ref or ""):
-            # v23: the DF_MIG/B15 keyed wildcard download — the citizenship
-            # twin, 18.4 MB as one stream (same timeout class as B14); the
-            # parser splits the sexes (the F rows drop logged, the V24 hook)
-            # and drops the residual vocabulary logged.
-            records = parse_mig_csv(response.text)
         else:
             safety = _OECD_SAFETY_REF_RE.match(source_ref or "")
             records = parse_safety_csv(

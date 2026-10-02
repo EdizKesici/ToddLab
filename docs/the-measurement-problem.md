@@ -226,6 +226,8 @@ Decisions implied by this analysis (to be applied incrementally):
    `barro_lee` (the Barro-Lee/Lee-Lee attainment panels via OWID's
    chart door — THE CORPUS'S OWN NAMED SOURCE riding the witness
    tier, the scholar's reconciliation facing the LFS print);
+   (v26 note: the two migration roots below withdrew with their
+   indicator — counts, not rates; the registry drops to 29) —
    `un_desa` (the Trends in International Migrant Stock estimates via
    WDI — the immigration witness, the WPP relation in a third family);
    and `eurostat_migr` (the migration questionnaire's foreign-born
@@ -285,6 +287,10 @@ Decisions implied by this analysis (to be applied incrementally):
    study IS the origin), v19 wid (the compilation the corpus names),
    v20 five more — the pattern is the registry's own majority for
    canonicals without collectors, each entry carrying the probe
+   (v26 note: the v22-v24 root-and-layer narration that follows is the
+   HISTORICAL record — the bilateral family and its roots withdrew
+   entire with immigration_stock; the segment layers of v25 carry the
+   parallel-faces discipline forward.)
    record that closed the collector question. v21 adds NO new root:
    the vanished-entity tables ride `unsd_dyb` itself — the PDF route,
    the collector's own 1978 print transcribed (the transcription
@@ -562,15 +568,18 @@ for itself.
    industrial_employment_share (the backlog's head, 30 citations,
    deferred since v15 on "no collector prints the %") is wired
    WITHOUT any derivation and the composite-derived-layer ADR is
-   retired unused (the agricultural share rides the same door at
-   nace A); the education pair on the LFS attainment table (one
+   retired unused (the agricultural share rode the same door at
+   nace A — until v26 withdrew it with its indicator); the education
+   pair on the LFS attainment table (one
    questionnaire now carrying three Todd metrics — UNESCO UIS, the
    world's education collector, having no live API, its dead door
    recorded) with tertiary's witness being the corpus's own named
    source (the Barro-Lee/Lee-Lee panels through OWID's chart door);
    immigration_stock on the migration questionnaire's foreign-born
    stock (FR 2008 = 7.08M -> 2024 = 9.36M annual, the UN DESA
-   estimates the witness) — and since v22 the BY-ORIGIN boards wired
+   estimates the witness — all WITHDRAWN in v26 with the indicator;
+   the class-decomposed rates of the same question ride the v25
+   segment layers) — and since v22 the BY-ORIGIN boards wired
    (the recorded future door opened): the dist's `bilateral` layer,
    canonical on the 30 Eurostat ROW doors (91,230 points, 30
    destinations x 243 origins, the Maghreb/Turkish/Portuguese cells

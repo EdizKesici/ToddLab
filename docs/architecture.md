@@ -33,7 +33,7 @@ unemployment_rate 20 implemented in v17's two-track delivery, and the
 v18 six — industrial_employment_share 30 (THE BACKLOG'S HEAD, its
 composite-derived-layer question dissolved by the probe finding: the
 national-accounts door prints the share directly), tertiary 13,
-immigration_stock 11, cirrhosis 9, secondary 8, agricultural 2 — and
+cirrhosis 9, secondary 8 — and
 the v19 three: top_income_share 7 (the new head claimed through WID's
 chart door, the corpus's own named source — the DINA research
 harmonization as canonical by the consanguinity_studies constitution,
@@ -192,10 +192,10 @@ reports a demographic breakdown carries it through the whole pipeline:
   OWID, the corpus's own named source, root barro_lee; secondary
   canonical-only, its world face the recorded Barro-Lee direct door);
   immigration_stock (the demography family's first — the Family enum
-  gains `demography` — canonical on the migration questionnaire's
-  foreign-born stock, root eurostat_migr, witness the UN DESA
-  estimates, root un_desa; the Todd by-origin boards the recorded
-  future door); and cirrhosis_alcohol_mortality (the OECD dataflow's
+  (the demography family's admission — withdrawn in v26 with its
+  only rider, immigration_stock: a count of persons, not a rate;
+  the enum value stays for the corpus's own family vocabulary) and
+  cirrhosis_alcohol_mortality (the OECD dataflow's
   third cause code, CICDCIRR — the v13 "RUS absent" note corrected
   as a probe artifact, the honest finding being the WHO-MDB coding
   story, the GHE witness covering Russia). v19 — the three-indicator
@@ -274,7 +274,7 @@ reports a demographic breakdown carries it through the whole pipeline:
   contrast anchors, live-verified: CONVERGE FR<-PT 2015 = 648,112
   born vs 541,867 citizens; DIVERGE FR<-MA 2015 = 954,742 vs
   458,561 — the naturalization gap the pair exists to display. The
-  registry still holds 32 roots; the catalog's door counts alone move
+  registry then held 32 roots (29 since v26's withdrawal); the catalog's door counts alone move
   (eurostat_migr 31 -> 65, oecd_mig 1 -> 2 — the OECD connector's
   fifth door, the keyed wildcard). Two provider-side events surfaced
   by the session's recovery fetch, both audited: the GHO
@@ -295,6 +295,17 @@ reports a demographic breakdown carries it through the whole pipeline:
   the both-sexes ones). Layer totals: bilateral 273,708 canonical /
   194,177 witness; bilateral_citizenship 331,778 / 211,592; the
   catalog's eurostat_migr count 65 -> 189 doors.
+  V26 WITHDRAWS THE WHOLE BILATERAL FAMILY (the owner's decision:
+  immigration_stock removed entire — a count, not a rate, and a
+  228 MB dist file that blocked the GitHub push): the oecd_mig,
+  eurostat_migr and un_desa roots, the bilateral and
+  bilateral_citizenship layers, the ROW/ROW-SEX grammars and the
+  origin-axis machinery are history (ADR-0010 marked moot — its
+  parallel-faces discipline lives on in the segment layers; the
+  wiring narrative above is the historical record). The root
+  registry drops from 32 to 29; the corpus from 24 to 22 metrics;
+  the class-decomposed RATE faces of the same Todd question ride
+  unemployment_rate's segment layers since v25.
   Per-point provenance for the
   collector tier (v8: DYB quality codes, footnote texts, LE reference
   ranges, missing markers, provisional flags — as-reported, joined into
