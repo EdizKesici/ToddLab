@@ -241,11 +241,8 @@ _WB_INDICATOR_NAMES = {
     # v18 witnesses, three dedicated pages (the same discipline: each
     # code's own page with its own live anchors — the shared IMRT page's
     # per-1,000 prints would sit inside a share's plausible band and
-    # contaminate silently): the employment-by-sector shares and the
-    # migrant stock.
+    # contaminate silently): the employment-by-sector shares.
     "SL.IND.EMPL.ZS": "Employment in industry (% of total employment) (modeled ILO estimate)",
-    "SL.AGR.EMPL.ZS": "Employment in agriculture (% of total employment) (modeled ILO estimate)",
-    "SM.POP.TOTL": "International migrant stock, total",
 }
 
 
@@ -266,10 +263,6 @@ def _wb_page_for(code: str) -> str:
     # scripts/make_v18_fixtures.py — every row read, never typed).
     if code == "SL.IND.EMPL.ZS":
         return (FIXTURES_DIR / "wb_sl_ind_empl_sample.json").read_text(encoding="utf-8")
-    if code == "SL.AGR.EMPL.ZS":
-        return (FIXTURES_DIR / "wb_sl_agr_empl_sample.json").read_text(encoding="utf-8")
-    if code == "SM.POP.TOTL":
-        return (FIXTURES_DIR / "wb_sm_pop_totl_sample.json").read_text(encoding="utf-8")
     payload = json.loads((FIXTURES_DIR / "wb_imrt_ma_sample.json").read_text(encoding="utf-8"))
     name = _WB_INDICATOR_NAMES[code]
     for row in payload[1]:
@@ -400,100 +393,6 @@ def seed_oecd_safety_snapshot(raw_dir: Path, indicator_id: str, source_ref: str,
         indicator_id=indicator_id,
         fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
         source_url="test://fixture-oecd-safety",
-        records=records,
-    )
-    return _write_snapshot(raw_dir, result)
-
-
-def seed_eurostat_row_snapshot(
-    raw_dir: Path,
-    indicator_id: str,
-    source_ref: str = "migr_pop3ctb/ROW/FR",
-    *,
-    fixture: str = "eurostat_migr_row_fr_sample.json",
-) -> Path:
-    """eurostat migr_pop3ctb ROW (v22, the bilateral by-origin row): the
-    REAL 32,976-byte FR response as the API served it — the 307-code
-    c_birth codelist, the 1,450 non-empty cells, the b/e/p flags, the
-    three drop classes (aggregates/regions, the FOR/NAT/TOTAL/OTH/UNK/RNC
-    summary codes, the FR diagonal) the parser drops logged, and the
-    Todd-board anchors (FR<-MA 2015 = 954,742, FR<-DZ 2018 = 1,390,284,
-    FR<-PRT 2025 = 599,492, FR<-AN 1999 = 78 the vanished Antilles).
-    Runs the real parser (the ROW pin-guards + the origin-axis
-    resolution), snapshots through the production writer."""
-    json_text = (FIXTURES_DIR / fixture).read_text(encoding="utf-8")
-    records = parse_eurostat(json_text, expected_ref=source_ref)
-    result = RawFetchResult(
-        provider="eurostat",
-        source_ref=source_ref,
-        indicator_id=indicator_id,
-        fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
-        source_url="test://fixture-eurostat-row",
-        records=records,
-    )
-    return _write_snapshot(raw_dir, result)
-
-
-def seed_oecd_migf_snapshot(
-    raw_dir: Path,
-    indicator_id: str,
-    source_ref: str = "DF_MIG_POPF",
-    *,
-    fixture: str = "oecd_migf_sample.csv",
-) -> Path:
-    """oecd DF_MIG_POPF (v22, the migration questionnaire's foreign-born
-    matrix): a REAL slice of the empty-key /all download (rows copied
-    byte-for-byte by scripts/make_v22_fixtures.py, never typed) — the
-    complete FR and US rows on both sexes (the F rows exercising the
-    logged by-sex drop), every residual code (W/W_X/EEA/EU15/A4/STLS),
-    every vanished-entity code (XKV/ANT_F/CSK_F/SCG_F/SUN_F/YUG_F), the
-    diagonals. The parser pins the _T frame and drops the classes logged;
-    the seam anchors ride it (FR<-MAR 2015 = 954,742 = the Eurostat
-    print exactly; the 2019-2021 extension; US<-MEX 2024)."""
-    from src.connectors.oecd import parse_migf_csv
-
-    csv_text = (FIXTURES_DIR / fixture).read_text(encoding="utf-8")
-    records = parse_migf_csv(csv_text)
-    result = RawFetchResult(
-        provider="oecd",
-        source_ref=source_ref,
-        indicator_id=indicator_id,
-        fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
-        source_url="test://fixture-oecd-migf",
-        records=records,
-    )
-    return _write_snapshot(raw_dir, result)
-
-
-def seed_oecd_mig_snapshot(
-    raw_dir: Path,
-    indicator_id: str,
-    source_ref: str = "DF_MIG/B15",
-    *,
-    fixture: str = "oecd_mig_b15_sample.csv",
-) -> Path:
-    """oecd DF_MIG/B15 (v23, the migration questionnaire's CITIZENSHIP
-    matrix): a REAL slice of the keyed wildcard download (rows copied
-    byte-for-byte by scripts/make_v23_fixtures.py, never typed — 16,285
-    lines = 8,283 _T + 8,002 F) — the complete FR and US rows on both
-    sexes (the F rows exercising the logged by-sex drop, the V24 hook),
-    every residual code (STLS/W/W_X/EEA/EU15/A4), every vanished-entity
-    code (XKV/ANT_F/CSK_F/SCG_F/SUN_F/YUG_F) riding the shared override
-    table onto their withdrawn ISO3 entities, the diagonals. The parser
-    pins the _T frame and the B15 frame pins, drops the classes logged,
-    and stamps origin_axis="citizenship" on every record; the seam
-    anchors ride it (FR<-MAR _T 2015 = 458,561 = the Eurostat
-    migr_pop1ctz print exactly; US<-MEX 2024 = 8,226,106.247)."""
-    from src.connectors.oecd import parse_mig_csv
-
-    csv_text = (FIXTURES_DIR / fixture).read_text(encoding="utf-8")
-    records = parse_mig_csv(csv_text)
-    result = RawFetchResult(
-        provider="oecd",
-        source_ref=source_ref,
-        indicator_id=indicator_id,
-        fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
-        source_url="test://fixture-oecd-mig",
         records=records,
     )
     return _write_snapshot(raw_dir, result)

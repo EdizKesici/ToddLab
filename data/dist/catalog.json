@@ -1,50 +1,5 @@
 [
   {
-    "id": "agricultural_employment_share",
-    "label": "Agricultural employment share",
-    "family": "economy",
-    "unit": "percent",
-    "higher_is_better": false,
-    "todd_core": true,
-    "companion_indicators": [],
-    "reliability": "high",
-    "reliability_criteria": "Canonical tier = Eurostat nama_10_a10_e pinned na_item=EMP_DC, unit=PC_TOT_PER, nace_r2=A (\"Agriculture, forestry and fishing\" — the door's own aggregate label): same universe and discipline as industrial (34 countries, aggregates dropped logged incl. the EA two-letter edge, no sex dimension, FR 1995-2024 full annual series 4.4 -> 2.3). Witness tier = the ILO modeled agriculture shares, world 1991-2024. Root pair eurostat_na/ilo_modelled.",
-    "reclassification_sensitive": false,
-    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0 — see docs/licenses.md.",
-    "roots": {
-      "canonical": [
-        {
-          "root": "eurostat_na",
-          "label": "Eurostat national accounts (nama_10_a10_e — employment by industry as each country prints it, shares at PC_TOT_PER)",
-          "doors": 1
-        }
-      ],
-      "witness": [
-        {
-          "root": "ilo_modelled",
-          "label": "ILO modelled estimates, ILOSTAT 2EMP family (redistributed by World Bank WDI as the employment-by-sector share codes)",
-          "doors": 1
-        }
-      ]
-    },
-    "n_points": 1132,
-    "n_witness_points": 14208,
-    "todd_refs": {
-      "family": "economy",
-      "citations": 2,
-      "books": 1,
-      "refs": [
-        {
-          "book": "Le Destin des immigrés",
-          "year": 1994,
-          "citations": 2,
-          "label": "Agricultural employment/population share (Britain 1841, USA 1841, Turkey 1985)",
-          "note": "UK/USA/Turkey, 1841-1985."
-        }
-      ]
-    }
-  },
-  {
     "id": "birth_rate_fertility",
     "label": "Total fertility rate",
     "family": "society",
@@ -675,56 +630,6 @@
           "citations": 1,
           "label": "Out-of-wedlock births, 1960 vs 2015 (id from Le Fou et le Prolétaire)",
           "note": "France, 1960 vs 2015, tenfold rise."
-        }
-      ]
-    }
-  },
-  {
-    "id": "immigration_stock",
-    "label": "Immigrant stock (foreign-born population)",
-    "family": "demography",
-    "unit": "persons",
-    "higher_is_better": false,
-    "todd_core": true,
-    "companion_indicators": [],
-    "reliability": "high",
-    "reliability_criteria": "Canonical tier = Eurostat migr_pop3ctb pinned c_birth=FOR (the foreign-born total — \"Foreign country\"), age=TOTAL, sex=T, unit=NR (the dataset's only unit, pinned and guarded): 44 countries (aggregates dropped logged), the door's own per-country starts (Ireland 2000, Italy/Lithuania/Spain 2002, France 2007 — the FR series annual 2007-2025, census-aligned) with the collector's b/e/p flags as-reported. Since v22 the SAME collector tier carries the by-origin face: the 30 wired Eurostat ROW doors (c_birth open, the 307-code by-birth codelist as printed; aggregates, the FOR/NAT/TOTAL/OTH/UNK/RNC summary codes and the native diagonal dropped logged per class), as each country's own registration prints it. Since v23 the LEGAL twin rides beside it on the same collector judgment: the 34 Eurostat migr_pop1ctz ROW doors (citizen open, the 287-code by-citizenship codelist as printed; aggregates, the NAT/RNC/TOTAL/OTH/UNK summary codes, STLS stateless and the native diagonal dropped logged per class) — the face's own geography (Germany in, Cyprus out) carried as-printed. Witness tiers = the UN DESA migrant-stock estimates via WDI (world 1990-2024, the total face), the OECD migration questionnaire's foreign-born matrix (v22, DSD_MIG_F@DF_MIG_POPF, 38 destinations x the BIRTH_COUNTRY codelist, SEX=_T) and its citizenship twin (v23, DSD_MIG@DF_MIG measure B15, 36 destinations x the CITIZENSHIP codelist, SEX=_T — the two questionnaires agreeing to the unit on the co-covered core). Root pair eurostat_migr/un_desa/oecd_mig: the registrations, the compiled estimates of the same stock, and the OECD-compiled questionnaire answers — one estimation/ compilation step apart each.",
-    "reclassification_sensitive": false,
-    "license": "Eurostat reuse policy (attribution required, no endorsement implied); World Bank WDI CC-BY-4.0; OECD Terms and Conditions, attribution required — see docs/licenses.md.",
-    "roots": {
-      "canonical": [
-        {
-          "root": "eurostat_migr",
-          "label": "Eurostat migration statistics (migr_pop3ctb — foreign-born stock by country of birth, as each country reports)",
-          "doors": 189
-        }
-      ],
-      "witness": [
-        {
-          "root": "oecd_mig",
-          "label": "OECD International Migration Database (DSD_MIG_F@DF_MIG_POPF — the questionnaire's foreign-born matrix, OECD-compiled)",
-          "doors": 2
-        },
-        {
-          "root": "un_desa",
-          "label": "UN Population Division, Trends in International Migrant Stock (DESA estimates; redistributed by World Bank WDI as SM.POP.TOTL)",
-          "doors": 1
-        }
-      ]
-    },
-    "n_points": 557,
-    "n_witness_points": 14208,
-    "todd_refs": {
-      "family": "demography",
-      "citations": 11,
-      "books": 1,
-      "refs": [
-        {
-          "book": "Le Destin des immigrés",
-          "year": 1994,
-          "citations": 11,
-          "label": "Maghreb, Turkish, Portuguese populations — France/UK/Germany 1946–1990 (+ 4 distribution maps)",
-          "note": "France/UK/Germany immigrant population by origin, 1946-1990, official censuses."
         }
       ]
     }

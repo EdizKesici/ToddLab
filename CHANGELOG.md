@@ -18,6 +18,150 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-02 — v26: the withdrawal — immigration_stock and
+## agricultural_employment_share removed entire (the owner's decision),
+## the bilateral era closed honorably, the corpus 22/22
+
+**Breaking** (the dist contract loses two indicator files, the
+`bilateral`/`bilateral_citizenship` layer kinds, and two corpus metrics —
+the surviving 27 indicators' files are byte-identical; see Verified).
+
+### Context
+
+Ediz's decision, delivered as a brief: the two indicators go ENTIRE —
+implementation, data, corpus lines. The reasons, as stated: a stock of
+persons is a COUNT, not a rate — no direction ("better/worse") applies,
+and neither metric will enter the future composite score (whose
+architecture is Ediz's next decision, an ADR to come: a separate analysis
+layer, derivations never entering the indicator files); immigration_stock
+carried 11 citations in ONE book and 2 for agricultural (both Le Destin
+des immigrés) — marginal weight; and the 228 MB immigration dist file
+had already broken one GitHub push. This is the first RETRACTION in the
+project's history — every prior version only added — so it followed its
+own protocol: perimeter probes by grep, the shared-code audit
+(industrial's nama grammar is generic — the nace pin lives in the config,
+nothing agricultural-specific survives in code), atomic corpus surgery
+(the CSV, todd_refs.yaml and the configs in ONE version — the ADR-0009
+bijection would fail loudly on any half-state), and a byte-identity
+verification of everything that stays.
+
+### Withdrawn
+
+- `config/indicators/immigration_stock.yaml` (192 sources: the
+  migr_pop3ctb/FOR single-axis door, 62 birth-face ROW doors, 66
+  citizenship-face ROW doors, 124 by-sex ROW doors, the WB SM.POP.TOTL
+  witness, the OECD DF_MIG_POPF + DF_MIG/B15 matrix witnesses) and
+  `config/indicators/agricultural_employment_share.yaml` (the
+  nama_10_a10_e nace-A pin + the WB SL.AGR.EMPL.ZS witness).
+- The dist layer kinds `bilateral` and `bilateral_citizenship` and the
+  machinery that built them: RawRecord's origin_raw_name/origin_iso3_raw/
+  origin_axis fields, normalize's origin-axis routing and always-written
+  layer stubs, merge's _bilateral_key/merge_bilateral_points/
+  build_bilateral_witness_series/_merge_bilateral_layer, build's
+  _bilateral_point_dict/_bilateral_layer_payload + the DF_MIG/ROW
+  citation branches, validate's bilateral checks and report blocks,
+  stats' bilateral lines.
+- The connector grammars: eurostat.py's migr_pop3ctb/migr_pop1ctz
+  dispatch (ROW, ROW-SEX and pinned-c_birth regexes, the migr layout
+  guards, _MIGR_SUMMARY/STATELESS/ORIGIN tables) and oecd.py's
+  DF_MIG_POPF/DF_MIG doors (the bare-flow and keyed-B15 grammars, both
+  parsers, the _MIGF origin maps, the access-mirror URL builders). The
+  WB connector needed NOTHING (its doors are per-code, fully generic).
+- The roots `eurostat_migr`, `oecd_mig`, `un_desa` (the registry drops
+  from 32 to 29); the EUROSTAT/OECD title-registry entries for the migr
+  datasets; the demography Family comment (the enum value stays — the
+  corpus's own family column still carries demography rows).
+- 9 fixtures (5 Eurostat migr responses, 2 OECD matrices, the WB
+  agricultural + migrant-stock pages), 41 tests across four files
+  (21+14 connector tests, 6 integration), the 3 migr seed helpers in
+  conftest — 420 -> 365 tests collected.
+- sources.yaml: the migration door records (the OECD dataflow docs, the
+  eurostat migr dispatch text, the v18 UNWIRED migr entries) replaced by
+  ONE withdrawal record in the house style of the dead-door precedents;
+  the .gitignore line for the 228 MB file (data/dist fully committed
+  again, the policy comment now true without exception).
+- The raw trees (data/raw/{eurostat,oecd,worldbank}/immigration_stock,
+  {eurostat,worldbank}/agricultural_employment_share — 306 MB under
+  eurostat alone) and every processed artifact, including the empty
+  .bilateral stubs normalize used to write for all 29 indicators.
+- The corpus lines: todd_core.csv is Ediz's own upload (sha256
+  e30304cf6dca3b7ca1e3923e49e709167444edef42dcb63add656b8a72395d4b),
+  117 -> 115 rows, 24 -> 22 metrics, 483 -> 470 citations, 16 books
+  unchanged; todd_refs.yaml regenerated from it, the configs changed in
+  the same commit (the bijection holds — check-config green).
+
+### Changed
+
+- ADR-0010 marked MOOT SINCE v26, never deleted: its only rider was
+  withdrawn, but the parallel-faces discipline lives on in the segment
+  layers (v25 — the ADR's own vocabulary extended to population
+  classes). The register and the ADR itself carry the status.
+- scripts/verify_v23/24/25_diff.py, v23/v24_probe.py and
+  make_v22/23/24_fixtures.py moved to scripts/archive/ — they pin
+  dist states that no longer exist for these two indicators (the
+  verify scripts would fail loudly on the new tree, by design); the
+  v26 invariants live in scripts/verify_v26_diff.py, committed with
+  the version.
+- Docs brought to the current state without rewriting history:
+  README (the two provider-door sections and the economy paragraph),
+  architecture.md (the v22-v24 narration kept as the historical
+  record, a v26 note updating the root count 32 -> 29),
+  the-measurement-problem.md (withdrawal notes on the root registry
+  and the v18 section), fixtures/README.md (the three carving sections
+  replaced by one-line withdrawal notes), the entities.yaml comment on
+  the Netherlands Antilles admission.
+- The demography family now carries no implemented indicator — the
+  corpus's own family column keeps the value (consanguinity,
+  fertility); the day a stock/structure metric earns a rate face, the
+  enum value is waiting.
+
+### Verified (live, at delivery time)
+
+- `cli check-config`: OK — 27 indicators, 261 entities; todd corpus 22
+  metrics, 470 citations, 16 books, sha256 e30304cf6dca... (the
+  normalizer's own loud validation printed the same numbers).
+- Tests: 365 passed (420 at V25 — 55 fewer: the 41 deleted functions
+  above, several parametrized (~43 cases), plus parametrized cases and
+  inline asserts stripped from the surviving shared tests). The suite
+  is green with the machinery gone.
+- Rebuild x2 on the surviving raw tree: idempotent, all 30 dist files
+  md5-identical across runs.
+- scripts/verify_v26_diff.py: 39/39 PASS against Ediz's V25 commit
+  (a9ef7eb — tree-identical to the local 0bd640c). The pins: the two
+  indicator files gone config/data/raw/processed root and branch; all
+  27 surviving indicator dist files BYTE-IDENTICAL to V25; the catalog
+  diff = exactly the two entry removals (every surviving entry
+  unchanged field-for-field); the corpus = 22/22 implemented, the two
+  metric ids absent, the owner's CSV sha256 anchored; no dist payload
+  carries bilateral keys while unemployment_rate keeps its segment
+  layers at 3,023/2,710 points; no migr/bilateral machinery left in
+  src/ code lines; the vanished entities all still in the registry.
+- The entity-orphan audit (the brief's reporting requirement):
+  15 registry entities carry no data in the remaining dist; 13 were
+  already data-less at V25 (the WB-codelist islands — Antarctica,
+  Bouvet, Christmas, Cocos, the French Southern lands, Heard, South
+  Georgia, Svalbard, the US Minor Outlying, plus West Germany and the
+  two Yemens, registry-only admissions). TWO are NEW orphans, both
+  v21 vanished-entity admissions whose only data face was the by-origin
+  matrix: `netherlands_antilles` (ANT) and `serbia_and_montenegro`
+  (SCG). They stay — the registry is additive (the brief's rule);
+  Ediz's call whether to retire them.
+
+### Known limitations
+
+- The migration QUESTIONNAIRE still prints on every collector's wire —
+  the doors are closed on OUR side, not the providers'. The ILOSTAT
+  CCT/CBR restructure record (v25) and this withdrawal record sit side
+  by side in sources.yaml: the day a per-origin RATE face exists on a
+  machine wire, the segment-layer pattern (v25) is the shape it rides.
+- `yugoslavia_sfr`, `czechoslovakia`, `ussr` and `kosovo` keep data
+  through other indicators (DYB's vanished-entity tables, the curated
+  USSR tracer) — only ANT and SCG went dark (above).
+- The composite-score architecture Ediz announced (absolute fixed
+  bounds, one source per indicator per cut, no interpolation, a
+  dedicated score-layer config beyond `higher_is_better`) is recorded
+  for V27+ — deliberately NOT implemented here, per the brief.
+
 ## 2026-09-27 — v25: the by-nationality face of unemployment (THE Destin
 ## question found at the collector tier — the class decomposition of the
 ## rate on the LFS's own tables, the ILOSTAT per-country door's death

@@ -56,61 +56,35 @@ class RawRecord:
       fewer maternal deaths are identified by the symbol ♦" — the printed
       Notes17 text; a small-numbers caveat on the RATIO, as-reported).
 
-    v22 (the bilateral face): origin_raw_name / origin_iso3_raw carry the
-    SECOND axis of a matrix row when the source prints one — Eurostat's
-    migr_pop3ctb c_birth (the by-birth origin of a destination's stock,
-    the ROW door) and the OECD DF_MIG_POPF BIRTH_COUNTRY. On such records
-    entity_raw_name/iso3_raw are the DESTINATION and origin_* the ORIGIN
-    — Todd's Le Destin des immigrés board shape ("the stock of Moroccans
-    IN France"). None on every pre-v22 record: the single-axis face; the
-    pipeline routes on the field's presence (origin set -> the bilateral
-    layer, never the (entity, year) merge key).
-
-    v23 (the citizenship face): origin_axis names WHICH bilateral axis
-    the record rides — "birth" (the place-of-birth legality: Eurostat
-    migr_pop3ctb, OECD DF_MIG_POPF) or "citizenship" (the legal face:
-    Eurostat migr_pop1ctz, OECD DSD_MIG@DF_MIG measure B15 — étrangers
-    vs immigrés, Todd's own two boards of the same stock). None on every
-    pre-v23 record and on every single-axis record: the birth face is the
-    default by construction, so v22 snapshots (which carry no origin_axis)
-    keep routing to the bilateral layer bit-identically. The two faces
-    PARALLEL, never merged (ADR-0010): normalize routes citizenship rows
-    to {indicator}.bilateral_citizenship.json, a separate layer with its
-    own merge key space and its own dist block.
-
     v25 (the population-segment face): population_class / segment_axis
     carry the CLASS decomposition of a rate — the questionnaire's own
     segments of the same entity-year (Eurostat lfsa_urgan's citizen
     codelist NAT/FOR/EU27_2020_FOR/NEU27_2020_FOR, the ILOSTAT CCT/CBR
-    class codes). NOT a bilateral record: FOR/NAT are population
-    SEGMENTS, not countries — no origin entity exists to resolve, and
-    inventing umbrella entities for them is exactly the move the
-    project's constitution refuses (the Channel Islands decision).
-    population_class carries the PROJECT vocabulary ("foreigners",
-    "nationals"...), mapped from the provider's own codes in the
-    connector — the same discipline the sex codes follow (M -> "male").
-    segment_axis names which legality the class rides — "birth"
-    (immigrés: lfsa_urgacob, ILOSTAT CBR) or "citizenship" (étrangers:
-    lfsa_urgan, ILOSTAT CCT) — the two ADR-0010 faces again, parallel
-    layers never merged. None on every pre-v25 record: the single-axis
-    and bilateral flows are untouched by construction.
+    class codes). FOR/NAT are population SEGMENTS, not countries — no
+    origin entity exists to resolve, and inventing umbrella entities for
+    them is exactly the move the project's constitution refuses (the
+    Channel Islands decision). population_class carries the PROJECT
+    vocabulary ("foreigners", "nationals"...), mapped from the provider's
+    own codes in the connector — the same discipline the sex codes follow
+    (M -> "male"). segment_axis names which legality the class rides —
+    "birth" (immigrés: lfsa_urgacob, ILOSTAT CBR) or "citizenship"
+    (étrangers: lfsa_urgan, ILOSTAT CCT) — the two ADR-0010 faces again,
+    parallel layers never merged. None on every pre-v25 record: the
+    single-axis flows are untouched by construction.
+
+    (v26 note: the v22/v23 bilateral origin fields — origin_raw_name,
+    origin_iso3_raw, origin_axis — were REMOVED with the migration
+    matrices' indicator; the wiring history lives in the CHANGELOG.)
     """
     entity_raw_name: str
     iso3_raw: str | None
     year: int
     value: float | None  # None = explicitly missing value (not 0, not interpolated)
-    # v22: the origin axis of a bilateral matrix row (None = single-axis).
-    origin_raw_name: str | None = None
-    origin_iso3_raw: str | None = None
-    # v23: WHICH bilateral axis this row rides — "birth" | "citizenship"
-    # (None = single-axis, or a pre-v23 bilateral snapshot: the birth face).
-    origin_axis: str | None = None
     # v25: the population segment of a class-decomposed rate, in the
     # project's own vocabulary (None = the undecomposed faces).
     population_class: str | None = None
     # v25: WHICH legality the segment rides — "birth" | "citizenship"
-    # (None = every pre-v25 record; the birth face is the default by the
-    # same construction origin_axis follows).
+    # (None = every pre-v25 record; the birth face is the default).
     segment_axis: str | None = None
     citation: str | None = None
     definition_note: str | None = None

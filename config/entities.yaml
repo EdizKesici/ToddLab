@@ -315,7 +315,10 @@
   notes: Dissolved 10 October 2010 (Curaçao and Bonaire/Sint Eustatius/Saba
     the successors). Both migration doors keep printing the withdrawn code as
     a birth place (Eurostat AN, OECD ANT_F) — the by-origin face of the v21
-    vanished-entity admission, wired with the bilateral layer in v22.
+    vanished-entity admission, wired with the bilateral layer in v22
+    (the layer withdrew with its indicator in v26 — the entity stays,
+    the registry is additive; its only data face was the by-origin
+    matrix, so it rides the orphan report).
 - entity_id: aruba
   label: Aruba
   iso3: ABW

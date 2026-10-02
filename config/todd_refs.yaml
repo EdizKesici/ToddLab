@@ -14,11 +14,11 @@
 # carried stale from the compilation.
 
 meta:
-  source_csv_sha256: aac60d216c9bc39ceeeb51697e368f561997d8400aa2ce1892960e3f74547282
-  rows: 117
-  metrics: 24
+  source_csv_sha256: e30304cf6dca3b7ca1e3923e49e709167444edef42dcb63add656b8a72395d4b
+  rows: 115
+  metrics: 22
   books: 16
-  total_citations: 483
+  total_citations: 470
 metrics:
   birth_rate_fertility:
     family: society
@@ -526,15 +526,6 @@ metrics:
       citations: 8
       label: Tertiary-educated share of age cohort 70-74 (Barro-Lee)
       note: Barro-Lee panel, Russia/USA/Poland.
-  immigration_stock:
-    family: demography
-    refs:
-    - book: Le Destin des immigrés
-      year: 1994
-      citations: 11
-      label: Maghreb, Turkish, Portuguese populations — France/UK/Germany 1946–1990 (+ 4 distribution
-        maps)
-      note: France/UK/Germany immigrant population by origin, 1946-1990, official censuses.
   cirrhosis_alcohol_mortality:
     family: mortality
     refs:
@@ -669,14 +660,6 @@ metrics:
       citations: 3
       label: Obesity among college-educated, US vs France
       note: CDC-sourced, US health-paradox argument.
-  agricultural_employment_share:
-    family: economy
-    refs:
-    - book: Le Destin des immigrés
-      year: 1994
-      citations: 2
-      label: Agricultural employment/population share (Britain 1841, USA 1841, Turkey 1985)
-      note: UK/USA/Turkey, 1841-1985.
   hiv_prevalence_rate:
     family: mortality
     refs:

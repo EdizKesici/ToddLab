@@ -13,6 +13,6 @@ data/raw/
 data/processed/
 reports/
 
-# v23: probe scratch material (the B15 full download cache)
+# probe scratch material (full-download caches: the v23 B15 pull, the
+# v25 ITF per-vehicle pull — regenerable, never committed)
 data/tmp/
-data/dist/indicators/immigration_stock.json

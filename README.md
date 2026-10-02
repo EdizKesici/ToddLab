@@ -67,8 +67,8 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   alcohol deaths live under different ICD codes — the WHO-MDB coding
   story), so the Russian claim rides the GHE witness (modeled,
   age-standardized) and the book tables.
-- **OECD, THREE MORE DATAFLOWS** (collector tier, v19+v22 — the
-  four-flow connector, the eurostat precedent applied: one connector,
+- **OECD, THREE MORE DATAFLOWS** (collector tier, v19 — the
+  three-flow connector, the eurostat precedent applied: one connector,
   one grammar + pin guard per dataset) — the Income Distribution Database
   (DSD_WISE_IDD@DF_IDD, the gini canonical: national household-survey
   microdata as submitted, equivalized disposable income, 45 areas
@@ -90,70 +90,6 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   (10P4VEH_MOT_ROAD — the exact denominator of Todd's own 1974 WHO
   table in Le Fou et le Prolétaire) and the per-vehicle-km face stay
   registered non-wired doors, one config line away.
-- **OECD, THE MIGRATION QUESTIONNAIRE'S TWO MATRICES** (collector
-  tier, v22 + v23 — the fifth dataflow, the fourth connector's second
-  migration door) — the bilateral WITNESS pair of immigration_stock's
-  by-origin and by-citizenship faces, the SAME questionnaire's two
-  legalities (the oecd_mig root's two doors): the foreign-born matrix
-  (DSD_MIG_F@DF_MIG_POPF "International migration database - stocks of
-  foreign-born population", OECD.ELS.IMD — REF_AREA x BIRTH_COUNTRY,
-  both axes ISO3, 38 destinations x 242 origin codes) and its LEGAL
-  twin (DSD_MIG@DF_MIG "International migration database", measure
-  B15 — REF_AREA x CITIZENSHIP, 36 destinations x 236 origins after
-  the drops). THE ACCESS MIRRORS (each verified live): the B14 flow
-  refuses positional keys and serves only the empty-key /all download
-  (197,570 rows / 18.2 MB); the B15 flow REFUSES /all and serves the
-  positional wildcard key '..A.B15.._Z._Z.PS' (216,120 rows / 18.4 MB)
-  — one wire per face. Both downloads already the pinned frame
-  (FREQ=A, the measure, BIRTH_PLACE=_Z, EDUCATION_LEV=_Z, UNIT=PS —
-  hard-verified per row), both sexes riding for the parser to split
-  (the _T frame kept, the F rows dropped logged — the by-sex face
-  recorded unwired, the V24 hook: B15's 104,009 F rows already
-  downloaded). THE SEAMS, verified to the unit: the questionnaires
-  agree with the Eurostat doors on BOTH faces (FR<-MAR _T 2015 =
-  954,742 born on B14 and 458,561 citizens on B15 — each its Eurostat
-  print exactly), and the OECD faces extend the canonical universe
-  (the FR Maghreb series 2019-2021, the vanished-entity origins, the
-  world's non-European destinations: US<-MEX 2024 = 12,383,868 born
-  vs 8,226,106 citizens — the naturalization gap the pair exists to
-  display). SINCE v24 THE FEMALE FACE rides both matrices (the flows'
-  whole vocabulary is _T + F — NO male face, verified live): the F
-  rows kept as sex="female" points (B14 +94,952, B15 +101,829), the
-  seams verified to the unit against the Eurostat F doors (FR<-MAR F
-  2015 = 475,388 born / 226,668 citizens on both sides of each pair).
-- **Eurostat, THE TWO BY-ORIGIN ROW FACES** (collector tier, v22 +
-  v23 — the bilateral decomposition of the migration questionnaire,
-  migr_pop{3ctb,1ctz}/ROW/{geo}: one geo-pinned call per destination,
-  the origin dimension deliberately UNPINNED): the BIRTH face
-  (migr_pop3ctb — the foreign-born stock, immigrés) and its LEGAL twin
-  (migr_pop1ctz — the stock of foreign citizens, étrangers), the two
-  boards of Le Destin des immigrés themselves — the same migrants read
-  through two legalities, DIVERGING exactly where naturalization runs
-  ahead of the census (FR<-MA 2015: 954,742 born vs 458,561 citizens)
-  and CONVERGING where it rarely does (FR<-PT 2015: 648,112 vs
-  541,867). The two faces ride the dist as PARALLEL layers, never
-  merged (ADR-0010): `bilateral` and `bilateral_citizenship`, the
-  routing key RawRecord.origin_axis. THE HONEST COVERAGE LIMITS, each
-  face its own: the birth face — 30 of the codelist's 44 country geos
-  print the by-birth detail (91,230 canonical points, 30 x 243
-  origins, 1998-2025; 14 print only their totals, unwired, recorded);
-  the citizenship face — 34 print the by-citizenship detail (112,058
-  canonical points, 34 x 226 origins, 1998-2025), GERMANY joining (its
-  birth-face row never printed the detail) and CYPRUS leaving (the
-  totals-only class) — the registration's own asymmetry, carried
-  as-printed, never "corrected". THE DROP DISCIPLINE, shared with one
-  axis-specific class: the summary codes, the aggregates/regions and
-  the native diagonal drop logged per class; the citizenship face adds
-  STLS (stateless — a nationality without a state, an axis residual
-  the birth face never printed). THE VANISHED ORIGINS ride the shared
-  override tables on both faces (AN -> ANT, XK -> XKX — the kosovo/
-  XKX precedent, people born in or still citizens of the former
-  entities, the as-printed classification). SINCE v24 THE BY-SEX FACE
-  rides the same layers (migr_pop{3ctb,1ctz}/ROW/{geo}/{sex} — the
-  M/F ventilations of the SAME rows under the merge key's own sex
-  term, M + F = the _T print to the unit on every anchor: FR<-MA
-  birth 2015 = 479,354 + 475,388 = 954,742; 29 birth + 33 ctz
-  destinations print it, Croatia the honest absence).
 - **World Inequality Database, via OWID's chart door** (research-
   harmonization tier serving as CANONICAL, v19) — the corpus NAMES the
   source for La Défaite de l'Occident's own inequality board
@@ -175,7 +111,9 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   witness — the redistribution IS the gap, displayed never
   reconciled).
 - **The v20 queue doors — five compilations, one corpus closed**
-  (24/24 since v20) — the final five metrics each found their machine
+  (24/24 at v20; 22/22 since v26's withdrawal of immigration_stock and
+  agricultural_employment_share — counts, not rates; the closure
+  discipline itself unchanged) — the final five metrics each found their machine
   face on a compilation's chart door or the provider's own wire:
   the ICPR World Prison Brief via OWID's prison-population-rate (225
   entities 1993-2026, the Défaite six-country board printing itself:
@@ -323,26 +261,30 @@ Compare countries side by side on hard indicators (infant mortality, life expect
   DE at 2009) and the rounding seam (FRA 2024: 7.436 vs 7.4) reading
   as two doors, never a contradiction.
 - **Eurostat, THREE MORE QUESTIONNAIRES** (collector tier, v18 — the
-  five-dataset connector) — the national accounts (nama_10_a10_e), the
-  LFS attainment table (edat_lfse_03) and the migration collection
-  (migr_pop3ctb), each wired as its own dispatch decision with its own
-  ref grammar and layout pin-guard. THE INDUSTRIAL FINDING (the
+  connector that grew to eight datasets by v25, v26 leaving it at six)
+  — the national accounts (nama_10_a10_e) and the LFS attainment
+  table (edat_lfse_03), each wired as its own dispatch decision with
+  its own ref grammar and layout pin-guard. (The v18 migration
+  collection and its citizenship twin withdrew with their indicator
+  in v26; the v25 class-decomposition twins — lfsa_urgan/urgacob —
+  carry the same Todd question as rates.) THE INDUSTRIAL FINDING (the
   version's headline): the accounts door PRINTS the share of total
   employment by industry directly (unit PC_TOT_PER, na_item EMP_DC,
   nace_r2 B-E — the door's own aggregate, "Industry (except
   construction)"; FR 1995 = 16.4 -> 2024 = 10.1, DE 23.1 -> 17.5) —
   the finding that dissolved the composite-derived-layer question the
   backlog's head had waited on since v15: no derivation is needed
-  because the collector prints the share. The agricultural share
-  rides the same door one nace pin away (A: FR 4.4 -> 2.3). The
-  education pair rides the LFS attainment table (tertiary ED5-8,
-  secondary ED3_4 the completed-secondary face, age Y25-64 — one
-  questionnaire now carrying three Todd metrics: unemployment,
-  tertiary, secondary; UNESCO UIS, the world's education collector,
-  has no live API, the probe record in sources.yaml). The migration
-  door prints the foreign-born stock per country (c_birth=FOR: FR
-  2008 = 7,076,824 -> 2024 = 9,362,105, annual, the door's codelist
-  richer than the LFS's). THE EA EDGE: nama's geo codelist carries
+  because the collector prints the share. (v26 withdrew the
+  agricultural twin — the nace-A pin, FR 4.4 -> 2.3 — with its
+  indicator: a share without a defended direction; the door grammar
+  keeps its A-pin test fixture.) The education pair rides the LFS
+  attainment table (tertiary ED5-8, secondary ED3_4 the completed-
+  secondary face, age Y25-64 — one questionnaire carrying three Todd
+  metrics: unemployment, tertiary, secondary; UNESCO UIS, the world's
+  education collector, has no live API, the probe record in
+  sources.yaml). (The migration door that printed the foreign-born
+  stock per country also withdrew with its indicator.) THE EA EDGE:
+  nama's geo codelist carries
   the Euro-area aggregate as the bare two-letter code "EA" — the only
   two-letter aggregate in any wired Eurostat codelist, dropped logged
   by the connector's per-dataset table. Witnesses: the ILOEST modeled

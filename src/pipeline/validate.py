@@ -54,24 +54,10 @@ def check_no_duplicate_entity_year(points: list[MergedPoint]) -> list[tuple[str,
     return sorted(dupes)
 
 
-def check_no_duplicate_bilateral(points: list[MergedPoint]) -> list[tuple[str, str, int, str | None]]:
-    """v22: the bilateral layer's duplicate detection — the full by-origin
-    key (destination, origin, year, sex), the same discipline as the
-    single-axis check one layer over."""
-    seen = set()
-    dupes = set()
-    for p in points:
-        key = (p.entity_id, p.origin_entity_id, p.year, p.sex)
-        if key in seen:
-            dupes.add(key)
-        seen.add(key)
-    return sorted(dupes)
-
-
 def check_no_duplicate_segments(points: list[MergedPoint]) -> list[tuple[str, str, int, str | None]]:
     """v25: the population-segment layer's duplicate detection — the full
     class key (entity, class, year, sex), the same discipline as the
-    single-axis and bilateral checks."""
+    single-axis check."""
     seen = set()
     dupes = set()
     for p in points:
@@ -137,65 +123,6 @@ def _segments_validation(
         "duplicate_entity_year": check_no_duplicate_segments(s_points),
         "coverage": coverage_summary(indicator, s_points, entities),
         "witnesses": s_witness_results,
-    }
-
-
-def _bilateral_validation(
-    indicator: Indicator, processed_dir: Path, layer: str, entities: EntityRegistry
-) -> dict | None:
-    """v22 (inline block) / v23 (extracted, parameterized): one bilateral
-    FACE's own checks — the plausible bounds apply (a unit error on a
-    by-origin point is exactly as damaging whatever the legality), the
-    duplicate detection runs on (destination, origin, year, sex), and the
-    coverage summary counts the DESTINATION axis (the boards' rows) with
-    the pair count beside it. None when the indicator carries no points
-    on this layer (the 27 single-axis indicators — honest absence, same
-    as the dist layer itself)."""
-    bilateral_merged_path = processed_dir / f"{indicator.id}.{layer}.merged.json"
-    if not bilateral_merged_path.exists():
-        return None
-    b_raw_points = json.loads(bilateral_merged_path.read_text(encoding="utf-8"))
-    b_points = [MergedPoint(**p) for p in b_raw_points]
-    b_witnesses_path = processed_dir / f"{indicator.id}.{layer}.witnesses.json"
-    b_raw_witnesses = (
-        json.loads(b_witnesses_path.read_text(encoding="utf-8")) if b_witnesses_path.exists() else []
-    )
-    b_witness_results = []
-    for bw in b_raw_witnesses:
-        bw_points = [
-            MergedPoint(
-                entity_id=p["entity_id"],
-                origin_entity_id=p.get("origin_entity_id"),
-                year=p["year"],
-                value=p["value"],
-                provider=bw["provider"],
-                source_ref=bw["source_ref"],
-                sex=p.get("sex"),
-            )
-            for p in bw["data"]
-        ]
-        b_witness_results.append(
-            {
-                "provider": bw["provider"],
-                "source_ref": bw["source_ref"],
-                "n_points": len(bw_points),
-                "n_explicit_gaps": sum(1 for p in bw_points if p.value is None),
-                "n_destinations": len({p.entity_id for p in bw_points}),
-                "n_origins": len({p.origin_entity_id for p in bw_points}),
-                "range_violations": check_plausible_range(indicator, bw_points),
-                "duplicate_entity_year": check_no_duplicate_bilateral(bw_points),
-            }
-        )
-    return {
-        "n_points": len(b_points),
-        "n_pairs": len({(p.entity_id, p.origin_entity_id) for p in b_points}),
-        "n_destinations": len({p.entity_id for p in b_points}),
-        "n_origins": len({p.origin_entity_id for p in b_points}),
-        "n_explicit_gaps": sum(1 for p in b_points if p.value is None),
-        "range_violations": check_plausible_range(indicator, b_points),
-        "duplicate_entity_year": check_no_duplicate_bilateral(b_points),
-        "coverage": coverage_summary(indicator, b_points, entities),
-        "witnesses": b_witness_results,
     }
 
 
@@ -275,21 +202,8 @@ def validate_indicator(indicator: Indicator, processed_dir: Path, entities: Enti
         "witnesses": witness_results,
     }
 
-    # v22 (the bilateral face) / v23 (the citizenship face): each by-origin
-    # FACE gets the SAME two families of checks under its own key (see
-    # _bilateral_validation) — the plausible bounds apply (a unit error on
-    # a by-origin point is exactly as damaging), the duplicate detection
-    # runs on (destination, origin, year, sex), and the coverage summary
-    # counts the DESTINATION axis (the boards' rows) with the pair count
-    # beside it. Absent when the indicator carries no points on that layer
-    # (the 27 single-axis indicators — honest absence, same as the dist
-    # layer itself).
-    for layer in ("bilateral", "bilateral_citizenship"):
-        layer_result = _bilateral_validation(indicator, processed_dir, layer, entities)
-        if layer_result is not None:
-            result[layer] = layer_result
-    # v25 (the population-segment faces): the same per-layer checks for the
-    # two CLASS faces — segments (birth) and segments_citizenship (the
+    # v25 (the population-segment faces): the two CLASS faces get the same
+    # per-layer checks — segments (birth) and segments_citizenship (the
     # legal face), absent when the indicator carries no points there.
     for layer in ("segments", "segments_citizenship"):
         layer_result = _segments_validation(indicator, processed_dir, layer, entities)
@@ -333,14 +247,11 @@ def render_coverage_report_md(results: list[dict]) -> str:
                 lines.append(f"  - ⚠️ **{len(w['duplicate_entity_year'])} witness entity-year duplicate(s) (merge bug)**")
         if r.get("witnesses"):
             lines.append("")
-        # v22: the by-origin layer's own summary block — the destination
-        # axis is the boards' row space, the pair count the matrix's own
-        # size, the witnesses beside it (the OECD matrix's world face).
-        # v23: the citizenship face renders its own block with the same
-        # shape — the two faces read side by side, never blended.
-        for layer_key, layer_label in (("bilateral", "Bilateral layer"),
-                                       ("bilateral_citizenship", "Bilateral (citizenship) layer"),
-                                       ("segments", "Segments (country-of-birth classes) layer"),
+        # v25: the segment faces' own summary blocks — the class count, the
+        # entity count, the witnesses beside them (the ILOSTAT class
+        # cross-sections' world face). The two faces read side by side,
+        # never blended.
+        for layer_key, layer_label in (("segments", "Segments (country-of-birth classes) layer"),
                                        ("segments_citizenship", "Segments (citizenship classes) layer")):
             b = r.get(layer_key)
             if not b:
@@ -365,25 +276,6 @@ def render_coverage_report_md(results: list[dict]) -> str:
                         lines.append(f"  - ⚠️ **{len(bw['duplicate_entity_year'])} segment witness duplicate(s) (merge bug)**")
                 lines.append("")
                 continue
-            lines.append(
-                f"- {layer_label}: **{b['n_points']} points** on {b['n_pairs']} (destination x origin) "
-                f"pairs — {b['n_destinations']} destinations x {b['n_origins']} distinct origins "
-                f"({b['n_explicit_gaps']} explicit gap points)"
-            )
-            if b["range_violations"]:
-                lines.append(f"  - ⚠️ **{len(b['range_violations'])} bilateral value(s) out of plausible bounds**")
-            if b["duplicate_entity_year"]:
-                lines.append(f"  - ⚠️ **{len(b['duplicate_entity_year'])} bilateral (destination, origin, year) duplicate(s) (merge bug)**")
-            for bw in b.get("witnesses", []):
-                lines.append(
-                    f"- Bilateral witness `{bw['provider']}:{bw['source_ref']}` — {bw['n_destinations']} destinations, "
-                    f"{bw['n_origins']} origins, {bw['n_points']} points ({bw['n_explicit_gaps']} explicit gap points)"
-                )
-                if bw["range_violations"]:
-                    lines.append(f"  - ⚠️ **{len(bw['range_violations'])} bilateral witness value(s) out of plausible bounds**")
-                if bw["duplicate_entity_year"]:
-                    lines.append(f"  - ⚠️ **{len(bw['duplicate_entity_year'])} bilateral witness duplicate(s) (merge bug)**")
-            lines.append("")
     return "\n".join(lines)
 
 

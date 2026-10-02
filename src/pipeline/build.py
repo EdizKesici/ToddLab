@@ -114,24 +114,6 @@ def _source_citation(provider: Provider, ref: str) -> str:
                 f"(DSD_INDICATORS@DF_SAFETY), measure '{measure}', unit {unit} - "
                 "IRTAD road crash registrations as submitted"
             )
-        if flow == "DF_MIG_POPF":
-            # v22: the migration questionnaire's foreign-born matrix — the
-            # bare-flow ref (the empty-key /all download), the bilateral
-            # witness of immigration_stock.
-            return (
-                f"OECD, {OECD_DATAFLOW_TITLES['DF_MIG_POPF']} (DSD_MIG_F@DF_MIG_POPF), "
-                "the foreign-born stock by country of birth - the migration "
-                "questionnaire's answers as submitted, OECD-compiled"
-            )
-        if flow == "DF_MIG":
-            # v23: the SAME questionnaire's citizenship matrix — the keyed
-            # wildcard download (measure B15), the bilateral witness of the
-            # by-citizenship face.
-            return (
-                f"OECD, {OECD_DATAFLOW_TITLES['DF_MIG']} (DSD_MIG@DF_MIG), "
-                "the stock of foreign population by nationality (measure B15) - "
-                "the migration questionnaire's answers as submitted, OECD-compiled"
-            )
         return template.format(cause=parts[1])
     if provider == Provider.eurostat:
         # 'demo_find/TOTFERRT' (all countries) or 'demo_find/TOTFERRT/FR'
@@ -143,17 +125,6 @@ def _source_citation(provider: Provider, ref: str) -> str:
         # collection, never 'Fertility indicators').
         parts = ref.split("/")
         title = EUROSTAT_DATASET_TITLES[parts[0]]
-        if len(parts) == 3 and parts[1] == "ROW":
-            # v22/v23: the bilateral ROW doors — 'migr_pop3ctb/ROW/FR' (the
-            # by-origin row of one destination, c_birth open) and
-            # 'migr_pop1ctz/ROW/FR' (the by-citizenship twin, citizen open):
-            # geo named so the doors stay distinguishable in the sources
-            # block, the axis named so the two faces read as what they are.
-            axis = "by-origin (c_birth)" if parts[0] == "migr_pop3ctb" else "by-citizenship (citizen)"
-            return (
-                f"{template.format(title=title, dataset=parts[0], code='ROW')}, "
-                f"the {axis} row of geo {parts[2]}"
-            )
         if len(parts) == 3:
             return f"{template.format(title=title, dataset=parts[0], code=parts[1])}, geo {parts[2]}"
         if len(parts) == 2 and parts[0] in ("lfsa_urgan", "lfsa_urgacob"):
@@ -250,29 +221,6 @@ def build_indicator_file(
             out["small_base"] = True
         return out
 
-    def _bilateral_point_dict(p: dict) -> dict:
-        """v22: the by-origin layer's own point shape — the destination named
-        EXPLICITLY (destination_entity_id) so the two axes never read as one
-        field with different meanings, the origin beside it, then the same
-        conditional annotation transport as the single-axis face (the
-        bilateral doors print quality codes and provisional flags, nothing
-        else)."""
-        out = {
-            "destination_entity_id": p["entity_id"],
-            "origin_entity_id": p["origin_entity_id"],
-            "year": p["year"],
-            "value": p["value"],
-            **({"provider": p["provider"]} if p.get("provider") else {}),
-            **({"source_ref": p["source_ref"]} if p.get("source_ref") else {}),
-        }
-        if p.get("sex"):
-            out["sex"] = p["sex"]
-        if p.get("quality_code"):
-            out["quality_code"] = p["quality_code"]
-        if p.get("provisional"):
-            out["provisional"] = True
-        return out
-
     def _segment_point_dict(p: dict) -> dict:
         """v25: the population-segment layer's own point shape — the class
         named EXPLICITLY (population_class, the layer-scoped project
@@ -322,56 +270,10 @@ def build_indicator_file(
         for w in raw_witnesses
     ]
 
-    # v22 (the bilateral face) / v23 (the citizenship face): each by-origin
-    # FACE rides BESIDE the single-axis data/witnesses — its own data
-    # (destination x origin x year) and its own witness series. ADDITIVE by
-    # construction: each layer is emitted ONLY when the processed tree
-    # carries that layer's points (merge_indicator writes the pair exactly
-    # then, and unlinks stale copies otherwise), so every single-axis
-    # indicator's dist file stays byte-identical — no key, no change. The
-    # two faces are PARALLEL, never merged (ADR-0010): `bilateral` = the
-    # place-of-birth legality (immigrés), `bilateral_citizenship` = the
-    # legal face (étrangers).
-    def _bilateral_layer_payload(merged_path: Path) -> dict | None:
-        if not merged_path.exists():
-            return None
-        b_points = json.loads(merged_path.read_text(encoding="utf-8"))
-        b_witnesses_path = merged_path.parent / merged_path.name.replace(".merged.json", ".witnesses.json")
-        raw_b_witnesses = (
-            json.loads(b_witnesses_path.read_text(encoding="utf-8")) if b_witnesses_path.exists() else []
-        )
-        return {
-            "data": [_bilateral_point_dict(p) for p in b_points],
-            "witnesses": [
-                {
-                    "provider": bw["provider"],
-                    "source_ref": bw["source_ref"],
-                    "layer": PROVIDER_LAYER[Provider(bw["provider"])],
-                    "root": root_by_ref[(bw["provider"], bw["source_ref"])],
-                    "root_label": ROOT_LABELS[root_by_ref[(bw["provider"], bw["source_ref"])]],
-                    "unit": indicator.unit,
-                    "native_unit": native_unit_by_ref.get((bw["provider"], bw["source_ref"])),
-                    "citation": _source_citation(Provider(bw["provider"]), bw["source_ref"]),
-                    "url": _source_url(Provider(bw["provider"]), bw["source_ref"]),
-                    "license": PROVIDER_LICENSE[Provider(bw["provider"])],
-                    "n_points": len(bw["data"]),
-                    "data": [_bilateral_point_dict(p) for p in bw["data"]],
-                }
-                for bw in raw_b_witnesses
-            ],
-        }
-
-    bilateral_payload = _bilateral_layer_payload(
-        processed_dir / f"{indicator.id}.bilateral.merged.json"
-    )
-    bilateral_citizenship_payload = _bilateral_layer_payload(
-        processed_dir / f"{indicator.id}.bilateral_citizenship.merged.json"
-    )
-
     # v25 (the population-segment face): the same ADDITIVE-by-construction
     # emission for the two CLASS faces — each rides BESIDE the single-axis
-    # data/witnesses and the bilateral faces with its own data
-    # (entity x class x year) and its own witness series, emitted ONLY when
+    # data/witnesses with its own data (entity x class x year) and its own
+    # witness series, emitted ONLY when
     # the processed tree carries that layer's points. The two faces are
     # PARALLEL (ADR-0010): `segments` = the birth-axis classes (immigrés),
     # `segments_citizenship` = the legal classes (étrangers) — never merged,
@@ -440,17 +342,6 @@ def build_indicator_file(
         "data": [_point_dict(p) for p in points],
         "witnesses": witnesses_payload,
     }
-    # v22 (the bilateral face): the by-origin layer — ADDITIVE, emitted only
-    # when the indicator's processed tree carries it (see above). The field
-    # name is the dist contract's own vocabulary: destination_entity_id x
-    # origin_entity_id x year, the shape of Todd's boards.
-    # v23 (the citizenship face): the PARALLEL twin — `bilateral_citizenship`,
-    # the same point shape on the legal axis (ADR-0010: never merged with
-    # the birth face, never arbitrated across).
-    if bilateral_payload is not None:
-        payload["bilateral"] = bilateral_payload
-    if bilateral_citizenship_payload is not None:
-        payload["bilateral_citizenship"] = bilateral_citizenship_payload
     # v25 (the population-segment faces): ADDITIVE, the same rule — emitted
     # only when the indicator's processed tree carries the layer. The field
     # names are the dist contract's own vocabulary: `segments` (the birth
