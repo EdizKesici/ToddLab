@@ -14,6 +14,11 @@ entries/metrics that went away).
 v26.1 (the audit fixup) added §1b/§1c/§1d: content-based checks, after
 Ediz's audit found that name globs cannot see fixtures keyed by source
 codes (eurostat_migr_*, oecd_mig_b15, wb_sl_agr_empl, wb_sm_pop_totl).
+
+v26.1.1 made §9's count check self-diagnosing: FAIL [None] on the
+owner's machine was silence, not a regression — the returncode and
+output tails now ride the failure detail, every pytest summary shape
+is parsed, and a node-id fallback counts collected ids directly.
 """
 import json
 import subprocess
@@ -290,25 +295,43 @@ for eid in ("netherlands_antilles", "serbia_and_montenegro", "czechoslovakia", "
     check(f"registry keeps the vanished entity '{eid}' (additive discipline)", eid in ent_ids)
 
 # --- 9. tests + config state (announced, read live) ---
-proc = subprocess.run(
-    [sys.executable, "-m", "pytest", "tests/", "-q", "--co", "-t", ""],
-    capture_output=True, text=True, cwd=str(ROOT),
-) if False else None
+# v26.1.1: the count check made SELF-DIAGNOSING. On the owner's machine
+# it printed FAIL [None] — no number at all: `python -m pytest` produced
+# no parseable summary (pytest not importable by that interpreter, or a
+# usage error). A loud verifier must say WHY: the returncode and the
+# output tails now ride the failure detail, the parser accepts every
+# known pytest summary shape, and a node-id fallback counts the
+# collected ids themselves when no summary line exists.
 test_count = subprocess.run(
     [sys.executable, "-m", "pytest", "tests/", "-q", "--collect-only"],
     capture_output=True, text=True, cwd=str(ROOT),
 )
 n_tests = None
-for line in test_count.stdout.splitlines():
-    if "tests collected" in line or "test selected" in line:
-        n_tests = int(line.split()[0])
+_out_lines = test_count.stdout.splitlines()
+for _s in (l.strip() for l in _out_lines):
+    _m = (
+        _re.match(r"^(\d+) tests? collected", _s)
+        or _re.match(r"^(\d+) tests? selected", _s)
+        or _re.match(r"^collected (\d+) items", _s)
+    )
+    if _m:
+        n_tests = int(_m.group(1))
         break
-    if line.strip().endswith("collected") and line.strip().split()[0].isdigit():
-        n_tests = int(line.strip().split()[0])
+    if _s.endswith("collected") and _s.split() and _s.split()[0].isdigit():
+        n_tests = int(_s.split()[0])
+        break
+if n_tests is None:
+    # version-proof fallback: the collected node ids themselves
+    _ids = [l for l in _out_lines if "::" in l and not l.lstrip().startswith("=")]
+    if _ids:
+        n_tests = len(_ids)
+_diag = [f"returncode={test_count.returncode}"]
+_diag += [f"stdout: {_s}" for _s in map(str.strip, _out_lines[-4:]) if _s][:3]
+_diag += [f"stderr: {_s}" for _s in map(str.strip, test_count.stderr.splitlines()[-4:]) if _s][:3]
 check(
     "365 tests collected (420 at V25 - 55 withdrawn with the machinery)",
     n_tests == 365,
-    f"{n_tests}",
+    f"parsed={n_tests}; " + " | ".join(_diag),
 )
 cfg = subprocess.run(
     [sys.executable, "-m", "src.cli", "check-config"], capture_output=True, text=True, cwd=str(ROOT)
