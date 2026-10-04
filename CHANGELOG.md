@@ -18,6 +18,88 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-04 — v26.1: the audit fixup — the integration residue
+## removed (a zip unzipped over a folder cannot delete), the verifier
+## taught to read content instead of names, and the pre-withdrawal tag
+
+**No dist contract change:** data/dist untouched byte-for-byte (the
+residue lived in tests/ and scripts/ only); the fix rides Ediz's own
+pushed line (958fa0b) — after it, the tree differs from the backend's
+delivered commit (8c009ad) by exactly two files: this verifier and
+this changelog.
+
+### Context
+
+Ediz audited the V26 he pushed (958fa0b — his integration of the
+delivered zip) against V25 and confirmed the data side clean: the 27
+surviving dist files byte-identical, the catalog exactly the two entry
+removals, the corpus 22 metrics / 470 citations, industrial untouched,
+ADR-0010 moot, 15 orphans as announced. Three findings, all resolved
+here. (1) and (2): the 9 withdrawn fixtures and the 8 archived scripts
+still present at the top of scripts/ — the delivered artifact was
+faithful (the backend commit 8c009ad carries the nine fixtures as D
+deletions and the eight scripts as R100 pure renames; the zip never
+contained them), but the integration method — unzipping the delivery
+over the V25 folder — cannot propagate DELETIONS: files absent from
+the archive survive on disk and ride `git add -A` back into history.
+Every version until v26 was purely additive, so the flow had never
+tripped; v26 was the project's first RETRACTION. (3) the tag the
+brief demanded before the withdrawal was never laid — a genuine miss
+on the delivery side, admitted and corrected below.
+
+### Fixed
+
+- The 17 residue files removed from 958fa0b's line: the 9 fixtures
+  (5 Eurostat migr responses, 2 OECD mig matrices, the WB agricultural
+  and migrant-stock pages) and the 8 duplicate scripts (make_v22/23/
+  24_fixtures, v23/v24_probe, verify_v23/24/25_diff — the archive
+  copies in scripts/archive/ are again the single home; the duplicates
+  were the KeyError Ediz hit running verify_v25_diff.py).
+- The delivery protocol: from v26.1 on, any version carrying deletions
+  ships a git patch alongside the zip — deletions propagate exactly,
+  `git am` applies the commit verbatim.
+
+### Added
+
+- verify_v26_diff.py grew §1b/§1c/§1d — the audit's explicit ask,
+  fixtures checked by CONTENT, not names: six withdrawn-source
+  signatures (the migr_pop1ctz / migr_pop3ctb dataset labels,
+  DSD_MIG@DF_MIG, DSD_MIG_F@DF_MIG_POPF, SL.AGR.EMPL.ZS,
+  SM.POP.TOTL) — a renamed resurrected fixture cannot hide; the
+  scripts content rule (nothing outside archive/ may reference a
+  withdrawn indicator or source code, this verifier excepted — naming
+  the dead is its job); the explicit nine-name list as a third belt.
+  The signatures were carved live from the V25 fixtures and
+  self-tested against the residue before removal: they flagged
+  exactly the 9 files, zero false positives on the survivors.
+- The tag `v25-before-withdrawal` on a9ef7eb (annotated) — the
+  brief's pre-deletion anchor, landed late. One command pushes it
+  (Known limitations).
+
+### Verified (live, this session)
+
+- Tests: 365 passed. `cli check-config`: 27 indicators, 261 entities;
+  todd corpus 22 metrics / 470 citations.
+- scripts/verify_v26_diff.py: 42/42 PASS (the 39 carried + the three
+  new content checks).
+- The convergence proof: `git diff 8c009ad` on the fixed tree =
+  exactly scripts/verify_v26_diff.py + CHANGELOG.md — the owner's
+  line and the delivered line meet.
+- Rebuild ×2 on the surviving raw tree (the item the audit could not
+  verify — raw rides no git): all 30 dist files md5-identical across
+  the committed state and two consecutive rebuilds. The pushed dist
+  IS the deterministic pipeline product. (The unemployment_rate
+  mapping-gap warning reproduces identically — pre-existing,
+  output-stable.)
+
+### Known limitations
+
+- The push and the tag's push remain the owner's commands (this
+  sandbox has no GitHub credentials): `git am` the patch, then
+  `git push origin main --tags`.
+- ANT and SCG orphan retirement stays Ediz's call (the additive
+  registry discipline holds until he says otherwise).
+
 ## 2026-10-02 — v26: the withdrawal — immigration_stock and
 ## agricultural_employment_share removed entire (the owner's decision),
 ## the bilateral era closed honorably, the corpus 22/22
