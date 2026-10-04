@@ -10,6 +10,10 @@ leave NOTHING behind — configs, corpus lines, fixtures, machinery — and
 every SURVIVING indicator's dist file stays byte-identical, with exactly
 two dist files allowed to change (catalog.json, todd_corpus.json — the
 entries/metrics that went away).
+
+v26.1 (the audit fixup) added §1b/§1c/§1d: content-based checks, after
+Ediz's audit found that name globs cannot see fixtures keyed by source
+codes (eurostat_migr_*, oecd_mig_b15, wb_sl_agr_empl, wb_sm_pop_totl).
 """
 import json
 import subprocess
@@ -54,6 +58,80 @@ for name in ("immigration_stock", "agricultural_employment_share"):
         f"no fixture carries the name: tests/fixtures/*{name}*",
         not any((ROOT / "tests/fixtures").glob(f"*{name}*")),
     )
+
+# --- 1b. no fixture CARRIES withdrawn-source data (content, not names) ---
+# The v26 audit lesson: name globs miss fixtures keyed by SOURCE codes
+# (eurostat_migr_*, oecd_mig_b15, wb_sl_agr_empl, wb_sm_pop_totl carry
+# none of the indicator names). These checks read CONTENT: any fixture
+# whose bytes carry a withdrawn source signature fails, whatever its
+# filename — a renamed resurrected fixture cannot hide.
+WITHDRAWN_DATA_SIGNATURES = {
+    "eurostat migr_pop1ctz (population by citizenship)":
+        "Population on 1 January by age group, sex and citizenship",
+    "eurostat migr_pop3ctb (population by country of birth)":
+        "Population on 1 January by age group, sex and country of birth",
+    "oecd DSD_MIG@DF_MIG (the B15 matrix)": "DSD_MIG@DF_MIG",
+    "oecd DSD_MIG_F@DF_MIG_POPF (migration flows)": "DSD_MIG_F@DF_MIG_POPF",
+    "WB agricultural employment (SL.AGR.EMPL.ZS)": "SL.AGR.EMPL.ZS",
+    "WB international migrant stock (SM.POP.TOTL)": "SM.POP.TOTL",
+}
+_fixture_offenders = []
+for _f in sorted((ROOT / "tests/fixtures").iterdir()):
+    if not _f.is_file():
+        continue
+    _text = _f.read_text(encoding="utf-8", errors="replace")
+    for _what, _sig in WITHDRAWN_DATA_SIGNATURES.items():
+        if _sig in _text:
+            _fixture_offenders.append(f"{_f.name} carries {_what}")
+check(
+    "no fixture CARRIES withdrawn-source data (content scan, names irrelevant)",
+    not _fixture_offenders,
+    "\n".join(_fixture_offenders),
+)
+
+# --- 1c. no script outside archive/ references the withdrawn indicators ---
+# The audit's second finding: the archived v22/v23/v24/v25 scripts must
+# not ALSO live in scripts/ — the duplicates reference the withdrawn ids
+# and fail loudly when run (verify_v25_diff.py: KeyError). Content rule:
+# no script outside archive/ (this verifier excepted — naming the dead is
+# its job) may reference a withdrawn indicator or source code.
+_script_offenders = []
+for _f in sorted((ROOT / "scripts").glob("*.py")):  # top level only: archive/ excluded
+    if _f.name == "verify_v26_diff.py":
+        continue
+    _text = _f.read_text(encoding="utf-8", errors="replace")
+    for _needle in (
+        "immigration_stock", "agricultural_employment_share",
+        "migr_pop", "DSD_MIG", "SL.AGR.EMPL.ZS", "SM.POP.TOTL",
+    ):
+        if _needle in _text:
+            _script_offenders.append(f"{_f.name} references {_needle}")
+            break
+check(
+    "no script outside archive/ references the withdrawn indicators "
+    "(content scan; this verifier excepted)",
+    not _script_offenders,
+    "\n".join(_script_offenders),
+)
+
+# --- 1d. the nine withdrawn fixture files are gone by NAME too ---
+_WITHDRAWN_FIXTURES = (
+    "eurostat_migr1ctz_row_fr_f_sample.json",
+    "eurostat_migr1ctz_row_fr_sample.json",
+    "eurostat_migr3ctb_row_fr_m_sample.json",
+    "eurostat_migr_for_sample.json",
+    "eurostat_migr_row_fr_sample.json",
+    "oecd_mig_b15_sample.csv",
+    "oecd_migf_sample.csv",
+    "wb_sl_agr_empl_sample.json",
+    "wb_sm_pop_totl_sample.json",
+)
+_left = [n for n in _WITHDRAWN_FIXTURES if (ROOT / "tests/fixtures" / n).exists()]
+check(
+    "the 9 withdrawn fixture files are gone (explicit list)",
+    not _left,
+    f"still present: {_left}",
+)
 
 # --- 2. the surviving dist files are byte-identical to V25 ---
 # NOTE: immigration_stock.json was GITIGNORED at V25 (the 228 MB exclusion)
