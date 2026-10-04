@@ -18,6 +18,54 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-04 — v26.1.1: the count check made self-diagnosing —
+## FAIL [None] was silence, not a regression (the owner's first
+## end-to-end git am, tag and push landed on GitHub)
+
+### Context
+
+Ediz applied the v26.1 fixup himself — his first `git am` — laid the
+tag and pushed: GitHub main = 0782752, tree-identical to the delivered
+7731e23 (re-read live by fetch: the diff is empty), the tag
+v25-before-withdrawal live at a9ef7eb. On his machine the verifier read
+41/42: every substantive check PASSed — the 27 dist files
+byte-identical, the corpus 22/470, the content scans clean — but the
+test-count check printed FAIL [None]: no number at all. `python -m
+pytest` under his (venv_global) produced no parseable summary — that
+interpreter carries the project's dependencies (check-config imports
+src cleanly) but, most likely, not pytest itself (the audit's 365/365
+ran in another environment). Two defects, one his env, one ours: a
+loud verifier that answers "[None]" violates the house doctrine.
+
+### Fixed
+
+- verify_v26_diff.py §9 rewritten self-diagnosing: the subprocess
+  returncode and the stdout/stderr tails ride the FAIL detail (a
+  missing pytest now says so, in its own words); the parser accepts
+  every known pytest summary shape ("N tests collected", "N tests
+  selected", "collected N items", error suffixes); and when no summary
+  line exists a node-id fallback counts the collected ids directly.
+  The dead `proc` drafting stub and a missing `break` in the old
+  second branch went with it.
+
+### Verified (live, this session)
+
+- The parser self-tested against six synthetic outputs (modern
+  summary, module-missing — reproducing the owner's shape with the
+  readable diagnosis, usage error, old format, error suffix, node-id
+  fallback): 6/6.
+- scripts/verify_v26_diff.py: 42/42 PASS on this tree (pytest 9.0.2
+  here); the suite itself: 365 passed.
+- GitHub re-read live: main 0782752 tree-identical to the delivered
+  commit; the tag live at a9ef7eb.
+
+### Known limitations
+
+- The owner's environment question (pytest in venv_global) is his to
+  settle — `python -c "import pytest; print(pytest.__version__)"` says
+  it in one line (pyproject pins pytest>=8.0); the check now speaks
+  either way.
+
 ## 2026-10-04 — v26.1: the audit fixup — the integration residue
 ## removed (a zip unzipped over a folder cannot delete), the verifier
 ## taught to read content instead of names, and the pre-withdrawal tag
