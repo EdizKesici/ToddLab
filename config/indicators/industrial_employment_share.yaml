@@ -2,7 +2,10 @@ id: industrial_employment_share
 label: "Industrial employment share"
 family: economy
 unit: percent
-higher_is_better: false
+higher_is_better: true   # v27 decision 10 (Ediz): Todd defends industry against free
+                         # trade — the direction flips false -> true in v27; the score
+                         # config keeps provisional: true on the component until the
+                         # direction is confirmed in the books.
 todd_core: true
 
 sources:

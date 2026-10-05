@@ -18,6 +18,206 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-05 — v27: the score layer — two derived composites
+## (official / modelled) on a frozen absolute scale, the project's first
+## and only derived product, and the one deliberate indicator-layer
+## exception: industrial employment's direction flipped
+
+**Breaking** (the frontend contract): `industrial_employment_share`'s
+`higher_is_better` flips `false -> true` — the ONE indicator-layer
+change of v27 (Ediz's decision 10: Todd defends industry against free
+trade, *L'illusion économique*), propagating to its dist file and its
+catalog entry in exactly that one field. Everything else v27 touches is
+ADDITIVE, plus one archived verifier (the move listed in the delivery
+note).
+
+### Context
+
+Ediz's brief (written with the independent auditor from a live audit of
+the 58509e3 dist — every anchor re-read before implementation, zero
+divergence except two imprecisions in the brief's prose, reported
+below): the composite the project had refused since its founding,
+finally — as a DERIVED layer that leaves the indicator layer's three
+prohibitions untouched. The design interview's locked decisions became
+ADR-0011: two scores NEVER merged (official = canonical tier, ~37
+countries; modelled = widest-coverage single source, ~110); ONE source
+per component for all countries and years, never mixed; an ABSOLUTE
+scale with fixed p1/p99 bounds frozen since 1990 (log for the very
+skewed); the fertility target 2.1; coverage 0.60; deltas need 0.50
+common weight; life expectancy by sex as two half-weight components (no
+both-sexes canonical ever derived); road mortality per-vehicle official
+only (no world-wide source exists); `gini_index` removed from the score
+ONLY (double counting with top_income_share — it stays an indicator,
+todd_core true, on the site); the backend pre-computes everything, the
+frontend applies custom weights per the exact contract
+(`docs/score-contract.md`) and unit-tests itself against golden
+vectors. The v26 withdrawal's "counts, not rates" line held: no
+direction was retrofitted onto any count.
+
+### Investigated (live, before freezing anything)
+
+- The reference prototype (Ediz's auditor's script) run on the 58509e3
+  dist: every §8 anchor reproduced EXACTLY (20/18 and 19/17
+  components/weight; scored countries 20/18/36/37/33/34 official and
+  104/103/133/110/101/58 modelled at 2000/2005/2010/2015/2019/2022; the
+  2015 top-5s; the Russian deltas, modelled accepted at 0.53/0.71/0.59
+  common weight, official refused at 0.22/0.28/0.17).
+- **Two imprecisions in the brief's prose, reported per the working
+  rules**: (a) §5's "top_income_share and the WID Gini share exactly
+  the same country-years (3,203 pairs)" — the measured reality: the
+  Gini's canonical is OECD IDD (906 pairs), top_income's is OWID/WID
+  (3,203); 774 pairs shared, 85.4% of the Gini's footprint inside
+  top_income's. The double-counting rationale stands on the overlap;
+  the ADR carries the corrected facts. (b) The same §5 phrasing implies
+  one WID root for both; the structural truth is two canonicals over
+  one shared survey universe (and top_income's own witness IS the WID
+  Gini — the tell).
+- The incarceration even/odd probe (the brief's open question): even
+  years 1998-2008 carry 137-151 countries, odd years 10-32, ZERO null
+  records in those years — the odd years simply lack rows. The cause,
+  read from the config's own root: the canonical IS the ICPR World
+  Prison Brief compilation, whose World Prison Population Lists
+  publish biennially — the cadence is the COMPILATION's, not OWID's and
+  not the countries'.
+- The OECD/ITF per-vehicle probe (the brief's second open question,
+  wired to nothing): the 10P4VEH_MOT_ROAD unit publishes EXACTLY the
+  same 38 areas today as at the v25 fetch (no USA/RUS/GBR/JPN/CAN/KOR/
+  CHN/TUR/BRA/IND/UKR); the door's other unit (10P5HB, per capita)
+  carries 55 areas including USA/GBR/JPN/CAN/KOR/IND/UKR — the 38-area
+  limit is the per-vehicle unit's IRTAD reporting club, not a wiring
+  gap on our side.
+- Selection-tie audit: exactly one beyond-canonical tie exists
+  (modelled infant mortality: OWID vs GHO at identical counts) — the
+  brief's alphabetical rule and the prototype's list order both pick
+  OWID; concordance verified, no divergence.
+
+### Added
+
+- `src/score/` — the layer's pure computation (no network, no raw
+  tier): `core.py` (the SINGLE implementation of §4.4 selection and
+  §4.6 normalisation — the freezer, the rebuild and the drift guard all
+  import the same functions, the rules can never fork) and `emit.py`
+  (the deterministic builder + the drift guard). `src/schema/score.py`
+  — the pydantic contract for `config/score.yaml` (direction/transform
+  coherence, the EXCLUDED ids refused loudly, one entry per indicator,
+  presets limited to equal/todd).
+- `config/score.yaml` — the 18 components (intent only: directions,
+  transforms, sex handling, official/modelled membership, the mandatory
+  `basis` of every value judgment, `provisional` flags on the two
+  directions Ediz has not confirmed in the books, `corpus_metric`
+  mappings) + the global parameters (1990 / [0.01, 0.99] / 0.60 / 0.50
+  / 2.1 / 2 decimals).
+- `scripts/freeze_score_bounds.py` — the ONLY writer of
+  `config/score_bounds.yaml` (deterministic, `--dry-run`, meta block
+  with the score-config sha256 and the date-based bounds_version):
+  per (score, component) the retained source, floor, lo, hi, n_sample.
+  First freeze: `2026-10-05.1` — 39 blocks (20 official all-canonical;
+  19 modelled with 11 witness-retained: fertility, infant, suicide,
+  homicide, unemployment, maternal, LE x2, LE60 x2, industrial).
+- `data/dist/score/` — `meta.json` (10 KB: derived notice, global
+  parameters, fingerprints, component list, BOTH presets' weights,
+  excluded ids with reasons), `official.json` (515 KB, 20 components,
+  34,080 stored normalised values, 766 emitted equal-preset scores),
+  `modelled.json` (1.3 MB, 19 components, 83,621 values, 2,786 scores),
+  `golden_vectors.json` (14 hand-checkable cases: the REFUSED official
+  Russian delta at 0.28 common weight, the accepted modelled deltas
+  with decomposition, the split-sex case, the log and target
+  components, the coverage-just-below-threshold case). Every file
+  under the ~8 MB cap; scores emitted ONLY at coverage >= 0.60.
+- `docs/adr/0011-score-layer-derived-composites.md` + the register row;
+  `docs/score-contract.md` — the exact frontend contract (§4.9: the
+  score formula, the delta rule with refusal, the presets, the display
+  discipline — the three prohibitions applied to rendering).
+- `tests/test_score.py` — 19 tests on synthetic mini-dists: percentile
+  interpolation, the log floor with p1 = 0, target distance and
+  non-positive unavailability, every direction, never-mixed selection
+  (a fixture where mixing would flip a ranking), the official fallback
+  with the badge, split-sex half weights, todd weights with the floor,
+  the coverage edge (exactly at 0.60 vs below), the delta rule with
+  refusal, presets from ROUNDED stored values, determinism, the drift
+  guard, gini/withdrawn ids refused, and the zero-disagreement drift
+  test (catalog flag == score direction for every non-target
+  component; fertility excluded as the only target).
+- `scripts/verify_v27_diff.py` — the live verifier, 59/59 (below).
+
+### Changed
+
+- `config/indicators/industrial_employment_share.yaml`: line 5 flips
+  `higher_is_better: false -> true` (decision 10, the comment cites it;
+  the score component stays `provisional: true` until Ediz confirms in
+  the books). Propagated by the rebuild to the dist file and the
+  catalog entry — in exactly that one field, nothing else (proved two
+  ways: parse-compare of every other key, and a byte-diff confined to
+  the one line).
+- `src/cli.py` + `src/config_loader.py`: the wiring — `check-config`
+  validates the score configs and prints the layer's line (18
+  components, 18 official / 17 modelled, bounds version, frozen);
+  `rebuild` runs the score layer AFTER `build_all`, reading the frozen
+  bounds, refusing loudly on drift (a fetch that moves a source's
+  coverage under the score stops the build until a deliberate
+  re-freeze + version bump).
+- `scripts/verify_v26_diff.py` -> `scripts/archive/` (`git mv`, the
+  single move of this version): its v26 invariants assert the pre-flip
+  industrial flag, which decision 10 breaks by design — a vintage
+  verifier, not a living one, never weakened with an exception.
+
+### Verified (live, this session)
+
+- `cli check-config`: OK — 27 indicators, 261 entities; todd corpus 22
+  metrics, 470 citations, 16 books (sha256 e30304cf...); score layer:
+  18 components (18 official / 17 modelled), bounds 2026-10-05.1
+  (frozen).
+- Tests: 384 passed (365 + the 19 score-layer tests).
+- `scripts/verify_v27_diff.py`: **59/59 PASS** — the additions present
+  and the move done; **28 dist files byte-identical to 58509e3** (26
+  indicators + entities + corpus); the two designed files differ ONLY
+  by the flag (parse-compare AND byte-diff confined to the line);
+  corpus 22/470/16, sha256 unchanged; gini present, todd_core, absent
+  from the parsed score config; every score file parses under the cap;
+  every stored value in [0, 100]; every emitted score at coverage >=
+  0.60; zero direction disagreement; **all 12 scored-country anchors
+  exact**; both 2015 top-5s within the rounding tail; the Russian
+  anchors (3 modelled accepted within rounding, 3 official refused);
+  every golden vector recomputed by an independent code path; 384
+  tests; **rebuild x2: all 34 dist files byte-stable** including the
+  score layer.
+- The anchors of the brief's §8, recomputed by the SHIPPED code and
+  compared with the reference prototype: country counts EXACT, modelled
+  top-5 EXACT to the decimal (Japan 85.2, Singapore 81.0, Israel 79.0,
+  Qatar 78.8, Norway 78.4), deltas exact. The ONE explained
+  difference: the shipped layer STORES 2-decimal values and computes
+  aggregates from the stored values (the brief's own §6 requirement),
+  so full-precision quantities shift within the rounding tail
+  (official Sweden 72.8 vs 72.9, Switzerland 71.5 vs 71.4) — the
+  verifier pins this at <= 0.15.
+- File sizes: meta 10 KB / official 515 KB / modelled 1.3 MB / golden
+  3.5 KB — the whole layer ~1.8 MB beside the ~51 MB indicator dist.
+
+### Known limitations
+
+- The score per year is uneven because the sources' rhythms are (PISA
+  ~3-year, tertiary 5-year, incarceration biennial-on-even-years per
+  the probe above, suicide and LE-at-60 stop 2021 with the GHE
+  edition, maternal mortality differs by door: OWID to 2020, WB to
+  2023). No carry-forward — Ediz's accepted worry, recorded in the
+  ADR's consequences, not solved here.
+- "Official" means the canonical tier, not "non-modelled": obesity and
+  HIV are modeled estimates, top income share rides OWID/WID. The
+  contract says so; the official-fallback badge exists, is tested on a
+  fixture, and fires on no component today.
+- Two provisional directions await Ediz's confirmation in the books
+  (industrial employment, tertiary attainment) — flagged in the
+  config, emitted with every value, one-word to flip later.
+- The todd preset concentrates 16/96 indicator weight on fertility
+  (the corpus's own book counts — the concentration is Todd's; the
+  equal preset exists because of it).
+- The Gini overlap correction (§ Investigated) is recorded in the ADR;
+  if Ediz wants the exclusion re-argued on the corrected facts, the
+  one-line config change is the whole surgery.
+- The bounds are frozen at 2026-10-05.1 on the 58509e3 dist: any later
+  `fetch` that changes a source's coverage will trip the drift guard
+  by design — re-freezing is a deliberate version bump recorded here.
+
 ## 2026-10-04 — v26.1.1: the count check made self-diagnosing —
 ## FAIL [None] was silence, not a regression (the owner's first
 ## end-to-end git am, tag and push landed on GitHub)

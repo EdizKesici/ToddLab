@@ -1,0 +1,239 @@
+# config/score.yaml — the v27 score layer's declarative contract (ADR-0011).
+#
+# WHAT THIS IS: the project's FIRST AND ONLY derived product — two composite
+# scores per country-year, "official" (canonical-tier sources) and "modelled"
+# (widest-coverage single source per component), built ON TOP of the frozen
+# indicator dist (data/dist/indicators/*.json), never inside it. The three
+# prohibitions (no interpolation, no derivation, no reconciliation) stand at
+# the indicator layer; the score DERIVES openly from what the indicators
+# measured, and every output file carries derived: true.
+#
+# WHAT LIVES HERE: intent — directions, transforms, sex handling, which
+# score a component enters, the BASIS of each value judgment (mandatory and
+# emitted: a boolean higher_is_better hid them), the corpus_metric each
+# component's todd-preset weight reads, and the provisional flags (two
+# directions await Ediz's confirmation in the books: industrial employment,
+# tertiary attainment). The NUMBERS never live here: bounds, floors and
+# chosen sources are FROZEN by scripts/freeze_score_bounds.py into
+# config/score_bounds.yaml (a later fetch cannot move the scale; changing
+# bounds = a deliberate regeneration + bounds_version bump, and rebuild
+# fails loudly if the frozen source drifts from what the selection rules
+# would pick today).
+#
+# DECISIONS (Ediz's, ADR-0011 §Decision): one source per component for all
+# countries and years, never mixed within a component; absolute scale with
+# fixed p1/p99 bounds (frozen, versioned; log for the very skewed); the
+# fertility target 2.1; coverage 0.60; delta needs 0.50 common weight; road
+# mortality per-vehicle enters the official score only (no world-wide
+# source exists); gini_index is REMOVED FROM THE SCORE ONLY (double
+# counting with top_income_share over the shared survey universe — it stays
+# an indicator, todd_core true, on the site); sex: the life expectancy pair
+# splits male/female as two half-weight components (no both-sexes canonical
+# is ever derived in the indicator layer).
+#
+# Excluded by earlier decisions (refused loudly by the schema, never
+# silently dropped): maternal_deaths (a count — the ratio is the component),
+# the markers, male_height_trend, consanguineous_marriage_rate,
+# crude_birth_rate, road_accident_mortality (per capita), the postponed
+# illegitimate_births, and the v26-withdrawn immigration_stock /
+# agricultural_employment_share.
+
+version: "1"
+bounds_from_year: 1990
+percentiles: [0.01, 0.99]
+coverage_threshold: 0.60
+delta_min_common_weight: 0.50
+fertility_target: 2.1
+rounding: 2
+presets: [equal, todd]
+
+components:
+  # THE TARGET COMPONENT: fertility's optimum is 2.1 (replacement), best = 0
+  # distance. t = abs(ln(TFR/2.1)); a non-positive TFR point is unavailable.
+  # Known simplification (recorded in ADR-0011): replacement is higher where
+  # mortality is high.
+  - indicator: birth_rate_fertility
+    direction: target
+    transform: target
+    sex_mode: both
+    scores: [official, modelled]
+    basis: editorial
+    provisional: false
+    corpus_metric: birth_rate_fertility
+
+  # THE LOG COMPONENTS (auditor's delegated decisions, skewness > 3 in at
+  # least one score, p99/p1 ratios of 25x and more): infant mortality,
+  # homicide, HIV prevalence, maternal mortality ratio, road mortality per
+  # vehicle. floor = p1 of the strictly positive sample (handles p1 = 0).
+  - indicator: infant_mortality
+    direction: lower
+    transform: log
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: infant_mortality
+
+  - indicator: suicide_rate
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: suicide_rate
+
+  - indicator: homicide_rate
+    direction: lower
+    transform: log
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: homicide_rate
+
+  - indicator: cirrhosis_alcohol_mortality
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: cirrhosis_alcohol_mortality
+
+  - indicator: obesity_rate
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: obesity_rate
+
+  - indicator: hiv_prevalence_rate
+    direction: lower
+    transform: log
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: hiv_prevalence_rate
+
+  - indicator: unemployment_rate
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: unemployment_rate
+
+  # OFFICIAL ONLY (decision 6): no world-wide per-vehicle source exists —
+  # 38 IRTAD areas on the OECD/ITF door (probed live v27: the door's other
+  # unit carries 55 areas, the per-vehicle unit's club is the constraint).
+  # corpus_metric maps to the companion road-mortality metric (the
+  # per-vehicle face is todd_core: false) for the todd preset's book count.
+  - indicator: road_accident_mortality_per_vehicle
+    direction: lower
+    transform: log
+    sex_mode: both
+    scores: [official]
+    basis: consensus
+    provisional: false
+    corpus_metric: road_accident_mortality
+
+  - indicator: maternal_mortality_ratio
+    direction: lower
+    transform: log
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: null
+
+  # THE EDITORIAL INEQUALITY FACE: top income share stays, the Gini goes
+  # (decision 7 — the same survey universe; measured live: 774 shared
+  # country-year pairs, 85.4% of the Gini's 906 inside top_income's 3,203).
+  - indicator: top_income_share
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: editorial
+    provisional: false
+    corpus_metric: top_income_share
+
+  - indicator: incarceration_rate
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: editorial
+    provisional: false
+    corpus_metric: incarceration_rate
+
+  # THE SPLIT-SEX PAIR (decision 5): life expectancy and life expectancy at
+  # 60 are published by sex only on the canonical tier — male and female
+  # are two components of equal weight (0.5 each), and NO both-sexes
+  # canonical series is ever derived in the indicator layer.
+  - indicator: life_expectancy
+    direction: higher
+    transform: linear
+    sex_mode: split
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: life_expectancy
+
+  - indicator: life_expectancy_60
+    direction: higher
+    transform: linear
+    sex_mode: split
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: null
+
+  - indicator: math_test_scores
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: math_test_scores
+
+  - indicator: secondary_education_share
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: secondary_education_share
+
+  # PROVISIONAL DIRECTIONS (Ediz's to confirm in the books): tertiary
+  # attainment and industrial employment — both editorial, both flagged,
+  # both emitted so the frontend renders the caveat.
+  - indicator: tertiary_education_share
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: editorial
+    provisional: true
+    corpus_metric: tertiary_education_share
+
+  # THE DECISION-10 FLIP (v27's only indicator-layer change): industrial
+  # employment's direction is HIGHER is better (Todd defends industry
+  # against free trade — L'illusion économique; config flipped
+  # higher_is_better: false -> true in this same version, Breaking line in
+  # the changelog). provisional: true until Ediz confirms in the books.
+  - indicator: industrial_employment_share
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: editorial
+    provisional: true
+    corpus_metric: industrial_employment_share

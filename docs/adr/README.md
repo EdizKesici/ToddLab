@@ -28,6 +28,7 @@ they ever need revisiting:
 | [0008](0008-todd-board-canonical-layer.md) | The Todd board's canonical layer is the as-reported tier (Technique A) | Accepted (2026-09-06) |
 | [0009](0009-todd-corpus-as-first-class-metadata.md) | The Todd corpus as first-class metadata (todd_refs) | Accepted (2026-09-19) |
 | [0010](0010-bilateral-faces-parallel-never-merged.md) | The two bilateral faces (birth / citizenship) are parallel layers, never merged | Moot since v26 (the faces' only indicator withdrawn; the discipline lives on in the segment layers) |
+| [0011](0011-score-layer-derived-composites.md) | The score layer: two derived composites (official / modelled), frozen bounds, never merged | Accepted (v27) — the project's first and only derived product; the indicator layer untouched but for decision 10's direction flip |
 
 ## Format
 
