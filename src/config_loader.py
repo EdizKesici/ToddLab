@@ -1,5 +1,5 @@
 """Loads and validates config/indicators/*.yaml, config/entities.yaml, config/sources.yaml,
-config/todd_refs.yaml.
+config/todd_refs.yaml, config/score.yaml, config/score_bounds.yaml.
 
 Principle: an invalid config file must fail the build immediately, with a
 message pointing at the offending file — never produce a silently
@@ -8,6 +8,7 @@ you don't have to fix-and-rerun one file at a time.
 """
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 import yaml
@@ -15,6 +16,7 @@ from pydantic import ValidationError
 
 from src.schema.entity import Entity, EntityRegistry
 from src.schema.indicator import Indicator
+from src.schema.score import ScoreConfig, ScoreName
 from src.schema.todd_refs import ToddCorpus
 
 
@@ -161,3 +163,102 @@ def cross_validate_companions(indicators: dict[str, Indicator]) -> None:
                 )
     if errors:
         raise ConfigError("companion_indicators cross-validation errors:\n- " + "\n- ".join(errors))
+
+
+# ---------------------------------------------------------------------------
+# v27: the score layer's configs — score.yaml (intent) and score_bounds.yaml
+# (the frozen numbers). Both are REQUIRED once present: the layer is part
+# of the build, and an absent bounds file is a loud failure, never a
+# silent recompute (changing bounds = a deliberate regeneration plus a
+# bounds_version bump, per ADR-0011).
+# ---------------------------------------------------------------------------
+
+
+def _file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_score_config(config_dir: Path) -> ScoreConfig:
+    path = config_dir / "score.yaml"
+    if not path.is_file():
+        raise ConfigError(
+            f"{path} is missing — the score layer is part of the build since v27; "
+            "an absent config is a loud failure, never a silently skipped layer."
+        )
+    raw = _load_yaml(path)
+    try:
+        return ScoreConfig.model_validate(raw)
+    except ValidationError as e:
+        raise ConfigError(f"score.yaml is invalid:\n{e}") from e
+
+
+def load_score_bounds(config_dir: Path) -> dict:
+    """The frozen numbers, read raw (deterministic YAML written by
+    scripts/freeze_score_bounds.py). Shape:
+    meta: {bounds_version, generated, score_config_sha256, ...}
+    bounds: {official|modelled: {'indicator/sex': {source, source_class,
+    floor, lo, hi, n_sample, bounds_version}}}"""
+    path = config_dir / "score_bounds.yaml"
+    if not path.is_file():
+        raise ConfigError(
+            f"{path} is missing — rebuild never recomputes bounds (ADR-0011: a later "
+            "fetch must not move the scale). Regenerate deliberately: "
+            "python scripts/freeze_score_bounds.py [--dry-run]"
+        )
+    raw = _load_yaml(path)
+    if not isinstance(raw, dict) or "meta" not in raw or "bounds" not in raw:
+        raise ConfigError(f"{path}: expected the meta/blocks structure written by freeze_score_bounds.py")
+    return raw
+
+
+def cross_validate_score(
+    score: ScoreConfig,
+    indicators: dict[str, Indicator],
+    corpus: ToddCorpus | None,
+) -> None:
+    """The score layer's own cross-validations (fail loudly, never silently
+    drop a component):
+
+    - every component names a KNOWN indicator (an unknown id is a typo or
+      a withdrawn indicator resurrected);
+    - every non-null corpus_metric exists in todd_refs (the todd preset's
+      book counts read it);
+    - the direction agreement (the brief's drift test): for every
+      non-target component, higher_is_better == (direction == 'higher')
+      — the catalog flag and the score config must never disagree;
+      birth_rate_fertility (a target) is the only exclusion;
+    - at least one component per declared score (an empty score is a
+      config contradiction).
+    """
+    errors: list[str] = []
+    for c in score.components:
+        if c.indicator not in indicators:
+            errors.append(
+                f"score.yaml: component {c.indicator!r} names no indicator in "
+                "config/indicators/ — a typo or a withdrawn id resurrected."
+            )
+            continue
+        if c.corpus_metric and (corpus is None or c.corpus_metric not in corpus.metrics):
+            errors.append(
+                f"score.yaml: {c.indicator}: corpus_metric {c.corpus_metric!r} not in "
+                "config/todd_refs.yaml — the todd preset's book count reads it."
+            )
+        ind = indicators[c.indicator]
+        if c.direction.value != "target":
+            agrees = ind.higher_is_better == (c.direction.value == "higher")
+            if not agrees:
+                errors.append(
+                    f"score.yaml: {c.indicator}: direction {c.direction.value!r} DISAGREES with the "
+                    f"indicator's higher_is_better={ind.higher_is_better} — the catalog flag and "
+                    "the score config must agree for every non-target component (flip one of the "
+                    "two, deliberately, in the same version)."
+                )
+    for name in ScoreName:
+        if not score.components_for(name):
+            errors.append(f"score.yaml: the {name.value} score carries no component.")
+    if errors:
+        raise ConfigError("score.yaml cross-validation errors:\n- " + "\n- ".join(errors))
+
+
+def score_config_sha256(config_dir: Path) -> str:
+    return _file_sha256(config_dir / "score.yaml")

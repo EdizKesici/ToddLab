@@ -40,9 +40,12 @@ sys.path.insert(0, str(ROOT))
 from src.config_loader import (
     ConfigError,
     cross_validate_companions,
+    cross_validate_score,
     cross_validate_todd_core,
     load_entities,
     load_indicators,
+    load_score_bounds,
+    load_score_config,
     load_todd_refs,
 )  # noqa: E402
 from src.pipeline.build import build_all  # noqa: E402
@@ -51,6 +54,7 @@ from src.pipeline.merge import merge_all  # noqa: E402
 from src.pipeline.normalize import normalize_all  # noqa: E402
 from src.pipeline.stats import render_stats  # noqa: E402
 from src.pipeline.validate import validate_all  # noqa: E402
+from src.score.emit import BoundsDriftError, build_score_layer  # noqa: E402
 
 
 def _load_config():
@@ -59,12 +63,15 @@ def _load_config():
     todd_refs = load_todd_refs(CONFIG_DIR)
     cross_validate_todd_core(indicators, todd_refs)
     cross_validate_companions(indicators)
-    return indicators, entities, todd_refs
+    score_config = load_score_config(CONFIG_DIR)
+    cross_validate_score(score_config, indicators, todd_refs)
+    return indicators, entities, todd_refs, score_config
 
 
 def cmd_check_config(_args) -> int:
     try:
-        indicators, entities, todd_refs = _load_config()
+        indicators, entities, todd_refs, score_config = _load_config()
+        score_bounds = load_score_bounds(CONFIG_DIR)
     except ConfigError as e:
         print(f"INVALID CONFIG:\n{e}", file=sys.stderr)
         return 1
@@ -75,7 +82,14 @@ def cmd_check_config(_args) -> int:
             f" | todd corpus: {m.metrics} metrics, {m.total_citations} citations, "
             f"{m.books} books (sha256 {m.source_csv_sha256[:12]}...)"
         )
-    print(f"OK: {len(indicators)} indicator(s), {len(entities.entities)} entities.{corpus_note}")
+    n_official = sum(1 for c in score_config.components if any(s.value == "official" for s in c.scores))
+    n_modelled = sum(1 for c in score_config.components if any(s.value == "modelled" for s in c.scores))
+    score_note = (
+        f" | score layer: {len(score_config.components)} components "
+        f"({n_official} official / {n_modelled} modelled), bounds "
+        f"{score_bounds['meta']['bounds_version']} (frozen)"
+    )
+    print(f"OK: {len(indicators)} indicator(s), {len(entities.entities)} entities.{corpus_note}{score_note}")
     for ind in indicators.values():
         mode = "Todd+Extra" if ind.todd_core else "Extra only"
         refs_note = ""
@@ -87,7 +101,7 @@ def cmd_check_config(_args) -> int:
 
 
 def cmd_fetch(args) -> int:
-    indicators, _, _ = _load_config()
+    indicators, _, _, _ = _load_config()
     outcome = fetch_all(indicators, RAW_DIR)
 
     print(f"Fetch done: {len(outcome.written)} snapshot(s) written, {len(outcome.failures)} failure(s).")
@@ -102,7 +116,7 @@ def cmd_fetch(args) -> int:
 
 
 def cmd_rebuild(_args) -> int:
-    indicators, entities, todd_refs = _load_config()
+    indicators, entities, todd_refs, score_config = _load_config()
 
     norm_summary = normalize_all(indicators, RAW_DIR, PROCESSED_DIR, entities)
     for iid, s in norm_summary.items():
@@ -124,6 +138,22 @@ def cmd_rebuild(_args) -> int:
     print(f"Coverage report -> {REPORTS_DIR / 'coverage_report.md'}")
     if todd_refs is not None:
         print(f"Todd corpus -> {DIST_DIR / 'todd_corpus.json'}")
+
+    # v27: the score layer rides the rebuild — AFTER build_all, reading the
+    # freshly written dist + the frozen bounds. The drift guard fails the
+    # rebuild loudly when the frozen source no longer matches §4.4.
+    try:
+        score_bounds = load_score_bounds(CONFIG_DIR)
+        summary = build_score_layer(score_config, score_bounds, DIST_DIR, CONFIG_DIR, todd_refs)
+    except BoundsDriftError as e:
+        print(f"SCORE LAYER REFUSED: {e}", file=sys.stderr)
+        return 1
+    n = summary["n_components"]
+    print(
+        f"Score layer -> {summary['out_dir']} "
+        f"(official {n['official']} / modelled {n['modelled']} components, "
+        f"bounds {score_bounds['meta']['bounds_version']} frozen)"
+    )
     return 0
 
 

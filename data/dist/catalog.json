@@ -698,7 +698,7 @@
     "label": "Industrial employment share",
     "family": "economy",
     "unit": "percent",
-    "higher_is_better": false,
+    "higher_is_better": true,
     "todd_core": true,
     "companion_indicators": [],
     "reliability": "high",

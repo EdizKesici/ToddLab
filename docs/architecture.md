@@ -16,6 +16,28 @@ Each step reads the file written by the previous one from disk
 `*.validation.json` -> `data/dist/`). No step keeps in-memory state across
 runs: you can stop after any step and resume by rerunning `rebuild`.
 
+## The score layer rides the dist (v27, ADR-0011)
+
+The project's FIRST AND ONLY derived product — two composite scores per
+country-year, `official` (canonical-tier sources) and `modelled`
+(widest-coverage single source per component), never merged. It is a
+SIXTH consumer, not a pipeline step: `src/score/` reads the frozen
+`data/dist/indicators/*.json` + `config/score.yaml` (the intent:
+directions, transforms, sex handling, basis, provisional flags) +
+`config/score_bounds.yaml` (the frozen numbers — p1/p99 bounds and the
+retained source per component, written ONLY by
+`scripts/freeze_score_bounds.py`), and emits `data/dist/score/`
+(meta/official/modelled/golden_vectors — the exact frontend contract,
+`docs/score-contract.md`). The indicator layer is untouched by all of
+this: the three prohibitions stand, the derivation lives in its own
+layer, its own config, its own ADR, labelled derived everywhere — with
+ONE deliberate exception (decision 10: `industrial_employment_share`'s
+`higher_is_better` flipped true, a Breaking change recorded in the
+changelog). `rebuild` never recomputes bounds: a drift guard fails the
+build loudly when the frozen source no longer matches what the §4.4
+selection rules would pick on the current dist — re-freezing is a
+deliberate `bounds_version` bump, recorded, never an auto-refresh.
+
 ## The Todd corpus rides as metadata (v13)
 
 Ediz's OCR compilation of Todd's metrics (todd_core.csv, outside the
