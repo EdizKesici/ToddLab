@@ -21,8 +21,9 @@ plus a bounds_version bump).
 House invariants enforced here:
 - every component names a KNOWN indicator id (validated at load against
   the indicator registry — see config_loader.cross_validate_score);
-- the EXCLUDED ids (decision 7/9: gini_index, the markers, the counts,
-  the postponed) are refused loudly, not silently dropped;
+- the EXCLUDED ids (decisions 7/9/11: the Gini, incarceration, the
+  markers, the counts, the postponed) are refused loudly, not silently
+  dropped;
 - direction/transform pairs must be coherent (target transform rides a
   target direction; log/linear ride higher or lower);
 - one entry per indicator — the split-sex components (life expectancy
@@ -69,10 +70,15 @@ class Basis(str, Enum):
     editorial = "editorial"
 
 
-# Decision 7/9: the ids that must NEVER appear as score components.
+# Decisions 7/9/11: the ids that must NEVER appear as score components.
 # gini_index: removed from the score only (double counting with
 #   top_income_share over the shared survey universe — it stays an
 #   indicator, todd_core true, in the catalog and on the site);
+# incarceration_rate: removed from the score only in v27.1 (decision 11 —
+#   no defensible monotone direction: the prison population measures
+#   policing and the justice system, not crime or well-being; the same
+#   movement reads in opposite ways — it stays an indicator, todd_core
+#   true, exactly the Gini's treatment);
 # maternal_deaths: a count, the RATIO is the component;
 # the markers, male_height_trend, consanguineous_marriage_rate,
 #   crude_birth_rate, road_accident_mortality (per capita), and the
@@ -81,6 +87,7 @@ class Basis(str, Enum):
 EXCLUDED_INDICATORS: frozenset[str] = frozenset(
     {
         "gini_index",
+        "incarceration_rate",
         "maternal_deaths",
         "same_sex_marriage",
         "universal_suffrage",
@@ -149,7 +156,7 @@ class ScoreConfig(BaseModel):
             seen[c.indicator] = seen.get(c.indicator, 0) + 1
             if c.indicator in EXCLUDED_INDICATORS:
                 raise ValueError(
-                    f"{c.indicator} is EXCLUDED from the score by decision 7/9 — "
+                    f"{c.indicator} is EXCLUDED from the score by decision 7/9/11 — "
                     "remove the component (the exclusion is deliberate, never silent)"
                 )
         dups = sorted(k for k, n in seen.items() if n > 1)

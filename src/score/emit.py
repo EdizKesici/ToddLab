@@ -147,6 +147,10 @@ def build_score_layer(
     excluded_reasons = {
         "gini_index": "decision 7 — double counting with top_income_share over the shared "
         "survey universe (stays an indicator, todd_core true, on the site)",
+        "incarceration_rate": "decision 11 (v27.1) — no defensible monotone direction: the "
+        "prison population measures policing and the justice system, not crime or "
+        "well-being; the same movement reads in opposite ways (stays an indicator, "
+        "todd_core true, on the site)",
         "maternal_deaths": "a count of deaths — maternal_mortality_ratio is the component",
         "same_sex_marriage": "a marker, not a rate",
         "universal_suffrage": "a marker, not a rate",
@@ -251,13 +255,20 @@ def build_score_layer(
 def _golden_vectors(config: ScoreConfig, state: dict) -> list:
     """<= 20 hand-checkable cases: the frontend unit-tests its
     implementation against these. The verifier recomputes every one by an
-    independent code path from the EMITTED normalised values."""
+    independent code path from the EMITTED normalised values.
+
+    v27.1: every `why` label is GENERATED from live readings of the state
+    (the v27 audit's fix 4 — two labels had drifted from the truth), so a
+    later recomputation can never ship a stale reason.
+    """
+    from src.score.core import aggregate as _agg
+    from src.score.core import score_and_coverage
+
     vectors: list = []
 
     def add(score, entity, year, preset, why, with_delta_to=None):
         normalised = state[score]["normalised"]
         weights = state[score]["weights"][preset]
-        from src.score.core import score_and_coverage
 
         sc = score_and_coverage(normalised, weights, entity, year)
         if sc is None:
@@ -283,6 +294,8 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
         d = delta(normalised, weights, entity, y1, y2, config.delta_min_common_weight)
         if d is None:
             return
+        if callable(why):  # the label rides the live delta dict
+            why = why(d)
         vectors.append(
             {
                 "score": score.value,
@@ -296,10 +309,12 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
 
     # 1. the REFUSED delta (the official Russian pair — common weight under 0.50)
     add_delta(ScoreName.official, "russian_federation", 2000, 2010, "equal",
-              "the refused delta: official common weight 0.28 < delta_min_common_weight 0.50")
+              lambda d: f"the refused delta: official common weight {d['common_weight_share']} "
+                        f"< delta_min_common_weight {config.delta_min_common_weight}")
     # 2. the accepted delta with decomposition (the modelled Russian pair)
     add_delta(ScoreName.modelled, "russian_federation", 2010, 2019, "equal",
-              "the accepted delta with per-component decomposition (12 common components)")
+              lambda d: f"the accepted delta with per-component decomposition "
+                        f"({d['n_components']} common components)")
     add_delta(ScoreName.modelled, "russian_federation", 1995, 2000, "equal",
               "a negative delta (the 1990s collapse decade)")
     # 3. the split-sex case (life expectancy male+female, equal half weights)
@@ -313,19 +328,40 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
     add(ScoreName.official, "australia", 2015, "equal", "the 2015 official head (74.7 in the reference run)")
     # 8. the todd preset on the same point (the book-count weights)
     add(ScoreName.modelled, "japan", 2015, "todd", "the todd preset: book-count weights on the same point")
-    # 9-12. a few plain countries at the coverage boundary
+    # 9-12. a few plain countries at the coverage boundary. The US label is
+    # GENERATED from the live official coverage at the same point (audit
+    # fix 4: v27 blamed 'per-vehicle absent', the real cause is coverage).
+    sc_us = score_and_coverage(
+        state[ScoreName.official]["normalised"],
+        state[ScoreName.official]["weights"]["equal"],
+        "united_states", 2015,
+    )
+    if sc_us is not None:
+        n_present = sum(
+            1 for key in state[ScoreName.official]["normalised"]
+            if 2015 in state[ScoreName.official]["normalised"][key].get("united_states", {})
+        )
+        n_total = len(state[ScoreName.official]["weights"]["equal"])
+        why_us = (
+            f"the modelled-only case (no official score — official coverage "
+            f"{sc_us[1]:.2f}, {n_present} of {n_total} components present)"
+        )
+    else:
+        why_us = "the modelled-only case (no official score at this point)"
     for entity, year, why in (
         ("germany", 2010, "a plain mid-coverage case"),
-        ("united_states", 2015, "the modelled-only case (no official score — per-vehicle absent)"),
-        ("sweden", 2000, "an early-year official case"),
+        ("united_states", 2015, why_us),
+        ("sweden", 2000, "an early-year case on the MODELLED score (the official "
+                       "score effectively starts around 2005)"),
         ("nigeria", 2015, "a low-coverage modelled case"),
     ):
         add(ScoreName.modelled, entity, year, "equal", why)
 
     # 13. the coverage-just-below-threshold case (search live over ALL
-    # aggregate points — the emitted scores only carry the above-threshold)
+    # aggregate points — the emitted scores only carry the above-threshold;
+    # v27.1 re-picks from live data: the v27 case is invalid under the
+    # new total weight)
     best = None
-    from src.score.core import aggregate as _agg
 
     all_points = _agg(state[ScoreName.modelled]["normalised"], state[ScoreName.modelled]["weights"]["equal"])
     for entity, years in all_points.items():
@@ -337,7 +373,6 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
     if best:
         normalised = state[ScoreName.modelled]["normalised"]
         weights = state[ScoreName.modelled]["weights"]["equal"]
-        from src.score.core import score_and_coverage
 
         sc = score_and_coverage(normalised, weights, best[0], best[1])
         vectors.append(

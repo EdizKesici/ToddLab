@@ -16,7 +16,7 @@ Each step reads the file written by the previous one from disk
 `*.validation.json` -> `data/dist/`). No step keeps in-memory state across
 runs: you can stop after any step and resume by rerunning `rebuild`.
 
-## The score layer rides the dist (v27, ADR-0011)
+## The score layer rides the dist (v27, amended v27.1, ADR-0011)
 
 The project's FIRST AND ONLY derived product — two composite scores per
 country-year, `official` (canonical-tier sources) and `modelled`
@@ -33,7 +33,11 @@ this: the three prohibitions stand, the derivation lives in its own
 layer, its own config, its own ADR, labelled derived everywhere — with
 ONE deliberate exception (decision 10: `industrial_employment_share`'s
 `higher_is_better` flipped true, a Breaking change recorded in the
-changelog). `rebuild` never recomputes bounds: a drift guard fails the
+changelog). v27.1 amended the layer's COMPOSITION only (decision 11:
+`incarceration_rate` left the score — no defensible direction; it
+stays an indicator — while the frozen bounds regenerated at
+2026-10-06.1 with all 37 remaining blocks numerically identical).
+`rebuild` never recomputes bounds: a drift guard fails the
 build loudly when the frozen source no longer matches what the §4.4
 selection rules would pick on the current dist — re-freezing is a
 deliberate `bounds_version` bump, recorded, never an auto-refresh.

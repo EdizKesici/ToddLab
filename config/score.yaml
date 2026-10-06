@@ -31,12 +31,15 @@
 # splits male/female as two half-weight components (no both-sexes canonical
 # is ever derived in the indicator layer).
 #
-# Excluded by earlier decisions (refused loudly by the schema, never
-# silently dropped): maternal_deaths (a count — the ratio is the component),
-# the markers, male_height_trend, consanguineous_marriage_rate,
-# crude_birth_rate, road_accident_mortality (per capita), the postponed
-# illegitimate_births, and the v26-withdrawn immigration_stock /
-# agricultural_employment_share.
+# Excluded by later decisions (refused loudly by the schema, never
+# silently dropped): incarceration_rate (decision 11, v27.1 — no
+# defensible monotone direction: the prison population measures policing
+# and the justice system, not crime or well-being; it stays an indicator,
+# todd_core true, on the site), maternal_deaths (a count — the ratio is the
+# component), the markers, male_height_trend,
+# consanguineous_marriage_rate, crude_birth_rate, road_accident_mortality
+# (per capita), the postponed illegitimate_births, and the v26-withdrawn
+# immigration_stock / agricultural_employment_share.
 
 version: "1"
 bounds_from_year: 1990
@@ -152,8 +155,10 @@ components:
     corpus_metric: null
 
   # THE EDITORIAL INEQUALITY FACE: top income share stays, the Gini goes
-  # (decision 7 — the same survey universe; measured live: 774 shared
-  # country-year pairs, 85.4% of the Gini's 906 inside top_income's 3,203).
+  # (decision 7 — the same survey universe; two live facts: the WID Gini
+  # witness covers exactly top_income's 3,203 country-year keys with 0
+  # equal values, and the OECD canonical Gini shares 774 of its 906 pairs
+  # with top_income, 85.4%).
   - indicator: top_income_share
     direction: lower
     transform: linear
@@ -163,14 +168,9 @@ components:
     provisional: false
     corpus_metric: top_income_share
 
-  - indicator: incarceration_rate
-    direction: lower
-    transform: linear
-    sex_mode: both
-    scores: [official, modelled]
-    basis: editorial
-    provisional: false
-    corpus_metric: incarceration_rate
+  # (incarceration_rate was here until v27.1 — decision 11 removed it from
+  # the score ONLY: no defensible monotone direction, the same movement
+  # reads in opposite ways; it stays an indicator, todd_core true.)
 
   # THE SPLIT-SEX PAIR (decision 5): life expectancy and life expectancy at
   # 60 are published by sex only on the canonical tier — male and female

@@ -413,6 +413,17 @@ def test_gini_refused_in_config():
         ])
 
 
+def test_incarceration_refused_in_config():
+    # decision 11 (v27.1): the prison population measures policing and the
+    # justice system, not crime or well-being — no defensible monotone
+    # direction, so it can never be a score component (stays an indicator)
+    with pytest.raises(ValidationError, match="EXCLUDED"):
+        _config(components=[
+            ScoreComponent(indicator="incarceration_rate", direction="lower", transform="linear",
+                           sex_mode="both", scores=["official", "modelled"], basis="editorial"),
+        ])
+
+
 def test_withdrawn_ids_refused_too():
     for iid in ("immigration_stock", "illegitimate_births", "maternal_deaths"):
         with pytest.raises(ValidationError):

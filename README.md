@@ -15,7 +15,7 @@ The project takes inspiration from the method of historian-demographer Emmanuel 
 Compare countries side by side on hard indicators (infant mortality, life
 expectancy, fertility, homicides, education...).
 
-## The score layer (v27)
+## The score layer (v27, amended v27.1)
 
 Beside the indicators, a DERIVED layer: two composite scores per
 country-year — **official** (canonical-tier sources) and **modelled**
@@ -25,7 +25,9 @@ never mixed, no interpolation, coverage displayed with every value.
 The two scores stay side by side, never merged (ADR-0011); the exact
 frontend contract is `docs/score-contract.md`. The indicator layer's
 three prohibitions are untouched — the derivation lives in its own
-layer and is labelled as derived everywhere.
+layer and is labelled as derived everywhere. `incarceration_rate`
+stays an indicator but sits OUTSIDE the score (v27.1, decision 11 — no
+defensible direction); so does `gini_index` (decision 7).
 
 ## Principles
 
