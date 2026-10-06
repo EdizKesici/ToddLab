@@ -1,35 +1,47 @@
-# config/score.yaml — the v27 score layer's declarative contract (ADR-0011).
+# config/score.yaml — the v27 score layer's declarative contract (ADR-0011,
+# amended v27.1 and v28).
 #
 # WHAT THIS IS: the project's FIRST AND ONLY derived product — two composite
 # scores per country-year, "official" (canonical-tier sources) and "modelled"
 # (widest-coverage single source per component), built ON TOP of the frozen
 # indicator dist (data/dist/indicators/*.json), never inside it. The three
-# prohibitions (no interpolation, no derivation, no reconciliation) stand at
-# the indicator layer; the score DERIVES openly from what the indicators
-# measured, and every output file carries derived: true.
+# prohibitions stand at the indicator layer; the score DERIVES openly from
+# what the indicators measured, and every output file carries derived: true.
 #
 # WHAT LIVES HERE: intent — directions, transforms, sex handling, which
 # score a component enters, the BASIS of each value judgment (mandatory and
 # emitted: a boolean higher_is_better hid them), the corpus_metric each
-# component's todd-preset weight reads, and the provisional flags (two
-# directions await Ediz's confirmation in the books: industrial employment,
-# tertiary attainment). The NUMBERS never live here: bounds, floors and
-# chosen sources are FROZEN by scripts/freeze_score_bounds.py into
-# config/score_bounds.yaml (a later fetch cannot move the scale; changing
-# bounds = a deliberate regeneration + bounds_version bump, and rebuild
-# fails loudly if the frozen source drifts from what the selection rules
-# would pick today).
+# component's todd-preset weight reads, and max_age_years (decision 16, v28:
+# how long a real observation may be carried forward). The NUMBERS never
+# live here: bounds, floors and chosen sources are FROZEN by
+# scripts/freeze_score_bounds.py into config/score_bounds.yaml (a later fetch
+# cannot move the scale; changing bounds = a deliberate regeneration +
+# bounds_version bump, and rebuild fails loudly if the frozen source drifts
+# from what the selection rules would pick today).
 #
 # DECISIONS (Ediz's, ADR-0011 §Decision): one source per component for all
 # countries and years, never mixed within a component; absolute scale with
 # fixed p1/p99 bounds (frozen, versioned; log for the very skewed); the
-# fertility target 2.1; coverage 0.60; delta needs 0.50 common weight; road
-# mortality per-vehicle enters the official score only (no world-wide
-# source exists); gini_index is REMOVED FROM THE SCORE ONLY (double
-# counting with top_income_share over the shared survey universe — it stays
-# an indicator, todd_core true, on the site); sex: the life expectancy pair
-# splits male/female as two half-weight components (no both-sexes canonical
-# is ever derived in the indicator layer).
+# fertility target 2.1; coverage 0.60; delta needs 0.50 common weight
+# computed on components whose UNDERLYING OBSERVATION differs between the
+# two dates (v28 amendment — same-observation components would damp the
+# delta artificially); road mortality per-vehicle enters the official score
+# only (no world-wide source exists); gini_index is REMOVED FROM THE SCORE
+# ONLY (double counting with top_income_share over the shared survey
+# universe — it stays an indicator, todd_core true, on the site); sex: the
+# life expectancy pair splits male/female as two half-weight components (no
+# both-sexes canonical is ever derived in the indicator layer).
+#
+# THE CARRY RULE (decision 16, v28 — amends decision 3): no interpolation;
+# real observations may be carried forward for at most max_age_years, with
+# their age recorded and displayed. A component's value for year Y is the
+# LATEST real observation with obs_year in [Y - max_age_years, Y]; age =
+# Y - obs_year (0 = fresh); a value: null point never counts; nothing is
+# carried across entities, sources or sexes; no score year beyond the
+# score's max_obs_year (the greatest year with a real observation in any
+# retained source of that score); a country-year is scored only with at
+# least one FRESH component (the ghost guard). max_age_years: 0 reproduces
+# the v27 exact-year behaviour (a tested configuration).
 #
 # Excluded by later decisions (refused loudly by the schema, never
 # silently dropped): incarceration_rate (decision 11, v27.1 — no
@@ -38,8 +50,10 @@
 # todd_core true, on the site), maternal_deaths (a count — the ratio is the
 # component), the markers, male_height_trend,
 # consanguineous_marriage_rate, crude_birth_rate, road_accident_mortality
-# (per capita), the postponed illegitimate_births, and the v26-withdrawn
-# immigration_stock / agricultural_employment_share.
+# (per capita), and the v26-withdrawn immigration_stock /
+# agricultural_employment_share. OFFICIAL-SCORE-ONLY by decision 15 (v28):
+# illegitimate_births (refused in the modelled score — see its component
+# comment).
 
 version: "1"
 bounds_from_year: 1990
@@ -49,6 +63,9 @@ delta_min_common_weight: 0.50
 fertility_target: 2.1
 rounding: 2
 presets: [equal, todd]
+# decision 16 (v28): carry a real observation forward at most this many
+# years (age recorded, displayed; 0 = the v27 exact-year behaviour).
+max_age_years: 3
 
 components:
   # THE TARGET COMPONENT: fertility's optimum is 2.1 (replacement), best = 0
@@ -60,9 +77,11 @@ components:
     transform: target
     sex_mode: both
     scores: [official, modelled]
-    basis: editorial
+    basis: todd
     provisional: false
     corpus_metric: birth_rate_fertility
+    # decision 13 (v28): the 2.1 target is confirmed in the books — too
+    # high and too low are BOTH bad; transform and bounds unchanged.
 
   # THE LOG COMPONENTS (auditor's delegated decisions, skewness > 3 in at
   # least one score, p99/p1 ratios of 25x and more): infant mortality,
@@ -145,6 +164,27 @@ components:
     provisional: false
     corpus_metric: road_accident_mortality
 
+  # OFFICIAL ONLY TOO (decision 15, v28): illegitimate_births joins the
+  # score — Todd's illégitimité, the family-anthropology axis (todd_core:
+  # true, 16 citations in 6 books). Direction LOWER: a high share of
+  # births outside marriage is "bad" in Todd's reading, verified in the
+  # books by Ediz. Official-only for a DATA reason (the auditor's
+  # recommendation, Ediz can reverse it): the indicator exists for 47
+  # entities, almost all European — in the modelled score it would push
+  # about 40 non-European countries per year under the 0.60 coverage
+  # threshold (modelled countries scored in 2015: 141 -> 104 in a test),
+  # while in the official score it changes nothing (37 -> 37). Same
+  # treatment as the per-vehicle road indicator (decision 6); the schema
+  # refuses the id in the modelled score loudly (decision 15).
+  - indicator: illegitimate_births
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official]
+    basis: todd
+    provisional: false
+    corpus_metric: illegitimate_births
+
   - indicator: maternal_mortality_ratio
     direction: lower
     transform: log
@@ -158,13 +198,14 @@ components:
   # (decision 7 — the same survey universe; two live facts: the WID Gini
   # witness covers exactly top_income's 3,203 country-year keys with 0
   # equal values, and the OECD canonical Gini shares 774 of its 906 pairs
-  # with top_income, 85.4%).
+  # with top_income, 85.4%). Decision 14 (v28): lower is better,
+  # confirmed in the books — basis todd.
   - indicator: top_income_share
     direction: lower
     transform: linear
     sex_mode: both
     scores: [official, modelled]
-    basis: editorial
+    basis: todd
     provisional: false
     corpus_metric: top_income_share
 
@@ -212,28 +253,30 @@ components:
     provisional: false
     corpus_metric: secondary_education_share
 
-  # PROVISIONAL DIRECTIONS (Ediz's to confirm in the books): tertiary
-  # attainment and industrial employment — both editorial, both flagged,
-  # both emitted so the frontend renders the caveat.
+  # CONFIRMED IN THE BOOKS (decision 12, v28): tertiary attainment and
+  # industrial employment are higher-is-better, basis todd, no longer
+  # provisional. Until v28 both carried basis: editorial + provisional:
+  # true (the frontend caveat is retired with the confirmation).
   - indicator: tertiary_education_share
     direction: higher
     transform: linear
     sex_mode: both
     scores: [official, modelled]
-    basis: editorial
-    provisional: true
+    basis: todd
+    provisional: false
     corpus_metric: tertiary_education_share
 
   # THE DECISION-10 FLIP (v27's only indicator-layer change): industrial
   # employment's direction is HIGHER is better (Todd defends industry
   # against free trade — L'illusion économique; config flipped
-  # higher_is_better: false -> true in this same version, Breaking line in
-  # the changelog). provisional: true until Ediz confirms in the books.
+  # higher_is_better: false -> true in that same version, Breaking line in
+  # the changelog). Decision 12 (v28): confirmed in the books — basis
+  # todd, provisional flag retired.
   - indicator: industrial_employment_share
     direction: higher
     transform: linear
     sex_mode: both
     scores: [official, modelled]
-    basis: editorial
-    provisional: true
+    basis: todd
+    provisional: false
     corpus_metric: industrial_employment_share

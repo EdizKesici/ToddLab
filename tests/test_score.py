@@ -1,10 +1,16 @@
-"""tests/test_score.py — the v27 score layer's unit tests (§6 of the brief).
+"""tests/test_score.py — the score layer's unit tests (§6 of the briefs).
 
 Synthetic mini-dists ONLY, no real data: every rule is tested on hand-built
 fixtures where the expected value is computable by head. The live invariants
-(the 28 byte-identical dist files, the anchors against the reference
-prototype) live in scripts/verify_v27_diff.py — these tests are the RULES,
+(the 30 byte-identical dist files, the anchors against the reference
+prototype) live in scripts/verify_v28_diff.py — these tests are the RULES,
 that verifier is the STATE.
+
+v28 sections: the carry rule (decision 16 — age cap, latest-wins, no carry
+across entities, max_obs_year cap, the ghost guard, max_age_years 0 = the
+exact-year behaviour), the amended delta (same-observation exclusion), the
+bounds' independence from the carry, and decision 15's official-only
+refusal of illegitimate_births in the modelled score.
 """
 from __future__ import annotations
 
@@ -19,11 +25,15 @@ from src.schema.score import ScoreComponent, ScoreConfig, ScoreName
 from src.schema.todd_refs import ToddCorpus
 from src.score.core import (
     aggregate,
+    ages_from_obs_years,
     compute_bounds,
     delta,
+    fresh_points,
+    max_obs_year_of,
     normalise_series,
     pct,
     preset_weights,
+    resolve_carry,
     score_and_coverage,
     select_source,
 )
@@ -592,3 +602,255 @@ def test_build_score_layer_deterministic_and_drift_guard(tmp_path):
     doc_wrong["bounds"]["official"]["alpha/both"]["source"] = "worldbank:WA"
     with pytest.raises(BoundsDriftError, match="BOUNDS DRIFT"):
         build_score_layer(cfg, doc_wrong, dist, cfg_dir, None)
+
+
+# ---------------------------------------------------------------------------
+# v28 THE CARRY RULE (decision 16) — synthetic normalised maps, hand-computed
+# ---------------------------------------------------------------------------
+
+
+def _norm():
+    """alpha/both: x observed 2000 (50.0) and 2004 (70.0); z observed 2004
+    only (60.0). max_obs_year over the score = 2004."""
+    return {
+        ("alpha", "both"): {
+            "x": {2000: 50.0, 2004: 70.0},
+            "z": {2004: 60.0},
+        }
+    }
+
+
+def test_carry_age_cap_exact():
+    resolved, obs_years = resolve_carry(_norm(), 3, 1990, 2004)
+    # x: 2000 fresh; 2001-2003 carried from 2000 (ages 1-3); 2004 fresh
+    assert resolved[("alpha", "both")]["x"] == {
+        2000: 50.0, 2001: 50.0, 2002: 50.0, 2003: 50.0, 2004: 70.0,
+    }
+    assert obs_years[("alpha", "both")]["x"] == {
+        2000: 2000, 2001: 2000, 2002: 2000, 2003: 2000, 2004: 2004,
+    }
+    # THE CAP: with max_age_years = 3, an observation at 2004 does NOT
+    # fill 2000-2003 (backward carry never happens: the window is
+    # [Y - max_age, Y]) and 2000's value does NOT reach 2004+1 anywhere.
+
+
+def test_carry_age_four_is_not_carried():
+    # a 5-year gap: 2000 observed, next candidate year 2005 > 2000 + 3
+    norm = {("alpha", "both"): {"x": {2000: 50.0, 2005: 70.0}}}
+    resolved, _ = resolve_carry(norm, 3, 1990, 2005)
+    # 2004 would need the 2000 observation at age 4 — refused
+    assert 2004 not in resolved[("alpha", "both")]["x"]
+    assert resolved[("alpha", "both")]["x"] == {
+        2000: 50.0, 2001: 50.0, 2002: 50.0, 2003: 50.0, 2005: 70.0,
+    }
+
+
+def test_carry_latest_observation_wins():
+    # two candidates inside the window at Y=2003 (the score's max_obs_year
+    # pushed to 2003 by ANOTHER component's observation): the LATER wins
+    norm = {("alpha", "both"): {"x": {2000: 50.0, 2002: 62.0}}}
+    resolved, obs_years = resolve_carry(norm, 3, 1990, 2003)
+    assert resolved[("alpha", "both")]["x"][2003] == 62.0  # 2002 beats 2000
+    assert obs_years[("alpha", "both")]["x"][2003] == 2002
+    assert resolved[("alpha", "both")]["x"][2001] == 50.0  # 2002 not yet seen
+    assert obs_years[("alpha", "both")]["x"][2001] == 2000
+
+
+def test_carry_fresh_beats_older():
+    # a fresh observation at Y always wins over an older one in the window
+    norm = {("alpha", "both"): {"x": {2000: 50.0, 2002: 62.0}}}
+    resolved, obs_years = resolve_carry(norm, 3, 1990, 2002)
+    assert resolved[("alpha", "both")]["x"][2002] == 62.0
+    assert obs_years[("alpha", "both")]["x"][2002] == 2002  # age 0
+
+
+def test_nothing_carried_across_entities():
+    resolved, _ = resolve_carry(_norm(), 3, 1990, 2004)
+    # z is observed 2004 only: 2001-2003 stay absent (x's 2000 never fills z)
+    assert resolved[("alpha", "both")]["z"] == {2004: 60.0}
+
+
+def test_max_obs_year_cap():
+    # no resolved year beyond the score's max_obs_year (2004 here)
+    resolved, _ = resolve_carry(_norm(), 3, 1990, 2004)
+    every_year = [y for e in resolved[("alpha", "both")].values() for y in e]
+    assert every_year and max(every_year) == 2004
+    # and max_obs_year_of reads it from the fresh map itself
+    assert max_obs_year_of(_norm()) == 2004
+
+
+def test_carry_before_bounds_from_year_never_resolved():
+    # observations before bounds_from_year are outside the score's range:
+    # the 1985 point never fills 1990 (its window ends at 1988), and the
+    # 1995 observation carries only within [1990, max_obs_year=1995]
+    norm = {("alpha", "both"): {"x": {1985: 10.0, 1995: 30.0}}}
+    resolved, _ = resolve_carry(norm, 3, 1990, 1995)
+    assert 1990 not in resolved[("alpha", "both")]["x"]
+    assert resolved[("alpha", "both")]["x"] == {1995: 30.0}
+
+
+def test_max_age_years_zero_equals_exact_year():
+    norm = _norm()
+    resolved, obs_years = resolve_carry(norm, 0, 1990, 2004)
+    # window [Y, Y]: only fresh observations survive, identical to v27
+    assert resolved == {k: {e: {y: v for y, v in ys.items()} for e, ys in s.items()} for k, s in norm.items()}
+    assert ages_from_obs_years(obs_years) == {}
+
+
+def test_ages_map_is_sparse_and_consistent():
+    resolved, obs_years = resolve_carry(_norm(), 3, 1990, 2004)
+    ages = ages_from_obs_years(obs_years)
+    assert ages == {("alpha", "both"): {"x": {2001: 1, 2002: 2, 2003: 3}}}
+    # absent = fresh: every emitted age is >= 1 and < = max_age_years
+    for key, ents in ages.items():
+        for entity, years in ents.items():
+            for year, age in years.items():
+                assert 1 <= age <= 3
+                assert resolved[key][entity][year] == resolved[key][entity][year - age]
+
+
+def test_fresh_guard_refuses_ghost_scores():
+    # x reaches coverage 1.0 in 2001-2003 on CARRIED values alone — ghosts,
+    # refused; only 2000 (fresh) and 2004 (fresh) are emitted
+    resolved, obs_years = resolve_carry(_norm(), 3, 1990, 2004)
+    weights = {("alpha", "both"): 1.0}
+    agg = aggregate(resolved, weights)
+    fresh = fresh_points(obs_years)
+    emitted = {
+        e: {y: p for y, p in ys.items() if p[1] >= 0.60 and (e, int(y)) in fresh}
+        for e, ys in agg.items()
+    }
+    assert set(emitted["x"]) == {"2000", "2004"}
+    assert set(emitted["z"]) == {"2004"}
+    # the ghost years DID reach the coverage threshold — the guard, not the
+    # threshold, refuses them
+    assert all(agg["x"][y][1] >= 0.60 for y in ("2001", "2002", "2003"))
+
+
+def test_delta_excludes_same_observation_components():
+    # alpha moves 40->50 between 2000 and 2001; beta is CARRIED into 2001
+    # (same 2000 observation): its zero term must NOT dilute the delta
+    resolved = {
+        ("alpha", "both"): {"x": {2000: 40.0, 2001: 50.0}},
+        ("beta", "both"): {"x": {2000: 30.0, 2001: 30.0}},
+    }
+    weights = {("alpha", "both"): 1.0, ("beta", "both"): 1.0}
+    ages = {("beta", "both"): {"x": {2001: 1}}}
+
+    d = delta(resolved, weights, "x", 2000, 2001, 0.50, ages=ages)
+    assert d["refused"] is False
+    assert d["n_components"] == 1
+    assert d["delta"] == 10.0  # 50 - 40, undamped by beta's zero term
+    assert d["common_weight_share"] == 0.5
+
+    # without the age map (the pre-v28 caller): beta counts, delta damped
+    d_old = delta(resolved, weights, "x", 2000, 2001, 0.50)
+    assert d_old["n_components"] == 2
+    assert d_old["delta"] == 5.0
+
+    # the refusal still rides the AMENDED common weight: threshold 0.75
+    # refuses the share-0.5 pair even though coverage is full
+    d_ref = delta(resolved, weights, "x", 2000, 2001, 0.75, ages=ages)
+    assert d_ref["refused"] is True
+    assert d_ref["common_weight_share"] == 0.5
+
+    # every common component resting on the same observation -> C empty
+    resolved2 = {
+        ("alpha", "both"): {"x": {2000: 40.0, 2001: 40.0}},
+        ("beta", "both"): {"x": {2000: 30.0, 2001: 30.0}},
+    }
+    ages2 = {
+        ("alpha", "both"): {"x": {2001: 1}},
+        ("beta", "both"): {"x": {2001: 1}},
+    }
+    assert delta(resolved2, weights, "x", 2000, 2001, 0.50, ages=ages2) is None
+
+
+def test_bounds_unaffected_by_the_carry_rule(tmp_path):
+    # end-to-end on the mini dist: the emitted component bounds are the
+    # FROZEN ones — the carried years (2001-2003 now in normalised) never
+    # feed lo/hi/n_sample
+    dist, cfg = _mini_dist(tmp_path)
+    bounds_doc = _mini_bounds_doc(dist, cfg)
+    cfg_dir = tmp_path / "cfg"
+    cfg_dir.mkdir()
+    (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
+    (cfg_dir / "score_bounds.yaml").write_text("meta: {}", encoding="utf-8")
+    (cfg_dir / "todd_refs.yaml").write_text("meta: {}", encoding="utf-8")
+    build_score_layer(cfg, bounds_doc, dist, cfg_dir, None)
+    official = json.loads((dist / "score" / "official.json").read_text())
+    for key, block in bounds_doc["bounds"]["official"].items():
+        emitted = official["components"][key]
+        assert emitted["lo"] == block["lo"]
+        assert emitted["hi"] == block["hi"]
+        assert emitted["n_sample"] == block["n_sample"]
+        assert emitted["bounds_version"] == block["bounds_version"]
+    # the carry DID add years to normalised (the resolved range is wider
+    # than the fresh one) while the bounds stayed frozen
+    assert "2001" in official["normalised"]["alpha/both"]["x"]
+    assert official["age"]["alpha/both"]["x"] == {"2001": 1, "2002": 2, "2003": 3}
+
+
+# ---------------------------------------------------------------------------
+# v28 decisions 12-15 at the config level
+# ---------------------------------------------------------------------------
+
+
+def _ib_component(scores):
+    return ScoreComponent(
+        indicator="illegitimate_births", direction="lower", transform="linear",
+        sex_mode="both", scores=scores, basis="todd", provisional=False,
+        corpus_metric="illegitimate_births",
+    )
+
+
+def test_illegitimate_births_accepted_official_refused_modelled():
+    # accepted: official only (decision 15)
+    cfg = _config(components=[_ib_component(["official"])])
+    assert cfg.components[0].indicator == "illegitimate_births"
+    # refused loudly on the modelled side
+    with pytest.raises(ValidationError, match="OFFICIAL-SCORE-ONLY"):
+        _config(components=[_ib_component(["official", "modelled"])])
+    with pytest.raises(ValidationError, match="OFFICIAL-SCORE-ONLY"):
+        _config(components=[_ib_component(["modelled"])])
+
+
+def test_gini_and_incarceration_still_refused():
+    for bad_id in ("gini_index", "incarceration_rate"):
+        with pytest.raises(ValidationError, match="EXCLUDED"):
+            _config(components=[
+                ScoreComponent(indicator=bad_id, direction="lower", transform="linear",
+                               sex_mode="both", scores=["official"], basis="consensus")
+            ])
+
+
+def test_max_age_years_schema():
+    cfg = _config()
+    assert cfg.max_age_years == 3  # the shipped default (decision 16)
+    with pytest.raises(ValidationError):
+        _config(**{"max_age_years": -1})
+    with pytest.raises(ValidationError):
+        _config(**{"max_age_years": 1.5})
+    zero = _config(**{"max_age_years": 0})
+    assert zero.max_age_years == 0  # the tested exact-year configuration
+
+
+def test_shipped_score_config_has_no_editorial_basis():
+    # decisions 12-14 confirmed in the books: every component now carries
+    # basis in {todd, consensus} and no provisional flag remains — asserted
+    # on the REAL config, not a fixture (the brief's "assert it")
+    from src.config_loader import load_score_config
+
+    repo_root = Path(__file__).resolve().parents[1]
+    cfg = load_score_config(repo_root / "config")
+    assert cfg.max_age_years == 3
+    assert all(c.basis.value in ("todd", "consensus") for c in cfg.components)
+    assert not any(c.provisional for c in cfg.components)
+    for iid in ("birth_rate_fertility", "top_income_share",
+                "tertiary_education_share", "industrial_employment_share"):
+        comp = next(c for c in cfg.components if c.indicator == iid)
+        assert comp.basis.value == "todd", iid
+        assert comp.provisional is False, iid
+    ib = next(c for c in cfg.components if c.indicator == "illegitimate_births")
+    assert [s.value for s in ib.scores] == ["official"]
+    assert ib.basis.value == "todd" and ib.provisional is False

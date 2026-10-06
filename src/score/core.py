@@ -4,8 +4,9 @@ No network, no data/raw, no data/processed: the input is the FROZEN
 indicator dist (data/dist/indicators/*.json), config/score.yaml and the
 frozen config/score_bounds.yaml. The output is data/dist/score/ (emit.py).
 
-The rules here are the SINGLE implementation of the v27 brief's §4.4
-(source selection) and §4.6 (normalisation): scripts/freeze_score_bounds.py
+The rules here are the SINGLE implementation of the source selection
+(§4.4), the normalisation (§4.6), the v28 CARRY RULE (decision 16) and
+the aggregation/delta rules (§4.8-4.9): scripts/freeze_score_bounds.py
 uses them to WRITE the frozen bounds, rebuild uses them to read and apply
 the frozen bounds, and the drift guard uses them to compare the frozen
 source with what the rules would pick today. One implementation, three
@@ -15,6 +16,16 @@ Determinism contract: every iteration is over sorted keys; every stored
 value is rounded at the config's `rounding` decimals and every later
 aggregate reads the STORED values; the same dist + config bytes give the
 same output bytes.
+
+THE CARRY RULE (v28, decision 16 — amends decision 3): no interpolation;
+a real observation may be carried forward for at most `max_age_years`,
+with its age recorded. For each (score, component, entity) and each year
+Y in [bounds_from_year, max_obs_year(score)]: the value used is the
+LATEST real observation with obs_year in [Y - max_age_years, Y]; age =
+Y - obs_year (0 = fresh). Carrying NEVER crosses entities, sources or
+sexes (the resolution is per component key and entity), a null point is
+never an observation, and the frozen bounds are computed on fresh
+observations only — the carry rule never moves the scale.
 """
 from __future__ import annotations
 
@@ -255,6 +266,91 @@ def normalise_series(
 # ---------------------------------------------------------------------------
 
 
+def max_obs_year_of(normalised: dict) -> int | None:
+    """The score's max_obs_year (v28): the greatest year with a real
+    (fresh, non-null) observation in ANY retained source of the score —
+    no score year is emitted beyond it. None when the score has no
+    observation at all."""
+    years = [y for series in normalised.values() for ey in series.values() for y in ey]
+    return max(years) if years else None
+
+
+def resolve_carry(
+    normalised: dict,  # ComponentKey -> entity -> year -> stored FRESH value
+    max_age_years: int,
+    bounds_from_year: int,
+    max_obs_year: int | None,
+) -> tuple[dict, dict]:
+    """The v28 carry rule (decision 16). Returns (resolved, obs_years):
+
+    - resolved: ComponentKey -> entity -> year -> the STORED value in use
+      (fresh, or the latest fresh observation within max_age_years — the
+      stored rounded value is carried as-is, so every later aggregate
+      still reads stored values only);
+    - obs_years: ComponentKey -> entity -> year -> the underlying
+      observation's year (== year when fresh).
+
+    Nothing is carried across entities or component keys (the loops are
+    per key and entity); a year with no candidate in the window stays
+    absent (a gap is a gap, never interpolated); no year beyond
+    max_obs_year is ever emitted. max_age_years == 0 reproduces the
+    exact-year behaviour identically (the window [Y, Y] holds only a
+    fresh observation).
+    """
+    resolved: dict = {key: {} for key in normalised}
+    obs_years: dict = {key: {} for key in normalised}
+    if max_obs_year is None or max_obs_year < bounds_from_year:
+        return resolved, obs_years
+    for key in sorted(normalised):
+        series = normalised[key]
+        for entity in sorted(series):
+            years = sorted(series[entity])
+            if not years:
+                continue
+            ent_res: dict = {}
+            ent_obs: dict = {}
+            for year in range(bounds_from_year, max_obs_year + 1):
+                candidates = [y for y in years if year - max_age_years <= y <= year]
+                if not candidates:
+                    continue
+                y0 = candidates[-1]  # the LATEST observation in the window wins
+                ent_res[year] = series[entity][y0]
+                ent_obs[year] = y0
+            resolved[key][entity] = ent_res
+            obs_years[key][entity] = ent_obs
+    return resolved, obs_years
+
+
+def ages_from_obs_years(obs_years: dict) -> dict:
+    """The EMITTED sparse age map: ComponentKey -> entity -> year -> age,
+    present only where age >= 1 (absent = fresh). This is the exact shape
+    data/dist/score/*.json carry and the frontend contract documents."""
+    ages: dict = {}
+    for key in sorted(obs_years):
+        for entity in sorted(obs_years[key]):
+            sparse = {
+                year: year - obs
+                for year, obs in sorted(obs_years[key][entity].items())
+                if obs != year
+            }
+            if sparse:
+                ages.setdefault(key, {})[entity] = sparse
+    return ages
+
+
+def fresh_points(obs_years: dict) -> set:
+    """The ghost guard's set: (entity, year) where at least one available
+    component is FRESH (obs_year == year). A country-year with coverage
+    above the threshold but NO fresh component is a ghost — not emitted."""
+    fresh: set = set()
+    for key in sorted(obs_years):
+        for entity, years in obs_years[key].items():
+            for year, obs in years.items():
+                if obs == year:
+                    fresh.add((entity, year))
+    return fresh
+
+
 def component_keys(config: ScoreConfig, score: ScoreName) -> list:
     """The (indicator, sex) keys of one score, in deterministic order."""
     keys: list = []
@@ -346,16 +442,32 @@ def delta(
     year1: int,
     year2: int,
     delta_min_common_weight: float,
+    ages: dict | None = None,
 ) -> dict | None:
-    """§4.9's frontend contract: C = the components with a stored value at
-    BOTH years; refused when C is empty or the common-weight share is
-    below delta_min_common_weight. Returns the delta, the share, |C| and
-    the per-component decomposition (each term already divided by the
-    common weight — the additive form the frontend displays)."""
+    """§4.9's frontend contract, AMENDED in v28: C = the components with a
+    stored value at BOTH years whose UNDERLYING OBSERVATION YEAR differs
+    between the two dates — a component resting on the same observation at
+    both dates is excluded (otherwise the delta would be artificially
+    damped by a term of zero that still dilutes the common weight).
+
+    `ages` is the EMITTED sparse map (component -> entity -> year -> age,
+    present only where age >= 1): obs_year = year - age, fresh when
+    absent. None means no age information — every common component
+    counts (the pre-v28 behaviour, kept for callers without the map).
+
+    Refused when C is empty or the common-weight share is below
+    delta_min_common_weight. Returns the delta, the share, |C| and the
+    per-component decomposition (each term already divided by the common
+    weight — the additive form the frontend displays)."""
+    def _obs_year(key: tuple, year: int) -> int:
+        if ages is None:
+            return year  # no age information: treat every component as fresh
+        return year - ages.get(key, {}).get(entity, {}).get(year, 0)
+
     common: list = []
     for key in sorted(normalised):
         s = normalised[key].get(entity, {})
-        if year1 in s and year2 in s:
+        if year1 in s and year2 in s and _obs_year(key, year1) != _obs_year(key, year2):
             common.append((key, s[year1], s[year2]))
     if not common:
         return None

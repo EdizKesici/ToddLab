@@ -16,14 +16,14 @@ Each step reads the file written by the previous one from disk
 `*.validation.json` -> `data/dist/`). No step keeps in-memory state across
 runs: you can stop after any step and resume by rerunning `rebuild`.
 
-## The score layer rides the dist (v27, amended v27.1, ADR-0011)
+## The score layer rides the dist (v27, amended v27.1 and v28, ADR-0011)
 
 The project's FIRST AND ONLY derived product — two composite scores per
 country-year, `official` (canonical-tier sources) and `modelled`
 (widest-coverage single source per component), never merged. It is a
 SIXTH consumer, not a pipeline step: `src/score/` reads the frozen
 `data/dist/indicators/*.json` + `config/score.yaml` (the intent:
-directions, transforms, sex handling, basis, provisional flags) +
+directions, transforms, sex handling, basis, `max_age_years`) +
 `config/score_bounds.yaml` (the frozen numbers — p1/p99 bounds and the
 retained source per component, written ONLY by
 `scripts/freeze_score_bounds.py`), and emits `data/dist/score/`
@@ -35,8 +35,21 @@ ONE deliberate exception (decision 10: `industrial_employment_share`'s
 `higher_is_better` flipped true, a Breaking change recorded in the
 changelog). v27.1 amended the layer's COMPOSITION only (decision 11:
 `incarceration_rate` left the score — no defensible direction; it
-stays an indicator — while the frozen bounds regenerated at
-2026-10-06.1 with all 37 remaining blocks numerically identical).
+stays an indicator). v28 amended it again (decisions 12-16): the
+remaining directions confirmed in the books (no `editorial` basis, no
+provisional flag left), `illegitimate_births` joined the OFFICIAL score
+only (decision 15 — the modelled side refuses it loudly), and THE
+CARRY RULE (decision 16, amends the ADR's decision 3): a component's
+value for year Y is the latest real observation with obs_year in
+[Y - max_age_years, Y], its age recorded in the emitted sparse `age`
+maps, a score emitted only where coverage >= 0.60 AND at least one
+component is fresh (the ghost guard), no year beyond the score's
+max_obs_year, and the two-year delta computed on components whose
+underlying observation differs — the composition noise fell from
+0.86/0.95 to 0.33/0.34 points per year, at the recorded price that the
+last years of a series are largely carried values. The bounds
+regenerated at 2026-10-06.2 with the 37 pre-existing blocks numerically
+identical (fresh observations only — the carry never moves the scale).
 `rebuild` never recomputes bounds: a drift guard fails the
 build loudly when the frozen source no longer matches what the §4.4
 selection rules would pick on the current dist — re-freezing is a

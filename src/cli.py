@@ -157,9 +157,12 @@ def cmd_rebuild(_args) -> int:
         print(f"SCORE LAYER REFUSED: {e}", file=sys.stderr)
         return 1
     n = summary["n_components"]
+    mo = summary["max_obs_year"]
     print(
         f"Score layer -> {summary['out_dir']} "
         f"(official {n['official']} / modelled {n['modelled']} components, "
+        f"carry <= {score_config.max_age_years}y, max_obs_year "
+        f"{mo['official']}/{mo['modelled']}, "
         f"bounds {score_bounds['meta']['bounds_version']} frozen)"
     )
     return 0

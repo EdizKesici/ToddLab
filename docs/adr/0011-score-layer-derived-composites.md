@@ -1,7 +1,10 @@
 # ADR-0011: The score layer — two derived composites, official and modelled
 
 - **Status**: ACCEPTED (2026-10-05, v27); AMENDED (2026-10-06, v27.1 —
-  decision 11: `incarceration_rate` removed from the score only)
+  decision 11: `incarceration_rate` removed from the score only);
+  AMENDED (2026-10-06, v28 — decisions 12-16: directions confirmed in
+  the books, `illegitimate_births` joins the official score, and the
+  score-per-year carry rule)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -53,10 +56,17 @@ Ediz's decisions (locked; numbered and testable):
    values of the retained source since 1990, FROZEN in a committed
    config (versioned; log transform for the very skewed). No per-year
    percentile rank — rank is a display on the composite, never a
-   property of it. No interpolation, ever.
+   property of it. No interpolation, ever; real observations may be
+   carried forward for at most 3 years, with their age recorded and
+   displayed (v28, decision 16 — the amendment; a carried value is a
+   reuse of a real observation, never an invented one, and the bounds
+   are computed on fresh observations only).
 4. A difference between two years is computed **only on the components
-   available at both dates**, displays its common-component count and
-   the per-component decomposition, and is REFUSED below 0.50 of common
+   available at both dates WHOSE UNDERLYING OBSERVATION DIFFERS**
+   (v28 amendment: a component resting on the same observation at both
+   dates is excluded — its zero term would damp the delta and dilute the
+   common weight), displays its common-component count and the
+   per-component decomposition, and is REFUSED below 0.50 of common
    weight.
 5. **Sex**: life expectancy and life expectancy at 60 are canonical by
    sex only — male and female are two components of equal weight whose
@@ -85,9 +95,9 @@ Ediz's decisions (locked; numbered and testable):
    schema): `maternal_deaths` (a count; the ratio is the component),
    the two markers, `male_height_trend`,
    `consanguineous_marriage_rate`, `crude_birth_rate`,
-   `road_accident_mortality` (per capita), the POSTPONED
-   `illegitimate_births` (not included, not deleted), and the v26
-   withdrawals.
+   `road_accident_mortality` (per capita), and the v26 withdrawals.
+   The POSTPONED `illegitimate_births` is postponement no longer —
+   decision 15 (v28) made it the official score's component.
 10. **`industrial_employment_share` flips to "higher is better"** —
     Ediz's explicit instruction (Todd defends industry against free
     trade, *L'illusion économique*): the indicator config, its dist
@@ -118,6 +128,68 @@ Ediz's decisions (locked; numbered and testable):
     the odd years lack rows, not values), so it made the score's
     composition alternate; without it the modelled score gains 13 to 39
     countries per year between 2000 and 2022.
+12. **`industrial_employment_share` and `tertiary_education_share`:
+    "higher is better" is confirmed in Todd's books** (v28, 2026-10-06).
+    Both components drop `provisional: true` and move to `basis: todd`
+    (they were editorial+provisional since v27). With this and decisions
+    13-14, NO component carries `basis: editorial` any more and none is
+    provisional — the frontend's caveat retires.
+13. **`birth_rate_fertility` stays a target of 2.1; too high and too
+    low are both bad** (confirmed in the books by Ediz; `basis: todd`).
+    Transform (`abs(ln(TFR/2.1))`) and bounds unchanged — the known
+    simplification (replacement is higher where mortality is high)
+    stands and stays recorded below.
+14. **`top_income_share`: lower is better, confirmed** (`basis: todd`).
+    The Gini exclusion (decision 7) is untouched by the confirmation.
+15. **`illegitimate_births` joins the score; direction `lower`; the
+    OFFICIAL score only.** A high share of births outside marriage is
+    "bad" in Todd's reading, verified in the books by Ediz — the
+    family-anthropology axis (the corpus's own `illégitimité`:
+    `todd_core: true`, 16 citations in 6 books; todd-preset weight 6).
+    Official-only for a DATA reason (the auditor's recommendation,
+    based on measurement; Ediz can reverse it): the indicator exists
+    for 47 entities, almost all European — in the modelled score it
+    would push about 40 non-European countries per year under the 0.60
+    coverage threshold (modelled countries scored in 2015: 141 -> 104
+    in a test), while in the official score it changes nothing in the
+    number of countries (37 -> 37 in the same test). Same treatment as
+    the per-vehicle road indicator (decision 6): the config schema
+    refuses the id on the modelled side, loudly. With this decision the
+    official score reaches 18 indicators / 20 components (total weight
+    18); the modelled stays 16 / 18 / 16.
+16. **Score per year: keep the latest real observation, at most 3 years
+    old, with its age shown** (v28, 2026-10-06). This replaces the
+    exact-year rule of v27 and amends decision 3: no interpolation; real
+    observations may be carried forward for at most 3 years, with their
+    age recorded and displayed. It is NOT interpolation — no value is
+    invented: a real, older observation is reused, capped, and
+    labelled. The reason is measured, not aesthetic: at the exact year
+    the composition of a score changes from one year to the next
+    because PISA comes every ~3 years, top income share and the
+    official life expectancy at 60 have gaps up to 4 years, and the
+    last years of the series are ragged (suicide and life expectancy
+    at 60 stop in 2021). On the V27.1 dist the composition effect was
+    0.86 (official) / 0.95 (modelled) score points per year against a
+    real mean annual change of about 1.4, and it reversed the sign of
+    the year-on-year change in about 18% (modelled) to 20% (official)
+    of consecutive-year pairs; with the carry rule the composition
+    noise falls to 0.33 / 0.34 (measured on the V27.1 dist, 2000-2020).
+    Mechanics: for each (score, component, entity) and year Y in
+    [bounds_from_year, max_obs_year(score)], the value used is the
+    LATEST real observation with obs_year in [Y - 3, Y]; age = Y -
+    obs_year (0 = fresh), recorded in the emitted sparse `age` maps;
+    nothing is carried across entities, sources or sexes; a null point
+    is never an observation; no score year beyond the score's
+    max_obs_year (2025 for both scores today); a country-year is
+    scored only with coverage >= 0.60 AND at least one FRESH component
+    (the ghost guard — its measured effect: 3 country-years in 2025,
+    official); carried values are 13.5% (official) / 9.3% (modelled) of
+    the scored values; and the two-year delta is computed on components
+    whose underlying observation DIFFERS between the two dates
+    (decision 4's amendment). The frozen bounds never move: they are
+    computed on fresh observations only (the invariant is tested —
+    all 37 pre-existing blocks kept every field at the 2026-10-06.2
+    regeneration).
 
 The auditor's delegated decisions (taken with data; Ediz can reverse):
 weighted **arithmetic** mean (the geometric mean ranked nearly the same
@@ -154,42 +226,56 @@ vectors.
 
 The accepted negatives, stated as such:
 
-- **The score per year is uneven because the sources' rhythms are.**
-  PISA prints every ~3 years, tertiary attainment in 5-year steps,
-  suicide and life expectancy at 60 stop in 2021 (the GHE edition),
-  maternal mortality differs by door (OWID to 2020, World Bank to
-  2023). No carry-forward: a component absent in a year is absent in
-  that year's score — Ediz's accepted worry about "the score per year",
-  recorded, not solved. (v27.1 note: the incarceration alternation that
-  motivated this bullet's first draft left with decision 11 — the
-  cadence is an observed pattern whose cause was never established.)
+- **The composition noise is measured and capped, not gone.** The
+  exact-year rule of v27 made a score's composition jump with the
+  sources' rhythms (PISA every ~3 years, tertiary attainment in 5-year
+  steps, suicide and life expectancy at 60 stopping in 2021): a
+  composition effect of 0.86 (official) / 0.95 (modelled) score points
+  per year against a real mean annual change of about 1.4, sign
+  reversals in about 18-20% of consecutive-year pairs. The v28 carry
+  rule (decision 16) cuts that noise to 0.33 / 0.34 — at the price the
+  amendment names: the last three years of a series are largely carried
+  values (2025: 74 modelled countries, 32 official), every carried
+  component wears its age and the frontend badge "data from YYYY", and
+  the carried share (13.5% official / 9.3% modelled of scored values)
+  is displayed, not hidden. A gap longer than 3 years is still a gap.
 - **"Official" means the canonical tier, not "non-modelled"**: obesity
   (WHO) and HIV are modeled estimates, top income share rides
   OWID/WID. The contract says so; the badge `source_class: modelled`
   flags the (currently empty, tested on a fixture) official fallback.
 - **The fertility target is a simplification** (2.1 everywhere;
   replacement is higher where mortality is high).
-- **Two provisional directions** (industrial employment, tertiary
-  attainment) await Ediz's confirmation in the books — flagged in the
-  config, emitted with every value.
+- **No provisional direction remains**: industrial employment, tertiary
+  attainment, the fertility target and top income share are confirmed
+  in the books (decisions 12-14, v28) — the `provisional` flags and
+  the last `basis: editorial` entries retired with them.
 - **The modelled score lacks road mortality per-vehicle** (decision 6's
-  corollary): it compares ~140 countries on 16 indicators, not 17.
-- The todd preset gives fertility 16 of 93 indicator weight on the
+  corollary) **and `illegitimate_births`** (decision 15, v28 — 47
+  entities, almost all European): it compares ~140 countries on 16
+  indicators, not 18. The official score gains the illégitimité and
+  with it a stronger European weight in its composition — the
+  asymmetry is the price of not pushing ~40 non-European countries per
+  year under the coverage threshold.
+- The todd preset gives fertility 16 of 99 indicator weight on the
   official score (92 modelled — the per-vehicle component's book count
   is official-only; v27.1 removed incarceration's weight 3 from the
-  96/95 it was). The concentration is Todd's own book counts —
-  displayed, not hidden; the equal preset exists precisely because of
-  it.
-- **The official score of 2000 falls from 20 countries to 3** (v27.1):
-  countries sat just above the 0.60 coverage threshold and fall just
-  below it when the total weight shrinks to 17 — the official score
-  effectively starts around 2005. An expected threshold effect,
-  reported in the changelog's Known limitations, not fixed.
+  96/95 it was; v28 added illegitimate_births' 6 to the official side).
+  The concentration is Todd's own book counts — displayed, not hidden;
+  the equal preset exists precisely because of it.
+- **The official score of 2000 is 21 countries, not 3** (v28): the
+  carry rule undoes v27.1's threshold fall (countries that lost
+  coverage when the total weight shrank to 17 regain it when
+  observations are carried), and the first years of a score follow
+  from the resolved data. The right edge is the honest new cost: no
+  score year exists beyond the score's max_obs_year (2025 for both
+  scores today), and a country-year with coverage above the threshold
+  but nothing fresh is a ghost — refused (3 such country-years in
+  2025, official).
 
 The indicator layer is untouched by all of this — the derivation lives
 in its own layer, its own config, its own ADR, labelled derived
 everywhere — with decision 10's single flag flip as the one deliberate,
-Breaking, reviewable exception (decision 11, like 7 and 9 before it,
-touches the score layer only). The score layer retires the
+Breaking, reviewable exception (decisions 11 and 15, like 7 and 9 before
+them, touch the score layer only). The score layer retires the
 "composite-derived-layer" reserve: the question architecture.md held
 open since v15 is answered, here, in writing.
