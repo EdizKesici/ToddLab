@@ -22,12 +22,17 @@ House invariants enforced here:
 - every component names a KNOWN indicator id (validated at load against
   the indicator registry — see config_loader.cross_validate_score);
 - the EXCLUDED ids (decisions 7/9/11: the Gini, incarceration, the
-  markers, the counts, the postponed) are refused loudly, not silently
+  markers, the counts, the withdrawn) are refused loudly, not silently
   dropped;
+- the OFFICIAL-ONLY ids (decision 15, v28: illegitimate_births) are
+  accepted in the official score and refused in the modelled one —
+  a coverage asymmetry, never a silent drop;
 - direction/transform pairs must be coherent (target transform rides a
   target direction; log/linear ride higher or lower);
 - one entry per indicator — the split-sex components (life expectancy
-  pair) are DERIVED from sex_mode, not listed twice.
+  pair) are DERIVED from sex_mode, not listed twice;
+- max_age_years is a non-negative integer (decision 16, v28: 0
+  reproduces the v27 exact-year behaviour — a tested configuration).
 """
 from __future__ import annotations
 
@@ -81,9 +86,12 @@ class Basis(str, Enum):
 #   true, exactly the Gini's treatment);
 # maternal_deaths: a count, the RATIO is the component;
 # the markers, male_height_trend, consanguineous_marriage_rate,
-#   crude_birth_rate, road_accident_mortality (per capita), and the
-#   postponed illegitimate_births: out by earlier decisions;
+#   crude_birth_rate, road_accident_mortality (per capita): out by
+#   earlier decisions;
 # immigration_stock / agricultural_employment_share: withdrawn in v26.
+# (illegitimate_births was on this list as "postponed" until v28 —
+#   decision 15 made it the official score's component; it is now
+#   OFFICIAL-ONLY below instead.)
 EXCLUDED_INDICATORS: frozenset[str] = frozenset(
     {
         "gini_index",
@@ -95,11 +103,24 @@ EXCLUDED_INDICATORS: frozenset[str] = frozenset(
         "consanguineous_marriage_rate",
         "crude_birth_rate",
         "road_accident_mortality",
-        "illegitimate_births",
         "immigration_stock",
         "agricultural_employment_share",
     }
 )
+
+# Decision 15 (v28): official-score-only components. illegitimate_births
+# exists for 47 entities, almost all European — in the modelled score it
+# would push about 40 non-European countries per year under the 0.60
+# coverage threshold (modelled countries scored in 2015: 141 -> 104 in a
+# test), while in the official score it changes nothing (37 -> 37). Ediz
+# can reverse it; until then the schema refuses the modelled side loudly.
+OFFICIAL_ONLY_INDICATORS: dict[str, str] = {
+    "illegitimate_births": (
+        "decision 15 (v28) — 47 entities, almost all European: official "
+        "score only (it would push ~40 non-European countries per year under "
+        "the coverage threshold in the modelled score)"
+    ),
+}
 
 
 class ScoreComponent(BaseModel):
@@ -140,6 +161,10 @@ class ScoreConfig(BaseModel):
     rounding: int = Field(2, ge=0, le=6)
     presets: list[str] = Field(..., min_length=1)
     components: list[ScoreComponent] = Field(..., min_length=1)
+    # decision 16 (v28): carry a real observation forward at most this many
+    # years (age recorded). 0 reproduces the v27 exact-year behaviour —
+    # a tested configuration, never a special case in the code.
+    max_age_years: int = Field(3, ge=0)
 
     @field_validator("percentiles")
     @classmethod
@@ -158,6 +183,13 @@ class ScoreConfig(BaseModel):
                 raise ValueError(
                     f"{c.indicator} is EXCLUDED from the score by decision 7/9/11 — "
                     "remove the component (the exclusion is deliberate, never silent)"
+                )
+            reason = OFFICIAL_ONLY_INDICATORS.get(c.indicator)
+            if reason and ScoreName.modelled in c.scores:
+                raise ValueError(
+                    f"{c.indicator} is OFFICIAL-SCORE-ONLY — {reason}. "
+                    "Remove 'modelled' from its scores (never silent, never a "
+                    "coverage hole in the modelled score)"
                 )
         dups = sorted(k for k, n in seen.items() if n > 1)
         if dups:

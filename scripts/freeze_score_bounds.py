@@ -27,6 +27,10 @@ REGENERATION PROTOCOL (the ADR's rule): a fetch that moves a source's
 coverage can change what §4.4 would pick; the drift guard in the build
 then REFUSES to run until this script is re-run deliberately and the
 bounds_version bumped — the scale never moves silently under a score.
+The version is a date plus a sequence: the FIRST regeneration of a
+given day takes .1, the second .2, and so on (read from the existing
+file — the v28 rule; before v28 the script hardcoded .1, which would
+have re-frozen the same version twice on a two-regeneration day).
 """
 from __future__ import annotations
 
@@ -51,11 +55,31 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _next_bounds_version() -> str:
+    """date + sequence: today's first freeze is '<date>.1'; a file already
+    frozen TODAY bumps its sequence (2026-10-06.1 -> 2026-10-06.2). The
+    version must MOVE on every deliberate regeneration."""
+    today = date.today().isoformat()
+    existing = REPO_ROOT / "config" / "score_bounds.yaml"
+    if existing.is_file():
+        try:
+            current = yaml.safe_load(existing.read_text(encoding="utf-8"))
+            prev = str((current or {}).get("meta", {}).get("bounds_version", ""))
+        except yaml.YAMLError:
+            prev = ""
+        if prev.startswith(f"{today}."):
+            try:
+                return f"{today}.{int(prev.rsplit('.', 1)[1]) + 1}"
+            except ValueError:
+                pass
+    return f"{today}.1"
+
+
 def freeze(dry_run: bool) -> int:
     config = load_score_config(REPO_ROOT / "config")
     dist_indicators = REPO_ROOT / "data" / "dist" / "indicators"
 
-    bounds_version = f"{date.today().isoformat()}.1"
+    bounds_version = _next_bounds_version()
     payload: dict = {
         "meta": {
             "bounds_version": bounds_version,

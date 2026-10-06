@@ -18,6 +18,358 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-06 — v28: the carry rule (decision 16, amends decision 3),
+## illegitimate_births in the official score (decision 15), and the
+## directions confirmed in the books (decisions 12-14)
+
+**Breaking** (against the v27.1 score files ONLY): `normalised` now
+holds the RESOLVED values (fresh or carried at most 3 years); a new
+sparse `age` map rides every score file; `illegitimate_births/both`
+joins the official score (18 indicators / 20 components / total weight
+18); the two-year delta rule changed (components resting on the same
+observation at both dates are excluded from C); `meta.json` gains
+`max_age_years`, `carry_rule` and `max_obs_year`. A frontend built on
+v27.1 must not assume exact-year normalised maps or the v27 delta
+formula. The indicator layer carries NO breaking change: the 30
+non-score dist files are byte-identical to v27.1, the catalog is
+field-for-field identical, the corpus untouched.
+
+### Context
+
+Ediz's decisions (2026-10-06, now ADR-0011 decisions 12-16):
+
+12. `industrial_employment_share` and `tertiary_education_share`:
+    "higher is better" is confirmed in Todd's books — `basis: todd`,
+    `provisional: false` for both (the frontend caveat retires; with
+    13-14, NO component carries `basis: editorial` any more).
+13. `birth_rate_fertility` stays a target of 2.1; too high and too low
+    are both bad (confirmed in the books) — `basis: todd`; transform
+    and bounds unchanged.
+14. `top_income_share`: lower is better, confirmed — `basis: todd`.
+15. `illegitimate_births` joins the score, direction lower (a high
+    share of births outside marriage is "bad" in Todd's reading,
+    verified in the books), the OFFICIAL score only: the indicator
+    exists for 47 entities, almost all European — in the modelled score
+    it would push about 40 non-European countries per year under the
+    0.60 coverage threshold (141 -> 104 in the 2015 test) while in the
+    official score it changes nothing (37 -> 37). Todd's illégitimité,
+    todd_core true, 16 citations in 6 books, todd-preset weight 6.
+    The schema now refuses the id on the modelled side, loudly
+    (decision 15's own error class, beside the EXCLUDED set).
+16. Score per year: keep the latest real observation, at most 3 years
+    old, with its age shown. This amends decision 3 ("no interpolation"
+    -> "no interpolation; real observations may be carried forward for
+    at most 3 years, with their age recorded and displayed"). The
+    reason is measured: at the exact year, the composition effect was
+    0.86 (official) / 0.95 (modelled) score points per year against a
+    real mean annual change of about 1.4, and it reversed the sign of
+    the year-on-year change in about 18% (modelled) to 20% (official)
+    of consecutive-year pairs; with the carry rule the composition
+    noise falls to 0.33 / 0.34.
+
+### Investigated (live, before freezing anything)
+
+- The reference prototype (score_reference_v28.py, run on the b2ed1c5
+  dist) reproduced every anchor of the brief's §5 EXACTLY at session
+  start: components 20/18, weights 18/16, max_obs_year 2025/2025; the
+  scored-country ladders (official 21/29/40/42/40/41/32, modelled
+  143/159/165/165/166/163/74); the 2015 top-5s and positions; the
+  Russian deltas under the amended rule (modelled -4.6/+8.8/+8.1 at
+  0.56/0.69/0.75, official refused at 0.22/0.22/0.33); the composition
+  noise 0.33/0.34; the carried shares 0.135/0.093; the new bounds
+  block's anchor (canonical, lo 2.2, hi 64.176). No divergence between
+  the brief and the live dist was found.
+- The todd preset's new weight read live from todd_refs:
+  illegitimate_births carries 6 books / 16 citations; the official todd
+  total moves 93 -> 99 (fertility now 16 of 99), the modelled stays 92.
+- PART B — the official-score source probes (report only; nothing
+  wired, no config, no dist file, no committed data touched; the raw
+  downloads live outside the repo):
+  1. WHO Mortality Database (suicide, cirrhosis candidate): a genuine
+     as-reported collector (ICD-coded deaths from national civil
+     registration), bulk CSV doors verified live (morticd10 parts 4-5
+     downloaded and inspected). Coverage (availability file, Feb 2026
+     vintage): 148 ICD-10 countries, 91 entities at 2000, 119 at 2010,
+     115 at 2015 and 2019, 94 at 2022, 75 at 2023 — against the OECD
+     canonical's 45-46. It covers 45 of the current canonical's 46
+     entities (Korea genuinely absent — the one real hole; Turkey, the
+     US and Czechia match under their WHO names). BLOCKER: the MDB
+     prints DEATH COUNTS by cause/sex/age — no rate column anywhere in
+     the part files — so wiring suicide_rate or cirrhosis mortality
+     would require a deaths/population derivation the indicator
+     layer's constitution forbids. Verdict: not wirable for the rate
+     components as the project stands; a future counts-based indicator
+     face, or an Ediz amendment extending the DYB-Table-17
+     printed-ratio precedent, would unlock ~115-148 countries in one
+     deliberate decision. Effort: high (entity mapping, ICD code-set
+     maintenance). Risk: medium.
+  2. UNODC (homicide candidate): the dataportal (dataunodc.unodc.org)
+     does not resolve from this environment (NXDOMAIN; the main site
+     is a JS shell) — the data-level probe could not be completed, said
+     as such. Structurally ADR-0007 files UNODC under the harmonized
+     tier (L3); whether a genuinely as-reported police-recorded door
+     could qualify remains unverified. Verdict: witness only (the
+     owid:homicide-rate-unodc witness already serves the modelled
+     score), revisit from a network that resolves the portal.
+  3. ILOSTAT (unemployment, industrial employment candidate): what
+     feeds from data/raw/ilostat today is the unemployment indicator's
+     two WITNESS doors (DF_UNE_DEAP_SEX_AGE_CBR_RT / CCT_RT, the
+     étrangers/immigrés faces of v25). The headline flow
+     (DF_UNE_DEAP_SEX_AGE_RT, probed live on the SDMX API) covers
+     211-233 areas per year (2000-2024) — but it is ONE series per
+     (area, measure) whose SOURCE annotations mix 'ILO - Modelled
+     Estimates' (87 areas) with ~120 heterogeneous national survey
+     genealogies ('Repository: ILO-STATISTICS - Micro data processing'
+     on 88-93; national LFS names on the rest): a harmonized tier (L3),
+     not an as-reported collector, and the national-estimate-only
+     candidacy fails the patchwork test (one canonical source for all
+     scored countries is impossible when 87 areas are modelled). The
+     modelled score already reads unemployment from the wide
+     national-estimate witness (worldbank SL.UEM.TOTL.NE.ZS, 209
+     entities). Verdict: witness only; reject for the official
+     canonical.
+  4. UNESCO UIS (secondary/tertiary attainment candidate): DEFINITION
+     MISMATCH — the score's components are population attainment
+     shares (25-64, ISCED 3-4 / 5-8, LFS-based, Eurostat edat_lfse_03);
+     the UIS's flagship series are enrolment ratios (a flow, not a
+     stock), and its survey-based SDG attainment series are
+     definitionally distinct. Access: the SDMX API door is dead
+     (api.uis.unesco.org/sdmx/rest returns 404 on every probed path;
+     the Data Browser is a JS portal with no discoverable bulk door).
+     Verdict: reject (a mismatch disqualifies, per the brief's own
+     rule); the data-level probe is additionally incomplete.
+  5. UN Demographic Yearbook (birth_rate_fertility, illegitimate_births,
+     life_expectancy_60):
+     - THE TFR IS PRINTED in Table 4 ("Vital statistics summary and life
+       expectancy at birth", per edition a 5-year window): edition 2024
+       carries 126 entities (118/113/109/88/28 across 2020-2024);
+       edition 2019 carries 190 entities (99 at 2015 thinning to 26 at
+       2019); edition 2015 carries 190 (111 at 2011, 18 at 2015). The
+       collector computes and PRINTS it — the same printed-value status
+       as Table 17's maternal ratios (no derivation on our side). On
+       the overlap with the Eurostat canonical the agreement is EXACT
+       (Germany, Italy, Spain, Sweden 2021: 0.000 difference); France
+       diverges by -0.043 (the known definitional seam). The what-if
+       (the emitted v28 official layer, the candidate's availability
+       swapped in): 2015: 42 -> 46 scored countries (gains japan,
+       united_states, argentina, colombia); 2019: 40 -> 40 (the 2019
+       window is thin); 2021: 40 -> 44; 2022: 41 -> 45; ZERO losses.
+       Older windows (2005, 2010) were not probed: the pre-2016 legacy
+       files for Table 4 are dead doors (the 2010 file 404s; the 2015
+       one was recovered through the legacy URL pattern).
+     - Births outside marriage: NO legitimacy table exists in the DYB
+       2024 edition (the 25 standard tables mapped live: vital summary,
+       population, births/CBR, fertility by age, foetal deaths,
+       abortions, marriages, divorces — no legitimacy status). No other
+       as-reported collector was found for the share outside Europe
+       beyond the OECD Family Database (SF2.4 — the wired OWID
+       witness). Verdict: no DYB door; the witness stands.
+     - LE60 coverage by year (the canonical IS the DYB, read live from
+       the dist): 166 entities overall; per year 2000: 8, 2005: 3,
+       2010: 60, 2015: 34, 2019: 53, 2020: 58, 2021: 56, 2022: 62,
+       2023: 63, 2024: 14 — the staggered five-year windows are the
+       collector's own rhythm (each edition prints its window; the 2024
+       column fills with the 2025 edition), and they are exactly the
+       gaps decision 16's carry rule absorbs.
+  6. HMD/HCD (statement only, nothing wired, per the brief): HMD would
+     add ANNUAL life tables (no gaps) for ~50-55 populations — narrower
+     than the DYB's 166 entities but continuous where the DYB staggers;
+     a co-published raw-counts + methods-protocol + constructed-series
+     stack already classified as a planned collector by ADR-0007
+     (Ediz's account pending). HCD would add annual cause-specific
+     COUNTS for ~40 countries — the same counts-not-rates blocker as
+     the WHO MDB.
+  7. Road mortality per-vehicle (probe only a door not tried): no new
+     door found — the IRTAD data distributes through the same OECD Data
+     Explorer (DF_SAFETY, our wired door); the per-vehicle unit's club
+     (38 areas) remains the constraint and the sister unit 10P5HB (55
+     areas) remains a different denominator (per-capita). Nothing to
+     wire.
+  RANKED WIRING PLAN (for Ediz's decision; a later version wires):
+  (1) DYB Table 4 TFR as birth_rate_fertility's second canonical door
+  (priority-merged with Eurostat's): gain +4-5 official-scored countries
+  in 2015-2022 and 126-190 entities of indicator coverage; effort
+  medium (multi-edition stitching 2015-2024, entity-name mapping, the
+  France seam arbitrated like FX/FR); risk low. (2) The structural
+  finding that matters more than any single door: the official score's
+  ~40-country width is a JOINT constraint — widening one of the nine
+  narrow components gains almost nothing (the TFR what-if proves it:
+  +4 countries max) — so the real decision is either accepting the
+  collector-tier frontier (the modelled score exists precisely for
+  breadth) or ONE deliberate constitutional amendment (printed-rates
+  collectors) that would unlock the WHO MDB's 115-148 countries for
+  suicide, cirrhosis AND homicide at once. (3) WHO MDB: reject for now
+  (counts-only). (4) ILOSTAT and UIS: reject for the official canonical
+  (harmonized; definition mismatch). (5) UNODC: witness only, probe
+  incomplete.
+
+### Added
+
+- THE CARRY RULE (decision 16) — `src/score/core.py::resolve_carry`,
+  the single implementation shared by rebuild and the emit path: for
+  each (score, component, entity) and year Y in [bounds_from_year,
+  max_obs_year(score)], the value used is the LATEST real observation
+  with obs_year in [Y - max_age_years, Y]; age = Y - obs_year (0 =
+  fresh); nothing carried across entities, sources or sexes; a null
+  point never counts; no year beyond the score's max_obs_year (2025
+  for both scores today); a country-year is scored only where coverage
+  >= 0.60 AND at least one component is fresh (the ghost guard — 3
+  country-years in 2025 official, australia/canada/chile, refused).
+- The emitted score files' sparse `age` maps (component -> entity ->
+  year -> age, present only where age >= 1) and `meta.json`'s
+  `global.max_age_years`, `carry_rule` description and `max_obs_year`
+  per score.
+- `config/score.yaml`: `max_age_years: 3` global (0 reproduces the v27
+  exact-year behaviour — a tested configuration, not a code path); the
+  `illegitimate_births` component (official only, direction lower,
+  basis todd, corpus_metric illegitimate_births).
+- `src/schema/score.py`: `max_age_years` validated (integer >= 0);
+  OFFICIAL_ONLY_INDICATORS (decision 15) refusing the modelled side
+  loudly; illegitimate_births removed from EXCLUDED_INDICATORS.
+- The v28 test section (16 tests): the age cap exact (age 3 carried,
+  age 4 not), latest-wins, fresh-beats-older, nothing carried across
+  entities, the max_obs_year cap, the pre-1990 window, max_age_years 0
+  = the exact-year result, the sparse age map's consistency, the ghost
+  guard, the amended delta (same-observation exclusion, refusal below
+  0.50 on the AMENDED common weight, C empty when everything rests on
+  one observation), the bounds' independence from the carry, decision
+  15's official-only refusal, gini/incarceration still refused, the
+  max_age_years schema, and the shipped-config assertion (no editorial
+  basis, nothing provisional — the brief's "assert it").
+- The golden vectors' five new contract cases: a carried PISA value
+  (albania 2010, math_test_scores resting on 2009, age 1 — the "data
+  from YYYY" badge), the amended delta excluding same-observation
+  components (afghanistan 2008->2009, 2 components excluded), the
+  right-edge case (afghanistan 2022 modelled: suicide age 1, LE-60
+  male/female carried), an illegitimate_births official point (france
+  2015), and the ghost-guard refusal (australia 2025 official,
+  coverage 0.6667, nothing fresh) — 19 vectors total, every label
+  generated from live readings.
+- `scripts/freeze_score_bounds.py`: the version rule — date +
+  sequence, the next free sequence for the day read from the existing
+  file (2026-10-06.1 -> 2026-10-06.2; before v28 the script hardcoded
+  .1 and would have re-frozen the same version twice on a
+  two-regeneration day).
+
+### Changed
+
+- The two-year delta rule (§4.9, and `core.delta`): C now counts only
+  the components available at BOTH dates WHOSE UNDERLYING OBSERVATION
+  DIFFERS — a component resting on the same observation at both dates
+  is excluded (its zero term would damp the delta and dilute the
+  common weight; the modelled Russian 2010->2019 delta moves 9.2 ->
+  8.1 with 12 -> 14 components for exactly this reason). The
+  decomposition, the |C| display and the 0.50 refusal ride the amended
+  C. `delta`'s ages parameter defaults to None (the pre-v28 behaviour
+  for callers without the map); the emit path always passes the
+  emitted sparse map.
+- Decisions 12-14 in `config/score.yaml`: birth_rate_fertility,
+  top_income_share, tertiary_education_share and
+  industrial_employment_share all carry `basis: todd` and
+  `provisional: false` — no editorial basis, no provisional flag,
+  anywhere.
+- `scripts/verify_v27_diff.py` -> `scripts/verify_v28_diff.py` (git mv,
+  THE single move of this delivery): the baseline is now b2ed1c5 and
+  the checks are the v28 invariants (102 checks — see Verified). The
+  V26.1/V27.1 precedent inverted: the name follows the surgery.
+- The CLI's score-layer line (rebuild) now prints the carry rule's own
+  numbers: "official 20 / modelled 18 components, carry <= 3y,
+  max_obs_year 2025/2025, bounds 2026-10-06.2 frozen".
+- The bounds regenerated BY THE FREEZER ALONE at 2026-10-06.2 with the
+  invariant proven live before anything else ran: all 37 pre-existing
+  blocks keep source / source_class / floor / lo / hi / n_sample /
+  n_unavailable IDENTICAL to v27.1's file; exactly ONE block added
+  (official/illegitimate_births/both: canonical, floor null, lo 2.2,
+  hi 64.17599999999997, n_sample 1263); the drift guard accepts the
+  new file and the bounds are computed on FRESH observations only (the
+  carry never moves the scale — the test asserts it).
+- Docs: ADR-0011 (status "Accepted (v27), amended (v27.1, v28)";
+  decisions 12-16 in full; decision 3's and decision 4's amended
+  wording; the Consequences rewritten — the composition noise measured
+  and capped, no provisional direction left, the todd concentration
+  at 16 of 99, the official-2000 threshold fall undone by the carry);
+  `docs/score-contract.md` (the carry rule section, the amended delta
+  formula, the "data from YYYY" badge, the carried-share display, the
+  right edge, the ghost guard); the ADR register; README and
+  architecture's score sections.
+
+### Fixed
+
+- The v27.1 golden-vector label that still quoted the V27 reference
+  run ("85.2 in the reference run") while the v27.1 head was 84.4: the
+  heads' labels are now generated from the LIVE recomputation (84.45
+  modelled / 75.54 official at v28's 20/18 components) — a stale
+  number can never ship again.
+- The just-below golden case re-picked live under the resolved values
+  (afghanistan 2000 at 0.5625 — unchanged from v27.1 by luck of the
+  resolution, now re-derived at every generation).
+
+### Verified (live, this session)
+
+- The reference anchors recomputed from the EMITTED layer (58/58
+  cross-checks PASS): every scored-country count EXACT (official
+  21/29/40/42/40/41/32; modelled 143/159/165/165/166/163/74); the
+  2015 top-5s within the stored-value rounding tail (modelled EXACT to
+  the decimal: japan 84.45, singapore 80.15, norway 78.34, israel
+  77.28, australia 77.09; official: australia 75.54, israel 74.3x,
+  canada 72.3x, switzerland 72.0x, new_zealand 71.6x); every 2015
+  position exact (japan 1, france 30, united_states 46, china 9,
+  russian_federation 85, chile 70, sweden 14; official france 17,
+  chile 39, sweden 6); the Russian deltas exact under the amended rule
+  (modelled -4.6/+8.8/+8.1 at 0.56/0.69/0.75 with 10/13/14 components;
+  official refused at 0.22/0.22/0.33); the composition noise 0.33/0.34
+  (from 0.86/0.95); the carried shares 0.135/0.093 EXACT; the ghost
+  guard's 3 country-years in 2025 official identified.
+- `cli check-config`: OK — 27 indicators; todd corpus 22 metrics, 470
+  citations, 16 books (sha256 e30304cf...); score layer: 18 indicators
+  (18 official / 16 modelled), 20/18 components, bounds 2026-10-06.2
+  (frozen).
+- Tests: **401 passed** (385 at v27.1 + 16 v28 tests).
+- `scripts/verify_v28_diff.py`: **102/102 PASS** — the 30 non-score
+  dist files byte-identical to b2ed1c5 (illegitimate_births's own dist
+  file among them — it was already an indicator); the catalog
+  field-for-field identical to v27.1; illegitimate_births still
+  todd_core true in the catalog and still a corpus metric (6 books /
+  16 citations); corpus 22 metrics / 115 rows / 16 books / 470
+  citations, sha256 unchanged; the 37+1 bounds invariant (every field
+  of every pre-existing block identical, only the version moved, the
+  new block's anchor verified at full precision); the age maps sparse
+  (1 <= age <= 3) and every carried value equal to the value at its
+  observation year; every emitted score at coverage >= 0.60 AND fresh
+  (recomputed from the age maps); no score year beyond max_obs_year;
+  no gini or incarceration key anywhere; basis ⊆ {todd, consensus},
+  nothing provisional; preset totals equal 18/16 and todd 99/92
+  (illegitimate_births weight 6); every golden vector recomputed by an
+  independent path from the emitted values AND age maps, including the
+  amended delta; 401 tests; rebuild ×2 byte-stable across all 34 dist
+  files; exactly one living score verifier (the git mv recorded).
+- The score files' sizes under the ~8 MB cap: official.json 700,222 B
+  (482,433 at v27.1), modelled.json 1,541,436 B (1,290,943), meta.json
+  10,644 B, golden_vectors.json 3,855 B — the carried values and age
+  maps add roughly the predicted 9-14% plus the maps' own weight.
+
+### Known limitations
+
+- The last years of a series are largely carried values (2025: 74
+  modelled countries, 32 official) — the price of the composition
+  noise cut (0.86/0.95 -> 0.33/0.34); the age display is the honest
+  answer, not a repair.
+- The fresh guard refuses 3 country-years in 2025 official
+  (australia, canada, chile — coverage above 0.60, nothing fresh);
+  they will return when the sources' 2025 vintages land.
+- The official score of 2000 carries 21 countries (the carry rule
+  undid v27.1's threshold fall to 3); the modelled 2019 window of the
+  DYB TFR candidate is thin (26 entities at 2019) — a wiring caveat
+  for Part B's plan, not a defect of this delivery.
+- The modelled score still lacks road mortality per-vehicle (decision
+  6) and illegitimate_births (decision 15): 16 indicators, not 18.
+- The fertility target (2.1) remains the recorded simplification
+  (replacement is higher where mortality is high).
+- Part B's probes could not be completed at the data level for UNODC
+  (the dataportal does not resolve from the workbench) and UIS (the
+  SDMX API is dead, the browser is a JS portal); both verdicts rest on
+  the structural analysis, said as such in Investigated.
+
 ## 2026-10-06 — v27.1: incarceration_rate leaves the score (decision
 ## 11), and the v27 audit's four text fixes
 
