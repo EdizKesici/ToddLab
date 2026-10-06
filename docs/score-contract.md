@@ -1,4 +1,4 @@
-# The score layer's frontend contract (v27, ADR-0011)
+# The score layer's frontend contract (v27, amended v27.1, ADR-0011)
 
 This is the EXACT, documented contract for computing a score, a custom-
 weighted score, or a two-year difference from `data/dist/score/`. The
@@ -13,11 +13,12 @@ and `golden_vectors.json` is what to unit-test against.
   indicator layer's three prohibitions (no interpolation, no
   derivation, no reconciliation) are untouched — the score derives
   openly from what the indicators measured, and every file says so.
-- **Two scores, never merged**: `official` (canonical-tier sources,
-  ~37 countries) and `modelled` (widest-coverage single source per
-  component, ~110 countries). They diverge where modeling runs ahead of
-  collection; the divergence is the signal. Display them side by side,
-  never average them.
+- **Two scores, never merged**: `official` (canonical-tier sources, 19
+  components / total weight 17, ~37 countries at its widest) and
+  `modelled` (widest-coverage single source per component, 18
+  components / total weight 16, ~140 countries). They diverge where
+  modeling runs ahead of collection; the divergence is the signal.
+  Display them side by side, never average them.
 - **"Official" means the canonical tier of this project, not
   "non-modelled"**: obesity (WHO) and HIV are modeled estimates,
   top income share rides OWID/WID. A component inside the official
@@ -89,8 +90,9 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 - `equal`: weight 1 per indicator (0.5 per sex component).
 - `todd`: weight = the number of DISTINCT BOOKS citing the component's
   `corpus_metric` in the Todd corpus (floor 1 when null or 0). Fertility
-  carries 16 of 96 — the concentration is Todd's own reading, display
-  it, and offer `equal` beside it.
+  carries 16 of 93 indicator weight on the official score (92 modelled
+  — v27.1 removed incarceration's 3) — the concentration is Todd's own
+  reading, display it, and offer `equal` beside it.
 
 ## Display discipline (the three prohibitions, applied to rendering)
 
@@ -107,17 +109,26 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
   tertiary attainment — Ediz has not confirmed them in the books yet);
   the component count behind every value; the chosen `source` per
   component.
+- **`incarceration_rate` is an indicator OUTSIDE the score** (decision
+  11, v27.1 — no defensible direction; it stays on the site's normal
+  statistics). The catalog still carries `higher_is_better: false` for
+  it — that boolean PREDATES the decision and is NOT a judgment the
+  score endorses: never use it for an evaluative display of that
+  indicator.
 
 ## Known limitations to carry into the UI
 
 - The score per year is uneven because the sources' rhythms are (PISA
-  ~3-year, tertiary 5-year, incarceration biennial on even years,
-  suicide and LE-at-60 stop 2021, maternal mortality differs by door).
-  This is accepted, not a bug; coverage display is the honest answer.
+  ~3-year, tertiary 5-year, suicide and LE-at-60 stop 2021, maternal
+  mortality differs by door). This is accepted, not a bug; coverage
+  display is the honest answer. (`incarceration_rate` is an indicator
+  outside the score — decision 11 — and no longer shapes the rhythm.)
 - The fertility target (2.1) is a simplification; replacement is higher
   where mortality is high.
 - The modelled score has no road mortality per-vehicle (no world-wide
   source exists — decision 6).
-- The official score starts where canonical by-sex life expectancy
-  starts (~2007-2010) — the first year of a score follows from the
-  data, by design (decision 8).
+- The official score of 2000 carries only 3 countries (v27.1: the
+  total weight shrank to 17 and countries that sat just above the 0.60
+  coverage threshold fell just below it) — the official score
+  effectively starts around 2005 (18 countries). The first year of a
+  score follows from the data, by design (decision 8).

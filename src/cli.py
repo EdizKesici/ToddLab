@@ -55,6 +55,8 @@ from src.pipeline.normalize import normalize_all  # noqa: E402
 from src.pipeline.stats import render_stats  # noqa: E402
 from src.pipeline.validate import validate_all  # noqa: E402
 from src.score.emit import BoundsDriftError, build_score_layer  # noqa: E402
+from src.score.core import component_keys  # noqa: E402
+from src.schema.score import ScoreName  # noqa: E402
 
 
 def _load_config():
@@ -82,12 +84,18 @@ def cmd_check_config(_args) -> int:
             f" | todd corpus: {m.metrics} metrics, {m.total_citations} citations, "
             f"{m.books} books (sha256 {m.source_csv_sha256[:12]}...)"
         )
+    # Both units, explicitly (the v27 audit's fix 3: v27 printed the
+    # INDICATOR count under the word "components" — indicators and
+    # components differ wherever the LE pair splits by sex).
     n_official = sum(1 for c in score_config.components if any(s.value == "official" for s in c.scores))
     n_modelled = sum(1 for c in score_config.components if any(s.value == "modelled" for s in c.scores))
+    n_comp_official = len(component_keys(score_config, ScoreName.official))
+    n_comp_modelled = len(component_keys(score_config, ScoreName.modelled))
     score_note = (
-        f" | score layer: {len(score_config.components)} components "
-        f"({n_official} official / {n_modelled} modelled), bounds "
-        f"{score_bounds['meta']['bounds_version']} (frozen)"
+        f" | score layer: {len(score_config.components)} indicators "
+        f"({n_official} official / {n_modelled} modelled), "
+        f"{n_comp_official}/{n_comp_modelled} components (the LE pair split by sex), "
+        f"bounds {score_bounds['meta']['bounds_version']} (frozen)"
     )
     print(f"OK: {len(indicators)} indicator(s), {len(entities.entities)} entities.{corpus_note}{score_note}")
     for ind in indicators.values():

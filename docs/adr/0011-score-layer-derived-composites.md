@@ -1,6 +1,7 @@
 # ADR-0011: The score layer — two derived composites, official and modelled
 
-- **Status**: ACCEPTED (2026-10-05, v27)
+- **Status**: ACCEPTED (2026-10-05, v27); AMENDED (2026-10-06, v27.1 —
+  decision 11: `incarceration_rate` removed from the score only)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -32,7 +33,7 @@ never an interpolation.
 The decision that shaped everything else: TWO SEPARATE SCORES, never
 merged. "Official" (canonical-tier sources — the project's own
 authenticity standard) and "modelled" (widest-coverage single source —
-comparability across ~110 countries instead of ~37). The pair is the
+comparability across ~140 countries instead of ~37). The pair is the
 same never-a-cross-layer-blend discipline ADR-0007 taught for
 indicators, applied to composites: the two scores diverge exactly where
 modeling runs ahead of collection, and the divergence is the signal,
@@ -68,13 +69,14 @@ Ediz's decisions (locked; numbered and testable):
    unit carries 55, the per-vehicle club is the constraint).
 7. **`gini_index` is removed from the score only** — it stays an
    indicator, `todd_core: true`, in the catalog and on the site. Reason:
-   double counting with `top_income_share`. The measured facts (read
-   live 2026-10-05, correcting the design brief's looser claim): the
-   Gini's canonical is OECD IDD (906 country-year pairs) and
-   top_income's canonical is OWID/WID (3,203 pairs); **774 pairs are
-   shared — 85.4% of the Gini's footprint sits inside top_income's**,
-   over the same survey universe, with the WID Gini riding
-   top_income's own witness root. The overlap, not an identity, is the
+   double counting with `top_income_share`. Two measured facts (read
+   live 2026-10-05, restated neutrally in v27.1): (i) the WID Gini
+   witness (`owid:gini-coefficient-wid`) covers exactly the same 3,203
+   country-year keys as `top_income_share`'s canonical
+   (`owid:incomes-of-the-richest`) — the same survey universe carrying
+   two different measures, 0 of 3,203 values equal; (ii) the Gini's own
+   canonical (OECD IDD, 906 country-year pairs) shares 774 of them
+   (85.4%) with top_income. The overlap, not an identity, is the
    double-counting ground; the exclusion is Ediz's call either way.
 8. No "long-run" pre-2000 mode: a score exists for a country-year when
    its weighted coverage reaches 0.60; the first year of a score
@@ -95,6 +97,27 @@ Ediz's decisions (locked; numbered and testable):
     the direction is confirmed in the books, and a drift test now
     asserts the catalog flag and the score direction can never
     disagree silently.
+11. **`incarceration_rate` is removed from the score only** (v27.1,
+    2026-10-05) — Ediz's methodological objection, accepted: the prison
+    population measures what policing and the justice system do, not
+    crime or well-being. The same movement reads in opposite ways — a
+    fall can mean fewer offenders or a police force that misses them; a
+    rise can mean a crackdown judged effective (the El Salvador case is
+    the example; the reading there is contested) or harsher penal
+    policy. No defensible monotone direction exists, so it cannot be a
+    score component (the v27 config's `basis: editorial` was the
+    warning that should have kept it out). It stays an indicator —
+    `todd_core: true`, in the catalog, in the corpus, on the site —
+    exactly the Gini's treatment (decision 7). The score keeps
+    `homicide_rate` as its outcome measure of crime. Side effect,
+    reported not sought: incarceration publishes mostly on even years
+    (observed pattern, cause NOT established — even years 2000-2018
+    carry 135-158 countries under the stated counting rule of distinct
+    `entity_id` with a non-null both-sexes point, odd years 1999-2021
+    carry 10-36, 1998 is an even year with only 13, zero null points:
+    the odd years lack rows, not values), so it made the score's
+    composition alternate; without it the modelled score gains 13 to 39
+    countries per year between 2000 and 2022.
 
 The auditor's delegated decisions (taken with data; Ediz can reverse):
 weighted **arithmetic** mean (the geometric mean ranked nearly the same
@@ -133,13 +156,13 @@ The accepted negatives, stated as such:
 
 - **The score per year is uneven because the sources' rhythms are.**
   PISA prints every ~3 years, tertiary attainment in 5-year steps,
-  incarceration carries the World Prison Brief compilation's biennial
-  rhythm (137-151 countries on even years, 10-32 on odd — the cadence
-  of the compilation itself, probed live), suicide and life expectancy
-  at 60 stop in 2021 (the GHE edition), maternal mortality differs by
-  door (OWID to 2020, World Bank to 2023). No carry-forward: a
-  component absent in a year is absent in that year's score — Ediz's
-  accepted worry about "the score per year", recorded, not solved.
+  suicide and life expectancy at 60 stop in 2021 (the GHE edition),
+  maternal mortality differs by door (OWID to 2020, World Bank to
+  2023). No carry-forward: a component absent in a year is absent in
+  that year's score — Ediz's accepted worry about "the score per year",
+  recorded, not solved. (v27.1 note: the incarceration alternation that
+  motivated this bullet's first draft left with decision 11 — the
+  cadence is an observed pattern whose cause was never established.)
 - **"Official" means the canonical tier, not "non-modelled"**: obesity
   (WHO) and HIV are modeled estimates, top income share rides
   OWID/WID. The contract says so; the badge `source_class: modelled`
@@ -150,14 +173,23 @@ The accepted negatives, stated as such:
   attainment) await Ediz's confirmation in the books — flagged in the
   config, emitted with every value.
 - **The modelled score lacks road mortality per-vehicle** (decision 6's
-  corollary): it compares ~110 countries on 17 indicators, not 18.
-- The todd preset gives fertility 16 of 96 indicator weight (the
-  corpus's own book counts — the concentration is Todd's, displayed,
-  not hidden; the equal preset exists precisely because of it).
+  corollary): it compares ~140 countries on 16 indicators, not 17.
+- The todd preset gives fertility 16 of 93 indicator weight on the
+  official score (92 modelled — the per-vehicle component's book count
+  is official-only; v27.1 removed incarceration's weight 3 from the
+  96/95 it was). The concentration is Todd's own book counts —
+  displayed, not hidden; the equal preset exists precisely because of
+  it.
+- **The official score of 2000 falls from 20 countries to 3** (v27.1):
+  countries sat just above the 0.60 coverage threshold and fall just
+  below it when the total weight shrinks to 17 — the official score
+  effectively starts around 2005. An expected threshold effect,
+  reported in the changelog's Known limitations, not fixed.
 
 The indicator layer is untouched by all of this — the derivation lives
 in its own layer, its own config, its own ADR, labelled derived
 everywhere — with decision 10's single flag flip as the one deliberate,
-Breaking, reviewable exception. The score layer retires the
+Breaking, reviewable exception (decision 11, like 7 and 9 before it,
+touches the score layer only). The score layer retires the
 "composite-derived-layer" reserve: the question architecture.md held
 open since v15 is answered, here, in writing.
