@@ -23,14 +23,21 @@ sources:
   # unwired companion door — a future crude_birth_rate decision.
   #
   # THE CANONICAL FINDING (verified live 2026-09-19, before any config):
-  # no collector wire prints a national TFR except Eurostat's demo_find
-  # — the UN DYB publishes CBR (Table 9) and general/age-specific rates
-  # (Table 10, no TFR column; summing the ASFR would be a derivation the
-  # canonical tier refuses by constitution) and the OECD SDMX registry
-  # has no national fertility dataflow (DF_FERTILITY is regional
-  # TL2/TL3). So the collector tier here is Eurostat: the TFR each
-  # national statistical office computes and publishes, collected via the
-  # Eurostat questionnaire — same judgment as un_dyb for content.
+  # the collector tier's TFR doors are Eurostat's demo_find and — v28.1's
+  # live correction — the UN DYB's Table 4, which PRINTS the finished rate
+  # ("Total fertility rate / L'indice synthétique de fécondité", column
+  # 21, verified live in every wired edition 2011-2024). The 2026-09-19
+  # probe had probed Table 10 (general and age-specific fertility rates,
+  # latest-year cross-sections) and concluded "no TFR column" — true of
+  # Table 10, blind to Table 4; the v28 Part B probe found the printed
+  # column and the v28.1 review wired it (the ranked plan #1). Summing
+  # Table 10's ASFR would remain the derivation the canonical tier
+  # refuses by constitution; the printed Table 4 column needs none — the
+  # same printed-value status as Table 17's maternal ratios. So the
+  # collector tier is Eurostat (the TFR each national statistical office
+  # computes, collected via the Eurostat questionnaire) + the DYB (the
+  # TFR the UNSD computes from registered births by mother's age,
+  # collected via the annual vital-statistics questionnaires).
   - provider: eurostat
     ref: demo_find/TOTFERRT
     priority: 1
@@ -58,6 +65,107 @@ sources:
     priority: 3
     role: canonical
     root: eurostat_demo
+  # v28.1 — THE SECOND CANONICAL DOOR (the v28 ranked wiring plan #1,
+  # approved in Ediz's review, 2026-10-07: "Le câblage de la fécondité
+  # par l'Annuaire démographique (risque faible, gain de 4 à 5 pays), à
+  # essayer avec le reste"): the DYB Table 4 TFR, the SAME file the
+  # life_expectancy loop already fetches (edition loop 2011-2024, the
+  # FILEPASS-encrypted 2016 deliberately absent — the inherited vintage
+  # discipline), read through the connector's new `field: tfr` block.
+  # PRIORITY-MERGED UNDER EUROSTAT (the FX/FR seam discipline): an
+  # entity-year both collectors print keeps Eurostat's value, every
+  # discarded DYB candidate logged in provenance.json — the overlap
+  # agreement read live on 564 shared keys: 220 exact, 157 within 0.01,
+  # 128 within 0.05 (rounding-level), and 7 entities with real
+  # collector-vs-collector seams >= 0.1 (Azerbaijan 0.44 max — the DYB
+  # prints ~2.3 where Eurostat prints ~1.9; Romania, Bulgaria, Georgia,
+  # Latvia, Moldova, Montenegro) — displayed as the two collectors'
+  # definitional seams, never reconciled, exactly the FX/FR precedent.
+  # The DYB fills what Eurostat never asked: the non-European world
+  # (Japan, Korea, the US, Israel, New Zealand, Latin America, Asia,
+  # Africa's civil-registration countries — 222 resolved entities over
+  # 2007-2024), the UK after Brexit (Eurostat ends 2018, the DYB carries
+  # 2019-2023), and single hole-years inside Eurostat's own span
+  # (Belarus 2009, Ukraine 2013, Moldova 2013/2016, Georgia
+  # 2011/2013/2021).
+  - provider: un_dyb
+    ref: 2024/table04
+    field: tfr
+    priority: 4
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2023/table04
+    field: tfr
+    priority: 5
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2022/table04
+    field: tfr
+    priority: 6
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2021/table04
+    field: tfr
+    priority: 7
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2020/table04
+    field: tfr
+    priority: 8
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2019/table04
+    field: tfr
+    priority: 9
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2018/table04
+    field: tfr
+    priority: 10
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2017/table04
+    field: tfr
+    priority: 11
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2015/table04
+    field: tfr
+    priority: 12
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2014/table04
+    field: tfr
+    priority: 13
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2013/table04
+    field: tfr
+    priority: 14
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2012/table04
+    field: tfr
+    priority: 15
+    role: canonical
+    root: unsd_dyb
+  - provider: un_dyb
+    ref: 2011/table04
+    field: tfr
+    priority: 16
+    role: canonical
+    root: unsd_dyb
   # THE WITNESS: WDI's TFR redistribution of UN WPP (bare code, no sex
   # dimension — a synthetic measure over women's reproductive lifetimes
   # has no split to print), ~200 countries, 1960-2024, the WDI print
@@ -69,7 +177,7 @@ sources:
   # (Russia post-2010, the whole non-European world).
   - provider: worldbank
     ref: SP.DYN.TFRT.IN
-    priority: 4
+    priority: 17
     role: witness
     root: un_wpp
 
@@ -78,12 +186,21 @@ coverage_end: 2024
 
 reliability: high
 reliability_criteria: >
-  Canonical tier = Eurostat demo_find TOTFERRT, the national official
-  total fertility rates as collected by Eurostat (questionnaire
-  collector), 47 country codes on the main slice (46 printing values,
-  Bosnia none) plus the two French series — 46 valued entities,
-  1960-2024, per-observation status flags (b/e/p) transported
-  as-reported; witness tier = UN WPP estimates via the World Bank's
+  Canonical tier = two collectors, priority-merged under Eurostat (v28.1):
+  Eurostat demo_find TOTFERRT, the national official total fertility
+  rates as collected by Eurostat (questionnaire collector), 47 country
+  codes on the main slice (46 printing values, Bosnia none) plus the two
+  French series — 46 valued entities, 1960-2024, per-observation status
+  flags (b/e/p) transported as-reported; and UN DYB Table 4's PRINTED
+  total fertility rate (field: tfr), editions 2011-2024 (2016
+  FILEPASS-encrypted, deliberately absent), 222 resolved entities over
+  2007-2024, sex=None by construction, per-point footnote refs and
+  reference ranges transported as-reported, explicit "..." gaps kept as
+  gap points. Overlap arbitration: Eurostat wins every shared entity-year
+  (discarded DYB values logged in provenance.json); the 7 seam entities
+  (Azerbaijan, Romania, Bulgaria, Georgia, Latvia, Moldova, Montenegro)
+  are collector-vs-collector definitional seams, displayed never
+  reconciled. Witness tier = UN WPP estimates via the World Bank's
   SP.DYN.TFRT.IN (modeled, ~200 countries, 1960-2024, the WDI print
   precision as carried: FRA 2022 = 1.78, RUS 1990 = 1.892). Authenticity
   first per ADR-0008: displayed beside each other, never blended.
@@ -129,10 +246,10 @@ notes: >
   TFR is already a synthetic measure over women's lifetimes; no split
   exists to report, and every point carries sex=None.
 
-  CANONICAL TIER: three Eurostat sources, one collector. The main slice
-  (demo_find/TOTFERRT) serves 47 country codes, 46 of them printing
-  values — Western Europe annually from 1960 (65 points each), the
-  Eastern partnership partially (Russia 2006-2010, Belarus to 2018,
+  CANONICAL TIER: Eurostat first (three sources, one collector). The
+  main slice (demo_find/TOTFERRT) serves 47 country codes, 46 of them
+  printing values — Western Europe annually from 1960 (65 points each),
+  the Eastern partnership partially (Russia 2006-2010, Belarus to 2018,
   Ukraine to 2019, Moldova to 2023 — the national offices stopped
   answering the questionnaire, the collector's honest freeze, exactly
   Russia's last DYB life table; Bosnia and Herzegovina prints NO point
@@ -154,6 +271,32 @@ notes: >
   (b = break in series, e = estimated, p = provisional — FR 2014 carries
   'b', the French series' own methodological break), provisional=true
   where the flag contains p.
+
+  THE DYB DOOR (v28.1, the second collector): Table 4's printed TFR,
+  editions 2011-2024 priority-ordered (later edition = later vintage =
+  higher priority, the edition-loop precedent; 2016 FILEPASS-encrypted,
+  deliberately absent, verified live), every value sex=None (a synthetic
+  measure over women's lifetimes has no split to report — the TOTFERRT
+  discipline), per-point footnote refs (Japan's values carry their
+  note; Korea's carry '102' on the 2024 edition) and reference ranges
+  as-reported, explicit "..." gaps kept as gap points (the collector
+  computes rates only for C/"|"-grade registration — the same honest
+  degradation as Table 15). Where both collectors print, Eurostat wins
+  (priority, provenance-logged): the 564-key overlap is 505/564 within
+  0.05 (rounding-level agreement), with 7 entities carrying real
+  collector-vs-collector seams (Azerbaijan the widest at 0.44 — the
+  DYB's ~2.3 against Eurostat's ~1.9, both as-reported by their own
+  questionnaire chains; then Romania, Bulgaria, Georgia, Latvia,
+  Moldova, Montenegro) — two collectors' definitional seams, displayed,
+  never reconciled. What the door ADDS: the whole non-European
+  civil-registration world (222 resolved entities, 2007-2024 — Japan,
+  Korea, the US, Israel, New Zealand, Latin America, Asia, Africa's
+  registration countries), the UK's post-Brexit 2019-2023 (the canonical
+  series resumed — pre-v28.1 the UK was witness-only there), and
+  Eurostat's own single hole-years (Belarus 2009, Ukraine 2013, Moldova
+  2013/2016, Georgia 2011/2013/2021). China prints NO TFR row at all in
+  any wired edition (the collector's own hole — the witness carries
+  China, as it always has).
 
   WITNESS TIER: one door, the minimal honest choice (the v13
   discipline): WDI's WPP redistribution, worldwide — the face the
@@ -177,8 +320,8 @@ notes: >
   WPP 1950-2023, 254 entities — same root again) and
   'total-fertility-rate' (WPP + pre-1950 depth for a handful of
   countries, Sweden from 1891 — would need its own composite root),
-  DYB Table 9 (the collector's CBR face, a different unit — the future
-  crude_birth_rate indicator, one parser away), DYB Table 10
+  DYB Table 9 (the collector's CBR face, a different unit — the wired
+  crude_birth_rate companion), DYB Table 10
   (general + age-specific fertility rates, latest-available-year
   cross-sections, no TFR column — verified on the 2024 file), and the
   Human Fertility Database (France from 1817, the collector with the

@@ -16,7 +16,7 @@ Each step reads the file written by the previous one from disk
 `*.validation.json` -> `data/dist/`). No step keeps in-memory state across
 runs: you can stop after any step and resume by rerunning `rebuild`.
 
-## The score layer rides the dist (v27, amended v27.1 and v28, ADR-0011)
+## The score layer rides the dist (v27, amended v27.1, v28 and v28.1, ADR-0011)
 
 The project's FIRST AND ONLY derived product — two composite scores per
 country-year, `official` (canonical-tier sources) and `modelled`

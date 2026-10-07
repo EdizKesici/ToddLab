@@ -16,6 +16,8 @@
         <Cell ss:Index="7" ss:MergeAcross="3" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Deaths</Data></Cell>
         <Cell ss:Index="13" ss:MergeAcross="2" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Infant deaths</Data></Cell>
         <Cell ss:Index="18" ss:MergeAcross="3" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Life expectancy at birth</Data></Cell>
+        <Cell ss:Index="22" ss:MergeAcross="1" ss:StyleID="sCenterBoldBorderWrap"><Data ss:Type="String">Total fertility rate
+L’indice synthétique de fécondité</Data></Cell>
       </Row>
       <Row>
         <Cell ss:Index="2" ss:StyleID="sCenter"><Data ss:Type="String">Co-de</Data></Cell>
@@ -56,6 +58,7 @@
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">III</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">77.9000000000</Data></Cell>
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">III</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
@@ -73,6 +76,7 @@
         <Cell ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
         <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sCountryName"><Data ss:Type="String">EUROPE</Data></Cell>
@@ -95,16 +99,22 @@
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">4</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">80.7000000000</Data></Cell>
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">4</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.7100000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">4</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
         <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">73.8000000000</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">80.1000000000</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.8300000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">IV</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2022</Data></Cell>
         <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">...</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.9000000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.4500000000</Data></Cell>
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">*</Data></Cell>
       </Row>
       <Row>
@@ -116,6 +126,8 @@
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.6000000000</Data></Cell>
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.7900000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">5</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2021</Data></Cell>
@@ -123,21 +135,26 @@
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">V 5</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.7000000000</Data></Cell>
         <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">V</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.8500000000</Data></Cell>
+        <Cell ss:StyleID="sFootnoteReference"><Data ss:Type="String">V 5</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2022</Data></Cell>
         <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.4000000000</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.8000000000</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.7900000000</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2023</Data></Cell>
         <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.6000000000</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">85.9000000000</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.6800000000</Data></Cell>
       </Row>
       <Row>
         <Cell ss:StyleID="sRefDate"><Data ss:Type="Number">2024</Data></Cell>
         <Cell ss:Index="18" ss:StyleID="sDataDecimal"><Data ss:Type="String">79.8000000000</Data></Cell>
         <Cell ss:Index="20" ss:StyleID="sDataDecimal"><Data ss:Type="String">86.1000000000</Data></Cell>
+        <Cell ss:Index="22" ss:StyleID="sDataDecimal"><Data ss:Type="String">1.6200000000</Data></Cell>
       </Row>
   </Table>
  </Worksheet>

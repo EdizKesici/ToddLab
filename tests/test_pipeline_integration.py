@@ -9,6 +9,7 @@ from tests.conftest import (
     seed_dyb_table17_snapshot,
     seed_dyb_table21_snapshot,
     seed_dyb_table4_snapshot,
+    seed_dyb_table4_tfr_snapshot,
     seed_dyb_table9_snapshot,
     seed_eurostat_snapshot,
     seed_gho_snapshot,
@@ -100,6 +101,11 @@ def _run_pipeline(tmp_path: Path, real_indicators, real_entities):
     seed_eurostat_snapshot(raw_dir, "birth_rate_fertility", "demo_find/TOTFERRT/FR", fixture="eurostat_totferrt_fr_sample.json")
     seed_eurostat_snapshot(raw_dir, "birth_rate_fertility", "demo_find/TOTFERRT/FX", fixture="eurostat_totferrt_fx_sample.json")
     seed_wb_snapshot(raw_dir, "birth_rate_fertility", "SP.DYN.TFRT.IN")
+    # v28.1: the SECOND canonical door — the DYB Table 4 TFR (field: tfr).
+    # The fixture prints France (2020-2024, the years the Eurostat FR
+    # fixture only touches at 2023 — the arbitration case), Czechia
+    # (a DYB-only entity, the fill case) and Algeria (gap cells only).
+    seed_dyb_table4_tfr_snapshot(raw_dir, "birth_rate_fertility")
     # v15 (the CBR companion + the markers): crude_birth_rate seeds its
     # two tiers — DYB Table 9 canonical (the collector's natalité print,
     # the Table 15 wide layout through the v15 dispatch branch: the
@@ -1142,7 +1148,16 @@ def test_birth_rate_fertility_is_two_tier_with_the_fx_fr_seam(tmp_path, real_ind
     assert canon[("france", 2000)]["value"] == pytest.approx(1.89)  # FR wins over FX 1.87
     assert canon[("france", 2012)]["value"] == pytest.approx(2.01)  # FR wins over FX 1.99
     assert canon[("france", 2023)]["value"] == pytest.approx(1.66)
-    assert all(d["provider"] == "eurostat" for d in payload["data"])
+    # v28.1: the canonical tier is TWO collectors now — Eurostat first,
+    # the DYB Table 4 TFR (field: tfr) filling what Eurostat never asked
+    # (the fixture's Czechia 2020-2022, France 2020-2022 where the
+    # Eurostat fixtures print nothing) — so the provider set is exactly
+    # {eurostat, un_dyb} on the canonical series, and every French point
+    # BOTH collectors print stays Eurostat's (the arbitration case above).
+    providers = {d["provider"] for d in payload["data"]}
+    assert providers == {"eurostat", "un_dyb"}
+    assert all(d["provider"] == "eurostat" for d in payload["data"]
+               if d["entity_id"] in ("greece", "united_kingdom", "russian_federation", "germany", "kosovo"))
     # TFR has no sex split BY CONSTRUCTION (a synthetic measure over
     # women's lifetimes) — every point rides sex=None.
     assert all(d.get("sex") is None for d in payload["data"])
@@ -1168,14 +1183,24 @@ def test_birth_rate_fertility_is_two_tier_with_the_fx_fr_seam(tmp_path, real_ind
     # script pins the live dist, this pin carries the fixture's shape).
     assert ks == {2017: pytest.approx(1.65)}
 
-    # THE ARBITRATION TRAIL: each overlap year logs the discarded FX
-    # value — the vintage discipline, never a silent blend.
+    # THE ARBITRATION TRAIL: each overlap year logs every discarded
+    # candidate — the FX seam years AND (v28.1) the DYB door's France
+    # 2023 candidate (1.68, refused under the Eurostat value 1.66) — the
+    # vintage discipline, never a silent blend, now across two collectors.
     provenance = json.loads((processed_dir / "birth_rate_fertility.provenance.json").read_text())
     fra = [e for e in provenance if e.get("entity_id") == "france" and e["role"] == "canonical"]
     discarded = {e["year"]: [d["value"] for d in e["discarded"]] for e in fra}
-    assert discarded == {2000: [pytest.approx(1.87)], 2012: [pytest.approx(1.99)]}
+    assert discarded == {
+        2000: [pytest.approx(1.87)],  # FX metro loses to FR
+        2012: [pytest.approx(1.99)],  # FX metro loses to FR
+        2023: [pytest.approx(1.68)],  # the DYB Table 4 TFR loses to FR
+    }
     retained = {e["year"]: e["retained"]["source_ref"] for e in fra}
-    assert retained == {2000: "demo_find/TOTFERRT/FR", 2012: "demo_find/TOTFERRT/FR"}
+    assert retained == {
+        2000: "demo_find/TOTFERRT/FR",
+        2012: "demo_find/TOTFERRT/FR",
+        2023: "demo_find/TOTFERRT/FR",
+    }
 
     # The witness: WDI's WPP door, worldwide — one door, the v13 minimal
     # discipline. Root un_wpp: for the EU it anchors on the national
@@ -1189,11 +1214,13 @@ def test_birth_rate_fertility_is_two_tier_with_the_fx_fr_seam(tmp_path, real_ind
     assert wit[("russian_federation", 2025)]["value"] is None  # the trailing-grid honest gap
     assert wit[("france", 2020)]["value"] == pytest.approx(1.79)
 
-    # The catalog's roots genealogy: ONE collector root (3 doors, one
-    # provider) + ONE witness root — two independent origins, stated.
+    # The catalog's roots genealogy (v28.1): TWO collector roots — the
+    # Eurostat questionnaire chain and the UNSD vital-statistics chain
+    # (the second canonical door) — + ONE witness root: three independent
+    # origins, stated where the genealogy display reads them.
     catalog = {c["id"]: c for c in json.loads((dist_dir / "catalog.json").read_text())}
     roots = catalog["birth_rate_fertility"]["roots"]
-    assert [r["root"] for r in roots["canonical"]] == ["eurostat_demo"]
+    assert [r["root"] for r in roots["canonical"]] == ["eurostat_demo", "unsd_dyb"]
     assert roots["canonical"][0]["doors"] == 3
     assert [r["root"] for r in roots["witness"]] == ["un_wpp"]
 
@@ -2632,3 +2659,48 @@ def test_segment_layers_absent_on_class_less_indicators(
         payload = json.loads((dist_dir / "indicators" / f"{name}.json").read_text())
         assert "segments" not in payload, name
         assert "segments_citizenship" not in payload, name
+
+
+# ---------------------------------------------------------------------------
+# v28.1 — the DYB Table 4 TFR door (birth_rate_fertility's second canonical
+# source): the priority-merged arbitration and the fill, proven end-to-end on
+# the fixture-seeded pipeline.
+# ---------------------------------------------------------------------------
+
+
+def test_fertility_dyb_door_fills_and_arbitrates(tmp_path, real_indicators, real_entities):
+    processed_dir, dist_dir, _, _ = _run_pipeline(tmp_path, real_indicators, real_entities)
+    dist = json.loads((dist_dir / "indicators" / "birth_rate_fertility.json").read_text())
+
+    points = {(p["entity_id"], p["year"]): p for p in dist["data"]}
+
+    # THE FILL: Czechia is DYB-only on the fixtures (no Eurostat record) —
+    # the printed TFR rides the canonical series with its provider and ref.
+    cz = {y: p for (e, y), p in points.items() if e == "czechia"}
+    assert cz[2020]["value"] == pytest.approx(1.71)
+    assert cz[2020]["provider"] == "un_dyb"
+    assert cz[2020]["source_ref"] == "2024/table04"
+    assert cz[2021]["value"] == pytest.approx(1.83)
+    assert cz[2022]["value"] == pytest.approx(1.45)
+
+    # THE ARBITRATION: France 2023 is printed by BOTH collectors — Eurostat
+    # FR (1.66, priority 2) and the DYB fixture (1.68, priority 4): the
+    # canonical keeps Eurostat's value, the FX/FR seam discipline extended
+    # to the second collector (the discarded candidate rides provenance).
+    fr = {y: p for (e, y), p in points.items() if e == "france"}
+    assert fr[2023]["value"] == pytest.approx(1.66)
+    assert fr[2023]["provider"] == "eurostat"
+    # and where only the DYB prints (2020: the Eurostat fixtures carry no
+    # French TFR there), the DYB value serves:
+    assert fr[2020]["value"] == pytest.approx(1.79)
+    assert fr[2020]["provider"] == "un_dyb"
+
+    # THE HONEST GAP: Algeria's "..." cells ride as explicit gap points —
+    # the collector reported births, computed no rate.
+    alg = [p for p in dist["data"] if p["entity_id"] == "algeria"]
+    assert alg and all(p["value"] is None for p in alg)
+
+    # THE PROVENANCE TRAIL: the arbitration is logged, never silent.
+    prov = json.loads((processed_dir / "birth_rate_fertility.provenance.json").read_text())
+    text = json.dumps(prov)
+    assert "2024/table04" in text  # the DYB door's arbitrations are recorded

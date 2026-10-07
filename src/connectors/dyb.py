@@ -182,8 +182,10 @@ KNOWN SCOPE LIMITS (deliberate — see docs/adr/0007-source-of-record-and-witnes
   reference range, the printed missing markers, the "*" provisional
   flag. Nothing is normalized away, nothing is interpreted;
 - `field` selects the value block on Table 15: "rate" (default; IMR per
-  1,000 live births) or "number" (registered infant deaths); ignored on
-  Table 4 (both sexes are always emitted);
+  1,000 live births) or "number" (registered infant deaths); on Table 4
+  it selects the printed measure — "tfr" (v28.1: the total fertility
+  rate column, sex=None) or anything else (the historical Male/Female
+  life-expectancy pair);
 - entity names in the DYB are bilingual ("Algeria - Algérie") and, in the
   BIFF editions, footnote-suffixed ("Algeria - Algérie1"): the parser
   keeps the English part and CAPTURES the footnote digits (they annotate
@@ -253,6 +255,24 @@ _T4_LE_FEMALE_COL = 19
 # the Roman-numeral reference-period range (legend b).
 _T4_LE_MALE_FN_COL = 18
 _T4_LE_FEMALE_FN_COL = 20
+# v28.1: the Total fertility rate column of the SAME Table 4 ("Vital
+# statistics summary and life expectancy at birth") — immediately right
+# of the LE pair's own marker columns. The TFR is PRINTED by the collector
+# ("Total fertility rate / L'indice synthétique de fécondité", verified
+# live at column 21 in every wired edition 2011-2024, SpreadsheetML and
+# BIFF alike — the same era-proof layout the LE map documents), which is
+# the same printed-value status as Table 17's maternal ratios and Table
+# 9's crude birth rates: the collector computes it from the registered
+# births by mother's age, and the anti-derivation rule holds on our side
+# (summing Table 10's age-specific rates would be the forbidden
+# derivation — v14's finding, which probed Table 10 and missed that
+# Table 4 prints the finished rate; corrected in v28.1). The marker cell
+# at col 22 carries footnote refs (Japan 2020-2023: '85', Korea
+# 2020-2023: '102' — read live on the 2024 edition) and, where a small
+# population's rate covers a multi-year reference period, the Roman
+# range rides as on the LE columns.
+_T4_TFR_COL = 21
+_T4_TFR_FN_COL = 22
 
 
 def build_url(source_ref: str) -> str:
@@ -932,12 +952,16 @@ def parse_table21(xml_text: str, *, age: str) -> list[RawRecord]:
 # ---------------------------------------------------------------------------
 
 
-def _parse_table4_rows(rows: list[list[str | None]]) -> list[RawRecord]:
+def _parse_table4_rows(rows: list[list[str | None]], *, measure: str = "le") -> list[RawRecord]:
     # Assert the header signature BEFORE trusting the fixed column map:
     # a row whose col 17 starts with "Life expectancy" and a row whose
     # cols 17/19 start with "Male"/"Female". Both must be found near the
-    # top of the file; otherwise this is not the layout we know.
+    # top of the file; otherwise this is not the layout we know. For the
+    # TFR measure (v28.1) the col-21 "Total fertility" header is asserted
+    # as well — a future renumbering that drops the fertility column must
+    # refuse loudly, not silently emit gaps.
     header_signature = False
+    tfr_header_signature = False
     for values in rows[:8]:
         male = values[_T4_LE_MALE_COL] if _T4_LE_MALE_COL < len(values) else None
         female = values[_T4_LE_FEMALE_COL] if _T4_LE_FEMALE_COL < len(values) else None
@@ -948,10 +972,19 @@ def _parse_table4_rows(rows: list[list[str | None]]) -> list[RawRecord]:
             and female.split("\n")[0].startswith("Female")
         ):
             header_signature = True
+        tfr = values[_T4_TFR_COL] if _T4_TFR_COL < len(values) else None
+        if tfr and str(tfr).split("\n")[0].startswith("Total fertility"):
+            tfr_header_signature = True
     if not header_signature:
         raise ValueError(
             "Table 4 header signature not found (Male/Female at columns "
             f"{_T4_LE_MALE_COL}/{_T4_LE_FEMALE_COL}): layout change? Investigate."
+        )
+    if measure == "tfr" and not tfr_header_signature:
+        raise ValueError(
+            "Table 4 TFR header signature not found (\"Total fertility\" at column "
+            f"{_T4_TFR_COL}): this edition's Table 4 does not print the fertility "
+            "column — check the edition before wiring it."
         )
 
     records: list[RawRecord] = []
@@ -990,11 +1023,46 @@ def _parse_table4_rows(rows: list[list[str | None]]) -> list[RawRecord]:
                     provisional=provisional,
                 )
 
-            # Both sexes are always emitted, None included — a year row with
-            # no printed LE value is an explicit gap, and the (entity, year,
-            # sex) triple is the merge key downstream.
-            records.append(_le_record("male", _T4_LE_MALE_COL, _T4_LE_MALE_FN_COL))
-            records.append(_le_record("female", _T4_LE_FEMALE_COL, _T4_LE_FEMALE_FN_COL))
+            def _tfr_record() -> RawRecord:
+                """One printed TFR point (v28.1): sex=None by construction
+                (a synthetic measure over women's reproductive lifetimes
+                has no split to report — the same discipline the Eurostat
+                TOTFERRT records follow), the marker cell immediately
+                right of the value carrying its footnote refs (and the
+                Roman reference range where the collector prints one), the
+                printed missing marker, and the country-level refs. NO
+                quality_code by design — the C/U/| codes describe the
+                births/deaths/infant-deaths blocks, not the fertility
+                column (the LE columns' own precedent)."""
+                cell = values[_T4_TFR_COL] if _T4_TFR_COL < len(values) else None
+                marker_cell = values[_T4_TFR_FN_COL] if _T4_TFR_FN_COL < len(values) else None
+                cell_refs, reference_range, provisional, _small = _parse_marker_cell(marker_cell)
+                value = _cell_to_value(cell)
+                return RawRecord(
+                    entity_raw_name=current_name,
+                    iso3_raw=None,
+                    year=year,
+                    value=value,
+                    sex=None,
+                    footnote_refs=_merge_refs(country_refs, cell_refs),
+                    reference_range=reference_range,
+                    missing_marker=_missing_marker(value, cell),
+                    provisional=provisional,
+                )
+
+            if measure == "tfr":
+                # One record per year row, value=None included — a year the
+                # collector prints with "..." (rates only computed for
+                # C/"|"-grade registration) is an explicit gap, and the
+                # (entity, year) key with sex=None is the merge key
+                # downstream, exactly the Table 15 discipline.
+                records.append(_tfr_record())
+            else:
+                # Both sexes are always emitted, None included — a year row with
+                # no printed LE value is an explicit gap, and the (entity, year,
+                # sex) triple is the merge key downstream.
+                records.append(_le_record("male", _T4_LE_MALE_COL, _T4_LE_MALE_FN_COL))
+                records.append(_le_record("female", _T4_LE_FEMALE_COL, _T4_LE_FEMALE_FN_COL))
         elif len(non_empty) == 1:
             # Country/continent label row ("Algeria - Algérie", "AFRICA -
             # AFRIQUE"; continent rows are overwritten by the next country
@@ -1008,10 +1076,13 @@ def _parse_table4_rows(rows: list[list[str | None]]) -> list[RawRecord]:
     return records
 
 
-def parse_table4(xml_text: str) -> list[RawRecord]:
-    """Pure function: SpreadsheetML text of a DYB Table 4 -> RawRecords
-    (LE at birth, one record per (country, year, sex))."""
-    return _parse_table4_rows(_rows_from_spreadsheetml(xml_text))
+def parse_table4(xml_text: str, *, measure: str = "le") -> list[RawRecord]:
+    """Pure function: SpreadsheetML text of a DYB Table 4 -> RawRecords.
+
+    measure="le" (the default): life expectancy at birth, one record per
+    (country, year, sex). measure="tfr" (v28.1): the printed total
+    fertility rate, one record per (country, year) with sex=None."""
+    return _parse_table4_rows(_rows_from_spreadsheetml(xml_text), measure=measure)
 
 
 # ---------------------------------------------------------------------------
@@ -1109,7 +1180,10 @@ def parse_dyb(data: bytes, *, expected_table: int | None = None, block: str = "r
     requested table number when given; raises on anything unknown.
 
     For Tables 15/17 `block` selects the measure ("rate"/"number"); for
-    Table 21/22 it selects the AGE column ("60", "65", ...)."""
+    Table 21/22 it selects the AGE column ("60", "65", ...); for Table 4
+    (v28.1) it selects the printed measure — "tfr" for the total
+    fertility rate column, anything else (the historical default
+    "rate"/None) for the Male/Female life-expectancy pair."""
     rows = _rows_from_bytes(data)
     title = _title_row_value(rows)
     title_number = int(re.match(r"^(\d+)\.", title).group(1))
@@ -1137,7 +1211,7 @@ def parse_dyb(data: bytes, *, expected_table: int | None = None, block: str = "r
             )
         return _parse_table15_rows(rows, block=block)
     if title_number == 4:
-        return _parse_table4_rows(rows)
+        return _parse_table4_rows(rows, measure=block)
     if title_number == 17:
         return _parse_table17_rows(rows, block=block)
     if title_number in (21, 22):
@@ -1153,7 +1227,7 @@ def parse_dyb(data: bytes, *, expected_table: int | None = None, block: str = "r
     raise ValueError(
         f"DYB table {title_number} is not wired in this connector yet "
         "(supported: 15 = infant deaths/IMR, 9 = live births/crude birth rates, "
-        "4 = life expectancy at birth, "
+        "4 = life expectancy at birth + total fertility rate (block: tfr), "
         "17 = maternal deaths/mortality ratios, 21/22 = life expectancy at "
         "specified ages)."
     )
