@@ -10,7 +10,7 @@
       "crude_birth_rate"
     ],
     "reliability": "high",
-    "reliability_criteria": "Canonical tier = Eurostat demo_find TOTFERRT, the national official total fertility rates as collected by Eurostat (questionnaire collector), 47 country codes on the main slice (46 printing values, Bosnia none) plus the two French series — 46 valued entities, 1960-2024, per-observation status flags (b/e/p) transported as-reported; witness tier = UN WPP estimates via the World Bank's SP.DYN.TFRT.IN (modeled, ~200 countries, 1960-2024, the WDI print precision as carried: FRA 2022 = 1.78, RUS 1990 = 1.892). Authenticity first per ADR-0008: displayed beside each other, never blended.",
+    "reliability_criteria": "Canonical tier = two collectors, priority-merged under Eurostat (v28.1): Eurostat demo_find TOTFERRT, the national official total fertility rates as collected by Eurostat (questionnaire collector), 47 country codes on the main slice (46 printing values, Bosnia none) plus the two French series — 46 valued entities, 1960-2024, per-observation status flags (b/e/p) transported as-reported; and UN DYB Table 4's PRINTED total fertility rate (field: tfr), editions 2011-2024 (2016 FILEPASS-encrypted, deliberately absent), 222 resolved entities over 2007-2024, sex=None by construction, per-point footnote refs and reference ranges transported as-reported, explicit \"...\" gaps kept as gap points. Overlap arbitration: Eurostat wins every shared entity-year (discarded DYB values logged in provenance.json); the 7 seam entities (Azerbaijan, Romania, Bulgaria, Georgia, Latvia, Moldova, Montenegro) are collector-vs-collector definitional seams, displayed never reconciled. Witness tier = UN WPP estimates via the World Bank's SP.DYN.TFRT.IN (modeled, ~200 countries, 1960-2024, the WDI print precision as carried: FRA 2022 = 1.78, RUS 1990 = 1.892). Authenticity first per ADR-0008: displayed beside each other, never blended.",
     "reclassification_sensitive": false,
     "license": "Mixed, per source (see \"sources\"): Eurostat = Eurostat reuse policy (attribution required, no endorsement implied); World Bank witness = CC-BY-4.0.",
     "roots": {
@@ -19,6 +19,11 @@
           "root": "eurostat_demo",
           "label": "Eurostat demographic statistics (demo_find — national official fertility series collected by Eurostat)",
           "doors": 3
+        },
+        {
+          "root": "unsd_dyb",
+          "label": "UN Statistics Division, Demographic Yearbook (questionnaire collector)",
+          "doors": 13
         }
       ],
       "witness": [
@@ -29,7 +34,7 @@
         }
       ]
     },
-    "n_points": 1958,
+    "n_points": 4237,
     "n_witness_points": 14208,
     "todd_refs": {
       "family": "society",

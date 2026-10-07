@@ -15,7 +15,7 @@ The project takes inspiration from the method of historian-demographer Emmanuel 
 Compare countries side by side on hard indicators (infant mortality, life
 expectancy, fertility, homicides, education...).
 
-## The score layer (v27, amended v27.1 and v28)
+## The score layer (v27, amended v27.1, v28 and v28.1)
 
 Beside the indicators, a DERIVED layer: two composite scores per
 country-year — **official** (canonical-tier sources, 18 indicators —
@@ -230,8 +230,10 @@ direction).
   national statistical offices themselves compute and publish,
   collected by Eurostat via its own questionnaire. TWO Todd metrics
   ride the one dataset now: the total fertility rate (demo_find's
-  TOTFERRT, "births per woman" — v14, the one collector wire that
-  prints a national TFR, verified live before any config) and the
+  TOTFERRT, "births per woman" — v14; and since v28.1 the UN DYB
+  Table 4's PRINTED TFR as the second canonical door, priority-merged
+  under Eurostat, the worldwide fill + the UK's post-Brexit years —
+  ADR-0011 decision 17) and the
   share of live births outside marriage (demo_find's NMARPCT,
   "Proportion of live births outside marriage" — v16, printed
   DIRECTLY by the collector, no ratio derivation; the OECD Family

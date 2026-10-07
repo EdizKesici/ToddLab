@@ -854,3 +854,34 @@ def test_shipped_score_config_has_no_editorial_basis():
     ib = next(c for c in cfg.components if c.indicator == "illegitimate_births")
     assert [s.value for s in ib.scores] == ["official"]
     assert ib.basis.value == "todd" and ib.provisional is False
+
+
+def test_shipped_fertility_config_carries_the_dyb_door():
+    # v28.1: the ranked plan #1 wired — the REAL config (not a fixture)
+    # declares the DYB Table 4 TFR as birth_rate_fertility's second
+    # canonical collector: 13 editions priority-merged UNDER Eurostat
+    # (the FX/FR seam discipline), the WPP witness last, `field: tfr`
+    # selecting the printed fertility column of the file the
+    # life_expectancy loop already fetches.
+    from src.config_loader import load_indicators
+
+    repo_root = Path(__file__).resolve().parents[1]
+    indicators = load_indicators(repo_root / "config")
+    sources = indicators["birth_rate_fertility"].sources_by_priority()
+
+    eur = [s for s in sources if s.provider.value == "eurostat"]
+    dyb = [s for s in sources if s.provider.value == "un_dyb"]
+    wit = [s for s in sources if s.provider.value == "worldbank"]
+    assert len(eur) == 3 and all(s.role.value == "canonical" for s in eur)
+    assert len(dyb) == 13 and all(s.role.value == "canonical" for s in dyb)
+    assert all(s.field == "tfr" for s in dyb)
+    assert all(s.root == "unsd_dyb" for s in dyb)
+    # later edition = higher priority (the vintage discipline), and the
+    # FILEPASS-encrypted 2016 stays deliberately absent.
+    editions = [int(s.ref.split("/")[0]) for s in dyb]
+    assert editions == sorted(editions, reverse=True)
+    assert 2016 not in editions and 2011 in editions and 2024 in editions
+    # Eurostat outranks every DYB edition; the witness rides last.
+    assert max(s.priority for s in eur) < min(s.priority for s in dyb)
+    assert len(wit) == 1 and wit[0].priority > max(s.priority for s in dyb)
+    assert wit[0].role.value == "witness"

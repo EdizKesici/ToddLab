@@ -877,3 +877,82 @@ def test_star_plus_ref_marker_cell_grammar():
     # The mirror discipline: an unknown glued marker still raises loudly.
     with pytest.raises(ValueError, match="Unexpected marker cell"):
         _parse_marker_cell("x*47")
+
+
+# ---------------------------------------------------------------------------
+# v28.1 — Table 4's PRINTED total fertility rate (the second canonical door
+# of birth_rate_fertility): `field: tfr` selects the fertility column of
+# the same file the life_expectancy loop already parses.
+# ---------------------------------------------------------------------------
+
+
+def test_table4_tfr_measure_emits_sex_none_records():
+    records = parse_table4(T4_FIXTURE.read_text(encoding="utf-8"), measure="tfr")
+    france = {r.year: r.value for r in records if r.entity_raw_name == "France"}
+    assert france[2020] == pytest.approx(1.79)
+    assert france[2021] == pytest.approx(1.85)
+    assert france[2024] == pytest.approx(1.62)
+    # TFR is a synthetic measure over women's lifetimes: no split exists
+    # to report, exactly the Eurostat TOTFERRT discipline — every record
+    # carries sex=None, the (entity, year) merge key.
+    assert all(r.sex is None for r in records)
+    # one record per year row — France's five years, not ten (no male/female
+    # duplication on this measure).
+    assert len([r for r in records if r.entity_raw_name == "France"]) == 5
+
+
+def test_table4_tfr_gap_cells_become_explicit_gap_records():
+    records = parse_table4(T4_FIXTURE.read_text(encoding="utf-8"), measure="tfr")
+    algeria = {r.year: r for r in records if r.entity_raw_name == "Algeria"}
+    # Algeria prints "..." in the fertility column (rates only computed for
+    # C/"|"-grade registration): an explicit gap with its printed marker,
+    # never a zero, never dropped at parse.
+    assert algeria[2020].value is None
+    assert algeria[2020].missing_marker == "..."
+    assert algeria[2021].value is None
+
+
+def test_table4_tfr_markers_ride_as_reported():
+    records = parse_table4(T4_FIXTURE.read_text(encoding="utf-8"), measure="tfr")
+    by_year = {r.year: r for r in records if r.entity_raw_name == "Czechia"}
+    # footnote ref beside the value...
+    assert by_year[2020].footnote_refs == ["4"]
+    # ...the Roman reference range (a multi-year rate period)...
+    assert by_year[2021].reference_range == "IV"
+    # ...and the "*" provisional flag, all as printed.
+    assert by_year[2022].provisional is True
+    france = {r.year: r for r in records if r.entity_raw_name == "France"}
+    assert france[2021].reference_range == "V"
+    assert france[2021].footnote_refs == ["5"]
+    # NO quality_code on this measure: the C/U/| codes describe the
+    # births/deaths blocks, not the fertility column (the LE precedent).
+    assert all(r.quality_code is None for r in records)
+
+
+def test_table4_tfr_refuses_a_missing_fertility_header():
+    # A Table 4 without the "Total fertility" column at 21 must refuse
+    # loudly when asked for the tfr measure — a future renumbering that
+    # drops the column must never silently emit gaps.
+    text = T4_FIXTURE.read_text(encoding="utf-8").replace("Total fertility rate", "Indice di fecondit\u00e0")
+    with pytest.raises(ValueError, match="TFR header signature"):
+        parse_table4(text, measure="tfr")
+
+
+def test_table4_le_measure_ignores_the_tfr_column():
+    # The default (LE) measure is untouched by the fertility column's
+    # presence: same records, same sexes, no TFR value leaks into a
+    # life-expectancy point.
+    records = parse_table4(T4_FIXTURE.read_text(encoding="utf-8"))
+    assert all(r.sex in ("male", "female") for r in records)
+    france = {(r.year, r.sex): r.value for r in records if r.entity_raw_name == "France"}
+    assert france[(2020, "male")] == pytest.approx(79.1)
+    assert france[(2024, "female")] == pytest.approx(86.1)
+
+
+def test_parse_dyb_dispatches_table4_tfr_block():
+    records = parse_dyb(T4_FIXTURE.read_bytes(), expected_table=4, block="tfr")
+    assert all(r.sex is None for r in records)
+    assert {r.entity_raw_name for r in records} == {"Algeria", "Czechia", "France"}
+    # and the historical default (no field / "rate") still parses the LE pair
+    le = parse_dyb(T4_FIXTURE.read_bytes(), expected_table=4, block="rate")
+    assert all(r.sex in ("male", "female") for r in le)

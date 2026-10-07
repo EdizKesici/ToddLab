@@ -136,6 +136,26 @@ def seed_dyb_table4_snapshot(raw_dir: Path, indicator_id: str, source_ref: str =
     return _write_snapshot(raw_dir, result)
 
 
+def seed_dyb_table4_tfr_snapshot(raw_dir: Path, indicator_id: str, source_ref: str = "2024/table04") -> Path:
+    """un_dyb Table 4 through the v28.1 TFR block (`field: tfr` in the
+    indicator config): the SAME fixture parsed with measure="tfr" — the
+    printed fertility column (sex=None, footnote refs, Roman ranges,
+    "*" provisional, honest "..." gaps), everything the second canonical
+    door of birth_rate_fertility transports."""
+    data = (FIXTURES_DIR / "dyb_table4_sample.xls").read_bytes()
+    records = parse_dyb(data, expected_table=4, block="tfr")
+    result = RawFetchResult(
+        provider="un_dyb",
+        source_ref=source_ref,
+        indicator_id=indicator_id,
+        fetched_at=FIXED_SNAPSHOT_TIMESTAMP,
+        source_url="test://fixture-dyb-t4-tfr",
+        records=records,
+        footnotes=parse_dyb_footnotes(data),
+    )
+    return _write_snapshot(raw_dir, result)
+
+
 def seed_dyb_table17_snapshot(
     raw_dir: Path, indicator_id: str, source_ref: str = "2024/table17", block: str = "rate"
 ) -> Path:

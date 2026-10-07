@@ -152,7 +152,21 @@ un_dyb:
     canonical unit (no conversion on this path); Table 4 life expectancy
     comes in years (same as the indicator's unit) and MALE/FEMALE split
     (the collector prints no "both sexes" column — the sex field is part
-    of the merge key, averaging would be a derivation).
+    of the merge key, averaging would be a derivation); and since v28.1
+    Table 4's PRINTED total fertility rate (field: tfr, sex=None) is
+    birth_rate_fertility's SECOND canonical door, priority-merged under
+    Eurostat's TOTFERRT (the FX/FR seam discipline across two collectors:
+    564 shared entity-years read live — 505 agree within 0.05, the 7 seam
+    entities Azerbaijan/Romania/Bulgaria/Georgia/Latvia/Moldova/Montenegro
+    displayed as the two questionnaire chains' definitional seams, never
+    reconciled). The TFR is printed at column 21 of every wired edition
+    2011-2024 (verified live, SpreadsheetML and BIFF alike) — the
+    printed-value status of Table 17's ratios; v14's finding ("no TFR
+    column") had probed Table 10 and missed it. The wiring gains the
+    official score +2 to +6 scored countries per year 2010-2024 with zero
+    losses (ADR-0011 decision 17), the UK's post-Brexit canonical series
+    (2019-2023), and Eurostat's own single hole-years (Belarus 2009,
+    Ukraine 2013, Moldova 2013/2016, Georgia 2011/2013/2021).
 
     United Nations Demographic Yearbook: the COLLECTOR tier of the layer
     model (docs/the-measurement-problem.md section 7) — national official

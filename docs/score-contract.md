@@ -171,7 +171,7 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 
 ## Known limitations to carry into the UI
 
-- The composition noise is cut, not gone (0.33/0.34 points per year,
+- The composition noise is cut, not gone (0.32/0.34 points per year,
   2000-2020, from 0.86/0.95 at the exact year) — and the price is
   that the last years of a series are largely carried values (2025:
   74 modelled countries, 32 official). Coverage and age display is
@@ -185,3 +185,17 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 - The official score of 2000 carries 21 countries (the carry rule
   undid v27.1's threshold fall to 3); the first year of a score
   follows from the resolved data, by design (decision 8).
+- Since v28.1 the official fertility component reads TWO collectors
+  (Eurostat first, the DYB Table 4 TFR filling — decision 17): the
+  official fertility normalised map now carries 177 entities where it
+  carried 47, the UK's series resumes 2019-2023 (it was witness-only
+  after Brexit), and japan tops the official 2015 ranking (81.44).
+  The SCALE is still the v28 freeze (bounds_version 2026-10-06.2,
+  hi 0.611 on the European sample): a country whose TFR sits beyond
+  that sample's worst distance reads 0 on the component (korea 2023
+  at TFR 0.72 does) — that is the retained-scale semantics, not an
+  error; regenerating the scale worldwide is the owner's open
+  decision (the measured what-if lives in the v28.1 changelog).
+- 4 ghost country-years in 2025 official (australia, canada, chile,
+  costa_rica): fertility coverage arrived for costa_rica, nothing
+  fresh did — the guard holds.

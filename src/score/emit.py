@@ -397,8 +397,20 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
     # 5. the target component (fertility — distance to 2.1)
     add(ScoreName.modelled, "france", 2015, "equal", "the target component: fertility distance to 2.1")
     # 6-7. the two 2015 heads (the anchors the changelog quotes — the label
-    # rides the LIVE value, never a typed number)
-    for score, entity in ((ScoreName.modelled, "japan"), (ScoreName.official, "australia")):
+    # rides the LIVE value, never a typed number). v28.1: the head ENTITY is
+    # picked live too (the #1 of the emitted equal-preset scores at 2015,
+    # ties broken alphabetically) — the DYB TFR door put japan atop the
+    # official 2015 ranking where australia stood at v28, and a hardcoded
+    # head can silently stop being the head (the modelled-only case's own
+    # lesson, applied one case earlier).
+    for score in (ScoreName.modelled, ScoreName.official):
+        _head_rank = sorted(
+            ((ys["2015"][0], e) for e, ys in state[score]["scores"]["equal"].items()
+             if "2015" in ys),
+            key=lambda t: (-t[0], t[1]),
+        )
+        _fallback = "japan" if score == ScoreName.modelled else "australia"
+        entity = _head_rank[0][1] if _head_rank else _fallback
         sc = score_and_coverage(
             state[score]["normalised"], state[score]["weights"]["equal"], entity, 2015
         )
@@ -410,29 +422,52 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
         add(score, entity, 2015, "equal", why)
     # 8. the todd preset on the same point (the book-count weights)
     add(ScoreName.modelled, "japan", 2015, "todd", "the todd preset: book-count weights on the same point")
-    # 9-12. a few plain countries at the coverage boundary. The US label is
-    # GENERATED from the live official coverage at the same point (audit
-    # fix 4: v27 blamed 'per-vehicle absent', the real cause is coverage).
-    sc_us = score_and_coverage(
-        state[ScoreName.official]["normalised"],
-        state[ScoreName.official]["weights"]["equal"],
-        "united_states", 2015,
-    )
-    if sc_us is not None:
+    # 9-12. a few plain countries at the coverage boundary. The
+    # modelled-only case is RE-PICKED LIVE (v28.1's lesson, the case-13
+    # discipline extended): the case's premise — a modelled-scored
+    # country with NO official score — is a property of the data, and the
+    # v28.1 DYB TFR wiring moved the US across the official threshold at
+    # 2015 (coverage 0.61, fertility arrived via the Yearbook), silently
+    # invalidating the hardcoded choice's label. The picker now takes the
+    # CLOSEST MISS among 2015's modelled-scored entities (the highest
+    # official coverage still under the threshold, ties alphabetical) —
+    # the most informative representative of what the modelled layer is
+    # FOR, re-derived at every generation so a later config change can
+    # never leave a stale premise behind.
+    _official_2015 = state[ScoreName.official]["scores"]["equal"]
+    _candidates = [
+        e for e in state[ScoreName.modelled]["scores"]["equal"]
+        if 2015 in {int(y) for y in state[ScoreName.modelled]["scores"]["equal"][e]}
+        and "2015" not in _official_2015.get(e, {})
+    ]
+    _closest = None
+    for _e in sorted(_candidates):
+        sc_c = score_and_coverage(
+            state[ScoreName.official]["normalised"],
+            state[ScoreName.official]["weights"]["equal"],
+            _e, 2015,
+        )
+        if sc_c is None:
+            continue
+        if _closest is None or sc_c[1] > _closest[2]:
+            _closest = (_e, sc_c[0], sc_c[1])
+    if _closest is not None:
+        _entity, _score, _cov = _closest
         n_present = sum(
             1 for key in state[ScoreName.official]["normalised"]
-            if 2015 in state[ScoreName.official]["normalised"][key].get("united_states", {})
+            if 2015 in state[ScoreName.official]["normalised"][key].get(_entity, {})
         )
         n_total = len(state[ScoreName.official]["weights"]["equal"])
-        why_us = (
+        why_closest = (
             f"the modelled-only case (no official score — official coverage "
-            f"{sc_us[1]:.2f}, {n_present} of {n_total} components present)"
+            f"{_cov:.2f}, {n_present} of {n_total} components present)"
         )
+        modelled_only_case = (_entity, 2015, why_closest)
     else:
-        why_us = "the modelled-only case (no official score at this point)"
+        modelled_only_case = ("nigeria", 2015, "the modelled-only case (no official score at this point)")
     for entity, year, why in (
         ("germany", 2010, "a plain mid-coverage case"),
-        ("united_states", 2015, why_us),
+        modelled_only_case,
         ("sweden", 2000, "an early-year case on the MODELLED score"),
         ("nigeria", 2015, "a low-coverage modelled case"),
     ):

@@ -4,7 +4,9 @@
   decision 11: `incarceration_rate` removed from the score only);
   AMENDED (2026-10-06, v28 — decisions 12-16: directions confirmed in
   the books, `illegitimate_births` joins the official score, and the
-  score-per-year carry rule)
+  score-per-year carry rule); AMENDED (2026-10-07, v28.1 — decision 17:
+  the DYB Table 4 TFR wired as `birth_rate_fertility`'s second canonical
+  door, the official fertility scale RETAINED)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -190,6 +192,33 @@ Ediz's decisions (locked; numbered and testable):
     computed on fresh observations only (the invariant is tested —
     all 37 pre-existing blocks kept every field at the 2026-10-06.2
     regeneration).
+17. **The DYB Table 4 TFR is `birth_rate_fertility`'s second canonical
+    door; the frozen official fertility scale is RETAINED** (v28.1,
+    2026-10-07 — Ediz's review of v28 approving the ranked wiring plan
+    #1: "Le câblage de la fécondité par l'Annuaire démographique
+    (risque faible, gain de 4 à 5 pays), à essayer avec le reste").
+    The indicator layer's constitution is untouched: the TFR is
+    PRINTED by the collector in Table 4 (the printed-value status of
+    Table 17's ratios — v14's "no collector wire prints a national
+    TFR" finding had probed Table 10 and missed it), so no derivation
+    enters. The door is priority-merged UNDER Eurostat (the FX/FR seam
+    discipline: every entity-year both collectors print keeps
+    Eurostat's value, the discarded candidates logged in
+    provenance.json) and the 13 wired editions follow the vintage
+    rule. The SCORE consequence is coverage only: the official
+    scored-country ladders gain 2010: +6, 2015: +5, 2019: +2,
+    2021/2022: +6, 2023: +4, 2024: +5 with ZERO losses, and the
+    fertility component enters the aggregates of 10 already-scored
+    entities (97 entity-years move, -2.8 to +3.4 points). The frozen
+    fertility bounds are deliberately NOT regenerated: the drift
+    guard's own trigger (a §4.4 source-NAME change) did not fire — the
+    selection still retains "canonical" — and moving the scale is
+    Ediz's standing decision, now with the measured what-if on record
+    (regenerating on the worldwide canonical sample would move the
+    official p99 hi 0.611 -> 1.019 and rescale the fertility component
+    of 109 scored entity-years by more than half a point; the extremes
+    the new sample would set the scale by: South Sudan 7.5, DRC 6.7,
+    Macao 0.68, Hong Kong 0.70, Korea 0.72).
 
 The auditor's delegated decisions (taken with data; Ediz can reverse):
 weighted **arithmetic** mean (the geometric mean ranked nearly the same

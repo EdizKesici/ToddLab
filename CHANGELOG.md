@@ -18,6 +18,337 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-07 — v28.1: the DYB Table 4 TFR wired (decision 17 — the
+## ranked plan #1) and the UNODC probe record corrected
+
+**Breaking** (against the v28 score files and one indicator file ONLY):
+the official fertility component now reads TWO collectors (Eurostat
+first, the DYB Table 4 TFR filling — decision 17), so the official
+score's fertility coverage, several of its values and its country set
+change — the scored-country ladders gain +2 to +6 countries per year
+over 2010-2024 with ZERO losses, 97 pre-existing entity-years across 10
+entities move by -2.8 to +3.4 points (the fertility component entering
+aggregates that already scored), the official fertility normalised map
+grows 47 -> 177 entities, and `birth_rate_fertility.json` +
+`catalog.json` change with it. The frozen fertility scale is RETAINED
+(`score_bounds.yaml` byte-identical — the regeneration is the owner's
+open decision, measured below). The modelled score file is
+BYTE-IDENTICAL to v28. The UNODC record correction is documentation
+only: no config, no dist file, no committed data.
+
+### Context
+
+Ediz's review of v28 (2026-10-07) carried two directives, both landed
+here. First, the wiring: "Le câblage de la fécondité par l'Annuaire
+démographique (risque faible, gain de 4 à 5 pays), à essayer avec le
+reste" — the v28 ranked wiring plan #1, now ADR-0011 decision 17.
+Second, the UNODC probe verdict: the review found the v28 conclusion
+("dataportal NXDOMAIN ... witness only") rested on a wrong address —
+the probe had asked `dataunodc.unodc.org`, a domain that does not exist
+(registry NXDOMAIN, re-confirmed live this session), while the real
+portal is `dataunodc.un.org` (Ediz's web search) — and the "witness
+only" verdict was therefore never tested. The re-probe below is the
+correction the house rules demand (the v28 entry stays as written; this
+entry is the record). Ediz's own reading of the UNODC documentation
+also reopened the layer question — the classification of UNODC under
+ADR-0007's harmonized tier is a decision, not a fact — and that
+decision is HIS to take: the memo below measures it, nothing was wired.
+
+### Investigated (live, before freezing anything)
+
+- THE TFR IS PRINTED IN EVERY WIRED EDITION: Table 4's column 21
+  ("Total fertility rate / L'indice synthétique de fécondité"),
+  verified live on all 13 editions (2011-2015, 2017-2024 — the
+  FILEPASS-encrypted 2016 deliberately absent, as on life_expectancy),
+  SpreadsheetML and BIFF files alike, 173-197 entities per edition over
+  each edition's 5-year window. This corrects v14's canonical finding
+  ("no collector wire prints a national TFR except Eurostat's
+  demo_find"): that probe examined Table 10 — the age-specific
+  fertility table, which indeed has no TFR column — and never looked at
+  Table 4, whose vital-statistics summary carries the finished rate.
+  The printed-value status is the same as Table 17's maternal ratios
+  and Table 9's crude birth rates: the collector computes, we report —
+  the anti-derivation rule holds on our side (summing Table 10's ASFR
+  would have been the forbidden derivation; reading the printed column
+  is not).
+- The marker cell (column 22) carries footnote refs on real values
+  (Japan 2020-2023: '85'; Korea 2020-2023: '102' — read on the 2024
+  edition) and the Roman reference-range grammar where a small
+  population's rate covers a multi-year period — the same transport
+  discipline as the LE columns.
+- THE OVERLAP AGREEMENT (Eurostat canonical vs the stitched DYB set,
+  564 shared entity-years): 220 exact, 157 within 0.01, 128 within
+  0.05 — 90% rounding-level agreement — and 7 entities with real
+  collector-vs-collector seams >= 0.1: Azerbaijan (max 0.44 — the DYB
+  prints ~2.3 where Eurostat prints ~1.9), Romania (0.29), Bulgaria,
+  Georgia, Latvia, Moldova, Montenegro. The seams are displayed, never
+  reconciled: with Eurostat at priorities 1-3 they never surface in the
+  canonical (every shared entity-year keeps Eurostat's value, the
+  discarded DYB candidates logged in provenance.json).
+- THE FILL, measured on the rebuilt dist: the canonical fertility
+  series gains 1,245 valued un_dyb points (2007-2024) plus 1,034
+  explicit "..." gap points (the collector computes rates only for
+  C/"|"-grade registration — the same honest degradation as Table 15);
+  the valued-entity set grows 47 -> 177 (130 DYB-only entities: Japan,
+  Korea, the US, Israel, New Zealand, Latin America, Asia, Africa's
+  civil-registration countries); the UK's series resumes 2019-2023
+  (Eurostat ended 2018 with Brexit — the canonical UK was witness-only
+  there); Eurostat's own single hole-years are filled (Belarus 2009,
+  Ukraine 2013, Moldova 2013/2016, Georgia 2011/2013/2021). China
+  prints NO TFR row in any wired edition (the collector's own hole —
+  the WPP witness carries China, as it always has). Unresolved names
+  after the footnote-strip: three territories ("Saint Helena ex.
+  dep.", "Saint Helena: Ascension", "Saint-Barthélemy") — the
+  life_expectancy unresolved report's own precedent.
+- THE SCORE EFFECT, measured before anything shipped: the official
+  scored-country ladders move 2010: 40 -> 46 (brazil, japan, korea,
+  mexico, new_zealand, united_states), 2015: 42 -> 47 (argentina,
+  colombia, japan, korea, united_states), 2019: 40 -> 42 (korea,
+  united_states), 2021: 40 -> 46, 2022: 41 -> 47 (colombia, israel,
+  new_zealand joining), 2023: 41 -> 45, 2024: 38 -> 43 (costa_rica and
+  the resuming united_kingdom) — ZERO losses at every year, and
+  2000/2005/2025 unchanged (the DYB windows start 2007). The todd
+  preset gains more (2015: 38 -> 50 — the fertility weight 16 of 99
+  makes crossing easier). 97 pre-existing entity-years across exactly
+  10 entities (argentina, australia, brazil, canada, chile, costa_rica,
+  israel, new_zealand, turkiye, united_kingdom) move by -2.8 (israel —
+  its ~3 TFR is far from the 2.1 target on the frozen scale) to +3.4
+  (chile) points as the fertility component enters their aggregates.
+  japan tops the official 2015 ranking at 81.44 (v28's head was
+  australia 75.54; the modelled ranking is untouched). 4 ghost
+  country-years in 2025 official now (costa_rica joins australia,
+  canada, chile): fertility coverage arrived, nothing fresh did.
+- THE FROZEN SCALE, MEASURED — the owner's open decision: the drift
+  guard did NOT fire (the §4.4 selection still retains "canonical" for
+  the official fertility component; the guard's own trigger is a
+  source-NAME change), so the scale was deliberately retained at
+  2026-10-06.2 (lo 0.0, hi 0.610909, n_sample 1278 — the European
+  sample it was frozen on). Regenerating on the new worldwide canonical
+  sample (1,801 transformed country-years since 1990, from 1,278)
+  would move p99 hi 0.611 -> 1.019 (1.67x) and p1 0.0096 -> 0.0021 —
+  the extremes the worldwide sample sets the scale by: South Sudan
+  2010 (TFR 7.5), DRC 6.7, Macao 0.68, Hong Kong 0.70, Korea 0.72 —
+  and 109 scored entity-years' fertility components would move by more
+  than half a point (cyprus 2015: 24.0 -> 54.6; albania 2022: 9.8 ->
+  46.0; every low-fertility European country's component RISES because
+  Korea and Macao would now define the bad tail). The retained scale's
+  own semantics: a TFR beyond the European sample's worst distance
+  reads 0 on the component — korea 2023 (TFR 0.721, transformed
+  distance 1.069 > hi 0.611) does exactly that. Both options are
+  honest under the constitution; moving the scale is a deliberate
+  regeneration (the freezer + a bounds_version bump + a changelog
+  entry), and the numbers above are on record for that decision.
+- THE UNODC RE-PROBE (report only; nothing wired; the XLSX and the
+  metadata PDF live outside the repo): `dataunodc.unodc.org` does not
+  resolve (registry NXDOMAIN — the v28 probe's address, the error Ediz
+  caught); `dataunodc.un.org` resolves (193.138.94.104) and redirects
+  to the Drupal portal `data.unodc.org` — the client-rendered SPA the
+  v20 record documented (every page the same 44KB shell). The v20 and
+  v28 probes BOTH missed what Ediz's browser found: the page's own
+  "Download data" link is a STATIC FILE —
+  `data.unodc.org/sites/dataportal.unodc.org/files/2026-07/
+  data_cts_intentional_homicide.xlsx` (7.76 MB, vintage 2026-07-12),
+  machine-readable, no JS needed once the URL is known. The dataset:
+  TWO sheets, cleanly separated by the source itself — the country-level
+  CTS microdata (126,082 rows: victims / arrested-suspected / convicted,
+  counts AND rates per 100,000, sex and age splits, dimensions by
+  relationship/situational context/mechanism/citizenship, a per-point
+  `Source` genealogy) and `data_cts_homicide_reg_estimates` (3,452 rows:
+  UNODC's own regional/global ESTIMATES — imputation, linear
+  interpolation, exponential smoothing, "Estimated value" flags — the
+  modeling separated from the collection by the source's own design).
+  The official-score candidate face (victims, rate, sex Total, age
+  Total, dimension Total): 3,005 rows, 203 ISO3 areas, 2003-2024,
+  95-165 countries per year (2024: 95). The per-point `Source`
+  genealogy on that face: 53.4% CTS + national agency compilations
+  (NSO/NP/OAS/Eurostat/SDG...), 8.5% pure CTS, 15.2% GSH-revised
+  (UNODC's own Global Study on Homicide adjustments), 9.1%
+  health-register substitutions (WHO/MD/PAHO — the register mixing
+  Ediz flagged, documented PER POINT), 13.4% other agency, 0.4%
+  computed. The metadata PDF (5 pages, the portal's own) states the
+  collection mechanics: national data submitted through the UN-CTS by
+  national focal points, UNODC checking "consistency and coherence"
+  after submission, EU/EFTA members' responses validated by Eurostat,
+  rates computed on WPP 2024 populations, the estimates' imputation
+  method documented in full.
+- THE UNODC LAYER MEMO (for Ediz's decision; ADR-0007 currently files
+  UNODC under harmonized L3 "model estimates"): the country-level CTS
+  sheet is a QUESTIONNAIRE COLLECTOR — UN-CTS submitted by national
+  focal points, consistency-checked, Eurostat-validated, its own
+  estimates separated onto another sheet — the DYB/Eurostat pattern,
+  not the IGME/WPP pattern. FOR canonical: the printed rates (no
+  counts-not-rates blocker, unlike the WHO MDB), 203 areas vs the
+  OECD canonical's 46, and the register mixing is per-point DOCUMENTED
+  (transportable as-reported annotations, the DYB footnote discipline).
+  AGAINST canonical: 15.2% of the candidate face carries UNODC's own
+  GSH revisions (a collector revising is a harmonizer at work), 9.1%
+  health-register substitutions, rates computed on WPP denominators
+  (the collector's own choice — printed, but modeled population
+  estimates under the rate), and the register mixing itself. ONE MORE
+  FACT the memo must carry: the current canonical is the WHO-MDB
+  cause-of-death register (ICD Assault via OECD DF_COM — the
+  homicide config's own text: "vital-registration assault (canonical)
+  vs criminal-justice homicide (witness) differ where deaths are
+  classified differently than they are investigated") — so promoting
+  UNODC-CTS is ALSO a register switch for the 46 currently-covered
+  entities (the overlap read live: 438/838 shared entity-years within
+  0.51 on the both-sexes face — and the disagreement is the two
+  registers' definitional seam: USA 2015 UNODC 4.87 vs the OECD
+  series' health-register prints, Mexico 2020 29.0 vs 50.2, South
+  Africa 35.8 vs 23.1). And Ediz's own observation verified: the OWID
+  witness (`homicide-rate-unodc`) covers 200 entities 1990-2024 and
+  matches UNODC direct on 2,787 of 2,797 overlapping keys (10 diffs —
+  the vintage seam: LVA 2021-22, BRA 2020-23, KEN/HTI 2020) — the
+  witness already serves the modelled score with this data; the
+  promotion question is which LAYER the same numbers speak from (and
+  the OWID door would then be a same-root redistribution beside a
+  UNODC canonical — the "illusion of independent verification"
+  warning's own case, stated by the root field). Verdict: NOT wired —
+  the layer decision is Ediz's; the door exists, is machine-readable,
+  and is documented above.
+
+### Added
+
+- `src/connectors/dyb.py`: Table 4's TFR measure — `field: tfr`
+  selects the printed fertility column (one record per country-year,
+  sex=None — a synthetic measure over women's lifetimes has no split
+  to report, the TOTFERRT discipline; footnote refs, Roman reference
+  ranges and the "*" provisional flag transported as-reported; the
+  "..." cells kept as explicit gap records). The LE pair stays the
+  default measure (the historical configs carry no field); the TFR
+  header signature ("Total fertility" at column 21) is ASSERTED before
+  any parsing — an edition that drops the fertility column refuses
+  loudly, never silently emits gaps.
+- `config/indicators/birth_rate_fertility.yaml`: the 13 un_dyb sources
+  (editions 2011-2024, `field: tfr`, `role: canonical`,
+  `root: unsd_dyb`, priorities 4-16 — later edition = higher priority,
+  the vintage discipline; Eurostat keeps 1-3, the WPP witness moves to
+  17), with the seam documentation and the v14-finding correction in
+  the notes and reliability_criteria.
+- The v28.1 test section (8 tests): the TFR measure's records/gaps/
+  markers/header-refusal/LE-independence (6 parser tests), the
+  fill-and-arbitrate integration case (Czechia the fill, France 2023
+  the arbitration — Eurostat 1.66 kept over the DYB 1.68, the
+  discarded candidate in provenance), and the shipped-config wiring
+  assertion (13 editions, field tfr, the priority order, 2016 absent).
+
+### Changed
+
+- THE FROZEN FERTILITY SCALE RETAINED (decision 17's second half):
+  `config/score_bounds.yaml` is byte-identical to v28's — the drift
+  guard's own trigger (a §4.4 source-NAME change) did not fire, and
+  moving the scale is the owner's standing decision with the measured
+  what-if now on record (Investigated). The official fertility
+  component's meta still describes the V28 freeze (n_sample 1278, hi
+  0.6109) — the frozen numbers are the freeze's own metadata; the
+  regeneration, if taken, rewrites them deliberately.
+- The golden vectors' LIVE-PICKED cases (the wiring's lesson: a
+  hardcoded premise is a stale premise): the two 2015 heads are now
+  picked from the emitted rankings (japan 81.44 tops the official —
+  australia 75.54 was v28's head; the modelled head japan 84.45
+  unchanged), and the modelled-only case is re-picked as the CLOSEST
+  MISS among 2015's modelled-scored entities without an official score
+  (mexico, official coverage 0.56, 11 of 20 components — the US, the
+  hardcoded v27/v28 carrier, crossed the official threshold at 0.61
+  when the DYB TFR arrived and can no longer carry a case whose label
+  says "no official score").
+- The seam test (`test_birth_rate_fertility_is_two_tier_with_the_fx_fr_seam`)
+  now asserts the two-collector reality: the canonical provider set
+  {eurostat, un_dyb}, the France-2023 arbitration logging the DYB
+  candidate, and the catalog's TWO canonical roots (eurostat_demo +
+  unsd_dyb — the genealogy display's exact case).
+- Docs: ADR-0011 (decision 17 in full, status amended v28.1);
+  `config/sources.yaml` un_dyb notes (the Table 4 TFR paragraph, the
+  seam and fill numbers); `docs/score-contract.md` (the two-collector
+  fertility component, the retained-scale semantics, the 4 ghost
+  country-years); README and architecture's score-layer headers.
+
+### Fixed
+
+- THE V28 UNODC RECORD (the review's finding): the v28 Investigated
+  item 2 concluded "dataportal NXDOMAIN ... witness only ... revisit
+  from a network that resolves the portal" — but the probe had
+  addressed `dataunodc.unodc.org`, a domain that does not exist at the
+  registry. The real portal resolves from this same workbench (v28's
+  "from this environment" framing was wrong — the environment was
+  never the problem), and the door the v20 and v28 probes both missed
+  is the static XLSX behind the page's own Download-data link. The
+  verdict "witness only" is RETRACTED as untested; the corrected
+  findings and the layer memo live in Investigated above; ADR-0007's
+  harmonized placement stands UNCHANGED pending Ediz's decision (it is
+  a decision, not a fact — the review's own point, agreed).
+- Two golden-vector staleness traps the wiring exposed (both now
+  live-picked, see Changed): the 2015 official head and the
+  modelled-only case.
+
+### Verified (live, this session)
+
+- The rebuild's dist diff, exactly scoped: 28 of the 30 non-score dist
+  files byte-identical to b640917 (Ediz's V28 push — his git am,
+  tree-identical to the delivered 0f1b91a, verified live at session
+  start); the two designed exceptions are `birth_rate_fertility.json`
+  (every one of v28's 1,958 canonical points IDENTICAL — 0 changed, 0
+  removed; 2,279 added: 1,245 valued un_dyb points + 1,034 explicit
+  gaps; the witnesses array untouched) and `catalog.json` (the
+  fertility entry only: n_points 1958 -> 4237, the roots gain unsd_dyb,
+  the other 26 entries field-for-field identical). The corpus is
+  untouched (22 metrics / 115 rows / 16 books / 470 citations, sha256
+  unchanged). `homicide_rate.json` byte-identical — the UNODC re-probe
+  touched no data.
+- `config/score_bounds.yaml` BYTE-IDENTICAL to v28 (2026-10-06.2; the
+  official fertility block still canonical / floor null / lo 0.0 /
+  hi 0.610909 / n_sample 1278) and the drift guard ACCEPTS it (the
+  rebuild runs clean).
+- `data/dist/score/modelled.json` BYTE-IDENTICAL to v28. The official
+  score carries exactly the designed changes: the ladders (2000: 21,
+  2005: 29, 2010: 46, 2015: 47, 2019: 42, 2021: 46, 2022: 47,
+  2023: 45, 2024: 43, 2025: 32 — modelled 143/159/165/165/166/163/74
+  unchanged), the per-year gain sets exactly enumerated with zero
+  losses, exactly 97 moved pre-existing entity-years across exactly
+  the 10 entities, the fertility normalised map 47 -> 177 entities /
+  1361 -> 3037 keys with exactly 22 old keys re-resolved (andorra,
+  armenia, azerbaijan, belarus, georgia, moldova, turkiye, ukraine,
+  united_kingdom — the extension and hole-year entities), the 2015
+  top-5 (japan 81.44, australia 75.45, new_zealand 73.29,
+  switzerland 71.98, israel 71.14 — the modelled top-5 unchanged),
+  the official 2015 positions (france 19, chile 44, sweden 6), the
+  composition noise 0.32/0.34, the carried share 0.14/0.093, and 4
+  ghost country-years in 2025 official (australia, canada, chile,
+  costa_rica). `meta.json` changes in ONE fingerprint
+  (birth_rate_fertility) — the bounds and score-config fingerprints
+  identical.
+- Every golden vector recomputed by an independent path; the
+  live-picked heads and modelled-only case hold their premises on the
+  emitted layer (checked explicitly).
+- The surgical fetch: the 13 new un_dyb snapshots written through the
+  pipeline's own machinery (DybConnector.fetch_raw + _write_snapshot)
+  — no other raw snapshot touched, every other indicator's vintage
+  unchanged from 2026-09-27.
+- Tests: **409 passed** (401 at v28 + 8 v28.1 tests).
+- `scripts/verify_v28_diff.py` (updated in place, the V27.1 precedent):
+  **121/121 PASS** — the checks above, every coverage recomputed from
+  the age maps, no score year beyond max_obs_year, basis/provisional
+  invariants, and rebuild ×2 byte-stable across all 34 dist files.
+
+### Known limitations
+
+- The official fertility component's scale is the v28 European freeze
+  (hi 0.611): Korea's 2023 TFR (transformed distance 1.069) reads 0
+  on the component — the retained-scale semantics. The regeneration
+  (hi would move to 1.019; 109 entity-years' components would move >
+  0.5 points) is Ediz's open decision, the numbers on record.
+- The DYB TFR's staggered windows leave 2024 thin (59 canonical
+  entities at 2024 — the 2025 edition will fill the column) and the
+  pre-2007 past unwired (the edition loop's own frontier, as on
+  life_expectancy).
+- The UNODC question is OPEN: the machine door exists and is
+  documented; the canonical-vs-harmonized decision (and the register
+  switch it would imply for the 46 OECD-covered entities) is Ediz's.
+  Nothing is wired; the OWID witness serves the modelled score as
+  before.
+- The 2025 vintage lag: the 4 ghost country-years (australia, canada,
+  chile, costa_rica) return when the sources' 2025 vintages land.
+
 ## 2026-10-06 — v28: the carry rule (decision 16, amends decision 3),
 ## illegitimate_births in the official score (decision 15), and the
 ## directions confirmed in the books (decisions 12-14)
