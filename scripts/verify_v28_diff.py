@@ -1,57 +1,60 @@
 #!/usr/bin/env python3
-"""verify_v28_diff.py — the v28.1 surgery's invariant checks.
+"""verify_v28_diff.py — the v28.2 surgery's invariant checks.
 
 Every check PASSES loud or FAILS loud. Run from the repo root:
     python scripts/verify_v28_diff.py
 
-Baseline: the V28 commit (b640917, Ediz's own push — the reviewed baseline
-of this delivery). The v28.1 surgery, from Ediz's review of v28
-(2026-10-07): (1) the DYB Table 4 TFR wired as birth_rate_fertility's
-second canonical door (the ranked wiring plan #1 — "Le câblage de la
-fécondité par l'Annuaire démographique (risque faible, gain de 4 à 5
-pays), à essayer avec le reste"), priority-merged UNDER Eurostat, the
-frozen fertility scale RETAINED (the drift guard's own trigger — a
-source-NAME change — did not fire; the regeneration is Ediz's open
-decision, the measured would-be numbers in the changelog); (2) the
-UNODC probe record corrected (the v28 verdict "dataportal NXDOMAIN"
-probed a domain that does not exist — the real portal resolves and its
-Download Dataset link serves a machine-readable XLSX; report only,
-nothing wired, the layer question is Ediz's open decision).
+Baseline: the V28.1 commit (b394ea6, Ediz's own push — the reviewed
+baseline of this delivery, tree-identical to the delivered d4e8ffc).
+The v28.2 surgery, from the auditor's brief of 2026-10-08 (Ediz's
+decision 18): (1) the official fertility bounds REGENERATED on the
+worldwide canonical sample the v28.1 DYB wiring had built — the shipped
+freezer alone, bounds_version 2026-10-08.1, exactly ONE block changing
+(official/birth_rate_fertility/both: hi 0.611 -> 0.9903 on 2,523
+observations / 177 entities); (2) the drift guard HARDENED: the freezer
+records n_entities per block, and rebuild recomputes both n_sample and
+n_entities live with the freezer's own sampling rule, refusing the
+build beyond bounds_drift_tolerance (0.25) — the guard now trips on
+the source NAME and on the sample's COVERAGE (the v28.1 blind spot:
+47 -> 177 entities under the same 'canonical' name passed silently).
 
-§2 invariants: 28 of the 30 non-score dist files byte-identical to V28 —
-the designed exceptions are birth_rate_fertility.json (where every one of
-V28's 1,958 canonical points is IDENTICAL and the only additions are
-un_dyb points (2,279: 1,245 valued + 1,034 explicit "..." gaps), the
-witnesses array untouched; the catalog changes in the fertility entry
-only (n_points, roots, reliability_criteria, sources).
+§2 invariants: ALL 30 non-score dist files byte-identical to V28.1 —
+the surgery touches nothing outside config/ + src/ + the four score
+files. The corpus is untouched (22 / 115 / 16 / 470, sha e30304cf...).
 
-§4 the frozen bounds: config/score_bounds.yaml BYTE-IDENTICAL to V28
-(2026-10-06.2 — the scale never moves silently under a score; the
-regeneration decision stays Ediz's, with the measured what-if in the
-changelog's Investigated) and the drift guard ACCEPTS the file (the
-rebuild runs clean, §9).
+§4 the frozen bounds: exactly one block changes as above; every other
+block keeps source, source_class, floor, lo, hi, n_sample,
+n_unavailable (only the version moves), and n_entities appears on all
+38 blocks. The modelled blocks' numbers are unchanged.
 
-§5-§6: the modelled score file BYTE-IDENTICAL to V28; the official
-score carries the designed coverage gains — the scored-country ladders
-(2010: 40->46, 2015: 42->47, 2019: 40->42, 2021: 40->46, 2022: 41->47,
-2023: 41->45, 2024: 38->43; 2000/2005/2025 unchanged) with ZERO
-losses; 97 pre-existing entity-years across exactly 10 entities move
-(the fertility component entering their aggregate); the fertility
-normalised map grows 47 -> 177 entities with exactly 22 old keys
-re-resolved (the extension entities: the UK after Brexit, Armenia,
-Azerbaijan, Turkiye, and Eurostat's single hole-years); japan tops the
-official 2015 ranking (81.44 — the new head); 4 ghost country-years in
-2025 official (costa_rica joins australia/canada/chile).
+§5-§6: the MODELLED score file's normalised / scores / age maps are
+value-identical to V28.1 (only the per-component bounds_version moved —
+compare values, not bytes); the official score's SCORED COUNTRY-YEAR
+SETS are identical at every year (no gains, no losses), while the
+fertility component values and therefore the official scores change:
+1,077 of the 1,093 scored official country-years' fertility components
+move by more than 0.5 points (1,017 by more than 5, up to 38.3), and
+970 shipped official scores move by more than 0.5 points (mean absolute
+change 1.35 on the stored values — 971 / 1.36 at the reference
+prototype's full-precision basis, the divergence recorded in the
+changelog's Corrections; max 3.49 stored / 3.48 full-precision; 49
+entities). The §5 anchors: official top-5 2015 japan 83.5 / australia
+76.2 / new_zealand 73.6 / israel 73.2 / switzerland 73.1, positions
+japan 1 / sweden 8 / france 22 / united_states 31 / chile 44, Russian
+deltas all refused; modelled identical to V28.1.
 
-§7: the golden vectors recomputed by an independent code path — the
-2015 heads and the modelled-only case are now PICKED LIVE (a hardcoded
-premise is a stale premise: the wiring moved the US across the official
-threshold and dethroned australia).
+§7: the golden vectors recomputed by an independent code path — 20
+cases now: the v28 coverage kept, the official head's label carries the
+live-checked DYB-only fact, and the beyond-the-old-scale case
+(a scored official point whose TFR distance exceeded the v28.1 European
+freeze and now reads non-zero) is present with its premise verified.
 
-§8-§9: 409 tests collected (401 at v28 + 8 v28.1 tests); check-config
-unchanged (18 indicators -> 20/18 components); rebuild ×2 byte-stable
-across all 34 dist files; exactly ONE living score verifier (updated in
-place, the V27.1 precedent).
+§8-§9: 416 tests collected (409 at v28.1 + 7 v28.2 tests); check-config
+unchanged; the drift guard's live-vs-frozen ratios on all 38 blocks are
+0.0 (the calibration — no block trips, the full margin visible); the
+guard REFUSES a tampered doc live (both triggers); rebuild ×2
+byte-stable across all 34 dist files; exactly ONE living score verifier
+(updated in place, the V27.1 precedent).
 """
 import hashlib
 import json
@@ -63,7 +66,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE = "b640917"  # Ediz's V28 push — the reviewed baseline of this delivery
+BASE = "b394ea6"  # Ediz's V28.1 push — the reviewed baseline of this delivery
 
 results: list = []
 
@@ -123,59 +126,32 @@ check(
     (ROOT / "scripts/archive/verify_v26_diff.py").is_file(),
 )
 
-# --- 2. the 30 non-score dist files: 29 byte-identical, fertility by design ---
+# --- 2. the 30 non-score dist files: ALL byte-identical (the surgery
+# touches config/ + src/ + the four score files only) ---
 base_dist = git("ls-tree", "-r", "--name-only", BASE, "data/dist/").splitlines()
 nonscore_expected = [f for f in base_dist if not f.startswith("data/dist/score/")]
 mismatched = [f for f in nonscore_expected if (ROOT / f).read_bytes() != _bytes_at(BASE, f)]
 check(
-    "28 of the 30 non-score dist files byte-identical to V28 — the designed "
-    "exceptions: birth_rate_fertility.json (the DYB TFR door's additions) and "
-    "catalog.json (the fertility entry)",
-    len(nonscore_expected) == 30
-    and mismatched == ["data/dist/catalog.json", "data/dist/indicators/birth_rate_fertility.json"],
-    f"expected 30 files, 2 designed changes; got {len(nonscore_expected)} files; "
+    "ALL 30 non-score dist files byte-identical to V28.1 — the bounds "
+    "regeneration reads the SAME indicator dist the v28.1 wiring emitted "
+    "(birth_rate_fertility.json and catalog.json untouched THIS time)",
+    len(nonscore_expected) == 30 and not mismatched,
+    f"expected 30 files, 0 changed; got {len(nonscore_expected)} files; "
     f"mismatched: {mismatched}",
 )
 check(
-    "homicide_rate.json (the dist file) byte-identical to V28 — the UNODC "
-    "re-probe touched NO data (report only; the layer question is open)",
-    (ROOT / "data/dist/indicators/homicide_rate.json").read_bytes()
-    == _bytes_at(BASE, "data/dist/indicators/homicide_rate.json"),
-)
-
-# the fertility dist diff's SHAPE: additions only, nothing moved, nothing removed
-_old_fert = _parse_at(BASE, "data/dist/indicators/birth_rate_fertility.json")
-_new_fert = json.loads((ROOT / "data/dist/indicators/birth_rate_fertility.json").read_text(encoding="utf-8"))
-_ok = {(p["entity_id"], p["year"], p.get("sex")): p for p in _old_fert["data"]}
-_nk = {(p["entity_id"], p["year"], p.get("sex")): p for p in _new_fert["data"]}
-_added_pts = set(_nk) - set(_ok)
-_removed_pts = set(_ok) - set(_nk)
-_changed_pts = [k for k in set(_ok) & set(_nk) if _ok[k] != _nk[k]]
-_added_valued = [k for k in _added_pts if _nk[k].get("value") is not None]
-_added_gaps = [k for k in _added_pts if _nk[k].get("value") is None]
-check(
-    "fertility dist: every one of V28's 1,958 canonical points IDENTICAL; "
-    "2,279 added (1,245 valued un_dyb + 1,034 explicit '...' gaps); nothing removed",
-    len(_ok) == 1958 and not _changed_pts and not _removed_pts
-    and len(_added_pts) == 2279 and len(_added_valued) == 1245 and len(_added_gaps) == 1034,
-    f"old={len(_ok)} changed={len(_changed_pts)} removed={len(_removed_pts)} "
-    f"added={len(_added_pts)} (valued {len(_added_valued)}, gaps {len(_added_gaps)})",
-)
-check(
-    "fertility dist: every added VALUED point carries provider un_dyb + a table04 "
-    "source_ref (the second canonical door, never a third party)",
-    all(_nk[k]["provider"] == "un_dyb" and _nk[k]["source_ref"].endswith("/table04")
-        for k in _added_valued),
-)
-check(
-    "fertility dist: the witnesses array untouched (the WPP door unchanged)",
-    _old_fert.get("witnesses") == _new_fert.get("witnesses"),
-)
-check(
-    "fertility dist: the dist's other contract fields unchanged (only sources / "
-    "reliability_criteria / notes — the config-driven fields — may move)",
-    all(_old_fert.get(k) == _new_fert.get(k) for k in _old_fert
-        if k not in ("data", "witnesses", "sources", "reliability_criteria", "notes")),
+    "the four score files are the ONLY dist changes (official / modelled / "
+    "meta / golden_vectors)",
+    sorted(
+        f for f in git("ls-tree", "-r", "--name-only", BASE, "data/dist/").splitlines()
+        if (ROOT / f).read_bytes() != _bytes_at(BASE, f)
+    ) == [
+        "data/dist/score/golden_vectors.json",
+        "data/dist/score/meta.json",
+        "data/dist/score/modelled.json",
+        "data/dist/score/official.json",
+    ],
+    "",
 )
 
 cur_cat = json.loads((ROOT / "data/dist/catalog.json").read_text(encoding="utf-8"))
@@ -184,24 +160,6 @@ check("catalog carries 27 entries (illegitimate_births among them)", len(cur_cat
 check(
     "illegitimate_births: still todd_core true in the catalog (decision 15 — score only)",
     cur_by_id["illegitimate_births"]["todd_core"] is True,
-)
-old_cat = _parse_at(BASE, "data/dist/catalog.json")
-old_by_id = {e["id"]: e for e in old_cat}
-_changed_cat = [eid for eid in cur_by_id if cur_by_id[eid] != old_by_id.get(eid)]
-check(
-    "catalog: only the fertility entry changed (n_points 1958 -> 4237, the roots "
-    "gain unsd_dyb, reliability_criteria, sources) — the other 26 field-for-field "
-    "identical to V28",
-    _changed_cat == ["birth_rate_fertility"]
-    and cur_by_id["birth_rate_fertility"]["n_points"] == 4237,
-    f"changed entries: {_changed_cat}",
-)
-_new_roots = {r["root"] for r in cur_by_id["birth_rate_fertility"]["roots"]["canonical"]}
-check(
-    "catalog fertility roots: TWO collector roots now (eurostat_demo + unsd_dyb) — "
-    "the genealogy display's exact case",
-    _new_roots == {"eurostat_demo", "unsd_dyb"},
-    str(sorted(_new_roots)),
 )
 
 corpus = json.loads((ROOT / "data/dist/todd_corpus.json").read_text(encoding="utf-8"))
@@ -236,6 +194,12 @@ check(
 )
 check("score.yaml: max_age_years: 3 (decision 16)", _score_yaml_parsed.get("max_age_years") == 3)
 check(
+    "score.yaml: bounds_drift_tolerance: 0.25 (decision 18, v28.2 — the drift "
+    "guard's refusal threshold on n_sample / n_entities)",
+    _score_yaml_parsed.get("bounds_drift_tolerance") == 0.25,
+    str(_score_yaml_parsed.get("bounds_drift_tolerance")),
+)
+check(
     "score.yaml: no basis: editorial and no provisional: true left "
     "(decisions 12-14 — confirmed in the books)",
     all(c.get("basis") != "editorial" for c in _score_yaml_parsed["components"])
@@ -256,6 +220,7 @@ from src.schema.score import (  # noqa: E402
     OFFICIAL_ONLY_INDICATORS,
     ScoreComponent,
     ScoreConfig,
+    ScoreName,
 )
 from pydantic import ValidationError  # noqa: E402
 
@@ -325,6 +290,26 @@ check(
     and "max_age_years" in _probe_bad_age
     and "max_age_years" in _probe_frac_age,
 )
+_probe_bad_tol = _try_full_config(
+    {"version": "probe", "bounds_drift_tolerance": 1.0,
+     "components": [{"indicator": "infant_mortality", "direction": "lower",
+                     "transform": "log", "sex_mode": "both", "scores": ["official"],
+                     "basis": "consensus"}]}
+)
+_probe_neg_tol = _try_full_config(
+    {"version": "probe", "bounds_drift_tolerance": -0.01,
+     "components": [{"indicator": "infant_mortality", "direction": "lower",
+                     "transform": "log", "sex_mode": "both", "scores": ["official"],
+                     "basis": "consensus"}]}
+)
+check(
+    "schema: bounds_drift_tolerance validated (0 <= x < 1, default 0.25 — both "
+    "out-of-range probes raise: 1.0 and -0.01)",
+    "bounds_drift_tolerance" in ScoreConfig.model_fields
+    and ScoreConfig.model_fields["bounds_drift_tolerance"].default == 0.25
+    and "bounds_drift_tolerance" in _probe_bad_tol
+    and "bounds_drift_tolerance" in _probe_neg_tol,
+)
 check(
     "schema: illegitimate_births left the EXCLUDED set (it is a component now), "
     "still listed in OFFICIAL_ONLY with the decision-15 reason",
@@ -332,41 +317,69 @@ check(
     and "illegitimate_births" in OFFICIAL_ONLY_INDICATORS,
 )
 
-# --- 4. the frozen bounds: RETAINED, byte-identical (the deliberate choice) ---
-old_bounds_bytes = _bytes_at(BASE, "config/score_bounds.yaml")
+# --- 4. the frozen bounds: REGENERATED by the shipped freezer, exactly one
+# block changing (decision 18) ---
+old_bounds = yaml.safe_load(_bytes_at(BASE, "config/score_bounds.yaml"))
 new_bounds_bytes = (ROOT / "config/score_bounds.yaml").read_bytes()
 new_bounds = yaml.safe_load(new_bounds_bytes)
 FIELDS = ("source", "source_class", "floor", "lo", "hi", "n_sample", "n_unavailable")
+_changed_blocks = []
+_problems = []
+for score in ("official", "modelled"):
+    for key in sorted(set(old_bounds["bounds"][score]) | set(new_bounds["bounds"][score])):
+        ob = old_bounds["bounds"][score].get(key)
+        nb = new_bounds["bounds"][score].get(key)
+        if ob is None or nb is None:
+            _problems.append(f"{score}/{key}: block added/removed")
+            continue
+        if any(ob.get(f) != nb.get(f) for f in FIELDS):
+            _changed_blocks.append(f"{score}/{key}")
+        if "n_entities" not in nb:
+            _problems.append(f"{score}/{key}: n_entities MISSING")
 check(
-    "config/score_bounds.yaml BYTE-IDENTICAL to V28 — the fertility scale "
-    "RETAINED (the drift guard's own trigger, a source-NAME change, did not "
-    "fire; the regeneration is Ediz's open decision, the measured what-if in "
-    "the changelog's Investigated)",
-    old_bounds_bytes == new_bounds_bytes,
-    f"sha old={hashlib.sha256(old_bounds_bytes).hexdigest()[:12]} "
-    f"new={hashlib.sha256(new_bounds_bytes).hexdigest()[:12]}",
+    "bounds: exactly ONE block changes its numbers — official/"
+    "birth_rate_fertility/both — every other block keeps source, "
+    "source_class, floor, lo, hi, n_sample, n_unavailable (only the version "
+    "moves, and n_entities appears on all of them)",
+    _changed_blocks == ["official/birth_rate_fertility/both"] and not _problems,
+    f"changed={_changed_blocks}; problems={_problems[:4]}",
 )
 check(
-    "bounds: 38 blocks (20 official + 18 modelled), every block still at "
-    "2026-10-06.2 (the freezer is the only writer — it did not run)",
+    "bounds: 38 blocks (20 official + 18 modelled), all at 2026-10-08.1 "
+    "(the freezer's own date+sequence rule — the first regeneration of the day)",
     len(new_bounds["bounds"]["official"]) == 20
     and len(new_bounds["bounds"]["modelled"]) == 18
     and {blk["bounds_version"] for score in ("official", "modelled")
-         for blk in new_bounds["bounds"][score].values()} == {"2026-10-06.2"},
+         for blk in new_bounds["bounds"][score].values()} == {"2026-10-08.1"},
 )
 _fert_block = new_bounds["bounds"]["official"]["birth_rate_fertility/both"]
 check(
-    "the official fertility block still reads the V28 freeze (canonical, floor "
-    "null, lo 0.0, hi 0.6109, n_sample 1278 — the European sample the scale "
-    "was frozen on; the worldwide sample now beneath it is the open "
-    "regeneration question, NOT a silent move)",
+    "the official fertility block reads the REGENERATED worldwide scale "
+    "(canonical, floor null, lo 0.0, hi 0.9902959932984179, n_sample 2523, "
+    "n_entities 177 — the anchor of the brief's Part 1)",
     _fert_block["source"] == "canonical"
     and _fert_block["source_class"] == "canonical"
     and _fert_block["floor"] is None
     and abs(_fert_block["lo"]) < 1e-12
-    and abs(round(_fert_block["hi"], 6) - 0.610909) < 1e-6
-    and _fert_block["n_sample"] == 1278,
-    str({f: _fert_block[f] for f in FIELDS}),
+    and _fert_block["hi"] == 0.9902959932984179
+    and _fert_block["n_sample"] == 2523
+    and _fert_block["n_entities"] == 177,
+    str({f: _fert_block[f] for f in (*FIELDS, "n_entities")}),
+)
+check(
+    "the MODELLED fertility block unchanged (worldbank witness, hi "
+    "1.2487535788317012, n_sample 7542) — the modelled scale never moves",
+    new_bounds["bounds"]["modelled"]["birth_rate_fertility/both"]["hi"] == 1.2487535788317012
+    and new_bounds["bounds"]["modelled"]["birth_rate_fertility/both"]["n_sample"] == 7542
+    and new_bounds["bounds"]["modelled"]["birth_rate_fertility/both"]["n_entities"] == 216,
+)
+check(
+    "bounds meta: score_config_sha256 matches the CURRENT config/score.yaml "
+    "(the tolerance key moved it) and generated is the freeze date",
+    new_bounds["meta"]["score_config_sha256"]
+    == hashlib.sha256((ROOT / "config/score.yaml").read_bytes()).hexdigest()
+    and new_bounds["meta"]["generated"] == "2026-10-08",
+    str(new_bounds["meta"].get("generated")),
 )
 
 # --- 5. the score files: parse, size cap, contract ---
@@ -396,9 +409,11 @@ check(
     == hashlib.sha256((ROOT / "config/score_bounds.yaml").read_bytes()).hexdigest(),
 )
 check(
-    "meta.json: max_age_years 3 in global, carry_rule described, "
+    "meta.json: max_age_years 3 in global, bounds_drift_tolerance 0.25 (the "
+    "v28.2 guard parameter, EMITTED), carry_rule described, "
     "max_obs_year 2025/2025 (the brief's anchors)",
     s_meta.get("global", {}).get("max_age_years") == 3
+    and s_meta.get("global", {}).get("bounds_drift_tolerance") == 0.25
     and bool(s_meta.get("carry_rule"))
     and s_meta.get("max_obs_year") == {"official": 2025, "modelled": 2025},
     str(s_meta.get("max_obs_year")),
@@ -543,15 +558,30 @@ check(
     not _disagreements, str(_disagreements),
 )
 
-# --- 6. the v28.1 anchors: the official coverage gains, recomputed from the
-# EMITTED layer (the explained difference vs a full-precision prototype
-# stands: the shipped layer STORES 2-decimal values and aggregates those).
-# The MODELLED anchors are V28's own — that file is byte-identical (§5).
+# --- 6. the v28.2 anchors: the modelled VALUES identical, the official
+# scores re-scaled on the same scored sets (the explained difference vs a
+# full-precision prototype stands: the shipped layer STORES 2-decimal
+# values and aggregates those).
+_old_modelled = _parse_at(BASE, "data/dist/score/modelled.json")
 check(
-    "modelled.json BYTE-IDENTICAL to V28 (the modelled fertility reads the "
-    "unchanged WPP witness — the DYB door touches the official side only)",
-    _bytes_at(BASE, "data/dist/score/modelled.json")
-    == (ROOT / "data/dist/score/modelled.json").read_bytes(),
+    "modelled.json: normalised / scores / age maps VALUE-IDENTICAL to V28.1 "
+    "(the modelled fertility reads the unchanged World Bank witness — only "
+    "the per-component bounds_version metadata moved with the freeze)",
+    _old_modelled["normalised"] == s_modelled["normalised"]
+    and _old_modelled["scores"] == s_modelled["scores"]
+    and _old_modelled["age"] == s_modelled["age"],
+)
+_meta_diffs = [
+    (k, f) for k in s_modelled["components"]
+    for f in s_modelled["components"][k]
+    if _old_modelled["components"].get(k, {}).get(f) != s_modelled["components"][k][f]
+]
+check(
+    "modelled.json: the ONLY component-meta change is bounds_version "
+    "(2026-10-06.2 -> 2026-10-08.1) on all 18 components",
+    all(f == "bounds_version" for _, f in _meta_diffs)
+    and len({k for k, _ in _meta_diffs}) == 18,
+    str(sorted(set(_meta_diffs))[:4]),
 )
 _old_official = _parse_at(BASE, "data/dist/score/official.json")
 ANCHORS = {
@@ -566,69 +596,80 @@ for score_name, spec in ANCHORS.items():
         n = sum(1 for entity, years in scores_eq.items() if str(year) in years)
         check(f"{score_name}: scored countries {year} = {expected} (the anchor)", n == expected, f"got {n}")
 
-# the gains/losses per year, exactly enumerated — ZERO losses everywhere
-GAINS = {
-    2010: ["brazil", "japan", "korea_republic_of", "mexico", "new_zealand", "united_states"],
-    2015: ["argentina", "colombia", "japan", "korea_republic_of", "united_states"],
-    2019: ["korea_republic_of", "united_states"],
-    2021: ["argentina", "colombia", "israel", "korea_republic_of", "new_zealand", "united_states"],
-    2022: ["argentina", "colombia", "israel", "korea_republic_of", "new_zealand", "united_states"],
-    2023: ["israel", "korea_republic_of", "new_zealand", "united_states"],
-    2024: ["costa_rica", "israel", "korea_republic_of", "united_kingdom", "united_states"],
-}
-for year, expected_gains in GAINS.items():
+# the scored country-year SETS are identical at EVERY year — no gains, no
+# losses anywhere (the regeneration moves VALUES on a scale, never coverage)
+_set_diffs = []
+for year in range(1990, 2026):
     old_set = {e for e, ys in _old_official["scores"]["equal"].items() if str(year) in ys}
     new_set = {e for e, ys in s_official["scores"]["equal"].items() if str(year) in ys}
-    check(
-        f"official {year}: gained exactly {expected_gains}, lost NOTHING (the wiring's promise)",
-        sorted(new_set - old_set) == expected_gains and not (old_set - new_set),
-        f"gained={sorted(new_set - old_set)} lost={sorted(old_set - new_set)}",
-    )
-
-# the changed pre-existing entity-years: exactly 97 across exactly 10
-# entities (the fertility component entering aggregates that already scored)
-_changed_ey = []
-for e, ys in s_official["scores"]["equal"].items():
-    for y, pair in ys.items():
-        old_pair = _old_official["scores"]["equal"].get(e, {}).get(y)
-        if old_pair and abs(old_pair[0] - pair[0]) > 1e-9:
-            _changed_ey.append((e, int(y)))
-from collections import Counter as _C  # noqa: E402
-_changed_entities = dict(_C(e for e, _ in _changed_ey))
+    if old_set != new_set:
+        _set_diffs.append((year, sorted(new_set - old_set), sorted(old_set - new_set)))
 check(
-    "official: exactly 97 pre-existing entity-years move, across exactly the 10 "
-    "entities whose fertility component entered (argentina, australia, brazil, "
-    "canada, chile, costa_rica, israel, new_zealand, turkiye, united_kingdom)",
-    len(_changed_ey) == 97 and set(_changed_entities) == {
-        "argentina", "australia", "brazil", "canada", "chile", "costa_rica",
-        "israel", "new_zealand", "turkiye", "united_kingdom"},
-    f"n={len(_changed_ey)}; per-entity={_changed_entities}",
+    "official: the scored country-year sets IDENTICAL to V28.1 at every year "
+    "(the scale regeneration changes values, never who is scored)",
+    not _set_diffs, str(_set_diffs[:3]),
 )
 
-# the fertility normalised map: 47 -> 177 entities, and on the OLD keys
-# exactly the 22 extension re-resolutions move (the UK after Brexit, Armenia,
-# Azerbaijan, Turkiye, and Eurostat's single hole-years) — every other old
-# value identical (the frozen scale + the unchanged Eurostat points)
+# the corrections numbers (the changelog's Corrections section, on the
+# SHIPPED stored values): 1,077 of 1,093 fertility components move > 0.5
+# (1,017 by > 5, up to 38.3); 970 official scores move > 0.5 (mean 1.35,
+# max 3.49, 49 entities) — the reference prototype's full-precision basis
+# gives 971 / 1.36 / 3.48, the divergence recorded in the changelog
 _o_tfr = _old_official["normalised"]["birth_rate_fertility/both"]
 _n_tfr = s_official["normalised"]["birth_rate_fertility/both"]
-_moved_keys = sorted(
-    (e, int(y)) for e, ys in _o_tfr.items() for y in ys
-    if e in _n_tfr and y in _n_tfr[e] and _n_tfr[e][y] != ys[y]
-)
+_n_scored = sum(len(ys) for ys in s_official["scores"]["equal"].values())
+_comp_moved = _comp_moved5 = 0
+_comp_max = 0.0
+_score_moved = 0
+_score_abs = 0.0
+_score_max = 0.0
+_score_ents = set()
+for e, ys in s_official["scores"]["equal"].items():
+    for y, pair in ys.items():
+        ov = _o_tfr.get(e, {}).get(y)
+        nv = _n_tfr.get(e, {}).get(y)
+        if ov is not None and nv is not None:
+            d = abs(nv - ov)
+            if d > 0.5:
+                _comp_moved += 1
+            if d > 5:
+                _comp_moved5 += 1
+            _comp_max = max(_comp_max, d)
+        op = _old_official["scores"]["equal"][e][y]
+        ds = abs(pair[0] - op[0])
+        _score_abs += ds
+        _score_max = max(_score_max, ds)
+        if ds > 0.5:
+            _score_moved += 1
+            _score_ents.add(e)
 check(
-    "the official fertility normalised map: 47 -> 177 entities, 1361 -> 3037 "
-    "keys, and exactly 22 old keys re-resolved (the extension entities)",
+    "corrections (shipped files): 1,093 scored official country-years; "
+    "1,077 fertility components move > 0.5 (1,017 by > 5, up to 38.3); "
+    "970 official scores move > 0.5 (mean |change| 1.35, max 3.49, "
+    "49 entities)",
+    _n_scored == 1093 and _comp_moved == 1077 and _comp_moved5 == 1017
+    and round(_comp_max, 1) == 38.3 and _score_moved == 970
+    and round(_score_abs / _n_scored, 2) == 1.35
+    and round(_score_max, 2) == 3.49 and len(_score_ents) == 49,
+    f"n={_n_scored} comp>0.5={_comp_moved} comp>5={_comp_moved5} max={_comp_max:.1f} "
+    f"scores>0.5={_score_moved} mean={_score_abs / _n_scored:.3f} max={_score_max:.2f} "
+    f"ents={len(_score_ents)}",
+)
+
+# the fertility normalised map: same 177 entities / 3,037 keys as V28.1
+# (the v28.1 wiring's map) — the VALUES re-scaled on the worldwide sample
+check(
+    "the official fertility normalised map: same 177 entities / 3,037 keys as "
+    "V28.1 — the VALUES re-scaled (the regeneration moves the scale, not the "
+    "coverage)",
     len(_n_tfr) == 177 and sum(len(v) for v in _n_tfr.values()) == 3037
-    and len(_moved_keys) == 22
-    and set(e for e, _ in _moved_keys) == {
-        "andorra", "armenia", "azerbaijan", "belarus", "georgia",
-        "moldova_republic_of", "turkiye", "ukraine", "united_kingdom"},
-    f"moved={_moved_keys}",
+    and set(_n_tfr) == set(_o_tfr),
+    f"entities={len(_n_tfr)} keys={sum(len(v) for v in _n_tfr.values())}",
 )
 
 TOP5 = {
-    "official": [("japan", 81.4), ("australia", 75.5), ("new_zealand", 73.3),
-                 ("switzerland", 72.0), ("israel", 71.1)],
+    "official": [("japan", 83.5), ("australia", 76.2), ("new_zealand", 73.6),
+                 ("israel", 73.2), ("switzerland", 73.1)],
     "modelled": [("japan", 84.4), ("singapore", 80.2), ("norway", 78.3),
                  ("israel", 77.3), ("australia", 77.1)],
 }
@@ -646,7 +687,8 @@ for score_name, expected5 in TOP5.items():
 POSITIONS = {
     "modelled": {"japan": 1, "france": 30, "united_states": 46, "china": 9,
                  "russian_federation": 85, "chile": 70, "sweden": 14},
-    "official": {"france": 19, "chile": 44, "sweden": 6},
+    "official": {"japan": 1, "sweden": 8, "france": 22, "united_states": 31,
+                 "chile": 44},
 }
 for score_name, spec in POSITIONS.items():
     doc = s_official if score_name == "official" else s_modelled
@@ -697,9 +739,11 @@ for y1, y2, bs in ((1995, 2000, 0.22), (2000, 2010, 0.22), (2010, 2019, 0.33)):
           got is not None and got[1] < 0.50 and got[1] == bs, f"got {got}")
 
 # composition noise (mean points per year, 2000-2020) and carried share —
-# the measured WHY of decision 16
+# the measured WHY of decision 16 (v28.2: the official noise reads 0.31-0.32
+# on the regenerated scale — the re-scaled fertility components move it a
+# hundredth; the modelled side is untouched)
 for score_name, ref_noise, ref_carried in (
-    ("official", 0.32, 0.14), ("modelled", 0.34, 0.093),
+    ("official", 0.31, 0.14), ("modelled", 0.34, 0.093),
 ):
     doc = s_official if score_name == "official" else s_modelled
     weights = s_meta["presets"][score_name]["equal"]
@@ -715,9 +759,8 @@ for score_name, ref_noise, ref_carried in (
                 dc = sum(weights[k] * (norm[k][e][str(y + 1)] - norm[k][e][str(y)]) for k in com) / wc
                 gaps.append(abs((ys[str(y + 1)][0] - s) - dc))
     noise = round(sum(gaps) / len(gaps), 2) if gaps else None
-    check(f"{score_name}: composition noise ~ {ref_noise} (V28: "
-          f"{'0.33' if score_name == 'official' else '0.34'} — the new countries' "
-          "fertility components move it a hundredth)",
+    check(f"{score_name}: composition noise ~ {ref_noise} (the regenerated "
+          "official scale moves it a hundredth at most)",
           noise is not None and abs(noise - ref_noise) <= 0.02, f"got {noise}")
     carried = sum(
         1 for e, ys in sc.items() for y_str in ys
@@ -834,13 +877,39 @@ _official_rank = sorted(
 )
 check(
     "the two 2015 head cases: picked live from the emitted rankings (the official "
-    "head is japan 81.44 — the DYB TFR door's most visible ranking effect; the "
-    "modelled head japan 84.45 unchanged)",
+    "head is japan 83.54 on the regenerated worldwide scale — and its label "
+    "carries the live-checked DYB-only fact; the modelled head japan 84.45 "
+    "unchanged)",
     len(_heads) == 2
     and {v["score"]: v["entity"] for v in _heads} == {"modelled": "japan", "official": "japan"}
     and _official_rank[0][1] == "japan"
-    and abs(_official_rank[0][0] - 81.44) <= 0.01,
+    and abs(_official_rank[0][0] - 83.54) <= 0.01
+    and any("DYB-only entity" in v.get("why", "") for v in _heads if v["score"] == "official"),
     str([(v["score"], v["entity"], v["expected"]["score"]) for v in _heads]),
+)
+# v28.2: the beyond-the-old-scale case — its premise verified live: the
+# fertility component reads NON-ZERO now and read 0 under the v28.1 European
+# freeze (distance > 0.6109)
+_btos = [v for v in s_golden.get("vectors", []) if "beyond-the-old-scale" in v.get("why", "")]
+_btok = (
+    (_btos[0]["entity"], str(_btos[0]["year"])) if _btos else (None, None)
+)
+_btok_ok = False
+if _btos:
+    _e, _y = _btok
+    _v_new = s_official["normalised"]["birth_rate_fertility/both"].get(_e, {}).get(_y)
+    _v_old = _old_official["normalised"]["birth_rate_fertility/both"].get(_e, {}).get(_y)
+    _btok_ok = (
+        _v_new is not None and _v_new > 0 and _v_old == 0
+        and _y in s_official["scores"]["equal"].get(_e, {})
+    )
+check(
+    "the beyond-the-old-scale case: a SCORED official point whose fertility "
+    "component read 0 under the v28.1 European freeze and reads NON-ZERO on "
+    "the worldwide scale (the premise verified against the emitted layer AND "
+    "the V28.1 baseline)",
+    len(_btos) == 1 and _btok_ok,
+    str([(v["entity"], v["year"], v["expected"]["score"]) for v in _btos]),
 )
 _required_shapes = {
     "the refused delta": lambda v: "years" in v and v["expected"]["delta"].get("refused"),
@@ -853,12 +922,21 @@ _required_shapes = {
     "a right-edge case (2022 carried)": lambda v: "right-edge" in v.get("why", ""),
     "an illegitimate_births official case": lambda v: "illegitimate_births case" in v.get("why", ""),
     "a ghost-guard case (not emitted)": lambda v: "ghost-guard" in v.get("why", ""),
+    "the beyond-the-old-scale case (v28.2)": lambda v: "beyond-the-old-scale" in v.get("why", ""),
+    "the DYB-only fact on the official head (v28.2)": lambda v: "DYB-only entity" in v.get("why", ""),
 }
 _missing_shapes = [name for name, pred in _required_shapes.items()
                    if not any(pred(v) for v in s_golden.get("vectors", []))]
 check(
-    "the golden set covers every required shape (the v28 additions included)",
+    "the golden set covers every required shape (the v28 additions and the "
+    "two v28.2 additions included)",
     not _missing_shapes, f"missing: {_missing_shapes}",
+)
+check(
+    "golden_vectors.json: exactly 20 cases (19 v28/v28.1 cases + the "
+    "beyond-the-old-scale case)",
+    s_golden.get("n") == 20 and len(s_golden.get("vectors", [])) == 20,
+    str(s_golden.get("n")),
 )
 
 # --- 8. tests + config state (the self-diagnosing count check, v26.1.1) ---
@@ -887,10 +965,10 @@ _diag = [f"returncode={test_count.returncode}"]
 _diag += [f"stdout: {_s}" for _s in map(str.strip, test_count.stdout.splitlines()[-4:]) if _s][:3]
 _diag += [f"stderr: {_s}" for _s in map(str.strip, test_count.stderr.splitlines()[-4:]) if _s][:3]
 check(
-    "409 tests collected (401 at v28 + 8 v28.1 tests: the TFR parser's measure "
-    "block, the fill/arbitration integration, the shipped-config wiring, the "
-    "seam test's two-collector update)",
-    n_tests == 409,
+    "416 tests collected (409 at v28.1 + 7 v28.2 tests: the two drift-guard "
+    "refusals, the boundary accept, the configurable tolerance, the tolerance "
+    "schema, the freezer's n_entities, the two-collector percentile fixture)",
+    n_tests == 416,
     f"parsed={n_tests}; " + " | ".join(_diag),
 )
 cfg = subprocess.run(
@@ -904,6 +982,82 @@ check(
     and "score layer: 18 indicators (18 official / 16 modelled), 20/18 components" in cfg.stdout
     and "(frozen)" in cfg.stdout,
     cfg.stdout.splitlines()[0] if cfg.stdout else cfg.stderr[:120],
+)
+
+# --- 8b. the HARDENED drift guard, exercised live on the real config and
+# dist: the calibration table (all 38 blocks live == frozen) and BOTH
+# refusal triggers (a tampered doc refuses BEFORE any file is written —
+# the writes happen only after the component loop completes)
+from src.config_loader import load_score_config, load_todd_refs  # noqa: E402
+from src.score.core import bounds_sample_counts, component_keys, select_source  # noqa: E402
+from src.score.emit import BoundsDriftError, build_score_layer  # noqa: E402
+
+_score_config = load_score_config(ROOT / "config")
+_corpus = load_todd_refs(ROOT / "config")
+_ratios = []
+_trips = []
+for _score in (ScoreName.official, ScoreName.modelled):
+    _comps = {c.indicator: c for c in _score_config.components_for(_score)}
+    for _key in component_keys(_score_config, _score):
+        _ind_id, _sex = _key
+        _comp = _comps[_ind_id]
+        _ind_dist = json.loads(
+            (ROOT / "data/dist/indicators" / f"{_ind_id}.json").read_text(encoding="utf-8")
+        )
+        _sel = select_source(_ind_dist, _sex, _score, _score_config.bounds_from_year)
+        _live_s, _live_e = bounds_sample_counts(list(_sel.points), _comp.transform, _score_config)
+        _blk = new_bounds["bounds"][_score.value][f"{_ind_id}/{_sex}"]
+        _fs, _fe = int(_blk["n_sample"]), int(_blk["n_entities"])
+        _rs = abs(_live_s - _fs) / _fs if _fs else 0.0
+        _re = abs(_live_e - _fe) / _fe if _fe else 0.0
+        _ratios.append(max(_rs, _re))
+        if _rs > _score_config.bounds_drift_tolerance or _re > _score_config.bounds_drift_tolerance:
+            _trips.append(f"{_score.value}/{_ind_id}/{_sex}")
+check(
+    "the guard's calibration: all 38 blocks' live-vs-frozen ratios are 0.0 "
+    "(the file was regenerated on THIS dist — the full 0.25 margin stands; "
+    "no block trips)",
+    len(_ratios) == 38 and not _trips and all(r == 0.0 for r in _ratios),
+    f"blocks={len(_ratios)} max_ratio={max(_ratios) if _ratios else None} trips={_trips}",
+)
+
+# trigger 1 (the coverage check): tamper n_entities on the fertility block
+_doc_tampered = json.loads(json.dumps(new_bounds))
+_doc_tampered["bounds"]["official"]["birth_rate_fertility/both"]["n_entities"] = 100
+_guard1 = None
+try:
+    build_score_layer(_score_config, _doc_tampered, ROOT / "data/dist", ROOT / "config", _corpus)
+except BoundsDriftError as e:
+    _guard1 = str(e)
+check(
+    "guard trigger 1 (v28.2): a coverage drift beyond the tolerance REFUSES "
+    "the build — the message names the score, the component, both measures' "
+    "frozen and live values (n_entities frozen 100, live 177 — the tripped "
+    "measure; n_sample frozen 2523, live 2523 — the agreeing one, both named) "
+    "and the deliberate re-freeze prescription",
+    _guard1 is not None
+    and "official/birth_rate_fertility/both" in _guard1
+    and "n_entities: frozen 100, live 177" in _guard1
+    and "n_sample frozen 2523, live 2523" in _guard1
+    and "n_entities frozen 100, live 177" in _guard1
+    and "bounds_drift_tolerance" in _guard1
+    and "re-freeze deliberately" in _guard1,
+    (_guard1 or "NO REFUSAL — the guard is blind")[:200],
+)
+# trigger 2 (the source-name check, unchanged since v27): tamper the source
+_doc_named = json.loads(json.dumps(new_bounds))
+_doc_named["bounds"]["modelled"]["homicide_rate/both"]["source"] = "owid:WRONG"
+_guard2 = None
+try:
+    build_score_layer(_score_config, _doc_named, ROOT / "data/dist", ROOT / "config", _corpus)
+except BoundsDriftError as e:
+    _guard2 = str(e)
+check(
+    "guard trigger 2: a frozen source-NAME change still REFUSES (the v27 "
+    "check stays — both triggers run on every rebuild)",
+    _guard2 is not None and "modelled/homicide_rate/both" in _guard2
+    and "owid:WRONG" in _guard2,
+    (_guard2 or "NO REFUSAL — the name check regressed")[:200],
 )
 
 # --- 9. rebuild ×2 byte-stability, INCLUDING the score layer ---

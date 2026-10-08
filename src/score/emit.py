@@ -6,11 +6,15 @@ book counts). Writes: data/dist/score/{meta,official,modelled,
 golden_vectors}.json — deterministic bytes (sorted keys, compact
 separators, fixed rounding), every file under the ~8 MB cap.
 
-The drift guard: the frozen bounds record WHICH source the selection
-retained at freeze time; if the live selection on the current dist would
-pick another source, the build REFUSES to run (loudly) — a fetch moved
-the coverage under the score, and re-freezing is a deliberate
-bounds_version bump, never an auto-refresh.
+The drift guard (v28.2, decision 18): the frozen bounds record WHICH
+source the selection retained at freeze time AND the bounds sample's
+size and entity count. The build REFUSES to run (loudly) when EITHER
+the live §4.4 selection would pick another source (a fetch moved the
+sources' relative coverage) or the live n_sample / n_entities of any
+frozen block drifts beyond config/score.yaml's bounds_drift_tolerance
+(a source that keeps its name while its coverage changes — the v28.1
+blind spot). In both cases re-freezing is a deliberate bounds_version
+bump, never an auto-refresh.
 
 THE CARRY RULE (v28, decision 16): after the fresh normalisation, each
 component's stored value for year Y is RESOLVED to the latest real
@@ -29,6 +33,7 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import math
 from pathlib import Path
 
 from src.schema.score import Direction, ScoreConfig, ScoreName, SexMode, Transform
@@ -37,6 +42,7 @@ from src.score.core import (
     ComponentBounds,
     aggregate,
     ages_from_obs_years,
+    bounds_sample_counts,
     component_keys,
     delta,
     fresh_points,
@@ -50,6 +56,12 @@ from src.score.core import (
 
 logger = logging.getLogger(__name__)
 
+# The v28.1 European freeze's official fertility hi (bounds_version
+# 2026-10-06.2, n_sample 1278) — a HISTORICAL anchor, not a live number:
+# the beyond-the-old-scale golden case contrasts the regenerated worldwide
+# scale against it. The live scale always comes from the frozen bounds.
+_V28_1_FERTILITY_HI = 0.6109090823229733
+
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -60,7 +72,10 @@ def _compact_json(payload) -> str:
 
 
 class BoundsDriftError(Exception):
-    """The frozen source no longer matches what §4.4 would pick today."""
+    """The frozen bounds no longer describe the live dist: either the
+    §4.4 selection would pick another source, or the bounds sample's
+    n_sample / n_entities drifted beyond bounds_drift_tolerance
+    (v28.2 — a source that keeps its name while its coverage changes)."""
 
 
 def _frozen_bounds_for(score: ScoreName, key: tuple, bounds_doc: dict) -> ComponentBounds:
@@ -93,6 +108,7 @@ def build_score_layer(
 
     # per-score working state
     state: dict = {}
+    fertility_points: dict = {}  # the official fertility's retained points (the v28.2 golden cases read them)
     for score in (ScoreName.official, ScoreName.modelled):
         comps = {c.indicator: c for c in config.components_for(score)}
         fresh_normalised: dict = {}
@@ -102,8 +118,12 @@ def build_score_layer(
             comp = comps[ind_id]
             ind_dist = load_indicator_file(indicators_dir, ind_id)
             selected = select_source(ind_dist, sex, score, config.bounds_from_year)
+            if ind_id == "birth_rate_fertility" and sex == "both":
+                fertility_points[score] = list(selected.points)
 
-            # --- the drift guard: frozen source vs live selection ---
+            # --- the drift guard (v28.2, decision 18): TWO checks, both
+            # on every rebuild —
+            # 1. the frozen source NAME vs the live §4.4 selection;
             frozen_block = bounds_doc["bounds"][score.value].get(f"{ind_id}/{sex}")
             if frozen_block is None or frozen_block["source"] != selected.name:
                 frozen_name = frozen_block["source"] if frozen_block else "(absent)"
@@ -113,6 +133,44 @@ def build_score_layer(
                     "A fetch moved the sources' coverage under the score. The scale never "
                     "moves silently: re-run scripts/freeze_score_bounds.py DELIBERATELY, "
                     "bump bounds_version, and record the change in the changelog."
+                )
+            # 2. the bounds sample's SIZE and ENTITY COUNT vs the live
+            #    recomputation (the freezer's own sampling rule — one
+            #    implementation, src/score/core.bounds_sample). A source
+            #    that keeps its name while its coverage changes (the v28.1
+            #    blind spot) trips HERE now.
+            live_n_sample, live_n_entities = bounds_sample_counts(
+                list(selected.points), comp.transform, config
+            )
+            frozen_n_sample = int(frozen_block.get("n_sample", 0))
+            frozen_n_entities = int(frozen_block.get("n_entities", 0))
+            tolerance = config.bounds_drift_tolerance
+            drifted = [
+                (measure, frozen, live)
+                for measure, frozen, live in (
+                    ("n_sample", frozen_n_sample, live_n_sample),
+                    ("n_entities", frozen_n_entities, live_n_entities),
+                )
+                if frozen > 0 and abs(live - frozen) / frozen > tolerance
+            ]
+            if drifted:
+                parts = "; ".join(
+                    f"{m}: frozen {f}, live {l} ({abs(l - f) / f:.1%})"
+                    for m, f, l in drifted
+                )
+                both = (
+                    f"n_sample frozen {frozen_n_sample}, live {live_n_sample}; "
+                    f"n_entities frozen {frozen_n_entities}, live {live_n_entities}"
+                )
+                raise BoundsDriftError(
+                    f"BOUNDS DRIFT — {score.value}/{ind_id}/{sex}: the bounds sample "
+                    f"drifted beyond the tolerance ({parts}; tolerance {tolerance} = "
+                    "config/score.yaml bounds_drift_tolerance). Both measures: "
+                    f"{both}. A fetch changed a source's coverage under the score "
+                    "(the source name did not move — this is the coverage trigger). "
+                    "The scale never moves silently: re-freeze deliberately "
+                    "(`scripts/freeze_score_bounds.py`, bump `bounds_version`, "
+                    "record it in the changelog)."
                 )
             bounds = _frozen_bounds_for(score, key, bounds_doc)
 
@@ -214,6 +272,9 @@ def build_score_layer(
             "rounding": config.rounding,
             "presets": config.presets,
             "max_age_years": config.max_age_years,
+            # v28.2, decision 18: the drift guard's refusal threshold on
+            # the frozen bounds sample's n_sample / n_entities
+            "bounds_drift_tolerance": config.bounds_drift_tolerance,
         },
         "carry_rule": (
             "decision 16 (v28): a component's value for year Y is the LATEST real "
@@ -279,7 +340,7 @@ def build_score_layer(
         (out_dir / f"{score.value}.json").write_text(_compact_json(payload), encoding="utf-8")
 
     # --- golden_vectors.json: hand-checkable cases for the frontend ---
-    vectors = _golden_vectors(config, state)
+    vectors = _golden_vectors(config, state, fertility_points)
     (out_dir / "golden_vectors.json").write_text(
         _compact_json({"n": len(vectors), "vectors": vectors}), encoding="utf-8"
     )
@@ -302,7 +363,7 @@ def build_score_layer(
     }
 
 
-def _golden_vectors(config: ScoreConfig, state: dict) -> list:
+def _golden_vectors(config: ScoreConfig, state: dict, fertility_points: dict) -> list:
     """<= 20 hand-checkable cases: the frontend unit-tests its
     implementation against these. The verifier recomputes every one by an
     independent code path from the EMITTED normalised values and age maps.
@@ -317,6 +378,12 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
     life expectancy at 60 carried), and an illegitimate_births official
     point — plus the ghost-guard case (coverage above the threshold, no
     fresh component: NOT emitted).
+
+    v28.2 adds the beyond-the-old-scale case (decision 18's showcase: a
+    scored official point whose TFR distance exceeded the v28.1 European
+    freeze and now reads non-zero on the worldwide scale), and the official
+    head's label carries the live-checked DYB-only fact (the TFR arriving
+    via the Yearbook's Table 4, not Eurostat — decision 17).
     """
     from src.score.core import aggregate as _agg
     from src.score.core import score_and_coverage
@@ -380,6 +447,18 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
         """The underlying observation's year: year - age (fresh when 0)."""
         return year - age_of(score, ind, sex, entity, year)
 
+    def _is_dyb_only(points: list, entity: str) -> bool:
+        """Live check: the entity's valued fertility points carry NO
+        Eurostat print — its TFR arrives via the DYB Table 4 door alone
+        (the v28.1 wiring's own vocabulary)."""
+        seen = False
+        for p in points:
+            if p["entity_id"] == entity and p.get("value") is not None:
+                seen = True
+                if p.get("provider") != "un_dyb":
+                    return False
+        return seen
+
     # 1. the REFUSED delta (the official Russian pair — common weight under 0.50)
     add_delta(ScoreName.official, "russian_federation", 2000, 2010, "equal",
               lambda d: f"the refused delta: official common weight {d['common_weight_share']} "
@@ -419,6 +498,14 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
             if sc is not None
             else f"the 2015 {score.value} head"
         )
+        if (
+            score == ScoreName.official
+            and _is_dyb_only(fertility_points.get(ScoreName.official, []), entity)
+        ):
+            why += (
+                " — a DYB-only entity: its TFR arrives via the Yearbook's Table 4 "
+                "(decision 17), not Eurostat"
+            )
         add(score, entity, 2015, "equal", why)
     # 8. the todd preset on the same point (the book-count weights)
     add(ScoreName.modelled, "japan", 2015, "todd", "the todd preset: book-count weights on the same point")
@@ -657,4 +744,56 @@ def _golden_vectors(config: ScoreConfig, state: dict) -> list:
                 ),
             }
         )
+    # 19. the BEYOND-THE-OLD-SCALE case (v28.2, decision 18's showcase): a
+    # scored official point whose fertility TFR distance exceeded the v28.1
+    # European freeze (hi 0.6109 — the component read 0) but reads NON-ZERO
+    # on the regenerated worldwide scale. Live-picked among the scored
+    # points: the highest live component wins (the clearest reading; ties
+    # alphabetical). The 0.6109 constant is the v28.1 freeze's own hi — the
+    # HISTORICAL anchor this case exists to contrast; the live scale always
+    # comes from the frozen bounds.
+    fert_points = fertility_points.get(ScoreName.official, [])
+    if fert_points:
+        fert_hi = state[ScoreName.official]["component_meta"]["birth_rate_fertility/both"]["hi"]
+        dist: dict = {}
+        for p in fert_points:
+            if (
+                p["year"] >= config.bounds_from_year
+                and p.get("value") is not None
+                and float(p["value"]) > 0
+            ):
+                dist[(p["entity_id"], p["year"])] = abs(
+                    math.log(float(p["value"]) / config.fertility_target)
+                )
+        best = None  # (entity, year, distance, component value)
+        for entity in sorted(state[ScoreName.official]["scores"]["equal"]):
+            for year_str in sorted(state[ScoreName.official]["scores"]["equal"][entity]):
+                year = int(year_str)
+                obs = obs_year_of(
+                    ScoreName.official, "birth_rate_fertility", "both", entity, year
+                )
+                d = dist.get((entity, obs))
+                if d is None or not (_V28_1_FERTILITY_HI < d <= fert_hi):
+                    continue
+                val = (
+                    state[ScoreName.official]["normalised"]
+                    .get(("birth_rate_fertility", "both"), {})
+                    .get(entity, {})
+                    .get(year)
+                )
+                if val is None:
+                    continue
+                if best is None or val > best[3] or (
+                    val == best[3] and (entity, year) < (best[0], best[1])
+                ):
+                    best = (entity, year, d, val)
+        if best:
+            entity, year, d, val = best
+            why = (
+                f"the beyond-the-old-scale case (v28.2): TFR distance {d:.3f} exceeded "
+                "the v28.1 European freeze (hi 0.6109 — the component read 0) but "
+                f"the worldwide scale (hi {fert_hi:.4f}) reads it {val}"
+            )
+            add(ScoreName.official, entity, year, "equal", why)
+
     return vectors[:20]

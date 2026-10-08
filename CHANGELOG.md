@@ -18,6 +18,312 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-08 — v28.2: the official fertility scale regenerated
+## (decision 18) and the drift guard hardened to trip on coverage
+
+**Breaking** (against the v28.1 score files ONLY): the official
+fertility component's frozen scale is regenerated on the worldwide
+canonical sample (ADR-0011 decision 18), so the official score's
+fertility component values and therefore the official scores change —
+1,077 of the 1,093 scored official country-years' fertility components
+move by more than 0.5 points (1,017 by more than 5, up to 38.3), and
+970 shipped official scores move by more than 0.5 points (mean
+absolute change 1.35, maximum 3.49, 49 entities; the reference
+prototype's full-precision basis gives 971 / 1.36 / 3.48 — the one
+borderline point and the rounding tail, see Corrections). The number
+of countries scored does not change at any year (the scored
+country-year sets are identical to v28.1 at every year), and the
+modelled score file's normalised values and scores are unchanged. No
+indicator dist file changes: all 30 non-score dist files are
+byte-identical to V28.1.
+
+### Context
+
+The auditor's v28.2 brief (2026-10-08, on the V28.1 audit baseline
+b394ea6 — the audit reproduced the DYB Table 4 wiring and every
+shipped score value exactly: 42,456 official normalised values and
+1,093 scored country-years identical to an independent implementation,
+19/19 golden vectors) carried two findings, both landed here as Ediz's
+decision 18. First, the frozen fertility bounds no longer describe
+their own component: the official fertility series went from 47 to 177
+valued entities when the DYB Table 4 TFR became its second canonical
+door, but the frozen bounds still describe the European sample they
+were frozen on (2026-10-06.2: hi 0.611, n_sample 1278) — the component
+was clipped to 0 for every TFR above 3.87 or below 1.14 (190
+country-years across 44 entities since 1990: Tanzania, Burundi,
+Mozambique, Hong Kong, Macao among them became indistinguishable),
+and the freeze's own principle ("bounds = p1/p99 of the retained
+source's sample since bounds_from_year") had stopped being true of
+this component. Second, the drift guard compares the frozen SOURCE
+NAME with the live §4.4 selection: a source that keeps its name while
+its content changes passed silently — the v28 changelog had even
+claimed the opposite ("any later `fetch` that changes a source's
+coverage will trip the drift guard by design"); the v28.1 entry
+corrected the record, but the guard stayed blind. The decision:
+regenerate the official fertility bounds on the current canonical
+sample with the SHIPPED freezer (never by hand), and harden the guard
+so coverage drift trips it too.
+
+### Investigated (live, before freezing anything)
+
+- THE FREEZER'S DRY-RUN on the V28.1 dist: the official fertility
+  block would move to lo 0.0, hi 0.9902959932984179 on 2,523
+  observations (source canonical, source_class canonical, floor null,
+  n_unavailable 0) — the brief's Part-1 anchor reproduced exactly. In
+  TFR terms the component now reads 0 only above 5.65 and below 0.78
+  (was above 3.87 / below 1.14); the modelled fertility block would
+  not move at all (worldbank:SP.DYN.TFRT.IN, hi 1.2487535788317012,
+  n_sample 7542).
+- THE OLD SCALE'S CLIP, measured on the canonical dist: 190
+  country-years across 44 entities since 1990 sat beyond the European
+  freeze's p99; the regenerated scale leaves 26 country-years across
+  10 entities beyond ITS p99 — the tail shrinks but does not vanish
+  (that is the p99 semantics, not an error).
+- THE REFERENCE PROTOTYPE (score_reference_v28.py, unchanged since
+  v28 — it recomputes bounds from the sample, so after the
+  regeneration it equals the frozen state): every §5 anchor
+  reproduced on the rebuilt dist — the official ladders UNCHANGED
+  (2000: 21, 2005: 29, 2010: 46, 2015: 47, 2019: 42, 2022: 47,
+  2025: 32), the official 2015 top-5 japan 83.5 / australia 76.2 /
+  new_zealand 73.6 / israel 73.2 / switzerland 73.1, the positions
+  japan 1 / sweden 8 / france 22 / united_states 31 / chile 44, the
+  Russian deltas all refused (common weight 0.22 / 0.22 / 0.33 under
+  the 0.50 rule), and the modelled side identical to V28.1 (ladders
+  143/159/165/165/166/163/74; top-5 japan 84.4, singapore 80.2,
+  norway 78.3, israel 77.3, australia 77.1).
+- THE SCORE-MOVE STATISTICS measured on BOTH bases (they feed the
+  Corrections entry below): on the shipped files' stored 2-decimal
+  values, 970 official scores move by more than 0.5 points (mean
+  absolute change 1.35, maximum 3.49); at the prototype's
+  full-precision basis, 971 / 1.36 / 3.48 — one borderline point
+  crosses at full precision, the rounding tail explains the rest.
+- THE TWO-COLLECTOR FACTS re-read live on the shipped provenance log
+  (data/processed/birth_rate_fertility.provenance.json): 568 unique
+  shared entity-years where Eurostat's value was retained over at
+  least one discarded DYB candidate; 220 agree exactly, 157 within
+  0.01, 128 within 0.05 (505 of 568 = 88.9%, about 90% at rounding
+  level); 7 entities with collector-vs-collector seams >= 0.1
+  (Azerbaijan up to 0.44, Romania 0.29, Moldova 0.24, Georgia 0.23,
+  Bulgaria 0.13, Latvia 0.13, Montenegro 0.12). The v28.1 entry's
+  "564" diverges by 4 (its stitched-set definition of the DYB windows)
+  — reported in Corrections; score-contract.md carries the live 568.
+- THE GUARD'S CALIBRATION: a normal yearly refresh adds roughly 3% to
+  a 30-year sample, so the tolerance was set at 0.25 — it tolerates
+  several years of refreshes and would have refused the V28.1 wiring
+  at +97% observations (1,278 -> 2,523) and roughly +276% entities
+  (47 -> 177) on the fertility block.
+
+### Changed
+
+- THE OFFICIAL FERTILITY SCALE REGENERATED (Part 1) by the shipped
+  freezer alone (`scripts/freeze_score_bounds.py`, bounds_version
+  2026-10-08.1 — the freezer's own date+sequence rule): exactly ONE
+  block changes — `official/birth_rate_fertility/both` moves hi
+  0.6109090823229733 -> 0.9902959932984179 and n_sample 1278 -> 2523
+  — and every other block keeps source, source_class, floor, lo, hi,
+  n_sample, n_unavailable (only the version moves, and the new
+  n_entities field of Part 2 appears on all of them). The modelled
+  bounds did not move; `modelled.json`'s normalised values and scores
+  are value-identical to V28.1 (only the per-component
+  `bounds_version` metadata moved with the freeze). The modelled
+  score's values were never recomputed — the modelled fertility reads
+  the unchanged World Bank witness.
+- THE DRIFT GUARD HARDENED (Part 2, the spec implemented as written):
+  the freezer additionally records, per block, `n_entities` (the
+  distinct entity_id with at least one non-null observation in the
+  bounds sample); the new config key `bounds_drift_tolerance: 0.25`
+  in `config/score.yaml` (schema-validated, 0 <= x < 1, tested); at
+  rebuild, for every frozen block, the live `n_sample` and
+  `n_entities` are recomputed on the current dist with the SAME
+  SAMPLING FUNCTION AS THE FREEZER — the new shared
+  `src/score/core.bounds_sample`, one implementation used by the
+  freezer (through `compute_bounds`) and by the guard (through
+  `bounds_sample_counts`) — and the build is REFUSED when either
+  `abs(live - frozen) / frozen > bounds_drift_tolerance`. The refusal
+  message names the score, the component, both measures' frozen and
+  live values, and says "re-freeze deliberately
+  (`scripts/freeze_score_bounds.py`, bump `bounds_version`, record it
+  in the changelog)". The existing source-name check stays; BOTH
+  checks run on every rebuild; no automatic refresh, no bypass flag.
+- `meta.json`'s global block gains `bounds_drift_tolerance` (emitted
+  beside the other guard parameters — the contract's file list
+  updated).
+- THE GOLDEN VECTORS regenerated (20 cases): the v28/v28.1 coverage
+  kept case-for-case, the fertility component of every official case
+  that includes it re-scaled; the official head's label now carries
+  the live-checked DYB-only fact (japan — its TFR arrives via the
+  Yearbook's Table 4, not Eurostat); a NEW beyond-the-old-scale case,
+  live-picked as the qualifying scored point with the clearest
+  non-zero reading: malta 2021 (TFR distance 0.620 exceeded the v28.1
+  European freeze's hi 0.6109 — the component read 0 — and the
+  worldwide scale reads it 37.42). Every label generated from live
+  readings.
+- EVERY LIVING TEXT that says what trips the guard updated to the two
+  implemented triggers (the frozen source NAME no longer matching the
+  §4.4 selection; the bounds sample's n_sample / n_entities drifting
+  beyond the tolerance): `docs/score-contract.md`, ADR-0011, the
+  freezer's docstring, `src/score/emit.py`'s header,
+  `docs/architecture.md`, `config/score.yaml`'s header,
+  `src/config_loader.py`'s bounds-loader docstring, the schema's
+  house-invariant list, README's score-layer paragraph.
+- ADR-0011: status "Accepted (v27), amended (v27.1, v28, v28.1,
+  v28.2)"; decision 18 in full (the regeneration and the guard rule,
+  with the tolerance as a parameter); the Consequences now state what
+  is true — the official fertility scale is the worldwide canonical
+  sample (2,523 observations, 177 entities), and korea 2023 (TFR
+  0.721, distance 1.069) still reads 0 on the component because
+  1.069 > 0.990: the p99 tail semantics, not a Korea-specific scale
+  (the v28.1 entry attributed the tail to Korea and Macao; the
+  amended ADR says these are the points beyond p99, nothing more).
+- `docs/score-contract.md`: the two-collector paragraph (the official
+  fertility component as a PRIORITY MERGE of two as-reported
+  collectors — Eurostat wins every shared entity-year; the 568/220/
+  157/128 agreement statistics; the 7 seam entities; the 130 DYB-only
+  entities that cannot be cross-checked; the frontend rule: do not
+  treat cross-country differences on this component as exact below
+  the ~0.05 TFR level); the retained-scale limitation bullet replaced
+  by the worldwide-scale semantics; the frozen-scale display
+  discipline carries the two drift triggers.
+
+### Fixed
+
+- THE DRIFT GUARD'S BLIND SPOT — the brief's named defect: a source
+  that keeps its name while its content changes (here 47 -> 177
+  entities and 1,278 -> 2,523 observations under the same
+  `canonical`) passed silently through v28.1. The coverage trigger is
+  now implemented, tested (the guard refuses when n_sample drifts
+  beyond the tolerance, and when n_entities does — each alone;
+  accepts at the boundary and below; still refuses a source-name
+  change; the tolerance's schema bounds refuse 1.0 and -0.01), and
+  verified live (the verifier exercises BOTH triggers on the real
+  config: a tampered n_entities refuses with the full message, a
+  tampered source name still refuses).
+- THE V28 CLAIM IS NOW TRUE IN CODE: "any later fetch that changes a
+  source's coverage will trip the drift guard" — the v28 changelog
+  wrote it, v28.1 retracted it as untested, v28.2 implements it.
+
+### Verified (live, this session)
+
+- The one-block invariant, proven field-for-field against b394ea6's
+  file: all 38 blocks compared — exactly `official/
+  birth_rate_fertility/both` changes (hi 0.611 -> 0.9903, n_sample
+  1278 -> 2523, n_entities 177), the 37 others keep every number,
+  `n_entities` present on all 38, every block at 2026-10-08.1, and
+  the meta's score_config_sha256 matches the current score.yaml (the
+  tolerance key moved it).
+- The dist diff, exactly scoped: ALL 30 non-score dist files
+  byte-identical to b394ea6 — the four score files (official,
+  modelled, meta, golden_vectors) are the only changes; the corpus
+  untouched (22 metrics / 115 rows / 16 books / 470 citations, sha256
+  e30304cf... unchanged).
+- `modelled.json`: normalised / scores / age maps VALUE-IDENTICAL to
+  V28.1; the only component-meta change is `bounds_version`
+  (2026-10-06.2 -> 2026-10-08.1) on all 18 components.
+- The official score: the scored country-year sets IDENTICAL to V28.1
+  at every year (no gains, no losses — the regeneration moves values
+  on a scale, never who is scored); the corrections numbers above
+  (1,077 / 1,017 / 38.3 components; 970 / 1.35 / 3.49 / 49 scores on
+  the shipped values, 971 / 1.36 / 3.48 at full precision); the
+  official 2015 top-5 japan 83.54 / australia 76.21 / new_zealand
+  73.56 / israel 73.16 / switzerland 73.06; the positions japan 1 /
+  sweden 8 / france 22 / united_states 31 / chile 44; the Russian
+  deltas all refused (0.22 / 0.22 / 0.33); the composition noise
+  0.31 / 0.34; the carried share 0.14 / 0.093; 4 ghost country-years
+  in 2025 official (australia, canada, chile, costa_rica —
+  unchanged); `meta.json` changes in the bounds_version, the two
+  config fingerprints, and the new global `bounds_drift_tolerance`
+  (all 18 indicator fingerprints identical).
+- The golden vectors: 20 cases, every one recomputed by the
+  verifier's independent path from the emitted values and age maps;
+  the beyond-the-old-scale case's premise verified against BOTH the
+  emitted layer and the b394ea6 baseline (malta 2021's fertility
+  component read 0 then, reads 37.42 now, scored both times); the
+  head cases hold their premises (japan the official head at 83.54,
+  the modelled head japan 84.45 unchanged, the modelled-only case
+  mexico at official coverage 0.56).
+- The drift guard: the calibration table — all 38 blocks'
+  live-vs-frozen ratios 0.0000 (the file was regenerated on THIS
+  dist; the full 0.25 margin stands; no block trips); both refusal
+  triggers exercised live on the real config (a tampered n_entities
+  refuses with the full message naming both measures' frozen and
+  live values; a tampered source name still refuses).
+- The reference prototype run on the rebuilt dist: every §5 anchor
+  exact (see Investigated).
+- Tests: **416 passed** (409 at v28.1 + 7 v28.2: the two drift
+  refusals — n_sample alone, n_entities alone — the boundary accept
+  (a ratio exactly at the tolerance builds, strictly-greater
+  refuses), the configurable tolerance, the tolerance's schema
+  bounds, the freezer writing n_entities (the real script, its repo
+  root monkeypatched onto a mini repo), and the two-collector
+  percentile fixture reproducing the regenerated fertility block's
+  computation by hand).
+- `scripts/verify_v28_diff.py` updated in place (the V27.1 precedent):
+  **121/121 PASS** against b394ea6.
+- Rebuild ×2 byte-stable across all 34 dist files.
+
+### Corrections
+
+The v28.1 entry's regeneration what-if was inexact; the figures were
+corrected by the shipped freezer's own numbers (the house rule: past
+entries stay as written, the correction lands here — the v28.1 entry
+is untouched).
+
+- The what-if said hi would move to 1.019 on 1,801 transformed
+  country-years and that 109 entity-years would move by more than
+  half a point. The shipped freezer gives hi 0.9903 on 2,523
+  observations, and 1,077 of the 1,093 scored official country-years'
+  fertility components move by more than 0.5 points (1,017 by more
+  than 5, up to 38.3). The 1,801 counted the transformed points of
+  the audit prototype's fertility series — not the freezer's sample
+  (the §4.4 selection's retained points since 1990, 2,523); the 109
+  counted only the pre-existing Eurostat-era entity-years, not the
+  DYB-wired scored set the scale change actually moves.
+- The score-level what-if figures, restated on both bases: 971
+  official scores move by more than 0.5 points at the reference
+  prototype's full-precision basis (mean absolute change 1.36,
+  maximum 3.48, 49 entities); on the SHIPPED files' stored 2-decimal
+  values the same comparison gives 970 / 1.35 / 3.49 — one
+  borderline point crosses at full precision, the rounding tail
+  explains the rest.
+- The v28.1 entry's Korea/Macao tail attribution is corrected: those
+  are simply the points beyond p99, nothing more (the regenerated
+  scale still leaves korea 2023 beyond it — ADR-0011's amended
+  Consequences state the tail rule, not a Korea-specific scale).
+- The two-collector overlap count: the v28.1 entry said 564 shared
+  entity-years; the live count on the shipped provenance log is 568
+  (the 220 / 157 / 128 agreement split and the 7 seam entities
+  reproduce exactly). The 4-point difference is the v28.1 probe's
+  stitched-set definition (it deduplicated the DYB windows before
+  matching); the shipped arbitration log's count is the record.
+  docs/score-contract.md carries 568.
+
+### Known limitations
+
+- The official fertility component's scale is now the worldwide
+  canonical sample, and its p99 tail still reads 0 beyond TFR 5.65 /
+  below 0.78 (26 country-years across 10 entities on the current
+  dist): korea 2023 (TFR 0.721, distance 1.069) and every point
+  beyond the percentile are indistinguishable on this component — the
+  tail rule, displayed as such, not an error.
+- Cross-country differences on the official fertility component are
+  not exact below the ~0.05 TFR level (the two-collector seams); the
+  130 DYB-only entities have no second collector to cross-check at
+  all.
+- The guard's coverage trigger compares the sample's SIZE and ENTITY
+  COUNT, not its composition: a redistribution that keeps both counts
+  within the tolerance still passes (the source name and the two
+  counts are the three tripwires today).
+- The DYB TFR's staggered windows leave 2024 thin (59 canonical
+  entities at 2024 — the 2025 edition will fill the column) and the
+  pre-2007 past unwired (the edition loop's own frontier, as on
+  life_expectancy) — carried from v28.1, unchanged here.
+- The UNODC question is OPEN (carried from v28.1): the machine door
+  exists and is documented; the canonical-vs-harmonized decision (and
+  the register switch it would imply for the 46 OECD-covered
+  entities) is Ediz's. Nothing is wired.
+- The 2025 vintage lag: the 4 ghost country-years (australia, canada,
+  chile, costa_rica) return when the sources' 2025 vintages land.
+
 ## 2026-10-07 — v28.1: the DYB Table 4 TFR wired (decision 17 — the
 ## ranked plan #1) and the UNODC probe record corrected
 

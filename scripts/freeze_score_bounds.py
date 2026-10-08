@@ -5,10 +5,13 @@ WHAT THIS SCRIPT IS
 The score layer's numbers are FROZEN, never recomputed at build time
 (ADR-0011): the absolute scale's bounds (p1/p99 of the transformed sample),
 the log floors, and — per (score, component) — WHICH source the §4.4
-selection rules retained. This script is the ONLY writer of
-config/score_bounds.yaml; `rebuild` only READS it (and fails loudly if the
-frozen source drifts from what the rules would pick on the current dist —
-the drift is a regeneration decision, never an auto-refresh).
+selection rules retained, the sample's SIZE (n_sample) and its ENTITY
+COUNT (n_entities, v28.2). This script is the ONLY writer of
+config/score_bounds.yaml; `rebuild` only READS it (and fails loudly if
+the frozen source drifts from what the rules would pick on the current
+dist, or if the bounds sample's n_sample / n_entities drifts beyond
+config/score.yaml's bounds_drift_tolerance — the drift is a
+regeneration decision, never an auto-refresh).
 
     python scripts/freeze_score_bounds.py            # write the frozen file
     python scripts/freeze_score_bounds.py --dry-run  # print, write nothing
@@ -27,7 +30,14 @@ REGENERATION PROTOCOL (the ADR's rule): a fetch that moves a source's
 coverage can change what §4.4 would pick; the drift guard in the build
 then REFUSES to run until this script is re-run deliberately and the
 bounds_version bumped — the scale never moves silently under a score.
-The version is a date plus a sequence: the FIRST regeneration of a
+The guard trips on TWO conditions (v28.2, decision 18): the frozen
+source NAME no longer matching the live §4.4 selection, or the bounds
+sample's n_sample / n_entities drifting beyond bounds_drift_tolerance
+(a source that keeps its name while its COVERAGE changes — the v28.1
+blind spot: the DYB wiring moved the official fertility sample
+1278 -> 2523 observations / 47 -> 177 entities under the same
+'canonical' name and the guard stayed silent). The version is a date
+plus a sequence: the FIRST regeneration of a
 given day takes .1, the second .2, and so on (read from the existing
 file — the v28 rule; before v28 the script hardcoded .1, which would
 have re-frozen the same version twice on a two-regeneration day).
@@ -116,6 +126,7 @@ def freeze(dry_run: bool) -> int:
                     "hi": b.hi,
                     "n_sample": b.n_sample,
                     "n_unavailable": b.n_unavailable,
+                    "n_entities": b.n_entities,
                     "bounds_version": bounds_version,
                 }
         payload["bounds"][score.value] = block

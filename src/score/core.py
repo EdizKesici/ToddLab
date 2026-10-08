@@ -9,8 +9,9 @@ The rules here are the SINGLE implementation of the source selection
 the aggregation/delta rules (§4.8-4.9): scripts/freeze_score_bounds.py
 uses them to WRITE the frozen bounds, rebuild uses them to read and apply
 the frozen bounds, and the drift guard uses them to compare the frozen
-source with what the rules would pick today. One implementation, three
-consumers — the rules can never fork.
+source — and, since v28.2, the frozen bounds SAMPLE'S SIZE AND ENTITY
+COUNT — with what the rules would pick today. One implementation,
+three consumers — the rules can never fork.
 
 Determinism contract: every iteration is over sorted keys; every stored
 value is rounded at the config's `rounding` decimals and every later
@@ -195,6 +196,33 @@ class ComponentBounds:
     hi: float
     n_sample: int
     n_unavailable: int = 0  # target components: points dropped for v <= 0
+    n_entities: int = 0  # v28.2: distinct entity_id in the bounds sample
+
+
+def bounds_sample(points: list, transform: Transform, config: ScoreConfig) -> list:
+    """The ONE sampling rule of the frozen bounds (v28.2): the non-null
+    points of the retained source with year >= bounds_from_year; a target
+    transform additionally drops non-positive values (counted in
+    n_unavailable). The freezer's n_sample AND n_entities, and the drift
+    guard's live recomputation of both, read THIS function — the guard
+    never re-derives its own sampling, so the two sides can never disagree
+    on what "the bounds sample" means."""
+    sample = [
+        p for p in points
+        if p["year"] >= config.bounds_from_year and p.get("value") is not None
+    ]
+    if transform == Transform.target:
+        sample = [p for p in sample if float(p["value"]) > 0]
+    return sample
+
+
+def bounds_sample_counts(points: list, transform: Transform, config: ScoreConfig) -> tuple[int, int]:
+    """(n_sample, n_entities) of the bounds sample — the drift guard's two
+    live measures, computed by the freezer's own sampling rule (the shared
+    bounds_sample above). v28.2's guard compares these against the frozen
+    block's recorded values."""
+    sample = bounds_sample(points, transform, config)
+    return len(sample), len({p["entity_id"] for p in sample})
 
 
 def compute_bounds(points: list, transform: Transform, config: ScoreConfig) -> ComponentBounds:
@@ -202,30 +230,50 @@ def compute_bounds(points: list, transform: Transform, config: ScoreConfig) -> C
     it reads config/score_bounds.yaml; changing bounds = a deliberate
     regeneration plus a bounds_version bump).
 
-    Sample = all non-null values of the retained source with
-    year >= bounds_from_year (the target transform additionally drops
-    non-positive values, counted in n_unavailable).
+    Sample = bounds_sample(points) — all non-null values of the retained
+    source with year >= bounds_from_year (the target transform
+    additionally drops non-positive values, counted in n_unavailable);
+    n_entities counts the distinct entity_id in that sample (v28.2).
     """
     p_lo, p_hi = config.percentiles
-    sample = [float(p["value"]) for p in points if p["year"] >= config.bounds_from_year]
+    sample_points = bounds_sample(points, transform, config)
+    sample = [float(p["value"]) for p in sample_points]
+    n_entities = len({p["entity_id"] for p in sample_points})
+    n_unavailable = 0
+    if transform == Transform.target:
+        # the target's positive filter (inside bounds_sample) drops the
+        # non-positive points — n_unavailable records how many there were
+        # among the year-filtered non-null points of the retained source.
+        n_unavailable = sum(
+            1
+            for p in points
+            if p["year"] >= config.bounds_from_year
+            and p.get("value") is not None
+            and float(p["value"]) <= 0
+        )
     if transform == Transform.log:
         positive = [v for v in sample if v > 0]
         if not positive:
             raise ValueError("log component with no strictly positive sample value")
         floor = pct(positive, p_lo)
         t = [math.log(max(v, floor)) for v in sample]
-        return ComponentBounds(floor=floor, lo=pct(t, p_lo), hi=pct(t, p_hi), n_sample=len(t))
+        return ComponentBounds(
+            floor=floor, lo=pct(t, p_lo), hi=pct(t, p_hi), n_sample=len(t), n_entities=n_entities
+        )
     if transform == Transform.target:
-        usable = [v for v in sample if v > 0]
-        t = [abs(math.log(v / config.fertility_target)) for v in usable]
+        t = [abs(math.log(v / config.fertility_target)) for v in sample]
         return ComponentBounds(
             floor=None,
             lo=0.0,
             hi=pct(t, p_hi),
-            n_sample=len(usable),
-            n_unavailable=len(sample) - len(usable),
+            n_sample=len(t),
+            n_unavailable=n_unavailable,
+            n_entities=n_entities,
         )
-    return ComponentBounds(floor=None, lo=pct(sample, p_lo), hi=pct(sample, p_hi), n_sample=len(sample))
+    return ComponentBounds(
+        floor=None, lo=pct(sample, p_lo), hi=pct(sample, p_hi),
+        n_sample=len(sample), n_entities=n_entities,
+    )
 
 
 def normalise_series(
