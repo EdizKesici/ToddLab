@@ -32,7 +32,11 @@ House invariants enforced here:
 - one entry per indicator — the split-sex components (life expectancy
   pair) are DERIVED from sex_mode, not listed twice;
 - max_age_years is a non-negative integer (decision 16, v28: 0
-  reproduces the v27 exact-year behaviour — a tested configuration).
+  reproduces the v27 exact-year behaviour — a tested configuration);
+- bounds_drift_tolerance is a fraction in [0, 1) (decision 18, v28.2:
+  the drift guard's refusal threshold on the frozen bounds sample's
+  n_sample and n_entities — 0.25 tolerates several yearly refreshes
+  and refuses the coverage changes the v28.1 wiring slipped through).
 """
 from __future__ import annotations
 
@@ -165,6 +169,13 @@ class ScoreConfig(BaseModel):
     # years (age recorded). 0 reproduces the v27 exact-year behaviour —
     # a tested configuration, never a special case in the code.
     max_age_years: int = Field(3, ge=0)
+    # decision 18 (v28.2): the drift guard refuses the rebuild when the
+    # live bounds sample's n_sample or n_entities drifts from the frozen
+    # block's by more than this FRACTION (0 <= x < 1). Calibration: a
+    # normal yearly refresh adds roughly 3% to a 30-year sample; 0.25
+    # tolerates several years of refreshes and would have refused the
+    # v28.1 wiring (+97% observations, ~+275% entities on fertility).
+    bounds_drift_tolerance: float = Field(0.25, ge=0, lt=1)
 
     @field_validator("percentiles")
     @classmethod

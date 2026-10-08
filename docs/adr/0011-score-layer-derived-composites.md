@@ -6,7 +6,10 @@
   the books, `illegitimate_births` joins the official score, and the
   score-per-year carry rule); AMENDED (2026-10-07, v28.1 — decision 17:
   the DYB Table 4 TFR wired as `birth_rate_fertility`'s second canonical
-  door, the official fertility scale RETAINED)
+  door, the official fertility scale RETAINED); AMENDED (2026-10-08,
+  v28.2 — decision 18: the official fertility scale regenerated on the
+  worldwide canonical sample, and the drift guard hardened to trip on
+  coverage drift, not only on source-name changes)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -210,15 +213,44 @@ Ediz's decisions (locked; numbered and testable):
     2021/2022: +6, 2023: +4, 2024: +5 with ZERO losses, and the
     fertility component enters the aggregates of 10 already-scored
     entities (97 entity-years move, -2.8 to +3.4 points). The frozen
-    fertility bounds are deliberately NOT regenerated: the drift
-    guard's own trigger (a §4.4 source-NAME change) did not fire — the
-    selection still retains "canonical" — and moving the scale is
-    Ediz's standing decision, now with the measured what-if on record
-    (regenerating on the worldwide canonical sample would move the
-    official p99 hi 0.611 -> 1.019 and rescale the fertility component
-    of 109 scored entity-years by more than half a point; the extremes
-    the new sample would set the scale by: South Sudan 7.5, DRC 6.7,
-    Macao 0.68, Hong Kong 0.70, Korea 0.72).
+    fertility bounds were deliberately NOT regenerated AT THAT VERSION
+    (the drift guard's then-trigger — a §4.4 source-NAME change — did
+    not fire, the selection still retained "canonical"); the
+    regeneration became decision 18 below, taken the next day with the
+    measured what-if on record.
+18. **The official fertility bounds are REGENERATED on the worldwide
+    canonical sample, and the drift guard trips on COVERAGE drift, not
+    only on source-name changes** (v28.2, 2026-10-08). Why: the v28.1
+    wiring kept the frozen European scale (hi 0.611 on 1,278
+    observations / 47 entities) while the component's canonical became
+    the two-collector worldwide series — every TFR above 3.87 or below
+    1.14 read 0 on the component (190 country-years across 44 entities
+    since 1990: Tanzania, Burundi, Mozambique, Hong Kong, Macao among
+    them became indistinguishable), and the freeze's own principle
+    ("bounds = p1/p99 of the retained source's sample since
+    bounds_from_year") had stopped being true of this component. The
+    regeneration was run by the SHIPPED freezer alone
+    (`scripts/freeze_score_bounds.py`, bounds_version 2026-10-08.1):
+    exactly one block changes — `official/birth_rate_fertility/both`
+    moves hi 0.611 -> 0.9903 on 2,523 observations / 177 entities; the
+    component now reads 0 only beyond TFR 5.65 / below 0.78; the
+    modelled bounds and every modelled score value are untouched (the
+    modelled fertility reads the unchanged World Bank witness). The
+    GUARD RULE (the v28.1 defect, fixed here): the freezer additionally
+    records `n_entities` per block (the distinct entities of the bounds
+    sample), and rebuild recomputes both `n_sample` and `n_entities`
+    live with the freezer's OWN sampling rule (one implementation,
+    `src/score/core.bounds_sample`, shared by freezer and guard),
+    refusing the build when either drifts beyond `bounds_drift_tolerance`
+    (config/score.yaml — 0.25, a PARAMETER of this decision: a normal
+    yearly refresh adds roughly 3% to a 30-year sample, so 0.25
+    tolerates several years of refreshes and would have refused the
+    v28.1 wiring at +97% observations / roughly +275% entities on the
+    fertility block). The source-name check stays; BOTH checks run on
+    every rebuild; the refusal message names the score, the component,
+    both measures' frozen and live values, and the deliberate re-freeze
+    prescription (re-run the freezer, bump `bounds_version`, record it
+    in the changelog). No automatic refresh, no bypass flag.
 
 The auditor's delegated decisions (taken with data; Ediz can reverse):
 weighted **arithmetic** mean (the geometric mean ranked nearly the same
@@ -242,8 +274,10 @@ transforms, sex handling, basis, provisional flags, corpus_metric) +
 `scripts/freeze_score_bounds.py`), output `data/dist/score/` —
 `meta.json`, `official.json`, `modelled.json`, `golden_vectors.json`.
 `rebuild` reads the frozen bounds and NEVER recomputes them; a drift
-guard fails the build loudly when the frozen source no longer matches
-what the §4.4 rules would pick (a fetch moved the coverage under the
+guard fails the build loudly on EITHER of its two triggers (v28.2,
+decision 18): the frozen source no longer matches what the §4.4 rules
+would pick, or the bounds sample's `n_sample` / `n_entities` drifts
+beyond `bounds_drift_tolerance` (a fetch moved the coverage under the
 score — re-freezing is a deliberate `bounds_version` bump, recorded in
 the changelog, never an auto-refresh). The backend pre-computes
 normalised values, retained sources, coverage and the two presets; the
@@ -274,6 +308,26 @@ The accepted negatives, stated as such:
   flags the (currently empty, tested on a fixture) official fallback.
 - **The fertility target is a simplification** (2.1 everywhere;
   replacement is higher where mortality is high).
+- **The official fertility scale is the worldwide canonical sample**
+  (v28.2, decision 18): p1/p99 over 2,523 observations across 177
+  entities — the two-collector canonical the v28.1 wiring built, no
+  longer the European 47-entity sample the scale was first frozen on.
+  The consequence is the p99 tail semantics: a country-year whose TFR
+  distance sits beyond the sample's p99 reads 0 on the component —
+  TFR above 5.65 or below 0.78 (26 country-years across 10 entities
+  on the current dist). Korea 2023 (TFR 0.721, distance 1.069) does
+  exactly that: 1.069 > 0.990, so the component reads 0 — that is the
+  tail rule, NOT a Korea-specific scale, and the same reading applies
+  to every point beyond p99, nothing more (the v28.1 entry had
+  attributed the retained tail to "Korea and Macao" specifically; the
+  attribution is corrected here — those are simply the points beyond
+  the percentile, and the regenerated scale still leaves Korea 2023
+  beyond it).
+- **The modelled score's fertility scale is untouched** by decision 18
+  (its component reads the World Bank witness, whose sample did not
+  move): every modelled normalised value and score is identical to
+  v28.1 — only the two files' per-component `bounds_version` metadata
+  moved with the freeze.
 - **No provisional direction remains**: industrial employment, tertiary
   attainment, the fertility target and top income share are confirmed
   in the books (decisions 12-14, v28) — the `provisional` flags and

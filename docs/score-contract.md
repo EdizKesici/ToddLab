@@ -1,4 +1,5 @@
-# The score layer's frontend contract (v27, amended v27.1 and v28, ADR-0011)
+# The score layer's frontend contract (v27, amended v27.1, v28, v28.1
+# and v28.2, ADR-0011)
 
 This is the EXACT, documented contract for computing a score, a custom-
 weighted score, or a two-year difference from `data/dist/score/`. The
@@ -29,13 +30,33 @@ and `golden_vectors.json` is what to unit-test against.
   ADR-0011's decision 3): no value is invented — a real, older
   observation is reused, capped at `max_age_years` (3), and labelled
   with its age.
+- **The official fertility component is a PRIORITY MERGE of two
+  as-reported collectors** (decision 17, v28.1): Eurostat's
+  `demo_find` TFR (priorities 1-3) wins on every shared entity-year,
+  and the DYB Table 4 TFR fills every entity-year Eurostat does not
+  print — one component, two collectors, never reconciled. Measured on
+  the shipped provenance log (live, 2026-10-08): of the 568 shared
+  entity-years, 220 agree exactly, 157 within 0.01, 128 within 0.05 —
+  about 90% at rounding level (the v28.1 entry said 564; the live
+  count on the shipped arbitration log is 568, the correction recorded
+  in the v28.2 changelog). 7 entities show collector-vs-collector
+  seams >= 0.1 (Azerbaijan up to 0.44; Romania, Bulgaria, Georgia,
+  Latvia, Moldova, Montenegro — Eurostat's value always wins, the
+  discarded DYB candidate logged per point), and the 130 DYB-only
+  entities (Japan, Korea, the US, Israel, New Zealand, Latin America,
+  Asia, Africa's civil-registration countries) have no second
+  collector to cross-check at all. DO NOT treat cross-country
+  differences on this component as exact below the ~0.05 TFR level:
+  within that band the two collectors' prints are interchangeable at
+  rounding level, and at the seams they genuinely disagree.
 
 ## The files
 
 - `data/dist/score/meta.json` — the layer's contract card: global
   parameters (`bounds_from_year`, `percentiles`, `coverage_threshold`,
   `delta_min_common_weight`, `fertility_target`, `rounding`,
-  `max_age_years`), the `carry_rule` description, `max_obs_year` per
+  `max_age_years`, `bounds_drift_tolerance` — the drift guard's refusal
+  threshold since v28.2), the `carry_rule` description, `max_obs_year` per
   score, the component list (`direction`, `transform`, `basis`,
   `provisional`, `sex`, `corpus_metric`), BOTH presets' weights per
   component, input fingerprints (config/bounds/corpus sha256), and the
@@ -152,7 +173,13 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 - **The scale is absolute and frozen**: `bounds_version` in every
   component block. A score of 72 in 1995 and 72 in 2020 mean the same
   thing on the same scale — that is the point of p1/p99 bounds frozen
-  at generation time. Never re-rank per year.
+  at generation time. Never re-rank per year. Since v28.2 the frozen
+  file also records each block's bounds-sample `n_sample` and
+  `n_entities`, and the build REFUSES (it does not silently re-scale)
+  if the live selection would pick another source OR if either measure
+  drifts beyond `bounds_drift_tolerance` — the two drift triggers are
+  the source NAME and the sample's coverage; both demand a deliberate
+  re-freeze (`bounds_version` bump, changelog entry).
 - **Badges to surface**: `source_class: "modelled"` inside the official
   score; `reliability: "low"` of the underlying indicator (read the
   catalog); the chosen `source` per component; the component count
@@ -187,15 +214,21 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
   follows from the resolved data, by design (decision 8).
 - Since v28.1 the official fertility component reads TWO collectors
   (Eurostat first, the DYB Table 4 TFR filling — decision 17): the
-  official fertility normalised map now carries 177 entities where it
-  carried 47, the UK's series resumes 2019-2023 (it was witness-only
-  after Brexit), and japan tops the official 2015 ranking (81.44).
-  The SCALE is still the v28 freeze (bounds_version 2026-10-06.2,
-  hi 0.611 on the European sample): a country whose TFR sits beyond
-  that sample's worst distance reads 0 on the component (korea 2023
-  at TFR 0.72 does) — that is the retained-scale semantics, not an
-  error; regenerating the scale worldwide is the owner's open
-  decision (the measured what-if lives in the v28.1 changelog).
+  official fertility normalised map carries 177 entities where it
+  carried 47, and the UK's series resumes 2019-2023 (it was
+  witness-only after Brexit). Since v28.2 (decision 18) the component's
+  frozen scale is the WORLDWIDE canonical sample (bounds_version
+  2026-10-08.1: hi 0.9903 on 2,523 observations / 177 entities — the
+  European freeze of 2026-10-06.2, hi 0.611 on 1,278 / 47, is
+  retired): the component reads 0 only beyond TFR 5.65 / below 0.78.
+  The p99 tail semantics stay: korea 2023 (TFR 0.721, distance 1.069
+  > 0.990) still reads 0 — that is the tail rule, not a Korea-specific
+  scale and not an error; the points beyond p99 are simply
+  indistinguishable on this component, nothing more.
+- Cross-country differences on the official fertility component are
+  not exact below the ~0.05 TFR level (the two-collector seam facts
+  above): display the component's source badge, and treat small
+  cross-country gaps as rounding-level agreement, not signal.
 - 4 ghost country-years in 2025 official (australia, canada, chile,
   costa_rica): fertility coverage arrived for costa_rica, nothing
   fresh did — the guard holds.

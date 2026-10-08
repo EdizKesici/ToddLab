@@ -1,5 +1,5 @@
 # config/score.yaml — the v27 score layer's declarative contract (ADR-0011,
-# amended v27.1 and v28).
+# amended v27.1, v28, v28.1 and v28.2).
 #
 # WHAT THIS IS: the project's FIRST AND ONLY derived product — two composite
 # scores per country-year, "official" (canonical-tier sources) and "modelled"
@@ -16,8 +16,10 @@
 # live here: bounds, floors and chosen sources are FROZEN by
 # scripts/freeze_score_bounds.py into config/score_bounds.yaml (a later fetch
 # cannot move the scale; changing bounds = a deliberate regeneration +
-# bounds_version bump, and rebuild fails loudly if the frozen source drifts
-# from what the selection rules would pick today).
+# bounds_version bump, and rebuild fails loudly on EITHER drift trigger:
+# the frozen source NAME no longer matching the §4.4 selection, or the
+# bounds sample's n_sample / n_entities moving beyond bounds_drift_tolerance
+# — decision 18, v28.2).
 #
 # DECISIONS (Ediz's, ADR-0011 §Decision): one source per component for all
 # countries and years, never mixed within a component; absolute scale with
@@ -66,6 +68,16 @@ presets: [equal, todd]
 # decision 16 (v28): carry a real observation forward at most this many
 # years (age recorded, displayed; 0 = the v27 exact-year behaviour).
 max_age_years: 3
+# decision 18 (v28.2): the drift guard's refusal threshold. At rebuild,
+# every frozen block's n_sample and n_entities (the bounds sample's size
+# and distinct-entity count, recorded by the freezer) are recomputed live
+# with the freezer's own sampling rule; a drift beyond this FRACTION on
+# either measure refuses the build. Calibration: a normal yearly refresh
+# adds roughly 3% to a 30-year sample — 0.25 tolerates several years of
+# refreshes and would have refused the v28.1 wiring (the DYB door moved
+# the official fertility sample +97% observations / ~+275% entities under
+# the same 'canonical' name, and the name-only guard stayed silent).
+bounds_drift_tolerance: 0.25
 
 components:
   # THE TARGET COMPONENT: fertility's optimum is 2.1 (replacement), best = 0

@@ -49,11 +49,18 @@ underlying observation differs — the composition noise fell from
 0.86/0.95 to 0.33/0.34 points per year, at the recorded price that the
 last years of a series are largely carried values. The bounds
 regenerated at 2026-10-06.2 with the 37 pre-existing blocks numerically
-identical (fresh observations only — the carry never moves the scale).
-`rebuild` never recomputes bounds: a drift guard fails the
-build loudly when the frozen source no longer matches what the §4.4
-selection rules would pick on the current dist — re-freezing is a
-deliberate `bounds_version` bump, recorded, never an auto-refresh.
+identical (fresh observations only — the carry never moves the scale),
+and again at 2026-10-08.1 (v28.2, decision 18) with exactly ONE block
+changing — the official fertility scale moved to the worldwide
+two-collector canonical sample (hi 0.611 -> 0.9903 on 2,523
+observations / 177 entities) that the v28.1 DYB wiring had built under
+the European freeze. `rebuild` never recomputes bounds: a drift guard
+fails the build loudly on EITHER of its two triggers (v28.2) — the
+frozen source no longer matching what the §4.4 selection rules would
+pick on the current dist, or the bounds sample's `n_sample` /
+`n_entities` drifting beyond `bounds_drift_tolerance` (0.25) —
+re-freezing is a deliberate `bounds_version` bump, recorded, never an
+auto-refresh.
 
 ## The Todd corpus rides as metadata (v13)
 

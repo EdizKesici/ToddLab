@@ -21,7 +21,7 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from src.schema.score import ScoreComponent, ScoreConfig, ScoreName
+from src.schema.score import ScoreComponent, ScoreConfig, ScoreName, SexMode, Transform
 from src.schema.todd_refs import ToddCorpus
 from src.score.core import (
     aggregate,
@@ -885,3 +885,226 @@ def test_shipped_fertility_config_carries_the_dyb_door():
     assert max(s.priority for s in eur) < min(s.priority for s in dyb)
     assert len(wit) == 1 and wit[0].priority > max(s.priority for s in dyb)
     assert wit[0].role.value == "witness"
+
+
+# ---------------------------------------------------------------------------
+# v28.2 THE HARDENED DRIFT GUARD (decision 18) + the bounds regeneration
+# ---------------------------------------------------------------------------
+
+
+def _mini_bounds_doc_v282(tmp_path: Path, cfg: ScoreConfig):
+    """The mini bounds doc as the v28.2 FREEZER writes it: every block
+    carries source, source_class, floor, lo, hi, n_sample, n_unavailable
+    AND n_entities (the new field)."""
+    from src.score.core import compute_bounds, select_source
+    from src.schema.score import ScoreName
+
+    doc = _mini_bounds_doc(tmp_path, cfg)
+    for score in (ScoreName.official, ScoreName.modelled):
+        for comp in cfg.components_for(score):
+            ind = json.loads((tmp_path / "indicators" / f"{comp.indicator}.json").read_text())
+            sexes = ("male", "female") if comp.sex_mode == SexMode.split else ("both",)
+            for sex in sexes:
+                sel = select_source(ind, sex, score, cfg.bounds_from_year)
+                b = compute_bounds(list(sel.points), comp.transform, cfg)
+                block = doc["bounds"][score.value][f"{comp.indicator}/{sex}"]
+                block["n_entities"] = b.n_entities
+    return doc
+
+
+def test_drift_guard_refuses_n_sample_drift(tmp_path):
+    # decision 18: a source that keeps its NAME while its sample SIZE moves
+    # beyond the tolerance must refuse the build (the v28.1 blind spot).
+    dist, cfg = _mini_dist(tmp_path)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)
+    cfg_dir = dist / "cfg"
+    cfg_dir.mkdir(exist_ok=True)
+    (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
+    (cfg_dir / "score_bounds.yaml").write_text("meta: {}", encoding="utf-8")
+    (cfg_dir / "todd_refs.yaml").write_text("meta: {}", encoding="utf-8")
+
+    # sanity: the honest doc builds
+    build_score_layer(cfg, bounds_doc, dist, cfg_dir, None)
+
+    # live alpha/both n_sample = 3 (x2000, x2005, y2000); freeze 1 -> |3-1|/1
+    # = 2.0 > 0.25 -> REFUSED, and the message names both measures
+    doc_drift = json.loads(json.dumps(bounds_doc))
+    doc_drift["bounds"]["official"]["alpha/both"]["n_sample"] = 1
+    with pytest.raises(BoundsDriftError, match="n_sample: frozen 1, live 3") as ei:
+        build_score_layer(cfg, doc_drift, dist, cfg_dir, None)
+    assert "n_entities" in str(ei.value)  # both measures named
+    assert "bounds_drift_tolerance" in str(ei.value)
+    assert "re-freeze deliberately" in str(ei.value)
+
+
+def test_drift_guard_refuses_n_entities_drift(tmp_path):
+    # the entity count alone trips the guard: n_sample stays honest, the
+    # frozen n_entities is far below the live count (a coverage change
+    # that adds countries under the same source name).
+    dist, cfg = _mini_dist(tmp_path)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)
+    cfg_dir = dist / "cfg"
+    cfg_dir.mkdir(exist_ok=True)
+    (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
+    (cfg_dir / "score_bounds.yaml").write_text("meta: {}", encoding="utf-8")
+    (cfg_dir / "todd_refs.yaml").write_text("meta: {}", encoding="utf-8")
+
+    doc_drift = json.loads(json.dumps(bounds_doc))
+    # live alpha/both n_entities = 2 (x, y); freeze 1 -> |2-1|/1 = 1.0 > 0.25
+    doc_drift["bounds"]["official"]["alpha/both"]["n_entities"] = 1
+    with pytest.raises(BoundsDriftError, match="n_entities: frozen 1, live 2"):
+        build_score_layer(cfg, doc_drift, dist, cfg_dir, None)
+
+
+def test_drift_guard_accepts_at_the_boundary_and_below(tmp_path):
+    # |live - frozen| / frozen == tolerance exactly -> ACCEPTED (the
+    # refusal is strictly greater); below -> accepted; a legacy block with
+    # no n_entities at all -> the entity measure is skipped, not fatal.
+    dist, cfg = _mini_dist(tmp_path)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)
+    cfg_dir = dist / "cfg"
+    cfg_dir.mkdir(exist_ok=True)
+    (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
+    (cfg_dir / "score_bounds.yaml").write_text("meta: {}", encoding="utf-8")
+    (cfg_dir / "todd_refs.yaml").write_text("meta: {}", encoding="utf-8")
+
+    # live n_sample = 3: frozen 4 -> |3-4|/4 = 0.25 == tolerance -> build
+    doc_edge = json.loads(json.dumps(bounds_doc))
+    doc_edge["bounds"]["official"]["alpha/both"]["n_sample"] = 4
+    build_score_layer(cfg, doc_edge, dist, cfg_dir, None)  # no refusal
+
+    # frozen 3 -> ratio 0.0 -> build
+    build_score_layer(cfg, json.loads(json.dumps(bounds_doc)), dist, cfg_dir, None)
+
+    # a pre-v28.2 block (no n_entities key): the sample measure still
+    # guards, the entity measure is simply absent — not an error
+    doc_legacy = json.loads(json.dumps(bounds_doc))
+    del doc_legacy["bounds"]["official"]["alpha/both"]["n_entities"]
+    build_score_layer(cfg, doc_legacy, dist, cfg_dir, None)
+
+
+def test_drift_guard_tolerance_is_configurable(tmp_path):
+    # the threshold comes from the config: a tight tolerance refuses what
+    # the shipped 0.25 accepts (the same frozen/live pair as the boundary
+    # test: frozen 4, live 3, ratio 0.25).
+    dist, cfg = _mini_dist(tmp_path)
+    tight = _config(bounds_drift_tolerance=0.1)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)
+    cfg_dir = dist / "cfg"
+    cfg_dir.mkdir(exist_ok=True)
+    (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
+    (cfg_dir / "score_bounds.yaml").write_text("meta: {}", encoding="utf-8")
+    (cfg_dir / "todd_refs.yaml").write_text("meta: {}", encoding="utf-8")
+
+    doc_edge = json.loads(json.dumps(bounds_doc))
+    doc_edge["bounds"]["official"]["alpha/both"]["n_sample"] = 4
+    build_score_layer(cfg, doc_edge, dist, cfg_dir, None)  # tolerance 0.25: ratio 0.25 accepted
+    with pytest.raises(BoundsDriftError):  # tolerance 0.1: the same ratio refuses
+        build_score_layer(tight, doc_edge, dist, cfg_dir, None)
+
+
+def test_bounds_drift_tolerance_schema():
+    # decision 18: 0 <= x < 1, schema-validated
+    assert _config().bounds_drift_tolerance == 0.25  # the shipped value
+    assert _config(bounds_drift_tolerance=0).bounds_drift_tolerance == 0.0
+    assert _config(bounds_drift_tolerance=0.99).bounds_drift_tolerance == 0.99
+    for bad in (-0.01, 1.0, 1.5):
+        with pytest.raises(ValidationError):
+            _config(bounds_drift_tolerance=bad)
+
+
+def test_freezer_writes_n_entities(tmp_path, monkeypatch):
+    # the REAL freezer (scripts/freeze_score_bounds.py, imported as a
+    # module) writes n_entities on every block, computed by the same
+    # sampling rule the drift guard reads.
+    import importlib.util
+
+    repo_root = Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location(
+        "freeze_score_bounds_v282", repo_root / "scripts" / "freeze_score_bounds.py"
+    )
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    # a mini repo the freezer can freeze: config/ + data/dist/indicators/
+    (tmp_path / "config").mkdir()
+    (tmp_path / "data" / "dist" / "indicators").mkdir(parents=True)
+    (tmp_path / "config" / "score.yaml").write_text(
+        "version: test\npresets: [equal]\ncomponents:\n"
+        "  - indicator: alpha\n    direction: lower\n    transform: linear\n"
+        "    sex_mode: both\n    scores: [official, modelled]\n    basis: consensus\n",
+        encoding="utf-8",
+    )
+    alpha = {
+        "sources": [{"provider": "eurostat", "source_ref": "A", "role": "canonical",
+                     "layer": "collector", "root": "rt_a", "root_label": "RT-A"}],
+        "data": [_pt("x", 2000, 4.0), _pt("x", 2005, 2.0), _pt("y", 2000, 2.0)],
+        "witnesses": [],
+    }
+    (tmp_path / "data" / "dist" / "indicators" / "alpha.json").write_text(
+        json.dumps(alpha), encoding="utf-8"
+    )
+    monkeypatch.setattr(mod, "REPO_ROOT", tmp_path)
+    assert mod.freeze(dry_run=False) == 0
+
+    import yaml
+
+    doc = yaml.safe_load((tmp_path / "config" / "score_bounds.yaml").read_text())
+    for score in ("official", "modelled"):
+        blk = doc["bounds"][score]["alpha/both"]
+        assert set(blk) >= {"source", "source_class", "floor", "lo", "hi",
+                            "n_sample", "n_unavailable", "n_entities", "bounds_version"}
+        assert blk["n_sample"] == 3
+        assert blk["n_entities"] == 2  # x and y
+
+
+def test_regenerated_fertility_bounds_on_a_two_collector_series():
+    # decision 18's own computation: the official fertility bounds are the
+    # p1/p99 of the target distance over the PRIORITY-MERGED two-collector
+    # canonical (Eurostat points + DYB points in one data array — the
+    # v28.1 wiring's shape), with the target's positive filter, the
+    # pre-bounds_from_year points and the null gaps excluded.
+    from src.score.core import compute_bounds, select_source
+    from src.schema.score import ScoreName
+
+    cfg = _config(components=[
+        ScoreComponent(indicator="tfr_two_collector", direction="target", transform="target",
+                       sex_mode="both", scores=["official", "modelled"], basis="todd"),
+    ])
+    pts = [
+        _pt("eu_a", 1995, 1.5),        # Eurostat print
+        _pt("eu_a", 2000, 1.6),        # Eurostat print
+        _pt("eu_b", 1995, 2.0),        # Eurostat print
+        _pt("dyb_c", 2010, 4.2),       # DYB print — TFR beyond the old European scale
+        _pt("dyb_d", 2010, 0.9),       # DYB print — below the old scale's low edge
+        _pt("eu_a", 1985, 1.4),        # pre-1990: excluded from the sample
+        _pt("dyb_e", 2010, None),      # an explicit "..." gap: never an observation
+        _pt("dyb_f", 2010, 0.0),       # non-positive: unavailable for a target
+    ]
+    ind = _ind(pts, sources=[
+        {"provider": "eurostat", "source_ref": "demo_find/TOTFERRT", "role": "canonical",
+         "layer": "collector", "root": "eurostat_demo", "root_label": "Eurostat"},
+        {"provider": "un_dyb", "source_ref": "2024/table04", "role": "canonical",
+         "layer": "collector", "root": "unsd_dyb", "root_label": "UN DYB"},
+    ])
+
+    sel = select_source(ind, "both", ScoreName.official, cfg.bounds_from_year)
+    assert sel.name == "canonical"
+    b = compute_bounds(list(sel.points), Transform("target"), cfg)
+
+    distances = sorted(
+        abs(math.log(v / cfg.fertility_target))
+        for v in (1.5, 1.6, 2.0, 4.2, 0.9)
+    )
+    k = (len(distances) - 1) * 0.99
+    f = int(k)
+    expected_hi = distances[f] + (distances[min(f + 1, len(distances) - 1)] - distances[f]) * (k - f)
+    assert b.hi == pytest.approx(expected_hi)
+    assert b.lo == 0.0
+    assert b.n_sample == 5
+    assert b.n_unavailable == 1  # dyb_f's 0.0
+    assert b.n_entities == 4     # eu_a, eu_b, dyb_c, dyb_d (e is a gap, f unavailable)
+    # and the live measures the guard recomputes agree with the freezer
+    from src.score.core import bounds_sample_counts
+
+    assert bounds_sample_counts(list(sel.points), Transform("target"), cfg) == (5, 4)

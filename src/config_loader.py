@@ -197,7 +197,8 @@ def load_score_bounds(config_dir: Path) -> dict:
     scripts/freeze_score_bounds.py). Shape:
     meta: {bounds_version, generated, score_config_sha256, ...}
     bounds: {official|modelled: {'indicator/sex': {source, source_class,
-    floor, lo, hi, n_sample, bounds_version}}}"""
+    floor, lo, hi, n_sample, n_entities (v28.2), n_unavailable,
+    bounds_version}}}"""
     path = config_dir / "score_bounds.yaml"
     if not path.is_file():
         raise ConfigError(

@@ -1,354 +1,392 @@
 bounds:
   modelled:
     birth_rate_fertility/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 1.2487535788317012
       lo: 0.0
+      n_entities: 216
       n_sample: 7542
       n_unavailable: 0
       source: worldbank:SP.DYN.TFRT.IN
       source_class: modelled
     cirrhosis_alcohol_mortality/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 56.728
       lo: 1.9
+      n_entities: 45
       n_sample: 1473
       n_unavailable: 0
       source: canonical
       source_class: canonical
     hiv_prevalence_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 0.00045
       hi: 3.170647837547242
       lo: -7.706262975199909
+      n_entities: 152
       n_sample: 5199
       n_unavailable: 0
       source: canonical
       source_class: canonical
     homicide_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 0.2619783072
       hi: 4.0994260736636
       lo: -1.3394935755954616
+      n_entities: 200
       n_sample: 4220
       n_unavailable: 0
       source: owid:homicide-rate-unodc
       source_class: modelled
     industrial_employment_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 39.814063452247595
       lo: 2.5812560902673214
+      n_entities: 186
       n_sample: 6496
       n_unavailable: 0
       source: worldbank:SL.IND.EMPL.ZS
       source_class: modelled
     infant_mortality/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 2.023014275
       hi: 4.856645474779177
       lo: 0.7049938005795621
+      n_entities: 200
       n_sample: 6982
       n_unavailable: 0
       source: owid:infant-mortality
       source_class: modelled
     life_expectancy/female:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 86.45652000000001
       lo: 46.44808999999999
+      n_entities: 216
       n_sample: 7542
       n_unavailable: 0
       source: worldbank:SP.DYN.LE00.FE.IN
       source_class: modelled
     life_expectancy/male:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 81.7
       lo: 42.78838
+      n_entities: 216
       n_sample: 7542
       n_unavailable: 0
       source: worldbank:SP.DYN.LE00.MA.IN
       source_class: modelled
     life_expectancy_60/female:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 27.188469840699998
       lo: 13.6197092417
+      n_entities: 185
       n_sample: 4070
       n_unavailable: 0
       source: who_gho:WHOSIS_000015
       source_class: modelled
     life_expectancy_60/male:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 23.7973120277
       lo: 10.6614996006
+      n_entities: 185
       n_sample: 4070
       n_unavailable: 0
       source: who_gho:WHOSIS_000015
       source_class: modelled
     maternal_mortality_ratio/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 3.0
       hi: 7.269686339041811
       lo: 1.0986122886681098
+      n_entities: 194
       n_sample: 6596
       n_unavailable: 0
       source: worldbank:SH.STA.MMRT
       source_class: modelled
     math_test_scores/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 561.7232368
       lo: 338.1354024
+      n_entities: 88
       n_sample: 439
       n_unavailable: 0
       source: canonical
       source_class: canonical
     obesity_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 67.42516051999999
       lo: 0.6082316296
+      n_entities: 199
       n_sample: 6965
       n_unavailable: 0
       source: canonical
       source_class: canonical
     secondary_education_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 75.2
       lo: 10.798
+      n_entities: 36
       n_sample: 1000
       n_unavailable: 0
       source: canonical
       source_class: canonical
     suicide_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 34.85291230469999
       lo: 0.61489813347
+      n_entities: 185
       n_sample: 4070
       n_unavailable: 0
       source: who_gho:SDGSUICIDE
       source_class: modelled
     tertiary_education_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 51.504
       lo: 8.299000000000001
+      n_entities: 36
       n_sample: 1000
       n_unavailable: 0
       source: canonical
       source_class: canonical
     top_income_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 33.436800000000005
       lo: 5.948300000000001
+      n_entities: 155
       n_sample: 1984
       n_unavailable: 0
       source: canonical
       source_class: canonical
     unemployment_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 31.05229999999991
       lo: 0.4
+      n_entities: 208
       n_sample: 4224
       n_unavailable: 0
       source: worldbank:SL.UEM.TOTL.NE.ZS
       source_class: modelled
   official:
     birth_rate_fertility/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
-      hi: 0.6109090823229733
+      hi: 0.9902959932984179
       lo: 0.0
-      n_sample: 1278
+      n_entities: 177
+      n_sample: 2523
       n_unavailable: 0
       source: canonical
       source_class: canonical
     cirrhosis_alcohol_mortality/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 56.728
       lo: 1.9
+      n_entities: 45
       n_sample: 1473
       n_unavailable: 0
       source: canonical
       source_class: canonical
     hiv_prevalence_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 0.00045
       hi: 3.170647837547242
       lo: -7.706262975199909
+      n_entities: 152
       n_sample: 5199
       n_unavailable: 0
       source: canonical
       source_class: canonical
     homicide_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 0.2
       hi: 3.810942048015117
       lo: -1.6094379124341003
+      n_entities: 46
       n_sample: 1508
       n_unavailable: 0
       source: canonical
       source_class: canonical
     illegitimate_births/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 64.17599999999997
       lo: 2.2
+      n_entities: 47
       n_sample: 1263
       n_unavailable: 0
       source: canonical
       source_class: canonical
     industrial_employment_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 30.808999999999994
       lo: 8.291
+      n_entities: 37
       n_sample: 1092
       n_unavailable: 0
       source: canonical
       source_class: canonical
     infant_mortality/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 1.72435023502
       hi: 3.783040158007027
       lo: 0.5452024373860596
+      n_entities: 118
       n_sample: 1406
       n_unavailable: 0
       source: canonical
       source_class: canonical
     life_expectancy/female:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 87.1344
       lo: 56.114000000000004
+      n_entities: 184
       n_sample: 1515
       n_unavailable: 0
       source: canonical
       source_class: canonical
     life_expectancy/male:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 82.05780927759199
       lo: 51.7
+      n_entities: 184
       n_sample: 1517
       n_unavailable: 0
       source: canonical
       source_class: canonical
     life_expectancy_60/female:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 29.177200000000003
       lo: 15.604
+      n_entities: 166
       n_sample: 877
       n_unavailable: 0
       source: canonical
       source_class: canonical
     life_expectancy_60/male:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 24.842
       lo: 13.585172219722743
+      n_entities: 166
       n_sample: 877
       n_unavailable: 0
       source: canonical
       source_class: canonical
     maternal_mortality_ratio/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 1.0396386
       hi: 4.873425152891094
       lo: 0.042225899634557466
+      n_entities: 97
       n_sample: 1114
       n_unavailable: 0
       source: canonical
       source_class: canonical
     math_test_scores/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 561.7232368
       lo: 338.1354024
+      n_entities: 88
       n_sample: 439
       n_unavailable: 0
       source: canonical
       source_class: canonical
     obesity_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 67.42516051999999
       lo: 0.6082316296
+      n_entities: 199
       n_sample: 6965
       n_unavailable: 0
       source: canonical
       source_class: canonical
     road_accident_mortality_per_vehicle/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: 0.27890970416
       hi: 2.2843541167453423
       lo: -1.2768671905474078
+      n_entities: 38
       n_sample: 534
       n_unavailable: 0
       source: canonical
       source_class: canonical
     secondary_education_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 75.2
       lo: 10.798
+      n_entities: 36
       n_sample: 1000
       n_unavailable: 0
       source: canonical
       source_class: canonical
     suicide_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 41.19000000000001
       lo: 0.7
+      n_entities: 46
       n_sample: 1511
       n_unavailable: 0
       source: canonical
       source_class: canonical
     tertiary_education_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 51.504
       lo: 8.299000000000001
+      n_entities: 36
       n_sample: 1000
       n_unavailable: 0
       source: canonical
       source_class: canonical
     top_income_share/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 33.436800000000005
       lo: 5.948300000000001
+      n_entities: 155
       n_sample: 1984
       n_unavailable: 0
       source: canonical
       source_class: canonical
     unemployment_rate/both:
-      bounds_version: 2026-10-06.2
+      bounds_version: 2026-10-08.1
       floor: null
       hi: 27.833999999999993
       lo: 2.6830000000000003
+      n_entities: 35
       n_sample: 584
       n_unavailable: 0
       source: canonical
       source_class: canonical
 meta:
-  bounds_version: 2026-10-06.2
-  generated: '2026-10-06'
+  bounds_version: 2026-10-08.1
+  generated: '2026-10-08'
   method: p1/p99 (percentiles key of config/score.yaml) over all non-null country-years of the retained
     source since bounds_from_year (1990); floor = p1 of the strictly positive sample for log components;
     target lo = 0; the source per (score, component) is the §4.4 selection frozen at generation time —
     rebuild reads this file and never recomputes
-  score_config_sha256: c220759fe283889fad4d89bbcb90e110485e8a4b824aaa73617c3f1dd76a25a5
+  score_config_sha256: aa1c1a7b82148eaa9c82946259e4217fdcb9237fcaf3f7cb2cb34a85341440e7
   score_config_version: '1'
