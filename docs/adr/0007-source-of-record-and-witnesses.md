@@ -126,3 +126,18 @@ CHANGELOG, 2026-09-06 entry):
   to derive them"; OWID per-chart provenance model.
 - Numbering note: ADR-0001..0006 are reserved for decisions already taken
   and recorded in the CHANGELOG (see `docs/adr/README.md`).
+
+---
+
+2026-10-09 — HMD is dropped: Ediz will not create an account. The
+planned-route statements above are retired — the "HMD/HCD (planned)"
+collector row (Context item 2's collector list), the alternative-route
+mentions ("the named alternative route (HMD, national office)", "HMD
+for Russia, national offices for the US/UK", "HMD authentication" in
+the cost list), and the CHANGELOG reference's HMD/HCD live verification
+are historical records, not plans: HMD is no longer a planned
+collector, a per-indicator alternative route, or a planned
+cross-check. HCD (the Human Cause-of-Death Data series, HMD's sister
+database) is UNCHANGED — still available, still unwired. The PRECEDENT
+statements (HMD's co-published layers as the industry pattern, the
+Methods Protocol reference) are factual and stand as written.

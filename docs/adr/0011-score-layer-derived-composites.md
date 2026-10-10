@@ -9,7 +9,9 @@
   door, the official fertility scale RETAINED); AMENDED (2026-10-08,
   v28.2 — decision 18: the official fertility scale regenerated on the
   worldwide canonical sample, and the drift guard hardened to trip on
-  coverage drift, not only on source-name changes)
+  coverage drift, not only on source-name changes); AMENDED (2026-10-09,
+  v28.3 — decision 19: the UNODC / WHO Mortality Database widening of
+  the official score's coverage REFUSED, the measured what-if on record)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -251,6 +253,53 @@ Ediz's decisions (locked; numbered and testable):
     both measures' frozen and live values, and the deliberate re-freeze
     prescription (re-run the freezer, bump `bounds_version`, record it
     in the changelog). No automatic refresh, no bypass flag.
+19. **The official score's coverage is NOT widened through UNODC or the
+    WHO Mortality Database — REFUSED, with the measurement on record**
+    (v28.3, 2026-10-09). What was evaluated: the two doors the v28/v28.1
+    probes left open. The UNODC intentional-homicide face (the v28.1
+    memo: printed rates with per-point Source genealogy, 203 areas —
+    but 15.2% of the candidate face carries UNODC's own GSH revisions,
+    and promoting it is a REGISTER SWITCH for the 46 entities whose
+    homicide today reads the WHO-MDB cause-of-death canonical). The WHO
+    Mortality Database (suicide, cirrhosis, homicide: a genuine
+    as-reported collector of ICD-coded deaths, 115-148 countries by
+    year against the canonical's 45-46 — but it prints DEATH COUNTS by
+    cause/sex/age, no rate column anywhere: reading a crude rate off
+    the collector's own counts plus a population denominator is exactly
+    what the anti-derivation rule forbids). The measurement (what-if on
+    the V28.2 dist, equal weights, coverage 0.60, the shipped carry and
+    ghost rules; the swapped component's bounds re-frozen on the
+    witness sample with the freezer's own rule; the stand-ins are the
+    EXISTING global witness series, so every row is an UPPER BOUND for
+    what the raw faces would add; reproduced by TWO independent tools —
+    the repo-core swap and the reference prototype — agreeing on every
+    row): scored official countries at 2010/2015/2019/2021 — actual
+    46/47/42/46; homicide on the OWID-UNODC witness (200 entities)
+    46/48/45/49; suicide on the WHO GHO witness (185 entities)
+    46/48/45/49; homicide and suicide together 51/49/46/51; the
+    cirrhosis row is an ARTIFACT, not a widening — 40/42/45/49 as
+    reproduced here by both tools (the brief's own earlier reading
+    45/44/54/57; both readings agree on the shape: the WHO GHO
+    cirrhosis witness is a 2019-only cross-section — 540 points, 180
+    entities, one distinct year — so the swap DROPS 2010/2015 coverage
+    while 2019/2021 ride the fresh cross-section; the row measures the
+    swap's coverage artifact, not the source, and is recorded as not
+    representative). Why refused: (a) THE JOINT CONSTRAINT — a
+    non-OECD country is kept out of the official score by the narrow
+    components AS A SET (unemployment 35 entities, secondary and
+    tertiary attainment 36, industrial employment 37, road deaths per
+    vehicle 38, cirrhosis 45, homicide and suicide 46, illegitimate
+    births 47 — the OECD/Eurostat-bound tier), so widening one or two
+    components moves only the countries that already hold most of the
+    others: +1 to +5 scored countries per year, against the modelled
+    score's 159-166; (b) the UNODC promotion is a register switch for
+    the 46 covered entities plus the GSH-revision mixing the memo
+    recorded; (c) the WHO MDB route needs the anti-derivation rule
+    amended (counts -> crude rates) — a constitutional change refused
+    for a single-digit coverage gain. Reopens when: a single
+    as-reported source widens SEVERAL of the narrow components at once
+    (the decision-17 mirror: one collector, multiple components) —
+    not before.
 
 The auditor's delegated decisions (taken with data; Ediz can reverse):
 weighted **arithmetic** mean (the geometric mean ranked nearly the same

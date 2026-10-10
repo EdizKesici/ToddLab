@@ -18,6 +18,176 @@ after the fact, corrections land in a new entry):
 - The numbers in an entry are frozen at delivery time (docs/
   the-measurement-problem.md carries the current state).
 
+## 2026-10-10 — v28.3: the frozen bounds validated at load (the drift
+## guard's missing-count blind spot closed), decision 19 (the UNODC /
+## WHO MDB widening refused, measured), and HMD retired
+
+**Breaking: NONE.** A strictly more-informed refusal is not a contract
+break: a malformed score_bounds.yaml (a block missing or corrupting
+its counts) now fails AT LOAD TIME with a clean ConfigError at both
+CLI doors — v28.2 let such a file reach the guard, which silently
+skipped the entity check (missing n_entities), skipped BOTH checks (a
+zero count), or crashed on a raw KeyError (both counts missing). The
+shipped file is healthy and passes the new validation unchanged: every
+dist byte, every score value, every frozen bound, every weight and
+threshold is identical to V28.2 (64e8e82) — verified byte-for-byte.
+
+### Context
+
+Ediz's brief v28.3 (2026-10-09, relayed by the auditor) is
+data-neutral by construction: fix the guard's last gap, record two
+decisions, touch no number. (1) The v28.2 audit's own finding: the
+coverage trigger read its frozen counts with `.get(..., 0)` and an
+`frozen > 0` escape — the exact shape of the v28.1 blind spot it was
+built to close, one layer down. A block WITHOUT n_entities built
+silently (the entity measure skipped); a block with a ZERO count
+skipped both measures; a block with NEITHER count died on a raw
+KeyError inside `_frozen_bounds_for` instead of refusing cleanly. (2)
+Decision 19 (ADR-0011): the UNODC and WHO Mortality Database doors
+evaluated and REFUSED, with the measurement on record. (3) HMD
+retired — Ediz will not create an account; HMD is no longer a planned
+collector, alternative route, or planned cross-check (documentation
+only: no HMD wiring, connector, or door ever existed in src/,
+scripts/, or config/ — grep-verified).
+
+### Investigated (live, before freezing anything)
+
+- THE BLIND SPOT, reproduced first: on a copy of the shipped dist,
+  `build_score_layer` with a fertility block stripped of n_entities
+  BUILT (no refusal); stripped of both counts it raised
+  KeyError('n_sample'); a zero n_entities or zero n_sample BUILT (both
+  measures skipped). All four symptoms exactly as the brief described,
+  before any code moved. The shipped file is healthy (38 blocks, every
+  count present and strictly positive) — the gap was latent, the same
+  class as the v28.1 one.
+- THE DECISION-19 MEASUREMENT, reproduced by TWO independent tools
+  (the repo-core swap — the retained source replaced by the named
+  witness, that component's bounds re-frozen with the freezer's own
+  compute_bounds, the shipped aggregate/carry/ghost rules — and the
+  reference prototype's FORCED hook), agreeing on every row: scored
+  official countries at 2010/2015/2019/2021 — actual 46/47/42/46;
+  homicide on the OWID-UNODC witness (200 entities) 46/48/45/49;
+  suicide on the WHO GHO witness (185 entities) 46/48/45/49; both
+  together 51/49/46/51. The cirrhosis row measures the SWAP's
+  artifact, not the source: 40/42/45/49 as reproduced here by both
+  tools, against the brief's own earlier reading 45/44/54/57 (recorded
+  alongside, both reported); the readings agree on the shape — the WHO
+  GHO cirrhosis witness is a 2019-only cross-section (540 points, 180
+  entities, one distinct year), so the swap DROPS 2010/2015 coverage
+  while 2019/2021 ride the fresh cross-section. Every row is an UPPER
+  BOUND (the stand-ins are the existing global witness series, not the
+  raw UNODC-CTS/MDB faces). The modelled score's breadth for scale:
+  159-166 countries at 2005-2022.
+- THE UNODC/WHO RECORD already on file: the v28.1 memo (printed rates,
+  per-point Source genealogy, 203 areas, 15.2% GSH-revised, the
+  register switch for the 46 WHO-MDB-covered entities) and the v28
+  probe record (the MDB's 115-148 countries by year; counts, not
+  rates) — both cited by decision 19, neither re-probed.
+- THE HMD SWEEP: every remaining HMD mention in src/, scripts/,
+  config/ is a factual provenance label (the OWID life-expectancy
+  source's Riley/HMD genealogy in the schema's root labels) or a
+  registry comment on deliberately-absent sources — no wiring existed
+  to remove, none added.
+
+### Fixed
+
+- `src/config_loader.py` — `load_score_bounds` VALIDATES every block
+  at load: source, source_class, bounds_version (non-empty strings);
+  floor (present, number or null), lo, hi (numbers); n_sample and
+  n_entities (integers — bools refused — STRICTLY POSITIVE). All
+  violations accumulate into ONE ConfigError naming score, component,
+  and field, closing with the re-freeze prescription. The single
+  implementation both CLI doors share.
+- `src/score/emit.py` — the drift guard reads the counts DIRECTLY
+  (`int(frozen_block["n_sample"])` / `["n_entities"]`, no `.get`
+  default, no `frozen > 0` escape): an unreadable count raises a clean
+  BoundsDriftError naming the component and the v28.3 contract; a
+  non-positive count is REFUSED — "(frozen count not positive —
+  refused, never skipped)". Defense in depth under the loader's gate.
+- `src/cli.py` — `cmd_rebuild` catches the loader's ConfigError (it
+  caught only BoundsDriftError, so a malformed file would have escaped
+  as a traceback): "INVALID CONFIG (score bounds)", exit 1 — the same
+  refusal check-config prints, from the same implementation.
+- `scripts/freeze_score_bounds.py` — the freezer REFUSES to freeze an
+  empty sample, checked via `bounds_sample_counts` BEFORE
+  `compute_bounds` (which would die on a raw pct-of-nothing
+  ValueError): SystemExit naming score/component/source with both
+  counts; nothing is written.
+
+### Changed
+
+- ADR-0011: decision 19 recorded (the refusal, the measurement, the
+  joint constraint with live per-component entity counts, the register
+  switch, the anti-derivation blocker, the reopening condition) and
+  the status line amended (v28.3).
+- ADR-0007 / ADR-0008: dated endnotes (2026-10-09) retiring the HMD
+  planned-route statements — original sentences untouched (ADRs are
+  records of reasoning); HCD unchanged; the precedent statements
+  unchanged.
+- `docs/the-measurement-problem.md`: three direct edits (the phase-2
+  route item, the data-ops account line, the cross-check plan) —
+  dropped on 2026-10-09.
+- `docs/licenses.md`: HMD dropped; CLIO-INFRA unchanged (set aside).
+- The living texts that describe the guard now carry the v28.3
+  contract (emit.py's header, the BoundsDriftError docstring, the
+  freezer's docstring, the schema's invariant list, the loader's
+  docstring). `docs/score-contract.md` needed NO UNODC fix:
+  grep-verified it carries no UNODC wording at all — the open-UNODC
+  question lives in the v28.2 entry's Known limitations (immutable by
+  the house rules); its closure is recorded below, in THIS entry.
+
+### Verified (live, this session)
+
+- 431 tests pass (416 + 15 new: the loader's refusals — missing
+  n_sample, missing n_entities, both, zero, negative, string, float,
+  bool — the whole v28.1-shape file refused with all 38 blocks listed,
+  the factory file's acceptance, the guard's clean refusal of
+  non-positive counts, the freezer's empty-sample refusal, and the two
+  CLI doors refusing the same bad file with the same message). The
+  v28.2 drift tests pass unchanged EXCEPT one deliberately flipped
+  sub-case: the boundary test's legacy block (no n_entities) now
+  expects the refusal it used to accept — that acceptance WAS the
+  blind spot (a strengthening, not a weakening; two older tests'
+  fixtures moved to the v28.2 block shape for the same reason).
+- The session-opening repro, re-run after the fix: all four bad
+  variants REFUSED with clean BoundsDriftError messages; the factory
+  file loads (38 blocks, bounds_version 2026-10-08.1).
+- Full rebuild on the real raw: exit 0, all 34 dist files
+  BYTE-STABLE, "official 20 / modelled 18 components, carry <= 3y,
+  max_obs_year 2025/2025, bounds 2026-10-08.1 frozen".
+- `scripts/verify_v28_diff.py` updated IN PLACE (the V27.1/V28.2
+  precedent): every existing check kept (the v28.2 invariants against
+  b394ea6 still hold), 13 new checks — the strict validation
+  reproduced on five bad copies of the real file, the v28.1-shape
+  whole-file refusal with all 38 blocks listed, check-config's exit 1,
+  the factory file's acceptance, the byte-identity of all 34 dist
+  files + score_bounds.yaml + score.yaml against the V28.2 baseline
+  (64e8e82), the corpus untouched, the golden vectors unchanged
+  (n=20). 134/134 PASS.
+
+### Known limitations
+
+- The UNODC question, carried OPEN since v28.1 (the v28.2 entry's
+  record), is CLOSED by decision 19: refused, with the reopening
+  condition on record (a single as-reported source that widens
+  several narrow components at once — the decision-17 mirror). The
+  WHO Mortality Database stays blocked by the anti-derivation rule
+  (counts, not rates).
+- HMD is dropped (2026-10-09): no account will be created; HCD
+  remains available and unwired. The registry comments in
+  config/sources.yaml and the indicator configs ("set aside for now",
+  "HMD-class pending") are historical notes on deliberately-absent
+  sources, untouched by the documentation-only scope of the
+  retirement.
+- The decision-19 measurement is an UPPER BOUND on witness stand-ins:
+  the raw UNODC-CTS and MDB faces were not fetched this session (the
+  v28/v28.1 probe records stand as their evidence); the cirrhosis row
+  differs from the brief's own reading on both tools — both numbers
+  recorded, the row annotated as an artifact either way.
+- The 2025 vintage lag and the 4 ghost country-years (australia,
+  canada, chile, costa_rica) — carried from v28.2, unchanged: this
+  delivery moves no data.
+
 ## 2026-10-08 — v28.2: the official fertility scale regenerated
 ## (decision 18) and the drift guard hardened to trip on coverage
 

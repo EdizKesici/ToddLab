@@ -21,7 +21,9 @@ added — only OWID is active in phase 1.
 
 To fill in once the connectors are written.
 
-## HMD, CLIO-INFRA (set aside for now)
+## HMD (dropped), CLIO-INFRA (set aside for now)
 
-Not applicable — see the conversation: deliberately set aside, their
-specific licensing/redistribution questions were not investigated.
+HMD: dropped on 2026-10-09 — Ediz will not create an account, so it is
+no longer a planned source; nothing to license or credit.
+CLIO-INFRA: deliberately set aside — see the conversation: its specific
+licensing/redistribution questions were not investigated.

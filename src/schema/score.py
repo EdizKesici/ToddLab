@@ -36,7 +36,11 @@ House invariants enforced here:
 - bounds_drift_tolerance is a fraction in [0, 1) (decision 18, v28.2:
   the drift guard's refusal threshold on the frozen bounds sample's
   n_sample and n_entities — 0.25 tolerates several yearly refreshes
-  and refuses the coverage changes the v28.1 wiring slipped through).
+  and refuses the coverage changes the v28.1 wiring slipped through);
+- every frozen bounds block carries INTEGER STRICTLY-POSITIVE n_sample
+  and n_entities (v28.3, the loader's contract — load_score_bounds
+  refuses a malformed block at both CLI doors; the drift guard reads
+  the counts directly and never skips a missing or non-positive one).
 """
 from __future__ import annotations
 

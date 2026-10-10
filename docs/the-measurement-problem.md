@@ -133,8 +133,9 @@ Concretely, for this indicator (and as a template for others):
    vital registration. Free after registration; downloads require an
    account, so raw snapshots stay out of git (same policy as GHO). Quality
    warnings: 1959–1969 lower quality; updates suspended after 2014 (pair
-   with Rosstat for recent years). **This is the phase-2 route to L1-quality
-   data for Russia and ~40 other countries.**
+   with Rosstat for recent years). **Dropped on 2026-10-09: Ediz will not
+   create an account — HMD is no longer a planned route (the description
+   above is factual, the plan is retired).**
 3. **Rosstat / EMISS (modern Russia)** — the direct national source for
    post-Soviet years; Russian-language, free.
 4. **UN IGME (via OWID)** — keep it: it is the right backbone for the
@@ -335,8 +336,9 @@ Decisions implied by this analysis (to be applied incrementally):
    blackout should be representable as an explicit coverage event with a
    reason ("publication suspended"), not just as missing values. A state
    stopping publication is a hard indicator in its own right.
-7. **Data ops**: HMD requires an account (CI secret, raw never committed);
-   curated tables are plain text, reviewed like code.
+7. **Data ops**: HMD required an account (CI secret, raw never committed) —
+   dropped on 2026-10-09, Ediz will not create one; curated tables are
+   plain text, reviewed like code.
 
 ## 6. Questions resolved by ADR-0008 (2026-09-06)
 
@@ -352,7 +354,8 @@ Decisions implied by this analysis (to be applied incrementally):
   curated tier (`catalog/curated/ussr_infant_mortality_official.csv`, 21
   points 1970-1990, one citation per point, gate check in
   `catalog/curated/README.md`) is infant_mortality's canonical source #1,
-  live-verified end-to-end. The HMD cross-check remains a phase-2 plan.
+  live-verified end-to-end. The HMD cross-check was a phase-2 plan —
+  dropped on 2026-10-09 (Ediz will not create an account).
 - **WPP**: still open — verify its Russia series shape as soon as
   programmatic access is found (it would tell us whether *any* big
   harmonized family kept the signal).

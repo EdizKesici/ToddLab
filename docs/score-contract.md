@@ -179,7 +179,11 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
   if the live selection would pick another source OR if either measure
   drifts beyond `bounds_drift_tolerance` — the two drift triggers are
   the source NAME and the sample's coverage; both demand a deliberate
-  re-freeze (`bounds_version` bump, changelog entry).
+  re-freeze (`bounds_version` bump, changelog entry). Since v28.3 the
+  frozen file is VALIDATED at load: every block's counts must be
+  integers and strictly positive, or both CLI doors refuse the file
+  outright (a missing or zero count is a refusal, never a skipped
+  check).
 - **Badges to surface**: `source_class: "modelled"` inside the official
   score; `reliability: "low"` of the underlying indicator (read the
   catalog); the chosen `source` per component; the component count

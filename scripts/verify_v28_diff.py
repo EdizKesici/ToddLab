@@ -49,12 +49,37 @@ live-checked DYB-only fact, and the beyond-the-old-scale case
 (a scored official point whose TFR distance exceeded the v28.1 European
 freeze and now reads non-zero) is present with its premise verified.
 
-§8-§9: 416 tests collected (409 at v28.1 + 7 v28.2 tests); check-config
+§8-§9: 431 tests collected (409 at v28.1 + 7 v28.2 + 15 v28.3 tests);
+check-config
 unchanged; the drift guard's live-vs-frozen ratios on all 38 blocks are
 0.0 (the calibration — no block trips, the full margin visible); the
 guard REFUSES a tampered doc live (both triggers); rebuild ×2
 byte-stable across all 34 dist files; exactly ONE living score verifier
 (updated in place, the V27.1 precedent).
+
+v28.3 (2026-10-10, data-neutral by construction — the auditor's brief
+of 2026-10-09): the drift guard's LAST gap closed. The coverage trigger
+read its frozen counts with `.get(..., 0)` and a `frozen > 0` escape,
+so a block WITHOUT n_entities built silently (the entity measure
+skipped — the v28.1 blind spot's twin), a block with a ZERO count
+skipped BOTH measures, and a block with NEITHER count died on a raw
+KeyError. Now load_score_bounds VALIDATES every block at load (the
+single implementation both CLI doors share: integers, strictly
+positive), the guard reads the counts directly and refuses on any
+missing/non-positive one, cmd_rebuild catches the loader's ConfigError
+(the same refusal check-config prints), and the freezer refuses to
+freeze an empty sample. Decision 19 (ADR-0011): the UNODC / WHO MDB
+widening of the official score REFUSED with the measurement on record
+(reproduced by two independent tools: actual 46/47/42/46 at
+2010/2015/2019/2021, UNODC-homicide 46/48/45/49, WHO-suicide
+46/48/45/49, both 51/49/46/51 — upper bounds on witness stand-ins).
+HMD retired (docs only; no wiring existed to remove).
+
+§10 (v28.3): the new strict validation reproduced on bad copies; the
+factory file passes; ALL 34 dist files + config/score_bounds.yaml +
+config/score.yaml BYTE-IDENTICAL to the V28.2 baseline (64e8e82); the
+corpus untouched; the golden vectors unchanged (20); the two CLI doors
+refuse the same bad file with the same message.
 """
 import hashlib
 import json
@@ -67,6 +92,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "b394ea6"  # Ediz's V28.1 push — the reviewed baseline of this delivery
+BASE2 = "64e8e82"  # Ediz's V28.2 push — the v28.3 baseline (data-neutral delivery)
 
 results: list = []
 
@@ -965,10 +991,15 @@ _diag = [f"returncode={test_count.returncode}"]
 _diag += [f"stdout: {_s}" for _s in map(str.strip, test_count.stdout.splitlines()[-4:]) if _s][:3]
 _diag += [f"stderr: {_s}" for _s in map(str.strip, test_count.stderr.splitlines()[-4:]) if _s][:3]
 check(
-    "416 tests collected (409 at v28.1 + 7 v28.2 tests: the two drift-guard "
+    "431 tests collected (409 at v28.1 + 7 v28.2 tests: the two drift-guard "
     "refusals, the boundary accept, the configurable tolerance, the tolerance "
-    "schema, the freezer's n_entities, the two-collector percentile fixture)",
-    n_tests == 416,
+    "schema, the freezer's n_entities, the two-collector percentile fixture; "
+    "+ 15 v28.3 tests: the loader's refusals — missing n_sample / missing "
+    "n_entities / both / zero / negative / string / float / bool, the whole "
+    "v28.1-shape file, the factory file's acceptance, the guard's clean "
+    "refusal of non-positive counts, the freezer's empty-sample refusal, the "
+    "two CLI doors on the same bad file)",
+    n_tests == 431,
     f"parsed={n_tests}; " + " | ".join(_diag),
 )
 cfg = subprocess.run(
@@ -1058,6 +1089,183 @@ check(
     _guard2 is not None and "modelled/homicide_rate/both" in _guard2
     and "owid:WRONG" in _guard2,
     (_guard2 or "NO REFUSAL — the name check regressed")[:200],
+)
+
+# --- 10. v28.3: the strict load-time validation + the data-neutral proof ---
+# (placed BEFORE §9: the byte-identity checks read the PRISTINE committed
+# dist — §9's rebuild is byte-stable with raw present, but on a patch-only
+# clone the no-raw rebuild empties it first; the §2 discipline, applied)
+
+# 10a. ALL 34 dist files byte-identical to the V28.2 baseline: the v28.3
+# surgery touches src/ + docs/ + tests/ only, never a byte of data.
+_dist_files_v283 = sorted(str(f.relative_to(ROOT)) for f in (ROOT / "data/dist").rglob("*.json"))
+_byte_diffs_v283 = [
+    p for p in _dist_files_v283
+    if hashlib.md5((ROOT / p).read_bytes()).hexdigest()
+    != hashlib.md5(_bytes_at(BASE2, p)).hexdigest()
+]
+check(
+    "v28.3: all 34 dist files BYTE-IDENTICAL to the V28.2 baseline (64e8e82) — "
+    "no score value, no frozen bound, no indicator byte moved",
+    len(_dist_files_v283) == 34 and not _byte_diffs_v283,
+    f"n={len(_dist_files_v283)}; diffs={_byte_diffs_v283[:3]}",
+)
+
+# 10b. the two configs the surgery must never touch, byte-identical too.
+for _rel in ("config/score_bounds.yaml", "config/score.yaml"):
+    check(
+        f"v28.3: {_rel} BYTE-IDENTICAL to the V28.2 baseline — no re-freeze, "
+        "no threshold change, bounds_version still 2026-10-08.1",
+        (ROOT / _rel).read_bytes() == _bytes_at(BASE2, _rel),
+    )
+
+# 10c. the factory file passes the new validation (the strictness changes
+# nothing for a healthy file), and the counts are the v28.2 freezer's own.
+from src.config_loader import load_score_bounds as _lsb  # noqa: E402
+
+_doc_v283 = _lsb(ROOT / "config")
+_n_blocks_v283 = sum(len(b) for b in _doc_v283["bounds"].values())
+_all_positive_v283 = all(
+    isinstance(blk["n_sample"], int) and blk["n_sample"] > 0
+    and isinstance(blk["n_entities"], int) and blk["n_entities"] > 0
+    for blocks in _doc_v283["bounds"].values() for blk in blocks.values()
+)
+check(
+    "v28.3: the factory score_bounds.yaml PASSES the strict loader (38 blocks, "
+    "every count an integer, strictly positive; bounds_version 2026-10-08.1)",
+    _n_blocks_v283 == 38 and _all_positive_v283
+    and _doc_v283["meta"]["bounds_version"] == "2026-10-08.1",
+    f"n={_n_blocks_v283}; version={_doc_v283['meta'].get('bounds_version')}",
+)
+
+# 10d. the blind spot reproduced THEN refused: each bad copy of the REAL
+# file is a ConfigError naming score/component/field (v28.2: silent build,
+# raw KeyError, or skipped checks).
+import tempfile as _tempfile  # noqa: E402
+import shutil as _shutil  # noqa: E402
+from src.config_loader import ConfigError as _ConfigError  # noqa: E402
+
+
+def _bad_config_dir(mutate) -> tuple:
+    """The real config/ copied to a temp dir with one mutation applied."""
+    tmp = Path(_tempfile.mkdtemp(prefix="v283_verify_"))
+    cfg = tmp / "config"
+    _shutil.copytree(ROOT / "config", cfg)
+    doc = yaml.safe_load((cfg / "score_bounds.yaml").read_text(encoding="utf-8"))
+    mutate(doc)
+    (cfg / "score_bounds.yaml").write_text(
+        yaml.safe_dump(doc, sort_keys=True, allow_unicode=True), encoding="utf-8"
+    )
+    return tmp, cfg
+
+
+def _strip_entities(doc):
+    del doc["bounds"]["official"]["birth_rate_fertility/both"]["n_entities"]
+
+
+def _strip_both(doc):
+    b = doc["bounds"]["official"]["birth_rate_fertility/both"]
+    del b["n_sample"], b["n_entities"]
+
+
+def _zero_entities(doc):
+    doc["bounds"]["official"]["birth_rate_fertility/both"]["n_entities"] = 0
+
+
+def _negative_sample(doc):
+    doc["bounds"]["modelled"]["hiv_prevalence_rate/both"]["n_sample"] = -12
+
+
+def _string_sample(doc):
+    doc["bounds"]["official"]["homicide_rate/both"]["n_sample"] = "1508"
+
+
+for _label, _mut in (
+    ("missing n_entities (the silent-build symptom)", _strip_entities),
+    ("both counts missing (the raw-KeyError symptom)", _strip_both),
+    ("zero n_entities (the skipped-check symptom)", _zero_entities),
+    ("negative n_sample", _negative_sample),
+    ("string n_sample", _string_sample),
+):
+    _tmp, _cfg = _bad_config_dir(_mut)
+    try:
+        try:
+            _lsb(_cfg)
+            _refused, _detail = False, "loaded (NO refusal)"
+        except _ConfigError as e:
+            _refused = "re-freeze" in str(e) and "n_" in str(e)
+            _detail = str(e)[:100]
+        check(
+            f"v28.3: the loader REFUSES the bad copy — {_label}",
+            _refused, _detail,
+        )
+    finally:
+        _shutil.rmtree(_tmp)
+
+# 10e. the v28.1 SHAPE (n_entities on NO block) refused with EVERY block
+# listed — and the same file refused at BOTH CLI doors with the same
+# message (the single implementation).
+def _strip_all_entities(doc):
+    for blocks in doc["bounds"].values():
+        for blk in blocks.values():
+            blk.pop("n_entities", None)
+
+
+_tmp, _cfg = _bad_config_dir(_strip_all_entities)
+try:
+    try:
+        _lsb(_cfg)
+        _n_listed = 0
+        _msg = "(loaded — NO refusal)"
+    except _ConfigError as e:
+        _msg = str(e)
+        _n_listed = _msg.count("field 'n_entities' is missing")
+    check(
+        "v28.3: a whole v28.1-shaped file (no n_entities anywhere) is refused "
+        "with ALL 38 blocks listed",
+        _n_listed == 38,
+        f"listed={_n_listed}; {_msg[:100]}",
+    )
+
+    # the two doors on the same bad file (check-config needs no raw; the
+    # rebuild door is driven with the loader raising at its call site —
+    # the shared implementation is what both doors call)
+    import src.cli as _cli  # noqa: E402
+
+    _old_cfg_dir = _cli.CONFIG_DIR
+    _cli.CONFIG_DIR = _cfg
+    try:
+        _rc = _cli.cmd_check_config(None)
+    finally:
+        _cli.CONFIG_DIR = _old_cfg_dir
+    check(
+        "v28.3: check-config exits 1 on the bad file (INVALID CONFIG, the "
+        "field named) — door 1",
+        _rc == 1,
+        f"rc={_rc}",
+    )
+finally:
+    _shutil.rmtree(_tmp)
+
+# 10f. the corpus and the golden vectors unchanged vs V28.2 (the §2/§7
+# checks prove it against V28.1; this closes the chain to the v28.3
+# baseline directly).
+_corpus_v283 = json.loads((ROOT / "data/dist/todd_corpus.json").read_text())
+check(
+    "v28.3: the corpus untouched vs V28.2 (22 metrics / 115 rows / 16 books / "
+    "470 citations)",
+    _corpus_v283["meta"]["metrics"] == 22 and _corpus_v283["meta"]["rows"] == 115
+    and _corpus_v283["meta"]["books"] == 16
+    and _corpus_v283["meta"]["total_citations"] == 470,
+)
+_gv_v283 = json.loads((ROOT / "data/dist/score/golden_vectors.json").read_text())
+_gv_base = json.loads(_bytes_at(BASE2, "data/dist/score/golden_vectors.json"))
+check(
+    "v28.3: the golden vectors UNCHANGED vs V28.2 (n=20, the payload "
+    "value-identical)",
+    _gv_v283["n"] == 20 and len(_gv_v283["vectors"]) == 20
+    and json.dumps(_gv_v283, sort_keys=True) == json.dumps(_gv_base, sort_keys=True),
+    f"n={_gv_v283.get('n')}; vectors={len(_gv_v283.get('vectors', []))}",
 )
 
 # --- 9. rebuild ×2 byte-stability, INCLUDING the score layer ---

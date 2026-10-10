@@ -192,13 +192,78 @@ def load_score_config(config_dir: Path) -> ScoreConfig:
         raise ConfigError(f"score.yaml is invalid:\n{e}") from e
 
 
+def _validate_bounds_blocks(raw: dict, path: Path) -> None:
+    """v28.3: every frozen block is validated AT LOAD TIME — the single
+    implementation, shared by `check-config` and `rebuild` (both doors
+    call load_score_bounds). A block missing its counts used to reach the
+    drift guard, whose `.get(..., 0)` + `frozen > 0` escape silently
+    SKIPPED the entity check (the v28.2 blind spot's twin) or crashed on
+    a raw KeyError — neither is acceptable for a frozen file. Required
+    per block: source, source_class, floor (may be null), lo, hi,
+    bounds_version, and INTEGER STRICTLY-POSITIVE n_sample and
+    n_entities. n_unavailable stays optional (pre-v28 files)."""
+    errors: list[str] = []
+    bounds = raw.get("bounds")
+    if not isinstance(bounds, dict) or not bounds:
+        raise ConfigError(
+            f"{path}: 'bounds' must be a non-empty map of score -> blocks "
+            "(the shape freeze_score_bounds.py writes)"
+        )
+    for score, blocks in bounds.items():
+        if not isinstance(blocks, dict) or not blocks:
+            errors.append(f"bounds.{score}: expected a non-empty map of blocks")
+            continue
+        for key, block in blocks.items():
+            where = f"bounds.{score}.{key}"
+            if not isinstance(block, dict):
+                errors.append(f"{where}: expected a mapping, got {type(block).__name__}")
+                continue
+            for field in ("source", "source_class", "bounds_version"):
+                v = block.get(field)
+                if not isinstance(v, str) or not v.strip():
+                    errors.append(f"{where}: field '{field}' must be a non-empty string")
+            for field in ("floor", "lo", "hi"):
+                if field not in block:
+                    errors.append(f"{where}: field '{field}' is missing")
+                elif block[field] is not None and not isinstance(block[field], (int, float)):
+                    errors.append(
+                        f"{where}: field '{field}' must be a number or null, "
+                        f"got {type(block[field]).__name__}"
+                    )
+            for field in ("n_sample", "n_entities"):
+                if field not in block:
+                    errors.append(f"{where}: field '{field}' is missing")
+                    continue
+                v = block[field]
+                if isinstance(v, bool) or not isinstance(v, int):
+                    errors.append(
+                        f"{where}: field '{field}' must be an integer, "
+                        f"got {type(v).__name__} ({v!r})"
+                    )
+                elif v <= 0:
+                    errors.append(f"{where}: field '{field}' must be strictly positive, got {v}")
+    if errors:
+        raise ConfigError(
+            "score_bounds.yaml is invalid (v28.3: every block must carry integer, "
+            "strictly-positive n_sample and n_entities — a block without valid "
+            "counts is refused at load, never silently skipped by the drift "
+            "guard):\n- " + "\n- ".join(errors) + "\n"
+            "re-freeze: `scripts/freeze_score_bounds.py`, bump `bounds_version`, "
+            "record it in the changelog."
+        )
+
+
 def load_score_bounds(config_dir: Path) -> dict:
     """The frozen numbers, read raw (deterministic YAML written by
     scripts/freeze_score_bounds.py). Shape:
     meta: {bounds_version, generated, score_config_sha256, ...}
     bounds: {official|modelled: {'indicator/sex': {source, source_class,
     floor, lo, hi, n_sample, n_entities (v28.2), n_unavailable,
-    bounds_version}}}"""
+    bounds_version}}}
+
+    v28.3: the blocks are VALIDATED here (see _validate_bounds_blocks) —
+    the one implementation both `check-config` and `rebuild` share, so a
+    malformed frozen file is refused identically at either door."""
     path = config_dir / "score_bounds.yaml"
     if not path.is_file():
         raise ConfigError(
@@ -209,6 +274,7 @@ def load_score_bounds(config_dir: Path) -> dict:
     raw = _load_yaml(path)
     if not isinstance(raw, dict) or "meta" not in raw or "bounds" not in raw:
         raise ConfigError(f"{path}: expected the meta/blocks structure written by freeze_score_bounds.py")
+    _validate_bounds_blocks(raw, path)
     return raw
 
 

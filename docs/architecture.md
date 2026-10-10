@@ -60,7 +60,10 @@ frozen source no longer matching what the §4.4 selection rules would
 pick on the current dist, or the bounds sample's `n_sample` /
 `n_entities` drifting beyond `bounds_drift_tolerance` (0.25) —
 re-freezing is a deliberate `bounds_version` bump, recorded, never an
-auto-refresh.
+auto-refresh. Since v28.3 every frozen block is VALIDATED at load
+(integers, strictly positive counts — the single implementation both
+CLI doors share): a malformed file is refused before any build, and
+the guard never silently skips a missing or non-positive count.
 
 ## The Todd corpus rides as metadata (v13)
 

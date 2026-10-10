@@ -150,9 +150,15 @@ def cmd_rebuild(_args) -> int:
     # v27: the score layer rides the rebuild — AFTER build_all, reading the
     # freshly written dist + the frozen bounds. The drift guard fails the
     # rebuild loudly when the frozen source no longer matches §4.4.
+    # v28.3: a malformed frozen file (e.g. a block without valid counts)
+    # is refused HERE too — load_score_bounds validates at both doors
+    # (check-config and rebuild share the single implementation).
     try:
         score_bounds = load_score_bounds(CONFIG_DIR)
         summary = build_score_layer(score_config, score_bounds, DIST_DIR, CONFIG_DIR, todd_refs)
+    except ConfigError as e:
+        print(f"INVALID CONFIG (score bounds):\n{e}", file=sys.stderr)
+        return 1
     except BoundsDriftError as e:
         print(f"SCORE LAYER REFUSED: {e}", file=sys.stderr)
         return 1
