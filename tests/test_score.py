@@ -573,7 +573,7 @@ def _mini_bounds_doc(tmp_path: Path, cfg: ScoreConfig):
 
 def test_build_score_layer_deterministic_and_drift_guard(tmp_path):
     dist, cfg = _mini_dist(tmp_path)  # dist IS the dist root: indicators/ lives in it
-    bounds_doc = _mini_bounds_doc(dist, cfg)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)  # v28.3: the counts are required
 
     # a config dir with the yaml files the meta fingerprints read
     cfg_dir = tmp_path / "cfg"
@@ -771,7 +771,7 @@ def test_bounds_unaffected_by_the_carry_rule(tmp_path):
     # FROZEN ones — the carried years (2001-2003 now in normalised) never
     # feed lo/hi/n_sample
     dist, cfg = _mini_dist(tmp_path)
-    bounds_doc = _mini_bounds_doc(dist, cfg)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)  # v28.3: the counts are required
     cfg_dir = tmp_path / "cfg"
     cfg_dir.mkdir()
     (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
@@ -958,8 +958,10 @@ def test_drift_guard_refuses_n_entities_drift(tmp_path):
 
 def test_drift_guard_accepts_at_the_boundary_and_below(tmp_path):
     # |live - frozen| / frozen == tolerance exactly -> ACCEPTED (the
-    # refusal is strictly greater); below -> accepted; a legacy block with
-    # no n_entities at all -> the entity measure is skipped, not fatal.
+    # refusal is strictly greater); below -> accepted. A legacy block
+    # with no n_entities at all is REFUSED since v28.3 (the guard reads
+    # the counts directly — a missing count is a refusal, never a
+    # silent skip; load_score_bounds refuses the same file at load).
     dist, cfg = _mini_dist(tmp_path)
     bounds_doc = _mini_bounds_doc_v282(dist, cfg)
     cfg_dir = dist / "cfg"
@@ -976,11 +978,16 @@ def test_drift_guard_accepts_at_the_boundary_and_below(tmp_path):
     # frozen 3 -> ratio 0.0 -> build
     build_score_layer(cfg, json.loads(json.dumps(bounds_doc)), dist, cfg_dir, None)
 
-    # a pre-v28.2 block (no n_entities key): the sample measure still
-    # guards, the entity measure is simply absent — not an error
+    # a pre-v28.2 block (no n_entities key): REFUSED since v28.3 — the
+    # v28.2 behaviour (entity measure silently skipped) was the blind
+    # spot this version closes; the refusal is clean (BoundsDriftError,
+    # never a raw KeyError) and names the component.
     doc_legacy = json.loads(json.dumps(bounds_doc))
     del doc_legacy["bounds"]["official"]["alpha/both"]["n_entities"]
-    build_score_layer(cfg, doc_legacy, dist, cfg_dir, None)
+    with pytest.raises(BoundsDriftError, match="official/alpha/both") as ei:
+        build_score_layer(cfg, doc_legacy, dist, cfg_dir, None)
+    assert "unreadable" in str(ei.value)
+    assert "re-freeze" in str(ei.value)
 
 
 def test_drift_guard_tolerance_is_configurable(tmp_path):
@@ -1108,3 +1115,250 @@ def test_regenerated_fertility_bounds_on_a_two_collector_series():
     from src.score.core import bounds_sample_counts
 
     assert bounds_sample_counts(list(sel.points), Transform("target"), cfg) == (5, 4)
+
+
+# ---------------------------------------------------------------------------
+# v28.3 THE STRICT LOAD-TIME VALIDATION — the loader's contract, shared by
+# check-config and rebuild; the guard's own defense on top
+# ---------------------------------------------------------------------------
+
+
+def _dump_bounds_yaml(tmp_path: Path, doc: dict) -> Path:
+    """A config dir holding `doc` as score_bounds.yaml (the loader's input)."""
+    import yaml
+
+    cfg_dir = tmp_path / "cfg"
+    cfg_dir.mkdir(exist_ok=True)
+    (cfg_dir / "score_bounds.yaml").write_text(
+        yaml.safe_dump(doc, sort_keys=True, allow_unicode=True), encoding="utf-8"
+    )
+    return cfg_dir
+
+
+def _mutated_doc(tmp_path: Path, mutate) -> tuple[Path, dict]:
+    dist, cfg = _mini_dist(tmp_path)
+    doc = _mini_bounds_doc_v282(dist, cfg)
+    mutate(doc)
+    return tmp_path, doc
+
+
+def test_loader_refuses_missing_n_entities(tmp_path):
+    # the v28.3 blind spot itself: a block WITHOUT n_entities (n_sample
+    # present) built silently through v28.2 — the loader refuses it now.
+    from src.config_loader import load_score_bounds
+
+    def strip(doc):
+        del doc["bounds"]["official"]["alpha/both"]["n_entities"]
+
+    tmp, doc = _mutated_doc(tmp_path, strip)
+    cfg_dir = _dump_bounds_yaml(tmp, doc)
+    with pytest.raises(ConfigError) as ei:
+        load_score_bounds(cfg_dir)
+    msg = str(ei.value)
+    assert "official.alpha/both" in msg and "n_entities" in msg and "is missing" in msg
+    assert "re-freeze" in msg  # the prescription closes the message
+
+
+def test_loader_refuses_missing_n_sample(tmp_path):
+    from src.config_loader import load_score_bounds
+
+    def strip(doc):
+        del doc["bounds"]["official"]["alpha/both"]["n_sample"]
+
+    tmp, doc = _mutated_doc(tmp_path, strip)
+    cfg_dir = _dump_bounds_yaml(tmp, doc)
+    with pytest.raises(ConfigError, match="field 'n_sample' is missing"):
+        load_score_bounds(cfg_dir)
+
+
+def test_loader_refuses_both_counts_missing(tmp_path):
+    # the raw-KeyError symptom (the guard fell through to _frozen_bounds_for
+    # and died on block['n_sample']): a clean ConfigError naming BOTH fields.
+    from src.config_loader import load_score_bounds
+
+    def strip(doc):
+        b = doc["bounds"]["official"]["alpha/both"]
+        del b["n_sample"], b["n_entities"]
+
+    tmp, doc = _mutated_doc(tmp_path, strip)
+    cfg_dir = _dump_bounds_yaml(tmp, doc)
+    with pytest.raises(ConfigError) as ei:
+        load_score_bounds(cfg_dir)
+    msg = str(ei.value)
+    assert "field 'n_sample' is missing" in msg
+    assert "field 'n_entities' is missing" in msg
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("n_entities", 0),
+        ("n_sample", 0),
+        ("n_entities", -5),
+        ("n_sample", -1),
+        ("n_sample", "3"),      # a YAML string, not an integer
+        ("n_sample", 12.5),     # a float, not an integer
+        ("n_entities", True),   # a YAML bool (an int subclass — refused)
+    ],
+)
+def test_loader_refuses_invalid_counts(tmp_path, field, value):
+    # zero, negative, non-integer: every one is a ConfigError (the v28.2
+    # guard would have SKIPPED the zero/negative checks entirely).
+    from src.config_loader import load_score_bounds
+
+    def set_(doc):
+        doc["bounds"]["official"]["alpha/both"][field] = value
+
+    tmp, doc = _mutated_doc(tmp_path, set_)
+    cfg_dir = _dump_bounds_yaml(tmp, doc)
+    with pytest.raises(ConfigError) as ei:
+        load_score_bounds(cfg_dir)
+    assert "official.alpha/both" in str(ei.value)
+
+
+def test_loader_accepts_the_factory_file():
+    # the shipped config/score_bounds.yaml passes the new validation
+    # untouched — the strictness changes nothing for a healthy file.
+    from src.config_loader import load_score_bounds
+
+    repo_root = Path(__file__).resolve().parents[1]
+    doc = load_score_bounds(repo_root / "config")
+    n_blocks = sum(len(blocks) for blocks in doc["bounds"].values())
+    assert n_blocks == 38  # 20 official + 18 modelled
+    for score, blocks in doc["bounds"].items():
+        for key, block in blocks.items():
+            assert isinstance(block["n_sample"], int) and block["n_sample"] > 0, (score, key)
+            assert isinstance(block["n_entities"], int) and block["n_entities"] > 0, (score, key)
+
+
+def test_loader_refuses_a_v28_1_shaped_file(tmp_path):
+    # a whole file in the v28.1 shape (n_entities on NO block): refused
+    # with EVERY block listed — the accumulator, not a first-error crash.
+    from src.config_loader import load_score_bounds
+
+    dist, cfg = _mini_dist(tmp_path)
+    doc = _mini_bounds_doc(dist, cfg)  # the pre-v28.2 shape: no n_entities
+    cfg_dir = _dump_bounds_yaml(tmp_path, doc)
+    with pytest.raises(ConfigError) as ei:
+        load_score_bounds(cfg_dir)
+    msg = str(ei.value)
+    for score in ("official", "modelled"):
+        for key in doc["bounds"][score]:
+            assert f"{score}.{key}" in msg  # every block named
+    assert msg.count("field 'n_entities' is missing") == len(
+        [k for blocks in doc["bounds"].values() for k in blocks]
+    )
+
+
+def test_guard_refuses_non_positive_counts_cleanly(tmp_path):
+    # emit-level defense (build_score_layer called with a hand-made doc,
+    # bypassing the loader): a frozen count of 0 is REFUSED — the v28.2
+    # `frozen > 0` escape silently skipped exactly this case.
+    dist, cfg = _mini_dist(tmp_path)
+    bounds_doc = _mini_bounds_doc_v282(dist, cfg)
+    cfg_dir = dist / "cfg"
+    cfg_dir.mkdir(exist_ok=True)
+    (cfg_dir / "score.yaml").write_text("version: test", encoding="utf-8")
+    (cfg_dir / "score_bounds.yaml").write_text("meta: {}", encoding="utf-8")
+    (cfg_dir / "todd_refs.yaml").write_text("meta: {}", encoding="utf-8")
+
+    for field in ("n_sample", "n_entities"):
+        doc_zero = json.loads(json.dumps(bounds_doc))
+        doc_zero["bounds"]["official"]["alpha/both"][field] = 0
+        with pytest.raises(BoundsDriftError, match="not positive") as ei:
+            build_score_layer(cfg, doc_zero, dist, cfg_dir, None)
+        assert "official/alpha/both" in str(ei.value)
+        assert "bounds_drift_tolerance" in str(ei.value)
+
+
+def test_freezer_refuses_an_empty_sample(tmp_path, monkeypatch):
+    # the REAL freezer never writes a block whose bounds sample is empty
+    # (n_sample 0): such a file would be dead on arrival at load time.
+    import importlib.util
+
+    repo_root = Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location(
+        "freeze_score_bounds_v283", repo_root / "scripts" / "freeze_score_bounds.py"
+    )
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    (tmp_path / "config").mkdir()
+    (tmp_path / "data" / "dist" / "indicators").mkdir(parents=True)
+    (tmp_path / "config" / "score.yaml").write_text(
+        "version: test\npresets: [equal]\ncomponents:\n"
+        "  - indicator: alpha\n    direction: lower\n    transform: linear\n"
+        "    sex_mode: both\n    scores: [official, modelled]\n    basis: consensus\n",
+        encoding="utf-8",
+    )
+    alpha = {
+        "sources": [{"provider": "eurostat", "source_ref": "A", "role": "canonical",
+                     "layer": "collector", "root": "rt_a", "root_label": "RT-A"}],
+        # every point BEFORE bounds_from_year (1990): the sample is empty
+        "data": [_pt("x", 1985, 4.0), _pt("x", 1987, 2.0)],
+        "witnesses": [],
+    }
+    (tmp_path / "data" / "dist" / "indicators" / "alpha.json").write_text(
+        json.dumps(alpha), encoding="utf-8"
+    )
+    monkeypatch.setattr(mod, "REPO_ROOT", tmp_path)
+    with pytest.raises(SystemExit) as ei:
+        mod.freeze(dry_run=False)
+    assert "REFUSED" in str(ei.value) and "official/alpha/both" in str(ei.value)
+    assert "EMPTY bounds sample" in str(ei.value)
+    # and nothing was written
+    assert not (tmp_path / "config" / "score_bounds.yaml").exists()
+
+
+def _bad_real_config(tmp_path: Path) -> Path:
+    """The REAL config/ copied to tmp, one n_entities stripped — the same
+    bad file offered to both CLI doors."""
+    import shutil
+
+    import yaml
+
+    repo_root = Path(__file__).resolve().parents[1]
+    cfg_dir = tmp_path / "config"
+    shutil.copytree(repo_root / "config", cfg_dir)
+    text = (cfg_dir / "score_bounds.yaml").read_text(encoding="utf-8")
+    doc = yaml.safe_load(text)
+    del doc["bounds"]["official"]["birth_rate_fertility/both"]["n_entities"]
+    (cfg_dir / "score_bounds.yaml").write_text(
+        yaml.safe_dump(doc, sort_keys=True, allow_unicode=True), encoding="utf-8"
+    )
+    return cfg_dir
+
+
+def test_both_cli_doors_refuse_the_same_bad_file(tmp_path, monkeypatch, capsys):
+    # check-config and rebuild call the ONE load_score_bounds: the same
+    # bad file gets the same refusal (exit 1, the block and field named)
+    # at both doors. The rebuild door's pipeline is stubbed — only the
+    # score-layer section runs, which is where the loader is called.
+    import src.cli as cli
+
+    cfg_dir = _bad_real_config(tmp_path)
+
+    # door 1: check-config
+    monkeypatch.setattr(cli, "CONFIG_DIR", cfg_dir)
+    rc = cli.cmd_check_config(None)
+    out1 = capsys.readouterr()
+    assert rc == 1
+    assert "INVALID CONFIG" in out1.err
+    assert "official.birth_rate_fertility/both" in out1.err
+    assert "field 'n_entities' is missing" in out1.err
+
+    # door 2: rebuild (pipeline stubbed to no-ops, dirs to tmp)
+    for d in ("RAW_DIR", "PROCESSED_DIR", "DIST_DIR", "REPORTS_DIR"):
+        monkeypatch.setattr(cli, d, tmp_path / d.lower())
+        (tmp_path / d.lower()).mkdir()
+    monkeypatch.setattr(cli, "normalize_all", lambda *a, **k: {})
+    monkeypatch.setattr(cli, "merge_all", lambda *a, **k: None)
+    monkeypatch.setattr(cli, "validate_all", lambda *a, **k: [])
+    monkeypatch.setattr(cli, "build_all", lambda *a, **k: None)
+    rc = cli.cmd_rebuild(None)
+    out2 = capsys.readouterr()
+    assert rc == 1
+    assert "INVALID CONFIG" in out2.err
+    # the SAME single refusal: same block, same field, both doors
+    assert "official.birth_rate_fertility/both" in out2.err
+    assert "field 'n_entities' is missing" in out2.err

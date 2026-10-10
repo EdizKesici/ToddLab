@@ -14,7 +14,11 @@ sources' relative coverage) or the live n_sample / n_entities of any
 frozen block drifts beyond config/score.yaml's bounds_drift_tolerance
 (a source that keeps its name while its coverage changes — the v28.1
 blind spot). In both cases re-freezing is a deliberate bounds_version
-bump, never an auto-refresh.
+bump, never an auto-refresh. v28.3: the counts are read DIRECTLY (no
+`.get(..., 0)` default, no `frozen > 0` escape) — a block with a
+missing, invalid, or non-positive count is REFUSED, never silently
+skipped; load_score_bounds validates the same contract at load time
+(the single implementation both CLI doors share).
 
 THE CARRY RULE (v28, decision 16): after the fresh normalisation, each
 component's stored value for year Y is RESOLVED to the latest real
@@ -75,7 +79,10 @@ class BoundsDriftError(Exception):
     """The frozen bounds no longer describe the live dist: either the
     §4.4 selection would pick another source, or the bounds sample's
     n_sample / n_entities drifted beyond bounds_drift_tolerance
-    (v28.2 — a source that keeps its name while its coverage changes)."""
+    (v28.2 — a source that keeps its name while its coverage changes).
+    v28.3: a block whose counts are missing, unreadable, or not
+    strictly positive raises this too — the guard never silently
+    skips a measure."""
 
 
 def _frozen_bounds_for(score: ScoreName, key: tuple, bounds_doc: dict) -> ComponentBounds:
@@ -138,12 +145,27 @@ def build_score_layer(
             #    recomputation (the freezer's own sampling rule — one
             #    implementation, src/score/core.bounds_sample). A source
             #    that keeps its name while its coverage changes (the v28.1
-            #    blind spot) trips HERE now.
+            #    blind spot) trips HERE now. v28.3: the counts are read
+            #    DIRECTLY (no `.get(..., 0)` default, no `frozen > 0`
+            #    escape) — a block without valid counts is REFUSED, never
+            #    silently skipped; load_score_bounds validates the same
+            #    contract at load time (the single implementation both
+            #    CLI doors share), this is the guard's own defense.
             live_n_sample, live_n_entities = bounds_sample_counts(
                 list(selected.points), comp.transform, config
             )
-            frozen_n_sample = int(frozen_block.get("n_sample", 0))
-            frozen_n_entities = int(frozen_block.get("n_entities", 0))
+            try:
+                frozen_n_sample = int(frozen_block["n_sample"])
+                frozen_n_entities = int(frozen_block["n_entities"])
+            except (KeyError, TypeError, ValueError) as e:
+                raise BoundsDriftError(
+                    f"BOUNDS DRIFT — {score.value}/{ind_id}/{sex}: the frozen block's "
+                    f"counts are unreadable ({e!r}). v28.3 requires every block to "
+                    "carry an integer n_sample and n_entities (strictly positive) — "
+                    "the coverage check never skips on a missing or invalid count. "
+                    "re-freeze: `scripts/freeze_score_bounds.py`, bump "
+                    "`bounds_version`, record it in the changelog."
+                ) from e
             tolerance = config.bounds_drift_tolerance
             drifted = [
                 (measure, frozen, live)
@@ -151,11 +173,16 @@ def build_score_layer(
                     ("n_sample", frozen_n_sample, live_n_sample),
                     ("n_entities", frozen_n_entities, live_n_entities),
                 )
-                if frozen > 0 and abs(live - frozen) / frozen > tolerance
+                if frozen <= 0 or abs(live - frozen) / frozen > tolerance
             ]
             if drifted:
                 parts = "; ".join(
-                    f"{m}: frozen {f}, live {l} ({abs(l - f) / f:.1%})"
+                    f"{m}: frozen {f}, live {l} "
+                    + (
+                        f"({abs(l - f) / f:.1%})"
+                        if f > 0
+                        else "(frozen count not positive — refused, never skipped)"
+                    )
                     for m, f, l in drifted
                 )
                 both = (

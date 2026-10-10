@@ -36,7 +36,10 @@ sample's n_sample / n_entities drifting beyond bounds_drift_tolerance
 (a source that keeps its name while its COVERAGE changes — the v28.1
 blind spot: the DYB wiring moved the official fertility sample
 1278 -> 2523 observations / 47 -> 177 entities under the same
-'canonical' name and the guard stayed silent). The version is a date
+'canonical' name and the guard stayed silent). v28.3: the freezer
+REFUSES to freeze an empty sample (n_sample or n_entities of 0) —
+every block is written with integer, strictly-positive counts, the
+same contract load_score_bounds enforces at load time. The version is a date
 plus a sequence: the FIRST regeneration of a
 given day takes .1, the second .2, and so on (read from the existing
 file — the v28 rule; before v28 the script hardcoded .1, which would
@@ -58,7 +61,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from src.config_loader import load_score_config  # noqa: E402
 from src.schema.score import ScoreName, SexMode  # noqa: E402
-from src.score.core import ComponentBounds, compute_bounds, select_source  # noqa: E402
+from src.score.core import ComponentBounds, bounds_sample_counts, compute_bounds, select_source  # noqa: E402
 
 
 def _sha256(path: Path) -> str:
@@ -117,6 +120,26 @@ def freeze(dry_run: bool) -> int:
             sexes = ("male", "female") if comp.sex_mode == SexMode.split else ("both",)
             for sex in sexes:
                 selected = select_source(ind_dist, sex, score, config.bounds_from_year)
+                # v28.3: the freezer refuses to freeze an EMPTY sample —
+                # checked BEFORE compute_bounds (which would die on a raw
+                # pct-of-nothing ValueError). A block with n_sample 0 or
+                # n_entities 0 would be refused by load_score_bounds at
+                # every door (strictly positive), so this file would be
+                # dead on arrival. An absolute scale over no sample is
+                # meaningless; fix the selection or the dist, then re-run.
+                n_sample, n_entities = bounds_sample_counts(
+                    list(selected.points), comp.transform, config
+                )
+                if n_sample <= 0 or n_entities <= 0:
+                    raise SystemExit(
+                        f"REFUSED — {score.value}/{comp.indicator}/{sex}: the retained "
+                        f"source '{selected.name}' yields an EMPTY bounds sample "
+                        f"(n_sample {n_sample}, n_entities {n_entities}). The "
+                        "freezer never freezes an empty sample: every block must "
+                        "carry strictly positive counts (the same contract "
+                        "load_score_bounds enforces). Fix the selection or the "
+                        "dist, then re-run."
+                    )
                 b: ComponentBounds = compute_bounds(list(selected.points), comp.transform, config)
                 block[f"{comp.indicator}/{sex}"] = {
                     "source": selected.name,

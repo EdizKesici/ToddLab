@@ -144,3 +144,12 @@ divergence is now carried by the data layer itself.
 - `catalog/curated/README.md` (gate, provenance, cross-checks for the
   USSR series)
 - CHANGELOG 2026-09-06, v6 entry (implementation + live verification)
+
+---
+
+2026-10-09 — HMD is dropped: Ediz will not create an account. The
+"the HMD/national routes" phrase in the negative-costs list above is
+retired as to HMD — the infant-mortality gap it named still awaits the
+DYB editions loop and the national-office routes, which are unchanged;
+HCD is unchanged. See ADR-0007's same-day note for the full
+retirement.
