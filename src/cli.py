@@ -126,6 +126,20 @@ def cmd_fetch(args) -> int:
 def cmd_rebuild(_args) -> int:
     indicators, entities, todd_refs, score_config = _load_config()
 
+    # v29: fail fast — the frozen bounds are structurally validated BEFORE
+    # any dist file is written (v28.3 validated them only AFTER build_all,
+    # so a malformed file let the whole indicator dist be rewritten before
+    # the refusal came). The score config itself is already validated above
+    # (_load_config -> load_score_config + cross_validate_score, also
+    # before any write); the drift check still runs after the build, by
+    # design — it compares the frozen counts against the freshly built
+    # dist, which only exists then.
+    try:
+        score_bounds = load_score_bounds(CONFIG_DIR)
+    except ConfigError as e:
+        print(f"INVALID CONFIG (score bounds):\n{e}", file=sys.stderr)
+        return 1
+
     norm_summary = normalize_all(indicators, RAW_DIR, PROCESSED_DIR, entities)
     for iid, s in norm_summary.items():
         n_gap = sum(len(v.get("possible_mapping_gap", [])) for v in s["unresolved"].values())
@@ -150,15 +164,12 @@ def cmd_rebuild(_args) -> int:
     # v27: the score layer rides the rebuild — AFTER build_all, reading the
     # freshly written dist + the frozen bounds. The drift guard fails the
     # rebuild loudly when the frozen source no longer matches §4.4.
-    # v28.3: a malformed frozen file (e.g. a block without valid counts)
-    # is refused HERE too — load_score_bounds validates at both doors
-    # (check-config and rebuild share the single implementation).
+    # v28.3: a malformed frozen file is refused at BOTH CLI doors (the
+    # structural validation itself moved BEFORE the build in v29 — see
+    # above; only the drift comparison remains here, because it reads the
+    # dist this build just wrote).
     try:
-        score_bounds = load_score_bounds(CONFIG_DIR)
         summary = build_score_layer(score_config, score_bounds, DIST_DIR, CONFIG_DIR, todd_refs)
-    except ConfigError as e:
-        print(f"INVALID CONFIG (score bounds):\n{e}", file=sys.stderr)
-        return 1
     except BoundsDriftError as e:
         print(f"SCORE LAYER REFUSED: {e}", file=sys.stderr)
         return 1

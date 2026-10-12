@@ -1362,3 +1362,46 @@ def test_both_cli_doors_refuse_the_same_bad_file(tmp_path, monkeypatch, capsys):
     # the SAME single refusal: same block, same field, both doors
     assert "official.birth_rate_fertility/both" in out2.err
     assert "field 'n_entities' is missing" in out2.err
+
+
+def test_rebuild_fails_fast_on_a_bad_bounds_file_before_any_dist_write(tmp_path, monkeypatch, capsys):
+    # v29 (the V28.3 audit's third residual): v28.3's rebuild validated
+    # the frozen bounds only AFTER build_all — a malformed file let the
+    # whole indicator dist be REWRITTEN before the refusal came. Now the
+    # bounds load runs before any dist write: the pipeline must not even
+    # start (normalize/merge/validate/build all unreached), and a dist
+    # sentinel file must survive the refusal byte-untouched.
+    import src.cli as cli
+
+    cfg_dir = _bad_real_config(tmp_path)
+    dist_dir = tmp_path / "dist"
+    dist_dir.mkdir()
+    sentinel = dist_dir / "sentinel.json"
+    sentinel.write_text('{"untouched": true}', encoding="utf-8")
+    sentinel_bytes = sentinel.read_bytes()
+
+    monkeypatch.setattr(cli, "CONFIG_DIR", cfg_dir)
+    monkeypatch.setattr(cli, "RAW_DIR", tmp_path / "raw")
+    monkeypatch.setattr(cli, "PROCESSED_DIR", tmp_path / "processed")
+    monkeypatch.setattr(cli, "DIST_DIR", dist_dir)
+    monkeypatch.setattr(cli, "REPORTS_DIR", tmp_path / "reports")
+
+    def _must_not_run(name):
+        def _bomb(*a, **k):
+            raise AssertionError(f"{name} ran — the pipeline must not start on a refused config")
+        return _bomb
+
+    monkeypatch.setattr(cli, "normalize_all", _must_not_run("normalize_all"))
+    monkeypatch.setattr(cli, "merge_all", _must_not_run("merge_all"))
+    monkeypatch.setattr(cli, "validate_all", _must_not_run("validate_all"))
+    monkeypatch.setattr(cli, "build_all", _must_not_run("build_all"))
+
+    rc = cli.cmd_rebuild(None)
+    out = capsys.readouterr()
+    assert rc == 1
+    assert "INVALID CONFIG (score bounds)" in out.err
+    assert "official.birth_rate_fertility/both" in out.err
+    assert "field 'n_entities' is missing" in out.err
+    # the dist bytes untouched: the sentinel survived the refusal
+    assert sentinel.read_bytes() == sentinel_bytes
+    assert list(dist_dir.iterdir()) == [sentinel]

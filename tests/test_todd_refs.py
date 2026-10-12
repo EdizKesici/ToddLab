@@ -10,8 +10,14 @@ repo, untouched). These tests pin the transform's contract:
 - the family majority rule (the compilation labels a handful of rows by
   book context — the metric-level family is the citation-weighted
   majority, and the disagreement is REPORTED, not buried);
-- the CSV's `status` column is ignored (implemented-ness is the repo's
-  own state — the bijection tests below enforce it from the configs).
+- the CSV layout contract (v29): the `status` column is GONE from the
+  CSV — a v2 file without it normalises, a legacy file still carrying
+  it normalises the same way (the extra column is ignored), a missing
+  required column fails loudly, and an empty note is accepted and
+  published as the empty string (the `refs[].note` key stays present —
+  it is a published field). The committed config/todd_refs.yaml is
+  pinned to the shipped todd_core.csv by its meta hash (a swapped CSV
+  without a regen fails the pin).
 
 The tests build their own miniature CSVs (tmp_path): the miniatures carry
 synthetic book names and counts BY DESIGN (fixture rules) — the committed
@@ -44,6 +50,19 @@ consanguineous_marriage_rate,Rate,society,Livre C (2000),3,not_implemented,"Most
 consanguineous_marriage_rate,Rate,demography,Livre D (2010),1,not_implemented,"One demography row."
 birth_rate_fertility,Fertility,society,Livre E (2020),3,not_implemented,"Note."
 birth_rate_fertility,Fertility,demography,Livre F (2021),1,not_implemented,"Note."
+"""
+
+# v29: the CSV dropped the `status` column — this is the v2 shape (the
+# legacy MINI_CSV above stays in the suite on purpose: a legacy vintage
+# that still carries the column must normalise the same way).
+MINI_CSV_V2 = """id,label,family,book,citation_count,notes
+suicide_rate,"Suicide rate per 100,000",mortality,Le Livre A (1980),12,"Series X."
+suicide_rate,Suicide rate,mortality,Le Livre B (1990),8,"Series Y."
+infant_mortality,Infant mortality,mortality,Le Livre A (1980),5,"Series Z."
+consanguineous_marriage_rate,Rate,society,Livre C (2000),3,"Mostly society."
+consanguineous_marriage_rate,Rate,demography,Livre D (2010),1,"One demography row."
+birth_rate_fertility,Fertility,society,Livre E (2020),3,"Note."
+birth_rate_fertility,Fertility,demography,Livre F (2021),1,"Note."
 """
 
 
@@ -131,6 +150,85 @@ def test_normalize_output_is_deterministic(tmp_path):
     assert dump_yaml(payload1) == dump_yaml(payload2)
     # and the payload validates against the repo schema
     ToddCorpus.model_validate(payload1)
+
+
+# --- v29: the CSV layout contract (status column dropped) -------------------
+
+
+def test_a_v2_csv_without_the_status_column_normalises(tmp_path):
+    # the v29 shape: no status column anywhere — same payload as the
+    # legacy miniature, whose status column was ignored anyway.
+    payload, _ = normalize(_write_mini_csv(tmp_path, MINI_CSV_V2))
+    assert payload["meta"]["rows"] == 7
+    assert payload["meta"]["metrics"] == 4
+    assert payload["meta"]["books"] == 6
+    assert payload["meta"]["total_citations"] == 33
+    assert "not_implemented" not in dump_yaml(payload)
+
+
+def test_a_legacy_csv_still_carrying_status_normalises_identically(tmp_path):
+    # the ignore rule keeps its meaning for legacy vintages: the extra
+    # column is ignored WHATEVER it says ('implemented' here — a value
+    # the real compilation never carried — must not leak anywhere), and
+    # the legacy shape (status present) yields the SAME payload as the
+    # v2 shape (status gone) — everything except meta.source_csv_sha256,
+    # which pins the vintage and therefore DIFFERS between different
+    # bytes (the one field designed to tell them apart).
+    def _sans_hash(payload):
+        p = {**payload, "meta": dict(payload["meta"])}
+        del p["meta"]["source_csv_sha256"]
+        return p
+
+    p_v2, _ = normalize(_write_mini_csv(tmp_path, MINI_CSV_V2))
+    p_legacy, _ = normalize(_write_mini_csv(tmp_path, MINI_CSV))
+    p_flipped, _ = normalize(
+        _write_mini_csv(tmp_path, MINI_CSV.replace("not_implemented", "implemented"))
+    )
+    assert _sans_hash(p_v2) == _sans_hash(p_legacy) == _sans_hash(p_flipped)
+    # and the hashes DO differ (different bytes -> different vintages)
+    assert len({p["meta"]["source_csv_sha256"] for p in (p_v2, p_legacy, p_flipped)}) == 3
+    # no status VALUE leaks into the generated body (the header comment
+    # legitimately mentions "implemented-ness" — the body must not carry
+    # the column's own values)
+    _body = dump_yaml(p_flipped).split("\nmetrics:", 1)[1]
+    assert "implemented" not in _body and "not_implemented" not in _body
+
+
+def test_a_csv_missing_a_required_column_fails_loudly(tmp_path):
+    # `label` is required; a layout surprise upstream is refused, never
+    # silently mangled (the same refusal that guards the v29 header).
+    content = MINI_CSV_V2.replace("id,label,family,book,citation_count,notes",
+                                  "id,family,book,citation_count,notes")
+    with pytest.raises(ValueError, match="CSV is missing column\\(s\\) \\['label'\\]"):
+        normalize(_write_mini_csv(tmp_path, content))
+
+
+def test_an_empty_note_is_accepted_and_published_as_an_empty_string(tmp_path):
+    # v29: six of the shipped CSV's notes are empty — the row still
+    # normalises, the published refs[].note key stays PRESENT as "" (a
+    # published field is never dropped), and the schema accepts it.
+    content = MINI_CSV_V2.replace('"Series X."', '""')
+    payload, _ = normalize(_write_mini_csv(tmp_path, content))
+    ref = payload["metrics"]["suicide_rate"]["refs"][0]
+    assert ref["note"] == ""
+    assert "note" in ref  # the key stays present
+    ToddCorpus.model_validate(payload)  # the schema takes the empty note
+    dumped = dump_yaml(payload)
+    assert "note: ''" in dumped
+
+
+def test_the_committed_yaml_pins_the_shipped_csv_vintage():
+    # the pin: sha256(repo todd_core.csv) == meta.source_csv_sha256 of the
+    # committed config/todd_refs.yaml. A CSV swapped without regenerating
+    # the YAML fails HERE (the vintage tie is checkable, so it is checked).
+    import hashlib
+
+    repo_root = Path(__file__).resolve().parents[1]
+    csv_path = repo_root / "todd_core.csv"
+    corpus = load_todd_refs(CONFIG_DIR)
+    assert corpus is not None
+    live_sha = hashlib.sha256(csv_path.read_bytes()).hexdigest()
+    assert corpus.meta.source_csv_sha256 == live_sha
 
 
 # --- the committed corpus ---------------------------------------------------

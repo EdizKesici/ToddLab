@@ -63,18 +63,26 @@ re-freezing is a deliberate `bounds_version` bump, recorded, never an
 auto-refresh. Since v28.3 every frozen block is VALIDATED at load
 (integers, strictly positive counts — the single implementation both
 CLI doors share): a malformed file is refused before any build, and
-the guard never silently skips a missing or non-positive count.
+the guard never silently skips a missing or non-positive count. Since
+v29 that validation runs BEFORE any dist file is written — a bad
+bounds file fails the rebuild with the dist bytes untouched (v28.3
+had validated only after the indicator build).
 
 ## The Todd corpus rides as metadata (v13)
 
-Ediz's OCR compilation of Todd's metrics (todd_core.csv, outside the
-repo) transforms one-way into `config/todd_refs.yaml`
-(`scripts/normalize_todd_refs.py`, deterministic, validating loudly).
+Ediz's OCR compilation of Todd's metrics (todd_core.csv, tracked at
+the repo root since v26) transforms one-way into
+`config/todd_refs.yaml` (`scripts/normalize_todd_refs.py`,
+deterministic, validating loudly). The v29 CSV dropped the stale
+`status` column and cleaned the notes to what-is-cited-only (a note
+may be empty; the published `refs[].note` key stays present).
 Config load cross-validates the bijection between `todd_core: true`
 indicators and corpus metric ids (ADR-0009) — the flag is
 evidence-backed, failing loudly on either side. The build emits the
 corpus additively: a `todd_refs` block on matching indicators and
-catalog entries, and `dist/todd_corpus.json` — all 24 metrics,
+catalog entries, and `dist/todd_corpus.json` — all 22 metrics
+(24 at the v20 close; 22 since the v26 withdrawal of
+immigration_stock and agricultural_employment_share),
 implemented and unimplemented, ranked by the corpus's citation weight
 (the executable roadmap: birth_rate_fertility 111 citations, the #1,
 implemented since v14 — consanguineous_marriage_rate 34 and

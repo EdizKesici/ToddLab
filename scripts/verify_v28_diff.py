@@ -80,6 +80,24 @@ factory file passes; ALL 34 dist files + config/score_bounds.yaml +
 config/score.yaml BYTE-IDENTICAL to the V28.2 baseline (64e8e82); the
 corpus untouched; the golden vectors unchanged (20); the two CLI doors
 refuse the same bad file with the same message.
+
+v29 (2026-10-11, data-bearing but numerically neutral — Ediz's brief
+relayed by the auditor): todd_core.csv v2 — the stale `status` column
+dropped (all 115 rows read not_implemented while the dist computes
+implemented itself) and 16 notes cleaned to what-is-cited-only (6 now
+empty strings, the published refs[].note key staying present). The
+corpus fingerprint moves (sha a46fccbe...); exactly 12 dist files
+change vs the V28.3 baseline (f26e464): the corpus, catalog.json (its
+todd_refs blocks embed the notes), score/meta.json (fingerprints only)
+and the 9 indicator files whose notes moved — every score value,
+weight, bound and count identical. Three V28.3-audit residuals: the
+ADR-0011 cirrhosis-row erratum (45/44/54/57 was the three-swap
+combination mislabelled as the cirrhosis swap — the brief was wrong,
+not the measurement; cirrhosis alone reads 40/42/45/49, re-run), the
+HMD/HFD wording in config/sources.yaml + birth_rate_fertility's
+published note (HMD dropped 2026-10-09; HFD not wired, account-gated,
+no decision to wire it), and rebuild now fails fast: the frozen bounds
+are validated BEFORE any dist file is written.
 """
 import hashlib
 import json
@@ -93,6 +111,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "b394ea6"  # Ediz's V28.1 push — the reviewed baseline of this delivery
 BASE2 = "64e8e82"  # Ediz's V28.2 push — the v28.3 baseline (data-neutral delivery)
+BASE3 = "f26e464"  # Ediz's V28.3 push — the v29 baseline (data-bearing delivery)
 
 results: list = []
 
@@ -152,32 +171,50 @@ check(
     (ROOT / "scripts/archive/verify_v26_diff.py").is_file(),
 )
 
-# --- 2. the 30 non-score dist files: ALL byte-identical (the surgery
-# touches config/ + src/ + the four score files only) ---
-base_dist = git("ls-tree", "-r", "--name-only", BASE, "data/dist/").splitlines()
-nonscore_expected = [f for f in base_dist if not f.startswith("data/dist/score/")]
-mismatched = [f for f in nonscore_expected if (ROOT / f).read_bytes() != _bytes_at(BASE, f)]
-check(
-    "ALL 30 non-score dist files byte-identical to V28.1 — the bounds "
-    "regeneration reads the SAME indicator dist the v28.1 wiring emitted "
-    "(birth_rate_fertility.json and catalog.json untouched THIS time)",
-    len(nonscore_expected) == 30 and not mismatched,
-    f"expected 30 files, 0 changed; got {len(nonscore_expected)} files; "
-    f"mismatched: {mismatched}",
+# --- 2. the dist changed-set vs the V28.3 baseline: EXACTLY the 12
+# designed files (v29 is data-bearing); everything else byte-identical.
+# (v28.2's own §2 proof — ALL 30 non-score dist files byte-identical to
+# V28.1 — was true of THAT delivery; v29 moves the corpus vintage, the
+# catalog's embedded notes and 9 indicator files' todd_refs notes, so
+# the same protective check is rebased onto the v29 baseline with the
+# designed-change set enumerated, the V28.1 precedent.)
+_V29_DESIGNED = sorted(
+    ["data/dist/catalog.json", "data/dist/todd_corpus.json", "data/dist/score/meta.json"]
+    + [
+        f"data/dist/indicators/{i}.json"
+        for i in (
+            "birth_rate_fertility", "consanguineous_marriage_rate", "homicide_rate",
+            "incarceration_rate", "infant_mortality", "life_expectancy",
+            "same_sex_marriage_legalization_year", "suicide_rate", "unemployment_rate",
+        )
+    ]
+)
+base3_dist = git("ls-tree", "-r", "--name-only", BASE3, "data/dist/").splitlines()
+_v29_changed = sorted(
+    f for f in base3_dist
+    if (ROOT / f).read_bytes() != _bytes_at(BASE3, f)
 )
 check(
-    "the four score files are the ONLY dist changes (official / modelled / "
-    "meta / golden_vectors)",
-    sorted(
-        f for f in git("ls-tree", "-r", "--name-only", BASE, "data/dist/").splitlines()
-        if (ROOT / f).read_bytes() != _bytes_at(BASE, f)
-    ) == [
-        "data/dist/score/golden_vectors.json",
-        "data/dist/score/meta.json",
-        "data/dist/score/modelled.json",
-        "data/dist/score/official.json",
-    ],
-    "",
+    "v29: the dist changed-set vs V28.3 (f26e464) is EXACTLY the 12 designed "
+    "files — the corpus + catalog + score/meta.json + the 9 indicator files "
+    "whose todd_refs notes moved (the birth_rate_fertility file carries "
+    "Part B2's HMD/HFD sentence too)",
+    _v29_changed == _V29_DESIGNED and len(base3_dist) == 34,
+    f"changed={_v29_changed}; n_base={len(base3_dist)}",
+)
+_v29_untouched = [f for f in base3_dist if f not in _v29_changed]
+_mismatched_v29 = [
+    f for f in _v29_untouched if (ROOT / f).read_bytes() != _bytes_at(BASE3, f)
+]
+check(
+    "v29: the 22 OTHER dist files byte-identical to V28.3 — the 18 untouched "
+    "indicator files, entities.json, and the three score VALUE files "
+    "(official / modelled / golden_vectors: no score value moved)",
+    len(_v29_untouched) == 22 and not _mismatched_v29
+    and (ROOT / "data/dist/score/official.json").read_bytes() == _bytes_at(BASE3, "data/dist/score/official.json")
+    and (ROOT / "data/dist/score/modelled.json").read_bytes() == _bytes_at(BASE3, "data/dist/score/modelled.json")
+    and (ROOT / "data/dist/score/golden_vectors.json").read_bytes() == _bytes_at(BASE3, "data/dist/score/golden_vectors.json"),
+    f"untouched={len(_v29_untouched)}; mismatched={_mismatched_v29[:3]}",
 )
 
 cur_cat = json.loads((ROOT / "data/dist/catalog.json").read_text(encoding="utf-8"))
@@ -195,8 +232,18 @@ check("corpus: 115 rows", meta["rows"] == 115, str(meta.get("rows")))
 check("corpus: 16 books", meta["books"] == 16, str(meta.get("books")))
 check("corpus: 470 citations", meta["total_citations"] == 470, str(meta.get("total_citations")))
 check(
-    "corpus: the owner's CSV sha256 unchanged",
-    meta["source_csv_sha256"].startswith("e30304cf6dca"),
+    "corpus: the owner's CSV sha256 is the v29 vintage (a46fccbe...) — the "
+    "status column dropped, 16 notes cleaned",
+    meta["source_csv_sha256"].startswith("a46fccbe2a46"),
+)
+_csv_sha_live = hashlib.sha256((ROOT / "todd_core.csv").read_bytes()).hexdigest()
+check(
+    "v29: the repo's todd_core.csv IS the pinned vintage (sha256(csv) == "
+    "meta.source_csv_sha256 == a46fccbe...) — the pin that refuses a swapped "
+    "CSV without a regen",
+    _csv_sha_live == meta["source_csv_sha256"]
+    and _csv_sha_live == "a46fccbe2a467219feaa2514a5825c50617871ee5607bda95f42b7fe43c8fa93",
+    f"live={_csv_sha_live[:16]}; meta={meta['source_csv_sha256'][:16]}",
 )
 _corpus_ids = {m["id"] for m in corpus["metrics"]}
 check(
@@ -991,15 +1038,12 @@ _diag = [f"returncode={test_count.returncode}"]
 _diag += [f"stdout: {_s}" for _s in map(str.strip, test_count.stdout.splitlines()[-4:]) if _s][:3]
 _diag += [f"stderr: {_s}" for _s in map(str.strip, test_count.stderr.splitlines()[-4:]) if _s][:3]
 check(
-    "431 tests collected (409 at v28.1 + 7 v28.2 tests: the two drift-guard "
-    "refusals, the boundary accept, the configurable tolerance, the tolerance "
-    "schema, the freezer's n_entities, the two-collector percentile fixture; "
-    "+ 15 v28.3 tests: the loader's refusals — missing n_sample / missing "
-    "n_entities / both / zero / negative / string / float / bool, the whole "
-    "v28.1-shape file, the factory file's acceptance, the guard's clean "
-    "refusal of non-positive counts, the freezer's empty-sample refusal, the "
-    "two CLI doors on the same bad file)",
-    n_tests == 431,
+    "437 tests collected (409 at v28.1 + 7 v28.2 tests + 15 v28.3 tests; "
+    "+ 6 v29 tests: the v2 CSV without status, the legacy CSV with status "
+    "normalising identically, the missing-required-column refusal, the "
+    "empty note published as '', the committed-yaml CSV-vintage pin, and "
+    "rebuild's fail-fast on a bad bounds file before any dist write)",
+    n_tests == 437,
     f"parsed={n_tests}; " + " | ".join(_diag),
 )
 cfg = subprocess.run(
@@ -1096,20 +1140,19 @@ check(
 # dist — §9's rebuild is byte-stable with raw present, but on a patch-only
 # clone the no-raw rebuild empties it first; the §2 discipline, applied)
 
-# 10a. ALL 34 dist files byte-identical to the V28.2 baseline: the v28.3
-# surgery touches src/ + docs/ + tests/ only, never a byte of data.
-_dist_files_v283 = sorted(str(f.relative_to(ROOT)) for f in (ROOT / "data/dist").rglob("*.json"))
-_byte_diffs_v283 = [
-    p for p in _dist_files_v283
-    if hashlib.md5((ROOT / p).read_bytes()).hexdigest()
-    != hashlib.md5(_bytes_at(BASE2, p)).hexdigest()
-]
-check(
-    "v28.3: all 34 dist files BYTE-IDENTICAL to the V28.2 baseline (64e8e82) — "
-    "no score value, no frozen bound, no indicator byte moved",
-    len(_dist_files_v283) == 34 and not _byte_diffs_v283,
-    f"n={len(_dist_files_v283)}; diffs={_byte_diffs_v283[:3]}",
-)
+# 10a. v29 is DATA-BEARING in exactly 12 dist files: the §2 checks above
+# prove the changed-set and the 22 byte-identical others against the
+# V28.3 baseline (the v28.3 check — all 34 byte-identical to V28.2 —
+# described THAT delivery; this is its rebased successor). The score
+# VALUE files are byte-identical to BOTH older baselines:
+for _b, _tag in ((BASE2, "V28.2 (64e8e82)"), (BASE3, "V28.3 (f26e464)")):
+    check(
+        f"v29: official.json / modelled.json / golden_vectors.json byte-identical "
+        f"to {_tag} — no score VALUE moved by the corpus note cleanup",
+        (ROOT / "data/dist/score/official.json").read_bytes() == _bytes_at(_b, "data/dist/score/official.json")
+        and (ROOT / "data/dist/score/modelled.json").read_bytes() == _bytes_at(_b, "data/dist/score/modelled.json")
+        and (ROOT / "data/dist/score/golden_vectors.json").read_bytes() == _bytes_at(_b, "data/dist/score/golden_vectors.json"),
+    )
 
 # 10b. the two configs the surgery must never touch, byte-identical too.
 for _rel in ("config/score_bounds.yaml", "config/score.yaml"):
@@ -1247,16 +1290,16 @@ try:
 finally:
     _shutil.rmtree(_tmp)
 
-# 10f. the corpus and the golden vectors unchanged vs V28.2 (the §2/§7
-# checks prove it against V28.1; this closes the chain to the v28.3
-# baseline directly).
+# 10f. the corpus (v29 vintage — the §2 checks carry the byte proof) and
+# the golden vectors unchanged vs V28.2 AND V28.3.
 _corpus_v283 = json.loads((ROOT / "data/dist/todd_corpus.json").read_text())
 check(
-    "v28.3: the corpus untouched vs V28.2 (22 metrics / 115 rows / 16 books / "
-    "470 citations)",
+    "v28.3/v29: the corpus counts unchanged (22 metrics / 115 rows / 16 books / "
+    "470 citations — only the vintage hash and the 16 notes moved)",
     _corpus_v283["meta"]["metrics"] == 22 and _corpus_v283["meta"]["rows"] == 115
     and _corpus_v283["meta"]["books"] == 16
-    and _corpus_v283["meta"]["total_citations"] == 470,
+    and _corpus_v283["meta"]["total_citations"] == 470
+    and _corpus_v283["meta"]["implemented_metrics"] == 22,
 )
 _gv_v283 = json.loads((ROOT / "data/dist/score/golden_vectors.json").read_text())
 _gv_base = json.loads(_bytes_at(BASE2, "data/dist/score/golden_vectors.json"))
@@ -1267,6 +1310,349 @@ check(
     and json.dumps(_gv_v283, sort_keys=True) == json.dumps(_gv_base, sort_keys=True),
     f"n={_gv_v283.get('n')}; vectors={len(_gv_v283.get('vectors', []))}",
 )
+
+# --- 11. v29: the CSV v2, the 16-note invariant, the three residuals ------
+
+# 11a. the shipped CSV layout, read live from the repo root.
+_csv_bytes_v29 = (ROOT / "todd_core.csv").read_bytes()
+check(
+    "v29: todd_core.csv layout — header id,label,family,book,citation_count,"
+    "notes (status GONE), 115 data rows, CRLF, no BOM, 17417 bytes",
+    _csv_bytes_v29.split(b"\r\n")[0].decode()
+    == "id,label,family,book,citation_count,notes"
+    and len([l for l in _csv_bytes_v29.split(b"\r\n") if l.strip()]) == 116  # header + 115
+    and _csv_bytes_v29.count(b"\r\n") == 116
+    and _csv_bytes_v29[:3] != b"\xef\xbb\xbf"
+    and len(_csv_bytes_v29) == 17417,
+    f"header={_csv_bytes_v29.split(b'\r\n')[0][:60]!r}; "
+    f"lines={len(_csv_bytes_v29.split(b'\r\n'))}",
+)
+
+# 11b. the todd_refs.yaml parsed diff vs V28.3: EXACTLY the 16 note
+# strings + the meta hash — nothing else (the raw text additionally
+# carries the rewritten header sentence about the dropped column, which
+# is a comment, not a field).
+def _walk_diffs(old, new, path, diffs):
+    if type(old) is not type(new):
+        diffs.append(f"{path}: TYPE {type(old).__name__}->{type(new).__name__}")
+        return
+    if isinstance(old, dict):
+        for k in old:
+            if k not in new:
+                diffs.append(f"{path}.{k}: REMOVED")
+            else:
+                _walk_diffs(old[k], new[k], f"{path}.{k}", diffs)
+        for k in new:
+            if k not in old:
+                diffs.append(f"{path}.{k}: ADDED")
+    elif isinstance(old, list):
+        if len(old) != len(new):
+            diffs.append(f"{path}: LEN {len(old)}->{len(new)}")
+            return
+        for i, (o, n) in enumerate(zip(old, new)):
+            _walk_diffs(o, n, f"{path}[{i}]", diffs)
+    elif old != new:
+        diffs.append(f"{path}: {old!r} -> {new!r}")
+
+
+_refs_old = yaml.safe_load(_bytes_at(BASE3, "config/todd_refs.yaml"))
+_refs_new = yaml.safe_load((ROOT / "config/todd_refs.yaml").read_text(encoding="utf-8"))
+_yaml_diffs = []
+_walk_diffs(_refs_old, _refs_new, "todd_refs", _yaml_diffs)
+_yaml_note_diffs = [d for d in _yaml_diffs if ".refs[" in d and ".note: " in d]
+_yaml_other = [d for d in _yaml_diffs if d not in _yaml_note_diffs]
+check(
+    "v29: config/todd_refs.yaml data diff vs V28.3 = EXACTLY the 16 note "
+    "strings + the meta hash (family, order, citations, labels untouched; "
+    "the raw text also carries the rewritten header COMMENT on the dropped "
+    "column — a comment, not a field)",
+    len(_yaml_note_diffs) == 16
+    and _yaml_other == ["todd_refs.meta.source_csv_sha256: 'e30304cf6dca3b7ca1e3923e49e709167444edef42dcb63add656b8a72395d4b' -> 'a46fccbe2a467219feaa2514a5825c50617871ee5607bda95f42b7fe43c8fa93'"],
+    f"notes={len(_yaml_note_diffs)}; other={_yaml_other[:3]}",
+)
+
+# the 16 pairs are the brief's own table (metric, book), read live:
+_BRIEF16 = {
+    ("homicide_rate", "Après la démocratie"),
+    ("homicide_rate", "La Défaite de l'Occident"),
+    ("infant_mortality", "La Défaite de l'Occident"),
+    ("life_expectancy", "La Défaite de l'Occident"),
+    ("same_sex_marriage_legalization_year", "La Défaite de l'Occident"),
+    ("suicide_rate", "Le Fou et le Prolétaire"),
+    ("incarceration_rate", "L'illusion économique"),
+    ("infant_mortality", "La Chute finale"),
+    ("life_expectancy", "La Chute finale"),
+    ("homicide_rate", "La Chute finale"),
+    ("suicide_rate", "La troisième planète"),
+    ("infant_mortality", "L'invention de la France"),
+    ("birth_rate_fertility", "Les Luttes de classes en France"),
+    ("infant_mortality", "Les Luttes de classes en France"),
+    ("consanguineous_marriage_rate", "Où en sommes-nous ?"),
+    ("unemployment_rate", "Où en sommes-nous ?"),
+}
+_live_pairs = set()
+for _mid, _m in _refs_new["metrics"].items():
+    for _r in _m["refs"]:
+        if "note" in _r and any(
+            d.startswith(f"todd_refs.metrics.{_mid}.refs[")
+            and ".note: " in d
+            and d.endswith(f" -> {_r['note']!r}")
+            for d in _yaml_note_diffs
+        ):
+            _live_pairs.add((_mid, _r["book"]))
+check(
+    "v29: the 16 changed notes are EXACTLY the brief's table (16 metric x "
+    "book pairs, no more, no fewer)",
+    _live_pairs == _BRIEF16,
+    f"live={sorted(_live_pairs)}",
+)
+_yaml_empty = sum(
+    1 for _m in _refs_new["metrics"].values() for _r in _m["refs"] if _r.get("note") == ""
+)
+check(
+    "v29: 6 notes are now EMPTY STRINGS and every refs[].note key stays "
+    "PRESENT (a published field is never dropped)",
+    _yaml_empty == 6
+    and all("note" in _r for _m in _refs_new["metrics"].values() for _r in _m["refs"]),
+    f"empty={_yaml_empty}",
+)
+
+# 11c. catalog.json: the parsed diff vs V28.3 is EXACTLY the same 16 notes.
+_cat_diffs = []
+_walk_diffs(
+    json.loads(_bytes_at(BASE3, "data/dist/catalog.json")),
+    json.loads((ROOT / "data/dist/catalog.json").read_text(encoding="utf-8")),
+    "catalog", _cat_diffs,
+)
+_cat_notes = [d for d in _cat_diffs if ".todd_refs.refs[" in d and ".note: " in d]
+check(
+    "v29: catalog.json data diff vs V28.3 = EXACTLY the 16 notes (its "
+    "todd_refs blocks embed the corpus notes — the byte change is the "
+    "catalog's own embedding, nothing else moved)",
+    len(_cat_notes) == 16 and len(_cat_diffs) == 16,
+    f"diffs={len(_cat_diffs)}; non-note={[d for d in _cat_diffs if d not in _cat_notes][:3]}",
+)
+
+# 11d. the 9 indicator files: the parsed diff is ONLY the todd_refs notes
+# (birth_rate_fertility additionally carries Part B2's notes sentence).
+_IND9 = (
+    "birth_rate_fertility", "consanguineous_marriage_rate", "homicide_rate",
+    "incarceration_rate", "infant_mortality", "life_expectancy",
+    "same_sex_marriage_legalization_year", "suicide_rate", "unemployment_rate",
+)
+for _ind in _IND9:
+    _d = []
+    _walk_diffs(
+        json.loads(_bytes_at(BASE3, f"data/dist/indicators/{_ind}.json")),
+        json.loads((ROOT / f"data/dist/indicators/{_ind}.json").read_text(encoding="utf-8")),
+        _ind, _d,
+    )
+    _notes = [x for x in _d if ".todd_refs.refs[" in x and ".note: " in x]
+    _other = [x for x in _d if x not in _notes]
+    if _ind == "birth_rate_fertility":
+        check(
+            "v29: birth_rate_fertility.json data diff = 1 todd_refs note + its "
+            "own notes field (Part B2's HMD/HFD sentence reworded) — nothing else",
+            len(_notes) == 1 and len(_other) == 1 and _other[0].startswith("birth_rate_fertility.notes: "),
+            f"notes={len(_notes)}; other={_other[:2]}",
+        )
+    else:
+        check(
+            f"v29: {_ind}.json data diff vs V28.3 = todd_refs notes only",
+            not _other and len(_notes) >= 1,
+            f"other={_other[:3]}",
+        )
+_nine_note_total = 0
+for _ind in _IND9:
+    _d = []
+    _walk_diffs(
+        json.loads(_bytes_at(BASE3, f"data/dist/indicators/{_ind}.json")),
+        json.loads((ROOT / f"data/dist/indicators/{_ind}.json").read_text(encoding="utf-8")),
+        _ind, _d,
+    )
+    _nine_note_total += sum(1 for x in _d if ".todd_refs.refs[" in x and ".note: " in x)
+check(
+    "v29: the 9 indicator files carry EXACTLY the 16 note changes between them "
+    "(1+1+3+1+4+2+1+2+1)",
+    _nine_note_total == 16,
+    f"total={_nine_note_total}",
+)
+
+# 11e. score/meta.json: the parsed diff is fingerprints only.
+_meta_diffs = []
+_walk_diffs(
+    json.loads(_bytes_at(BASE3, "data/dist/score/meta.json")),
+    json.loads((ROOT / "data/dist/score/meta.json").read_text(encoding="utf-8")),
+    "meta", _meta_diffs,
+)
+_allowed_fp = (
+    "meta.fingerprints.todd_core_csv_sha256",
+    "meta.fingerprints.todd_refs_yaml_sha256",
+    "meta.fingerprints.indicators.",
+)
+_meta_other = [d for d in _meta_diffs if not d.startswith(_allowed_fp)]
+check(
+    "v29: score/meta.json data diff = fingerprints ONLY (8: the CSV hash, the "
+    "refs-yaml hash, and the 6 indicator prefixes of the touched score "
+    "components) — bounds_version, presets, weights, notice all unmoved",
+    not _meta_other and len(_meta_diffs) == 8,
+    f"diffs={len(_meta_diffs)}; other={_meta_other[:3]}",
+)
+
+# 11f. the todd preset weights did not move (read live from the emitted meta).
+_w_official = sum(
+    v for c, v in json.loads((ROOT / "data/dist/score/meta.json").read_text())["presets"]["official"]["todd"].items()
+)
+_w_modelled = sum(
+    v for c, v in json.loads((ROOT / "data/dist/score/meta.json").read_text())["presets"]["modelled"]["todd"].items()
+)
+check(
+    "v29: todd preset weight totals unchanged (official 99 / modelled 92 — "
+    "books_count is untouched by the note cleanup)",
+    _w_official == 99 and _w_modelled == 92,
+    f"official={_w_official}; modelled={_w_modelled}",
+)
+
+# 11g. Part B1: the ADR-0011 erratum on record.
+_adr11 = (ROOT / "docs/adr/0011-score-layer-derived-composites.md").read_text(encoding="utf-8")
+check(
+    "v29/B1: ADR-0011 carries the dated cirrhosis erratum (45/44/54/57 was "
+    "the three-swap combination mislabelled as the cirrhosis swap; cirrhosis "
+    "alone 40/42/45/49 re-run; the not-representative conclusion stands)",
+    "2026-10-11 ERRATUM (v29)" in _adr11
+    and "the COMBINATION of\n    the three swaps" in _adr11
+    and "cirrhosis alone 40/42/45/49 (unchanged)" in _adr11
+    and "the brief was wrong, not the measurement" in _adr11,
+    "grep the ADR",
+)
+check(
+    "v29/B1: ADR-0011's status line carries the v29 amendment",
+    "AMENDED (2026-10-11, v29 — decision 19's cirrhosis row erratum" in _adr11,
+    "grep the status line",
+)
+
+# 11h. Part B2: the HMD/HFD wording in config/ is the true state.
+_sources = (ROOT / "config/sources.yaml").read_text(encoding="utf-8")
+check(
+    "v29/B2: sources.yaml header — HMD dropped (2026-10-09), CLIO-INFRA set "
+    "aside (unchanged), HFD not wired (account-gated like HMD, no decision)",
+    "HMD dropped on 2026-10-09: Ediz will not create an account" in _sources
+    and "CLIO-INFRA deliberately set" in _sources
+    and "not wired either" in _sources
+    and "no decision has been taken to wire it" in _sources,
+    "grep sources.yaml header",
+)
+check(
+    "v29/B2: sources.yaml eurostat note — HFD 'not wired', no 'HMD-class "
+    "pending decision' left",
+    "is NOT wired —\n    account-gated like HMD (dropped on 2026-10-09" in _sources
+    and "HMD-class\n    pending decision" not in _sources
+    and "set aside for now" not in _sources,
+    "grep sources.yaml eurostat notes",
+)
+_fert_cfg = (ROOT / "config/indicators/birth_rate_fertility.yaml").read_text(encoding="utf-8")
+check(
+    "v29/B2: birth_rate_fertility.yaml's published note ends on the true state "
+    "(not wired, account-gated like HMD which was dropped, no decision to "
+    "wire HFD; see sources.yaml)",
+    "not wired: account-gated\n  like HMD, which was dropped on 2026-10-09, and no decision taken to\n  wire HFD; see sources.yaml" in _fert_cfg
+    and "HMD-class pending" not in _fert_cfg,
+    "grep the fertility note ending",
+)
+_fert_dist = (ROOT / "data/dist/indicators/birth_rate_fertility.json").read_text(encoding="utf-8")
+check(
+    "v29/B2: the reworded sentence IS published in the dist (the fertility "
+    "indicator's notes field — the file already carried the v29 corpus notes)",
+    "not wired: account-gated like HMD, which was dropped on 2026-10-09" in _fert_dist,
+    "grep birth_rate_fertility.json",
+)
+_hmd_pending_cfg = subprocess.run(
+    ["grep", "-rn", "HMD-class pending", str(ROOT / "config")],
+    capture_output=True, text=True,
+)
+check(
+    "v29/B2: no 'HMD-class pending' wording left anywhere under config/",
+    _hmd_pending_cfg.returncode == 1 and not _hmd_pending_cfg.stdout.strip(),
+    _hmd_pending_cfg.stdout[:120],
+)
+
+# 11i. Part B3: fail fast — the bounds are validated BEFORE any dist write.
+# Reproduced live: a bad bounds copy + a sentinel dist file + a rebuild
+# whose pipeline stages are wired to FAIL if they run.
+import src.cli as _cli_v29  # noqa: E402
+
+_tmp_v29, _cfg_v29 = _bad_config_dir(_strip_entities)
+_sentinel_dir = _tmp_v29 / "dist"
+_sentinel_dir.mkdir()
+(_sentinel_dir / "sentinel.json").write_text('{"untouched": true}', encoding="utf-8")
+_sentinel_bytes = (_sentinel_dir / "sentinel.json").read_bytes()
+
+_saved_attrs = {a: getattr(_cli_v29, a) for a in
+                ("CONFIG_DIR", "RAW_DIR", "PROCESSED_DIR", "DIST_DIR", "REPORTS_DIR",
+                 "normalize_all", "merge_all", "validate_all", "build_all")}
+try:
+    _cli_v29.CONFIG_DIR = _cfg_v29
+    _cli_v29.RAW_DIR = _tmp_v29 / "raw"
+    _cli_v29.PROCESSED_DIR = _tmp_v29 / "processed"
+    _cli_v29.DIST_DIR = _sentinel_dir
+    _cli_v29.REPORTS_DIR = _tmp_v29 / "reports"
+
+    def _bomb(name):
+        def _f(*a, **k):
+            raise AssertionError(f"{name} ran — the pipeline must not start")
+        return _f
+
+    _cli_v29.normalize_all = _bomb("normalize_all")
+    _cli_v29.merge_all = _bomb("merge_all")
+    _cli_v29.validate_all = _bomb("validate_all")
+    _cli_v29.build_all = _bomb("build_all")
+    _rc_v29 = _cli_v29.cmd_rebuild(None)
+    _failfast_ok = _rc_v29 == 1 and (_sentinel_dir / "sentinel.json").read_bytes() == _sentinel_bytes
+finally:
+    for _a, _v in _saved_attrs.items():
+        setattr(_cli_v29, _a, _v)
+check(
+    "v29/B3: rebuild with a bad score_bounds.yaml exits 1 with the dist bytes "
+    "UNTOUCHED and the pipeline never started (v28.3 rebuilt the indicators "
+    "first and refused only afterwards — reproduced then refused here)",
+    _failfast_ok,
+    f"rc={_rc_v29}; sentinel-intact={(_sentinel_dir / 'sentinel.json').read_bytes() == _sentinel_bytes}",
+)
+_shutil.rmtree(_tmp_v29)
+
+# 11j. the normalizer's layout contract, exercised live via the script:
+# a v2 CSV (no status) and a legacy CSV (status present) BOTH normalise;
+# a CSV missing a required column is refused with exit 1.
+import tempfile as _tf_v29  # noqa: E402
+
+_mini_v2 = (
+    "id,label,family,book,citation_count,notes\n"
+    'suicide_rate,Suicide rate,mortality,Le Livre A (1980),12,"Series X."\n'
+)
+_mini_legacy = _mini_v2.replace("citation_count,notes", "citation_count,status,notes").replace(
+    ",12,", ",12,not_implemented,"
+)
+_mini_missing = _mini_v2.replace("id,label,family,", "id,family,")
+for _label, _content, _expect_ok in (
+    ("v2 (no status)", _mini_v2, True),
+    ("legacy (status present)", _mini_legacy, True),
+    ("missing required column", _mini_missing, False),
+):
+    _d = Path(_tf_v29.mkdtemp(prefix="v29_norm_"))
+    (_d / "mini.csv").write_text(_content, encoding="utf-8")
+    _r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts/normalize_todd_refs.py"),
+         "--csv", str(_d / "mini.csv"), "--out", str(_d / "out.yaml")],
+        capture_output=True, text=True,
+    )
+    check(
+        f"v29: the normalizer {'ACCEPTS' if _expect_ok else 'REFUSES'} a {_label} CSV",
+        (_r.returncode == 0) == _expect_ok
+        and (_expect_ok or "missing column" in _r.stderr),
+        f"rc={_r.returncode}; stderr={_r.stderr[:80]}",
+    )
+    _shutil.rmtree(_d)
+
 
 # --- 9. rebuild ×2 byte-stability, INCLUDING the score layer ---
 

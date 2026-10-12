@@ -15,7 +15,7 @@ The project takes inspiration from the method of historian-demographer Emmanuel 
 Compare countries side by side on hard indicators (infant mortality, life
 expectancy, fertility, homicides, education...).
 
-## The score layer (v27, amended v27.1, v28, v28.1, v28.2 and v28.3)
+## The score layer (v27, amended v27.1, v28, v28.1, v28.2, v28.3 and v29)
 
 Beside the indicators, a DERIVED layer: two composite scores per
 country-year — **official** (canonical-tier sources, 18 indicators —
@@ -28,7 +28,9 @@ The rebuild refuses loudly when a frozen source name or a bounds
 sample's size and entity count drifts beyond the configured tolerance
 (v28.2's hardened drift guard; since v28.3 every frozen block is
 validated at load — a missing, invalid, or non-positive count is
-refused at both CLI doors, never silently skipped). Since v28 a component's value is the
+refused at both CLI doors, never silently skipped; since v29 that
+validation runs BEFORE any dist file is written — a malformed bounds
+file fails the rebuild with the dist untouched). Since v28 a component's value is the
 latest real observation at most
 3 years old, its age recorded and displayed ("data from YYYY") — a
 reuse of a real measurement, never an invented value. The two scores

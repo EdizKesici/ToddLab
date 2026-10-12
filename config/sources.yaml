@@ -456,9 +456,10 @@ eurostat:
     SDMX registry carries no national fertility dataflow (DSD_REG_DEMO
     @DF_FERTILITY is TL2/TL3 regional; the Family Database is not on
     SDMX). The Human Fertility Database (France from 1817, the
-    historical depth Todd's onset dates need) remains the HMD-class
-    pending decision — deliberately NOT wired, recorded below with the
-    same status as HMD/CLIO-INFRA.
+    historical depth Todd's onset dates need) is NOT wired —
+    account-gated like HMD (dropped on 2026-10-09: Ediz will not create
+    an account), and no decision has been taken to wire it — recorded
+    below beside CLIO-INFRA among the deliberately unwired.
 
 ilostat:
   base_url: "https://sdmx.ilo.org/rest/data"
@@ -506,11 +507,15 @@ ilostat:
     live against the registry).
 
 
-# HMD and CLIO-INFRA deliberately absent (set aside for now, per
-# conversation). The Human FERTILITY Database (HFD) joins that pending
-# class in v14: the collector-tier source with the historical depth the
-# fertility metric's 19th-century face needs (France from 1817) — see
-# the eurostat notes above.
+# HMD dropped on 2026-10-09: Ediz will not create an account, so it is
+# no longer a planned source (the v28.3 retirement — see licenses.md and
+# the-measurement-problem.md section 4). CLIO-INFRA deliberately set
+# aside (per conversation; its licensing questions were never
+# investigated). The Human FERTILITY Database (HFD) is not wired either
+# — account-gated like HMD, and no decision has been taken to wire it:
+# the collector-tier source with the historical depth the fertility
+# metric's 19th-century face needs (France from 1817) — see the
+# eurostat notes above.
 #
 # industrial_employment_share (v18, WIRED — the composite-derived-layer
 # question DISSOLVED BY PROBE): the corpus's #6 (30 citations, 5 books)

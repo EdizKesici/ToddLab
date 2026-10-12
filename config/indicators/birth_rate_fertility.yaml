@@ -325,5 +325,6 @@ notes: >
   (general + age-specific fertility rates, latest-available-year
   cross-sections, no TFR column — verified on the 2024 file), and the
   Human Fertility Database (France from 1817, the collector with the
-  historical depth Todd's onset dates need — the HMD-class pending
-  decision recorded in sources.yaml).
+  historical depth Todd's onset dates need — not wired: account-gated
+  like HMD, which was dropped on 2026-10-09, and no decision taken to
+  wire HFD; see sources.yaml).

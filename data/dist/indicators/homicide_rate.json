@@ -76337,7 +76337,7 @@
         "year_raw": "1976/1990",
         "citations": 3,
         "label": "Homicide rate",
-        "note": "Cited jointly with suicide as 'rising violent deaths' signature. Already in config/indicators/."
+        "note": "Cited jointly with suicide as 'rising violent deaths'."
       },
       {
         "book": "Le Fou et le Prolétaire",
@@ -76379,7 +76379,7 @@
         "year": 2008,
         "citations": 1,
         "label": "Homicide rate per 100,000 (France + international)",
-        "note": "France + genuine international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia)."
+        "note": "France + international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia)."
       },
       {
         "book": "L'invention de la France",
@@ -76400,7 +76400,7 @@
         "year": 2024,
         "citations": 7,
         "label": "Homicide rate",
-        "note": "Russia 2000-2020 citation, reinforcing."
+        "note": "Russia 2000-2020."
       }
     ]
   }

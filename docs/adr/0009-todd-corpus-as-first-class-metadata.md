@@ -45,6 +45,19 @@ without the repo silently overriding it (or it overriding the repo)?
    Implemented-ness is the repo's own state, derived by
    `cross_validate_todd_core` against `config/indicators/*.yaml` — a
    stale flag in the compilation must never override the config's truth.
+
+   *2026-10-11 (v29): the column was DROPPED from the CSV — all 115 rows
+   read `not_implemented` (all 22 metrics implemented in the repo at the
+   time), a permanently stale flag contradicting the real state, so Ediz
+   removed it. The decision above stands as the recorded reasoning and
+   keeps its meaning for legacy vintages: a CSV that still carries an
+   extra `status` column normalises identically (extra columns are
+   ignored), and a missing required column still fails loudly. The same
+   v29 delivery cleaned the notes to what-is-cited-only (where / when /
+   which table; no process remarks, no file cross-references, no
+   importance judgments) — six rows had nothing left to say and their
+   published `refs[].note` is now the empty string, the key staying
+   present (a published field).*
 4. **The `todd_core` flag becomes evidence-backed (the bijection).** An
    indicator flagged `todd_core: true` MUST have a corpus entry with the
    same id (the flag now cites its source); a corpus metric sharing an

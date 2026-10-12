@@ -11,7 +11,12 @@
   worldwide canonical sample, and the drift guard hardened to trip on
   coverage drift, not only on source-name changes); AMENDED (2026-10-09,
   v28.3 — decision 19: the UNODC / WHO Mortality Database widening of
-  the official score's coverage REFUSED, the measured what-if on record)
+  the official score's coverage REFUSED, the measured what-if on record);
+  AMENDED (2026-10-11, v29 — decision 19's cirrhosis row erratum: the
+  v28.3 brief's 45/44/54/57 was the THREE-SWAP combination mislabelled
+  as the cirrhosis swap, not an earlier reading of it — the brief was
+  wrong, not the measurement; cirrhosis alone reads 40/42/45/49,
+  re-run and confirmed)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -284,7 +289,23 @@ Ediz's decisions (locked; numbered and testable):
     entities, one distinct year — so the swap DROPS 2010/2015 coverage
     while 2019/2021 ride the fresh cross-section; the row measures the
     swap's coverage artifact, not the source, and is recorded as not
-    representative). Why refused: (a) THE JOINT CONSTRAINT — a
+    representative).
+
+    2026-10-11 ERRATUM (v29): the parenthetical above that presented
+    45/44/54/57 as "the brief's own earlier reading" of the cirrhosis
+    swap mislabels that row — it was never a reading of the cirrhosis
+    swap at all. The v28.3 brief's 45/44/54/57 was the COMBINATION of
+    the three swaps (homicide + suicide + cirrhosis) presented under
+    the cirrhosis label; the brief was wrong, not the measurement.
+    Re-run on 2026-10-11 by BOTH tools (the repo-core swap on the
+    pristine V28.3 dist; the reference prototype — agreeing on every
+    row): cirrhosis alone 40/42/45/49 (unchanged), the three-swap
+    combination 45/44/54/57 — the mislabelled row reproduced
+    exactly, which is what it was. The conclusion stands
+    unchanged: the cirrhosis row is not representative, because the
+    only worldwide cirrhosis witness (WHO GHO) covers 2019 only.
+
+    Why refused: (a) THE JOINT CONSTRAINT — a
     non-OECD country is kept out of the official score by the narrow
     components AS A SET (unemployment 35 entities, secondary and
     tertiary attainment 36, industrial employment 37, road deaths per

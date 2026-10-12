@@ -4,9 +4,9 @@ WHAT THIS FILE MODELS
 Ediz's OCR compilation of every metric Todd uses across 16 books (one row
 per metric x book, citation-counted) enters the repo as a GENERATED config
 (scripts/normalize_todd_refs.py performs the one-way transform from
-todd_core.csv; the CSV stays outside as the source of truth). This module
-is what the pipeline validates that config against — the same
-fail-loudly contract as every other config file.
+todd_core.csv; the CSV is Ediz's source of truth, tracked at the repo root
+since v26). This module is what the pipeline validates that config against
+— the same fail-loudly contract as every other config file.
 
 Two consumers read it downstream:
 - build.py attaches `todd_refs` to every indicator whose id matches a
@@ -36,8 +36,13 @@ class ToddRef(BaseModel):
     Todd used the metric. `label` is the usage label of that row (the
     compilation labels per row, e.g. 'Suicide rate per 100,000' vs a
     bare 'Suicide rate'), `note` the row's data description (countries,
-    years, sources). `year_raw` keeps the original parenthetical when
-    the book year is not a plain YYYY (the 1976/1990 dual edition)."""
+    years, sources). `note` MAY BE EMPTY (v29: the cleaned CSV keeps a
+    note only when it says what is cited — where / when / which table;
+    a row with nothing to say beyond the citation carries the empty
+    string, and the published `refs[].note` key stays present, never
+    dropped — it is a published field). `year_raw` keeps the original
+    parenthetical when the book year is not a plain YYYY (the 1976/1990
+    dual edition)."""
 
     book: str = Field(..., min_length=1)
     year: int = Field(..., ge=1400, le=2100)

@@ -491,8 +491,10 @@ def _todd_corpus_payload(indicators: dict[str, Indicator], corpus: ToddCorpus) -
     unimplemented metrics — as the executable roadmap. The ranking is the
     corpus's own (citation-weighted, carried over from the generated
     YAML); `implemented` is derived from the indicator configs, never
-    carried stale from the CSV's own status column (the normalizer
-    deliberately ignores it)."""
+    carried from the CSV (the compilation's own `status` column — all
+    'not_implemented', permanently stale — was dropped from the CSV in
+    v29; a legacy vintage carrying it normalises the same way, the extra
+    column ignored)."""
     metrics = [
         {
             "id": mid,

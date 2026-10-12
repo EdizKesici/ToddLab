@@ -324101,7 +324101,7 @@
         "year_raw": "1976/1990",
         "citations": 5,
         "label": "Life expectancy at birth",
-        "note": "Male/female longevity gap. Already in config/indicators/."
+        "note": "Male/female longevity gap."
       },
       {
         "book": "Le Fou et le Prolétaire",
@@ -324171,7 +324171,7 @@
         "year": 2024,
         "citations": 6,
         "label": "Life expectancy: Germany, France, Italy above the US",
-        "note": "Reinforcing citation."
+        "note": ""
       }
     ]
   }

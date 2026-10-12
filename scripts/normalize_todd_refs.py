@@ -4,9 +4,9 @@
 WHAT THIS SCRIPT IS
 The Todd corpus (Ediz's OCR mega-compilation of every metric Todd uses,
 one row per metric x book with a citation count) enters the repo as a
-GENERATED config file — the CSV itself stays outside the repo as the
-source of truth and is never modified by this project. The transform is
-strictly one-way:
+GENERATED config file — the CSV itself is Ediz's source of truth
+(tracked at the repo root since v26) and is never modified by this
+project's code — the transform is strictly one-way:
 
     todd_core.csv  --(this script)-->  config/todd_refs.yaml  --(build)-->  dist
 
@@ -21,10 +21,16 @@ The YAML carries the source CSV's SHA-256 in its meta block so a regen
 can be tied to the exact upstream vintage.
 
 DELIBERATELY IGNORED CSV columns:
-- `status` ("not_implemented"): implemented-ness is the REPO's own state,
-  derived by cross-validation against config/indicators/*.yaml (see
-  src/config_loader.cross_validate_todd_core) — a stale flag in the CSV
-  must never override the config's own truth.
+- `status` (v13-v28.3: "not_implemented" in every row): implemented-ness
+  is the REPO's own state, derived by cross-validation against
+  config/indicators/*.yaml (see src/config_loader.cross_validate_todd_core)
+  — a stale flag in the CSV must never override the config's own truth.
+  The column was DROPPED from the CSV in v29 (all 115 rows read
+  "not_implemented" while the dist computed "implemented" itself — a
+  permanently stale flag that misled whoever opened the file). A legacy
+  CSV that still carries the column is still accepted: an extra column
+  is ignored by csv.DictReader, so the ignore rule keeps its meaning for
+  legacy vintages. A missing REQUIRED column still fails loudly.
 
 VALIDATIONS (fail loudly, never silently mangle):
 - unique (id, book) pairs — a duplicate row is an upstream OCR artifact
@@ -78,7 +84,7 @@ def normalize(csv_path: Path) -> tuple[dict, list[str]]:
     csv_bytes = csv_path.read_bytes()
     text = csv_bytes.decode("utf-8")
     reader = csv.DictReader(text.splitlines())
-    required = ["id", "label", "family", "book", "citation_count", "status", "notes"]
+    required = ["id", "label", "family", "book", "citation_count", "notes"]
     missing = [c for c in required if c not in (reader.fieldnames or [])]
     if missing:
         raise ValueError(f"CSV is missing column(s) {missing}: layout change upstream?")
@@ -178,10 +184,12 @@ _HEADER = """\
 #     python scripts/normalize_todd_refs.py --csv <path>/todd_core.csv
 #
 # Same CSV bytes -> same YAML bytes (deterministic); meta.source_csv_sha256
-# ties this file to the exact upstream vintage. The CSV's own `status`
-# column is deliberately ignored: implemented-ness is derived from
-# config/indicators/*.yaml by cross-validation at config load, never
-# carried stale from the compilation.
+# ties this file to the exact upstream vintage. The CSV carried a `status`
+# column through v28.3 (deliberately ignored here: implemented-ness is
+# derived from config/indicators/*.yaml by cross-validation at config load,
+# never carried stale from the compilation); the column was dropped from
+# the CSV in v29 — a legacy vintage that still carries it normalises the
+# same way, the extra column ignored.
 """
 
 
