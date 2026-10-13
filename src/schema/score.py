@@ -131,6 +131,29 @@ OFFICIAL_ONLY_INDICATORS: dict[str, str] = {
 }
 
 
+# Decision 20 (v30): modelled-score-only components. The official score is the
+# project's authenticity standard: figures that statistical services of the
+# state produce and publish (registers, censuses, their own surveys), with no
+# model behind them. These three canonical series are model outputs or
+# compilations (UNAIDS Spectrum estimates, the NCD-RisC Bayesian pooled
+# analysis, the WID constructed series): they stay on the indicator layer
+# and in the modelled score, and the schema refuses them on the official side.
+MODELLED_ONLY_INDICATORS: dict[str, str] = {
+    "hiv_prevalence_rate": (
+        "decision 20 (v30) — UNAIDS modelled estimates (Spectrum), not a "
+        "figure published by a national statistical service"
+    ),
+    "obesity_rate": (
+        "decision 20 (v30) — NCD-RisC Bayesian hierarchical model over "
+        "pooled studies, estimated for every country-year"
+    ),
+    "top_income_share": (
+        "decision 20 (v30) — WID constructed series (fiscal microdata, "
+        "surveys and national accounts combined)"
+    ),
+}
+
+
 class ScoreComponent(BaseModel):
     indicator: str = Field(..., min_length=1)
     direction: Direction
@@ -205,6 +228,12 @@ class ScoreConfig(BaseModel):
                     f"{c.indicator} is OFFICIAL-SCORE-ONLY — {reason}. "
                     "Remove 'modelled' from its scores (never silent, never a "
                     "coverage hole in the modelled score)"
+                )
+            reason = MODELLED_ONLY_INDICATORS.get(c.indicator)
+            if reason and ScoreName.official in c.scores:
+                raise ValueError(
+                    f"{c.indicator} is MODELLED-SCORE-ONLY — {reason}. "
+                    "Remove 'official' from its scores (never silent)"
                 )
         dups = sorted(k for k, n in seen.items() if n > 1)
         if dups:

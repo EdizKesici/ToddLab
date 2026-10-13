@@ -815,6 +815,37 @@ def test_illegitimate_births_accepted_official_refused_modelled():
         _config(components=[_ib_component(["modelled"])])
 
 
+@pytest.mark.parametrize(
+    "indicator", ["hiv_prevalence_rate", "obesity_rate", "top_income_share"]
+)
+def test_model_based_indicators_modelled_only_v30(indicator):
+    # decision 20 (v30): model outputs and compilations are accepted in the
+    # modelled score and refused loudly on the official side
+    def comp(scores):
+        return ScoreComponent(
+            indicator=indicator, direction="lower", transform="linear",
+            sex_mode="both", scores=scores, basis="consensus", provisional=False,
+            corpus_metric=indicator,
+        )
+
+    cfg = _config(components=[comp(["modelled"])])
+    assert cfg.components[0].indicator == indicator
+    for scores in (["official"], ["official", "modelled"]):
+        with pytest.raises(ValidationError, match="MODELLED-SCORE-ONLY"):
+            _config(components=[comp(scores)])
+
+
+def test_shipped_config_keeps_model_based_indicators_out_of_official():
+    from src.config_loader import load_score_config
+
+    cfg = load_score_config(Path(__file__).resolve().parents[1] / "config")
+    by_id = {c.indicator: c for c in cfg.components}
+    for indicator in ("hiv_prevalence_rate", "obesity_rate", "top_income_share"):
+        assert [s.value for s in by_id[indicator].scores] == ["modelled"]
+    official = [c for c in cfg.components if "official" in [s.value for s in c.scores]]
+    assert len(official) == 15  # indicators; 17 components once the two sex pairs split
+
+
 def test_gini_and_incarceration_still_refused():
     for bad_id in ("gini_index", "incarceration_rate"):
         with pytest.raises(ValidationError, match="EXCLUDED"):
@@ -1224,7 +1255,7 @@ def test_loader_accepts_the_factory_file():
     repo_root = Path(__file__).resolve().parents[1]
     doc = load_score_bounds(repo_root / "config")
     n_blocks = sum(len(blocks) for blocks in doc["bounds"].values())
-    assert n_blocks == 38  # 20 official + 18 modelled
+    assert n_blocks == 35  # 17 official + 18 modelled (v30, decision 20)
     for score, blocks in doc["bounds"].items():
         for key, block in blocks.items():
             assert isinstance(block["n_sample"], int) and block["n_sample"] > 0, (score, key)

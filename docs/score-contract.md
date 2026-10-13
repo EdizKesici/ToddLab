@@ -1,5 +1,5 @@
-# The score layer's frontend contract (v27, amended v27.1, v28, v28.1
-# and v28.2, ADR-0011)
+# The score layer's frontend contract (v27, amended v27.1, v28, v28.1,
+# v28.2 and v30, ADR-0011)
 
 This is the EXACT, documented contract for computing a score, a custom-
 weighted score, or a two-year difference from `data/dist/score/`. The
@@ -14,18 +14,21 @@ and `golden_vectors.json` is what to unit-test against.
   indicator layer's three prohibitions (no interpolation, no
   derivation, no reconciliation) are untouched — the score derives
   openly from what the indicators measured, and every file says so.
-- **Two scores, never merged**: `official` (canonical-tier sources, 20
-  components / total weight 18, 18 indicators — illegitimate_births
+- **Two scores, never merged**: `official` (canonical-tier sources, 17
+  components / total weight 15, 15 indicators — illegitimate_births
   among them since v28) and `modelled` (widest-coverage single source
   per component, 18 components / total weight 16, 16 indicators, ~140
   countries). They diverge where modeling runs ahead of collection;
   the divergence is the signal. Display them side by side, never
   average them.
-- **"Official" means the canonical tier of this project, not
-  "non-modelled"**: obesity (WHO) and HIV are modeled estimates,
-  top income share rides OWID/WID. A component inside the official
-  score whose retained source is a witness carries
-  `source_class: "modelled"` — surface the badge.
+- **"Official" means figures published by state statistical services**
+  (registers, censuses, their own surveys), with no model behind them.
+  Since v30 (decision 20) the three model-based or compiled series are
+  in the modelled score only: HIV (UNAIDS modelled estimates), obesity
+  (NCD-RisC Bayesian model) and top income share (WID constructed
+  series). A component inside the official score whose retained source
+  is a witness would carry `source_class: "modelled"` — surface the
+  badge.
 - **The v28 carry rule is NOT interpolation** (decision 16, amends
   ADR-0011's decision 3): no value is invented — a real, older
   observation is reused, capped at `max_age_years` (3), and labelled
@@ -152,10 +155,11 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 - `equal`: weight 1 per indicator (0.5 per sex component).
 - `todd`: weight = the number of DISTINCT BOOKS citing the component's
   `corpus_metric` in the Todd corpus (floor 1 when null or 0).
-  Fertility carries 16 of 99 indicator weight on the official score
-  (92 modelled — v28 added illegitimate_births' 6 to the official
-  side) — the concentration is Todd's own reading, display it, and
-  offer `equal` beside it.
+  Fertility carries 16 of 92 indicator weight on the official score
+  (also 92 on the modelled score since v30 — the official side lost
+  the weights of the three model-based indicators and gained none) —
+  the concentration is Todd's own reading, display it, and offer
+  `equal` beside it.
 
 ## Display discipline (the three prohibitions, applied to rendering)
 

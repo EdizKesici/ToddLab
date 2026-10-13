@@ -56,6 +56,10 @@
 # agricultural_employment_share. OFFICIAL-SCORE-ONLY by decision 15 (v28):
 # illegitimate_births (refused in the modelled score — see its component
 # comment).
+# MODELLED-SCORE-ONLY by decision 20 (v30): hiv_prevalence_rate,
+# obesity_rate, top_income_share (model outputs and compilations, not
+# figures published by a state statistical service — the schema refuses
+# them in the official score).
 
 version: "1"
 bounds_from_year: 1990
@@ -139,7 +143,7 @@ components:
     direction: lower
     transform: linear
     sex_mode: both
-    scores: [official, modelled]
+    scores: [modelled]
     basis: consensus
     provisional: false
     corpus_metric: obesity_rate
@@ -148,7 +152,7 @@ components:
     direction: lower
     transform: log
     sex_mode: both
-    scores: [official, modelled]
+    scores: [modelled]
     basis: consensus
     provisional: false
     corpus_metric: hiv_prevalence_rate
@@ -216,7 +220,7 @@ components:
     direction: lower
     transform: linear
     sex_mode: both
-    scores: [official, modelled]
+    scores: [modelled]
     basis: todd
     provisional: false
     corpus_metric: top_income_share

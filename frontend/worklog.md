@@ -433,3 +433,16 @@ Stage Summary:
 - No sync step anymore. Verified: eslint 0, tsc 0, next build OK, standalone server via `npm start` serves all pages with 200; API responses byte-identical to the previous build except `vintage` and the infant_mortality notes text (CHANGELOG mention removed); editing data/dist/score/meta.json was reflected by /api/stats on the next request, and reverting it too.
 - The frontend now requires the backend's data/dist next to it (same repository).
 
+
+---
+Task ID: 17
+Agent: Claude Code (Hermes)
+Task: Follow the backend v30 score change (decision 20) in the frontend.
+
+Work Log:
+- No frontend code change: the score pages read data/dist in place and the component list comes from score/meta.json.
+- Backend v30: hiv_prevalence_rate, obesity_rate and top_income_share are in the modelled score only; the official score has 17 components (weight 15; todd preset 92) and bounds 2026-10-13.1.
+
+Stage Summary:
+- Verified on the production server: /, /score, /countries/france and the /api/score routes answer 200.
+- Official 2025 scores moved with the new composition: France 64.48 (was 64.92), Germany 70.30 (was 68.79). Modelled scores are unchanged.
