@@ -740,4 +740,4 @@ than "bricolage" — is in `docs/adr/0007-source-of-record-and-witnesses.md`.
 - Live verifications performed during this project's audits (September
   2026): OWID/WDI/GHO value-level matches; OWID API origin metadata;
   GHO entity dimension; Macrotrends page structure and series values; HMD
-  Russia availability pages. See the conversation log and CHANGELOG.
+  Russia availability pages. See the conversation log.

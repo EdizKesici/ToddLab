@@ -156,7 +156,7 @@ def test_merge_indicator_writes_both_files(tmp_path):
     # class-less indicator leaves NO segment artifacts (and no stale
     # survivors from any previous run can outlive the clean one).
     # (v26: the bilateral layer machinery is gone entirely — the
-    # withdrawn migration indicator's faces are history in the CHANGELOG.)
+    # withdrawn migration indicator's faces are retired.)
     assert not (tmp_path / "imr.segments.merged.json").exists()
     assert not (tmp_path / "imr.segments.witnesses.json").exists()
     assert not (tmp_path / "imr.segments_citizenship.merged.json").exists()

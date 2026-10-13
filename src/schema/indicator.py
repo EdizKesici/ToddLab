@@ -485,8 +485,7 @@ EUROSTAT_DATASET_TITLES: dict[str, str] = {
     "nama_10_a10_e": "Employment by main industry (NACE Rev.2) - national accounts - annual data",
     "edat_lfse_03": "Population in private households by educational attainment level",
     # v26: the two migr dataset titles withdrew with their indicator — the
-    # datasets still print on the API; the wiring history is in the
-    # CHANGELOG.
+    # datasets still print on the API.
     # v25: read live from the API labels (2026-09-27, the v25 probe) — the
     # LFS questionnaire's own by-nationality rate titles, the same
     # one-questionnaire-one-title rule.

@@ -74,7 +74,7 @@ class RawRecord:
 
     (v26 note: the v22/v23 bilateral origin fields — origin_raw_name,
     origin_iso3_raw, origin_axis — were REMOVED with the migration
-    matrices' indicator; the wiring history lives in the CHANGELOG.)
+    matrices' indicator.)
     """
     entity_raw_name: str
     iso3_raw: str | None

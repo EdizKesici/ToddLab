@@ -105,7 +105,7 @@ def _latest_snapshot(raw_dir: Path, provider: str, indicator_id: str, source_ref
     date, one without): '2026-09-03T...' sorts BEFORE '20260101T...'
     because '-' (0x2D) is less than '0' (0x30) in ASCII, so a same-day
     mock/test snapshot with no dashes could outrank a genuinely newer real
-    fetch. Caught by a live-network audit — see CHANGELOG.
+    fetch. Caught by a live-network audit.
     """
     source_dir = _source_dir(raw_dir, provider, indicator_id, source_ref)
     if not source_dir.is_dir():
@@ -153,7 +153,7 @@ def normalize_indicator(
     never colliding with the single-axis flow BY CONSTRUCTION (a
     class-carrying point never enters the (entity, year, sex) flow).
     (v26: the v22/v23 bilateral routing — the origin-axis faces of the
-    withdrawn migration indicator — is history in the CHANGELOG.) The two segment faces are the ADR-0010 pair again:
+    withdrawn migration indicator — is retired.) The two segment faces are the ADR-0010 pair again:
     immigrés vs étrangers, never merged, never arbitrated across.
     """
     points: list[NormalizedPoint] = []

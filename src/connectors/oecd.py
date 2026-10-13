@@ -8,7 +8,7 @@ the response (the v8.1 rule, applied per-flow).
 
 (v26: the TWO MIGRATION dataflows — DSD_MIG_F@DF_MIG_POPF and
 DSD_MIG@DF_MIG — were withdrawn with their indicator; their access
-quirks and origin-override tables are history in the CHANGELOG. The
+quirks and origin-override tables are retired with it. The
 flows still print on the OECD's registry — the withdrawal record lives
 in config/sources.yaml.)
 

@@ -22,7 +22,7 @@ CATALOG_CURATED_DIR = ROOT / "catalog" / "curated"
 # Must be parseable by normalize.py's SNAPSHOT_TS_FORMAT ("%Y-%m-%dT%H%M%SZ").
 # An earlier version of this fixture used "20260101T000000Z" (no dashes),
 # which does NOT match that format and was the root cause of a real bug
-# (see CHANGELOG: mock snapshots silently outranking real fetches under a
+# (mock snapshots silently outranking real fetches under a
 # naive lexical filename sort). Keep this in sync with production's format.
 FIXED_SNAPSHOT_TIMESTAMP = "2026-01-01T000000Z"
 

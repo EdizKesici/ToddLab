@@ -51,7 +51,7 @@ def test_czechoslovakia_points_to_czechia_and_slovakia(real_entities):
 
 def test_kosovo_is_present_and_resolves_by_name(real_entities):
     # Added after a live-network audit found it as a real gap (not an
-    # aggregate) — see CHANGELOG.
+    # aggregate).
     kosovo = real_entities.by_id("kosovo")
     assert kosovo is not None
     assert kosovo.valid_from == 2008

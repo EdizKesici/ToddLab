@@ -8,7 +8,7 @@ or to replay a normalization bugfix without re-downloading).
 Each source is fetched independently: one source failing (network error,
 HTTP error, unexpected CSV shape) must NOT prevent the other sources or
 other indicators from being fetched. This was a real bug in an earlier
-version — see CHANGELOG entry "fetch isolation" — caught by a live-network
+version — caught by a live-network
 audit where a single 403 on one indicator silently killed the whole run.
 """
 from __future__ import annotations

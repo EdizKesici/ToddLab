@@ -16,3 +16,12 @@ reports/
 # probe scratch material (full-download caches: the v23 B15 pull, the
 # v25 ITF per-vehicle pull — regenerable, never committed)
 data/tmp/
+
+# frontend (Next.js): dependencies and build artifacts
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+frontend/*.log
+.env*
+*.tsbuildinfo

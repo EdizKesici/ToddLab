@@ -1,4 +1,4 @@
-"""Regression tests for bugs caught by a live-network audit (see CHANGELOG):
+"""Regression tests for bugs caught by a live-network audit:
 - fetch isolation (one source failing must not block the others)
 - snapshot selection by real timestamp, not lexical filename sort
 """

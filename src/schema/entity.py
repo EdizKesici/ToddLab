@@ -24,7 +24,7 @@ class FormerUnionMembership(BaseModel):
     their modern country code rather than to a separate "USSR" entity. A
     live-network audit confirmed OWID carries no standalone "USSR" entity
     at all in either of the two mortality datasets checked, even the
-    1751-2024 long-run one — see CHANGELOG. Decision: show each ex-Soviet
+    1751-2024 long-run one. Decision: show each ex-Soviet
     republic's series continuously (pre- and post-1991 in one line) rather
     than fabricate a separate "ussr" data series, with this field driving
     a frontend warning for the pre-1991 portion.

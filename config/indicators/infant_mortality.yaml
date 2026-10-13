@@ -237,7 +237,7 @@ notes: >
     significant digit) — wired precisely so the catalog can SAY "one
     root, four doors" from the data instead of from the docs.
 
-  UNIT HISTORY (live-network audits, see CHANGELOG): the OWID chart
+  UNIT HISTORY (live-network audits): the OWID chart
   reports a percentage, not per-1,000 — the phase-1 fix declared the
   percentage as the indicator unit. Phase 2 (now): the canonical unit is
   per-1,000 (the field's native unit — DYB, official series, IGME all

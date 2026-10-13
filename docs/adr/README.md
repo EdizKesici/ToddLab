@@ -49,3 +49,11 @@ they ever need revisiting:
 ADRs cite their evidence (live audits, docs, CHANGELOG entries) rather
 than restating it. They are never deleted: superseding an ADR means
 writing a new one that references it.
+
+## Endnote (2026-10-13)
+
+`CHANGELOG.md` was removed from the repository and from its public history
+on 2026-10-13. The "CHANGELOG" references in the table above and in the
+ADRs (0007, 0008, 0010) are kept as written, as historical citations of a
+file that no longer exists; the evidence they pointed to is not
+recoverable from this repository.

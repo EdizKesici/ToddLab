@@ -12,7 +12,7 @@
 #   connector logs an explicit warning (never crashes) when a name found
 #   in a CSV has no match here -- see {indicator}.unresolved.json, which
 #   is how this table gets corrected incrementally instead of guessed
-#   upfront. Confirmed live (see CHANGELOG): aggregates/regions/income
+#   upfront. Confirmed live: aggregates/regions/income
 #   groups (~27 names: 'World', 'Africa', 'European Union (27)'...) show
 #   up as unresolved by design -- this project only models countries.
 # - OWID Code values are NOT simply blank for non-ISO entities: OWID uses
@@ -82,7 +82,7 @@
     un_dyb: Union of Soviet Socialist Republics
   label_source: manual
   notes: 'This project''s original tracer (Soviet infant mortality, see brief). RESOLVED
-    (see conversation and CHANGELOG): a live-network audit found OWID carries no standalone
+    (see conversation): a live-network audit found OWID carries no standalone
     ''USSR'' entity in the mortality datasets used here (infant-mortality, child-mortality),
     even OWID''s deepest long-run series (1751-2024) -- Gapminder/UN IGME attach historical
     values straight to each modern successor country''s own code instead. Decision:
@@ -284,7 +284,7 @@
     by hand. Declared independence 2008. OWID uses Code=OWID_KOS. World Bank tracks
     it under the non-ISO code XKX (now carried as this entity's user-assigned iso3,
     v21). who_gho not verified yet (phase 2). Found missing during a live-network
-    audit (see CHANGELOG) that surfaced it as a real data gap, not an expected
+    audit that surfaced it as a real data gap, not an expected
     aggregate.
 - entity_id: netherlands_antilles
   label: Netherlands Antilles
@@ -444,8 +444,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: american_samoa
@@ -537,8 +536,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: burundi
@@ -690,8 +688,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: belize
@@ -1207,8 +1204,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: ethiopia
@@ -1342,8 +1338,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: guernsey
@@ -1785,8 +1780,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: kenya
@@ -1818,8 +1812,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: cambodia
@@ -1996,8 +1989,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: luxembourg
@@ -2029,8 +2021,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: macao
@@ -2101,8 +2092,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: madagascar
@@ -2722,8 +2712,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: rwanda
@@ -3093,8 +3082,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: tokelau
@@ -3126,8 +3114,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: timor_leste
@@ -3257,8 +3244,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: united_states_minor_outlying_islands
@@ -3315,8 +3301,7 @@
     until_year: 1991
     note: Data before 1991 was reported by OWID's sources under this country's modern
       name/code, but reflects the Soviet Union (USSR), not this country governed independently
-      -- OWID has no standalone USSR entity in its mortality data (confirmed live,
-      see CHANGELOG). Shown as one continuous series by design (decision made in conversation)
+      -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
 - entity_id: holy_see_vatican_city_state

@@ -116,7 +116,7 @@ _CODE_AGE_PIN: dict[str, str] = {
     "NCD_BMI_30C": "AGEGROUP_YEARS18-PLUS",  # read live 2026-09-22 on the full 28,350-row slice
     # v23: read live 2026-09-25 on the full 44,424-row payload (39,279
     # COUNTRY rows, every one carrying the 0-11-months frame; the v22
-    # dist reproduced bit-identically through the pin — see CHANGELOG).
+    # dist reproduced bit-identically through the pin).
     "MDG_0000000001": "AGEGROUP_MONTHS0-11",
 }
 

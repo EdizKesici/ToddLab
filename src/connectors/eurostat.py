@@ -138,7 +138,7 @@ make exactly that decision three more times):
   ENTIRE in v26 with their indicator (immigration_stock, the owner's
   decision: a count of persons, not a rate). The grammar, the ROW
   bilateral doors, the M/F ventilations and the origin-axis machinery
-  are history in the CHANGELOG; the datasets still print on Eurostat's
+  are retired; the datasets still print on Eurostat's
   wire — the record of the withdrawal lives in config/sources.yaml.
   Todd's two boards (immigrés vs étrangers, the naturalization
   DIVERGE/CONVERGE anchors) ride the SEGMENT faces of unemployment_rate
@@ -259,8 +259,8 @@ convention extended):
                                     carrying segment_axis="birth" into
                                     the segments layer)
     migr_pop3ctb/migr_pop1ctz (v18-v24): WITHDRAWN in v26 with their
-                                 indicator — the doors' history in the
-                                 CHANGELOG and config/sources.yaml.
+                                 indicator — the doors' record in
+                                 config/sources.yaml.
 The dataset part selects the dispatch; the pins are validated against
 the response (a pinned request must return EXACTLY what it asked for —
 never ingest a slice we didn't ask for).

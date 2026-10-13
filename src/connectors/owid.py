@@ -6,7 +6,7 @@ simplest, best-documented entry point into OWID; the `owid-catalog` library
 a future iteration if the number of indicators grows — see docs/architecture.md.
 
 Expected CSV format (confirmed against the live OWID API/CSV at time of
-writing, including via a real network audit — see CHANGELOG):
+writing, including via a real network audit):
     Entity,Code,Year,<Human-readable variable name>
     France,FRA,1950,52.0
     USSR,OWID_USS,1950,168.0

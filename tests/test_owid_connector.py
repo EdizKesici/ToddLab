@@ -63,7 +63,7 @@ def test_real_infant_mortality_fixture_parses_without_error():
     csv_text = (Path(__file__).parent / "fixtures" / "owid_infant_mortality.csv").read_text(encoding="utf-8")
     records = parse_csv(csv_text)
     assert len(records) == 12
-    # Reflects confirmed live reality (see CHANGELOG): this OWID indicator
+    # Reflects confirmed live reality: this OWID indicator
     # has no standalone "USSR" rows, Russia carries a continuous series.
     russia_rows = [r for r in records if r.entity_raw_name == "Russia"]
     assert len(russia_rows) == 6

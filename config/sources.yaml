@@ -265,8 +265,7 @@ oecd:
   # v26: the TWO MIGRATION dataflows (DSD_MIG_F@DF_MIG_POPF, the
   # foreign-born matrix; DSD_MIG@DF_MIG, the citizenship twin) were
   # WITHDRAWN with their indicator — their access quirks (the /all vs
-  # wildcard-key mirrors) and origin-override tables are history in the
-  # CHANGELOG; the flows still print on the OECD registry.
+  # wildcard-key mirrors) and origin-override tables are retired; the flows still print on the OECD registry.
   notes: >
     Layer: COLLECTOR (P3 judgment) — the "Causes of mortality" dataflow
     (DSD_HEALTH_STAT@DF_COM, agency OECD.ELS.HD) redistributes the WHO
@@ -671,7 +670,7 @@ ilostat:
 # by-citizenship matrices (Eurostat migr_pop{3ctb,1ctz} ROW doors +
 # the OECD DF_MIG_POPF / DF_MIG B15 witnesses, ADR-0010's parallel
 # faces) and their M/F ventilations — the full wiring history and its
-# live anchors live in the CHANGELOG's v22/v23/v24 entries. The doors
+# live anchors were retired with them. The doors
 # themselves stay open on the collectors' wires; the class-decomposed
 # RATE faces of the same question ride unemployment_rate's segment
 # layers since v25 (lfsa_urgan/urgacob). The remaining unwired faces

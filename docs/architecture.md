@@ -138,7 +138,7 @@ top of the file itself:
    (returns `None`, never a guess) when it doesn't match — and
    `normalize.py` logs every failure into `{indicator}.unresolved.json`
    instead of swallowing it silently. That's the mechanism meant to
-   correct the table incrementally. A live-network audit (see CHANGELOG)
+   correct the table incrementally. A live-network audit
    confirmed the bulk of "unresolved" names in real data are OWID
    aggregates/regions/income groups, expected by design — not mapping bugs.
 2. Sub-national entities OWID tracks separately (England and Wales,
@@ -409,6 +409,6 @@ reports a demographic breakdown carries it through the whole pipeline:
   significantly; not needed for the pilot indicators.
 - **Retry/backoff on transient network errors**: a live-network audit found
   one slug returning a hard HTTP 403 (not a transient failure — the source
-  itself needed swapping, see CHANGELOG), so retry logic wasn't the
+  itself needed swapping), so retry logic wasn't the
   priority fix here. Worth adding in phase 2 for genuinely transient
   errors (timeouts, 5xx).
