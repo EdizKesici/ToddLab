@@ -1,10 +1,8 @@
 """tests/test_score.py — the score layer's unit tests (§6 of the briefs).
 
 Synthetic mini-dists ONLY, no real data: every rule is tested on hand-built
-fixtures where the expected value is computable by head. The live invariants
-(the 30 byte-identical dist files, the anchors against the reference
-prototype) live in scripts/verify_v28_diff.py — these tests are the RULES,
-that verifier is the STATE.
+fixtures where the expected value is computable by head. These tests are the
+RULES; the state of the shipped dist is checked live against the data.
 
 v28 sections: the carry rule (decision 16 — age cap, latest-wins, no carry
 across entities, max_obs_year cap, the ghost guard, max_age_years 0 = the
