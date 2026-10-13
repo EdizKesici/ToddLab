@@ -417,3 +417,19 @@ Stage Summary:
 - Écart V28.3 -> V29 sur data/dist (12 fichiers, 51 lignes) : comparaison JSON champ par champ, seuls changent des champs « note/notes » et les empreintes sha de score/meta.json (todd_core.csv v2 : colonne « status » retirée, 16 notes nettoyées) ; aucune valeur de série ni de score.
 - Vérification après resync : eslint 0, tsc 0, next build OK ; serveur standalone : /api/stats vintage « V29 », 27 indicateurs, 261 entités, 113 435 points canoniques ; pages principales et routes score en 200 ; score officiel Égal 2025 inchangé (France 64,92, Allemagne 68,79). Piège de test : un ancien serveur resté sur le port masque le nouveau (EADDRINUSE) et renvoie l'ancienne version ; vérifier le port avant de conclure.
 - Déploiement : le projet reste en localhost (aucune URL publique à configurer ; sitemap et robots pointent vers http://localhost:3000, ce qui est voulu).
+
+---
+Task ID: 16
+Agent: Claude Code (Hermes)
+Task: Remove the frontend's copy of the backend data; read data/dist in place.
+
+Work Log:
+- New src/lib/toddlab/server/dist.ts: locates <repo>/data/dist (TODDLAB_DIST_DIR override, else the nearest data/dist/catalog.json walking up from the working directory, ignoring anything under .next because the standalone build embeds a stale build-time copy) and caches parsed files keyed by mtime.
+- store.ts and score-store.ts use it; the in-process meta cache is gone. `vintage` is now read from data/dist/score/meta.json (`score bounds <bounds_version>`) instead of the hardcoded "V29 (snapshot 2026-10)".
+- /indicators, /countries and sitemap.xml were prerendered at build time; they are now force-dynamic so they follow the data too.
+- Deleted frontend/data/dist (about 50 MB, duplicated in git) and frontend/scripts/sync-data.sh; frontend/.gitignore was removed earlier (root .gitignore covers node_modules, .next, ...).
+
+Stage Summary:
+- No sync step anymore. Verified: eslint 0, tsc 0, next build OK, standalone server via `npm start` serves all pages with 200; API responses byte-identical to the previous build except `vintage` and the infant_mortality notes text (CHANGELOG mention removed); editing data/dist/score/meta.json was reflected by /api/stats on the next request, and reverting it too.
+- The frontend now requires the backend's data/dist next to it (same repository).
+

@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site-url";
 import { getCatalog, getEntities } from "@/lib/toddlab/store";
 
+// Reads the backend payload at request time, so a rebuilt data/dist shows up without a frontend rebuild.
+export const dynamic = "force-dynamic";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();
   const now = new Date();

@@ -81,9 +81,9 @@ npm run dev                      # http://localhost:3000
 npm run build && npm start       # production build
 ```
 
-The frontend reads its own copy of the payload in `frontend/data/dist/`.
-After `data/dist/` changes, refresh the copy with
-`frontend/scripts/sync-data.sh`.
+The frontend has no copy of the data: it reads `data/dist/` in place, and
+picks up a rebuilt payload on the next request without a restart. Set
+`TODDLAB_DIST_DIR` to read it from another location.
 
 ## Repository layout
 

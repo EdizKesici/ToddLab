@@ -1,30 +1,21 @@
 import "server-only";
-import fs from "fs";
-import path from "path";
 import type {
   CatalogEntry,
   DistEntity,
   IndicatorFile,
   ToddCorpus,
 } from "./types";
+import { distFileExists, readDistJson } from "./server/dist";
 
 /**
- * Server-side data store for ToddLab dist files.
- * Files are read from disk lazily and parsed once per process (module-level cache).
+ * Server-side data store for the backend's dist files (<repo>/data/dist).
+ * Files are read in place (see server/dist.ts): parsed once per process and
+ * re-read automatically when the backend rebuilds them.
  * Total dist is ~53 MB — an all-files-warm footprint is acceptable for a small server.
  */
 
-const DIST_DIR = path.join(process.cwd(), "data", "dist");
-
-const jsonCache = new Map<string, unknown>();
-
 function readJson<T>(relPath: string): T {
-  const key = relPath;
-  if (jsonCache.has(key)) return jsonCache.get(key) as T;
-  const abs = path.join(DIST_DIR, relPath);
-  const parsed = JSON.parse(fs.readFileSync(abs, "utf8")) as T;
-  jsonCache.set(key, parsed);
-  return parsed;
+  return readDistJson<T>(relPath);
 }
 
 /* ------------------------------- Core artifacts ------------------------------- */
@@ -41,14 +32,12 @@ export function getCorpus(): ToddCorpus {
   return readJson<ToddCorpus>("todd_corpus.json");
 }
 
-const KNOWN_VINTAGE = "V29 (snapshot 2026-10)";
-
 /** Indicators withdrawn upstream (V26 retraction) or gitignored — never served. */
 export const UNAVAILABLE_INDICATORS = new Set<string>(["immigration_stock"]);
 
 export function indicatorFileExists(id: string): boolean {
   if (UNAVAILABLE_INDICATORS.has(id)) return false;
-  return fs.existsSync(path.join(DIST_DIR, "indicators", `${id}.json`));
+  return distFileExists(`indicators/${id}.json`);
 }
 
 export function getIndicatorFile(id: string): IndicatorFile | null {
@@ -73,14 +62,21 @@ export interface CatalogMeta {
   corpus: ToddCorpus["meta"];
 }
 
-let metaCache: CatalogMeta | null = null;
+/** Data vintage, read from the payload itself (the score layer's frozen bounds version). */
+function readVintage(): string {
+  try {
+    const meta = readDistJson<{ bounds_version?: string }>("score/meta.json");
+    return meta.bounds_version ? `score bounds ${meta.bounds_version}` : "unknown";
+  } catch {
+    return "unknown";
+  }
+}
 
 export function getCatalogMeta(): CatalogMeta {
-  if (metaCache) return metaCache;
   const catalog = getCatalog();
   const available = catalog.filter((c) => indicatorFileExists(c.id));
-  metaCache = {
-    vintage: KNOWN_VINTAGE,
+  return {
+    vintage: readVintage(),
     n_indicators_available: available.length,
     n_indicators_total: catalog.length,
     n_entities: getEntities().length,
@@ -88,7 +84,6 @@ export function getCatalogMeta(): CatalogMeta {
     n_witness_points: available.reduce((acc, c) => acc + c.n_witness_points, 0),
     corpus: getCorpus().meta,
   };
-  return metaCache;
 }
 
 /** Sorted available years (canonical ∪ witness) for an indicator. */
