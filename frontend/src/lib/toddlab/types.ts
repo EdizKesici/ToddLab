@@ -1,5 +1,5 @@
 /**
- * ToddLab data contract — mirrors data/dist/ exactly (backend V25).
+ * ToddLab data contract — mirrors data/dist/ exactly (backend V29).
  * Source of truth: github.com/EdizKesici/ToddLab
  *
  * Key contract facts:

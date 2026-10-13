@@ -485570,7 +485570,7 @@
         "year_raw": "1976/1990",
         "citations": 15,
         "label": "Infant mortality rate",
-        "note": "Central pivot metric; Soviet rise 1970-76 + publication blackout. Already in config/indicators/."
+        "note": "Soviet rise 1970-76 + publication blackout."
       },
       {
         "book": "Le Fou et le Prolétaire",
@@ -485633,7 +485633,7 @@
         "year": 2012,
         "citations": 5,
         "label": "Infant mortality rate",
-        "note": "Strongest indicator in this book; 19th-c. departmental data + foundling mortality."
+        "note": "19th-c. departmental data + foundling mortality."
       },
       {
         "book": "Où en sommes-nous ?",
@@ -485647,14 +485647,14 @@
         "year": 2019,
         "citations": 2,
         "label": "Infant mortality (qualitative level)",
-        "note": "Reinforcing citation."
+        "note": ""
       },
       {
         "book": "La Défaite de l'Occident",
         "year": 2024,
         "citations": 6,
         "label": "Infant mortality rate",
-        "note": "Reinforcing citation."
+        "note": ""
       }
     ]
   }

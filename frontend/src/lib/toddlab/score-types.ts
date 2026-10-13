@@ -1,5 +1,5 @@
 /**
- * ToddLab score layer — types mirroring data/dist/score/ (backend V28.3).
+ * ToddLab score layer — types mirroring data/dist/score/ (backend V29).
  * Contract: docs/score-contract.md in the backend repo (ADR-0011).
  *
  * The score is a DERIVED product: weighted arithmetic means of normalised

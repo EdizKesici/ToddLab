@@ -1,6 +1,6 @@
 # ToddLab Frontend — Worklog
 
-Projet : frontend Next.js 16 consommant le backend ToddLab V25 (`data/dist/`).
+Projet : frontend Next.js 16 consommant le backend ToddLab (version de référence : V29, cf. Task 15). Depuis la Task 15, le frontend vit dans `frontend/` du dépôt ToddLab ; le backend est à la racine du même dépôt (`data/dist/`).
 Tous les agents : lire ce fichier AVANT de travailler, y ajouter sa section APRÈS.
 
 ---
@@ -407,11 +407,13 @@ Work Log:
 - npm est le seul gestionnaire de paquets : bun.lock supprimé, package-lock.json régénéré, script « start » passé de bun à node, scripts db:* retirés. Package renommé « toddlab-frontend ».
 - Corrections : indicator-series-card.tsx (rawMap typé Map<string, number | null>), world-map.tsx (position du tooltip calculée dans le gestionnaire de souris, plus de lecture de ref au rendu), theme-toggle.tsx (état « mounted » via useSyncExternalStore). next.config.ts : « typescript.ignoreBuildErrors » retiré, donc le build échoue désormais sur toute erreur de type.
 - scripts/sync-data.sh : la source par défaut est le backend à la racine du dépôt (<repo>/data/dist) ; refus de vider la destination si la source n'a pas catalog.json, entities.json et todd_corpus.json.
-- Git : frontend/.git supprimé (aucun remote ; 18 commits locaux perdus) ; le frontend est désormais suivi par le dépôt ToddLab (règle « frontend » retirée du .gitignore racine).
+- Git : frontend/.git supprimé (aucun remote ; 18 commits locaux perdus) ; le frontend est désormais suivi par le dépôt ToddLab, directement sur main (règle « frontend » retirée du .gitignore racine).
 - Vérification : eslint 0 erreur, tsc --noEmit 0 erreur, next build OK ; serveur standalone démarré : /, /score, /countries/france, /indicators, /compare, /methodology, /api/stats, /robots.txt, /sitemap.xml répondent 200. Aucun texte d'interface modifié (parité FR/EN intacte).
 
 Stage Summary:
 - Frontend nettoyé et intégré au dépôt ToddLab ; aucune modification fonctionnelle de l'UI.
-- À savoir : frontend/data/dist (snapshot V28.3) diffère de <repo>/data/dist (V29 : p. ex. agricultural_employment_share absent côté backend). Il n'a PAS été resynchronisé : après « scripts/sync-data.sh », vérifier que les pages affichent les mêmes chiffres et que les indicateurs retirés ne sont plus référencés.
-- L'en-tête de ce fichier (« Next.js 16 », « backend V25 ») est périmé ; non modifié.
-- Variable d'environnement à définir au déploiement : l'URL publique du site (voir src/lib/site-url.ts), sinon sitemap/robots pointent vers http://localhost:3000.
+- Version du backend : V29 (HEAD « V29 fix », local = origin/main au 2026-10-13).
+- Resynchronisation V28.3 -> V29 faite dans un second temps : scripts/sync-data.sh exécuté, frontend/data/dist identique au data/dist du backend (diff -rq vide) ; agricultural_employment_share.json (retiré du backend depuis V26, jamais servi) a disparu de la copie ; KNOWN_VINTAGE = « V29 (snapshot 2026-10) » (store.ts) et commentaires « backend V29 » (score-store.ts, score-types.ts, types.ts).
+- Écart V28.3 -> V29 sur data/dist (12 fichiers, 51 lignes) : comparaison JSON champ par champ, seuls changent des champs « note/notes » et les empreintes sha de score/meta.json (todd_core.csv v2 : colonne « status » retirée, 16 notes nettoyées) ; aucune valeur de série ni de score.
+- Vérification après resync : eslint 0, tsc 0, next build OK ; serveur standalone : /api/stats vintage « V29 », 27 indicateurs, 261 entités, 113 435 points canoniques ; pages principales et routes score en 200 ; score officiel Égal 2025 inchangé (France 64,92, Allemagne 68,79). Piège de test : un ancien serveur resté sur le port masque le nouveau (EADDRINUSE) et renvoie l'ancienne version ; vérifier le port avant de conclure.
+- Déploiement : le projet reste en localhost (aucune URL publique à configurer ; sitemap et robots pointent vers http://localhost:3000, ce qui est voulu).

@@ -5,7 +5,7 @@ import type { ScoreFile, ScoreMeta, ScoreName } from "./score-types";
 
 /**
  * Server-side store for the score layer (data/dist/score/).
- * Derived product, backend V28.3 — contract: docs/score-contract.md.
+ * Derived product, backend V29 — contract: docs/score-contract.md.
  * Files are read once per process (module-level cache), same pattern as store.ts.
  */
 

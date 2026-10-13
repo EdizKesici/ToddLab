@@ -41,7 +41,7 @@ export function getCorpus(): ToddCorpus {
   return readJson<ToddCorpus>("todd_corpus.json");
 }
 
-const KNOWN_VINTAGE = "V28.3 (snapshot 2026-10)";
+const KNOWN_VINTAGE = "V29 (snapshot 2026-10)";
 
 /** Indicators withdrawn upstream (V26 retraction) or gitignored — never served. */
 export const UNAVAILABLE_INDICATORS = new Set<string>(["immigration_stock"]);

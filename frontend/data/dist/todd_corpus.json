@@ -1,7 +1,7 @@
 {
   "source": "todd_core.csv (OCR compilation of Todd's metrics, by Ediz) -> config/todd_refs.yaml (one-way transform, scripts/normalize_todd_refs.py); meta.source_csv_sha256 anchors this dist to the exact CSV vintage.",
   "meta": {
-    "source_csv_sha256": "e30304cf6dca3b7ca1e3923e49e709167444edef42dcb63add656b8a72395d4b",
+    "source_csv_sha256": "a46fccbe2a467219feaa2514a5825c50617871ee5607bda95f42b7fe43c8fa93",
     "rows": 115,
     "metrics": 22,
     "books": 16,
@@ -112,7 +112,7 @@
           "year": 2019,
           "citations": 5,
           "label": "Fertility index (France and regions)",
-          "note": "Reinforcing citation."
+          "note": ""
         },
         {
           "book": "Où en sont-elles ?",
@@ -150,14 +150,14 @@
           "year": 1979,
           "citations": 38,
           "label": "Suicide rate",
-          "note": "Core indicator; France 1835-1977 + European table + class breakdowns."
+          "note": "France 1835-1977 + European table + class breakdowns."
         },
         {
           "book": "La troisième planète",
           "year": 1983,
           "citations": 9,
           "label": "Suicide rate",
-          "note": "17-entity master table by family type; flagship indicator."
+          "note": "17-entity master table by family type."
         },
         {
           "book": "La nouvelle France",
@@ -230,7 +230,7 @@
           "year_raw": "1976/1990",
           "citations": 15,
           "label": "Infant mortality rate",
-          "note": "Central pivot metric; Soviet rise 1970-76 + publication blackout. Already in config/indicators/."
+          "note": "Soviet rise 1970-76 + publication blackout."
         },
         {
           "book": "Le Fou et le Prolétaire",
@@ -293,7 +293,7 @@
           "year": 2012,
           "citations": 5,
           "label": "Infant mortality rate",
-          "note": "Strongest indicator in this book; 19th-c. departmental data + foundling mortality."
+          "note": "19th-c. departmental data + foundling mortality."
         },
         {
           "book": "Où en sommes-nous ?",
@@ -307,14 +307,14 @@
           "year": 2019,
           "citations": 2,
           "label": "Infant mortality (qualitative level)",
-          "note": "Reinforcing citation."
+          "note": ""
         },
         {
           "book": "La Défaite de l'Occident",
           "year": 2024,
           "citations": 6,
           "label": "Infant mortality rate",
-          "note": "Reinforcing citation."
+          "note": ""
         }
       ],
       "implemented": true
@@ -372,7 +372,7 @@
           "year": 2017,
           "citations": 8,
           "label": "First-cousin (consanguineous) marriage rates, world + Jewish case",
-          "note": "Reinforcing citation."
+          "note": ""
         },
         {
           "book": "Les Luttes de classes en France",
@@ -454,7 +454,7 @@
           "year_raw": "1976/1990",
           "citations": 5,
           "label": "Life expectancy at birth",
-          "note": "Male/female longevity gap. Already in config/indicators/."
+          "note": "Male/female longevity gap."
         },
         {
           "book": "Le Fou et le Prolétaire",
@@ -524,7 +524,7 @@
           "year": 2024,
           "citations": 6,
           "label": "Life expectancy: Germany, France, Italy above the US",
-          "note": "Reinforcing citation."
+          "note": ""
         }
       ],
       "implemented": true
@@ -541,7 +541,7 @@
           "year_raw": "1976/1990",
           "citations": 3,
           "label": "Homicide rate",
-          "note": "Cited jointly with suicide as 'rising violent deaths' signature. Already in config/indicators/."
+          "note": "Cited jointly with suicide as 'rising violent deaths'."
         },
         {
           "book": "Le Fou et le Prolétaire",
@@ -583,7 +583,7 @@
           "year": 2008,
           "citations": 1,
           "label": "Homicide rate per 100,000 (France + international)",
-          "note": "France + genuine international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia)."
+          "note": "France + international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia)."
         },
         {
           "book": "L'invention de la France",
@@ -604,7 +604,7 @@
           "year": 2024,
           "citations": 7,
           "label": "Homicide rate",
-          "note": "Russia 2000-2020 citation, reinforcing."
+          "note": "Russia 2000-2020."
         }
       ],
       "implemented": true
@@ -655,7 +655,7 @@
           "year": 2017,
           "citations": 2,
           "label": "Unemployment rate",
-          "note": "Reinforcing citation."
+          "note": ""
         },
         {
           "book": "Les Luttes de classes en France",
@@ -729,7 +729,7 @@
           "year": 2024,
           "citations": 13,
           "label": "Same-sex marriage legalization year (Christianity 'state zero' marker)",
-          "note": "Dated per-country legalization; Todd's 'religion zero' marker (2015 -> Trump -> Ukraine war chain)."
+          "note": "Dated per-country legalization; used by Todd as a 'religion zero' marker."
         }
       ],
       "implemented": true
@@ -935,7 +935,7 @@
           "year": 1998,
           "citations": 1,
           "label": "US adults on probation / in jail or prison / on parole",
-          "note": "US correctional-population growth 1980-1993 (see note: total correctional population, not strict incarceration)."
+          "note": "US correctional-population growth 1980-1993 (total correctional population, not strict incarceration)."
         },
         {
           "book": "Qui est Charlie ?",
