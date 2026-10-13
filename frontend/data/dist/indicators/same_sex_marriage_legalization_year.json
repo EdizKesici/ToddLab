@@ -1,0 +1,346 @@
+{
+  "id": "same_sex_marriage_legalization_year",
+  "label": "Same-sex marriage legalization year",
+  "family": "markers",
+  "unit": "year",
+  "higher_is_better": false,
+  "todd_core": true,
+  "companion_indicators": [],
+  "reliability": "high",
+  "reliability_criteria": "Canonical tier = a curated table of dated national legislation (33 countries, 2001-2025, one citation per point — statute or nationwide ruling with its effective date, the consensus dating cross-checked against the legislative record); no witness tier exists (no machine-readable door carries the series — probed live 2026-09-20, the curation gate's condition (b) finding).",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 2001,
+    "end": 2025
+  },
+  "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md and catalog/curated/README.md.",
+  "notes": "THE TENTH INDICATOR, THE FIRST MARKER (v15). The corpus's family 'markers' = Todd's dated institutional events — the thresholds his method reads as STATE ZERO points, not curves. This one (13 citations, La Défaite de l'Occident 2024 — the single-book metric with the corpus's heaviest per-book concentration outside the #1) is Todd's 'religion zero' marker: the year a country legalizes same-sex marriage dates the moment its Christian norm system stopped being state-bearing (his chain: 2015 -> Trump -> Ukraine war reads from these very dates — Ireland's referendum and Obergefell both 2015, the US marker the chain's hinge).\nTHE MARKER'S SHAPE: one point per country, the point's year = the legalization year, the value = the same year (the board reads a STEP: France 2013, Germany 2017, Greece 2024 — the Orthodox world's first, the marker family's own divergence display). Every point carries its citation in the dist (the statute or nationwide ruling, with its effective date) and a definition_note spelling the dating convention: the year the FIRST NATIONAL law took effect (a statute's entry into force, not its signature; a nationwide court ruling where the statute never preceded one — Obergefell 2015, Colombia 2016, Austria 2019's court-ordered effective date; a referendum's year where the people voted first — Ireland 2015, Switzerland's 2021 referendum approval with the 2022 entry into force). Sub-national firsts (Massachusetts 2004, Mexico City 2010) and the registered- partnership history (Denmark 1989, the world's first) ride in the definition_notes, never in the value — the marker is the NATIONAL marriage date, as Todd reads it.\nTHE CURATION GATE (ADR-0007, all three conditions): (a) the todd_ref demands it — 13 citations in La Défaite de l'Occident, the 'religion zero' chain's own dating instrument; (b) the distortion is the ABSENCE — no collector or harmonized door carries the series at all (probed live: OWID 404 on every candidate slug, the collectors print vital statistics, not statutes), so the curated tier is not competing with a wire, it is the only tier; (c) every row carries its citation — enforced mechanically by the connector (an empty citation column is a parse error).\nHONEST SCOPE LIMITS: 33 countries = the countries with a national same-sex marriage law in force as of the 2025 vintage (the table's coverage ends at Thailand and Liechtenstein 2025); the countries where marriage remains unlegalized have NO row (an absent row is the honest state — a 0 would invent a date); the couples' registered- partnership intermediate step (Denmark 1989 onward) is deliberately NOT the marker, per Todd's own usage.",
+  "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "national_legislation",
+      "root_label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'same_sex_marriage_legalization' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/same_sex_marriage_legalization.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "argentina",
+      "year": 2010,
+      "value": 2010.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Ley 26.618 de matrimonio igualitario (in force 2010-07-15) — first in Latin America; Pew Research timeline; Boletín Oficial record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2017,
+      "value": 2017.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage Amendment (Definition and Religious Freedoms) Act 2017 (in force 2017-12-09) following the 2017-11-07 postal survey (61.6% yes); Pew Research timeline; Federal Register of Legislation",
+      "definition_note": "Year = effective year of the national statute (postal survey the same year)"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2019,
+      "value": 2019.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Verfassungsgerichtshof Erkenntnis of 2017-12-04 ordering marriage equality effective 2019-01-01; Pew Research timeline; VfGH record",
+      "definition_note": "Year = the court-ordered effective date"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2003,
+      "value": 2003.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Law of 2003-02-13 opening marriage to same-sex partners (in force 2003-06-01); Pew Research marriage-equality timeline; Belgian Senate record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2013,
+      "value": 2013.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Resolução CNJ nº 175/2013 (in force 2013-05-14) unifying civil-registry marriage nationwide; Pew Research timeline; CNJ record; several state courts 2011-2012 preceded it",
+      "definition_note": "Year = the national uniformity resolution (state-level marriages 2011-2012)"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2005,
+      "value": 2005.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Civil Marriage Act, S.C. 2005, c. 33 (royal assent 2005-07-20), following provincial court decisions and provincial laws 2003-2005; Pew Research timeline; Justice Canada record",
+      "definition_note": "Year = the national statute (the uniform federal law); provincial laws preceded it 2003-2005"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2022,
+      "value": 2022.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Ley 21.400 (in force 2022-03-10); Pew Research timeline; Biblioteca del Congreso Nacional record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2016,
+      "value": 2016.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Corte Constitucional Sentencia 646/2016 (2016-04-07) with statutory registration; Pew Research timeline; Corte Constitucional record",
+      "definition_note": "Year = the nationwide constitutional ruling"
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 2020,
+      "value": 2020.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Sala Constitucional Sentencia 2018-1556 (2018-08-08) effective with the national registry opening 2020-05-26 (Americas' first country via IACHR advisory opinion compliance); Pew Research timeline",
+      "definition_note": "Year = the effective nationwide registry opening (ruling 2018)"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2012,
+      "value": 2012.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage law of 2012-06-07 (in force 2012-06-15); Pew Research timeline; Folketing record; registered partnership (first in the world) since 1989 — marriage itself 2012",
+      "definition_note": "Year = effective year of the national marriage statute (registered partnership 1989)"
+    },
+    {
+      "entity_id": "ecuador",
+      "year": 2019,
+      "value": 2019.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Corte Constitucional Sentencia 11-18-CN/2019 (2019-06-12, effective 2019-07-08); Pew Research timeline; Corte Constitucional record",
+      "definition_note": "Year = the nationwide constitutional ruling"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2024,
+      "value": 2024.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Rahvusvahelise kaitse punkti seaduse ja sellega seonduvate seaduste muutmise seadus (family-law amendment), in force 2024-01-01 — first ex-USSR state; Pew Research timeline; Riigi Teataja record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "france",
+      "year": 2013,
+      "value": 2013.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Loi 2013-404 du 17 mai 2013 ouvrant le mariage aux couples de personnes de même sexe (mariage pour tous); Légifrance record; Pew Research timeline — the 2013 marker Todd's La Défaite de l'Occident chain reads",
+      "definition_note": "Year = effective year of the national statute (loi promulguée 17 mai 2013)"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2017,
+      "value": 2017.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Gesetz zur Einführung der Ehe für Personen verschiedenen Geschlechts (Ehe für alle), in force 2017-10-01; Pew Research timeline; Bundesgesetzblatt record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2024,
+      "value": 2024.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Law 5089/2024 on marriage equality (in force 2024-02-15) — first Orthodox-Christian-majority country; Pew Research timeline; Hellenic Parliament record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2010,
+      "value": 2010.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Law 65/2010 on gender-neutral marriage (in force 2010-06-27); Pew Research timeline; Althingi record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2015,
+      "value": 2015.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage Act 2015 following the 2015-05-22 referendum (62.1% yes) — first by popular vote; Pew Research timeline; Oireachtas record",
+      "definition_note": "Year = the referendum year (statute followed the same year)"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2025,
+      "value": 2025.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Ehe für alle law of 2024-05-16 (adopted), effective 2025-01-01; Pew Research timeline; Landtag record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2015,
+      "value": 2015.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Law of 2014-12-18 on marriage for all (in force 2015-01-01); Pew Research timeline; Mémorial A record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2015,
+      "value": 2015.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Código Civil Federal amendment of 2015-06-03 defining concubinage gender-neutrally nationwide; Mexico City first in 2010 (Ley de Sociedad de Convivencia amendment); Pew Research timeline",
+      "definition_note": "Year = the federal-level uniformity year; jurisdictional marriages 2010 onward"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2001,
+      "value": 2001.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage Act amendment (Wet van 28 december 2000 tot wijziging van Boek 1 van het Burgerlijk Wetboek), in force 2001-04-01 — first national same-sex marriage law in the world; Pew Research Center marriage-equality timeline; Wikipedia 'Timeline of same-sex marriage' (consensus dating, cross-checked against the statute)",
+      "definition_note": "Year = the national law's entry into force (effective year, not signature year)"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2013,
+      "value": 2013.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage (Definition of Marriage) Amendment Act 2013 (in force 2013-08-19); Pew Research timeline; NZ Legislation record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2009,
+      "value": 2009.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage Law amendment (in force 2009-01-01) adopting gender-neutral marriage; Pew Research timeline; Storting record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2010,
+      "value": 2010.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Lei n.º 9/2010 de 31 de maio (in force 2010-06-05); Pew Research timeline; Diário da República record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2022,
+      "value": 2022.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage-equality amendment to the Family Code adopted 2022-07-21; constitutional challenges rejected 2023; first applications registered 2023; registered partnership history since 2006; Pew Research timeline",
+      "definition_note": "Year = the adoption year of the national statute (implementation 2023)"
+    },
+    {
+      "entity_id": "south_africa",
+      "year": 2006,
+      "value": 2006.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Civil Union Act 17 of 2006 (in force 2006-11-30), following Minister of Home Affairs v Fourie (Constitutional Court, 2005-12-01); Pew Research timeline; South African Government record",
+      "definition_note": "Year = effective year of the national statute (court ruling 2005)"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2005,
+      "value": 2005.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Ley 13/2005 de 1 de julio (BOE 2005-07-02, in force 2005-07-03); Pew Research timeline; BOE (Boletín Oficial del Estado) record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2009,
+      "value": 2009.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Law 2009:311 on gender-neutral marriage (in force 2009-05-01); Pew Research timeline; Riksdag record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2022,
+      "value": 2022.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage-for-all law of 2020-12-18 approved by the 2021-09-26 referendum (64.1% yes), in force 2022-07-01; Pew Research timeline; Federal Gazette record",
+      "definition_note": "Year = effective year (referendum approval 2021)"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2019,
+      "value": 2019.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Act on Implementation of J.Y. Interpretation No. 748 (in force 2019-05-24) — first in Asia; Pew Research timeline; Legislative Yuan record",
+      "definition_note": "Year = effective year of the national statute (Constitutional Court interpretation 2017)"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2025,
+      "value": 2025.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Marriage Equality Act B.E. 2567 (2024) (published 2024-09-24, royal assent 2024-09-24, in force 2025-01-23) — first in Southeast Asia; Pew Research timeline; Royal Gazette record",
+      "definition_note": "Year = effective year of the national statute"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2015,
+      "value": 2015.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Obergefell v. Hodges, 576 U.S. 644 (decided 2015-06-26) — nationwide; Massachusetts first (2004, Goodridge); Pew Research timeline; Supreme Court record",
+      "definition_note": "Year = the nationwide court ruling; state laws and rulings 2004-2014"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2013,
+      "value": 2013.0,
+      "provider": "curated",
+      "source_ref": "same_sex_marriage_legalization",
+      "citation": "Ley 19.075 (promulgated 2013-05-03, in force 2013-08-05); Pew Research timeline; Poder Legislativo record",
+      "definition_note": "Year = effective year of the national statute"
+    }
+  ],
+  "witnesses": [],
+  "todd_refs": {
+    "family": "markers",
+    "citations": 13,
+    "books": 1,
+    "refs": [
+      {
+        "book": "La Défaite de l'Occident",
+        "year": 2024,
+        "citations": 13,
+        "label": "Same-sex marriage legalization year (Christianity 'state zero' marker)",
+        "note": "Dated per-country legalization; Todd's 'religion zero' marker (2015 -> Trump -> Ukraine war chain)."
+      }
+    ]
+  }
+}

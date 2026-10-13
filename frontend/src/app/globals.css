@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+  --color-chart-8: var(--chart-8);
+  --color-chart-9: var(--chart-9);
+  --color-chart-10: var(--chart-10);
+  --color-chart-11: var(--chart-11);
+  --color-chart-12: var(--chart-12);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-witness: var(--witness);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Warm paper & ink — editorial */
+  --background: oklch(0.982 0.004 85);
+  --foreground: oklch(0.22 0.012 60);
+  --card: oklch(0.995 0.003 85);
+  --card-foreground: oklch(0.22 0.012 60);
+  --popover: oklch(0.995 0.003 85);
+  --popover-foreground: oklch(0.22 0.012 60);
+  /* Terracotta signal */
+  --primary: oklch(0.56 0.17 35);
+  --primary-foreground: oklch(0.985 0.005 85);
+  --secondary: oklch(0.955 0.006 80);
+  --secondary-foreground: oklch(0.28 0.012 60);
+  --muted: oklch(0.952 0.006 80);
+  --muted-foreground: oklch(0.50 0.012 60);
+  --accent: oklch(0.945 0.012 60);
+  --accent-foreground: oklch(0.30 0.014 50);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.90 0.008 75);
+  --input: oklch(0.88 0.008 75);
+  --ring: oklch(0.56 0.17 35 / 45%);
+  /* Categorical palette (12 comparison series) — muted but distinct, no blue/indigo */
+  --chart-1: oklch(0.58 0.16 35);   /* terracotta */
+  --chart-2: oklch(0.55 0.09 195);  /* teal */
+  --chart-3: oklch(0.55 0.10 125);  /* olive */
+  --chart-4: oklch(0.52 0.13 330);  /* plum */
+  --chart-5: oklch(0.68 0.13 70);   /* amber */
+  --chart-6: oklch(0.55 0.03 265);  /* slate */
+  --chart-7: oklch(0.62 0.15 5);    /* rose */
+  --chart-8: oklch(0.48 0.10 150);  /* forest */
+  --chart-9: oklch(0.52 0.11 90);   /* chartreuse */
+  --chart-10: oklch(0.60 0.10 170); /* mint */
+  --chart-11: oklch(0.50 0.10 285); /* violet */
+  --chart-12: oklch(0.46 0.10 350); /* wine */
+  --witness: oklch(0.65 0.01 75);   /* witness gray */
+  --sidebar: oklch(0.985 0.004 85);
+  --sidebar-foreground: oklch(0.22 0.012 60);
+  --sidebar-primary: oklch(0.56 0.17 35);
+  --sidebar-primary-foreground: oklch(0.985 0.005 85);
+  --sidebar-accent: oklch(0.952 0.006 80);
+  --sidebar-accent-foreground: oklch(0.28 0.012 60);
+  --sidebar-border: oklch(0.90 0.008 75);
+  --sidebar-ring: oklch(0.56 0.17 35 / 45%);
+}
+
+.dark {
+  --background: oklch(0.165 0.006 60);
+  --foreground: oklch(0.93 0.006 80);
+  --card: oklch(0.205 0.008 60);
+  --card-foreground: oklch(0.93 0.006 80);
+  --popover: oklch(0.205 0.008 60);
+  --popover-foreground: oklch(0.93 0.006 80);
+  --primary: oklch(0.70 0.15 40);
+  --primary-foreground: oklch(0.16 0.006 60);
+  --secondary: oklch(0.25 0.008 60);
+  --secondary-foreground: oklch(0.93 0.006 80);
+  --muted: oklch(0.25 0.008 60);
+  --muted-foreground: oklch(0.70 0.010 70);
+  --accent: oklch(0.27 0.012 55);
+  --accent-foreground: oklch(0.93 0.006 80);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.70 0.15 40 / 50%);
+  --chart-1: oklch(0.70 0.15 40);
+  --chart-2: oklch(0.70 0.10 195);
+  --chart-3: oklch(0.70 0.11 125);
+  --chart-4: oklch(0.68 0.14 330);
+  --chart-5: oklch(0.78 0.13 75);
+  --chart-6: oklch(0.70 0.03 265);
+  --chart-7: oklch(0.72 0.14 10);
+  --chart-8: oklch(0.66 0.11 150);
+  --chart-9: oklch(0.68 0.11 90);
+  --chart-10: oklch(0.70 0.09 170);
+  --chart-11: oklch(0.66 0.09 285);
+  --chart-12: oklch(0.64 0.09 350);
+  --witness: oklch(0.55 0.01 75);
+  --sidebar: oklch(0.205 0.008 60);
+  --sidebar-foreground: oklch(0.93 0.006 80);
+  --sidebar-primary: oklch(0.70 0.15 40);
+  --sidebar-primary-foreground: oklch(0.16 0.006 60);
+  --sidebar-accent: oklch(0.25 0.008 60);
+  --sidebar-accent-foreground: oklch(0.93 0.006 80);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.70 0.15 40 / 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "tnum" off;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer utilities {
+  .font-serif-display {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Recharts polish */
+.recharts-cartesian-grid line {
+  stroke: var(--border);
+  stroke-dasharray: 3 3;
+  opacity: 0.7;
+}
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+/* Slim scrollbars for long lists */
+.slim-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}

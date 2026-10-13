@@ -16,5 +16,3 @@ reports/
 # probe scratch material (full-download caches: the v23 B15 pull, the
 # v25 ITF per-vehicle pull — regenerable, never committed)
 data/tmp/
-
-frontend
