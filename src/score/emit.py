@@ -143,7 +143,7 @@ def build_score_layer(
                     f"'{frozen_name}' but the selection rules would now pick '{selected.name}'. "
                     "A fetch moved the sources' coverage under the score. The scale never "
                     "moves silently: re-run scripts/freeze_score_bounds.py DELIBERATELY, "
-                    "bump bounds_version, and record the change in the changelog."
+                    "bump bounds_version, and record the change in ADR-0011 (an amendment)."
                 )
             # 2. the bounds sample's SIZE and ENTITY COUNT vs the live
             #    recomputation (the freezer's own sampling rule — one
@@ -168,7 +168,7 @@ def build_score_layer(
                     "carry an integer n_sample and n_entities (strictly positive) — "
                     "the coverage check never skips on a missing or invalid count. "
                     "re-freeze: `scripts/freeze_score_bounds.py`, bump "
-                    "`bounds_version`, record it in the changelog."
+                    "`bounds_version`, record it in ADR-0011 (an amendment)."
                 ) from e
             tolerance = config.bounds_drift_tolerance
             drifted = [
@@ -201,7 +201,7 @@ def build_score_layer(
                     "(the source name did not move — this is the coverage trigger). "
                     "The scale never moves silently: re-freeze deliberately "
                     "(`scripts/freeze_score_bounds.py`, bump `bounds_version`, "
-                    "record it in the changelog)."
+                    "record it in ADR-0011)."
                 )
             bounds = _frozen_bounds_for(score, key, bounds_doc)
 

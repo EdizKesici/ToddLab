@@ -41,6 +41,18 @@ sources:
   # notes: a machine-readable world panel EXISTS (Barro-Lee direct),
   # it is simply not yet wired.
 
+  # v30 (the UIS door): the UNESCO Institute for Statistics' attainment
+  # rate of the population aged 25+ (EA.3T8.AG25T99), on the UIS Data API - a
+  # WITNESS, an estimate by the project's rule (the UIS maps national
+  # censuses and household surveys to ISCED and computes the rate). It is
+  # the widest-coverage face, so the MODELLED score reads it; the official
+  # score keeps the Eurostat canonical. Definition seam, displayed and never reconciled: the UIS rate is 'upper secondary OR HIGHER' (ISCED 3-8, age band 25+), the Eurostat canonical is the completed-secondary face ED3_4 (tertiary excluded, 25-64) - the repo already records the ED3-8 face as ~20 points higher.
+  - provider: unesco_uis
+    ref: EA.3T8.AG25T99
+    priority: 2
+    role: witness
+    root: unesco_uis
+
 coverage_start: 1992
 coverage_end: 2025
 

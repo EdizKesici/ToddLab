@@ -297,7 +297,7 @@ def _validate_bounds_blocks(raw: dict, path: Path) -> None:
             "counts is refused at load, never silently skipped by the drift "
             "guard):\n- " + "\n- ".join(errors) + "\n"
             "re-freeze: `scripts/freeze_score_bounds.py`, bump `bounds_version`, "
-            "record it in the changelog."
+            "record it in ADR-0011 (an amendment)."
         )
 
 

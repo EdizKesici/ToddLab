@@ -1887,7 +1887,7 @@ def test_tertiary_education_share_is_two_tier_with_barro_lee(tmp_path, real_indi
     catalog = {c["id"]: c for c in json.loads((dist_dir / "catalog.json").read_text())}
     roots = catalog["tertiary_education_share"]["roots"]
     assert {r["root"] for r in roots["canonical"]} == {"eurostat_lfs"}
-    assert {r["root"] for r in roots["witness"]} == {"barro_lee"}
+    assert {r["root"] for r in roots["witness"]} == {"barro_lee", "unesco_uis"}  # v30: + the UIS estimate
 
 
 def test_secondary_education_share_is_canonical_only(tmp_path, real_indicators, real_entities):

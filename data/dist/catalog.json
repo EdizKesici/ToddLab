@@ -1476,10 +1476,16 @@
           "doors": 1
         }
       ],
-      "witness": []
+      "witness": [
+        {
+          "root": "unesco_uis",
+          "label": "UNESCO Institute for Statistics (education indicators compiled from national censuses and household surveys, harmonized to ISCED)",
+          "doors": 1
+        }
+      ]
     },
     "n_points": 1000,
-    "n_witness_points": 0,
+    "n_witness_points": 2478,
     "todd_refs": {
       "family": "society",
       "citations": 8,
@@ -1652,11 +1658,16 @@
           "root": "barro_lee",
           "label": "Barro-Lee / Lee-Lee educational attainment panels (scholarly compilation, 1870-2010; via OWID's long-run chart door)",
           "doors": 1
+        },
+        {
+          "root": "unesco_uis",
+          "label": "UNESCO Institute for Statistics (education indicators compiled from national censuses and household surveys, harmonized to ISCED)",
+          "doors": 1
         }
       ]
     },
     "n_points": 1000,
-    "n_witness_points": 3511,
+    "n_witness_points": 5801,
     "todd_refs": {
       "family": "society",
       "citations": 13,

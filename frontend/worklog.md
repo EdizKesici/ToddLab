@@ -511,3 +511,15 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, build OK, pages checked. Score files are unchanged.
+
+---
+Task ID: 23
+Agent: Claude Code (Hermes)
+Task: UNESCO UIS connector, mean years of schooling, UIS attainment in the modelled score.
+
+Work Log:
+- Backend v30: connector for the UIS Data API (provider unesco_uis), the extra metric mean_years_of_schooling (estimate, indicator only), and the UIS attainment rates as witnesses of the secondary and tertiary attainment indicators; bounds regenerated at 2026-10-14.1 (decision 22 in ADR-0011). Official scores unchanged; the modelled score covers more countries (2015: 165 -> 170, 2025: 74 -> 114 in the equal preset).
+- Frontend: provider labels (EN / FR) and the Provider type know unesco_uis; the data is read in place, nothing else changes.
+
+Stage Summary:
+- 24 golden vectors and all stored scores still match score-core. UIS data is CC BY-SA 4.0: credit the UIS.

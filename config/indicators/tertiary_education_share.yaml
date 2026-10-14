@@ -52,6 +52,18 @@ sources:
     role: witness
     root: barro_lee
 
+  # v30 (the UIS door): the UNESCO Institute for Statistics' attainment
+  # rate of the population aged 25+ (EA.5T8.AG25T99), on the UIS Data API - a
+  # WITNESS, an estimate by the project's rule (the UIS maps national
+  # censuses and household surveys to ISCED and computes the rate). It is
+  # the widest-coverage face, so the MODELLED score reads it; the official
+  # score keeps the Eurostat canonical. Definition seam: 'short-cycle tertiary or higher' (ISCED 5-8) on the age band 25+, against Eurostat's ED5-8 on 25-64.
+  - provider: unesco_uis
+    ref: EA.5T8.AG25T99
+    priority: 3
+    role: witness
+    root: unesco_uis
+
 coverage_start: 1870
 coverage_end: 2025
 
