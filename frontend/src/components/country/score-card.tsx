@@ -32,15 +32,21 @@ import {
   scoreAtYear,
   type ScoreCompSeries,
 } from "@/lib/toddlab/score-core";
-import type { ScoreName } from "@/lib/toddlab/score-types";
+import type { ScoreName, ScoreScope } from "@/lib/toddlab/score-types";
 import { cn } from "@/lib/utils";
 
 type PresetChoice = "equal" | "todd" | "custom";
 
-function weightsOf(side: ScoreEntitySide, preset: "equal" | "todd"): Record<string, number> {
+function weightsOf(
+  side: ScoreEntitySide,
+  preset: "equal" | "todd",
+  scope: ScoreScope = "all",
+): Record<string, number> {
   const out: Record<string, number> = {};
   for (const c of side.components) {
-    out[c.key] = preset === "todd" ? c.weight_todd : c.weight_equal;
+    const w = preset === "todd" ? c.weight_todd : c.weight_equal;
+    // Todd only: the extra metrics (outside Todd's books) carry weight 0.
+    out[c.key] = scope === "todd" && c.corpus_set === "extra" ? 0 : w;
   }
   return out;
 }
@@ -73,6 +79,7 @@ export function ScoreCard({ entityId }: { entityId: string }) {
 
   const [preset, setPreset] = React.useState<PresetChoice>("equal");
   const [lastBasePreset, setLastBasePreset] = React.useState<"equal" | "todd">("equal");
+  const [scope, setScope] = React.useState<ScoreScope>("all");
   const [customWeights, setCustomWeights] = React.useState<Record<string, number> | null>(null);
   const [year, setYear] = React.useState<number | null>(null);
   const [showComponents, setShowComponents] = React.useState(false);
@@ -86,9 +93,9 @@ export function ScoreCard({ entityId }: { entityId: string }) {
 
   const weightsByKey = React.useMemo(() => {
     if (!side) return {} as Record<string, number>;
-    if (preset === "custom") return customWeights ?? weightsOf(side, lastBasePreset);
-    return weightsOf(side, preset);
-  }, [side, preset, customWeights, lastBasePreset]);
+    if (preset === "custom") return customWeights ?? weightsOf(side, lastBasePreset, scope);
+    return weightsOf(side, preset, scope);
+  }, [side, preset, customWeights, lastBasePreset, scope]);
 
   const comps = React.useMemo<ScoreCompSeries[]>(
     () =>
@@ -125,7 +132,7 @@ export function ScoreCard({ entityId }: { entityId: string }) {
     [years, comps, threshold],
   );
 
-  const totalComponents = comps.length;
+  const totalComponents = comps.filter((c) => c.weight > 0).length;
 
   // Carried share at the selected year (share of available values resting on
   // an observation older than the year itself).
@@ -198,7 +205,7 @@ export function ScoreCard({ entityId }: { entityId: string }) {
     setYear(null);
     if (preset === "custom") {
       const target = s === "official" ? sides.official : sides.modelled;
-      setCustomWeights(target ? weightsOf(target, lastBasePreset) : null);
+      setCustomWeights(target ? weightsOf(target, lastBasePreset, scope) : null);
     }
   };
 
@@ -247,6 +254,17 @@ export function ScoreCard({ entityId }: { entityId: string }) {
                   { value: "custom", label: t((d) => d.score.presetCustom) },
                 ]}
               />
+              {preset !== "custom" && (
+                <SegmentedMini
+                  ariaLabel={t((d) => d.score.scope)}
+                  value={scope}
+                  onChange={(m) => setScope(m as ScoreScope)}
+                  options={[
+                    { value: "all", label: t((d) => d.score.scopeAll) },
+                    { value: "todd", label: t((d) => d.score.scopeTodd) },
+                  ]}
+                />
+              )}
             </div>
           </div>
 
@@ -256,7 +274,7 @@ export function ScoreCard({ entityId }: { entityId: string }) {
               : t((d) => d.score.modelledHint)}{" "}
             {preset === "custom"
               ? t((d) => d.score.customNote)
-              : t((d) => d.score.presetsExplained)}
+              : `${t((d) => d.score.presetsExplained)} ${t((d) => d.score.scopeHint)}`}
           </p>
         </div>
       </CardHeader>

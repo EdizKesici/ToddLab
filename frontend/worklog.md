@@ -486,3 +486,16 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, next build OK, pages checked in the browser. Vercel project `toddlab` is linked to the GitHub repo (production branch main).
+
+---
+Task ID: 21
+Agent: Claude Code (Hermes)
+Task: Todd only / Todd + extra metric sets in the score.
+
+Work Log:
+- Backend v30 (decision 21): extra_core.csv -> config/extra_refs.yaml -> dist/extra_corpus.json; two more stored presets (equal_todd_only, todd_todd_only) where the extra components weigh 0; every component carries corpus_set (todd | extra). The equal / todd presets are unchanged.
+- score-core.ts skips components with weight <= 0 (coverage, n, fresh count, delta), like the backend. Verified by compiling it and replaying the 24 golden vectors and all 24,449 stored scores of the 4 presets x 2 scores: no mismatch.
+- /score has a second toggle "Todd + extra | Todd seul" (URL param m=todd, API preset = storedPreset(weighting, scope)); the rankings count only weighted components. The country score card has the same toggle (hidden in custom mode, where the weights are the user's).
+
+Stage Summary:
+- eslint 0, tsc 0, next build OK. Official 2015 equal: 44 countries with extra, 34 Todd only (Switzerland 72.90 leads; Japan needs the extra components to reach the coverage threshold).

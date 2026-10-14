@@ -36,6 +36,7 @@ The repository holds two parts:
 | `entities.json` | countries and territories |
 | `indicators/<id>.json` | canonical series and witness series |
 | `todd_corpus.json` | the indicators Todd cites across his books |
+| `extra_corpus.json` | the metrics outside Todd's books (catalogued and planned) |
 | `score/` | the derived score layer |
 
 Sources: Eurostat, OECD, Our World in Data, WHO GHO, World Bank, UN
@@ -64,6 +65,7 @@ python -m src.cli fetch          # download sources -> data/raw (network)
 python -m src.cli rebuild        # data/raw -> data/dist (no network)
 python -m src.cli all            # fetch, then rebuild
 python -m src.cli stats          # counts of the built payload
+python scripts/normalize_extra_refs.py   # extra_core.csv -> config/extra_refs.yaml
 
 pytest
 ```

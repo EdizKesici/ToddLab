@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
+import type { StoredPreset } from "./score-types";
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
@@ -387,6 +388,7 @@ export interface ScoreEntityComponent {
   label_en: string;
   weight_equal: number;
   weight_todd: number;
+  corpus_set: "todd" | "extra";
   normalised: Record<string, number>;
   age: Record<string, number>;
   meta: {
@@ -414,7 +416,7 @@ export interface ScoreEntitySide {
   years: number[];
   max_obs_year: number;
   bounds_version: string;
-  presets: Record<"equal" | "todd", Record<string, [number, number]>>;
+  presets: Record<StoredPreset, Record<string, [number, number]>>;
   components: ScoreEntityComponent[];
   carried_share: number | null;
 }
@@ -437,7 +439,7 @@ export interface ScoreRankings {
   years: Record<string, number[]>;
   default_year: Record<string, number>;
   max_obs_year: Record<string, number>;
-  rankings: Record<string, Record<"equal" | "todd", ScoreRankingRow[]>>;
+  rankings: Record<string, Record<StoredPreset, ScoreRankingRow[]>>;
 }
 
 export function useScoreMeta(): UseQueryResult<ScoreMetaPayload> {
@@ -502,7 +504,7 @@ export interface ScoreCompareEntity {
 
 export interface ScoreComparePayload {
   score: "official" | "modelled";
-  preset: "equal" | "todd";
+  preset: StoredPreset;
   entities: ScoreCompareEntity[];
 }
 
@@ -514,7 +516,7 @@ export interface ScoreComparePayload {
 export function useScoreCompare(
   ids: string[],
   score: "official" | "modelled",
-  preset: "equal" | "todd",
+  preset: StoredPreset,
 ): UseQueryResult<ScoreComparePayload> {
   const key = ids.join(",");
   return useQuery({

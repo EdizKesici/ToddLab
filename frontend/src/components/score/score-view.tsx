@@ -38,7 +38,7 @@ import {
   type ScoreComparePoint,
 } from "@/lib/toddlab/client";
 import { fmtCoverage, fmtScore } from "@/lib/toddlab/format";
-import type { ScoreName } from "@/lib/toddlab/score-types";
+import { storedPreset, type ScoreName, type ScoreScope } from "@/lib/toddlab/score-types";
 import { cn } from "@/lib/utils";
 
 /* ----------------------------- URL-as-state ------------------------------ */
@@ -50,6 +50,7 @@ const SCORE_VALUES: ScoreName[] = ["official", "modelled"];
 function parseState(sp: Pick<URLSearchParams, "get">) {
   const s = sp.get("s");
   const p = sp.get("p");
+  const m = sp.get("m");
   const yRaw = sp.get("y");
   const cRaw = sp.get("c");
   const y = yRaw === null ? null : Number.parseInt(yRaw, 10);
@@ -64,6 +65,7 @@ function parseState(sp: Pick<URLSearchParams, "get">) {
   return {
     score: SCORE_VALUES.includes(s as ScoreName) ? (s as ScoreName) : "official",
     preset: p === "todd" ? ("todd" as ViewPreset) : ("equal" as ViewPreset),
+    scope: m === "todd" ? ("todd" as ScoreScope) : ("all" as ScoreScope),
     year: y !== null && Number.isFinite(y) ? y : null,
     compare,
   };
@@ -138,6 +140,7 @@ export function ScoreView() {
       partial: Partial<{
         score: ScoreName;
         preset: ViewPreset;
+        scope: ScoreScope;
         year: number | null;
         compare: string[];
       }>,
@@ -147,6 +150,7 @@ export function ScoreView() {
       const q = new URLSearchParams();
       q.set("s", next.score);
       q.set("p", next.preset);
+      if (next.scope === "todd") q.set("m", "todd");
       if (next.year !== null) q.set("y", String(next.year));
       if (next.compare.length > 0) q.set("c", next.compare.join(","));
       router.replace(`/score?${q.toString()}`, { scroll: false });
@@ -157,7 +161,8 @@ export function ScoreView() {
   const rankings = useScoreRankings(state.year);
   const meta = useScoreMeta();
   const entities = useEntities();
-  const compareQuery = useScoreCompare(state.compare, state.score, state.preset);
+  const stored = storedPreset(state.preset, state.scope);
+  const compareQuery = useScoreCompare(state.compare, state.score, stored);
 
   const labelOf = useCallback(
     (id: string) => entityLabel(id, entities.data?.entities.find((e) => e.entity_id === id)?.label),
@@ -166,9 +171,10 @@ export function ScoreView() {
 
   const data = rankings.data;
   const years = data?.years[state.score] ?? [];
-  const rows = data?.rankings[state.score][state.preset] ?? [];
-  const totalComponents =
-    meta.data ? Object.keys(meta.data.presets[state.score].equal).length : null;
+  const rows = data?.rankings[state.score][stored] ?? [];
+  const totalComponents = meta.data
+    ? Object.values(meta.data.presets[state.score][stored] ?? {}).filter((w) => w > 0).length
+    : null;
 
   // When the selected year does not exist for the (possibly switched) score,
   // snap to that score's default year once the payload is known.
@@ -221,6 +227,15 @@ export function ScoreView() {
                   { value: "todd", label: t((d) => d.score.presetTodd) },
                 ]}
               />
+              <Segmented<ScoreScope>
+                ariaLabel={t((d) => d.score.scope)}
+                value={state.scope}
+                onChange={(m) => patch({ scope: m })}
+                options={[
+                  { value: "all", label: t((d) => d.score.scopeAll) },
+                  { value: "todd", label: t((d) => d.score.scopeTodd) },
+                ]}
+              />
               <span className="text-sm text-muted-foreground">
                 {interpolate(t((d) => d.score.rankedCountries), {
                   n: rows.length,
@@ -237,7 +252,8 @@ export function ScoreView() {
               <p>
                 {state.score === "official"
                   ? t((d) => d.score.officialHint)
-                  : t((d) => d.score.modelledHint)}
+                  : t((d) => d.score.modelledHint)}{" "}
+                {t((d) => d.score.scopeHint)}
               </p>
               <p>
                 {interpolate(t((d) => d.score.thresholdNote), {

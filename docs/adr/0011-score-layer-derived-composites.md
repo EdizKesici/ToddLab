@@ -478,3 +478,31 @@ test keeps this field and the schema's `MODELLED_ONLY_INDICATORS` list equal.
 The canonical source of record is unchanged (the schema still requires one
 canonical source per indicator); consumers show a `modelled` canonical series
 as an estimate, never as an official figure.
+
+---
+
+## Amendment 2026-10-14 (v30): decision 21, two metric sets - Todd, and Todd + extra
+
+**Decision 21 (Ediz, 2026-10-14).** The user can choose, for the score,
+between the metrics Todd uses in his books ("Todd only") and those plus the
+metrics outside them ("Todd + extra"). The metrics outside Todd's books are
+catalogued in `extra_core.csv` (same layout as `todd_core.csv` minus the book
+and citation columns, one row per metric), turned one way into
+`config/extra_refs.yaml` by `scripts/normalize_extra_refs.py` and published as
+`dist/extra_corpus.json`; the config loader cross-validates it with the
+indicators' `todd_core` flag (every `todd_core: false` indicator is listed, no
+metric is in both corpora).
+
+In the score layer this is two more presets, `equal_todd_only` and
+`todd_todd_only`: the same weightings with weight 0 on the `extra` components
+(`corpus_set` on every component). The extra components weigh 1 under both
+weightings. The existing `equal` and `todd` presets are unchanged, byte for
+byte. Today the extra components are life expectancy at 60 (male, female),
+the maternal mortality ratio and road deaths per vehicle (official only).
+
+Measured effect (read live on the shipped dist): official equal preset in
+2015, 44 scored countries with the extra components and 34 without; the
+Todd-only head is Switzerland (72.90), where the extra set had Japan (83.17),
+which only reaches the 0.60 coverage threshold thanks to the extra components.
+Planned extra metrics (not yet wired) are listed in `extra_core.csv` and
+`dist/extra_corpus.json` with `implemented: false`.

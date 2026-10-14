@@ -1,14 +1,15 @@
 import "server-only";
 import { getCatalog } from "../store";
 import { getScoreFile, getScoreMeta } from "../score-store";
-import type {
-  ScoreEntityComponent,
-  ScoreEntityPayload,
-  ScoreEntitySide,
-  ScoreMeta,
-  ScoreName,
-  ScoreRankingsPayload,
-  ScoreRankingRow,
+import {
+  STORED_PRESETS,
+  type ScoreEntityComponent,
+  type ScoreEntityPayload,
+  type ScoreEntitySide,
+  type ScoreMeta,
+  type ScoreName,
+  type ScoreRankingsPayload,
+  type ScoreRankingRow,
 } from "../score-types";
 
 /**
@@ -18,7 +19,11 @@ import type {
  */
 
 const SCORES: ScoreName[] = ["official", "modelled"];
-const PRESETS = ["equal", "todd"] as const;
+const PRESETS = STORED_PRESETS;
+
+function emptyPresetTable(): Record<(typeof STORED_PRESETS)[number], ScoreRankingRow[]> {
+  return { equal: [], todd: [], equal_todd_only: [], todd_todd_only: [] };
+}
 
 const catalogLabels = new Map<string, string>();
 function catalogLabel(indicatorId: string): string {
@@ -38,10 +43,8 @@ function buildSide(
   const presetWeights = meta.presets[score];
   const compKeys = Object.keys(presetWeights.equal);
 
-  const presets: ScoreEntitySide["presets"] = {
-    equal: {},
-    todd: {},
-  };
+  const presets = {} as ScoreEntitySide["presets"];
+  for (const preset of PRESETS) presets[preset] = {};
   for (const preset of PRESETS) {
     presets[preset] = file.scores[preset][entityId] ?? {};
   }
@@ -80,6 +83,7 @@ function buildSide(
       label_en: catalogLabel(compMeta?.indicator ?? key.split("/")[0]),
       weight_equal: presetWeights.equal[key] ?? 0,
       weight_todd: presetWeights.todd[key] ?? 0,
+      corpus_set: block.corpus_set ?? "todd",
       normalised: norm,
       age,
       meta: block,
@@ -122,10 +126,17 @@ function scoredYearsOf(score: ScoreName): number[] {
   return [...years].sort((a, b) => a - b);
 }
 
-function nComponentsAt(score: ScoreName, entityId: string, yearStr: string): number {
+/** Components with a resolved value at that year AMONG THE ONES THE PRESET WEIGHTS (weight 0 = outside the metric set). */
+function nComponentsAt(
+  score: ScoreName,
+  entityId: string,
+  yearStr: string,
+  weights: Record<string, number>,
+): number {
   const file = getScoreFile(score);
   let n = 0;
   for (const key of Object.keys(file.normalised)) {
+    if ((weights[key] ?? 0) <= 0) continue;
     const v = file.normalised[key][entityId]?.[yearStr];
     if (v !== undefined) n++;
   }
@@ -154,8 +165,8 @@ export function buildScoreRankingsPayload(
 ): ScoreRankingsPayload | null {
   const meta = getScoreMeta();
   const rankings: ScoreRankingsPayload["rankings"] = {
-    official: { equal: [], todd: [] },
-    modelled: { equal: [], todd: [] },
+    official: emptyPresetTable(),
+    modelled: emptyPresetTable(),
   };
 
   // Absent or invalid year: fall back to the official score's default year
@@ -177,7 +188,7 @@ export function buildScoreRankingsPayload(
           entity_id: entityId,
           score: entry[0],
           coverage: entry[1],
-          n_components: nComponentsAt(score, entityId, String(year)),
+          n_components: nComponentsAt(score, entityId, String(year), meta.presets[score][preset] ?? {}),
         });
       }
       rows.sort((a, b) => b.score - a.score || a.entity_id.localeCompare(b.entity_id));

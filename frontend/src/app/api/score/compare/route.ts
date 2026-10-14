@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getScoreFile, scoreLayerExists } from "@/lib/toddlab/score-store";
-import type { ScoreName } from "@/lib/toddlab/score-types";
+import { isStoredPreset, type ScoreName } from "@/lib/toddlab/score-types";
 
 export const dynamic = "force-dynamic";
 
@@ -8,6 +8,7 @@ const ENTITY_RE = /^[a-z][a-z0-9_]*$/;
 
 /**
  * GET /api/score/compare?ids=FR,DE&score=official&preset=equal
+ *   (preset: equal | todd | equal_todd_only | todd_todd_only)
  *
  * Per-year emitted scores ([score, coverage]) for up to four entities, read
  * straight from the stored preset tables (data/dist/score/{score}.json).
@@ -25,7 +26,8 @@ export async function GET(req: Request) {
   const ids = [...new Set(idsRaw.split(",").map((s) => s.trim()).filter((s) => ENTITY_RE.test(s)))].slice(0, 4);
 
   const score: ScoreName = sp.get("score") === "modelled" ? "modelled" : "official";
-  const preset = sp.get("preset") === "todd" ? ("todd" as const) : ("equal" as const);
+  const presetRaw = sp.get("preset");
+  const preset = isStoredPreset(presetRaw) ? presetRaw : ("equal" as const);
 
   const file = getScoreFile(score);
   const table = file.scores[preset];

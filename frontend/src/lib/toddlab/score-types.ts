@@ -10,6 +10,26 @@
 export type ScoreName = "official" | "modelled";
 export type ScorePreset = "equal" | "todd" | "custom";
 
+/** Which metrics enter the score: Todd's books plus the extra metrics, or Todd's books only. */
+export type ScoreScope = "all" | "todd";
+
+/** The presets the backend stores (v30): a weighting x a metric set. */
+export type StoredPreset = "equal" | "todd" | "equal_todd_only" | "todd_todd_only";
+export const STORED_PRESETS: readonly StoredPreset[] = [
+  "equal",
+  "todd",
+  "equal_todd_only",
+  "todd_todd_only",
+];
+
+export function storedPreset(weighting: "equal" | "todd", scope: ScoreScope): StoredPreset {
+  return scope === "todd" ? (`${weighting}_todd_only` as StoredPreset) : weighting;
+}
+
+export function isStoredPreset(x: string | null): x is StoredPreset {
+  return x !== null && (STORED_PRESETS as readonly string[]).includes(x);
+}
+
 /** meta.json — the layer's contract card. */
 export interface ScoreMeta {
   version: string;
@@ -45,7 +65,7 @@ export interface ScoreMeta {
   >;
   presets: Record<
     ScoreName,
-    Record<Exclude<ScorePreset, "custom">, Record<string, number>>
+    Record<StoredPreset, Record<string, number>>
   >;
   excluded: Record<string, string>;
   fingerprints: Record<string, unknown>;
@@ -62,6 +82,8 @@ export interface ScoreComponentBlock {
   direction: "higher" | "lower" | "target";
   basis: "todd" | "consensus";
   provisional: false;
+  /** v30: in Todd's books ("todd") or in the extra metric set ("extra"). */
+  corpus_set: "todd" | "extra";
   floor: number | null;
   lo: number;
   hi: number;
@@ -82,7 +104,7 @@ export interface ScoreFile {
   age: Record<string, Record<string, Record<string, number>>>;
   /** preset -> entity_id -> yearStr -> [score, coverage] — emitted only where
    *  coverage >= threshold AND at least one fresh component (ghost guard). */
-  scores: Record<Exclude<ScorePreset, "custom">, Record<string, Record<string, [number, number]>>>;
+  scores: Record<StoredPreset, Record<string, Record<string, [number, number]>>>;
 }
 
 /* ------------------------------ API payloads ------------------------------ */
@@ -96,6 +118,8 @@ export interface ScoreEntityComponent {
   label_en: string;
   weight_equal: number;
   weight_todd: number;
+  /** Whether the metric is in Todd's books ("todd") or in the extra set ("extra"). */
+  corpus_set: "todd" | "extra";
   normalised: Record<string, number>;
   age: Record<string, number>;
   meta: ScoreComponentBlock;
@@ -106,7 +130,7 @@ export interface ScoreEntitySide {
   max_obs_year: number;
   bounds_version: string;
   /** Stored preset scores: preset -> yearStr -> [score, coverage]. */
-  presets: Record<Exclude<ScorePreset, "custom">, Record<string, [number, number]>>;
+  presets: Record<StoredPreset, Record<string, [number, number]>>;
   components: ScoreEntityComponent[];
   /** Share of resolved values with age >= 1 among scored years (displayed, not hidden). */
   carried_share: number | null;
@@ -131,5 +155,5 @@ export interface ScoreRankingsPayload {
   years: Record<ScoreName, number[]>;
   default_year: Record<ScoreName, number>;
   max_obs_year: Record<ScoreName, number>;
-  rankings: Record<ScoreName, Record<Exclude<ScorePreset, "custom">, ScoreRankingRow[]>>;
+  rankings: Record<ScoreName, Record<StoredPreset, ScoreRankingRow[]>>;
 }

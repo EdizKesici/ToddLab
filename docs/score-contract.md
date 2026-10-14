@@ -61,7 +61,7 @@ and `golden_vectors.json` is what to unit-test against.
   `max_age_years`, `bounds_drift_tolerance` — the drift guard's refusal
   threshold since v28.2), the `carry_rule` description, `max_obs_year` per
   score, the component list (`direction`, `transform`, `basis`,
-  `provisional`, `sex`, `corpus_metric`), BOTH presets' weights per
+  `provisional`, `sex`, `corpus_metric`, `corpus_set`), ALL FOUR presets' weights per
   component, input fingerprints (config/bounds/corpus sha256), and the
   excluded ids with reasons.
 - `data/dist/score/official.json` / `modelled.json` — per score:
@@ -77,7 +77,7 @@ and `golden_vectors.json` is what to unit-test against.
     present only where `age >= 1` (a carried value); absent = fresh
     (age 0). `obs_year = year - age` is the observation the value
     rests on.
-  - `scores`: per preset (`equal`, `todd`), `entity_id -> year ->
+  - `scores`: per preset (`equal`, `todd`, `equal_todd_only`, `todd_todd_only`), `entity_id -> year ->
     [score, coverage]`, EMITTED ONLY where `coverage >=
     coverage_threshold` (0.60) AND at least one component is FRESH
     (age 0) — the ghost guard. No year beyond `max_obs_year` exists.
@@ -149,6 +149,23 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 - REFUSE when `C` is empty or the common-weight share is below
   `delta_min_common_weight` (0.50). Refusal is information ("the two
   years do not overlap enough to compare"), display it as such.
+
+### The metric sets (v30, decision 21)
+
+Every component carries `corpus_set`: `todd` (the indicator is in Todd's
+books, `todd_core: true`) or `extra` (outside them, listed in
+`extra_core.csv`). The score is stored for two metric sets:
+
+- **Todd + extra** (`equal`, `todd`): every component, as before;
+- **Todd only** (`equal_todd_only`, `todd_todd_only`): the same weighting,
+  with weight **0** on every `extra` component.
+
+The extra components weigh 1 under BOTH weightings (they have no books to
+count). A component with weight 0 takes no part at all: not in the weighted
+mean, not in the coverage denominator, not in a delta (neither `n_components`
+nor the decomposition), and not in the ghost guard (a Todd-only score needs a
+fresh component among the weighted ones). A frontend re-implementing custom
+weights must skip `weight <= 0` the same way.
 
 ### The presets
 

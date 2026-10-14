@@ -122,6 +122,11 @@ export const en = {
     presetEqual: "Equal",
     presetTodd: "Todd",
     presetCustom: "Custom",
+    scope: "Metric set",
+    scopeAll: "Todd + extra",
+    scopeTodd: "Todd only",
+    scopeHint:
+      "Todd only keeps the metrics Emmanuel Todd uses in his books. Todd + extra adds the metrics outside his books (life expectancy at 60, maternal mortality, road deaths per vehicle...), each with weight 1.",
     rankedCountries: "{n} countries scored",
     tableCountry: "Country",
     tableScore: "Score",
@@ -446,6 +451,11 @@ export const fr: Dictionary = {
     presetEqual: "Égal",
     presetTodd: "Todd",
     presetCustom: "Personnalisé",
+    scope: "Ensemble de métriques",
+    scopeAll: "Todd + extra",
+    scopeTodd: "Todd seul",
+    scopeHint:
+      "Todd seul garde les métriques qu'Emmanuel Todd utilise dans ses livres. Todd + extra ajoute les métriques hors de ses livres (espérance de vie à 60 ans, mortalité maternelle, mortalité routière par véhicule...), chacune avec un poids de 1.",
     rankedCountries: "{n} pays scorés",
     tableCountry: "Pays",
     tableScore: "Score",
