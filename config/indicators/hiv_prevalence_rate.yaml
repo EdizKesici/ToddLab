@@ -4,6 +4,7 @@ family: mortality
 unit: percent
 higher_is_better: false
 todd_core: true
+canonical_nature: modelled
 
 sources:
   # THE TWENTY-THIRD INDICATOR (v20, 1 citation): Où en sommes-nous ?

@@ -372,11 +372,13 @@ function DetailContent({
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
               <ReliabilityBadge level={meta.reliability} />
               <p className="max-w-3xl text-sm text-muted-foreground">
-                {meta.reliability === "high"
-                  ? t((d) => d.indicators.relHighText)
-                  : meta.reliability === "medium"
-                    ? t((d) => d.indicators.relMediumText)
-                    : t((d) => d.indicators.relLowText)}
+                {meta.canonical_nature === "modelled"
+                  ? t((d) => d.indicators.relModelledText)
+                  : meta.reliability === "high"
+                    ? t((d) => d.indicators.relHighText)
+                    : meta.reliability === "medium"
+                      ? t((d) => d.indicators.relMediumText)
+                      : t((d) => d.indicators.relLowText)}
               </p>
             </div>
           </CardContent>
@@ -562,7 +564,9 @@ function SourcesSection({ meta }: { meta: IndicatorMetaPayload }) {
         {canonicalProviders.length > 0 && (
           <p className="text-sm">
             <span className="font-medium">
-              {t((d) => d.indicators.sourcesOfficial)}
+              {meta.canonical_nature === "modelled"
+                ? t((d) => d.indicators.sourcesModelledCanonical)
+                : t((d) => d.indicators.sourcesOfficial)}
             </span>{" "}
             <span className="text-muted-foreground">
               {canonicalProviders.join(" · ")}

@@ -5,6 +5,7 @@
   "unit": "gini_coefficient_0_to_1",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = the OECD Income Distribution Database (IDD) via SDMX (DSD_WISE_IDD@DF_IDD), the Gini of equivalized disposable income as submitted by member statistical offices (national household surveys), 45 areas, 1974-2025, unit 0_TO_1, AGE=_T, four vintage doors in a priority chain (METH2012-D_CUR > METH2012-D_PREV > METH2012-D_INC > METH2011-D_CUR — the OECD explorer's own chained display; 906 country-year keys, zero unresolved, every collision a logged provenance discard). Witness tier = the WID pre-tax Gini via OWID's chart door (165 entities, 1820-2024, the DINA research harmonization — a different income concept, the gap displayed never reconciled). Authenticity first per ADR-0008: collector print beside research harmonization, never blended.",

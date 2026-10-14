@@ -276,6 +276,9 @@ export const en = {
     sourcesTitle: "Sources",
     sourcesOfficial: "Official figures from",
     sourcesWitness: "Modelled estimates from",
+    sourcesModelledCanonical: "Estimates from",
+    relModelledText:
+      "The reference series is itself a model output or a compilation, not figures published by statistical services: read it as an estimate.",
     toddRefsTitle: "In Todd's books",
     toddRefsHint: "Citation weight of this metric across the 16 books of the corpus.",
     focusViewAll: "Show all countries",
@@ -299,7 +302,7 @@ export const en = {
       "ToddLab is an open-source tool for comparing countries on hard social indicators — deaths, births, measurements, test results — recorded for administrative reasons, whatever a regime declares. GDP, rankings and composite scores tell what is monetized or declared; bodies don't lie. The project borrows its method from historian-demographer Emmanuel Todd, who famously tracked rising Soviet infant mortality in the 1970s and read it as a hard signal of systemic decomposition.",
     s2Title: "Official figures vs estimates",
     s2Body:
-      "Every indicator has one official series: statistics as published (UN Demographic Yearbook, Eurostat, OECD…), plus a few hand-checked tables with one citation per point. Beside it, modelled estimates (UN IGME, WPP, GHO…) are shown for comparison — never merged or averaged into the official line. Where the two diverge, both are shown: the spread is information, not an error.",
+      "Every indicator has one official series: statistics as published (UN Demographic Yearbook, Eurostat, OECD…), plus a few hand-checked tables with one citation per point. Beside it, modelled estimates (UN IGME, WPP, GHO…) are shown for comparison — never merged or averaged into the official line. Where the two diverge, both are shown: the spread is information, not an error. Three indicators (HIV, obesity, top income share) have no published series: their reference source is itself a model or a compilation, so they are shown as estimates.",
     s3Title: "Gaps are data",
     s3Body:
       "A cell printed empty by a collector survives as an explicit gap — never interpolated, never hidden. A state that stops publishing is itself a hard indicator: the Soviet Union stopped publishing infant mortality in 1976; the blackout is part of the signal.",
@@ -597,6 +600,9 @@ export const fr: Dictionary = {
     sourcesTitle: "Sources",
     sourcesOfficial: "Chiffres officiels provenant de",
     sourcesWitness: "Estimations provenant de",
+    sourcesModelledCanonical: "Estimations provenant de",
+    relModelledText:
+      "La série de référence est elle-même le résultat d'un modèle ou d'une compilation, pas des chiffres publiés par des services statistiques : à lire comme une estimation.",
     toddRefsTitle: "Dans les livres de Todd",
     toddRefsHint: "Poids de citations de cette métrique à travers les 16 livres du corpus.",
     focusViewAll: "Voir tous les pays",
@@ -620,7 +626,7 @@ export const fr: Dictionary = {
       "ToddLab est un outil open-source de comparaison des pays sur des indicateurs sociaux durs (décès, naissances, mesures, résultats de tests), enregistrés pour des raisons administratives, quel que soit ce qu'un régime déclare. Le PIB, les classements et les scores composites disent ce qui est monétisé ou déclaré ; les corps ne mentent pas. Le projet emprunte sa méthode à l'historien-démographe Emmanuel Todd, qui a suivi la montée de la mortalité infantile soviétique dans les années 1970 et l'a lue comme un signal dur de décomposition du système.",
     s2Title: "Chiffres officiels vs estimations",
     s2Body:
-      "Chaque indicateur a une série officielle : les statistiques telles que publiées (Annuaire démographique de l'ONU, Eurostat, OCDE…), plus quelques tables vérifiées à la main avec une citation par point. À côté, des estimations modélisées (UN IGME, WPP, GHO…) sont affichées pour comparaison, jamais fusionnées ni moyennées avec la série officielle. Là où les deux divergent, les deux sont montrées : cet écart est une information, pas une erreur.",
+      "Chaque indicateur a une série officielle : les statistiques telles que publiées (Annuaire démographique de l'ONU, Eurostat, OCDE…), plus quelques tables vérifiées à la main avec une citation par point. À côté, des estimations modélisées (UN IGME, WPP, GHO…) sont affichées pour comparaison, jamais fusionnées ni moyennées avec la série officielle. Là où les deux divergent, les deux sont montrées : cet écart est une information, pas une erreur. Trois indicateurs (VIH, obésité, revenus du haut) n'ont pas de série publiée : leur source de référence est elle-même un modèle ou une compilation, ils sont donc présentés comme des estimations.",
     s3Title: "Les trous sont des données",
     s3Body:
       "Une cellule laissée vide par un collecteur reste un trou explicite : jamais interpolée, jamais masquée. Un État qui cesse de publier est lui-même un indicateur dur : l'URSS a cessé de publier la mortalité infantile en 1976 ; le black-out fait partie du signal.",

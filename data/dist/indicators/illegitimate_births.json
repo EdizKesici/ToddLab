@@ -5,6 +5,7 @@
   "unit": "percent_of_live_births",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = Eurostat demo_find NMARPCT, the national official shares of live births outside marriage as collected by Eurostat (questionnaire collector), four sources: the DE_TOT geo-pinned German series door (65 points 1960-2024, \"including former GDR\"), the main all-countries slice, and the two geo-pinned French series (FX metropolitan 1960-2012, FR whole 1998-2024 — the seam the merge arbitrates by priority); per-observation status flags (b/e/p) transported as-reported. Witness tier = the OECD Family Database via OWID's chart door (OECD-compiled, 42 entities, 1960-2021). Authenticity first per ADR-0008: displayed beside each other, never blended.",

@@ -5,6 +5,7 @@
   "unit": "deaths_per_100000_population",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = WHO Mortality Database cause-of-death registrations as submitted by member states (civil registration, ICD-coded, intentional self-harm = X60-Y84 and predecessors), redistributed by the OECD Causes of Mortality dataflow over SDMX, 46 countries, 1960-2024, sex-split as published, zero null observations in the live slice; witness tier = WHO Global Health Estimates crude suicide rates via GHO (modeled, 185 countries, 2000-2021, sex-split, uncertainty intervals published but not carried). Authenticity first per ADR-0008: collector as-reported beside model estimates, never blended.",

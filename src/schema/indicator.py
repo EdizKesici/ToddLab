@@ -51,6 +51,23 @@ class Reliability(str, Enum):
     low = "low"
 
 
+class CanonicalNature(str, Enum):
+    """What the canonical series IS, for display (decision 20, v30).
+
+    - `published`: figures published by a state statistical service
+      (registers, censuses, their own surveys) - shown as "official".
+    - `modelled`: the canonical source is itself a model output or a
+      compilation (UNAIDS Spectrum estimates, the NCD-RisC Bayesian model,
+      the WID constructed series). It stays the indicator's source of
+      record - the schema still needs one canonical source - but the UI
+      shows it as an estimate, and the score keeps it in the modelled
+      score only.
+    """
+
+    published = "published"
+    modelled = "modelled"
+
+
 class Provider(str, Enum):
     owid = "owid"
     worldbank = "worldbank"
@@ -623,6 +640,11 @@ class Indicator(BaseModel):
 
     todd_core: bool = Field(
         ..., description="True = used by Todd in his books (Todd mode). False = added in Extra mode only."
+    )
+
+    canonical_nature: CanonicalNature = Field(
+        default=CanonicalNature.published,
+        description="published = official figures; modelled = the canonical source is itself a model or a compilation (shown as an estimate).",
     )
 
     sources: list[SourceRef] = Field(..., min_length=1)

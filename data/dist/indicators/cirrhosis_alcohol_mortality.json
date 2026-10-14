@@ -5,6 +5,7 @@
   "unit": "deaths_per_100000_population",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = WHO Mortality Database cause-of-death registrations as submitted by member states (civil registration, ICD-coded, \"Chronic liver diseases and cirrhosis\" = the OECD's cross-ICD CICDCIRR grouping), redistributed by the OECD Causes of Mortality dataflow over SDMX, 45 areas, 1960-2024, sex-split as published (2,385 both-sexes + 2,352 male + 2,352 female cells in the live slice), quality codes as-reported (45 'D' + 3 'B' cells). Witness tier = WHO Global Health Estimates age-standardized liver-cirrhosis rates via GHO (modeled, 180 countries x 3 sexes at the GHE's own single 2019 vintage — no multi-year GHE cirrhosis series exists on the API, the neighboring codes probed and recorded; the all-ages series kept and the 15+ variant dropped logged per the connector's Dim2 rule). Authenticity first per ADR-0008: collector as-reported beside model estimates, never blended.",

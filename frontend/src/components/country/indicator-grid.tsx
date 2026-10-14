@@ -132,7 +132,9 @@ function IndicatorCard({
                 <TooltipContent className="text-xs">
                   {ind.rank_basis === "witness" && ind.witness_root_label
                     ? `${t((d) => d.common.basedOnWitness)} · ${ind.witness_root_label}`
-                    : t((d) => d.common.canonical)}
+                    : ind.canonical_nature === "modelled"
+                      ? t((d) => d.common.witness)
+                      : t((d) => d.common.canonical)}
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

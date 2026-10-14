@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": true,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = Eurostat edat_lfse_03 pinned isced11=ED5-8 (tertiary as highest attainment), age=Y25-64 (the LFS's adult band), sex=T, unit=PC (the dataset's only unit, pinned and guarded): 36 countries (EU + EFTA + the Balkans + Türkiye; no XK), the door's own per-country starts (Belgium/Denmark/Germany/Greece/ Ireland 1992, France 1993 — the attainment series reach deeper than the probe's pinned window), the collector's b/e/p flags transported as-reported. Witness tier = the Barro-Lee/Lee-Lee long-run panel via OWID's chart door, 153 entities 1870-2010+, 5-year steps. Root pair eurostat_lfs/ barro_lee: the survey print and the reconciled scholarly panel — on the co-covered core they print the same levels to a few points (the panel's partial-tertiary bucket running above the LFS's completed-only face by construction), the seam documented, never blended.",

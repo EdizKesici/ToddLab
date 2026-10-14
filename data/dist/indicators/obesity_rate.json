@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "modelled",
   "companion_indicators": [],
   "reliability": "medium",
   "reliability_criteria": "Canonical tier = the NCD Risk Factor Collaboration's adult BMI pooled analysis (measured population-based surveys re-analyzed), republished by WHO GHO as NCD_BMI_30C — the crude 18+ face, 199 countries, 1980-2024, full sex-split, on the provider's own API wire (the 2026 vintage, lastUpdated 2026-05-22, read live). A modeled-estimates canonical by necessity: no collector prints the prevalence anywhere (the WB probe record); the OWID chart door prints the same series bit-identically (verified on the live anchors — the same-root relation recorded) and is refused as an auto-witness. No witness tier. The top_income_share constitution (v19): the authoritative compilation displayed as what it is.",

@@ -5,6 +5,7 @@
   "unit": "centimeters",
   "higher_is_better": true,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = the NCD Risk Factor Collaboration's 2016 eLife compilation (1,472 population-based measurement studies re-analyzed; mean height at age 18 by birth cohort, 200 entities, 1896-1996) via OWID's chart door, single-column clean. Witness tier = Baten & Blum (2015) via Clio-Infra (the historical anthropometric record, 153 entities, 1550-2000) — a genuinely cross-root compilation agreeing at the cm level on the overlapping cohorts. Authenticity first per ADR-0008: two independent compilations displayed beside each other, never blended.",

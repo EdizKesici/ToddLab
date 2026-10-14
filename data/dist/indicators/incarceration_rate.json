@@ -5,6 +5,7 @@
   "unit": "prisoners_per_100000_population",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "medium",
   "reliability_criteria": "Canonical tier = the Institute for Crime & Justice Policy Research's World Prison Brief (2026 vintage, lastUpdated 2026-01-21), the national prison administrations' own counts compiled — prisoners per 100,000 population, pre-trial and remand detainees included, 225 areas, 1993-2026 — reached through OWID's chart door (the compilation's own site has no API and the UNODC collector portal is a client-rendered SPA with no discoverable machine door — the probe record). A compilation canonical by necessity: no collector prints the rate on any reachable wire. Witness tier = the WHO Health in Prisons database (GHO PRISON_A2, the European questionnaire collection's 2020 cross-section, 36 countries). Authenticity first per ADR-0008: the boards' compilation beside the health-services collection, never blended.",

@@ -5,6 +5,7 @@
   "unit": "year",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = a curated table of dated national legislation (33 countries, 2001-2025, one citation per point — statute or nationwide ruling with its effective date, the consensus dating cross-checked against the legislative record); no witness tier exists (no machine-readable door carries the series — probed live 2026-09-20, the curation gate's condition (b) finding).",

@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "medium",
   "reliability_criteria": "Canonical tier = a curated table of published consanguinity-prevalence readings (102 rows, 69 countries, 1943-2021, one citation per row — the consang.net global tables of A.H. Bittles' compilation carrying the national surveys and dispensation registries, plus the DHS final reports and journal studies verified directly: PDHS 2017-18 Table 4.5, El-Mouzan 2008, Saadat 2004, Ben Halim 2012, Kalam 2024, Kaplan 2016). Reliability is MIXED BY NATURE and documented per row: the European registry belt (dispensation and civil registration, N up to 1.4 million) is high; the survey belt is moderate (national samples N 1,500-306,000); the subnational and community-scope readings (entered only where no national print exists) are the table's honest frontier, each carrying its scope in definition_note. No witness tier exists (no machine-readable door carries the series — the gate finding).",

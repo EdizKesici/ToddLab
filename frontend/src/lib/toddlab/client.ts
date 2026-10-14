@@ -22,6 +22,7 @@ export interface CatalogItem {
   unit: string;
   higher_is_better: boolean;
   todd_core: boolean;
+  canonical_nature: "published" | "modelled";
   companion_indicators: string[];
   reliability: "high" | "medium" | "low";
   reliability_criteria: string;
@@ -113,6 +114,7 @@ export interface IndicatorMetaPayload {
   unit: string;
   higher_is_better: boolean;
   todd_core: boolean;
+  canonical_nature: "published" | "modelled";
   companion_indicators: string[];
   reliability: "high" | "medium" | "low";
   reliability_criteria: string;
@@ -184,6 +186,7 @@ export interface SeriesPayload {
   unit: string;
   higher_is_better: boolean;
   todd_core: boolean;
+  canonical_nature: "published" | "modelled";
   reliability: "high" | "medium" | "low";
   reliability_criteria: string;
   sex_split: boolean;
@@ -222,6 +225,7 @@ export interface CountryProfile {
     unit: string;
     higher_is_better: boolean;
     todd_core: boolean;
+    canonical_nature: "published" | "modelled";
     reliability: "high" | "medium" | "low";
     sex_split: boolean;
     last_year: number | null;

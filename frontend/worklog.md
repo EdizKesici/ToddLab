@@ -474,3 +474,15 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, next build OK (local and VERCEL=1 modes). Not tested on a real Vercel deployment (needs the owner's account).
+
+---
+Task ID: 20
+Agent: Claude Code (Hermes)
+Task: Show the three model-based canonical series as estimates.
+
+Work Log:
+- Backend v30: new additive field `canonical_nature` (published | modelled) on every indicator file and on catalog.json; hiv_prevalence_rate, obesity_rate and top_income_share are `modelled`. Score files are unchanged.
+- Frontend: types and API payloads carry the field; for `modelled` indicators the sources card says "Estimations provenant de" (not "Chiffres officiels provenant de"), the reliability text says the reference series is a model or compilation, and the rank tooltip says "Estimation". The method page states the exception. The words "Officiel" and "Estimation" are kept.
+
+Stage Summary:
+- eslint 0, tsc 0, next build OK, pages checked in the browser. Vercel project `toddlab` is linked to the GitHub repo (production branch main).

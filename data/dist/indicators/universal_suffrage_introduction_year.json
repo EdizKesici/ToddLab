@@ -5,6 +5,7 @@
   "unit": "year",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = a curated table of dated franchise introductions (16 countries, 1848-1946, one citation per point — the standard scholarly dating of the Caramani electoral-archive family, the male/female decomposition carried per row in definition_note); no witness tier exists (no machine-readable door carries the series — probed live 2026-09-20).",

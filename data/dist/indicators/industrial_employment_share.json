@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": true,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = Eurostat nama_10_a10_e pinned na_item=EMP_DC (total employment domestic concept — the door also prints SAL_DC employees and SELF_DC self-employed, unwired), unit=PC_TOT_PER (percentage of total — the door's OWN share unit; the counts face THS_PER and the index face I15_* refused), nace_r2=B-E (\"Industry (except construction)\" — the door's own aggregate label, verified live 2026-09-21): 34 countries + aggregates dropped (EU27_2020/EA/EA21/ EA20/EA19/EA12 — EA the bare two-letter Euro-area aggregate, dropped logged as _DATASET_TWO_LETTER_AGGREGATES records), no sex dimension (both-sexes by construction), FR/DE 1995-2024 full annual series (FR 16.4 -> 10.1, DE 23.1 -> 17.5), the EA aggregates' own prints riding the drop log. Witness tier = the ILO modeled shares, world 1991-2024, industry INCLUDING construction. The root pair eurostat_na/ilo_modelled: same underlying national accounts and surveys, one modeling step and one construction-coverage apart.",

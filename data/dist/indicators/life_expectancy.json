@@ -5,6 +5,7 @@
   "unit": "years",
   "higher_is_better": true,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = UN DYB Table 4, national official statistics as reported, 13 editions (2015 recovered v10), 2007-2024, sex-split (Male/Female) as printed by the collector; witness tier = OWID \"life expectancy\" (the mixed long-run compilation — Riley, HMD, UN WPP — both sexes) and the World Bank SP.DYN.LE00.MA/FE codes (pure UN WPP, sex-split), near-global. Authenticity first per ADR-0008: displayed beside each other, never blended.",

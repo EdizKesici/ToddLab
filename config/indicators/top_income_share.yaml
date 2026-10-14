@@ -4,6 +4,7 @@ family: economy
 unit: percent
 higher_is_better: false
 todd_core: true
+canonical_nature: modelled
 
 sources:
   # THE SEVENTEENTH INDICATOR (v19), the backlog's head claimed (7

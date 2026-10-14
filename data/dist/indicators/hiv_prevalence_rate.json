@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "modelled",
   "companion_indicators": [],
   "reliability": "medium",
   "reliability_criteria": "Canonical tier = UNAIDS' own epidemic indicators (the Global AIDS Update's modeled estimates, the Spectrum/EPP framework's central estimates), prevalence among adults 15-49 in percent, 161 entities, 1990-2024, reached through OWID's chart door (the direct UNAIDS machine door is closed from this environment — the probe record). A modeled-estimates canonical by necessity: no collector prints a prevalence (seroprevalence surveys feed the model, never the wire). No witness tier — the GHO and WB doors redistribute the same root (refused as auto-witnesses), and the IHME cross-root family is 403-blocked (re-confirmed live). The top_income_share constitution: the compilation the corpus names, displayed as what it is.",

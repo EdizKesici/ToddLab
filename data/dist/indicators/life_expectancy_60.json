@@ -5,6 +5,7 @@
   "unit": "years",
   "higher_is_better": true,
   "todd_core": false,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = UN DYB Tables 21/22 (life expectancy at specified ages, by sex), national life tables as reported by each country, 13 editions 2011-2015 + 2017-2024, sex-split as printed (Male/Female rows, no both-sexes column to report). Witness tier = WHO GHO WHOSIS_000015 (WPP-derived modeled estimates, 183 countries, 2000-2021; the uncertainty intervals are carried nowhere — dropped at parse, re-fetchable from source_url).",

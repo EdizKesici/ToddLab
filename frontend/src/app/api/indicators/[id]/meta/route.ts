@@ -24,6 +24,7 @@ export async function GET(
     unit: file.unit,
     higher_is_better: file.higher_is_better,
     todd_core: file.todd_core,
+    canonical_nature: file.canonical_nature,
     companion_indicators: file.companion_indicators,
     reliability: file.reliability,
     reliability_criteria: file.reliability_criteria,

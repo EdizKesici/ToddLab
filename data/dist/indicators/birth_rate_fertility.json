@@ -5,6 +5,7 @@
   "unit": "births_per_woman",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [
     "crude_birth_rate"
   ],

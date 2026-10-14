@@ -325,6 +325,10 @@ def build_indicator_file(
         "unit": indicator.unit,
         "higher_is_better": indicator.higher_is_better,
         "todd_core": indicator.todd_core,
+        # v30 (decision 20): what the canonical series is - "published"
+        # (official figures) or "modelled" (the canonical source is itself
+        # a model output or compilation). Additive field.
+        "canonical_nature": indicator.canonical_nature.value,
         # v15: the companion link (crude_birth_rate <-> birth_rate_fertility)
         # — the explicit statement that two indicators read the same
         # demographic phenomenon through DIFFERENT measures (TFR vs CBR),
@@ -532,6 +536,7 @@ def build_catalog(
             "unit": ind.unit,
             "higher_is_better": ind.higher_is_better,
             "todd_core": ind.todd_core,
+            "canonical_nature": ind.canonical_nature.value,
             # v15: the companion link on the catalog entry too (the board
             # navigates from the catalog — the TFR/CBR pair must be visible
             # there, one field read uniformly).

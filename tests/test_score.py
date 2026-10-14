@@ -844,6 +844,31 @@ def test_shipped_config_keeps_model_based_indicators_out_of_official():
     assert len(official) == 15  # indicators; 17 components once the two sex pairs split
 
 
+def test_canonical_nature_matches_the_modelled_only_score_list_v30():
+    # decision 20: an indicator whose canonical source is a model / compilation
+    # is declared `canonical_nature: modelled` in its config AND sits in the
+    # schema's MODELLED_ONLY list (and the reverse) - one fact, two places,
+    # never allowed to drift apart.
+    from src.config_loader import load_indicators
+    from src.schema.score import MODELLED_ONLY_INDICATORS
+
+    indicators = load_indicators(Path(__file__).resolve().parents[1] / "config")
+    declared = {i for i, ind in indicators.items() if ind.canonical_nature.value == "modelled"}
+    assert declared == set(MODELLED_ONLY_INDICATORS)
+
+
+def test_canonical_nature_is_published_in_the_dist():
+    import json
+
+    repo = Path(__file__).resolve().parents[1]
+    catalog = json.loads((repo / "data/dist/catalog.json").read_text(encoding="utf-8"))
+    nature = {c["id"]: c["canonical_nature"] for c in catalog}
+    assert {i for i, n in nature.items() if n == "modelled"} == {
+        "hiv_prevalence_rate", "obesity_rate", "top_income_share",
+    }
+    assert set(nature.values()) <= {"published", "modelled"}
+
+
 def test_gini_and_incarceration_still_refused():
     for bad_id in ("gini_index", "incarceration_rate"):
         with pytest.raises(ValidationError, match="EXCLUDED"):

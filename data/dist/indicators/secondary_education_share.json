@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": true,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = Eurostat edat_lfse_03 pinned isced11=ED3_4 (upper secondary and post-secondary non-tertiary as HIGHEST attainment — the completed-secondary print, tertiary excluded), age=Y25-64, sex=T, unit=PC (pinned and guarded): 36 countries, the same per-country starts as tertiary (1992-era), the collector's b/e/p flags as-reported. No witness tier wired (the probe record); the world face is the Barro-Lee panel's secondary bucket, unwired.",

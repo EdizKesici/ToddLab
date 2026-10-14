@@ -5,6 +5,7 @@
   "unit": "deaths_per_100000_population",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [
     "road_accident_mortality_per_vehicle"
   ],

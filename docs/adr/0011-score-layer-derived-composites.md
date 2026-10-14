@@ -469,3 +469,12 @@ models belongs to the modelled side (so UNESCO UIS attainment rates and
 ILO modelled estimates are modelled, while the ILO series flagged `LFS`
 or `OE` by their per-observation SOURCE are candidates for the official
 side).
+
+Follow-up (2026-10-13, v30): the same fact is now carried by the indicator
+config and the dist. `canonical_nature` (`published` | `modelled`, default
+`published`) is an additive field of every indicator file and of
+`catalog.json`; the three decision-20 indicators declare `modelled`, and a
+test keeps this field and the schema's `MODELLED_ONLY_INDICATORS` list equal.
+The canonical source of record is unchanged (the schema still requires one
+canonical source per indicator); consumers show a `modelled` canonical series
+as an estimate, never as an official figure.

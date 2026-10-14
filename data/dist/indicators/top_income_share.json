@@ -5,6 +5,7 @@
   "unit": "percent",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "modelled",
   "companion_indicators": [],
   "reliability": "medium",
   "reliability_criteria": "Canonical tier = the World Inequality Database's pre-tax national income top-1% share (DINA research harmonization: fiscal microdata + household surveys + national accounts blended per the 2020/2025 guidelines), reached through OWID's chart door (165 entities, 1820-2024, the chart's own attribution naming WID.world; the direct WID API probed and refused from this environment — every extractor shape 403, the record in sources.yaml). A research-harmonization canonical by necessity: no collector prints the metric anywhere (the probe record). No witness tier — no cross-root machine door exists (the IDD's measure list enumerated live, the extrapolations door refused as same-root modeled). Authenticity first per ADR-0008: the compilation the corpus itself names, displayed as what it is.",

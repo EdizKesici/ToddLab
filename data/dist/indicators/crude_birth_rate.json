@@ -5,6 +5,7 @@
   "unit": "births_per_1000_population",
   "higher_is_better": false,
   "todd_core": false,
+  "canonical_nature": "published",
   "companion_indicators": [
     "birth_rate_fertility"
   ],

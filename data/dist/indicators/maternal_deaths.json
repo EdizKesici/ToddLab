@@ -5,6 +5,7 @@
   "unit": "maternal_deaths",
   "higher_is_better": false,
   "todd_core": false,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "medium",
   "reliability_criteria": "Canonical tier = UN DYB Table 17 registered maternal-death counts (the Number rows, WHO-collected cause-of-death statistics), 13 editions 2001-2022 (2015 recovered v10, wired v12), C/U/|/+ quality-coded as printed — the counts exist for MORE countries than the ratios because the collector's editorial rule refuses ratios, not counts, on data it judges incomplete. Medium, not high: maternal deaths are the classic under-reported cause even inside otherwise-complete civil registration (obstetric deaths misclassified to disease chapters), and the registered counts inherit that undercount as-reported. Witness tier = UN MMEIG modeled number of maternal deaths via the World Bank (SH.MMR.DTHS, the 2023 round, annual 1985-2023), which models the counts precisely where registration cannot serve them.",

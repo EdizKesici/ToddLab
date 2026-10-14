@@ -5,6 +5,7 @@
   "unit": "deaths_per_1000_births",
   "higher_is_better": false,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = official as-reported series: the hand-curated USSR official series (one citation per point, curation gate ADR-0007) and UN DYB Table 15 rates across 13 editions (2015 recovered v10), 2007-2024 (published only for UN completeness codes C or \"|\"); witness tier = UN IGME harmonized estimates via OWID, the World Bank (WDI, sex-split, rounded print) and GHO for cross-country comparability — one root, four doors. Authenticity first per ADR-0008: the two tiers are displayed beside each other, never blended.",

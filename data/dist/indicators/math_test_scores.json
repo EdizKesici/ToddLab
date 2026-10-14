@@ -5,6 +5,7 @@
   "unit": "pisa_score_points",
   "higher_is_better": true,
   "todd_core": true,
+  "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "high",
   "reliability_criteria": "Canonical tier = the OECD PISA assessment's own mean mathematics scale scores (the PISA Database, OECD 2023 vintage), 90 entities, the seven triennial cycles 2003-2022, reached through OWID's chart door with the mathematics column pinned (the CSV's own header) — the OECD runs the assessment and prints the scale scores itself (the collector judgment); the SDMX registry carries no PISA dataflow, so the chart door is the machine face. No witness tier — the by-sex door is the same root, the composite learning scores are derived, and TIMSS (the assessment Todd's own table read) has no machine door. Authenticity first per ADR-0008: the assessment's own scores displayed as what they are.",
