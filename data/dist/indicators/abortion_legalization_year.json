@@ -1,0 +1,486 @@
+{
+  "id": "abortion_legalization_year",
+  "label": "Abortion legalization year",
+  "family": "markers",
+  "unit": "year",
+  "higher_is_better": false,
+  "todd_core": false,
+  "canonical_nature": "published",
+  "companion_indicators": [],
+  "reliability": "low",
+  "reliability_criteria": "Canonical tier = a curated table of 50 countries, one row each, every row citing the Wikipedia article it was read from (read 2026-10-14) and the statement it relies on. Low: the source is a secondary compilation (Wikipedia), not the statute itself, rows were assembled by hand from article text, and the scope of 'legal' differs by country (on request, or on broad social grounds, with narrower earlier episodes in each note). Countries whose current regime is narrow or was reversed (Poland, the United States after 2022, Germany, Malta) and every country the articles give no date for are ABSENT, not guessed. No witness tier: no machine-readable door carries the series (probed 2026-10-14).",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 1948,
+    "end": 2022
+  },
+  "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
+  "notes": "Start of the legal availability of abortion in the regime still in force (decision 24): on request or on broad social or economic grounds; earlier narrower episodes and later changes ride each row's definition_note. The Soviet successors carry the Soviet decree of 23 November 1955 (the 1920 legalization and the 1936 ban are in the note). HONEST LIMITS: the year is the one each Wikipedia article states for its own country, so the legal scope is not uniform (Hungary 1953 and Czechia 1957 are 'with restrictions', Denmark 1973 and Sweden 1974 are on request, Japan 1948 and India 1971 are on grounds); 50 countries, Europe and the former USSR in majority; no row for Germany (separate East and West regimes then the 1992/1995 compromise), Poland (1956 broad grounds, reversed 1993), Norway, Finland, Romania, Ukraine and others the cached articles did not date.",
+  "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "national_legislation",
+      "root_label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'abortion_legalization' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/abortion_legalization.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "albania",
+      "year": 1995,
+      "value": 1995.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Albania' (en.wikipedia.org/wiki/Abortion_in_Albania), read 2026-10-14: 'fully legalized on December 7, 1995' (the 1995 law nullifies all previous laws)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): full legalization; limited legalization 1989 (rape, incest, under 16)"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2020,
+      "value": 2020.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Argentina' (en.wikipedia.org/wiki/Abortion_in_Argentina), read 2026-10-14: 'liberalized when the Voluntary Interruption of Pregnancy Bill was passed by the National Congress in December 2020'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; effective January 2021"
+    },
+    {
+      "entity_id": "armenia",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Armenia' (en.wikipedia.org/wiki/Abortion_in_Armenia), read 2026-10-14: 'legalized in Soviet Armenia as part of USSR in October 1920, with a ban ... from 1936 to 1955'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet decree of 1955; first legalized 1920"
+    },
+    {
+      "entity_id": "austria",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Austria' (en.wikipedia.org/wiki/Abortion_in_Austria), read 2026-10-14: 'not punishable by law during the first three months of pregnancy since 1 January 1975'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): first-trimester decriminalization"
+    },
+    {
+      "entity_id": "azerbaijan",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Azerbaijan' (en.wikipedia.org/wiki/Abortion_in_Azerbaijan), read 2026-10-14: 'current abortion law ... is based on the abortion law of the Soviet Union of 1955' (edict of 23 November 1955)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet edict of 1955, no change after independence"
+    },
+    {
+      "entity_id": "belarus",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Belarus' (en.wikipedia.org/wiki/Abortion_in_Belarus), read 2026-10-14: 'legal since November 23, 1955' (Soviet decree)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet decree of 1955 after the 1936 ban; current law 1987"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 1990,
+      "value": 1990.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Belgium' (en.wikipedia.org/wiki/Abortion_in_Belgium), read 2026-10-14: 'fully legalised on 4 April 1990'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): full legalization"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Bosnia and Herzegovina' (en.wikipedia.org/wiki/Abortion_in_Bosnia_and_Herzegovina), read 2026-10-14: 'previously ... governed by the Law of 7 October 1977, made when Bosnia and Herzegovina was part of Yugoslavia'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Yugoslav-era law of 1977; current law 2008"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Bulgaria' (en.wikipedia.org/wiki/Abortion_in_Bulgaria), read 2026-10-14: 'legalized by a decree of the Ministry of Public Health on 27 April 1956' (any ground in the first 12 weeks)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request in the first 12 weeks; current law in force 1 February 1990"
+    },
+    {
+      "entity_id": "canada",
+      "year": 1988,
+      "value": 1988.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Canada' (en.wikipedia.org/wiki/Abortion_in_Canada), read 2026-10-14: 'in 1988, the Supreme Court allowed his second challenge' (R. v. Morgentaler struck down the 1969 Act)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): no federal abortion law since 1988; therapeutic abortions by committee legalized in 1969"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 1978,
+      "value": 1978.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Croatia' (en.wikipedia.org/wiki/Abortion_in_Croatia), read 2026-10-14: 'on 21 April 1978, the Act concerning the medical measures for materialization of the right to freely decide on the birth of children was passed in SR Croatia'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; Yugoslavia legalized on indications in 1952"
+    },
+    {
+      "entity_id": "cuba",
+      "year": 1965,
+      "value": 1965.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Cuba' (en.wikipedia.org/wiki/Abortion_in_Cuba), read 2026-10-14: 'decriminalized abortion in 1965'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): 1965 liberalization, public doctors, free of charge"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2018,
+      "value": 2018.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Cyprus' (en.wikipedia.org/wiki/Abortion_in_Cyprus), read 2026-10-14: 'since 2018 be performed on request up until the 12th week'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; earlier only on risk, fetal deformity or rape grounds"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 1957,
+      "value": 1957.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in the Czech Republic' (en.wikipedia.org/wiki/Abortion_in_the_Czech_Republic), read 2026-10-14: 'In 1957, abortions were legalized in Czechoslovakia, although with restrictions'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): with restrictions; no medical approval needed before 12 weeks from 1986"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1973,
+      "value": 1973.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Denmark' (en.wikipedia.org/wiki/Abortion_in_Denmark), read 2026-10-14: 'fully legalized on 1 October 1973' (on request to the 12th week)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; limited grounds by application from 1939"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Estonia' (en.wikipedia.org/wiki/Abortion_in_Estonia), read 2026-10-14: 'legal since 23 November 1955, when Estonia was part of the Soviet Union'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet decree of 1955"
+    },
+    {
+      "entity_id": "france",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in France' (en.wikipedia.org/wiki/Abortion_in_France), read 2026-10-14: 'The abortion law was liberalized by the Veil Act in 1975'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request from 1975; prohibited by laws of 1920 and 1923"
+    },
+    {
+      "entity_id": "greece",
+      "year": 1986,
+      "value": 1986.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Greece' (en.wikipedia.org/wiki/Abortion_in_Greece), read 2026-10-14: 'fully legalized since 1986, when Law 1609/1986 was passed effective from 3 July 1986'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): partial legalization by Law 821 of 1978"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 1953,
+      "value": 1953.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Hungary' (en.wikipedia.org/wiki/Abortion_in_Hungary), read 2026-10-14: 'legal in Hungary under certain restrictions since 1953'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): with restrictions; laws changed in 1956, 1973 and 1992"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Iceland' (en.wikipedia.org/wiki/Abortion_in_Iceland), read 2026-10-14: 'legalized on a number of grounds on 22 May 1975'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on grounds; on demand to week 22 from 2019"
+    },
+    {
+      "entity_id": "india",
+      "year": 1971,
+      "value": 1971.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in India' (en.wikipedia.org/wiki/Abortion_in_India), read 2026-10-14: 'legal in India ... with the introduction of the Medical Termination of Pregnancy (MTP) Act, 1971'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on grounds; amended 2021"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2019,
+      "value": 2019.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in the Republic of Ireland' (en.wikipedia.org/wiki/Abortion_in_the_Republic_of_Ireland), read 2026-10-14: 'Abortion services commenced on 1 January 2019 following its legalisation by the Health (Regulation of Termination of Pregnancy) Act 2018'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request to 12 weeks; Eighth Amendment 1983 until 2018"
+    },
+    {
+      "entity_id": "israel",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Israel' (en.wikipedia.org/wiki/Abortion_in_Israel), read 2026-10-14: 'had been illegal, but became legal, subject to a termination committee's approval, under the penal code of 1977'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): committee approval"
+    },
+    {
+      "entity_id": "italy",
+      "year": 1978,
+      "value": 1978.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Italy' (en.wikipedia.org/wiki/Abortion_in_Italy), read 2026-10-14: 'became legal in May 1978' (on request in the first 90 days)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request"
+    },
+    {
+      "entity_id": "japan",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Japan' (en.wikipedia.org/wiki/Abortion_in_Japan), read 2026-10-14: 'first legalized in 1948 under the Eugenic Protection Law' (later extended to economic hardship)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): 1948 law"
+    },
+    {
+      "entity_id": "kyrgyzstan",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Kyrgyzstan' (en.wikipedia.org/wiki/Abortion_in_Kyrgyzstan), read 2026-10-14: 'Stalin's law criminalizing abortion was repealed in 1955'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet decree of 1955"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Latvia' (en.wikipedia.org/wiki/Abortion_in_Latvia), read 2026-10-14: 'On 23 November 1955, the Government of the Soviet Union issued a decree which allowed abortions to be available on request'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet decree of 1955 (Latvia under Soviet law from 1940)"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 1978,
+      "value": 1978.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Luxembourg' (en.wikipedia.org/wiki/Abortion_in_Luxembourg), read 2026-10-14: 'was liberalized on 15 November 1978'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): liberalization"
+    },
+    {
+      "entity_id": "mongolia",
+      "year": 1989,
+      "value": 1989.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Mongolia' (en.wikipedia.org/wiki/Abortion_in_Mongolia), read 2026-10-14: 'legalized in 1989'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): legalization"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Montenegro' (en.wikipedia.org/wiki/Abortion_in_Montenegro), read 2026-10-14: 'current abortion law, which dates from 2009, repealed the previous 1977 law enacted by Yugoslavia'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Yugoslav-era law of 1977; current law 2009"
+    },
+    {
+      "entity_id": "nepal",
+      "year": 2002,
+      "value": 2002.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Nepal' (en.wikipedia.org/wiki/Abortion_in_Nepal), read 2026-10-14: 'legalised abortion in March 2002, under the 11th Amendment to the Civil Code'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): legalization"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 1984,
+      "value": 1984.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in the Netherlands' (en.wikipedia.org/wiki/Abortion_in_the_Netherlands), read 2026-10-14: 'fully legalized on 1 November 1984' (law of 1981 in force 1984)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request to the 24th week"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in North Macedonia' (en.wikipedia.org/wiki/Abortion_in_North_Macedonia), read 2026-10-14: 'The 1977 law regulating abortion, enacted while still part of Yugoslavia'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): 1977 law, restricted 2013-2019, liberalized 2019"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2007,
+      "value": 2007.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Portugal' (en.wikipedia.org/wiki/Abortion_in_Portugal), read 2026-10-14: 'liberalized on 10 April 2007' (elective to the 10th week)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; 1998 referendum rejected it"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Russia' (en.wikipedia.org/wiki/Abortion_in_Russia), read 2026-10-14: 'a ban on unconditional abortions being enacted again from 1936 to 1955, after which it was legalised again'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Soviet decree of 1955; first legalized 1920"
+    },
+    {
+      "entity_id": "san_marino",
+      "year": 2022,
+      "value": 2022.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in San Marino' (en.wikipedia.org/wiki/Abortion_in_San_Marino), read 2026-10-14: 'On 31 August 2022, the parliament approved the law'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): law approved 2022"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Serbia' (en.wikipedia.org/wiki/Abortion_in_Serbia), read 2026-10-14: 'legalized in its current form ... on October 7, 1977'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Yugoslav-era law of 7 October 1977; first legalized 1952"
+    },
+    {
+      "entity_id": "singapore",
+      "year": 1974,
+      "value": 1974.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Singapore' (en.wikipedia.org/wiki/Abortion_in_Singapore), read 2026-10-14: 'formally legalised in 1974'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Termination of Pregnancy Act 1974; Abortion Act 1969 in force 1970"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 1957,
+      "value": 1957.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Slovakia' (en.wikipedia.org/wiki/Abortion_in_Slovakia), read 2026-10-14: 'provided with restrictions in Slovakia and what is now the Czech Republic as early as 19 December 1957' (fully legalized 23 October 1986)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): with restrictions from 1957; fully legalized 1986"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Slovenia' (en.wikipedia.org/wiki/Abortion_in_Slovenia), read 2026-10-14: 'legalized for the first time in January 1952 and in its current form in July 1977'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): current form of 1977; first legalized 1952"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2010,
+      "value": 2010.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Spain' (en.wikipedia.org/wiki/Abortion_in_Spain), read 2026-10-14: 'Organic Law 2/2010 ... came into force on 5 July 2010 and legalizes abortion' on request",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request from 2010; three indications from 1985"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 1974,
+      "value": 1974.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Sweden' (en.wikipedia.org/wiki/Abortion_in_Sweden), read 2026-10-14: 'The current framework was introduced in 1974, when abortion on request was allowed up to the end of the 18th week'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request from 1974; Abortion Act of 1938 on medical grounds"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2002,
+      "value": 2002.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Switzerland' (en.wikipedia.org/wiki/Abortion_in_Switzerland), read 2026-10-14: 'legalized by popular vote in 2002'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; earlier prohibition no longer observed in practice"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 1985,
+      "value": 1985.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Taiwan' (en.wikipedia.org/wiki/Abortion_in_Taiwan), read 2026-10-14: 'legalized by the Genetic Health Act, enacted in 1985'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Genetic Health Act 1984 / 1985"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2021,
+      "value": 2021.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Thailand' (en.wikipedia.org/wiki/Abortion_in_Thailand), read 2026-10-14: 'legal up to at least 12 weeks of pregnancy since 7 February 2021'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request to 12 weeks; narrower grounds earlier"
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 1973,
+      "value": 1973.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Tunisia' (en.wikipedia.org/wiki/Abortion_in_Tunisia), read 2026-10-14: 'A 1973 law requires public medical facilities to provide free abortions on request'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request; 1965 law for women with five children"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 1983,
+      "value": 1983.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Turkey' (en.wikipedia.org/wiki/Abortion_in_Turkey), read 2026-10-14: 'has been legal on request since May 27, 1983'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 1968,
+      "value": 1968.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Timeline of reproductive rights legislation' (en.wikipedia.org/wiki/Timeline_of_reproductive_rights_legislation), read 2026-10-14: 'The UK Abortion Act (effective 1968) legalized abortion in the United Kingdom under certain grounds (except in Northern Ireland)'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): Abortion Act 1967 in force 1968 in Great Britain; Northern Ireland 2020"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2012,
+      "value": 2012.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Uruguay' (en.wikipedia.org/wiki/Abortion_in_Uruguay), read 2026-10-14: 'legalized in Uruguay since 2012'",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): on request"
+    },
+    {
+      "entity_id": "viet_nam",
+      "year": 1989,
+      "value": 1989.0,
+      "provider": "curated",
+      "source_ref": "abortion_legalization",
+      "citation": "Wikipedia, 'Abortion in Vietnam' (en.wikipedia.org/wiki/Abortion_in_Vietnam), read 2026-10-14: 'Article 44 of the 1989 Public Health Protection Law' (passed 30 June 1989)",
+      "definition_note": "Year = start of the legal availability of abortion in the regime still in force (broad grounds or on request; narrower earlier episodes and later changes in this note): legal to 22 weeks, free of charge"
+    }
+  ],
+  "witnesses": []
+}

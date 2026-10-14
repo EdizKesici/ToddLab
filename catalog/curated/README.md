@@ -330,3 +330,14 @@ the restrictions lifted, the lifted year is the value and the first grant is in
 several dates listed as stages of one grant take the earliest. Rows were
 generated from the page by script and reviewed against the printed table;
 countries the page does not list have no row.
+
+### `abortion_legalization.csv` and `divorce_legalization.csv` (v30, extra metrics)
+
+Start of the legal availability of abortion (50 countries, 1948-2022) and of
+divorce (12 countries, 1911-2011) in the regime still in force (decision 24).
+Source: English Wikipedia articles read 2026-10-14 ("Abortion in <country>",
+"Timeline of reproductive rights legislation", "Divorce", "Divorce law by
+country"); each row cites the article and the statement it relies on, and the
+`definition_note` carries the legal scope, earlier episodes and later reforms.
+Secondary source by the owner's choice (2026-10-14): treat as indicative.
+Countries without a dated statement have no row.

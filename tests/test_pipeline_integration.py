@@ -313,6 +313,7 @@ def test_full_pipeline_produces_the_expected_dist_files(tmp_path, real_indicator
         "youth_suicide_rate",  # v30: Eurostat causes of death, ages 15-24 (extra metric)
         "abortion_rate",  # v30: WHO/Europe Health for All database (extra metric)
         "womens_suffrage_introduction_year",  # v30: IPU table, curated marker (extra metric)
+        "abortion_legalization_year", "divorce_legalization_year",  # v30: curated markers (extra metrics)
     }
 
 

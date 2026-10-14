@@ -4,7 +4,7 @@
     "source_csv_sha256": "e7b378596a74c67266e55b2f3274a20e613a1daac156623e86e37ae25efd5f4a",
     "rows": 14,
     "metrics": 14,
-    "implemented_metrics": 11
+    "implemented_metrics": 13
   },
   "metrics": [
     {
@@ -12,7 +12,7 @@
       "label": "Abortion legalization year",
       "family": "markers",
       "note": "Year abortion was first legalized, one year per country.",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "abortion_rate",
@@ -33,7 +33,7 @@
       "label": "Divorce legalization year",
       "family": "markers",
       "note": "Year divorce became legally available, one year per country.",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "drug_induced_deaths",

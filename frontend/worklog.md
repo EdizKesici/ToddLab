@@ -548,3 +548,16 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, build OK, 24 golden vectors and 25,401 stored scores unchanged.
+
+---
+Task ID: 26
+Agent: Claude Code (Hermes)
+Task: The three marker metrics (women's suffrage, abortion, divorce legalization years).
+
+Work Log:
+- Curated tables under catalog/curated/: womens_suffrage_introduction (IPU table, 185 countries, equal-terms rule), abortion_legalization (50 countries, Wikipedia), divorce_legalization (12 countries, Wikipedia). Rules in ADR-0011 decision 24; absences deliberate.
+- Frontend: FR labels and descriptions for the three indicators.
+- Decision 23 recorded: ToddLab never commercial, abortion rate ranks lower = better.
+
+Stage Summary:
+- 491 tests, tsc 0, eslint 0, build OK, 24 golden vectors and 25,401 stored scores unchanged.

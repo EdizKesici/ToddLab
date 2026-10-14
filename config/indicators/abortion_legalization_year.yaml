@@ -1,0 +1,50 @@
+# abortion_legalization_year (v30, the extra metric set): outside Todd's books (todd_core:
+# false), listed in extra_core.csv.
+id: abortion_legalization_year
+label: "Abortion legalization year"
+family: markers
+unit: year
+higher_is_better: false
+todd_core: false
+
+sources:
+  - provider: curated
+    ref: abortion_legalization
+    priority: 1
+    role: canonical
+    root: national_legislation
+
+coverage_start: 1948
+coverage_end: 2022
+
+reliability: low
+reliability_criteria: >
+  Canonical tier = a curated table of 50 countries, one row each, every row
+  citing the Wikipedia article it was read from (read 2026-10-14) and the
+  statement it relies on. Low: the source is a secondary compilation
+  (Wikipedia), not the statute itself, rows were assembled by hand from
+  article text, and the scope of 'legal' differs by country (on request, or on broad social grounds, with narrower earlier episodes in each note). Countries whose current regime is narrow or was reversed (Poland, the United States after 2022, Germany, Malta) and every country the articles give no date for are ABSENT, not guessed. No witness tier: no machine-readable door carries
+  the series (probed 2026-10-14).
+reclassification_sensitive: false
+
+plausible_range:
+  min: 1900
+  max: 2030
+
+license: >
+  Facts with citation (small extracts, clearly attributed) - see
+  docs/licenses.md and catalog/curated/README.md.
+
+notes: >
+  Start of the legal availability of abortion in the regime still in force
+  (decision 24): on request or on broad social or economic grounds; earlier
+  narrower episodes and later changes ride each row's definition_note. The
+  Soviet successors carry the Soviet decree of 23 November 1955 (the 1920
+  legalization and the 1936 ban are in the note). HONEST LIMITS: the year is the
+  one each Wikipedia article states for its own country, so the legal scope is
+  not uniform (Hungary 1953 and Czechia 1957 are 'with restrictions', Denmark
+  1973 and Sweden 1974 are on request, Japan 1948 and India 1971 are on
+  grounds); 50 countries, Europe and the former USSR in majority; no row for
+  Germany (separate East and West regimes then the 1992/1995 compromise),
+  Poland (1956 broad grounds, reversed 1993), Norway, Finland, Romania, Ukraine
+  and others the cached articles did not date.

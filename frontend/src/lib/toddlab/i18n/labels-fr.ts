@@ -40,6 +40,8 @@ export const INDICATOR_LABELS_FR: Record<string, string> = {
   unemployment_rate: "Taux de chômage",
   universal_suffrage_introduction_year: "Année d'introduction du suffrage universel",
   womens_suffrage_introduction_year: "Année du droit de vote des femmes",
+  abortion_legalization_year: "Année de légalisation de l'avortement",
+  divorce_legalization_year: "Année de légalisation du divorce",
 };
 
 /** English labels for entities whose backend label differs from the entity_id

@@ -1,0 +1,45 @@
+# divorce_legalization_year (v30, the extra metric set): outside Todd's books (todd_core:
+# false), listed in extra_core.csv.
+id: divorce_legalization_year
+label: "Divorce legalization year"
+family: markers
+unit: year
+higher_is_better: false
+todd_core: false
+
+sources:
+  - provider: curated
+    ref: divorce_legalization
+    priority: 1
+    role: canonical
+    root: national_legislation
+
+coverage_start: 1911
+coverage_end: 2011
+
+reliability: low
+reliability_criteria: >
+  Canonical tier = a curated table of 12 countries, one row each, every row
+  citing the Wikipedia article it was read from (read 2026-10-14) and the
+  statement it relies on. Low: the source is a secondary compilation
+  (Wikipedia), not the statute itself, rows were assembled by hand from
+  article text, and only the countries where divorce was legalized in the 20th century have a row. Countries where divorce has been available since the 19th century or earlier (France, the United Kingdom, Germany, the Nordic countries...) have no single legalization date and are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. No witness tier: no machine-readable door carries
+  the series (probed 2026-10-14).
+reclassification_sensitive: false
+
+plausible_range:
+  min: 1900
+  max: 2030
+
+license: >
+  Facts with citation (small extracts, clearly attributed) - see
+  docs/licenses.md and catalog/curated/README.md.
+
+notes: >
+  Start of the legal availability of divorce in the regime still in force
+  (decision 24). Source: the list 'countries that have relatively recently
+  legalized divorce' of Wikipedia's Divorce article (Italy 1970, Portugal 1975,
+  Brazil 1977, Spain 1981, Argentina 1987, Paraguay 1991, Colombia 1991, Andorra
+  1995, Ireland 1996, Chile 2004, Malta 2011) plus Panama 1911 from the Divorce
+  law by country table. HONEST LIMITS: 12 countries, a deliberately small set;
+  the Andorra date is not cross-checked; Paraguay is 1992 in the other table.

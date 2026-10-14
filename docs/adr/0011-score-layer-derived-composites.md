@@ -577,3 +577,14 @@ Lexical Index of Electoral Democracy (effective universal right, via OWID) the
 IPU's legal dates agree for 68 of 179 matched countries; the rest are mostly
 1-2 years apart, a few differ by decades (Brazil 1932 / 1985, South Africa
 1930 / 1994, Chile 1949 / 1970): a different concept, not wired as a witness.
+
+Abortion and divorce tables (same amendment). `abortion_legalization_year` (50
+countries, 1948-2022) and `divorce_legalization_year` (12 countries, 1911-2011)
+are curated from English Wikipedia articles read 2026-10-14, one citation and
+one scope note per row; they are secondary-source and indicative. Absences are
+deliberate: Poland (1956 broad grounds, reversed 1993), Germany, Malta and the
+United States (after 2022) for abortion; every country with no single
+legalization date (France, the United Kingdom, the Nordic countries) and the
+Philippines and the Vatican (no legal divorce) for divorce. The drug-induced
+deaths metric remains listed in `extra_core.csv` without an indicator (EUDA
+data not reachable, owner decision 2026-10-14 to drop it).

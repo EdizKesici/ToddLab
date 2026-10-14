@@ -1,5 +1,31 @@
 [
   {
+    "id": "abortion_legalization_year",
+    "label": "Abortion legalization year",
+    "family": "markers",
+    "unit": "year",
+    "higher_is_better": false,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "low",
+    "reliability_criteria": "Canonical tier = a curated table of 50 countries, one row each, every row citing the Wikipedia article it was read from (read 2026-10-14) and the statement it relies on. Low: the source is a secondary compilation (Wikipedia), not the statute itself, rows were assembled by hand from article text, and the scope of 'legal' differs by country (on request, or on broad social grounds, with narrower earlier episodes in each note). Countries whose current regime is narrow or was reversed (Poland, the United States after 2022, Germany, Malta) and every country the articles give no date for are ABSENT, not guessed. No witness tier: no machine-readable door carries the series (probed 2026-10-14).",
+    "reclassification_sensitive": false,
+    "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "national_legislation",
+          "label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 50,
+    "n_witness_points": 0
+  },
+  {
     "id": "abortion_rate",
     "label": "Abortion rate",
     "family": "society",
@@ -388,6 +414,32 @@
     },
     "n_points": 3346,
     "n_witness_points": 14208
+  },
+  {
+    "id": "divorce_legalization_year",
+    "label": "Divorce legalization year",
+    "family": "markers",
+    "unit": "year",
+    "higher_is_better": false,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "low",
+    "reliability_criteria": "Canonical tier = a curated table of 12 countries, one row each, every row citing the Wikipedia article it was read from (read 2026-10-14) and the statement it relies on. Low: the source is a secondary compilation (Wikipedia), not the statute itself, rows were assembled by hand from article text, and only the countries where divorce was legalized in the 20th century have a row. Countries where divorce has been available since the 19th century or earlier (France, the United Kingdom, Germany, the Nordic countries...) have no single legalization date and are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. No witness tier: no machine-readable door carries the series (probed 2026-10-14).",
+    "reclassification_sensitive": false,
+    "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "national_legislation",
+          "label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 12,
+    "n_witness_points": 0
   },
   {
     "id": "gini_index",

@@ -1,0 +1,144 @@
+{
+  "id": "divorce_legalization_year",
+  "label": "Divorce legalization year",
+  "family": "markers",
+  "unit": "year",
+  "higher_is_better": false,
+  "todd_core": false,
+  "canonical_nature": "published",
+  "companion_indicators": [],
+  "reliability": "low",
+  "reliability_criteria": "Canonical tier = a curated table of 12 countries, one row each, every row citing the Wikipedia article it was read from (read 2026-10-14) and the statement it relies on. Low: the source is a secondary compilation (Wikipedia), not the statute itself, rows were assembled by hand from article text, and only the countries where divorce was legalized in the 20th century have a row. Countries where divorce has been available since the 19th century or earlier (France, the United Kingdom, Germany, the Nordic countries...) have no single legalization date and are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. No witness tier: no machine-readable door carries the series (probed 2026-10-14).",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 1911,
+    "end": 2011
+  },
+  "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
+  "notes": "Start of the legal availability of divorce in the regime still in force (decision 24). Source: the list 'countries that have relatively recently legalized divorce' of Wikipedia's Divorce article (Italy 1970, Portugal 1975, Brazil 1977, Spain 1981, Argentina 1987, Paraguay 1991, Colombia 1991, Andorra 1995, Ireland 1996, Chile 2004, Malta 2011) plus Panama 1911 from the Divorce law by country table. HONEST LIMITS: 12 countries, a deliberately small set; the Andorra date is not cross-checked; Paraguay is 1992 in the other table.",
+  "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "national_legislation",
+      "root_label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'divorce_legalization' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/divorce_legalization.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "andorra",
+      "year": 1995,
+      "value": 1995.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: As printed by the Divorce article; not cross-checked against a second source"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 1987,
+      "value": 1987.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'; also 'Divorce law by country' table: '1987: Divorce legalized'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce legalized 1987; unilateral divorce without separation 2015"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'; also 'Divorce law by country' table: '1977: Divorce legalized'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce legalized 1977; one-year separation abolished 2010"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2004,
+      "value": 2004.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'; 'Chile legalized divorce in 2004, overturning an 1884 legal code' (Wikipedia, 'Divorce in Chile')",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: New Civil Marriage Law, introduced as a bill in 1995"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 1991,
+      "value": 1991.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: From 1976 divorce was allowed only for non-Catholics; the 1991 date is the one for all; table: legalized only in 9 specific cases (1991), unilateral no-fault 2025"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 1996,
+      "value": 1996.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'; 'Ireland and Malta approved divorce at referendums in 1995 and 2011 respectively'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Approved by the 1995 referendum, law in effect 1996"
+    },
+    {
+      "entity_id": "italy",
+      "year": 1970,
+      "value": 1970.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'In Italy, the first divorce law was introduced on 1 December 1970 ... and entered into force on 18 December 1970' (confirmed by the 1974 referendum)",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Law of 1 December 1970; separation period of five years, reduced in 1987 and 2015"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2011,
+      "value": 2011.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'; also 'Divorce law by country' table: '2011: Divorce legalized'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Approved by the 2011 referendum"
+    },
+    {
+      "entity_id": "panama",
+      "year": 1911,
+      "value": 1911.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce law by country' (en.wikipedia.org/wiki/Divorce_law_by_country), read 2026-10-14: '1911: Divorce legalized'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Single date printed by the table's history column"
+    },
+    {
+      "entity_id": "paraguay",
+      "year": 1991,
+      "value": 1991.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: The 'Divorce law by country' table prints 1992 for the same event; the Divorce article's list (1991) is kept"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce possible for civil and religious marriage 1910-1940, then barred for religious marriages until 1975; Wikipedia's list dates the current availability 1975"
+    },
+    {
+      "entity_id": "spain",
+      "year": 1981,
+      "value": 1981.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)' and 'the 1931 Constitution of the Second Spanish Republic for the first time recognised a right to divorce'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Current availability from the 1981 law; first recognized by the 1931 Republic constitution (ended under Franco)"
+    }
+  ],
+  "witnesses": []
+}
