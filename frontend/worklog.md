@@ -523,3 +523,15 @@ Work Log:
 
 Stage Summary:
 - 24 golden vectors and all stored scores still match score-core. UIS data is CC BY-SA 4.0: credit the UIS.
+
+---
+Task ID: 24
+Agent: Claude Code (Hermes)
+Task: Youth suicide rate (extra metric) from Eurostat.
+
+Work Log:
+- Backend v30: the Eurostat connector learns hlth_cd_acdr2 (the causes-of-death crude rate by age, ref grammar icd10/age/sex, unit RT pinned, layout guard, NUTS-2 regional codes dropped as non-country codes); new root eurostat_cod; indicator youth_suicide_rate (ages 15-24, 36 countries, 2011-2023, todd_core false, indicator only).
+- Frontend: FR labels and descriptions for youth_suicide_rate and mean_years_of_schooling.
+
+Stage Summary:
+- eslint 0, tsc 0, build OK. Small countries (Luxembourg 0, Cyprus 1 in 2023) show the small-numbers noise noted in the indicator's reliability text.

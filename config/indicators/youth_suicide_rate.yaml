@@ -1,0 +1,61 @@
+# youth_suicide_rate (v30, the extra metric set): outside Todd's books
+# (todd_core: false), listed in extra_core.csv.
+#
+# THE SOURCE: Eurostat's causes-of-death statistics, dataset hlth_cd_acdr2
+# ("Causes of death - crude death rate by NUTS 2 region of residence", read
+# from the live API label), pinned icd10 = X60-X84_Y870 (intentional
+# self-harm), age = Y15-24, sex = T, unit = RT (the crude death rate per
+# 100,000 persons). The national statistical offices send their civil
+# registration death registers to Eurostat; the rate is Eurostat's published
+# print (the NUTS-2 regional codes of the same dataset drop as non-country
+# codes). 36 countries (EU, EFTA, candidates, plus Georgia and Moldova),
+# 2011-2023, read live 2026-10-14.
+id: youth_suicide_rate
+label: "Youth suicide rate (ages 15-24)"
+family: mortality
+unit: deaths_per_100000_population
+higher_is_better: false
+todd_core: false
+
+sources:
+  - provider: eurostat
+    ref: hlth_cd_acdr2/X60-X84_Y870/Y15-24/T
+    priority: 1
+    role: canonical
+    root: eurostat_cod
+
+coverage_start: 2011
+coverage_end: 2023
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = Eurostat's causes-of-death crude death rate for
+  intentional self-harm (ICD-10 X60-X84, Y87.0) at ages 15-24, both sexes,
+  per 100,000 persons: the national civil-registration death registers as
+  collected by Eurostat from the national statistical offices, 36 countries,
+  2011-2023, the collector's own per-observation flags transported
+  as-reported. High for the countries it covers, with one caveat: in small
+  countries (Liechtenstein, Malta, Iceland, Cyprus, Luxembourg) a handful of
+  deaths moves the rate by several points from one year to the next. No
+  witness tier wired: the WHO Global Health Estimates print youth suicide on
+  other bands (15-19, 15-29) for a single 2021 cross-section of 185 countries,
+  modeled (SDGSUICIDE age slices) - recorded, not wired.
+
+reclassification_sensitive: true
+
+plausible_range:
+  min: 0
+  max: 60  # the highest national youth rates sit well below; a safety net
+
+license: >
+  Mixed, per source (see "sources"): Eurostat reuse policy (attribution
+  required, no endorsement implied).
+
+notes: >
+  Deaths by intentional self-harm per 100,000 young people aged 15 to 24,
+  outside Todd's books (the all-ages rate, suicide_rate, is Todd's 2nd metric
+  by citations). The crude rate is not age-standardized within the band. THE
+  HONEST LIMITS: the coverage is the European club (the same ceiling as the
+  other Eurostat collectors); the band 15-24 differs from the WHO estimates'
+  15-29 / 15-19 bands; the reclassification caveat of suicide applies (an
+  undetermined-intent death is not counted as self-harm).

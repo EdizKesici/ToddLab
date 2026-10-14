@@ -142,6 +142,9 @@ def _source_citation(provider: Provider, ref: str) -> str:
                 f"{template.format(title=title, dataset=parts[0], code=parts[1])}, "
                 f"the class decomposition {axis}"
             )
+        if len(parts) == 4 and parts[0] == "hlth_cd_acdr2":
+            # v30: icd10/age/sex pins - the cause AND the age band name the slice
+            return f"{template.format(title=title, dataset=parts[0], code=parts[1])}, age {parts[2]}, sex {parts[3]}"
         return template.format(title=title, dataset=parts[0], code=parts[1])
     if provider == Provider.ilostat:
         # v25: the bare-flow refs — the ILO's own SDMX wire, the flow's own

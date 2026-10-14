@@ -81,6 +81,14 @@ export const INDICATOR_DESCRIPTIONS: Record<string, { en: string; fr: string }> 
     en: "Average score of 15-year-olds on the OECD PISA mathematics test.",
     fr: "Score moyen des élèves de 15 ans au test PISA de mathématiques de l'OCDE.",
   },
+  youth_suicide_rate: {
+    en: "Deaths by suicide per 100,000 young people aged 15 to 24 (European countries).",
+    fr: "Décès par suicide pour 100 000 jeunes de 15 à 24 ans (pays européens).",
+  },
+  mean_years_of_schooling: {
+    en: "Average number of years of formal education of adults aged 25 and over (UNESCO estimate).",
+    fr: "Nombre moyen d'années de scolarité des adultes de 25 ans et plus (estimation de l'UNESCO).",
+  },
   reading_test_scores: {
     en: "Average score of 15-year-olds on the OECD PISA reading test.",
     fr: "Score moyen des élèves de 15 ans au test PISA de lecture de l'OCDE.",

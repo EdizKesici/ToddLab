@@ -25,6 +25,8 @@ export const INDICATOR_LABELS_FR: Record<string, string> = {
   maternal_mortality_ratio: "Ratio de mortalité maternelle",
   math_test_scores: "Score moyen PISA en mathématiques",
   reading_test_scores: "Score moyen PISA en lecture",
+  youth_suicide_rate: "Taux de suicide des jeunes (15-24 ans)",
+  mean_years_of_schooling: "Années moyennes de scolarité (25 ans et plus)",
   science_test_scores: "Score moyen PISA en sciences",
   obesity_rate: "Prévalence de l'obésité (IMC ≥ 30)",
   road_accident_mortality: "Mortalité routière",

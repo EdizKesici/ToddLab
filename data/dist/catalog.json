@@ -1885,5 +1885,31 @@
         }
       ]
     }
+  },
+  {
+    "id": "youth_suicide_rate",
+    "label": "Youth suicide rate (ages 15-24)",
+    "family": "mortality",
+    "unit": "deaths_per_100000_population",
+    "higher_is_better": false,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = Eurostat's causes-of-death crude death rate for intentional self-harm (ICD-10 X60-X84, Y87.0) at ages 15-24, both sexes, per 100,000 persons: the national civil-registration death registers as collected by Eurostat from the national statistical offices, 36 countries, 2011-2023, the collector's own per-observation flags transported as-reported. High for the countries it covers, with one caveat: in small countries (Liechtenstein, Malta, Iceland, Cyprus, Luxembourg) a handful of deaths moves the rate by several points from one year to the next. No witness tier wired: the WHO Global Health Estimates print youth suicide on other bands (15-19, 15-29) for a single 2021 cross-section of 185 countries, modeled (SDGSUICIDE age slices) - recorded, not wired.",
+    "reclassification_sensitive": true,
+    "license": "Mixed, per source (see \"sources\"): Eurostat reuse policy (attribution required, no endorsement implied).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "eurostat_cod",
+          "label": "Eurostat causes-of-death statistics (national civil-registration death registers, collected from the national statistical offices)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 429,
+    "n_witness_points": 0
   }
 ]

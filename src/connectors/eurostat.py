@@ -308,9 +308,11 @@ EUROSTAT_API_URL = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1
 # demo_find: {indic_de}[/{geo}]           une_rt_a: {age}/{unit}/{sex}
 # nama_10_a10_e: {na_item}/{unit}/{nace}  edat_lfse_03: {isced11}/{age}/{sex}
 # lfsa_urgan/lfsa_urgacob: {age}/{sex} (v25 — the class dimension open)
+# v30: hlth_cd_acdr2 {icd10}/{age}/{sex} (the causes-of-death crude rate by
+# age, unit RT pinned; its NUTS-2 regional codes drop as non-country codes).
 _EUROSTAT_DATASETS = (
     "demo_find", "une_rt_a", "nama_10_a10_e", "edat_lfse_03",
-    "lfsa_urgan", "lfsa_urgacob",
+    "lfsa_urgan", "lfsa_urgacob", "hlth_cd_acdr2",
 )
 
 # v18 (nama_10_a10_e): the Euro-area aggregate prints as the bare
@@ -331,7 +333,7 @@ _DATASET_TWO_LETTER_AGGREGATES: dict[str, frozenset[str]] = {
 # lfsa_urgan/lfsa_urgacob (v25 — the class twins carry it too: the M/F
 # doors of the class decomposition ride the same layers under the merge
 # key's sex component).
-_SEXED_DATASETS = frozenset({"une_rt_a", "edat_lfse_03", "lfsa_urgan", "lfsa_urgacob"})
+_SEXED_DATASETS = frozenset({"une_rt_a", "edat_lfse_03", "lfsa_urgan", "lfsa_urgacob", "hlth_cd_acdr2"})
 
 # The provider's own geo codelist quirks pycountry cannot answer (verified
 # live 2026-09-19: pycountry returns nothing for FX/UK/EL/XK). XK (Kosovo)
@@ -413,6 +415,11 @@ _UNE_REF_RE = re.compile(
 _NAMA_REF_RE = re.compile(
     r"^(?P<dataset>nama_10_a10_e)/(?P<na_item>[A-Z_]+)/(?P<unit>[A-Z_]+)/(?P<nace>[A-Z0-9][A-Z0-9_\-]*)$"
 )
+# v30: the causes-of-death crude death rate by age. icd10 codes carry hyphens
+# and underscores (X60-X84_Y870); the age codes are Y15-24, Y15-19, TOTAL...
+_ACDR_REF_RE = re.compile(
+    r"^(?P<dataset>hlth_cd_acdr2)/(?P<icd10>[A-Z0-9][A-Z0-9_\-]*)/(?P<age>[A-Z][A-Z0-9_\-]*)/(?P<sex>[TMF])$"
+)
 _EDAT_REF_RE = re.compile(
     r"^(?P<dataset>edat_lfse_03)/(?P<isced>[A-Z0-9][A-Z0-9_\-]*)/(?P<age>[A-Z0-9][A-Z0-9_\-]*)/(?P<sex>[TMF])$"
 )
@@ -476,6 +483,20 @@ def _parse_ref(source_ref: str) -> dict:
             },
             "geo": None,
         }
+    m = _ACDR_REF_RE.match(source_ref)
+    if m:
+        return {
+            "dataset": "hlth_cd_acdr2",
+            "pins": {
+                "icd10": m.group("icd10"),
+                "age": m.group("age"),
+                "sex": m.group("sex"),
+                # RT = the crude death rate per 100,000 persons, the dataset's
+                # rate unit (verified live 2026-10-14): pinned and guarded.
+                "unit": "RT",
+            },
+            "geo": None,
+        }
     m = _EDAT_REF_RE.match(source_ref)
     if m:
         return {
@@ -502,6 +523,8 @@ def _parse_ref(source_ref: str) -> dict:
         f"share slice, e.g. nama_10_a10_e/EMP_DC/PC_TOT_PER/B-E), or "
         f"'edat_lfse_03/<isced11>/<age>/<sex>' (the LFS attainment slice, "
         f"e.g. edat_lfse_03/ED5-8/Y25-64/T), or "
+        f"'hlth_cd_acdr2/<icd10>/<age>/<sex>' (the causes-of-death crude rate "
+        f"by age, e.g. hlth_cd_acdr2/X60-X84_Y870/Y15-24/T - v30), or "
         f"'lfsa_urgan/<age>/<sex>' / 'lfsa_urgacob/<age>/<sex>' (the LFS "
         f"class-decomposition rate twins, e.g. lfsa_urgan/Y15-74/T — v25; "
         f"the class dimension is open, the records ride the segment layers)."
@@ -522,6 +545,13 @@ def build_url(source_ref: str) -> str:
             f"&na_item={ref['pins']['na_item']}"
             f"&unit={ref['pins']['unit']}"
             f"&nace_r2={ref['pins']['nace_r2']}"
+        )
+    elif ref["dataset"] == "hlth_cd_acdr2":
+        params += (
+            f"&icd10={ref['pins']['icd10']}"
+            f"&age={ref['pins']['age']}"
+            f"&sex={ref['pins']['sex']}"
+            f"&unit={ref['pins']['unit']}"
         )
     elif ref["dataset"] == "edat_lfse_03":
         params += (
@@ -565,6 +595,8 @@ def _validate_layout(payload: dict, ref: dict) -> dict:
         "une_rt_a": ["freq", "age", "unit", "sex", "geo", "time"],
         "nama_10_a10_e": ["freq", "unit", "nace_r2", "na_item", "geo", "time"],
         "edat_lfse_03": ["freq", "sex", "age", "unit", "isced11", "geo", "time"],
+        # v30 (verified live 2026-10-14)
+        "hlth_cd_acdr2": ["freq", "unit", "sex", "age", "icd10", "geo", "time"],
         # v25 (verified live 2026-09-27, the v25 probe — the two class
         # twins print unit/sex/age BEFORE the class dimension, a different
         # order from the migr faces: the layout guard is per-dataset, and

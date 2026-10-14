@@ -383,6 +383,14 @@ ROOT_LABELS: dict[str, str] = {
     # TIMSS itself has NO machine door (zero sitemap hit, no IEA API —
     # the probe record), so the modern OECD door is the wired face and
     # the TIMSS seam is documented per-indicator.
+    # v30 (youth_suicide_rate canonical): Eurostat's causes-of-death statistics -
+    # the national civil-registration death registers (ICD-10 underlying cause)
+    # collected by Eurostat from the national statistical offices; the crude
+    # death rate by age band (hlth_cd_acdr2), read live: 36 countries, 2011-2023.
+    "eurostat_cod": (
+        "Eurostat causes-of-death statistics (national civil-registration death registers, "
+        "collected from the national statistical offices)"
+    ),
     "oecd_pisa": (
         "OECD PISA assessment (the PISA Database mean scale scores; via OWID's chart door)"
     ),
@@ -524,6 +532,8 @@ EUROSTAT_DATASET_TITLES: dict[str, str] = {
     # one-questionnaire-one-title rule.
     "lfsa_urgan": "Unemployment rates by citizenship",
     "lfsa_urgacob": "Unemployment rates by country of birth",
+    # v30 (read from the dataset's own live API label 2026-10-14):
+    "hlth_cd_acdr2": "Causes of death - crude death rate by NUTS 2 region of residence",
 }
 # v19: the OECD connector's three dataflows — titles read from the live
 # SDMX registry (2026-09-21), the same one-questionnaire-one-title rule as

@@ -1,0 +1,3039 @@
+{
+  "id": "youth_suicide_rate",
+  "label": "Youth suicide rate (ages 15-24)",
+  "family": "mortality",
+  "unit": "deaths_per_100000_population",
+  "higher_is_better": false,
+  "todd_core": false,
+  "canonical_nature": "published",
+  "companion_indicators": [],
+  "reliability": "high",
+  "reliability_criteria": "Canonical tier = Eurostat's causes-of-death crude death rate for intentional self-harm (ICD-10 X60-X84, Y87.0) at ages 15-24, both sexes, per 100,000 persons: the national civil-registration death registers as collected by Eurostat from the national statistical offices, 36 countries, 2011-2023, the collector's own per-observation flags transported as-reported. High for the countries it covers, with one caveat: in small countries (Liechtenstein, Malta, Iceland, Cyprus, Luxembourg) a handful of deaths moves the rate by several points from one year to the next. No witness tier wired: the WHO Global Health Estimates print youth suicide on other bands (15-19, 15-29) for a single 2021 cross-section of 185 countries, modeled (SDGSUICIDE age slices) - recorded, not wired.",
+  "reclassification_sensitive": true,
+  "coverage_declared": {
+    "start": 2011,
+    "end": 2023
+  },
+  "license": "Mixed, per source (see \"sources\"): Eurostat reuse policy (attribution required, no endorsement implied).",
+  "notes": "Deaths by intentional self-harm per 100,000 young people aged 15 to 24, outside Todd's books (the all-ages rate, suicide_rate, is Todd's 2nd metric by citations). The crude rate is not age-standardized within the band. THE HONEST LIMITS: the coverage is the European club (the same ceiling as the other Eurostat collectors); the band 15-24 differs from the WHO estimates' 15-29 / 15-19 bands; the reclassification caveat of suicide applies (an undetermined-intent death is not counted as self-harm).",
+  "sources": [
+    {
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T",
+      "role": "canonical",
+      "layer": "collector",
+      "root": "eurostat_cod",
+      "root_label": "Eurostat causes-of-death statistics (national civil-registration death registers, collected from the national statistical offices)",
+      "native_unit": null,
+      "citation": "Eurostat, Causes of death - crude death rate by NUTS 2 region of residence (dataset hlth_cd_acdr2), series 'X60-X84_Y870', age Y15-24, sex T",
+      "url": null,
+      "license": "Eurostat reuse policy (attribution required, no endorsement implied)"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "austria",
+      "year": 2011,
+      "value": 8.94,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2012,
+      "value": 7.07,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2013,
+      "value": 7.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2014,
+      "value": 9.48,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2015,
+      "value": 7.88,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2016,
+      "value": 8.09,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2017,
+      "value": 6.51,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2018,
+      "value": 7.65,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2019,
+      "value": 6.44,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2020,
+      "value": 5.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2021,
+      "value": 6.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2022,
+      "value": 7.64,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2023,
+      "value": 7.89,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2011,
+      "value": 11.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2012,
+      "value": 9.87,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2013,
+      "value": 8.99,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2014,
+      "value": 8.51,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2015,
+      "value": 8.75,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2016,
+      "value": 8.41,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2017,
+      "value": 8.79,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2018,
+      "value": 8.14,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2019,
+      "value": 7.97,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2020,
+      "value": 6.79,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2021,
+      "value": 8.4,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2022,
+      "value": 7.59,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2023,
+      "value": 5.69,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2011,
+      "value": 5.52,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2012,
+      "value": 7.13,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2013,
+      "value": 5.05,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2014,
+      "value": 5.17,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2015,
+      "value": 4.12,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2016,
+      "value": 4.45,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2017,
+      "value": 4.62,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2018,
+      "value": 3.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2019,
+      "value": 3.88,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2020,
+      "value": 2.75,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2021,
+      "value": 3.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2022,
+      "value": 4.79,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2023,
+      "value": 3.43,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2011,
+      "value": 6.34,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2012,
+      "value": 7.97,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2013,
+      "value": 9.44,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2014,
+      "value": 10.11,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2015,
+      "value": 8.56,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2016,
+      "value": 7.96,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2017,
+      "value": 6.17,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2018,
+      "value": 8.88,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2019,
+      "value": 6.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2020,
+      "value": 8.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2021,
+      "value": 5.58,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2022,
+      "value": 8.63,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2023,
+      "value": 5.86,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2011,
+      "value": 2.24,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2012,
+      "value": 4.55,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2013,
+      "value": 5.56,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2014,
+      "value": 3.31,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2015,
+      "value": 5.08,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2016,
+      "value": 5.13,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2017,
+      "value": 7.79,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2018,
+      "value": 6.18,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2019,
+      "value": 3.55,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2020,
+      "value": 3.58,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2021,
+      "value": 2.75,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2022,
+      "value": 2.89,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2023,
+      "value": 1.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2011,
+      "value": 11.42,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2012,
+      "value": 7.97,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2013,
+      "value": 10.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2014,
+      "value": 8.68,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2015,
+      "value": 7.3,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2016,
+      "value": 9.9,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2017,
+      "value": 9.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2018,
+      "value": 10.96,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2019,
+      "value": 8.2,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2020,
+      "value": 6.98,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2021,
+      "value": 8.05,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2022,
+      "value": 10.28,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2023,
+      "value": 8.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2011,
+      "value": 5.28,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2012,
+      "value": 5.76,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2013,
+      "value": 4.85,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2014,
+      "value": 5.36,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2015,
+      "value": 3.27,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2016,
+      "value": 5.28,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2017,
+      "value": 5.28,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2018,
+      "value": 4.21,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2019,
+      "value": 5.9,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2020,
+      "value": 7.49,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2021,
+      "value": 5.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2022,
+      "value": 4.71,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2023,
+      "value": 4.55,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2011,
+      "value": 12.41,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2012,
+      "value": 9.95,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2013,
+      "value": 11.21,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2014,
+      "value": 14.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2015,
+      "value": 15.99,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2016,
+      "value": 9.83,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2017,
+      "value": 14.02,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2018,
+      "value": 11.87,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2019,
+      "value": 15.88,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2020,
+      "value": 16.61,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2021,
+      "value": 14.88,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2022,
+      "value": 16.59,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2023,
+      "value": 11.45,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2011,
+      "value": 17.27,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2012,
+      "value": 17.71,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2013,
+      "value": 15.06,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2014,
+      "value": 13.2,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2015,
+      "value": 10.86,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2016,
+      "value": 15.54,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2017,
+      "value": 16.06,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2018,
+      "value": 14.67,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2019,
+      "value": 17.11,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2020,
+      "value": 13.31,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2021,
+      "value": 12.51,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2022,
+      "value": 13.77,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2023,
+      "value": 18.13,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2011,
+      "value": 6.41,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2012,
+      "value": 6.25,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2013,
+      "value": 5.85,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2014,
+      "value": 4.94,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2015,
+      "value": 4.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2016,
+      "value": 4.82,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2017,
+      "value": 4.16,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2018,
+      "value": 5.4,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2019,
+      "value": 5.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2020,
+      "value": 5.5,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2021,
+      "value": 5.81,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2022,
+      "value": 6.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "france",
+      "year": 2023,
+      "value": 5.57,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "georgia",
+      "year": 2023,
+      "value": 4.76,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2011,
+      "value": 6.62,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2012,
+      "value": 6.37,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2013,
+      "value": 5.77,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2014,
+      "value": 6.02,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2015,
+      "value": 5.95,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2016,
+      "value": 6.23,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2017,
+      "value": 5.68,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2018,
+      "value": 6.06,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2019,
+      "value": 5.26,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2020,
+      "value": 5.73,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2021,
+      "value": 5.65,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2022,
+      "value": 5.61,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2023,
+      "value": 5.68,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2011,
+      "value": 2.58,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2012,
+      "value": 2.55,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2013,
+      "value": 2.43,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2014,
+      "value": 3.11,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2015,
+      "value": 2.18,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2016,
+      "value": 2.11,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2017,
+      "value": 2.75,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2018,
+      "value": 3.47,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2019,
+      "value": 3.08,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2020,
+      "value": 2.16,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2021,
+      "value": 1.67,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2022,
+      "value": 2.19,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2023,
+      "value": 1.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2011,
+      "value": 8.42,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2012,
+      "value": 8.05,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2013,
+      "value": 5.99,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2014,
+      "value": 6.81,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2015,
+      "value": 7.41,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2016,
+      "value": 6.43,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2017,
+      "value": 6.49,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2018,
+      "value": 6.24,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2019,
+      "value": 6.74,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2020,
+      "value": 6.18,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2021,
+      "value": 7.54,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2022,
+      "value": 6.24,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2023,
+      "value": 5.46,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2011,
+      "value": 10.64,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2012,
+      "value": 10.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2013,
+      "value": 10.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2014,
+      "value": 10.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2015,
+      "value": 14.87,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2016,
+      "value": 19.12,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2017,
+      "value": 14.77,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2018,
+      "value": 12.56,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2019,
+      "value": 10.43,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2020,
+      "value": 16.7,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2021,
+      "value": 8.3,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2022,
+      "value": 6.07,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2023,
+      "value": 8.02,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2011,
+      "value": 16.07,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2012,
+      "value": 13.23,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2013,
+      "value": 9.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2014,
+      "value": 13.2,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2015,
+      "value": 8.91,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2016,
+      "value": 11.4,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2017,
+      "value": 7.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2018,
+      "value": 9.23,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2019,
+      "value": 9.16,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2020,
+      "value": 9.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2021,
+      "value": 10.33,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2022,
+      "value": 7.83,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2023,
+      "value": 8.4,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2011,
+      "value": 3.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2012,
+      "value": 3.53,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2013,
+      "value": 3.04,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2014,
+      "value": 3.47,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2015,
+      "value": 3.19,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2016,
+      "value": 2.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2017,
+      "value": 3.5,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2018,
+      "value": 3.04,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2019,
+      "value": 3.16,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2020,
+      "value": 3.06,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2021,
+      "value": 3.67,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2022,
+      "value": 3.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2023,
+      "value": 3.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2011,
+      "value": 15.99,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2012,
+      "value": 15.9,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2013,
+      "value": 8.52,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2014,
+      "value": 17.34,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2015,
+      "value": 14.08,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2016,
+      "value": 10.83,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2017,
+      "value": 9.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2018,
+      "value": 8.43,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2019,
+      "value": 10.87,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2020,
+      "value": 10.95,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2021,
+      "value": 8.01,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2022,
+      "value": 3.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2023,
+      "value": 5.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2012,
+      "value": 0.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 2020,
+      "value": 24.08,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2011,
+      "value": 19.51,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2012,
+      "value": 17.82,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2013,
+      "value": 28.76,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2014,
+      "value": 26.31,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2015,
+      "value": 20.39,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2016,
+      "value": 13.55,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2017,
+      "value": 13.95,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2018,
+      "value": 12.58,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2019,
+      "value": 16.21,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2020,
+      "value": 14.54,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2021,
+      "value": 12.79,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2022,
+      "value": 11.49,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2023,
+      "value": 7.33,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2011,
+      "value": 8.01,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2012,
+      "value": 9.3,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2013,
+      "value": 3.04,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2014,
+      "value": 5.99,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2015,
+      "value": 7.36,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2016,
+      "value": 1.44,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2017,
+      "value": 5.66,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2018,
+      "value": 4.22,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2019,
+      "value": 11.18,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2020,
+      "value": 6.96,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2021,
+      "value": 2.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2022,
+      "value": 4.13,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2023,
+      "value": 0.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2011,
+      "value": 5.37,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2012,
+      "value": 1.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2013,
+      "value": 3.59,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2014,
+      "value": 5.41,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2015,
+      "value": 5.45,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2016,
+      "value": 0.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2017,
+      "value": 5.57,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2018,
+      "value": 1.85,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2019,
+      "value": 3.66,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2020,
+      "value": 1.87,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2021,
+      "value": 7.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2022,
+      "value": 7.63,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2023,
+      "value": 9.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2022,
+      "value": 9.1,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2023,
+      "value": 7.01,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2011,
+      "value": 6.02,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2012,
+      "value": 6.39,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2013,
+      "value": 6.96,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2014,
+      "value": 6.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2015,
+      "value": 5.97,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2016,
+      "value": 5.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2017,
+      "value": 7.49,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2018,
+      "value": 6.83,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2019,
+      "value": 7.3,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2020,
+      "value": 7.1,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2021,
+      "value": 7.21,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2022,
+      "value": 8.46,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2023,
+      "value": 7.47,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2011,
+      "value": 12.17,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2012,
+      "value": 9.99,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2013,
+      "value": 9.61,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2014,
+      "value": 8.07,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2015,
+      "value": 9.11,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2016,
+      "value": 10.47,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2017,
+      "value": 13.51,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2018,
+      "value": 12.82,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2019,
+      "value": 12.26,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2020,
+      "value": 11.26,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2021,
+      "value": 11.77,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2022,
+      "value": 8.83,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2023,
+      "value": 12.2,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2011,
+      "value": 11.19,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2012,
+      "value": 11.57,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2013,
+      "value": 11.86,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2014,
+      "value": 13.04,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2015,
+      "value": 11.42,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2016,
+      "value": 9.91,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2017,
+      "value": 9.64,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2018,
+      "value": 8.62,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2019,
+      "value": 9.74,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2020,
+      "value": 9.55,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2021,
+      "value": 10.61,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2022,
+      "value": 10.5,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2023,
+      "value": 9.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2011,
+      "value": 2.1,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2012,
+      "value": 3.01,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2013,
+      "value": 2.24,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2014,
+      "value": 3.25,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2015,
+      "value": 3.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2016,
+      "value": 2.54,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2017,
+      "value": 3.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2018,
+      "value": 2.47,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2019,
+      "value": 3.38,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2020,
+      "value": 3.92,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2021,
+      "value": 3.2,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2022,
+      "value": 4.95,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2023,
+      "value": 4.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2011,
+      "value": 8.96,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2012,
+      "value": 7.85,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2013,
+      "value": 6.97,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2014,
+      "value": 6.37,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2015,
+      "value": 6.4,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2016,
+      "value": 5.09,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2017,
+      "value": 5.66,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2018,
+      "value": 4.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2019,
+      "value": 5.69,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2020,
+      "value": 4.68,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2021,
+      "value": 5.12,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2022,
+      "value": 4.07,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2023,
+      "value": 4.61,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2011,
+      "value": 4.56,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2012,
+      "value": 5.01,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2013,
+      "value": 3.8,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2014,
+      "value": 4.52,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2015,
+      "value": 4.37,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2016,
+      "value": 2.89,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2017,
+      "value": 4.67,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2018,
+      "value": 3.79,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2019,
+      "value": 4.12,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2020,
+      "value": 2.37,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2021,
+      "value": 2.97,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2022,
+      "value": 3.19,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2023,
+      "value": 3.72,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2011,
+      "value": 4.59,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2012,
+      "value": 6.42,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2013,
+      "value": 8.08,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2014,
+      "value": 5.82,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2015,
+      "value": 4.63,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2016,
+      "value": 5.3,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2017,
+      "value": 4.01,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2018,
+      "value": 5.54,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2019,
+      "value": 6.06,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2020,
+      "value": 4.17,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2021,
+      "value": 5.9,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2022,
+      "value": 3.75,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2023,
+      "value": 4.14,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2011,
+      "value": 9.27,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2012,
+      "value": 9.56,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2013,
+      "value": 11.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2014,
+      "value": 9.73,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2015,
+      "value": 8.46,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2016,
+      "value": 11.14,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2017,
+      "value": 5.13,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2018,
+      "value": 8.23,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2019,
+      "value": 7.15,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2020,
+      "value": 8.62,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2021,
+      "value": 9.62,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2022,
+      "value": 11.04,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2023,
+      "value": 7.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2011,
+      "value": 2.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2012,
+      "value": 3.22,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2013,
+      "value": 3.75,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2014,
+      "value": 3.98,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2015,
+      "value": 3.47,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2016,
+      "value": 3.13,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2017,
+      "value": 2.89,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2018,
+      "value": 3.39,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2019,
+      "value": 3.48,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2020,
+      "value": 3.03,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2021,
+      "value": 3.59,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2022,
+      "value": 4.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2023,
+      "value": 3.7,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2011,
+      "value": 9.7,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2012,
+      "value": 9.45,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2013,
+      "value": 11.93,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2014,
+      "value": 10.35,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2015,
+      "value": 9.0,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2016,
+      "value": 9.03,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2017,
+      "value": 10.72,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2018,
+      "value": 11.82,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2019,
+      "value": 12.1,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2020,
+      "value": 11.42,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2021,
+      "value": 10.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2022,
+      "value": 8.65,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2023,
+      "value": 10.03,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2011,
+      "value": 8.74,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2012,
+      "value": 7.98,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2013,
+      "value": 7.34,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2014,
+      "value": 6.71,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2015,
+      "value": 8.65,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2016,
+      "value": 6.32,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2017,
+      "value": 7.77,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2018,
+      "value": 10.39,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2019,
+      "value": 8.84,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2020,
+      "value": 9.44,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2021,
+      "value": 8.25,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2022,
+      "value": 6.14,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2023,
+      "value": 7.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2011,
+      "value": 2.07,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2012,
+      "value": 2.16,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2013,
+      "value": 3.18,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2014,
+      "value": 2.91,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2015,
+      "value": 2.59,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2016,
+      "value": 2.6,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2017,
+      "value": 4.29,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2018,
+      "value": 5.41,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2019,
+      "value": 5.64,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2020,
+      "value": 5.89,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2021,
+      "value": 6.87,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2022,
+      "value": 7.53,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2023,
+      "value": 7.23,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2011,
+      "value": 4.73,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2012,
+      "value": 5.11,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2013,
+      "value": 4.62,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2014,
+      "value": 5.05,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2015,
+      "value": 5.78,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2016,
+      "value": 5.72,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2017,
+      "value": 6.3,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2018,
+      "value": 7.33,
+      "provider": "eurostat",
+      "source_ref": "hlth_cd_acdr2/X60-X84_Y870/Y15-24/T"
+    }
+  ],
+  "witnesses": []
+}

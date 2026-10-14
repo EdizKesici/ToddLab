@@ -4,7 +4,7 @@
     "source_csv_sha256": "e7b378596a74c67266e55b2f3274a20e613a1daac156623e86e37ae25efd5f4a",
     "rows": 14,
     "metrics": 14,
-    "implemented_metrics": 8
+    "implemented_metrics": 9
   },
   "metrics": [
     {
@@ -103,7 +103,7 @@
       "label": "Youth suicide rate",
       "family": "mortality",
       "note": "Deaths by suicide per 100,000 young people aged 15 to 24, for European countries.",
-      "implemented": false
+      "implemented": true
     }
   ]
 }
