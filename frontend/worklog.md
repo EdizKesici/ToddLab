@@ -499,3 +499,15 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, next build OK. Official 2015 equal: 44 countries with extra, 34 Todd only (Switzerland 72.90 leads; Japan needs the extra components to reach the coverage threshold).
+
+---
+Task ID: 22
+Agent: Claude Code (Hermes)
+Task: First extra metrics wired: PISA reading and science.
+
+Work Log:
+- Two new indicators (todd_core: false, listed in extra_core.csv): reading_test_scores (2000-2022) and science_test_scores (2006-2022), the other columns of the PISA chart door already used for mathematics; indicators only, the score keeps the single PISA component (math_test_scores).
+- French labels and descriptions added; the catalog now has 29 indicators (22 in Todd's books, 7 outside).
+
+Stage Summary:
+- eslint 0, tsc 0, build OK, pages checked. Score files are unchanged.

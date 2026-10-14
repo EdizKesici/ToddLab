@@ -1,0 +1,3396 @@
+{
+  "id": "science_test_scores",
+  "label": "PISA science mean score",
+  "family": "education",
+  "unit": "pisa_score_points",
+  "higher_is_better": true,
+  "todd_core": false,
+  "canonical_nature": "published",
+  "companion_indicators": [],
+  "reliability": "high",
+  "reliability_criteria": "Canonical tier = the OECD PISA assessment's own mean science scale scores (the PISA Database, OECD 2023 vintage), 90 entities, the six triennial cycles 2006-2022, reached through OWID's chart door with the science column pinned (the CSV's own header) - the OECD runs the assessment and prints the scale scores itself (the same collector judgment as math_test_scores). No witness tier: the by-sex door is the same root.",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 2006,
+    "end": 2022
+  },
+  "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: OECD, PISA Database - the OECD's own reuse terms apply upstream).",
+  "notes": "The science column of the PISA chart, outside Todd's books. Read live on the chart: the six triennial cycles 2006-2022. Sub-national participants ride the door's own entity list and resolve where the registry carries them; an entity that skipped a cycle prints no value for it.",
+  "sources": [
+    {
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science",
+      "role": "canonical",
+      "layer": "harmonized",
+      "root": "oecd_pisa",
+      "root_label": "OECD PISA assessment (the PISA Database mean scale scores; via OWID's chart door)",
+      "native_unit": null,
+      "citation": "Our World in Data, grapher dataset 'average-performance-of-15-year-olds-in-mathematics-reading-and-science'",
+      "url": "https://ourworldindata.org/grapher/average-performance-of-15-year-olds-in-mathematics-reading-and-science",
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "albania",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2009,
+      "value": 390.69574,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2012,
+      "value": 397.3732,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2015,
+      "value": 427.22498,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2018,
+      "value": 416.72626,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "albania",
+      "year": 2022,
+      "value": 375.96774,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "algeria",
+      "year": 2015,
+      "value": 375.74512,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2006,
+      "value": 391.2439,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2009,
+      "value": 400.83853,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2012,
+      "value": 405.63202,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2015,
+      "value": 432.22626,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2018,
+      "value": 404.07144,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "argentina",
+      "year": 2022,
+      "value": 406.19135,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2006,
+      "value": 526.8796,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2009,
+      "value": 527.2705,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2012,
+      "value": 521.49475,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2015,
+      "value": 509.99387,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2018,
+      "value": 502.96457,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "australia",
+      "year": 2022,
+      "value": 507.00085,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2006,
+      "value": 510.83716,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2009,
+      "value": 494.32767,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2012,
+      "value": 505.78125,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2015,
+      "value": 495.03748,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2018,
+      "value": 489.78043,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "austria",
+      "year": 2022,
+      "value": 491.27097,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belarus",
+      "year": 2018,
+      "value": 471.26367,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2006,
+      "value": 510.3635,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2009,
+      "value": 506.57553,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2012,
+      "value": 504.86765,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2015,
+      "value": 501.99973,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2018,
+      "value": 498.77313,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "belgium",
+      "year": 2022,
+      "value": 490.57834,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 2018,
+      "value": 398.49765,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2006,
+      "value": 390.33157,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2009,
+      "value": 405.404,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2012,
+      "value": 401.6197,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2015,
+      "value": 400.6821,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2018,
+      "value": 403.62094,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brazil",
+      "year": 2022,
+      "value": 403.00122,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brunei_darussalam",
+      "year": 2018,
+      "value": 430.98438,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "brunei_darussalam",
+      "year": 2022,
+      "value": 445.8551,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2006,
+      "value": 434.07977,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2009,
+      "value": 439.29416,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2012,
+      "value": 446.46872,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2015,
+      "value": 445.77197,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2018,
+      "value": 424.07358,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 2022,
+      "value": 420.99323,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "cambodia",
+      "year": 2022,
+      "value": 347.10416,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2006,
+      "value": 534.4698,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2009,
+      "value": 528.70496,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2012,
+      "value": 525.4413,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2015,
+      "value": 527.7047,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2018,
+      "value": 517.9977,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "canada",
+      "year": 2022,
+      "value": 515.01666,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2006,
+      "value": 438.17746,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2009,
+      "value": 447.46735,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2012,
+      "value": 444.93393,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2015,
+      "value": 446.95605,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2018,
+      "value": 443.58255,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "chile",
+      "year": 2022,
+      "value": 443.5434,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2006,
+      "value": 388.03827,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2009,
+      "value": 401.75012,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2012,
+      "value": 398.67862,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2015,
+      "value": 415.72876,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2018,
+      "value": 413.323,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "colombia",
+      "year": 2022,
+      "value": 411.12067,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 2012,
+      "value": 429.35098,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 2015,
+      "value": 419.60803,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 2018,
+      "value": 415.62247,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 2022,
+      "value": 410.98663,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2006,
+      "value": 493.2044,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2009,
+      "value": 486.36343,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2012,
+      "value": 491.3566,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2015,
+      "value": 475.39117,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2018,
+      "value": 472.3626,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "croatia",
+      "year": 2022,
+      "value": 482.66745,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2012,
+      "value": 437.67645,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2015,
+      "value": 432.57675,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2018,
+      "value": 439.00824,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 2022,
+      "value": 410.90253,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2006,
+      "value": 512.8607,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2009,
+      "value": 500.49707,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2012,
+      "value": 508.29907,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2015,
+      "value": 492.83005,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2018,
+      "value": 496.79132,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 2022,
+      "value": 497.74203,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2006,
+      "value": 495.89432,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2009,
+      "value": 499.33698,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2012,
+      "value": 498.4742,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2015,
+      "value": 501.9369,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2018,
+      "value": 492.63702,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "denmark",
+      "year": 2022,
+      "value": 493.8157,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "dominican_republic",
+      "year": 2015,
+      "value": 331.63882,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "dominican_republic",
+      "year": 2018,
+      "value": 335.62994,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "dominican_republic",
+      "year": 2022,
+      "value": 360.42606,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "el_salvador",
+      "year": 2022,
+      "value": 373.14133,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2006,
+      "value": 531.3918,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2009,
+      "value": 527.8317,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2012,
+      "value": 541.4048,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2015,
+      "value": 534.1937,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2018,
+      "value": 530.10803,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "estonia",
+      "year": 2022,
+      "value": 525.81177,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2006,
+      "value": 563.3228,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2009,
+      "value": 554.0795,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2012,
+      "value": 545.44196,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2015,
+      "value": 530.66113,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2018,
+      "value": 521.8846,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "finland",
+      "year": 2022,
+      "value": 510.95886,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2006,
+      "value": 495.21985,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2009,
+      "value": 498.2269,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2012,
+      "value": 498.9709,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2015,
+      "value": 494.9776,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2018,
+      "value": 492.97708,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "france",
+      "year": 2022,
+      "value": 487.22528,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "georgia",
+      "year": 2015,
+      "value": 411.13153,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "georgia",
+      "year": 2018,
+      "value": 382.6636,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "georgia",
+      "year": 2022,
+      "value": 384.06744,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2006,
+      "value": 515.6491,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2009,
+      "value": 520.40533,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2012,
+      "value": 524.1208,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2015,
+      "value": 509.14066,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2018,
+      "value": 502.9889,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "germany",
+      "year": 2022,
+      "value": 492.42673,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2006,
+      "value": 473.37796,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2009,
+      "value": 470.11575,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2012,
+      "value": 466.72202,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2015,
+      "value": 454.82883,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2018,
+      "value": 451.63275,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "greece",
+      "year": 2022,
+      "value": 440.78607,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "guatemala",
+      "year": 2022,
+      "value": 372.96277,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2006,
+      "value": 542.21136,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2009,
+      "value": 549.0287,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2012,
+      "value": 554.93744,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2015,
+      "value": 523.27747,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2018,
+      "value": 516.68616,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hong_kong",
+      "year": 2022,
+      "value": 520.4187,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2006,
+      "value": 503.93173,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2009,
+      "value": 502.64276,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2012,
+      "value": 494.30234,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2015,
+      "value": 476.7475,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2018,
+      "value": 480.91168,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 2022,
+      "value": 485.89017,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2006,
+      "value": 490.79376,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2009,
+      "value": 495.5985,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2012,
+      "value": 478.1546,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2015,
+      "value": 473.23007,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2018,
+      "value": 475.0241,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "iceland",
+      "year": 2022,
+      "value": 446.9671,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2006,
+      "value": 393.48102,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2009,
+      "value": 382.56946,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2012,
+      "value": 381.9115,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2015,
+      "value": 403.09973,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2018,
+      "value": 396.07007,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 2022,
+      "value": 382.8634,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2006,
+      "value": 508.32892,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2009,
+      "value": 507.98416,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2012,
+      "value": 522.00397,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2015,
+      "value": 502.5751,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2018,
+      "value": 496.11356,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ireland",
+      "year": 2022,
+      "value": 503.84555,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2006,
+      "value": 453.90372,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2009,
+      "value": 454.85095,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2012,
+      "value": 470.07266,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2015,
+      "value": 466.55283,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2018,
+      "value": 462.19662,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "israel",
+      "year": 2022,
+      "value": 464.75183,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2006,
+      "value": 475.39722,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2009,
+      "value": 488.83136,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2012,
+      "value": 493.54147,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2015,
+      "value": 480.54675,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2018,
+      "value": 468.01172,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "italy",
+      "year": 2022,
+      "value": 477.46338,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jamaica",
+      "year": 2022,
+      "value": 402.93396,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2006,
+      "value": 531.3885,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2009,
+      "value": 539.43097,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2012,
+      "value": 546.7356,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2015,
+      "value": 538.3948,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2018,
+      "value": 529.13544,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "japan",
+      "year": 2022,
+      "value": 546.63446,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jordan",
+      "year": 2006,
+      "value": 421.97183,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jordan",
+      "year": 2009,
+      "value": 415.3878,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jordan",
+      "year": 2012,
+      "value": 409.36722,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jordan",
+      "year": 2015,
+      "value": 408.66913,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jordan",
+      "year": 2018,
+      "value": 429.25208,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "jordan",
+      "year": 2022,
+      "value": 374.5271,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kazakhstan",
+      "year": 2009,
+      "value": 400.37613,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kazakhstan",
+      "year": 2012,
+      "value": 424.70752,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kazakhstan",
+      "year": 2015,
+      "value": 456.48358,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kazakhstan",
+      "year": 2018,
+      "value": 397.10483,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kazakhstan",
+      "year": 2022,
+      "value": 423.16605,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2006,
+      "value": 522.14813,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2009,
+      "value": 537.9862,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2012,
+      "value": 537.7876,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2015,
+      "value": 515.80994,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2018,
+      "value": 519.00726,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 2022,
+      "value": 527.82245,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2015,
+      "value": 378.4422,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2018,
+      "value": 364.88242,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "kosovo",
+      "year": 2022,
+      "value": 357.02405,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2006,
+      "value": 489.5438,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2009,
+      "value": 493.87894,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2012,
+      "value": 502.1862,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2015,
+      "value": 490.225,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2018,
+      "value": 487.25058,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 2022,
+      "value": 493.84277,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lebanon",
+      "year": 2015,
+      "value": 386.48538,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lebanon",
+      "year": 2018,
+      "value": 383.71698,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2006,
+      "value": 487.9567,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2009,
+      "value": 491.4098,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2012,
+      "value": 495.70007,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2015,
+      "value": 475.40894,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2018,
+      "value": 482.06702,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 2022,
+      "value": 484.4634,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2006,
+      "value": 486.32437,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2009,
+      "value": 483.9284,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2012,
+      "value": 491.21518,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2015,
+      "value": 482.8064,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 2018,
+      "value": 476.7694,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2006,
+      "value": 510.83972,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2009,
+      "value": 511.0696,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2012,
+      "value": 520.57086,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2015,
+      "value": 528.5496,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2018,
+      "value": 543.58575,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "macao",
+      "year": 2022,
+      "value": 543.09625,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malaysia",
+      "year": 2012,
+      "value": 419.50266,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malaysia",
+      "year": 2015,
+      "value": 442.9475,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malaysia",
+      "year": 2018,
+      "value": 437.61807,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malaysia",
+      "year": 2022,
+      "value": 416.30612,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2015,
+      "value": 464.78195,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2018,
+      "value": 456.59033,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "malta",
+      "year": 2022,
+      "value": 465.58875,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2006,
+      "value": 409.65195,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2009,
+      "value": 415.90866,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2012,
+      "value": 414.92014,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2015,
+      "value": 415.70987,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2018,
+      "value": 419.2047,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 2022,
+      "value": 409.8866,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2015,
+      "value": 427.9978,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2018,
+      "value": 428.48526,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 2022,
+      "value": 416.85898,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "mongolia",
+      "year": 2022,
+      "value": 412.38254,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2006,
+      "value": 411.78842,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2009,
+      "value": 401.27747,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2012,
+      "value": 410.0976,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2015,
+      "value": 411.31366,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2018,
+      "value": 415.17224,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "montenegro",
+      "year": 2022,
+      "value": 403.13025,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "morocco",
+      "year": 2018,
+      "value": 376.5969,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "morocco",
+      "year": 2022,
+      "value": 365.39807,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2006,
+      "value": 524.8615,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2009,
+      "value": 522.21814,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2012,
+      "value": 522.05585,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2015,
+      "value": 508.5748,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2018,
+      "value": 503.38382,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 2022,
+      "value": 488.31683,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2006,
+      "value": 530.38434,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2009,
+      "value": 532.0069,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2012,
+      "value": 515.6363,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2015,
+      "value": 513.3035,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2018,
+      "value": 508.49072,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 2022,
+      "value": 504.1293,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2015,
+      "value": 383.68237,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2018,
+      "value": 413.04468,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 2022,
+      "value": 379.8751,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2006,
+      "value": 486.52795,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2009,
+      "value": 499.8757,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2012,
+      "value": 494.52393,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2015,
+      "value": 498.4811,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2018,
+      "value": 490.41315,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "norway",
+      "year": 2022,
+      "value": 478.22647,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "palestine_state_of",
+      "year": 2022,
+      "value": 368.8151,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "panama",
+      "year": 2018,
+      "value": 364.62378,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "panama",
+      "year": 2022,
+      "value": 387.76764,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "paraguay",
+      "year": 2022,
+      "value": 368.32782,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "peru",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "peru",
+      "year": 2009,
+      "value": 369.35178,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "peru",
+      "year": 2012,
+      "value": 373.11343,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "peru",
+      "year": 2015,
+      "value": 396.68365,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "peru",
+      "year": 2018,
+      "value": 404.2156,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "peru",
+      "year": 2022,
+      "value": 407.77777,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "philippines",
+      "year": 2018,
+      "value": 356.93332,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "philippines",
+      "year": 2022,
+      "value": 356.1673,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2006,
+      "value": 497.8065,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2009,
+      "value": 508.0683,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2012,
+      "value": 525.81647,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2015,
+      "value": 501.43533,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2018,
+      "value": 511.03555,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "poland",
+      "year": 2022,
+      "value": 499.16437,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2006,
+      "value": 474.30588,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2009,
+      "value": 492.94998,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2012,
+      "value": 489.27472,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2015,
+      "value": 501.10007,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2018,
+      "value": 491.67734,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "portugal",
+      "year": 2022,
+      "value": 484.37347,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2006,
+      "value": 349.31314,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2009,
+      "value": 379.44696,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2012,
+      "value": 383.64255,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2015,
+      "value": 417.61115,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2018,
+      "value": 419.12717,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "qatar",
+      "year": 2022,
+      "value": 432.40253,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2006,
+      "value": 418.38638,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2009,
+      "value": 428.1789,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2012,
+      "value": 438.76807,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2015,
+      "value": 434.88486,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2018,
+      "value": 425.76123,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "romania",
+      "year": 2022,
+      "value": 427.5111,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2006,
+      "value": 479.47043,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2009,
+      "value": 478.29752,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2012,
+      "value": 486.2955,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2015,
+      "value": 486.63104,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 2018,
+      "value": 477.71768,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "saudi_arabia",
+      "year": 2018,
+      "value": 386.24615,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "saudi_arabia",
+      "year": 2022,
+      "value": 390.3876,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2018,
+      "value": 439.8739,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "serbia",
+      "year": 2022,
+      "value": 447.46066,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "singapore",
+      "year": 2009,
+      "value": 541.6955,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "singapore",
+      "year": 2012,
+      "value": 551.49316,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "singapore",
+      "year": 2015,
+      "value": 555.5747,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "singapore",
+      "year": 2018,
+      "value": 550.9369,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "singapore",
+      "year": 2022,
+      "value": 561.4333,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2006,
+      "value": 488.4334,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2009,
+      "value": 490.26593,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2012,
+      "value": 471.19318,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2015,
+      "value": 460.77484,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2018,
+      "value": 464.04758,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 2022,
+      "value": 462.26947,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2006,
+      "value": 518.8156,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2009,
+      "value": 511.75946,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2012,
+      "value": 514.1426,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2015,
+      "value": 512.8636,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2018,
+      "value": 507.00653,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 2022,
+      "value": 499.96487,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2006,
+      "value": 488.42453,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2009,
+      "value": 488.25464,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2012,
+      "value": 496.44583,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2015,
+      "value": 492.78613,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2018,
+      "value": 483.25204,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "spain",
+      "year": 2022,
+      "value": 484.53366,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2006,
+      "value": 503.334,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2009,
+      "value": 495.1059,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2012,
+      "value": 484.79898,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2015,
+      "value": 493.42236,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2018,
+      "value": 499.4447,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "sweden",
+      "year": 2022,
+      "value": 493.54932,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2006,
+      "value": 511.5239,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2009,
+      "value": 516.5675,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2012,
+      "value": 515.29755,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2015,
+      "value": 505.50583,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2018,
+      "value": 495.27628,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 2022,
+      "value": 502.52325,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2006,
+      "value": 532.4736,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2009,
+      "value": 520.4198,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2012,
+      "value": 523.3149,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2015,
+      "value": 532.3475,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2018,
+      "value": 515.74805,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "taiwan_province_of_china",
+      "year": 2022,
+      "value": 537.3804,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2006,
+      "value": 421.01147,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2009,
+      "value": 425.2963,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2012,
+      "value": 443.99994,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2015,
+      "value": 421.3373,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2018,
+      "value": 425.81345,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "thailand",
+      "year": 2022,
+      "value": 409.2643,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "trinidad_and_tobago",
+      "year": 2009,
+      "value": 410.19562,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "trinidad_and_tobago",
+      "year": 2015,
+      "value": 424.59045,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 2006,
+      "value": 385.5067,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 2009,
+      "value": 400.6615,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 2012,
+      "value": 398.04645,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 2015,
+      "value": 386.40338,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2006,
+      "value": 423.83273,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2009,
+      "value": 453.90973,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2012,
+      "value": 463.4129,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2015,
+      "value": 425.4895,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2018,
+      "value": 468.29962,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 2022,
+      "value": 475.9378,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ukraine",
+      "year": 2018,
+      "value": 468.98773,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "ukraine",
+      "year": 2022,
+      "value": 450.18723,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_arab_emirates",
+      "year": 2012,
+      "value": 448.3703,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_arab_emirates",
+      "year": 2015,
+      "value": 436.73114,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_arab_emirates",
+      "year": 2018,
+      "value": 433.6368,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_arab_emirates",
+      "year": 2022,
+      "value": 431.97946,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2006,
+      "value": 514.77356,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2009,
+      "value": 513.71027,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2012,
+      "value": 514.12933,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2015,
+      "value": 509.2215,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2018,
+      "value": 504.66748,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 2022,
+      "value": 499.67023,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2000,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2006,
+      "value": 488.90683,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2009,
+      "value": 502.00226,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2012,
+      "value": 497.40982,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2015,
+      "value": 496.24243,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2018,
+      "value": 502.38004,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "united_states",
+      "year": 2022,
+      "value": 499.41406,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2003,
+      "value": null,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2006,
+      "value": 428.13388,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2009,
+      "value": 427.21426,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2012,
+      "value": 415.84293,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2015,
+      "value": 435.36295,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2018,
+      "value": 425.81268,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 2022,
+      "value": 435.38477,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "uzbekistan",
+      "year": 2022,
+      "value": 354.86356,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "viet_nam",
+      "year": 2012,
+      "value": 528.4233,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "viet_nam",
+      "year": 2015,
+      "value": 524.64453,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    },
+    {
+      "entity_id": "viet_nam",
+      "year": 2022,
+      "value": 472.38095,
+      "provider": "owid",
+      "source_ref": "average-performance-of-15-year-olds-in-mathematics-reading-and-science"
+    }
+  ],
+  "witnesses": []
+}

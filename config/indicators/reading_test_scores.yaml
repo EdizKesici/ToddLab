@@ -1,0 +1,50 @@
+# reading_test_scores (v30, the extra metric set): the PISA reading column of the SAME OECD chart
+# door as math_test_scores (average-performance-of-15-year-olds-in-mathematics-
+# reading-and-science, the CSV's own "Reading" header pinned). Outside Todd's
+# books (todd_core: false): listed in extra_core.csv. Same root, same
+# authenticity judgment as the mathematics column; kept an INDICATOR only (the
+# score carries the single PISA component, math_test_scores - three PISA
+# domains would triple the weight of one assessment).
+id: reading_test_scores
+label: "PISA reading mean score"
+family: education
+unit: pisa_score_points
+higher_is_better: true
+todd_core: false
+
+sources:
+  - provider: owid
+    ref: average-performance-of-15-year-olds-in-mathematics-reading-and-science
+    field: Reading
+    priority: 1
+    role: canonical
+    root: oecd_pisa
+
+coverage_start: 2000
+coverage_end: 2022
+
+reliability: high
+reliability_criteria: >
+  Canonical tier = the OECD PISA assessment's own mean reading scale scores
+  (the PISA Database, OECD 2023 vintage), 90 entities, the eight triennial cycles 2000-2022,
+  reached through OWID's chart door with the reading column pinned (the
+  CSV's own header) - the OECD runs the assessment and prints the scale scores
+  itself (the same collector judgment as math_test_scores). No witness tier:
+  the by-sex door is the same root.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 300
+  max: 650  # the PISA scale's working band, as for mathematics
+
+license: >
+  Mixed, per source (see "sources"): OWID chart door = CC-BY-4.0
+  (OWID's chart-door terms; content: OECD, PISA Database - the OECD's own
+  reuse terms apply upstream).
+
+notes: >
+  The reading column of the PISA chart, outside Todd's books. Read live on
+  the chart: the eight triennial cycles 2000-2022. Sub-national participants ride the door's own
+  entity list and resolve where the registry carries them; an entity that
+  skipped a cycle prints no value for it.

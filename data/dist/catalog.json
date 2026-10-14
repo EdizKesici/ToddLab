@@ -1262,6 +1262,32 @@
     }
   },
   {
+    "id": "reading_test_scores",
+    "label": "PISA reading mean score",
+    "family": "education",
+    "unit": "pisa_score_points",
+    "higher_is_better": true,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = the OECD PISA assessment's own mean reading scale scores (the PISA Database, OECD 2023 vintage), 90 entities, the eight triennial cycles 2000-2022, reached through OWID's chart door with the reading column pinned (the CSV's own header) - the OECD runs the assessment and prints the scale scores itself (the same collector judgment as math_test_scores). No witness tier: the by-sex door is the same root.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: OECD, PISA Database - the OECD's own reuse terms apply upstream).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "oecd_pisa",
+          "label": "OECD PISA assessment (the PISA Database mean scale scores; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 480,
+    "n_witness_points": 0
+  },
+  {
     "id": "road_accident_mortality",
     "label": "Road accident mortality",
     "family": "mortality",
@@ -1376,6 +1402,32 @@
         }
       ]
     }
+  },
+  {
+    "id": "science_test_scores",
+    "label": "PISA science mean score",
+    "family": "education",
+    "unit": "pisa_score_points",
+    "higher_is_better": true,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "high",
+    "reliability_criteria": "Canonical tier = the OECD PISA assessment's own mean science scale scores (the PISA Database, OECD 2023 vintage), 90 entities, the six triennial cycles 2006-2022, reached through OWID's chart door with the science column pinned (the CSV's own header) - the OECD runs the assessment and prints the scale scores itself (the same collector judgment as math_test_scores). No witness tier: the by-sex door is the same root.",
+    "reclassification_sensitive": false,
+    "license": "Mixed, per source (see \"sources\"): OWID chart door = CC-BY-4.0 (OWID's chart-door terms; content: OECD, PISA Database - the OECD's own reuse terms apply upstream).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "oecd_pisa",
+          "label": "OECD PISA assessment (the PISA Database mean scale scores; via OWID's chart door)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 480,
+    "n_witness_points": 0
   },
   {
     "id": "secondary_education_share",

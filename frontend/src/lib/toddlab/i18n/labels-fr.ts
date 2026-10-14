@@ -24,6 +24,8 @@ export const INDICATOR_LABELS_FR: Record<string, string> = {
   maternal_deaths: "Décès maternels",
   maternal_mortality_ratio: "Ratio de mortalité maternelle",
   math_test_scores: "Score moyen PISA en mathématiques",
+  reading_test_scores: "Score moyen PISA en lecture",
+  science_test_scores: "Score moyen PISA en sciences",
   obesity_rate: "Prévalence de l'obésité (IMC ≥ 30)",
   road_accident_mortality: "Mortalité routière",
   road_accident_mortality_per_vehicle: "Mortalité routière (par véhicule motorisé)",

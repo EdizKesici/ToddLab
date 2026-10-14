@@ -4,7 +4,7 @@
     "source_csv_sha256": "e7b378596a74c67266e55b2f3274a20e613a1daac156623e86e37ae25efd5f4a",
     "rows": 14,
     "metrics": 14,
-    "implemented_metrics": 5
+    "implemented_metrics": 7
   },
   "metrics": [
     {
@@ -75,7 +75,7 @@
       "label": "PISA reading scores",
       "family": "education",
       "note": "Mean PISA reading score of 15-year-old students.",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "road_accident_mortality_per_vehicle",
@@ -89,7 +89,7 @@
       "label": "PISA science scores",
       "family": "education",
       "note": "Mean PISA science score of 15-year-old students.",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "womens_suffrage_introduction_year",

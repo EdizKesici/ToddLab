@@ -81,6 +81,14 @@ export const INDICATOR_DESCRIPTIONS: Record<string, { en: string; fr: string }> 
     en: "Average score of 15-year-olds on the OECD PISA mathematics test.",
     fr: "Score moyen des élèves de 15 ans au test PISA de mathématiques de l'OCDE.",
   },
+  reading_test_scores: {
+    en: "Average score of 15-year-olds on the OECD PISA reading test.",
+    fr: "Score moyen des élèves de 15 ans au test PISA de lecture de l'OCDE.",
+  },
+  science_test_scores: {
+    en: "Average score of 15-year-olds on the OECD PISA science test.",
+    fr: "Score moyen des élèves de 15 ans au test PISA de sciences de l'OCDE.",
+  },
   obesity_rate: {
     en: "Share of adults with a body mass index of 30 or more.",
     fr: "Part des adultes dont l'indice de masse corporelle est de 30 ou plus.",

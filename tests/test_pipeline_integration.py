@@ -308,6 +308,7 @@ def test_full_pipeline_produces_the_expected_dist_files(tmp_path, real_indicator
         "road_accident_mortality_per_vehicle",  # v25: the 1974 denominator
         "incarceration_rate", "math_test_scores", "obesity_rate",
         "hiv_prevalence_rate", "male_height_trend",
+        "reading_test_scores", "science_test_scores",  # v30: the extra metric set (PISA columns)
     }
 
 

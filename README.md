@@ -32,7 +32,7 @@ The repository holds two parts:
 
 | File | Content |
 |------|---------|
-| `catalog.json` | the 27 indicators: unit, direction, reliability, sources |
+| `catalog.json` | the indicators: unit, direction, reliability, sources |
 | `entities.json` | countries and territories |
 | `indicators/<id>.json` | canonical series and witness series |
 | `todd_corpus.json` | the indicators Todd cites across his books |
