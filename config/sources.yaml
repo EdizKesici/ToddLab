@@ -967,6 +967,29 @@ ilostat:
 # machine door prints a per-vehicle rate (GHO's road-safety family
 # carries per-100k only) — the top_income_share constitution.
 #
+unesco_uis:
+  base_url: "https://api.uis.unesco.org/api/public/data/indicators"
+  auth_required: false
+  license_default: "CC-BY-SA-4.0 (UNESCO Institute for Statistics; credit the UIS, ShareAlike applies)"
+  layer: harmonized
+  notes: >
+    Layer: HARMONIZED (v30 wiring judgment) - the UIS compiles national
+    population censuses and household surveys (national statistical offices,
+    MICS, DHS), maps them to the ISCED classification and completes them with
+    its own calculations (mean years of schooling, attainment rates): an
+    international institution recalculating national material, an estimate by
+    the project's rule (decision 20), never "as published". Wired in v30 on
+    its own public Data API (api.uis.unesco.org, no auth) for the extra metric
+    mean_years_of_schooling. The v18 probe record ("api.uis.unesco.org answers
+    every SDMX path with a 404 shell, the v2 API decommissioned") was about the
+    old SDMX paths: the current Data API answers (versions endpoint, data
+    endpoint with geoUnitType=NATIONAL), probed live 2026-10-14. The wire
+    prints no per-point provenance (magnitude and qualifier are null on every
+    row of the wired indicators): whether a value comes from a census, a
+    survey or a UIS calculation is not visible on this door. License CC BY-SA
+    4.0 per the UIS terms of use (credit line: UNESCO Institute for
+    Statistics, URL, date of extraction).
+
 # UNWIRED DOORS RECORDED (v25):
 # - ILOSTAT DF_UNE_DEAP_SEX_AGE_{CCT,CBR}_RT per-country detail (DEAD
 #   since the 2026-09-24 restructure — the record above; the day the

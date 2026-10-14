@@ -1,0 +1,46 @@
+{
+ "hints": [],
+ "records": [
+  {
+   "indicatorId": "MYS.1T8.AG25T99",
+   "geoUnit": "FRA",
+   "year": 2015,
+   "value": 11.33,
+   "magnitude": null,
+   "qualifier": null
+  },
+  {
+   "indicatorId": "MYS.1T8.AG25T99",
+   "geoUnit": "FRA",
+   "year": 2019,
+   "value": 11.61,
+   "magnitude": null,
+   "qualifier": null
+  },
+  {
+   "indicatorId": "MYS.1T8.AG25T99",
+   "geoUnit": "DEU",
+   "year": 2015,
+   "value": 14.08,
+   "magnitude": null,
+   "qualifier": null
+  },
+  {
+   "indicatorId": "MYS.1T8.AG25T99",
+   "geoUnit": "NER",
+   "year": 1977,
+   "value": 0.46,
+   "magnitude": null,
+   "qualifier": null
+  },
+  {
+   "indicatorId": "MYS.1T8.AG25T99",
+   "geoUnit": "NER",
+   "year": 2012,
+   "value": 1.64,
+   "magnitude": null,
+   "qualifier": null
+  }
+ ],
+ "indicatorMetadata": []
+}

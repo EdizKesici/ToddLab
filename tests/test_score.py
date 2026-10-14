@@ -846,15 +846,22 @@ def test_shipped_config_keeps_model_based_indicators_out_of_official():
 
 def test_canonical_nature_matches_the_modelled_only_score_list_v30():
     # decision 20: an indicator whose canonical source is a model / compilation
-    # is declared `canonical_nature: modelled` in its config AND sits in the
-    # schema's MODELLED_ONLY list (and the reverse) - one fact, two places,
-    # never allowed to drift apart.
-    from src.config_loader import load_indicators
+    # is declared `canonical_nature: modelled` in its config. Two invariants:
+    # (1) every indicator the score schema keeps out of the official score is
+    #     declared modelled;
+    # (2) an indicator declared modelled never sits in the OFFICIAL score
+    #     (it may be in the modelled score, or in neither - e.g. an extra
+    #     metric that is an indicator only).
+    from src.config_loader import load_indicators, load_score_config
     from src.schema.score import MODELLED_ONLY_INDICATORS
 
-    indicators = load_indicators(Path(__file__).resolve().parents[1] / "config")
+    config_dir = Path(__file__).resolve().parents[1] / "config"
+    indicators = load_indicators(config_dir)
     declared = {i for i, ind in indicators.items() if ind.canonical_nature.value == "modelled"}
-    assert declared == set(MODELLED_ONLY_INDICATORS)
+    assert set(MODELLED_ONLY_INDICATORS) <= declared
+    for comp in load_score_config(config_dir).components:
+        if comp.indicator in declared:
+            assert [s.value for s in comp.scores] == ["modelled"], comp.indicator
 
 
 def test_canonical_nature_is_published_in_the_dist():
@@ -865,6 +872,7 @@ def test_canonical_nature_is_published_in_the_dist():
     nature = {c["id"]: c["canonical_nature"] for c in catalog}
     assert {i for i, n in nature.items() if n == "modelled"} == {
         "hiv_prevalence_rate", "obesity_rate", "top_income_share",
+        "mean_years_of_schooling",  # v30: the UIS estimate (extra metric, indicator only)
     }
     assert set(nature.values()) <= {"published", "modelled"}
 

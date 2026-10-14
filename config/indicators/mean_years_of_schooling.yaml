@@ -1,0 +1,61 @@
+# mean_years_of_schooling (v30, the extra metric set): outside Todd's books
+# (todd_core: false), listed in extra_core.csv.
+#
+# THE SOURCE: the UNESCO Institute for Statistics' mean years of schooling of
+# the population aged 25 and over (indicator MYS.1T8.AG25T99, ISCED 1 or
+# higher, both sexes), read on the UIS Data API (api.uis.unesco.org) - 207
+# areas, 1970-2024, 1,742 national records (read live 2026-10-14). The UIS
+# compiles national censuses and household surveys, maps them to ISCED and
+# computes the indicator itself: an estimate by the project's rule
+# (decision 20), hence canonical_nature: modelled - the indicator stays an
+# indicator and the schema still needs one canonical source of record.
+id: mean_years_of_schooling
+label: "Mean years of schooling (population aged 25+)"
+family: education
+unit: years
+higher_is_better: true
+todd_core: false
+canonical_nature: modelled
+
+sources:
+  - provider: unesco_uis
+    ref: MYS.1T8.AG25T99
+    priority: 1
+    role: canonical
+    root: unesco_uis
+
+coverage_start: 1970
+coverage_end: 2024
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = the UNESCO Institute for Statistics' own mean years of
+  schooling of the population aged 25+ (ISCED 1 or higher, both sexes), on the
+  UIS Data API: national censuses and household surveys harmonized to ISCED
+  and computed by the UIS. Medium: the series is a compilation and a
+  calculation, not a published national figure, and the API prints no
+  per-point provenance (a census, a survey or a UIS calculation are not
+  distinguishable); the series can jump when a new survey replaces an
+  extrapolation. No witness tier: the OWID chart of the same name rides the
+  Barro-Lee / Lee-Lee panels (population aged 15-64) with projections beyond
+  2015, a different definition and partly a forecast - recorded, not wired.
+
+reclassification_sensitive: false
+
+plausible_range:
+  min: 0
+  max: 16  # the highest national means are near 14; 16 is a safety net
+
+license: >
+  CC BY-SA 4.0 (UNESCO Institute for Statistics): credit the UIS, ShareAlike
+  applies to the data reused here.
+
+notes: >
+  Mean years of schooling of adults aged 25+, outside Todd's books. The
+  population frame is 25+ (not 25-64): FRANCE 11.3 (2015) -> 11.6 (2019),
+  GERMANY 14.1 (2015) -> 14.3 (2020), UNITED STATES 13.6 (2021) -> 14.0
+  (2024), CHINA 4.1 (1990) -> 8.0 (2020), NIGER 0.5 (1977) -> 1.6 (2012).
+  Many countries print a handful of points (survey years), not an annual
+  line: the gaps are the wire's own. THE HONEST LIMITS: no per-point
+  provenance on this door; some jumps (INDIA 6.5 in 2022 -> 7.3 in 2023) are
+  survey replacements, displayed as printed.

@@ -1222,6 +1222,32 @@
     }
   },
   {
+    "id": "mean_years_of_schooling",
+    "label": "Mean years of schooling (population aged 25+)",
+    "family": "education",
+    "unit": "years",
+    "higher_is_better": true,
+    "todd_core": false,
+    "canonical_nature": "modelled",
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = the UNESCO Institute for Statistics' own mean years of schooling of the population aged 25+ (ISCED 1 or higher, both sexes), on the UIS Data API: national censuses and household surveys harmonized to ISCED and computed by the UIS. Medium: the series is a compilation and a calculation, not a published national figure, and the API prints no per-point provenance (a census, a survey or a UIS calculation are not distinguishable); the series can jump when a new survey replaces an extrapolation. No witness tier: the OWID chart of the same name rides the Barro-Lee / Lee-Lee panels (population aged 15-64) with projections beyond 2015, a different definition and partly a forecast - recorded, not wired.",
+    "reclassification_sensitive": false,
+    "license": "CC BY-SA 4.0 (UNESCO Institute for Statistics): credit the UIS, ShareAlike applies to the data reused here.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "unesco_uis",
+          "label": "UNESCO Institute for Statistics (education indicators compiled from national censuses and household surveys, harmonized to ISCED)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 1742,
+    "n_witness_points": 0
+  },
+  {
     "id": "obesity_rate",
     "label": "Obesity prevalence among adults (BMI >= 30)",
     "family": "mortality",

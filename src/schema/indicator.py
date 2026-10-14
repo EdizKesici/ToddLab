@@ -84,6 +84,10 @@ class Provider(str, Enum):
     # "Repository: ILO-STATISTICS - Micro data processing") — the layer
     # map says so, the same judgment owid/worldbank carry.
     ilostat = "ilostat"
+    # v30: the UNESCO Institute for Statistics Data API (api.uis.unesco.org) -
+    # education attainment compiled from national censuses and household
+    # surveys, harmonized to ISCED by the UIS. Harmonized tier.
+    unesco_uis = "unesco_uis"
 
 
 # Root genealogy (v11, P5 — the-measurement-problem.md section 5.1): the
@@ -97,6 +101,15 @@ class Provider(str, Enum):
 # same one. Adding a root = a deliberate, reviewable registry edit (never
 # an ad-hoc string in a config).
 ROOT_LABELS: dict[str, str] = {
+    # v30: the UNESCO Institute for Statistics' education indicators - the
+    # UIS compiles national population censuses and household surveys,
+    # maps them to ISCED and completes them with its own calculations
+    # (the attainment rates, the mean years of schooling). Reached on its
+    # own public Data API. An estimate by the project's rule (decision 20).
+    "unesco_uis": (
+        "UNESCO Institute for Statistics (education indicators compiled from national "
+        "censuses and household surveys, harmonized to ISCED)"
+    ),
     "un_igme": "UN Inter-agency Group for Child Mortality Estimation (IGME)",
     "un_wpp": "UN Population Division, World Population Prospects (WPP)",
     "un_mmeig": "UN Maternal Mortality Estimation Inter-agency Group (MMEIG)",
@@ -484,6 +497,9 @@ PROVIDER_LAYER: dict["Provider", str] = {
     # the WDI redistribution of it does (the v17 DEAP verdict) — the
     # layer map states the tier, never the door's brand.
     Provider.ilostat: "harmonized",
+    # v30: the UIS recalculates national census / survey material (ISCED
+    # mapping, its own calculations): an estimate, never "as published".
+    Provider.unesco_uis: "harmonized",
 }
 
 # How each provider's sources are cited in the dist (P2, the witness-
@@ -551,6 +567,7 @@ PROVIDER_CITATION: dict["Provider", str] = {
     # v25: the ILO's own SDMX wire — the flow's own registry title carries
     # the citation, one-flow-one-title.
     Provider.ilostat: "ILOSTAT, {title} (dataflow {flow}, SDMX wire)",
+    Provider.unesco_uis: "UNESCO Institute for Statistics (UIS) Data API, indicator '{ref}'",
 }
 PROVIDER_LICENSE: dict["Provider", str] = {
     Provider.curated: "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md",
@@ -563,6 +580,9 @@ PROVIDER_LICENSE: dict["Provider", str] = {
     # v25: ILOSTAT's own terms — CC-BY-4.0 with attribution per the ILO's
     # data reuse notice (ilostat.ilo.org — read on the site's terms page).
     Provider.ilostat: "ILOSTAT data reuse policy (CC-BY-4.0, attribution required, no endorsement implied)",
+    # v30: the UIS terms of use (databrowser.uis.unesco.org, read 2026-10-14):
+    # CC BY-SA 4.0, credit line "UNESCO Institute for Statistics (UIS), URL, date of extraction".
+    Provider.unesco_uis: "CC-BY-SA-4.0 (UNESCO Institute for Statistics; credit the UIS, ShareAlike applies)",
 }
 
 

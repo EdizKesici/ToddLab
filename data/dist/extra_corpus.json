@@ -4,7 +4,7 @@
     "source_csv_sha256": "e7b378596a74c67266e55b2f3274a20e613a1daac156623e86e37ae25efd5f4a",
     "rows": 14,
     "metrics": 14,
-    "implemented_metrics": 7
+    "implemented_metrics": 8
   },
   "metrics": [
     {
@@ -68,7 +68,7 @@
       "label": "Mean years of schooling",
       "family": "education",
       "note": "Average number of years of formal education completed by the population aged 25 and over.",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "reading_test_scores",

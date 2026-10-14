@@ -142,6 +142,7 @@ export const PROVIDER_LABELS_EN: Record<string, string> = {
   oecd: "OECD",
   eurostat: "Eurostat",
   ilostat: "ILOSTAT",
+  unesco_uis: "UNESCO Institute for Statistics",
 };
 
 export const PROVIDER_LABELS_FR: Record<string, string> = {
@@ -153,4 +154,5 @@ export const PROVIDER_LABELS_FR: Record<string, string> = {
   oecd: "OCDE",
   eurostat: "Eurostat",
   ilostat: "ILOSTAT",
+  unesco_uis: "Institut de statistique de l'UNESCO",
 };

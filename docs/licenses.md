@@ -17,6 +17,15 @@ added — only OWID is active in phase 1.
 - Source page link to display: easy to reconstruct from `source_ref` (e.g.
   `infant-mortality` -> `https://ourworldindata.org/grapher/infant-mortality`).
 
+## UNESCO Institute for Statistics (active, v30)
+
+- License: CC BY-SA 4.0 (UIS terms of use, databrowser.uis.unesco.org).
+  ShareAlike: the dist files carrying UIS data (`mean_years_of_schooling`)
+  are published under the same terms.
+- Credit to display: "UNESCO Institute for Statistics (UIS), URL, date of
+  extraction" - the indicator file's `sources[]` block carries the citation
+  and the license.
+
 ## World Bank, WHO GHO (phase 2, not active yet)
 
 To fill in once the connectors are written.

@@ -73,6 +73,10 @@ def _source_url(provider: Provider, ref: str, field: str | None = None) -> str |
         from src.connectors.ilostat import build_url as ilo_build_url  # idem
 
         return ilo_build_url(ref)
+    if provider == Provider.unesco_uis:
+        from src.connectors.unesco_uis import build_url as uis_build_url  # idem
+
+        return uis_build_url(ref)
     # NOTE (v25): eurostat sources intentionally keep url=None here — the
     # pre-v25 dists never carried a Eurostat URL, and wiring one now would
     # touch every Eurostat-sourced indicator's dist file (a cross-cutting

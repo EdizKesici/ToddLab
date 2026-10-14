@@ -309,6 +309,7 @@ def test_full_pipeline_produces_the_expected_dist_files(tmp_path, real_indicator
         "incarceration_rate", "math_test_scores", "obesity_rate",
         "hiv_prevalence_rate", "male_height_trend",
         "reading_test_scores", "science_test_scores",  # v30: the extra metric set (PISA columns)
+        "mean_years_of_schooling",  # v30: the UIS estimate (extra metric)
     }
 
 

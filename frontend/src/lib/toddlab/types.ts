@@ -33,7 +33,8 @@ export type Provider =
   | "curated"
   | "oecd"
   | "eurostat"
-  | "ilostat";
+  | "ilostat"
+  | "unesco_uis";
 
 export type Reliability = "high" | "medium" | "low";
 
