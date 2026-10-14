@@ -411,15 +411,31 @@ def component_keys(config: ScoreConfig, score: ScoreName) -> list:
     return sorted(keys)
 
 
+TODD_ONLY_SUFFIX = "_todd_only"
+
+
 def preset_weights(
     config: ScoreConfig,
     score: ScoreName,
     corpus: ToddCorpus | None,
     preset: str,
+    todd_core: dict | None = None,
 ) -> dict:
     """equal: weight 1 per indicator (0.5 per sex component).
     todd: the indicator's weight = DISTINCT BOOKS citing its corpus_metric
-    in todd_refs (floor 1 when null or 0); sex components carry half."""
+    in todd_refs (floor 1 when null or 0); sex components carry half.
+
+    v30: a preset named `<weighting>_todd_only` ("equal_todd_only",
+    "todd_todd_only") applies the same weighting but gives weight 0 to every
+    component whose indicator is NOT in Todd's books (todd_core false) - the
+    "Todd only" metric set. The extra metrics carry weight 1 under both
+    weightings (they have no books to count). `todd_core` maps indicator id
+    -> bool and is required for the *_todd_only presets."""
+    todd_only = preset.endswith(TODD_ONLY_SUFFIX)
+    if todd_only:
+        if todd_core is None:
+            raise ValueError(f"preset {preset!r} needs the indicators' todd_core flags")
+        preset = preset[: -len(TODD_ONLY_SUFFIX)]
     weights: dict = {}
     for c in config.components_for(score):
         if preset == "todd":
@@ -432,6 +448,8 @@ def preset_weights(
             w = 1.0
         if c.sex_mode == SexMode.split:
             w = w / 2.0
+        if todd_only and not todd_core.get(c.indicator, True):
+            w = 0.0
         for sex in (("male", "female") if c.sex_mode == SexMode.split else ("both",)):
             weights[(c.indicator, sex)] = w
     return weights
@@ -449,6 +467,8 @@ def aggregate(
     by_ey: dict = {}
     for key in sorted(normalised):
         w = weights[key]
+        if w == 0:
+            continue  # v30: a zero-weight component (outside the preset's metric set) takes no part
         for entity, years in normalised[key].items():
             for year, value in years.items():
                 by_ey.setdefault(entity, {}).setdefault(year, []).append((w, value))
@@ -475,7 +495,7 @@ def score_and_coverage(
     pairs = []
     for key in sorted(normalised):
         value = normalised[key].get(entity, {}).get(year)
-        if value is not None:
+        if value is not None and weights[key] > 0:
             pairs.append((weights[key], value))
     if not pairs:
         return None
@@ -515,6 +535,8 @@ def delta(
     common: list = []
     for key in sorted(normalised):
         s = normalised[key].get(entity, {})
+        if weights[key] == 0:
+            continue  # v30: outside the preset's metric set
         if year1 in s and year2 in s and _obs_year(key, year1) != _obs_year(key, year2):
             common.append((key, s[year1], s[year2]))
     if not common:

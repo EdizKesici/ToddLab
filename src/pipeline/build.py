@@ -43,6 +43,7 @@ from src.schema.indicator import (
     Indicator,
     Provider,
 )
+from src.schema.extra_refs import ExtraCorpus
 from src.schema.todd_refs import ToddCorpus
 
 logger = logging.getLogger(__name__)
@@ -522,6 +523,27 @@ def _todd_corpus_payload(indicators: dict[str, Indicator], corpus: ToddCorpus) -
     }
 
 
+def _extra_corpus_payload(indicators: dict[str, Indicator], extra: ExtraCorpus) -> dict:
+    """dist/extra_corpus.json: the metrics outside Todd's books - implemented
+    AND planned. `implemented` is derived from the indicator configs."""
+    metrics = [
+        {"id": mid, **metric.model_dump(), "implemented": mid in indicators}
+        for mid, metric in extra.metrics.items()
+    ]
+    return {
+        "source": (
+            "extra_core.csv -> config/extra_refs.yaml (one-way transform, "
+            "scripts/normalize_extra_refs.py); meta.source_csv_sha256 anchors this "
+            "dist to the exact CSV vintage."
+        ),
+        "meta": {
+            **extra.meta.model_dump(),
+            "implemented_metrics": sum(1 for m in metrics if m["implemented"]),
+        },
+        "metrics": metrics,
+    }
+
+
 def build_catalog(
     indicators: dict[str, Indicator],
     built_payloads: dict[str, dict],
@@ -578,6 +600,7 @@ def build_all(
     dist_dir: Path,
     entities: EntityRegistry,
     todd_refs: ToddCorpus | None = None,
+    extra_refs: ExtraCorpus | None = None,
 ) -> None:
     dist_dir.mkdir(parents=True, exist_ok=True)
     built = {
@@ -585,4 +608,9 @@ def build_all(
         for ind in indicators.values()
     }
     build_catalog(indicators, built, dist_dir, todd_refs=todd_refs)
+    if extra_refs is not None:
+        (dist_dir / "extra_corpus.json").write_text(
+            json.dumps(_extra_corpus_payload(indicators, extra_refs), ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
     build_entities(entities, dist_dir)

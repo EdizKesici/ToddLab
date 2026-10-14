@@ -1459,3 +1459,68 @@ def test_rebuild_fails_fast_on_a_bad_bounds_file_before_any_dist_write(tmp_path,
     # the dist bytes untouched: the sentinel survived the refusal
     assert sentinel.read_bytes() == sentinel_bytes
     assert list(dist_dir.iterdir()) == [sentinel]
+
+
+# ---------------------------------------------------------------------------
+# v30: the Todd-only metric sets (the extra metrics carry weight 0)
+# ---------------------------------------------------------------------------
+
+
+def _two_component_config():
+    comps = [
+        ScoreComponent(indicator=i, direction="lower", transform="linear", sex_mode="both",
+                       scores=["official", "modelled"], basis="consensus", corpus_metric=i)
+        for i in ("alpha", "beta")
+    ]
+    return _config(
+        components=comps,
+        presets=["equal", "todd", "equal_todd_only", "todd_todd_only"],
+    )
+
+
+def test_todd_only_presets_zero_the_extra_components():
+    cfg = _two_component_config()
+    flags = {"alpha": True, "beta": False}  # beta is not in Todd's books
+    corpus = _corpus({"alpha": [{"book": "B", "year": 1990, "citations": 3, "label": "a", "note": ""}]})
+    w = lambda p: preset_weights(cfg, ScoreName.official, corpus, p, flags)  # noqa: E731
+    assert w("equal") == {("alpha", "both"): 1.0, ("beta", "both"): 1.0}
+    assert w("equal_todd_only") == {("alpha", "both"): 1.0, ("beta", "both"): 0.0}
+    # the extra metric weighs 1 under the todd weighting too (no books to count)
+    assert w("todd") == {("alpha", "both"): 1.0, ("beta", "both"): 1.0}
+    assert w("todd_todd_only")[("beta", "both")] == 0.0
+    with pytest.raises(ValueError, match="todd_core"):
+        preset_weights(cfg, ScoreName.official, corpus, "equal_todd_only")
+
+
+def test_zero_weight_components_take_no_part_in_aggregate_or_delta():
+    from src.score.core import aggregate, delta
+
+    norm = {
+        ("alpha", "both"): {"x": {2000: 40.0, 2010: 60.0}},
+        ("beta", "both"): {"x": {2000: 100.0, 2010: 0.0}, "y": {2000: 77.0}},
+    }
+    weights = {("alpha", "both"): 1.0, ("beta", "both"): 0.0}
+    out = aggregate(norm, weights)
+    assert out["x"]["2000"] == [40.0, 1.0]  # beta's 100 is ignored
+    assert "y" not in out  # an entity living only on a zero-weight component is not scored
+    d = delta(norm, weights, "x", 2000, 2010, 0.5)
+    assert d["delta"] == 20.0 and d["n_components"] == 1
+
+
+def test_shipped_todd_only_presets_match_corpus_sets():
+    import json
+
+    repo = Path(__file__).resolve().parents[1]
+    meta = json.loads((repo / "data/dist/score/meta.json").read_text(encoding="utf-8"))
+    for score in ("official", "modelled"):
+        presets = meta["presets"][score]
+        assert set(presets) == {"equal", "todd", "equal_todd_only", "todd_todd_only"}
+        extra = {
+            k for k, c in meta["components"].items()
+            if c["corpus_set"] == "extra" and k in presets["equal"]
+        }
+        assert extra, "the shipped score has extra components"
+        for base in ("equal", "todd"):
+            only = presets[f"{base}_todd_only"]
+            assert {k for k, v in only.items() if v == 0} == extra
+            assert all(only[k] == presets[base][k] for k in only if k not in extra)

@@ -115,15 +115,19 @@ def build_score_layer(
 
     # per-score working state
     state: dict = {}
+    todd_core_all: dict = {}  # indicator -> in Todd's books? (the corpus_set of its components)
     fertility_points: dict = {}  # the official fertility's retained points (the v28.2 golden cases read them)
     for score in (ScoreName.official, ScoreName.modelled):
         comps = {c.indicator: c for c in config.components_for(score)}
         fresh_normalised: dict = {}
         component_meta: dict = {}
+        todd_core_by_indicator: dict = {}
         for key in component_keys(config, score):
             ind_id, sex = key
             comp = comps[ind_id]
             ind_dist = load_indicator_file(indicators_dir, ind_id)
+            todd_core_by_indicator[ind_id] = bool(ind_dist.get("todd_core", True))
+            todd_core_all[ind_id] = todd_core_by_indicator[ind_id]
             selected = select_source(ind_dist, sex, score, config.bounds_from_year)
             if ind_id == "birth_rate_fertility" and sex == "both":
                 fertility_points[score] = list(selected.points)
@@ -213,6 +217,7 @@ def build_score_layer(
                     "basis": comp.basis.value,
                     "provisional": comp.provisional,
                     "sex": sex,
+                    "corpus_set": "todd" if todd_core_by_indicator[ind_id] else "extra",
                     "floor": bounds.floor,
                     "lo": bounds.lo,
                     "hi": bounds.hi,
@@ -232,14 +237,25 @@ def build_score_layer(
         fresh = fresh_points(obs_years)
 
         weights = {
-            preset: preset_weights(config, score, corpus, preset) for preset in config.presets
+            preset: preset_weights(config, score, corpus, preset, todd_core_by_indicator)
+            for preset in config.presets
+        }
+        # The ghost guard per preset: "fresh" means a fresh component AMONG THE
+        # ONES THE PRESET WEIGHTS (v30: a Todd-only score must not live on a
+        # fresh extra component it does not use).
+        fresh_by_preset = {
+            preset: fresh_points(
+                {k: v for k, v in obs_years.items() if weights[preset].get(k, 0) > 0}
+            )
+            for preset in config.presets
         }
         scores = {
             preset: {
                 entity: {
                     year: pair
                     for year, pair in years.items()
-                    if pair[1] >= config.coverage_threshold and (entity, int(year)) in fresh
+                    if pair[1] >= config.coverage_threshold
+                    and (entity, int(year)) in fresh_by_preset[preset]
                 }
                 for entity, years in aggregate(resolved, weights[preset]).items()
             }
@@ -335,6 +351,7 @@ def build_score_layer(
                 "basis": c.basis.value,
                 "provisional": c.provisional,
                 "corpus_metric": c.corpus_metric,
+                "corpus_set": "todd" if todd_core_all[c.indicator] else "extra",
             }
             for c in sorted(config.components, key=lambda c: c.indicator)
             for sex in (("male", "female") if c.sex_mode == SexMode.split else ("both",))
@@ -418,6 +435,8 @@ def _golden_vectors(config: ScoreConfig, state: dict, fertility_points: dict) ->
     vectors: list = []
 
     def add(score, entity, year, preset, why, with_delta_to=None):
+        if preset not in state[score]["weights"]:
+            return  # a preset this config does not compute (v30: the *_todd_only ones)
         normalised = state[score]["normalised"]
         weights = state[score]["weights"][preset]
 
@@ -443,6 +462,8 @@ def _golden_vectors(config: ScoreConfig, state: dict, fertility_points: dict) ->
         vectors.append(vec)
 
     def add_delta(score, entity, y1, y2, preset, why):
+        if preset not in state[score]["weights"]:
+            return
         normalised = state[score]["normalised"]
         weights = state[score]["weights"][preset]
         d = delta(
@@ -823,4 +844,17 @@ def _golden_vectors(config: ScoreConfig, state: dict, fertility_points: dict) ->
             )
             add(ScoreName.official, entity, year, "equal", why)
 
-    return vectors[:20]
+    # v30: the Todd-only metric sets (the extra metrics carry weight 0). The
+    # labels state the live fact; the points are the same country-years as
+    # cases above so the two metric sets can be read against each other.
+    base = vectors[:20]
+    n_before = len(vectors)
+    add(ScoreName.official, "germany", 2015, "equal_todd_only",
+        "the Todd-only metric set (equal weights): the extra components carry weight 0")
+    add(ScoreName.official, "germany", 2015, "todd_todd_only",
+        "the Todd-only metric set (book-count weights)")
+    add(ScoreName.modelled, "japan", 2015, "equal_todd_only",
+        "the Todd-only metric set on the modelled score")
+    add_delta(ScoreName.official, "germany", 2010, 2019, "equal_todd_only",
+              lambda d: f"a delta on the Todd-only metric set ({d['n_components']} common components)")
+    return base + vectors[n_before:]

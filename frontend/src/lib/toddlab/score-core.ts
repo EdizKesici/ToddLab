@@ -8,6 +8,7 @@
  *
  * Contract facts implemented here:
  * - score(e,y)  = sum(w_c * n_c) / sum(w_c)      over components with a resolved value
+ *   (components with weight 0 - outside a Todd-only preset - take no part at all)
  * - coverage    = sum(w_c available) / sum(w_c all components of the score)
  * - a score EXISTS iff coverage >= threshold AND at least one component is FRESH
  *   (age 0 — the ghost guard; a country-year living entirely on carried values is refused)
@@ -66,6 +67,7 @@ export function scoreAtYear(
   let n = 0;
   let nFresh = 0;
   for (const c of comps) {
+    if (c.weight <= 0) continue; // outside the preset's metric set (v30: Todd-only presets)
     sumAll += c.weight;
     const v = c.normalised[String(year)];
     if (v === undefined) continue;
@@ -122,6 +124,7 @@ export function deltaBetweenYears(
   const decomposition: DeltaTerm[] = [];
 
   for (const c of comps) {
+    if (c.weight <= 0) continue; // outside the preset's metric set (v30: Todd-only presets)
     sumAll += c.weight;
     const v1 = c.normalised[String(y1)];
     const v2 = c.normalised[String(y2)];

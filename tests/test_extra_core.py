@@ -44,3 +44,33 @@ def test_every_non_todd_indicator_is_listed_in_extra_core():
     assert non_todd <= extra, sorted(non_todd - extra)
     # and an extra metric that IS an indicator is never flagged todd_core
     assert all(not indicators[i].todd_core for i in extra if i in indicators)
+
+
+def test_extra_refs_yaml_matches_the_csv():
+    # config/extra_refs.yaml is GENERATED from extra_core.csv: a stale file
+    # (CSV edited, normalize_extra_refs.py not re-run) must fail loudly.
+    import hashlib
+
+    import yaml
+
+    doc = yaml.safe_load((ROOT / "config" / "extra_refs.yaml").read_text(encoding="utf-8"))
+    csv_bytes = (ROOT / "extra_core.csv").read_bytes()
+    assert doc["meta"]["source_csv_sha256"] == hashlib.sha256(csv_bytes).hexdigest()
+    assert set(doc["metrics"]) == {r["id"] for r in _rows("extra_core.csv")}
+
+
+def test_extra_corpus_cross_validation_refuses_a_missing_metric():
+    import pytest
+
+    from src.config_loader import ConfigError, cross_validate_extra_core, load_extra_refs, load_todd_refs
+
+    config = ROOT / "config"
+    indicators = load_indicators(config)
+    extra = load_extra_refs(config)
+    todd = load_todd_refs(config)
+    cross_validate_extra_core(indicators, extra, todd)  # the shipped config is consistent
+    trimmed = extra.model_copy(
+        update={"metrics": {k: v for k, v in extra.metrics.items() if k != "life_expectancy_60"}}
+    )
+    with pytest.raises(ConfigError, match="life_expectancy_60"):
+        cross_validate_extra_core(indicators, trimmed, todd)

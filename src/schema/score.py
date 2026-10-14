@@ -238,7 +238,9 @@ class ScoreConfig(BaseModel):
         dups = sorted(k for k, n in seen.items() if n > 1)
         if dups:
             raise ValueError(f"duplicate score components: {dups}")
-        unknown_presets = sorted(set(self.presets) - {"equal", "todd"})
+        unknown_presets = sorted(
+            set(self.presets) - {"equal", "todd", "equal_todd_only", "todd_todd_only"}
+        )
         if unknown_presets:
             raise ValueError(
                 f"unknown presets {unknown_presets} — the layer computes 'equal' and "

@@ -68,7 +68,7 @@ coverage_threshold: 0.60
 delta_min_common_weight: 0.50
 fertility_target: 2.1
 rounding: 2
-presets: [equal, todd]
+presets: [equal, todd, equal_todd_only, todd_todd_only]
 # decision 16 (v28): carry a real observation forward at most this many
 # years (age recorded, displayed; 0 = the v27 exact-year behaviour).
 max_age_years: 3

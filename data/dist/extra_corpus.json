@@ -1,0 +1,109 @@
+{
+  "source": "extra_core.csv -> config/extra_refs.yaml (one-way transform, scripts/normalize_extra_refs.py); meta.source_csv_sha256 anchors this dist to the exact CSV vintage.",
+  "meta": {
+    "source_csv_sha256": "e7b378596a74c67266e55b2f3274a20e613a1daac156623e86e37ae25efd5f4a",
+    "rows": 14,
+    "metrics": 14,
+    "implemented_metrics": 5
+  },
+  "metrics": [
+    {
+      "id": "abortion_legalization_year",
+      "label": "Abortion legalization year",
+      "family": "markers",
+      "note": "Year abortion was first legalized, one year per country.",
+      "implemented": false
+    },
+    {
+      "id": "abortion_rate",
+      "label": "Abortion rate",
+      "family": "society",
+      "note": "Legally induced abortions per 1,000 live births, as reported by the countries of the WHO European Region.",
+      "implemented": false
+    },
+    {
+      "id": "crude_birth_rate",
+      "label": "Crude birth rate",
+      "family": "society",
+      "note": "Live births per 1,000 population. UN Demographic Yearbook Table 9 (2007-2024), plus the 1974-1978 prints of vanished states from the 1978 edition.",
+      "implemented": true
+    },
+    {
+      "id": "divorce_legalization_year",
+      "label": "Divorce legalization year",
+      "family": "markers",
+      "note": "Year divorce became legally available, one year per country.",
+      "implemented": false
+    },
+    {
+      "id": "drug_induced_deaths",
+      "label": "Drug-induced deaths",
+      "family": "mortality",
+      "note": "Deaths directly induced by drugs (overdoses and poisonings by drugs) per 100,000 inhabitants, for European countries.",
+      "implemented": false
+    },
+    {
+      "id": "life_expectancy_60",
+      "label": "Life expectancy at age 60",
+      "family": "mortality",
+      "note": "Years of life remaining at age 60, by sex. UN Demographic Yearbook Tables 21 and 22.",
+      "implemented": true
+    },
+    {
+      "id": "maternal_deaths",
+      "label": "Maternal deaths",
+      "family": "mortality",
+      "note": "Registered maternal deaths (a count). UN Demographic Yearbook Table 17, 2001-2022.",
+      "implemented": true
+    },
+    {
+      "id": "maternal_mortality_ratio",
+      "label": "Maternal mortality ratio",
+      "family": "mortality",
+      "note": "Maternal deaths per 100,000 live births. UN Demographic Yearbook Table 17, 2001-2022.",
+      "implemented": true
+    },
+    {
+      "id": "mean_years_of_schooling",
+      "label": "Mean years of schooling",
+      "family": "education",
+      "note": "Average number of years of formal education completed by the population aged 25 and over.",
+      "implemented": false
+    },
+    {
+      "id": "reading_test_scores",
+      "label": "PISA reading scores",
+      "family": "education",
+      "note": "Mean PISA reading score of 15-year-old students.",
+      "implemented": false
+    },
+    {
+      "id": "road_accident_mortality_per_vehicle",
+      "label": "Road accident mortality per motor vehicle",
+      "family": "mortality",
+      "note": "Road deaths per 10,000 registered motor vehicles. OECD / ITF IRTAD safety indicators, 1994-2024.",
+      "implemented": true
+    },
+    {
+      "id": "science_test_scores",
+      "label": "PISA science scores",
+      "family": "education",
+      "note": "Mean PISA science score of 15-year-old students.",
+      "implemented": false
+    },
+    {
+      "id": "womens_suffrage_introduction_year",
+      "label": "Women's suffrage introduction year",
+      "family": "markers",
+      "note": "Year women obtained the right to vote in national elections, one year per country.",
+      "implemented": false
+    },
+    {
+      "id": "youth_suicide_rate",
+      "label": "Youth suicide rate",
+      "family": "mortality",
+      "note": "Deaths by suicide per 100,000 young people aged 15 to 24, for European countries.",
+      "implemented": false
+    }
+  ]
+}

@@ -41,11 +41,13 @@ from src.config_loader import (
     ConfigError,
     cross_validate_companions,
     cross_validate_score,
+    cross_validate_extra_core,
     cross_validate_todd_core,
     load_entities,
     load_indicators,
     load_score_bounds,
     load_score_config,
+    load_extra_refs,
     load_todd_refs,
 )  # noqa: E402
 from src.pipeline.build import build_all  # noqa: E402
@@ -64,6 +66,7 @@ def _load_config():
     entities = load_entities(CONFIG_DIR)
     todd_refs = load_todd_refs(CONFIG_DIR)
     cross_validate_todd_core(indicators, todd_refs)
+    cross_validate_extra_core(indicators, load_extra_refs(CONFIG_DIR), todd_refs)
     cross_validate_companions(indicators)
     score_config = load_score_config(CONFIG_DIR)
     cross_validate_score(score_config, indicators, todd_refs)
@@ -155,11 +158,14 @@ def cmd_rebuild(_args) -> int:
         if r["range_violations"] or r["duplicate_entity_year"]:
             logging.warning("%s: anomalies detected, see reports/coverage_report.md", r["indicator_id"])
 
-    build_all(indicators, PROCESSED_DIR, DIST_DIR, entities, todd_refs=todd_refs)
+    extra_refs = load_extra_refs(CONFIG_DIR)
+    build_all(indicators, PROCESSED_DIR, DIST_DIR, entities, todd_refs=todd_refs, extra_refs=extra_refs)
     print(f"Build done -> {DIST_DIR}")
     print(f"Coverage report -> {REPORTS_DIR / 'coverage_report.md'}")
     if todd_refs is not None:
         print(f"Todd corpus -> {DIST_DIR / 'todd_corpus.json'}")
+    if extra_refs is not None:
+        print(f"Extra corpus -> {DIST_DIR / 'extra_corpus.json'}")
 
     # v27: the score layer rides the rebuild — AFTER build_all, reading the
     # freshly written dist + the frozen bounds. The drift guard fails the

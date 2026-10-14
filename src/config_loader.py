@@ -17,6 +17,7 @@ from pydantic import ValidationError
 from src.schema.entity import Entity, EntityRegistry
 from src.schema.indicator import Indicator
 from src.schema.score import ScoreConfig, ScoreName
+from src.schema.extra_refs import ExtraCorpus
 from src.schema.todd_refs import ToddCorpus
 
 
@@ -88,6 +89,53 @@ def load_todd_refs(config_dir: Path) -> ToddCorpus | None:
         return ToddCorpus.model_validate(raw)
     except ValidationError as e:
         raise ConfigError(f"todd_refs.yaml is invalid:\n{e}") from e
+
+
+def load_extra_refs(config_dir: Path) -> ExtraCorpus | None:
+    """config/extra_refs.yaml -> the validated extra corpus (the metrics
+    outside Todd's books), or None when the file is absent. A PRESENT but
+    invalid file raises like any other config."""
+    path = config_dir / "extra_refs.yaml"
+    if not path.is_file():
+        return None
+    raw = _load_yaml(path)
+    try:
+        return ExtraCorpus.model_validate(raw)
+    except ValidationError as e:
+        raise ConfigError(f"extra_refs.yaml is invalid:\n{e}") from e
+
+
+def cross_validate_extra_core(
+    indicators: dict[str, Indicator],
+    extra: ExtraCorpus | None,
+    todd: ToddCorpus | None,
+) -> None:
+    """The extra corpus is the mirror of the Todd corpus (v30):
+
+    - no metric may be in BOTH corpora (Todd's books or not, never both);
+    - every indicator flagged todd_core=false MUST be listed in the extra
+      corpus (the flag claims "not in Todd's books" - extra_core.csv is
+      where the metric is catalogued);
+    - a listed extra metric that is an indicator MUST be todd_core=false.
+
+    No-op when the extra corpus is absent."""
+    if extra is None:
+        return
+    errors: list[str] = []
+    if todd is not None:
+        both = sorted(set(extra.metrics) & set(todd.metrics))
+        if both:
+            errors.append(f"metric(s) in BOTH corpora: {both}")
+    for iid, ind in indicators.items():
+        if not ind.todd_core and iid not in extra.metrics:
+            errors.append(
+                f"{iid}: todd_core=false but extra_core.csv / config/extra_refs.yaml has no "
+                "metric with this id - add the row and regenerate the YAML."
+            )
+        if ind.todd_core and iid in extra.metrics:
+            errors.append(f"{iid}: listed as an extra metric but the indicator is todd_core=true.")
+    if errors:
+        raise ConfigError("extra corpus cross-validation errors:\n- " + "\n- ".join(errors))
 
 
 def cross_validate_todd_core(indicators: dict[str, Indicator], corpus: ToddCorpus | None) -> None:
