@@ -1,5 +1,31 @@
 [
   {
+    "id": "abortion_rate",
+    "label": "Abortion rate",
+    "family": "society",
+    "unit": "abortions_per_1000_live_births",
+    "higher_is_better": false,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = the WHO/Europe Health for All database's \"Abortions per 1000 live births\" (total induced abortions, irrespective of the method), national figures as reported by the Member States of the WHO European Region, 49 countries, 1970-2023, the group averages of the same measure (population-weighted, 400 rows) not read. Medium, not high: the definition and the registration are national - Belgium counts only abortions carried out in Belgium, Switzerland all abortions regardless of residence, the Netherlands only residents, Poland only the officially registered legal cases (an under-count by construction), the United Kingdom's 2013 figure is an estimate - and series carry breaks (Turkey's 2008 jump is \"improved recording\", Belarus counted vacuum aspirations only from 1997). No witness tier: the UN and the Guttmacher estimates cover other definitions and are modelled - recorded, not wired.",
+    "reclassification_sensitive": true,
+    "license": "Mixed, per source (see \"sources\"): WHO/Europe, CC BY-NC-SA 3.0 IGO (NonCommercial, ShareAlike - inferred, see docs/licenses.md).",
+    "roots": {
+      "canonical": [
+        {
+          "root": "who_euro_hfa",
+          "label": "WHO/Europe Health for All database (statistics reported by the Member States of the WHO European Region: ministries of health, statistical offices)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 1717,
+    "n_witness_points": 0
+  },
+  {
     "id": "birth_rate_fertility",
     "label": "Total fertility rate",
     "family": "society",

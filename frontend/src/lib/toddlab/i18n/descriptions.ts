@@ -81,6 +81,10 @@ export const INDICATOR_DESCRIPTIONS: Record<string, { en: string; fr: string }> 
     en: "Average score of 15-year-olds on the OECD PISA mathematics test.",
     fr: "Score moyen des élèves de 15 ans au test PISA de mathématiques de l'OCDE.",
   },
+  abortion_rate: {
+    en: "Induced abortions per 1,000 live births, as reported by the countries of the WHO European Region.",
+    fr: "Avortements provoqués pour 1 000 naissances vivantes, tels que déclarés par les pays de la Région européenne de l'OMS.",
+  },
   youth_suicide_rate: {
     en: "Deaths by suicide per 100,000 young people aged 15 to 24 (European countries).",
     fr: "Décès par suicide pour 100 000 jeunes de 15 à 24 ans (pays européens).",
@@ -151,6 +155,7 @@ export const PROVIDER_LABELS_EN: Record<string, string> = {
   eurostat: "Eurostat",
   ilostat: "ILOSTAT",
   unesco_uis: "UNESCO Institute for Statistics",
+  who_euro: "WHO/Europe (Health for All database)",
 };
 
 export const PROVIDER_LABELS_FR: Record<string, string> = {
@@ -163,4 +168,5 @@ export const PROVIDER_LABELS_FR: Record<string, string> = {
   eurostat: "Eurostat",
   ilostat: "ILOSTAT",
   unesco_uis: "Institut de statistique de l'UNESCO",
+  who_euro: "OMS Europe (base Santé pour tous)",
 };

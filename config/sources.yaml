@@ -990,6 +990,34 @@ unesco_uis:
     4.0 per the UIS terms of use (credit line: UNESCO Institute for
     Statistics, URL, date of extraction).
 
+who_euro:
+  base_url: "https://dw.euro.who.int/api/v5/measures"
+  auth_required: false
+  license_default: "CC-BY-NC-SA-3.0-IGO (WHO/Europe; NonCommercial, ShareAlike - inferred from the Gateway's 'Data sharing license' link; credit WHO/Europe and the national source)"
+  layer: collector
+  notes: >
+    Layer: COLLECTOR (v30 wiring judgment) - the WHO Regional Office for
+    Europe Data Warehouse (European Health Information Gateway) republishes
+    the statistics the Member States of the European Region report to it
+    (ministries of health, statistical offices; the per-country notes name
+    them), country by country, as reported: the Eurostat / OECD DF_COM
+    judgment, not a model. Its population-weighted GROUP averages (COUNTRY
+    empty, MEASURE_TYPE AVG_PW) are not countries and are dropped. Wired in
+    v30 for the extra metric abortion_rate (measure HFA_586). The v30 probe
+    found the API v5 at dw.euro.who.int/api/v5 (measures, ?output=data), the
+    measure list at /measures?filter=DATA_SOURCE:HFA (618 measures).
+    TLS: the server sends its leaf certificate without the Sectigo
+    intermediate (Sectigo Public Server Authentication CA DV R36), so default
+    clients fail with "unable to get local issuer certificate" (the earlier
+    "TLS problem" of this environment). The connector ships that public
+    intermediate (src/connectors/certs/, sha256 8C:54:C3:34:...:22:E0, valid
+    to 2036-03-21, chained to Sectigo Root R46) as an extra trust anchor for
+    this host only; chain and hostname verification stay on, never
+    verify=False. LICENSE: the Gateway footer's "Data sharing license" links
+    to the WHO copyright page (CC BY-NC-SA 3.0 IGO for WHO materials); the
+    dataset page itself states no license, so the application to the HFA-DB
+    data is an inference. NonCommercial applies.
+
 # UNWIRED DOORS RECORDED (v25):
 # - ILOSTAT DF_UNE_DEAP_SEX_AGE_{CCT,CBR}_RT per-country detail (DEAD
 #   since the 2026-09-24 restructure — the record above; the day the

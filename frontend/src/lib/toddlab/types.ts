@@ -34,7 +34,8 @@ export type Provider =
   | "oecd"
   | "eurostat"
   | "ilostat"
-  | "unesco_uis";
+  | "unesco_uis"
+  | "who_euro";
 
 export type Reliability = "high" | "medium" | "low";
 

@@ -535,3 +535,16 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, build OK. Small countries (Luxembourg 0, Cyprus 1 in 2023) show the small-numbers noise noted in the indicator's reliability text.
+
+---
+Task ID: 25
+Agent: Claude Code (Hermes)
+Task: Abortion rate (extra metric) from the WHO/Europe Data Warehouse.
+
+Work Log:
+- Backend v30: new connector for the WHO/Europe Data Warehouse API v5 (provider who_euro, collector tier, root who_euro_hfa): measure HFA_586 "Abortions per 1000 live births", 49 countries, 1970-2023, 1,717 observations; population-weighted group averages dropped; measure and unit pin-guards. The server omits the Sectigo intermediate certificate: the connector ships that public intermediate as an extra trust anchor for this host only (verification stays on).
+- Indicator abortion_rate (indicator only, not in the score; higher_is_better false by the illegitimate_births convention, no normative claim). License inferred CC BY-NC-SA 3.0 IGO (NonCommercial) - docs/licenses.md.
+- Frontend: provider labels, FR label and description, unit label and format.
+
+Stage Summary:
+- eslint 0, tsc 0, build OK, 24 golden vectors and 25,401 stored scores unchanged.

@@ -1,0 +1,69 @@
+# abortion_rate (v30, the extra metric set): outside Todd's books
+# (todd_core: false), listed in extra_core.csv.
+#
+# THE SOURCE: the WHO Regional Office for Europe Data Warehouse (API v5,
+# dw.euro.who.int), European Health for All database, measure HFA_586
+# "Abortions per 1000 live births" (indicator code E280500.T, unit
+# PROC_1000LBIRTH), read live 2026-10-14: 49 countries of the WHO European
+# Region, 1970-2023, 1,717 national observations. The Member States report to
+# WHO/Europe (ministries of health, statistical offices, public-health
+# institutes - the Data Warehouse's per-country notes name each one) and the
+# DW republishes them country by country: a collector, not a model.
+id: abortion_rate
+label: "Abortion rate"
+family: society
+unit: abortions_per_1000_live_births
+higher_is_better: false
+todd_core: false
+
+sources:
+  - provider: who_euro
+    ref: HFA_586
+    priority: 1
+    role: canonical
+    root: who_euro_hfa
+
+coverage_start: 1970
+coverage_end: 2023
+
+reliability: medium
+reliability_criteria: >
+  Canonical tier = the WHO/Europe Health for All database's "Abortions per
+  1000 live births" (total induced abortions, irrespective of the method),
+  national figures as reported by the Member States of the WHO European
+  Region, 49 countries, 1970-2023, the group averages of the same measure
+  (population-weighted, 400 rows) not read. Medium, not high: the definition
+  and the registration are national - Belgium counts only abortions carried
+  out in Belgium, Switzerland all abortions regardless of residence, the
+  Netherlands only residents, Poland only the officially registered legal
+  cases (an under-count by construction), the United Kingdom's 2013 figure is
+  an estimate - and series carry breaks (Turkey's 2008 jump is "improved
+  recording", Belarus counted vacuum aspirations only from 1997). No witness
+  tier: the UN and the Guttmacher estimates cover other definitions and are
+  modelled - recorded, not wired.
+
+reclassification_sensitive: true
+
+plausible_range:
+  min: 0
+  max: 4000  # the post-Soviet peaks reach about 2,000 (Russia 1990: 1,971); a safety net
+
+license: >
+  Mixed, per source (see "sources"): WHO/Europe, CC BY-NC-SA 3.0 IGO
+  (NonCommercial, ShareAlike - inferred, see docs/licenses.md).
+
+notes: >
+  Induced abortions per 1,000 live births, so a ratio to births, not a rate
+  per women of reproductive age: FRANCE 259 (1990) -> 306 (2019), BELGIUM 141
+  (2021), GERMANY 119 (2021) -> 141 (2022), RUSSIA 1,971 (1990) -> 303 (2022),
+  ESTONIA 1,599 (1980) -> 298 (2022). The coverage is the European Region and
+  its neighbours (no Cyprus, Austria or Luxembourg: the Data Warehouse prints
+  no data); the latest year differs by country (2019 to 2023). The extra
+  metric list words this metric as "legally induced abortions"; the DW's
+  definition is "induced abortions, irrespective of the method", with the
+  legal requirement left to each country - the DW's wording is kept.
+  higher_is_better is REQUIRED by the schema but carries no normative claim
+  (the same convention as illegitimate_births): the metric is read
+  descriptively, levels and contrasts, never a direction; false is the
+  least-misleading default and the rankings' "best" end must not be read as a
+  judgement.

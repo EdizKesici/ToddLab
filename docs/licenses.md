@@ -26,6 +26,18 @@ added — only OWID is active in phase 1.
   extraction" - the indicator file's `sources[]` block carries the citation
   and the license.
 
+## WHO/Europe Data Warehouse, Health for All database (active, v30)
+
+- License: CC BY-NC-SA 3.0 IGO - **an inference**: the Gateway footer's
+  "Data sharing license" link leads to the WHO copyright page, where WHO
+  materials are CC BY-NC-SA 3.0 IGO; the HFA-DB dataset page states no license
+  of its own. NonCommercial and ShareAlike apply: the `abortion_rate` dist
+  file must stay non-commercial and under the same terms. If ToddLab is ever
+  monetised, this source needs a permission request to WHO/Europe.
+- Credit to display: WHO/Europe, European Health for All database, measure
+  `HFA_586`, and the national source named in the Data Warehouse's country
+  notes - the indicator file's `sources[]` block carries the citation.
+
 ## World Bank, WHO GHO (phase 2, not active yet)
 
 To fill in once the connectors are written.

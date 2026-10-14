@@ -73,6 +73,10 @@ def _source_url(provider: Provider, ref: str, field: str | None = None) -> str |
         from src.connectors.ilostat import build_url as ilo_build_url  # idem
 
         return ilo_build_url(ref)
+    if provider == Provider.who_euro:
+        from src.connectors.who_euro import build_url as who_euro_build_url  # idem
+
+        return who_euro_build_url(ref)
     if provider == Provider.unesco_uis:
         from src.connectors.unesco_uis import build_url as uis_build_url  # idem
 

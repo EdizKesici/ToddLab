@@ -88,6 +88,11 @@ class Provider(str, Enum):
     # education attainment compiled from national censuses and household
     # surveys, harmonized to ISCED by the UIS. Harmonized tier.
     unesco_uis = "unesco_uis"
+    # v30: the WHO Regional Office for Europe Data Warehouse (dw.euro.who.int,
+    # API v5) - the European Health for All database: national health
+    # statistics as reported by the Member States, redistributed per country.
+    # Collector tier.
+    who_euro = "who_euro"
 
 
 # Root genealogy (v11, P5 — the-measurement-problem.md section 5.1): the
@@ -101,6 +106,14 @@ class Provider(str, Enum):
 # same one. Adding a root = a deliberate, reviewable registry edit (never
 # an ad-hoc string in a config).
 ROOT_LABELS: dict[str, str] = {
+    # v30: the WHO/Europe Health for All database - the statistics the Member
+    # States of the European Region report to WHO/Europe (ministries of
+    # health, national statistical offices, public-health institutes; the
+    # per-country notes of the Data Warehouse name each one).
+    "who_euro_hfa": (
+        "WHO/Europe Health for All database (statistics reported by the Member States "
+        "of the WHO European Region: ministries of health, statistical offices)"
+    ),
     # v30: the UNESCO Institute for Statistics' education indicators - the
     # UIS compiles national population censuses and household surveys,
     # maps them to ISCED and completes them with its own calculations
@@ -508,6 +521,9 @@ PROVIDER_LAYER: dict["Provider", str] = {
     # v30: the UIS recalculates national census / survey material (ISCED
     # mapping, its own calculations): an estimate, never "as published".
     Provider.unesco_uis: "harmonized",
+    # v30: national ministry / statistical-office figures as reported to WHO/Europe
+    # and republished per country (the group averages are not read): collector.
+    Provider.who_euro: "collector",
 }
 
 # How each provider's sources are cited in the dist (P2, the witness-
@@ -578,6 +594,7 @@ PROVIDER_CITATION: dict["Provider", str] = {
     # the citation, one-flow-one-title.
     Provider.ilostat: "ILOSTAT, {title} (dataflow {flow}, SDMX wire)",
     Provider.unesco_uis: "UNESCO Institute for Statistics (UIS) Data API, indicator '{ref}'",
+    Provider.who_euro: "WHO/Europe Data Warehouse, European Health for All database (HFA-DB), measure '{ref}'",
 }
 PROVIDER_LICENSE: dict["Provider", str] = {
     Provider.curated: "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md",
@@ -593,6 +610,11 @@ PROVIDER_LICENSE: dict["Provider", str] = {
     # v30: the UIS terms of use (databrowser.uis.unesco.org, read 2026-10-14):
     # CC BY-SA 4.0, credit line "UNESCO Institute for Statistics (UIS), URL, date of extraction".
     Provider.unesco_uis: "CC-BY-SA-4.0 (UNESCO Institute for Statistics; credit the UIS, ShareAlike applies)",
+    # v30: the Gateway footer's "Data sharing license" link leads to the WHO
+    # copyright page (read 2026-10-14): WHO materials CC BY-NC-SA 3.0 IGO. That
+    # the HFA-DB data fall under it is an INFERENCE from that link, not a
+    # statement on the dataset page; national sources are credited per country.
+    Provider.who_euro: "CC-BY-NC-SA-3.0-IGO (WHO/Europe; NonCommercial, ShareAlike - inferred from the Gateway's 'Data sharing license' link; credit WHO/Europe and the national source)",
 }
 
 

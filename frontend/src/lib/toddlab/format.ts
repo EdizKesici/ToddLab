@@ -47,6 +47,8 @@ export function fmtNumber(
       return d1.format(value);
     case "deaths_per_10000_vehicles":
       return d1.format(value);
+    case "abortions_per_1000_live_births":
+      return d1.format(value);
     case "maternal_deaths_per_100k_live_births":
       return int.format(value);
     case "prisoners_per_100000_population":

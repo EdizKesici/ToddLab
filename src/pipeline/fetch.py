@@ -28,6 +28,7 @@ from src.connectors.ilostat import IlostattConnector
 from src.connectors.oecd import OecdConnector
 from src.connectors.owid import OwidConnector
 from src.connectors.unesco_uis import UnescoUisConnector
+from src.connectors.who_euro import WhoEuroConnector
 from src.connectors.worldbank import WorldbankConnector
 from src.schema.indicator import Indicator, Provider
 
@@ -44,6 +45,7 @@ CONNECTORS: dict[Provider, Connector] = {
     # v25: the ILO's own SDMX wire — the DEAP class-decomposition rate
     # flows (the segment layers' witness, root ilo_lfs on its direct door).
     Provider.ilostat: IlostattConnector(),
+    Provider.who_euro: WhoEuroConnector(),  # v30: WHO/Europe Data Warehouse (abortion rate)
     Provider.unesco_uis: UnescoUisConnector(),  # v30: UIS Data API (mean years of schooling, attainment)
 }
 # ADR-0007/0008 wiring state: un_dyb (collector tier) and curated (L0-L2)
