@@ -39,6 +39,7 @@ export const INDICATOR_LABELS_FR: Record<string, string> = {
   top_income_share: "Part du revenu pré-impôt des 1 % les plus riches",
   unemployment_rate: "Taux de chômage",
   universal_suffrage_introduction_year: "Année d'introduction du suffrage universel",
+  womens_suffrage_introduction_year: "Année du droit de vote des femmes",
 };
 
 /** English labels for entities whose backend label differs from the entity_id

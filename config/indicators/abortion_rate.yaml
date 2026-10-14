@@ -50,7 +50,8 @@ plausible_range:
 
 license: >
   Mixed, per source (see "sources"): WHO/Europe, CC BY-NC-SA 3.0 IGO
-  (NonCommercial, ShareAlike - inferred, see docs/licenses.md).
+  (NonCommercial, ShareAlike - inferred; ToddLab is non-commercial by the
+  owner's decision 23, see docs/licenses.md).
 
 notes: >
   Induced abortions per 1,000 live births, so a ratio to births, not a rate
@@ -62,8 +63,6 @@ notes: >
   metric list words this metric as "legally induced abortions"; the DW's
   definition is "induced abortions, irrespective of the method", with the
   legal requirement left to each country - the DW's wording is kept.
-  higher_is_better is REQUIRED by the schema but carries no normative claim
-  (the same convention as illegitimate_births): the metric is read
-  descriptively, levels and contrasts, never a direction; false is the
-  least-misleading default and the rankings' "best" end must not be read as a
-  judgement.
+  higher_is_better: false is the owner's decision (decision 23, 2026-10-14):
+  for this metric a lower ratio ranks as "better"; the same flag on
+  illegitimate_births stays a descriptive default.

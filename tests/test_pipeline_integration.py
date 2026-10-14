@@ -312,6 +312,7 @@ def test_full_pipeline_produces_the_expected_dist_files(tmp_path, real_indicator
         "mean_years_of_schooling",  # v30: the UIS estimate (extra metric)
         "youth_suicide_rate",  # v30: Eurostat causes of death, ages 15-24 (extra metric)
         "abortion_rate",  # v30: WHO/Europe Health for All database (extra metric)
+        "womens_suffrage_introduction_year",  # v30: IPU table, curated marker (extra metric)
     }
 
 

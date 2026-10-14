@@ -1,0 +1,1701 @@
+{
+  "id": "womens_suffrage_introduction_year",
+  "label": "Women's suffrage introduction year",
+  "family": "markers",
+  "unit": "year",
+  "higher_is_better": false,
+  "todd_core": false,
+  "canonical_nature": "published",
+  "companion_indicators": [],
+  "reliability": "medium",
+  "reliability_criteria": "Canonical tier = a curated table of 185 countries, one row each, every row citing the IPU \"Women's Suffrage\" table entry it was read from. The year is the IPU's date of the right to vote in national elections ON EQUAL TERMS (decision 24, 2026-10-14): when the IPU flags the first grant as restricted and records the restrictions lifted later, the lifted date is kept and the first grant rides the row's definition_note (United Kingdom 1928, Belgium 1948, Portugal 1976, Australia 1962, Canada 1950). Medium, not high: a single compiler for all rows (no per-row cross-check against the statutes), an archive page last updated in 2005, and a convention choice (equal terms, not first grant). Staged grants by population group take the latest stage so that every woman is covered (South Africa 1994, Nigeria 1978); where the IPU lists several dates as stages of one grant (confirmation at independence), the earliest is kept. No witness tier: the Lexical Index of Electoral Democracy (via OWID, \"Universal right to vote for women\") dates the EFFECTIVE universal right and disagrees with the IPU's legal dates for most countries (2026-10-14 comparison: 68 of 179 matched countries identical, the others mostly one to two years apart, a few by decades - Brazil 1932 against 1985, South Africa 1930 against 1994, Chile 1949 against 1970), a different concept: recorded, not wired.",
+  "reclassification_sensitive": false,
+  "coverage_declared": {
+    "start": 1893,
+    "end": 2005
+  },
+  "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
+  "notes": "Year women obtained the right to vote in national elections, on equal terms, one row per country (the marker's shape: the point's year = the value). Europe's step, as the table prints it: Finland 1906, Norway 1913, Denmark 1915, Germany 1918, the Netherlands 1919, the United Kingdom 1928, France 1944, Italy 1945, Belgium 1948, Greece 1952, Switzerland 1971, Portugal 1976, Liechtenstein 1984. THE HONEST LIMITS: the equal-terms date is a convention (the first grant is in each row's note); the IPU page is an archive, so recent changes and countries without national elections are absent; Yemen merges two pre-unification dates (Arab Republic 1970, D.P.R. 1967, the later kept); \"Yugoslavia\" is the historical entity (1946), Serbia and Montenegro have no row.",
+  "sources": [
+    {
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "role": "canonical",
+      "layer": "curated",
+      "root": "national_legislation",
+      "root_label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+      "native_unit": null,
+      "citation": "Hand-curated series 'womens_suffrage_introduction' (catalog/curated/, one citation per point)",
+      "url": "catalog/curated/womens_suffrage_introduction.csv",
+      "license": "Facts with citation (small extracts, clearly attributed) — see docs/licenses.md"
+    }
+  ],
+  "data": [
+    {
+      "entity_id": "afghanistan",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Afghanistan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "albania",
+      "year": 1920,
+      "value": 1920.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Albania', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "algeria",
+      "year": 1962,
+      "value": 1962.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Algeria', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "andorra",
+      "year": 1970,
+      "value": 1970.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Andorra', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1973."
+    },
+    {
+      "entity_id": "angola",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Angola', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "antigua_and_barbuda",
+      "year": 1951,
+      "value": 1951.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Antigua and Barbuda', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "argentina",
+      "year": 1947,
+      "value": 1947.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Argentina', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "armenia",
+      "year": 1921,
+      "value": 1921.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Armenia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "australia",
+      "year": 1962,
+      "value": 1962.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Australia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1902 was subject to conditions or restrictions; IPU records them lifted in 1962."
+    },
+    {
+      "entity_id": "austria",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Austria', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "azerbaijan",
+      "year": 1921,
+      "value": 1921.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Azerbaijan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "bahamas",
+      "year": 1964,
+      "value": 1964.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bahamas', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1961 was subject to conditions or restrictions; IPU records them lifted in 1964."
+    },
+    {
+      "entity_id": "bahrain",
+      "year": 1973,
+      "value": 1973.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bahrain', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "bangladesh",
+      "year": 1972,
+      "value": 1972.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bangladesh', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "barbados",
+      "year": 1950,
+      "value": 1950.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Barbados', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "belarus",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Belarus', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "belgium",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Belgium', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1919 was subject to conditions or restrictions; IPU records them lifted in 1948; Right to stand for election: 1921."
+    },
+    {
+      "entity_id": "belize",
+      "year": 1954,
+      "value": 1954.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Belize', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "benin",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Benin', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "bhutan",
+      "year": 1953,
+      "value": 1953.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bhutan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "bolivia_plurinational_state_of",
+      "year": 1952,
+      "value": 1952.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bolivia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1938 was subject to conditions or restrictions; IPU records them lifted in 1952."
+    },
+    {
+      "entity_id": "bosnia_and_herzegovina",
+      "year": 1949,
+      "value": 1949.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bosnia and Herzegovina', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "botswana",
+      "year": 1965,
+      "value": 1965.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bostwana', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "brazil",
+      "year": 1932,
+      "value": 1932.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Brazil', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "bulgaria",
+      "year": 1944,
+      "value": 1944.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Bulgaria', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "burkina_faso",
+      "year": 1958,
+      "value": 1958.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Burkina Faso', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "burundi",
+      "year": 1961,
+      "value": 1961.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Burundi', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "cabo_verde",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Cape Verde', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "cambodia",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Cambodia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "cameroon",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Cameroon', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "canada",
+      "year": 1950,
+      "value": 1950.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Canada', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1917 was subject to conditions or restrictions; IPU records them lifted in 1950; Right to stand for election: 1920."
+    },
+    {
+      "entity_id": "central_african_republic",
+      "year": 1986,
+      "value": 1986.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Central African Republic', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "chad",
+      "year": 1958,
+      "value": 1958.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Chad', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "chile",
+      "year": 1949,
+      "value": 1949.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Chile', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1931 was subject to conditions or restrictions; IPU records them lifted in 1949."
+    },
+    {
+      "entity_id": "china",
+      "year": 1949,
+      "value": 1949.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'China', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "colombia",
+      "year": 1954,
+      "value": 1954.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Colombia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "comoros",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Comoros', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "congo",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Congo', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "congo_the_democratic_republic_of_the",
+      "year": 1967,
+      "value": 1967.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Democratic Republic of the Congo', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1970."
+    },
+    {
+      "entity_id": "costa_rica",
+      "year": 1949,
+      "value": 1949.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Costa Rica', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "cote_d_ivoire",
+      "year": 1952,
+      "value": 1952.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Côte d'Ivoire', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "croatia",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Croatia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "cuba",
+      "year": 1934,
+      "value": 1934.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Cuba', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "cyprus",
+      "year": 1960,
+      "value": 1960.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Cyprus', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "czechia",
+      "year": 1920,
+      "value": 1920.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Czech Republic', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "denmark",
+      "year": 1915,
+      "value": 1915.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Denmark', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "djibouti",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Djibouti', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1986."
+    },
+    {
+      "entity_id": "dominica",
+      "year": 1951,
+      "value": 1951.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Dominica', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "dominican_republic",
+      "year": 1942,
+      "value": 1942.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Dominican Republic', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "ecuador",
+      "year": 1967,
+      "value": 1967.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Ecuador', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1929 was subject to conditions or restrictions; IPU records them lifted in 1967."
+    },
+    {
+      "entity_id": "egypt",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Egypt', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "el_salvador",
+      "year": 1939,
+      "value": 1939.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'El Salvador', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1961."
+    },
+    {
+      "entity_id": "equatorial_guinea",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Equatorial Guinea', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "eritrea",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Eritrea', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "estonia",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Estonia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "eswatini",
+      "year": 1968,
+      "value": 1968.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Swaziland', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "ethiopia",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Ethiopia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "fiji",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Fiji', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "finland",
+      "year": 1906,
+      "value": 1906.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Finland', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "france",
+      "year": 1944,
+      "value": 1944.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'France', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "gabon",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Gabon', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "gambia",
+      "year": 1960,
+      "value": 1960.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Gambia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "georgia",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Georgia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists several dates reflecting stages of the grant (e.g. confirmation at independence or in a new constitution): 1918, 1921."
+    },
+    {
+      "entity_id": "germany",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Germany', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "ghana",
+      "year": 1954,
+      "value": 1954.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Ghana', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "greece",
+      "year": 1952,
+      "value": 1952.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Greece', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "grenada",
+      "year": 1951,
+      "value": 1951.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Grenada', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "guatemala",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Guatemala', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "guinea",
+      "year": 1958,
+      "value": 1958.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Guinea', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "guinea_bissau",
+      "year": 1977,
+      "value": 1977.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Guinea Bissau', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "guyana",
+      "year": 1953,
+      "value": 1953.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Guyana', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1945."
+    },
+    {
+      "entity_id": "haiti",
+      "year": 1950,
+      "value": 1950.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Haiti', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "honduras",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Honduras', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "hungary",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Hungary', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "iceland",
+      "year": 1920,
+      "value": 1920.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Iceland', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1915 was subject to conditions or restrictions; IPU records them lifted in 1920."
+    },
+    {
+      "entity_id": "india",
+      "year": 1950,
+      "value": 1950.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'India', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "indonesia",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Indonesia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "iran_islamic_republic_of",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Iran (Islamic Republic of)', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "iraq",
+      "year": 1980,
+      "value": 1980.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Iraq', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "ireland",
+      "year": 1928,
+      "value": 1928.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Ireland', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1918 was subject to conditions or restrictions; IPU records them lifted in 1928."
+    },
+    {
+      "entity_id": "israel",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Israel', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "italy",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Italy', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "jamaica",
+      "year": 1944,
+      "value": 1944.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Jamaica', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "japan",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Japan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists several dates reflecting stages of the grant (e.g. confirmation at independence or in a new constitution): 1945, 1947."
+    },
+    {
+      "entity_id": "jordan",
+      "year": 1974,
+      "value": 1974.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Jordan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "kazakhstan",
+      "year": 1924,
+      "value": 1924.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Kazakhstan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists several dates reflecting stages of the grant (e.g. confirmation at independence or in a new constitution): 1924, 1993."
+    },
+    {
+      "entity_id": "kenya",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Kenya', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "kiribati",
+      "year": 1967,
+      "value": 1967.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Kiribati', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "korea_democratic_people_s_republic_of",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'D.P.R. of Korea', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "korea_republic_of",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Republic of Korea', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "kuwait",
+      "year": 2005,
+      "value": 2005.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Kuwait', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "kyrgyzstan",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Kyrgyzstan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "lao_people_s_democratic_republic",
+      "year": 1958,
+      "value": 1958.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Lao P.D.R', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "latvia",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Latvia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "lebanon",
+      "year": 1952,
+      "value": 1952.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Lebanon', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "lesotho",
+      "year": 1965,
+      "value": 1965.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Lesotho', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "liberia",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Liberia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "libya",
+      "year": 1964,
+      "value": 1964.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Libyan Arab Jamahiriya', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 1984,
+      "value": 1984.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Liechtenstein', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "lithuania",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Lithuania', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "luxembourg",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Luxembourg', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "madagascar",
+      "year": 1959,
+      "value": 1959.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Madagascar', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "malawi",
+      "year": 1961,
+      "value": 1961.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Malawi', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "malaysia",
+      "year": 1957,
+      "value": 1957.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Malaysia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "maldives",
+      "year": 1932,
+      "value": 1932.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Maldives', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "mali",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Mali', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "malta",
+      "year": 1947,
+      "value": 1947.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Malta', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "marshall_islands",
+      "year": 1979,
+      "value": 1979.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Marshall Islands', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "mauritania",
+      "year": 1961,
+      "value": 1961.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Mauritania', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "mauritius",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Mauritius', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "mexico",
+      "year": 1947,
+      "value": 1947.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Mexico', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1953."
+    },
+    {
+      "entity_id": "micronesia_federated_states_of",
+      "year": 1979,
+      "value": 1979.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Micronesia (Fed. States)', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "moldova_republic_of",
+      "year": 1978,
+      "value": 1978.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Republic of Moldova', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists several dates reflecting stages of the grant (e.g. confirmation at independence or in a new constitution): 1978, 1993."
+    },
+    {
+      "entity_id": "monaco",
+      "year": 1962,
+      "value": 1962.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Monaco', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "mongolia",
+      "year": 1924,
+      "value": 1924.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Mongolia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "morocco",
+      "year": 1963,
+      "value": 1963.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Morocco', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "mozambique",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Mozambique', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "myanmar",
+      "year": 1935,
+      "value": 1935.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Myanmar', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1946."
+    },
+    {
+      "entity_id": "namibia",
+      "year": 1989,
+      "value": 1989.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Namibia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "nauru",
+      "year": 1968,
+      "value": 1968.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Nauru', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "nepal",
+      "year": 1951,
+      "value": 1951.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Nepal', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "netherlands",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Netherlands', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1917."
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 1893,
+      "value": 1893.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'New Zealand', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1919."
+    },
+    {
+      "entity_id": "nicaragua",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Nicaragua', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "niger",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Niger', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "nigeria",
+      "year": 1978,
+      "value": 1978.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Nigeria', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists staged grants by population group: 1958 South; 1978 North."
+    },
+    {
+      "entity_id": "north_macedonia",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'The F.Y.R. of Macedonia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "norway",
+      "year": 1913,
+      "value": 1913.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Norway', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1907."
+    },
+    {
+      "entity_id": "pakistan",
+      "year": 1947,
+      "value": 1947.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Pakistan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "palau",
+      "year": 1979,
+      "value": 1979.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Palau', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "panama",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Panama', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1941 was subject to conditions or restrictions; IPU records them lifted in 1946."
+    },
+    {
+      "entity_id": "papua_new_guinea",
+      "year": 1964,
+      "value": 1964.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Papua New Guinea', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1963."
+    },
+    {
+      "entity_id": "paraguay",
+      "year": 1961,
+      "value": 1961.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Paraguay', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "peru",
+      "year": 1955,
+      "value": 1955.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Peru', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "philippines",
+      "year": 1937,
+      "value": 1937.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Philippines', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "poland",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Poland', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "portugal",
+      "year": 1976,
+      "value": 1976.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Portugal', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1931 was subject to conditions or restrictions; IPU records them lifted in 1976."
+    },
+    {
+      "entity_id": "romania",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Romania', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1929 was subject to conditions or restrictions; IPU records them lifted in 1946."
+    },
+    {
+      "entity_id": "russian_federation",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Russian Federation', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "rwanda",
+      "year": 1961,
+      "value": 1961.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Rwanda', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "saint_kitts_and_nevis",
+      "year": 1951,
+      "value": 1951.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Saint Kitts and Nevis', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "saint_lucia",
+      "year": 1924,
+      "value": 1924.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Saint Lucia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "saint_vincent_and_the_grenadines",
+      "year": 1951,
+      "value": 1951.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Saint Vincent and the Grenadines', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "samoa",
+      "year": 1990,
+      "value": 1990.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Samoa', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "san_marino",
+      "year": 1959,
+      "value": 1959.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'San Marino', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1973."
+    },
+    {
+      "entity_id": "sao_tome_and_principe",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Sao Tome and Principe', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "senegal",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Senegal', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "seychelles",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Seychelles', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "sierra_leone",
+      "year": 1961,
+      "value": 1961.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Sierra Leone', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "singapore",
+      "year": 1947,
+      "value": 1947.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Singapore', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "slovakia",
+      "year": 1920,
+      "value": 1920.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Slovakia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "slovenia",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Slovenia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "solomon_islands",
+      "year": 1974,
+      "value": 1974.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Solomon Islands', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "somalia",
+      "year": 1956,
+      "value": 1956.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Somalia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "south_africa",
+      "year": 1994,
+      "value": 1994.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'South Africa', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists staged grants by population group: 1930 Whites; 1984 Coloureds + Indians; 1994 Blacks."
+    },
+    {
+      "entity_id": "spain",
+      "year": 1931,
+      "value": 1931.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Spain', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "sri_lanka",
+      "year": 1931,
+      "value": 1931.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Sri Lanka', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "sudan",
+      "year": 1964,
+      "value": 1964.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Sudan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "suriname",
+      "year": 1948,
+      "value": 1948.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Suriname', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "sweden",
+      "year": 1921,
+      "value": 1921.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Sweden', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1919 was subject to conditions or restrictions; IPU records them lifted in 1921."
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1971,
+      "value": 1971.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Switzerland', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "syrian_arab_republic",
+      "year": 1953,
+      "value": 1953.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Syrian Arab Republic', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1949 was subject to conditions or restrictions; IPU records them lifted in 1953."
+    },
+    {
+      "entity_id": "tajikistan",
+      "year": 1924,
+      "value": 1924.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Tajikistan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "tanzania_united_republic_of",
+      "year": 1959,
+      "value": 1959.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'United Republic of Tanzania', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "thailand",
+      "year": 1932,
+      "value": 1932.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Thailand', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "togo",
+      "year": 1945,
+      "value": 1945.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Togo', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "tonga",
+      "year": 1960,
+      "value": 1960.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Tonga', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "trinidad_and_tobago",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Trinidad and Tobago', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "tunisia",
+      "year": 1959,
+      "value": 1959.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Tunisia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "turkiye",
+      "year": 1930,
+      "value": 1930.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Turkey', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1934."
+    },
+    {
+      "entity_id": "turkmenistan",
+      "year": 1927,
+      "value": 1927.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Turkmenistan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "tuvalu",
+      "year": 1967,
+      "value": 1967.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Tuvalu', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "uganda",
+      "year": 1962,
+      "value": 1962.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Uganda', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "ukraine",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Ukraine', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 1928,
+      "value": 1928.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'United Kingdom', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); First grant 1918 was subject to conditions or restrictions; IPU records them lifted in 1928."
+    },
+    {
+      "entity_id": "united_states",
+      "year": 1920,
+      "value": 1920.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'United States of America', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1788."
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 1932,
+      "value": 1932.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Uruguay', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "uzbekistan",
+      "year": 1938,
+      "value": 1938.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Uzbekistan', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "vanuatu",
+      "year": 1975,
+      "value": 1975.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Vanuatu', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); IPU lists several dates reflecting stages of the grant (e.g. confirmation at independence or in a new constitution): 1975, 1980."
+    },
+    {
+      "entity_id": "venezuela_bolivarian_republic_of",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Venezuela', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "viet_nam",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Viet Nam', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "yemen",
+      "year": 1970,
+      "value": 1970.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Yemen (Arab Republic)', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Pre-unification Yemen: Arab Republic 1970, D.P.R. 1967; the later date is kept (all women covered)."
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Yugoslavia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "zambia",
+      "year": 1962,
+      "value": 1962.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Zambia', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted)."
+    },
+    {
+      "entity_id": "zimbabwe",
+      "year": 1957,
+      "value": 1957.0,
+      "provider": "curated",
+      "source_ref": "womens_suffrage_introduction",
+      "citation": "Inter-Parliamentary Union (IPU), 'Women's Suffrage' table (archive.ipu.org/wmn-e/suffrage.htm), entry 'Zimbabwe', read 2026-10-14; IPU compiles the dates from the national legislation",
+      "definition_note": "Year = women's right to vote in national elections on equal terms (restrictions lifted); Right to stand for election: 1978."
+    }
+  ],
+  "witnesses": []
+}

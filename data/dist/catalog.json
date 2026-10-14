@@ -11,7 +11,7 @@
     "reliability": "medium",
     "reliability_criteria": "Canonical tier = the WHO/Europe Health for All database's \"Abortions per 1000 live births\" (total induced abortions, irrespective of the method), national figures as reported by the Member States of the WHO European Region, 49 countries, 1970-2023, the group averages of the same measure (population-weighted, 400 rows) not read. Medium, not high: the definition and the registration are national - Belgium counts only abortions carried out in Belgium, Switzerland all abortions regardless of residence, the Netherlands only residents, Poland only the officially registered legal cases (an under-count by construction), the United Kingdom's 2013 figure is an estimate - and series carry breaks (Turkey's 2008 jump is \"improved recording\", Belarus counted vacuum aspirations only from 1997). No witness tier: the UN and the Guttmacher estimates cover other definitions and are modelled - recorded, not wired.",
     "reclassification_sensitive": true,
-    "license": "Mixed, per source (see \"sources\"): WHO/Europe, CC BY-NC-SA 3.0 IGO (NonCommercial, ShareAlike - inferred, see docs/licenses.md).",
+    "license": "Mixed, per source (see \"sources\"): WHO/Europe, CC BY-NC-SA 3.0 IGO (NonCommercial, ShareAlike - inferred; ToddLab is non-commercial by the owner's decision 23, see docs/licenses.md).",
     "roots": {
       "canonical": [
         {
@@ -1911,6 +1911,32 @@
         }
       ]
     }
+  },
+  {
+    "id": "womens_suffrage_introduction_year",
+    "label": "Women's suffrage introduction year",
+    "family": "markers",
+    "unit": "year",
+    "higher_is_better": false,
+    "todd_core": false,
+    "canonical_nature": "published",
+    "companion_indicators": [],
+    "reliability": "medium",
+    "reliability_criteria": "Canonical tier = a curated table of 185 countries, one row each, every row citing the IPU \"Women's Suffrage\" table entry it was read from. The year is the IPU's date of the right to vote in national elections ON EQUAL TERMS (decision 24, 2026-10-14): when the IPU flags the first grant as restricted and records the restrictions lifted later, the lifted date is kept and the first grant rides the row's definition_note (United Kingdom 1928, Belgium 1948, Portugal 1976, Australia 1962, Canada 1950). Medium, not high: a single compiler for all rows (no per-row cross-check against the statutes), an archive page last updated in 2005, and a convention choice (equal terms, not first grant). Staged grants by population group take the latest stage so that every woman is covered (South Africa 1994, Nigeria 1978); where the IPU lists several dates as stages of one grant (confirmation at independence), the earliest is kept. No witness tier: the Lexical Index of Electoral Democracy (via OWID, \"Universal right to vote for women\") dates the EFFECTIVE universal right and disagrees with the IPU's legal dates for most countries (2026-10-14 comparison: 68 of 179 matched countries identical, the others mostly one to two years apart, a few by decades - Brazil 1932 against 1985, South Africa 1930 against 1994, Chile 1949 against 1970), a different concept: recorded, not wired.",
+    "reclassification_sensitive": false,
+    "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
+    "roots": {
+      "canonical": [
+        {
+          "root": "national_legislation",
+          "label": "National legislation and constitutional rulings (the enacted law itself, cited per point)",
+          "doors": 1
+        }
+      ],
+      "witness": []
+    },
+    "n_points": 185,
+    "n_witness_points": 0
   },
   {
     "id": "youth_suicide_rate",

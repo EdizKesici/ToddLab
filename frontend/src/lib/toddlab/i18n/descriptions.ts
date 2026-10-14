@@ -137,6 +137,10 @@ export const INDICATOR_DESCRIPTIONS: Record<string, { en: string; fr: string }> 
     en: "Share of the labour force without work but available and looking for one.",
     fr: "Part de la population active sans emploi, disponible et en recherche d'un.",
   },
+  womens_suffrage_introduction_year: {
+    en: "Year women obtained the right to vote in national elections on equal terms (Inter-Parliamentary Union).",
+    fr: "Année où les femmes ont obtenu le droit de vote aux élections nationales à égalité de conditions (Union interparlementaire).",
+  },
   universal_suffrage_introduction_year: {
     en: "Year universal suffrage was introduced, as enacted by law.",
     fr: "Année d'introduction du suffrage universel, telle qu'inscrite dans la loi.",

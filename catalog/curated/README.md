@@ -317,3 +317,16 @@ recorded in config/sources.yaml.
    `provider: curated, ref: {name}` (and `role`/`unit` per ADR-0008).
 4. The connector, snapshot, normalize, merge and dist plumbing is
    already generic — no code change needed.
+
+### `womens_suffrage_introduction.csv` (v30, extra metric)
+
+Women's right to vote in national elections, on equal terms, one row per
+country (185 rows, 1893-2005). Source: the Inter-Parliamentary Union's
+"Women's Suffrage" table (archive.ipu.org/wmn-e/suffrage.htm), read
+2026-10-14; the IPU compiles the dates from the national legislation. Rule
+(decision 24): where the IPU flags the first grant as restricted and records
+the restrictions lifted, the lifted year is the value and the first grant is in
+`definition_note`; staged grants by population group take the latest stage;
+several dates listed as stages of one grant take the earliest. Rows were
+generated from the page by script and reviewed against the printed table;
+countries the page does not list have no row.
