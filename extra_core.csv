@@ -1,0 +1,15 @@
+id,label,family,notes
+crude_birth_rate,Crude birth rate,society,"Live births per 1,000 population. UN Demographic Yearbook Table 9 (2007-2024), plus the 1974-1978 prints of vanished states from the 1978 edition."
+life_expectancy_60,Life expectancy at age 60,mortality,"Years of life remaining at age 60, by sex. UN Demographic Yearbook Tables 21 and 22."
+maternal_deaths,Maternal deaths,mortality,"Registered maternal deaths (a count). UN Demographic Yearbook Table 17, 2001-2022."
+maternal_mortality_ratio,Maternal mortality ratio,mortality,"Maternal deaths per 100,000 live births. UN Demographic Yearbook Table 17, 2001-2022."
+road_accident_mortality_per_vehicle,Road accident mortality per motor vehicle,mortality,"Road deaths per 10,000 registered motor vehicles. OECD / ITF IRTAD safety indicators, 1994-2024."
+abortion_legalization_year,Abortion legalization year,markers,"Year abortion was first legalized, one year per country."
+abortion_rate,Abortion rate,society,"Legally induced abortions, as a rate (per 1,000 women of reproductive age or per 100 live births)."
+divorce_legalization_year,Divorce legalization year,markers,"Year divorce became legally available, one year per country."
+drug_overdose_mortality,Drug overdose mortality,mortality,"Deaths from drug overdose or drug use disorders per 100,000 inhabitants."
+mean_years_of_schooling,Mean years of schooling,education,Average number of years of formal education completed by the population aged 25 and over.
+reading_test_scores,PISA reading scores,education,Mean PISA reading score of 15-year-old students.
+science_test_scores,PISA science scores,education,Mean PISA science score of 15-year-old students.
+womens_suffrage_introduction_year,Women's suffrage introduction year,markers,"Year women obtained the right to vote in national elections, one year per country."
+youth_suicide_rate,Youth suicide rate,mortality,"Deaths by suicide per 100,000 young people aged 15 to 24."

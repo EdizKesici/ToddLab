@@ -109,6 +109,7 @@ scripts/        score-bounds freezer, verification tools
 tests/          pytest suite
 frontend/       Next.js web app
 todd_core.csv   Todd's indicators as cited in his books
+extra_core.csv  metrics outside Todd's books (catalogued or planned)
 ```
 
 Further reading: `docs/methodology.md`, `docs/architecture.md`,
