@@ -296,3 +296,51 @@ components:
     basis: todd
     provisional: false
     corpus_metric: industrial_employment_share
+
+  # v30 (decision 25): the remaining extra metrics enter the score under the
+  # `extra` metric set (outside Todd's books, weight 1 in the equal and todd
+  # presets, 0 in the Todd-only presets).
+  - indicator: reading_test_scores
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: null
+
+  - indicator: science_test_scores
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [official, modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: null
+
+  - indicator: mean_years_of_schooling
+    direction: higher
+    transform: linear
+    sex_mode: both
+    scores: [modelled]
+    basis: consensus
+    provisional: false
+    corpus_metric: null
+
+  - indicator: youth_suicide_rate
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official]
+    basis: consensus
+    provisional: false
+    corpus_metric: null
+
+  - indicator: abortion_rate
+    direction: lower
+    transform: linear
+    sex_mode: both
+    scores: [official]
+    basis: consensus
+    provisional: false
+    corpus_metric: null

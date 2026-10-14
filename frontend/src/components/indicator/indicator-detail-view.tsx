@@ -253,7 +253,10 @@ function DetailContent({
           <FamilyBadge family={meta.family} />
           {meta.todd_core && <ToddCoreBadge />}
           <ReliabilityBadge level={meta.reliability} />
-          <DirectionBadge higherIsBetter={meta.higher_is_better} />
+          <DirectionBadge
+            higherIsBetter={meta.higher_is_better}
+            family={meta.family}
+          />
           {meta.reclassification_sensitive && (
             <TooltipProvider delayDuration={200}>
               <Tooltip>
@@ -314,6 +317,7 @@ function DetailContent({
           availableYears={meta.available_years}
           sexSplit={meta.sex_split}
           higherIsBetter={meta.higher_is_better}
+          neutral={meta.family === "markers"}
           unit={meta.unit}
           year={effectiveYear}
           sex={effectiveSex}

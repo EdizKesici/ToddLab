@@ -40,9 +40,11 @@ added — only OWID is active in phase 1.
   `HFA_586`, and the national source named in the Data Warehouse's country
   notes - the indicator file's `sources[]` block carries the citation.
 
-## World Bank, WHO GHO (phase 2, not active yet)
+## World Bank, WHO GHO (active)
 
-To fill in once the connectors are written.
+- World Bank Open Data: CC BY 4.0. WHO Global Health Observatory: CC BY 3.0
+  IGO (the licenses carried by `PROVIDER_LICENSE` in `src/schema/indicator.py`).
+  Each indicator file's `sources[]` block carries the citation.
 
 ## HMD (dropped), CLIO-INFRA (set aside for now)
 

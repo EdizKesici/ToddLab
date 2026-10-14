@@ -899,7 +899,10 @@ export function MetricCard({
                 {data && <ReliabilityBadge level={data.reliability} />}
                 {data && <span>· {unitLabelStr}</span>}
                 {data && (
-                  <DirectionBadge higherIsBetter={data.higher_is_better} />
+                  <DirectionBadge
+                    higherIsBetter={data.higher_is_better}
+                    family={data.family}
+                  />
                 )}
               </div>
             </div>

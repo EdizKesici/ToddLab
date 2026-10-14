@@ -9,6 +9,8 @@ figures. It follows the method of the historian-demographer Emmanuel Todd,
 who foresaw the collapse of the USSR in 1976 from a single indicator:
 rising infant mortality.
 
+Live: <https://toddlab.vercel.app>
+
 The repository holds two parts:
 
 - **Backend** (Python, repo root): fetches public sources, normalizes them
@@ -36,13 +38,22 @@ The repository holds two parts:
 | `entities.json` | countries and territories |
 | `indicators/<id>.json` | canonical series and witness series |
 | `todd_corpus.json` | the indicators Todd cites across his books |
-| `extra_corpus.json` | the metrics outside Todd's books (catalogued and planned) |
+| `extra_corpus.json` | the metrics outside Todd's books |
 | `score/` | the derived score layer |
 
-Sources: Eurostat, OECD, Our World in Data, WHO GHO, World Bank, UN
-Demographic Yearbook, ILOSTAT, plus small curated tables kept in
-`catalog/curated/`. All are free and open; credits and licenses are in
-`docs/licenses.md`.
+Sources: Eurostat, OECD, Our World in Data, WHO GHO, WHO/Europe Data
+Warehouse, UNESCO Institute for Statistics, World Bank, UN Demographic
+Yearbook, ILOSTAT, plus small curated tables kept in `catalog/curated/`
+(dated laws, each row cited: Inter-Parliamentary Union, Wikipedia). All are
+free and open; credits and licenses are in `docs/licenses.md`.
+
+Each indicator is labelled **official** (figures published by state statistical
+services, no model behind them) or **estimate** (anything an international
+institution recalculates or models). The flag is `canonical_nature` in the
+catalog.
+
+Todd's own metrics are listed in `todd_core.csv`; `extra_core.csv` lists the
+relevant metrics outside his books.
 
 ### Score layer
 
@@ -50,7 +61,10 @@ On top of the indicators, two composite scores per country-year are
 derived and always labelled as derived: **official** (canonical sources
 only) and **modelled** (widest-coverage single source per component).
 They use a frozen absolute scale and show their coverage with every value.
-They are never merged. Contract: `docs/score-contract.md`.
+They are never merged. Each is stored for two metric sets: **Todd only** and
+**Todd + extra** (the extra metrics weigh 1 each); the web app has a toggle.
+Adding the extra set lowers coverage for countries outside Europe, so fewer
+countries are scored. Contract: `docs/score-contract.md`.
 
 ## Backend quick start
 
@@ -107,11 +121,11 @@ config/         indicators, sources, entities, score definition
 catalog/        curated tables
 data/dist/      published payload (committed)
 docs/           architecture, methodology, ADRs, score contract
-scripts/        score-bounds freezer, verification tools
+scripts/        score-bounds freezer, CSV normalizers, fixture builders
 tests/          pytest suite
 frontend/       Next.js web app
 todd_core.csv   Todd's indicators as cited in his books
-extra_core.csv  metrics outside Todd's books (catalogued or planned)
+extra_core.csv  metrics outside Todd's books
 ```
 
 Further reading: `docs/methodology.md`, `docs/architecture.md`,
@@ -119,4 +133,6 @@ Further reading: `docs/methodology.md`, `docs/architecture.md`,
 
 ## License
 
-MIT, see `LICENSE`. Data remains under each provider's license.
+MIT, see `LICENSE`. Data remains under each provider's license. ToddLab is
+non-commercial, which some sources require (WHO/Europe data: CC BY-NC-SA;
+UNESCO UIS: CC BY-SA, ShareAlike applies to the files that carry it).

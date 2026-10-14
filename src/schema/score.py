@@ -128,6 +128,14 @@ OFFICIAL_ONLY_INDICATORS: dict[str, str] = {
         "score only (it would push ~40 non-European countries per year under "
         "the coverage threshold in the modelled score)"
     ),
+    "youth_suicide_rate": (
+        "decision 25 (v30) — 36 European countries (Eurostat): official score only "
+        "(it would push most non-European countries under the coverage threshold)"
+    ),
+    "abortion_rate": (
+        "decision 25 (v30) — 49 countries of the WHO European Region: official score only "
+        "(it would push most non-European countries under the coverage threshold)"
+    ),
 }
 
 
@@ -150,6 +158,10 @@ MODELLED_ONLY_INDICATORS: dict[str, str] = {
     "top_income_share": (
         "decision 20 (v30) — WID constructed series (fiscal microdata, "
         "surveys and national accounts combined)"
+    ),
+    "mean_years_of_schooling": (
+        "decision 20 (v30) — UNESCO UIS estimate (national censuses and surveys "
+        "harmonized to ISCED and computed by the UIS), not a published national figure"
     ),
 }
 

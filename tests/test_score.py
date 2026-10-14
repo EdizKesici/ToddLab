@@ -841,7 +841,28 @@ def test_shipped_config_keeps_model_based_indicators_out_of_official():
     for indicator in ("hiv_prevalence_rate", "obesity_rate", "top_income_share"):
         assert [s.value for s in by_id[indicator].scores] == ["modelled"]
     official = [c for c in cfg.components if "official" in [s.value for s in c.scores]]
-    assert len(official) == 15  # indicators; 17 components once the two sex pairs split
+    assert len(official) == 19  # indicators; 21 components once the two sex pairs split
+
+
+def test_extra_metrics_in_the_score_follow_decision_25():
+    # decision 25 (v30): the extra metrics that can be scored enter the score
+    # under corpus_set "extra"; the Europe-only ones are official-only, the UIS
+    # estimate modelled-only; the three markers and the counts never enter.
+    from src.config_loader import load_indicators, load_score_config
+
+    config_dir = Path(__file__).resolve().parents[1] / "config"
+    cfg = load_score_config(config_dir)
+    by_id = {c.indicator: [s.value for s in c.scores] for c in cfg.components}
+    inds = load_indicators(config_dir)
+    extras_in_score = {i for i in by_id if not inds[i].todd_core}
+    assert extras_in_score == {
+        "life_expectancy_60", "maternal_mortality_ratio", "road_accident_mortality_per_vehicle",
+        "reading_test_scores", "science_test_scores", "mean_years_of_schooling",
+        "youth_suicide_rate", "abortion_rate",
+    }
+    assert by_id["youth_suicide_rate"] == ["official"] and by_id["abortion_rate"] == ["official"]
+    assert by_id["mean_years_of_schooling"] == ["modelled"]
+    assert by_id["reading_test_scores"] == by_id["science_test_scores"] == ["official", "modelled"]
 
 
 def test_canonical_nature_matches_the_modelled_only_score_list_v30():
@@ -1286,7 +1307,7 @@ def test_loader_accepts_the_factory_file():
     repo_root = Path(__file__).resolve().parents[1]
     doc = load_score_bounds(repo_root / "config")
     n_blocks = sum(len(blocks) for blocks in doc["bounds"].values())
-    assert n_blocks == 35  # 17 official + 18 modelled (v30, decision 20)
+    assert n_blocks == 42  # 21 official + 21 modelled (v30, decisions 20 and 25)
     for score, blocks in doc["bounds"].items():
         for key, block in blocks.items():
             assert isinstance(block["n_sample"], int) and block["n_sample"] > 0, (score, key)
@@ -1532,3 +1553,17 @@ def test_shipped_todd_only_presets_match_corpus_sets():
             only = presets[f"{base}_todd_only"]
             assert {k for k, v in only.items() if v == 0} == extra
             assert all(only[k] == presets[base][k] for k in only if k not in extra)
+
+
+def test_weighted_sum_is_a_plain_left_to_right_addition():
+    # builtin sum() of floats is compensated since Python 3.12; the frontend adds
+    # plainly. Albania 2010 (modelled, equal): 56.385000000000005 plain,
+    # 56.38499999999999801 compensated - the same tie rounded two ways.
+    from src.score.core import _ordered_sum
+
+    values = [1e16, 1.0, -1e16]
+    assert _ordered_sum(values) == 0.0  # a plain loop loses the 1.0 (sum() on 3.12+ keeps it)
+    plain = 0.0
+    for v in (0.1, 0.2, 0.3):
+        plain += v
+    assert _ordered_sum([0.1, 0.2, 0.3]) == plain

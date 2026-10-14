@@ -267,6 +267,8 @@ export const en = {
     mapEventNote: "Countries where the event had occurred by {year}.",
     mapLegendBest: "Best",
     mapLegendWorst: "Worst",
+    mapLegendEarliest: "Earliest",
+    mapLegendLatest: "Latest",
     rankingTitle: "Ranking",
     rankingAsteriskNote:
       "* Estimated value: no official figure for this country and year.",
@@ -293,8 +295,8 @@ export const en = {
     relHighText:
       "Official statistics used as published: collected by statistical agencies, not reworked by a model.",
     relMediumText:
-      "Official data completed or adjusted by modelled estimates for some countries or periods.",
-    relLowText: "Mostly modelled or patchy data — read with caution.",
+      "Usable data with limits: definitions, coverage or methods differ between countries or periods.",
+    relLowText: "Patchy, secondary or hard-to-compare data: read with caution.",
     unavailableTitle: "Data not included",
     unavailableText:
       "This indicator is not part of the current dataset. It can be regenerated from the backend pipeline.",
@@ -596,6 +598,8 @@ export const fr: Dictionary = {
     mapEventNote: "Pays où l'événement était survenu en {year} ou avant.",
     mapLegendBest: "Le mieux",
     mapLegendWorst: "Le moins bien",
+    mapLegendEarliest: "Le plus tôt",
+    mapLegendLatest: "Le plus tard",
     rankingTitle: "Classement",
     rankingAsteriskNote:
       "* Valeur estimée : aucun chiffre officiel pour ce pays et cette année.",
@@ -622,8 +626,8 @@ export const fr: Dictionary = {
     relHighText:
       "Statistiques officielles utilisées telles que publiées : collectées par des instituts statistiques, non retravaillées par un modèle.",
     relMediumText:
-      "Données officielles complétées ou ajustées par des estimations pour certains pays ou certaines périodes.",
-    relLowText: "Données majoritairement modélisées ou lacunaires : à lire avec prudence.",
+      "Données exploitables avec des limites : les définitions, la couverture ou les méthodes diffèrent selon les pays ou les périodes.",
+    relLowText: "Données lacunaires, secondaires ou difficiles à comparer : à lire avec prudence.",
     unavailableTitle: "Données non incluses",
     unavailableText:
       "Cet indicateur ne fait pas partie du jeu de données actuel. Il peut être régénéré depuis le pipeline backend.",

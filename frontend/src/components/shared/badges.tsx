@@ -72,8 +72,19 @@ export function FamilyBadge({ family }: { family: string }) {
   );
 }
 
-export function DirectionBadge({ higherIsBetter }: { higherIsBetter: boolean }) {
+/**
+ * "Higher / lower is better". Hidden for the markers family (dated events such
+ * as a legalization year): an earlier or later year is not a better one.
+ */
+export function DirectionBadge({
+  higherIsBetter,
+  family,
+}: {
+  higherIsBetter: boolean;
+  family?: string;
+}) {
   const { t } = useI18n();
+  if (family === "markers") return null;
   return (
     <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
       {higherIsBetter ? (

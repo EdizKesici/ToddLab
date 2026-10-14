@@ -231,7 +231,10 @@ function IndicatorCardBody({
           )}
         </div>
         <div className="mt-auto space-y-1.5">
-          <DirectionBadge higherIsBetter={item.higher_is_better} />
+          <DirectionBadge
+            higherIsBetter={item.higher_is_better}
+            family={item.family}
+          />
           <p className="text-xs text-muted-foreground">
             <span className="tnum">{item.n_points}</span>{" "}
             {t((d) => d.common.points)}

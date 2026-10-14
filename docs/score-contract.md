@@ -14,11 +14,12 @@ and `golden_vectors.json` is what to unit-test against.
   indicator layer's three prohibitions (no interpolation, no
   derivation, no reconciliation) are untouched — the score derives
   openly from what the indicators measured, and every file says so.
-- **Two scores, never merged**: `official` (canonical-tier sources, 17
-  components / total weight 15, 15 indicators — illegitimate_births
-  among them since v28) and `modelled` (widest-coverage single source
-  per component, 18 components / total weight 16, 16 indicators, ~140
-  countries). They diverge where modeling runs ahead of collection;
+- **Two scores, never merged**: `official` (canonical-tier sources, 21
+  components / total weight 19, 19 indicators — illegitimate_births
+  among them since v28; 37 countries scored in 2019 in the Todd + extra
+  set) and `modelled` (widest-coverage single source per component, 21
+  components / total weight 19, 19 indicators, 158 countries in 2019 in
+  the Todd + extra set). They diverge where modeling runs ahead of collection;
   the divergence is the signal. Display them side by side, never
   average them.
 - **"Official" means figures published by state statistical services**
@@ -161,7 +162,17 @@ books, `todd_core: true`) or `extra` (outside them, listed in
   with weight **0** on every `extra` component.
 
 The extra components weigh 1 under BOTH weightings (they have no books to
-count). A component with weight 0 takes no part at all: not in the weighted
+count). Since decision 25 (v30) eight extra metrics are components:
+`life_expectancy_60`, `maternal_mortality_ratio` and
+`road_accident_mortality_per_vehicle` (official or both, as before),
+`reading_test_scores` and `science_test_scores` (both scores, like the Todd
+PISA math component), `mean_years_of_schooling` (modelled only: UNESCO UIS
+estimate) and `youth_suicide_rate` and `abortion_rate` (official only: the
+data cover 36 and 49 European countries, and in the modelled score they would
+push most non-European countries under the coverage threshold). The three
+legalization-year markers cannot enter a mean of normalised values and stay
+indicators. Measured cost of the extra set, 2015, equal preset: official 44 ->
+37 countries scored, modelled 170 -> 144; the Todd-only sets are unchanged. A component with weight 0 takes no part at all: not in the weighted
 mean, not in the coverage denominator, not in a delta (neither `n_components`
 nor the decomposition), and not in the ghost guard (a Todd-only score needs a
 fresh component among the weighted ones). A frontend re-implementing custom

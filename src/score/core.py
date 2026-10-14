@@ -455,6 +455,19 @@ def preset_weights(
     return weights
 
 
+def _ordered_sum(values) -> float:
+    """Plain left-to-right float addition, the same operation the frontend's
+    score-core performs. NOT builtin sum(): since Python 3.12 sum() of floats
+    is compensated (Neumaier), so its last bit differs from a plain loop and
+    from JavaScript - enough to flip a rounding tie (Albania 2010: 56.385 as a
+    plain sum, 56.38499999999999801 compensated) and to make the stored scores
+    depend on the Python version."""
+    total = 0.0
+    for v in values:
+        total += v
+    return total
+
+
 def aggregate(
     normalised: dict,  # ComponentKey -> entity -> year -> stored value
     weights: dict,  # ComponentKey -> weight
@@ -477,7 +490,7 @@ def aggregate(
         for year in sorted(by_ey[entity]):
             pairs = by_ey[entity][year]
             w_sum = sum(w for w, _ in pairs)
-            score = sum(w * v for w, v in pairs) / w_sum
+            score = _ordered_sum(w * v for w, v in pairs) / w_sum
             out.setdefault(entity, {})[str(year)] = [round(score, 2), round(w_sum / total_w, 4)]
     return out
 
@@ -500,7 +513,7 @@ def score_and_coverage(
     if not pairs:
         return None
     w_sum = sum(w for w, _ in pairs)
-    return (round(sum(w * v for w, v in pairs) / w_sum, 2), round(w_sum / total_w, 4))
+    return (round(_ordered_sum(w * v for w, v in pairs) / w_sum, 2), round(w_sum / total_w, 4))
 
 
 def delta(
@@ -551,7 +564,7 @@ def delta(
             "common_weight_share": round(share, 4),
             "n_components": len(common),
         }
-    d = sum(weights[k] * (v2 - v1) for k, v1, v2 in common) / w_common
+    d = _ordered_sum(weights[k] * (v2 - v1) for k, v1, v2 in common) / w_common
     return {
         "refused": False,
         "delta": round(d, 2),

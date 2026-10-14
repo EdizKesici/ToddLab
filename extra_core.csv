@@ -7,7 +7,6 @@ road_accident_mortality_per_vehicle,Road accident mortality per motor vehicle,mo
 abortion_legalization_year,Abortion legalization year,markers,"Year abortion was first legalized, one year per country."
 abortion_rate,Abortion rate,society,"Legally induced abortions per 1,000 live births, as reported by the countries of the WHO European Region."
 divorce_legalization_year,Divorce legalization year,markers,"Year divorce became legally available, one year per country."
-drug_induced_deaths,Drug-induced deaths,mortality,"Deaths directly induced by drugs (overdoses and poisonings by drugs) per 100,000 inhabitants, for European countries."
 mean_years_of_schooling,Mean years of schooling,education,Average number of years of formal education completed by the population aged 25 and over.
 reading_test_scores,PISA reading scores,education,Mean PISA reading score of 15-year-old students.
 science_test_scores,PISA science scores,education,Mean PISA science score of 15-year-old students.

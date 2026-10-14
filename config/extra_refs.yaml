@@ -11,9 +11,9 @@
 # config/indicators/*.yaml at build time, never stored here.
 
 meta:
-  source_csv_sha256: e7b378596a74c67266e55b2f3274a20e613a1daac156623e86e37ae25efd5f4a
-  rows: 14
-  metrics: 14
+  source_csv_sha256: 8a9ba47c03cb75a942ec16bd62570c96ff8b09e49a8335841334a7d9c1a8204c
+  rows: 13
+  metrics: 13
 metrics:
   abortion_legalization_year:
     label: Abortion legalization year
@@ -33,11 +33,6 @@ metrics:
     label: Divorce legalization year
     family: markers
     note: Year divorce became legally available, one year per country.
-  drug_induced_deaths:
-    label: Drug-induced deaths
-    family: mortality
-    note: Deaths directly induced by drugs (overdoses and poisonings by drugs) per 100,000 inhabitants,
-      for European countries.
   life_expectancy_60:
     label: Life expectancy at age 60
     family: mortality

@@ -561,3 +561,16 @@ Work Log:
 
 Stage Summary:
 - 491 tests, tsc 0, eslint 0, build OK, 24 golden vectors and 25,401 stored scores unchanged.
+
+---
+Task ID: 27
+Agent: Claude Code (Hermes)
+Task: Extra metrics in the score (decision 25), markers without a direction badge, reliability wording, score-core rounding, README.
+
+Work Log:
+- Backend: five extra metrics join the score as `extra` components (placement by decisions 15 and 20), `drug_induced_deaths` removed from extra_core.csv, bounds regenerated (7 blocks added, none changed), summation made a plain ordered loop.
+- Frontend: DirectionBadge hidden for the markers family (detail, catalog, compare), the world-map legend reads "earliest / latest" for markers, the "medium" and "low" reliability sentences reworded (EN and FR), `roundTo` rounds like Python's round() (exact value, ties to even).
+- README refreshed (sources, official / estimate labels, metric sets, licensing note), docs/licenses.md World Bank / GHO section fixed.
+
+Stage Summary:
+- 493 tests, tsc 0, eslint 0, build OK; frontend reproduces 24,067 of 24,067 stored scores exactly and all 24 golden vectors.

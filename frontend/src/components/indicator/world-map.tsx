@@ -60,6 +60,8 @@ export interface WorldMapProps {
   availableYears: number[];
   sexSplit: boolean;
   higherIsBetter: boolean;
+  /** Dated-event markers: the legend reads earlier / later, never best / worst. */
+  neutral?: boolean;
   unit: string;
   /** Year & sex are lifted to the parent page so the map and the ranking share one source. */
   year: number | null;
@@ -75,6 +77,7 @@ export function WorldMap({
   availableYears,
   sexSplit,
   higherIsBetter,
+  neutral = false,
   unit,
   year,
   sex,
@@ -357,7 +360,9 @@ export function WorldMap({
           ) : null}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-2">
-              {t((d) => d.indicators.mapLegendBest)}
+              {t((d) =>
+                neutral ? d.indicators.mapLegendEarliest : d.indicators.mapLegendBest,
+              )}
               <span
                 aria-hidden
                 className="flex h-2.5 w-40 overflow-hidden rounded-full"
@@ -366,7 +371,9 @@ export function WorldMap({
                   <span key={c} className="h-full flex-1" style={{ background: c }} />
                 ))}
               </span>
-              {t((d) => d.indicators.mapLegendWorst)}
+              {t((d) =>
+                neutral ? d.indicators.mapLegendLatest : d.indicators.mapLegendWorst,
+              )}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <span

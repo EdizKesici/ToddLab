@@ -27,9 +27,27 @@ export interface ScoreCompSeries {
   age: Record<string, number>;
 }
 
+/**
+ * Rounds like Python's round(x, decimals): to the nearest decimal of the EXACT
+ * binary value, ties to even. Math.round(x * f) / f is not that: x * f can
+ * round up onto a false tie (56.38499999999999801 * 100 === 5638.5), which made
+ * the frontend print 56.39 where the backend stores 56.38.
+ */
 export function roundTo(x: number, decimals: number): number {
-  const f = 10 ** decimals;
-  return Math.round(x * f) / f;
+  if (!Number.isFinite(x)) return x;
+  const sign = x < 0 ? -1 : 1;
+  const abs = Math.abs(x);
+  // toFixed works on the exact value and breaks exact ties upward.
+  const nearest = Number(abs.toFixed(decimals));
+  // An exact tie shows as "5" then only zeros in the exact expansion.
+  const exact = abs.toFixed(Math.min(100, decimals + 30));
+  const tail = exact.slice(exact.indexOf(".") + 1 + decimals);
+  if (/^50*$/.test(tail)) {
+    const f = 10 ** decimals;
+    const down = Math.floor(abs * f);
+    return sign * ((down % 2 === 0 ? down : down + 1) / f);
+  }
+  return sign * nearest;
 }
 
 export function ageOf(comp: ScoreCompSeries, year: number): number {
