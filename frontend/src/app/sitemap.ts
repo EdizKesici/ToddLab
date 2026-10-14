@@ -2,12 +2,11 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site-url";
 import { getCatalog, getEntities } from "@/lib/toddlab/store";
 
-// Reads the backend payload at request time, so a rebuilt data/dist shows up without a frontend rebuild.
+// No lastModified: a build-time or request-time date would be a made-up value. Reads the backend payload at request time, so a rebuilt data/dist shows up without a frontend rebuild.
 export const dynamic = "force-dynamic";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();
-  const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
@@ -18,21 +17,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/methodology",
   ].map((path) => ({
     url: `${base}${path}`,
-    lastModified: now,
     changeFrequency: "weekly",
     priority: path === "" ? 1 : 0.8,
   }));
 
   const indicators: MetadataRoute.Sitemap = getCatalog().map((i) => ({
     url: `${base}/indicators/${i.id}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
   const countries: MetadataRoute.Sitemap = getEntities().map((e) => ({
     url: `${base}/countries/${e.entity_id}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.6,
   }));

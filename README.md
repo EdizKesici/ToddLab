@@ -85,6 +85,18 @@ The frontend has no copy of the data: it reads `data/dist/` in place, and
 picks up a rebuilt payload on the next request without a restart. Set
 `TODDLAB_DIST_DIR` to read it from another location.
 
+## Deploy (Vercel, free Hobby plan)
+
+1. Import the GitHub repository in Vercel.
+2. Set **Root Directory** to `frontend` and keep "Include source files outside
+   of the Root Directory" enabled (the app reads `data/dist/` at the repo root).
+3. Keep the default build command (`npm run build`). Nothing else to configure:
+   `next.config.ts` detects Vercel and bundles `data/dist/` with the functions.
+   Set `NEXT_PUBLIC_SITE_URL` only if you add a custom domain.
+
+The Hobby plan is for non-commercial use. To update the data, push a new
+`data/dist/` to `main`: Vercel redeploys.
+
 ## Repository layout
 
 ```

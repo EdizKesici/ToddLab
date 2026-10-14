@@ -461,3 +461,16 @@ Work Log:
 
 Stage Summary:
 - eslint 0, tsc 0, next build OK and warning-free; production server checked: unknown ids and routes answer 404, FR decimals are consistent.
+
+---
+Task ID: 19
+Agent: Claude Code (Hermes)
+Task: Language without flash, Vercel-ready deployment, sitemap without invented dates.
+
+Work Log:
+- Language: the server now decides it (cookie `toddlab-lang`, then Accept-Language, then English) in lib/toddlab/i18n/server.ts; the root layout sets <html lang> and passes initialLang to the I18nProvider, so the first HTML is already in the right language. The FR/EN toggle writes the cookie (localStorage is no longer used). Page titles (indicators, countries, compare, score, method, 404 fallbacks) follow the language; meta descriptions stay in English.
+- Vercel: next.config.ts detects VERCEL and then sets outputFileTracingRoot (repo root) and outputFileTracingIncludes for ../data/dist, instead of output: "standalone" (kept for local use). The build script only copies static files into .next/standalone when it exists. Checked with VERCEL=1: every route's .nft.json lists the 34 data/dist files.
+- siteUrl() prefers VERCEL_PROJECT_PRODUCTION_URL. The sitemap no longer emits a lastModified date.
+
+Stage Summary:
+- eslint 0, tsc 0, next build OK (local and VERCEL=1 modes). Not tested on a real Vercel deployment (needs the owner's account).

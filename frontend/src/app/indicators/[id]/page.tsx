@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import IndicatorDetailView from "@/components/indicator/indicator-detail-view";
 import { INDICATOR_DESCRIPTIONS } from "@/lib/toddlab/i18n/descriptions";
+import { getServerDictionary } from "@/lib/toddlab/i18n/server";
 import { getCatalog } from "@/lib/toddlab/store";
 
 interface Props {
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const entry = getCatalog().find((i) => i.id === id);
   if (!entry) {
-    return { title: "Indicator" };
+    return { title: (await getServerDictionary()).d.notFound.title };
   }
   const description =
     INDICATOR_DESCRIPTIONS[id]?.en ??

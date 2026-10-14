@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CountryView } from "@/components/country/country-view";
+import { getServerDictionary } from "@/lib/toddlab/i18n/server";
 import { getEntities } from "@/lib/toddlab/store";
 
 interface Props {
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const entity = getEntities().find((e) => e.entity_id === id);
   if (!entity) {
-    return { title: "Country" };
+    return { title: (await getServerDictionary()).d.notFound.title };
   }
   return {
     title: entity.label,

@@ -3,9 +3,15 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 import React, { useState } from "react";
-import { I18nProvider } from "@/lib/toddlab/i18n";
+import { I18nProvider, type Lang } from "@/lib/toddlab/i18n";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  initialLang,
+}: {
+  children: React.ReactNode;
+  initialLang: Lang;
+}) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -27,7 +33,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider initialLang={initialLang}>{children}</I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

@@ -24,9 +24,15 @@ import {
   PROVIDER_LABELS_FR,
 } from "./descriptions";
 
-export type Lang = "en" | "fr";
+import { LANG_COOKIE, type Lang } from "./lang";
 
-const STORAGE_KEY = "toddlab-lang";
+export type { Lang };
+
+const ONE_YEAR_S = 60 * 60 * 24 * 365;
+
+function writeLangCookie(l: Lang) {
+  document.cookie = `${LANG_COOKIE}=${l}; path=/; max-age=${ONE_YEAR_S}; samesite=lax`;
+}
 
 interface I18nContextValue {
   lang: Lang;
@@ -36,24 +42,15 @@ interface I18nContextValue {
 
 const I18nContext = createContext<I18nContextValue | null>(null);
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  // Server render and first client render are EN (default); the detected
-  // language is applied right after mount (standard no-hydration-mismatch pattern).
-  const [lang, setLangState] = useState<Lang>("en");
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    const detected =
-      stored === "fr" || stored === "en"
-        ? stored
-        : navigator.language?.toLowerCase().startsWith("fr")
-          ? "fr"
-          : null;
-    if (detected === "fr") {
-      // Deferred to avoid synchronous setState in effect (cascading render lint rule).
-      startTransition(() => setLangState("fr"));
-    }
-  }, []);
+export function I18nProvider({
+  children,
+  initialLang,
+}: {
+  children: React.ReactNode;
+  /** Language decided by the server (cookie, then Accept-Language): no flash of English. */
+  initialLang: Lang;
+}) {
+  const [lang, setLangState] = useState<Lang>(initialLang);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -61,7 +58,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l);
-    window.localStorage.setItem(STORAGE_KEY, l);
+    writeLangCookie(l);
   }, []);
 
   const t = useCallback(

@@ -6,6 +6,7 @@ import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { siteUrl } from "@/lib/site-url";
+import { getRequestLang } from "@/lib/toddlab/i18n/server";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -51,17 +52,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const lang = await getRequestLang();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
-        <Providers>
+        <Providers initialLang={lang}>
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
