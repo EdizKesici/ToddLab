@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { interpolate, useI18n } from "@/lib/toddlab/i18n";
 import { deltaBetweenYears, type ScoreCompSeries } from "@/lib/toddlab/score-core";
-import { fmtCoverage, fmtPct1, fmtScore } from "@/lib/toddlab/format";
+import { fmtCoverage, fmtDecimal, fmtPct1, fmtScore } from "@/lib/toddlab/format";
 import { cn } from "@/lib/utils";
 
 /**
@@ -155,8 +155,7 @@ export function ScoreDeltaPanel({
                       d.term >= 0 ? "text-emerald-700 dark:text-emerald-400" : "text-red-700 dark:text-red-400",
                     )}
                   >
-                    {d.term >= 0 ? "+" : ""}
-                    {d.term.toFixed(2)}
+                    {fmtDecimal(d.term, 2, lang, { signed: true })}
                   </span>
                   <Badge
                     variant="outline"

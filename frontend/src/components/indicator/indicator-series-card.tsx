@@ -350,7 +350,7 @@ export function IndicatorSeriesCard({
           {t((d) => d.indicators.seriesTitle)}
         </CardTitle>
         <CardDescription>{t((d) => d.indicators.seriesPick)}</CardDescription>
-        <CardAction className="flex flex-wrap items-center gap-3">
+        <CardAction className="flex flex-wrap items-center gap-3 max-sm:col-start-1 max-sm:row-span-1 max-sm:row-start-3 max-sm:justify-self-start">
           {sexSplit && <SexToggle value={sex} onChange={onSexChange} />}
           <div className="flex items-center gap-1.5">
             <Switch
@@ -429,7 +429,7 @@ export function IndicatorSeriesCard({
                       width={48}
                       tick={{ fontSize: 11 }}
                       tickFormatter={(v: number) =>
-                        indexing ? fmtTick(v, "") : fmtTick(v, unit)
+                        indexing ? fmtTick(v, "", lang) : fmtTick(v, unit, lang)
                       }
                       stroke="var(--muted-foreground)"
                       tickLine={false}

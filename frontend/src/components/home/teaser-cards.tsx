@@ -9,7 +9,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useI18n } from "@/lib/toddlab/i18n";
+import { useCatalog } from "@/lib/toddlab/client";
+import { interpolate, useI18n } from "@/lib/toddlab/i18n";
 
 interface Teaser {
   href: string;
@@ -20,6 +21,8 @@ interface Teaser {
 
 export function TeaserCards() {
   const { t } = useI18n();
+  const { data } = useCatalog();
+  const nIndicators = data ? data.meta.n_indicators_available : "…";
 
   const teasers: Teaser[] = [
     {
@@ -38,7 +41,7 @@ export function TeaserCards() {
       href: "/indicators",
       icon: BarChart3,
       title: t((d) => d.home.indicatorTeaserTitle),
-      text: t((d) => d.home.indicatorTeaserText),
+      text: interpolate(t((d) => d.home.indicatorTeaserText), { n: nIndicators }),
     },
   ];
 

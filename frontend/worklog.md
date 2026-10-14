@@ -446,3 +446,18 @@ Work Log:
 Stage Summary:
 - Verified on the production server: /, /score, /countries/france and the /api/score routes answer 200.
 - Official 2025 scores moved with the new composition: France 64.48 (was 64.92), Germany 70.30 (was 68.79). Modelled scores are unchanged.
+
+---
+Task ID: 18
+Agent: Claude Code (Hermes)
+Task: Fix the anomalies found in the frontend review.
+
+Work Log:
+- Mobile overflow: the single-column grids of the indicator detail page and the compare page are now `grid-cols-1` (minmax(0,1fr)) so wide charts and tables cannot stretch the page; the series card actions drop under the header on small screens. Checked at 390 px: no horizontal scroll on the 9 pages tested.
+- 404: new src/app/not-found.tsx (bilingual); /countries/[id] and /indicators/[id] call notFound() for unknown ids, so they now answer HTTP 404 instead of 200.
+- Number format: new fmtDecimal() in lib/toddlab/format.ts is the only way to print a plain decimal (locale separator, optional sign / trimming); fmtTick takes a locale. Replaced every toFixed() used for display (delta decomposition, synthesis average, weights total and weight badges).
+- Stale texts: the counts of indicators, Todd metrics and entities in the dictionaries are now {n} placeholders filled from the data; the hard-coded "about 50 / about 180 countries" sentence no longer quotes numbers.
+- dist.ts: Turbopack tracing warnings silenced with turbopackIgnore, build is warning-free.
+
+Stage Summary:
+- eslint 0, tsc 0, next build OK and warning-free; production server checked: unknown ids and routes answer 404, FR decimals are consistent.

@@ -5,6 +5,7 @@ import { RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { interpolate, useIndicatorLabel, useI18n } from "@/lib/toddlab/i18n";
+import { fmtDecimal } from "@/lib/toddlab/format";
 import type { ScoreEntityComponent } from "@/lib/toddlab/client";
 
 const MAX_WEIGHT = 20;
@@ -27,7 +28,7 @@ export function ScoreWeightsPanel({
   onReset: () => void;
   totalWeight: number;
 }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const indicatorLabel = useIndicatorLabel();
   const [showAll, setShowAll] = React.useState(false);
 
@@ -46,7 +47,7 @@ export function ScoreWeightsPanel({
       <div className="flex items-center justify-between gap-3">
         <span className="tnum text-sm font-medium">
           {interpolate(t((d) => d.score.weightsTotal), {
-            w: Number.isInteger(totalWeight) ? totalWeight : totalWeight.toFixed(1),
+            w: fmtDecimal(totalWeight, 1, lang, { trim: true }),
           })}
         </span>
         <Button variant="outline" size="sm" className="gap-1.5" onClick={onReset}>

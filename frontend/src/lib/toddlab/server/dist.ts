@@ -51,15 +51,15 @@ const cache = new Map<string, { mtimeMs: number; value: unknown }>();
 
 /** Read and parse a JSON file under data/dist (cached until it changes). */
 export function readDistJson<T>(relPath: string): T {
-  const abs = path.join(getDistDir(), relPath);
-  const { mtimeMs } = fs.statSync(abs);
+  const abs = path.join(/* turbopackIgnore: true */ getDistDir(), /* turbopackIgnore: true */ relPath);
+  const { mtimeMs } = fs.statSync(/* turbopackIgnore: true */ abs);
   const hit = cache.get(relPath);
   if (hit && hit.mtimeMs === mtimeMs) return hit.value as T;
-  const value = JSON.parse(fs.readFileSync(abs, "utf8")) as T;
+  const value = JSON.parse(fs.readFileSync(/* turbopackIgnore: true */ abs, "utf8")) as T;
   cache.set(relPath, { mtimeMs, value });
   return value;
 }
 
 export function distFileExists(relPath: string): boolean {
-  return fs.existsSync(path.join(getDistDir(), relPath));
+  return fs.existsSync(/* turbopackIgnore: true */ path.join(/* turbopackIgnore: true */ getDistDir(), /* turbopackIgnore: true */ relPath));
 }

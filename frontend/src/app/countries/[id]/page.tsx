@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { CountryView } from "@/components/country/country-view";
 import { getEntities } from "@/lib/toddlab/store";
 
@@ -18,6 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CountryProfilePage() {
+export default async function CountryProfilePage({ params }: Props) {
+  const { id } = await params;
+  if (!getEntities().some((e) => e.entity_id === id)) notFound();
   return <CountryView />;
 }

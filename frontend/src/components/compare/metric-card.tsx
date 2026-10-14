@@ -487,7 +487,7 @@ export function MetricCard({
                 tick={{ fontSize: 11 }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(v: number) => fmtTick(v, unit)}
+                tickFormatter={(v: number) => fmtTick(v, unit, lang)}
               />
               <Tooltip
                 cursor={{ fill: "var(--muted)", fillOpacity: 0.45 }}
@@ -616,7 +616,7 @@ export function MetricCard({
                 tick={{ fontSize: 11 }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(v: number) => fmtTick(v, unit)}
+                tickFormatter={(v: number) => fmtTick(v, unit, lang)}
               />
               <Tooltip
                 cursor={{ stroke: "var(--border)" }}

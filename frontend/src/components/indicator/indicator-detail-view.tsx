@@ -323,7 +323,7 @@ function DetailContent({
         />
 
         {/* 2 — Ranking + 3 — Series */}
-        <div className="grid gap-6 xl:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
           {/* At xl the ranking absolutely fills a wrapper that contributes no
               height of its own — the row is sized by the series card, so the
               ranking table grows/shrinks to keep both cards bottom-aligned. */}

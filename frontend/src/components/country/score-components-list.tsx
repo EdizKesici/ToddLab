@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ReliabilityBadge } from "@/components/shared/badges";
 import { interpolate, useIndicatorLabel, useI18n } from "@/lib/toddlab/i18n";
 import { useCatalog, type ScoreEntityComponent } from "@/lib/toddlab/client";
-import { fmtScore } from "@/lib/toddlab/format";
+import { fmtDecimal, fmtScore } from "@/lib/toddlab/format";
 import { cn } from "@/lib/utils";
 
 /**
@@ -74,7 +74,7 @@ export function ScoreComponentsList({
                     )}
                   </span>
                   <span className="tnum text-xs text-muted-foreground">
-                    ×{Number.isInteger(weight) ? weight : weight.toFixed(1)}
+                    ×{fmtDecimal(weight, 1, lang, { trim: true })}
                   </span>
                   {c.meta.transform === "log" && (
                     <Badge variant="outline" className="h-4 px-1.5 text-[10px] font-normal">

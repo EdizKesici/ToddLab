@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import IndicatorDetailView from "@/components/indicator/indicator-detail-view";
 import { INDICATOR_DESCRIPTIONS } from "@/lib/toddlab/i18n/descriptions";
 import { getCatalog } from "@/lib/toddlab/store";
@@ -22,6 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function IndicatorDetailPage() {
+export default async function IndicatorDetailPage({ params }: Props) {
+  const { id } = await params;
+  if (!getCatalog().some((i) => i.id === id)) notFound();
   return <IndicatorDetailView />;
 }

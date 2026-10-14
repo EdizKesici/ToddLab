@@ -60,14 +60,39 @@ export function fmtNumber(
   }
 }
 
+const decimalCache = new Map<string, Intl.NumberFormat>();
+
+/**
+ * The ONE way to print a plain decimal in the UI (never Number#toFixed, which
+ * always prints a dot). Fixed number of decimals, locale separator.
+ */
+export function fmtDecimal(
+  value: number | null | undefined,
+  digits: number,
+  locale: "fr" | "en" = "fr",
+  opts: { signed?: boolean; trim?: boolean } = {},
+): string {
+  if (value === null || value === undefined) return "";
+  const key = `${locale}|${digits}|${opts.signed ? 1 : 0}|${opts.trim ? 1 : 0}`;
+  let nf = decimalCache.get(key);
+  if (!nf) {
+    nf = new Intl.NumberFormat(locale === "en" ? "en-US" : "fr-FR", {
+      minimumFractionDigits: opts.trim ? 0 : digits,
+      maximumFractionDigits: digits,
+      signDisplay: opts.signed ? "exceptZero" : "auto",
+    });
+    decimalCache.set(key, nf);
+  }
+  return nf.format(value);
+}
+
 /** Compact axis tick formatter. */
-export function fmtTick(value: number, unit: string): string {
+export function fmtTick(value: number, unit: string, locale: "fr" | "en" = "fr"): string {
   if (unit === "persons") {
     if (Math.abs(value) >= 1_000_000) return `${(value / 1_000_000).toFixed(0)}M`;
     if (Math.abs(value) >= 1_000) return `${(value / 1_000).toFixed(0)}k`;
   }
-  if (Number.isInteger(value)) return String(value);
-  return String(Math.round(value * 100) / 100);
+  return fmtDecimal(Math.round(value * 100) / 100, 2, locale, { trim: true });
 }
 
 /** Base-100 index values: one decimal, unitless. */

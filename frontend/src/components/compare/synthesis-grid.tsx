@@ -40,7 +40,7 @@ import {
   useSeries,
   type SeriesPoint,
 } from "@/lib/toddlab/client";
-import { fmtNumber } from "@/lib/toddlab/format";
+import { fmtDecimal, fmtNumber } from "@/lib/toddlab/format";
 import {
   useEntityLabel,
   useI18n,
@@ -360,7 +360,7 @@ export function SynthesisGrid({
                         <TableCell className="text-right">
                           {avg !== null ? (
                             <span className="tnum text-sm font-semibold">
-                              {avg.toFixed(1)}
+                              {fmtDecimal(avg, 1, lang)}
                             </span>
                           ) : (
                             <span className="text-muted-foreground">-</span>

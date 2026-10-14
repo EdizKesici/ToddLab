@@ -10,7 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { PageHeader } from "@/components/shared/page-header";
 import { ErrorBlock, LoadingBlock } from "@/components/shared/states";
 import { useEntities, type EntityItem } from "@/lib/toddlab/client";
-import { useEntityLabel, useI18n } from "@/lib/toddlab/i18n";
+import { interpolate, useEntityLabel, useI18n } from "@/lib/toddlab/i18n";
 import { cn } from "@/lib/utils";
 
 function EntityCard({
@@ -119,7 +119,9 @@ export function CountriesView() {
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <PageHeader
         title={t((d) => d.countries.title)}
-        subtitle={t((d) => d.countries.subtitle)}
+        subtitle={interpolate(t((d) => d.countries.subtitle), {
+          n: data ? data.entities.length : "…",
+        })}
       >
         <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
           <div className="relative max-w-sm flex-1">

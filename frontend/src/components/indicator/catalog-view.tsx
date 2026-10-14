@@ -24,7 +24,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useCatalog } from "@/lib/toddlab/client";
-import { useFamilyLabel, useI18n, useIndicatorLabel } from "@/lib/toddlab/i18n";
+import { interpolate, useFamilyLabel, useI18n, useIndicatorLabel } from "@/lib/toddlab/i18n";
 import { cn } from "@/lib/utils";
 
 export function CatalogView() {
@@ -64,7 +64,9 @@ export function CatalogView() {
     <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
       <PageHeader
         title={t((d) => d.indicators.title)}
-        subtitle={t((d) => d.indicators.subtitle)}
+        subtitle={interpolate(t((d) => d.indicators.subtitle), {
+          n: data ? data.indicators.filter((i) => i.todd_core).length : "…",
+        })}
       />
 
       {/* Toolbar */}

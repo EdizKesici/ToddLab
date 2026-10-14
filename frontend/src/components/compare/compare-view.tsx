@@ -482,7 +482,7 @@ function CompareView() {
                 to={state.mode === "year" ? state.year : state.to}
               />
             )}
-            <div className="grid items-start gap-6 md:grid-cols-2">
+            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
               {state.metrics.map((id, i) => (
                 <MetricCard
                   key={id}

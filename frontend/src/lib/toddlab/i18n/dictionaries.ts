@@ -75,6 +75,13 @@ export const en = {
     showMore: "Show more",
     showLess: "Show less",
   },
+  notFound: {
+    title: "Page not found",
+    text: "This page does not exist, or the country or indicator you asked for is not in the dataset.",
+    home: "Back to home",
+    countries: "Browse countries",
+    indicators: "Browse indicators",
+  },
   home: {
     heroTitle: "Some data cannot lie.",
     heroDescription:
@@ -93,7 +100,7 @@ export const en = {
     countryTeaserText:
       "One page per country: every hard indicator, ranks, trends and historical warnings.",
     indicatorTeaserTitle: "Indicator pages",
-    indicatorTeaserText: "World maps, rankings and sources for each of the 27 metrics.",
+    indicatorTeaserText: "World maps, rankings and sources for each of the {n} metrics.",
     scoreTitle: "Civilizational Score",
     scoreText:
       "Two derived composites, official and modelled, on a frozen absolute scale: explicit weights, visible coverage, carried values labelled. A score is shown only where it is honestly computable.",
@@ -133,7 +140,7 @@ export const en = {
       "Coverage is above the threshold but nothing is fresh: the whole point rests on carried values. The ghost guard refuses it.",
     noScoreEntity: "This entity is not scored.",
     noScoreEntityWhy:
-      "The official score covers about 50 countries, the modelled one about 180. Unions, territories and some entities fall outside both.",
+      "The official score covers far fewer countries than the modelled one. Unions, territories and some entities fall outside both.",
     twoScoresNote:
       "Two separate calculations, never merged. If a country's official and modelled scores differ, that is normal: the gap comes from the sources used, not from an error.",
     carryRuleNote:
@@ -220,7 +227,7 @@ export const en = {
   countries: {
     title: "Countries & entities",
     subtitle:
-      "261 entities — present and vanished. Each profile gathers every hard indicator ToddLab carries.",
+      "{n} entities — present and vanished. Each profile gathers every hard indicator ToddLab carries.",
     searchPlaceholder: "Search a country or entity…",
     showAll: "Show all",
     withDataOnly: "With data only",
@@ -238,7 +245,7 @@ export const en = {
   indicators: {
     title: "Indicators",
     subtitle:
-      "The hard indicators of societies. 24 of them are metrics Emmanuel Todd actually used in his books.",
+      "The hard indicators of societies. {n} of them are metrics Emmanuel Todd actually used in his books.",
     searchPlaceholder: "Search an indicator…",
     familyAll: "All families",
     toddOnly: "In Todd's books only",
@@ -388,6 +395,13 @@ export const fr: Dictionary = {
     showMore: "Voir plus",
     showLess: "Voir moins",
   },
+  notFound: {
+    title: "Page introuvable",
+    text: "Cette page n'existe pas, ou le pays ou l'indicateur demandé ne fait pas partie du jeu de données.",
+    home: "Retour à l'accueil",
+    countries: "Parcourir les pays",
+    indicators: "Parcourir les indicateurs",
+  },
   home: {
     heroTitle: "Certaines données ne peuvent pas mentir.",
     heroDescription:
@@ -407,7 +421,7 @@ export const fr: Dictionary = {
       "Une page par pays : tous les indicateurs durs, les rangs, les tendances et les avertissements historiques.",
     indicatorTeaserTitle: "Pages indicateurs",
     indicatorTeaserText:
-      "Cartes mondiales, classements et sources pour chacune des 27 métriques.",
+      "Cartes mondiales, classements et sources pour chacune des {n} métriques.",
     scoreTitle: "Score civilisationnel",
     scoreText:
       "Deux composites dérivés, officiel et modélisé, sur une échelle absolue gelée : poids explicites, couverture visible, valeurs reportées étiquetées. Un score n'est montré que s'il est honnêtement calculable.",
@@ -447,7 +461,7 @@ export const fr: Dictionary = {
       "La couverture est au-dessus du seuil mais rien n'est frais : tout repose sur des valeurs reportées. Le garde-fou fantôme refuse ce point.",
     noScoreEntity: "Cette entité n'est pas scorée.",
     noScoreEntityWhy:
-      "Le score officiel couvre une cinquantaine de pays, le modélisé environ 180. Unions, territoires et certaines entités sortent des deux.",
+      "Le score officiel couvre beaucoup moins de pays que le modélisé. Unions, territoires et certaines entités sortent des deux.",
     twoScoresNote:
       "Deux calculs séparés, jamais mélangés. Si les scores officiel et modélisé d'un même pays sont différents, c'est normal : l'écart vient des sources utilisées, pas d'une erreur.",
     carryRuleNote:
@@ -534,7 +548,7 @@ export const fr: Dictionary = {
   countries: {
     title: "Pays & entités",
     subtitle:
-      "261 entités, présentes et disparues. Chaque profil rassemble tous les indicateurs durs de ToddLab.",
+      "{n} entités, présentes et disparues. Chaque profil rassemble tous les indicateurs durs de ToddLab.",
     searchPlaceholder: "Rechercher un pays ou une entité…",
     showAll: "Tout afficher",
     withDataOnly: "Avec données uniquement",
@@ -552,7 +566,7 @@ export const fr: Dictionary = {
   indicators: {
     title: "Indicateurs",
     subtitle:
-      "Les indicateurs durs des sociétés. 24 d'entre eux sont des métriques qu'Emmanuel Todd a réellement utilisées dans ses livres.",
+      "Les indicateurs durs des sociétés. {n} d'entre eux sont des métriques qu'Emmanuel Todd a réellement utilisées dans ses livres.",
     searchPlaceholder: "Rechercher un indicateur…",
     familyAll: "Toutes les familles",
     toddOnly: "Utilisées dans les livres de Todd",
