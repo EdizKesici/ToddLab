@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteUrl } from "@/lib/site-url";
 import { getRequestLang } from "@/lib/toddlab/i18n/server";
 
@@ -41,6 +42,14 @@ export const metadata: Metadata = {
     "data comparison",
   ],
   authors: [{ name: "Ediz Kesici" }],
+  // Each page canonicalises to its own URL (resolved against metadataBase), so
+  // query strings such as /score?s=modelled&c=... never compete with the page.
+  alternates: { canonical: "./" },
+  // Google Search Console ownership: set GOOGLE_SITE_VERIFICATION to the token
+  // of the "HTML tag" method; nothing is rendered when it is unset.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   openGraph: {
     // No title/description here: pages inherit their own metadata into the
     // OG tags — forcing them at the root would freeze og:title to "ToddLab".
@@ -69,6 +78,18 @@ export default async function RootLayout({
           <SiteFooter />
         </Providers>
         <Toaster />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "ToddLab",
+            url: siteUrl(),
+            description:
+              "Compare countries on hard social indicators with full provenance, following the method of Emmanuel Todd.",
+            inLanguage: ["en", "fr"],
+            sameAs: ["https://github.com/EdizKesici/ToddLab"],
+          }}
+        />
       </body>
     </html>
   );
