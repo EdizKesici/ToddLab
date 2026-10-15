@@ -159,10 +159,10 @@ export const en = {
     deltaTo: "To",
     deltaPoints: "points",
     deltaComponents: "{n} common components",
-    deltaWeightShare: "{p}% of the score's weight",
+    deltaWeightShare: "{p}% of the score's components",
     deltaRefusedEmpty: "The two years share no comparable component.",
     deltaRefusedWeight:
-      "The two years do not overlap enough to compare: {p}% of common weight, below the 50% threshold. Refusal is information, not an error.",
+      "The two years do not overlap enough to compare: {p}% of common components, below the 50% threshold. Refusal is information, not an error.",
     deltaExclusionNote:
       "Components resting on the same observation at both dates are excluded: their zero term would damp the change.",
     decomposition: "Additive decomposition",
@@ -191,7 +191,7 @@ export const en = {
     compareGap: "Gap",
     compareNotComparable: "Not comparable",
     compareLegendShade:
-      "Shaded years: the countries share less than {pct}% of the scored weight, so their gap compares different components.",
+      "Shaded years: the countries share less than {pct}% of the scored components, so their gap compares different components.",
     compareCommon: "Components in common",
     compareGapAt: "Gap in {year}",
     compareGapNotComparable: "not comparable that year",
@@ -516,10 +516,10 @@ export const fr: Dictionary = {
     deltaTo: "À",
     deltaPoints: "points",
     deltaComponents: "{n} composantes communes",
-    deltaWeightShare: "{p} % du poids du score",
+    deltaWeightShare: "{p} % des composantes du score",
     deltaRefusedEmpty: "Les deux années n'ont aucune composante comparable en commun.",
     deltaRefusedWeight:
-      "Les deux années ne se recoupent pas assez pour être comparées : {p} % de poids commun, sous le seuil de 50 %. Le refus est une information, pas une erreur.",
+      "Les deux années ne se recoupent pas assez pour être comparées : {p} % de composantes communes, sous le seuil de 50 %. Le refus est une information, pas une erreur.",
     deltaExclusionNote:
       "Les composantes qui reposent sur la même observation aux deux dates sont exclues : leur terme nul amortirait le changement.",
     decomposition: "Décomposition additive",
@@ -548,7 +548,7 @@ export const fr: Dictionary = {
     compareGap: "Écart",
     compareNotComparable: "Non comparable",
     compareLegendShade:
-      "Années grisées : les pays partagent moins de {pct} % du poids noté, leur écart compare donc des composantes différentes.",
+      "Années grisées : les pays partagent moins de {pct} % des composantes notées, leur écart compare donc des composantes différentes.",
     compareCommon: "Composantes en commun",
     compareGapAt: "Écart en {year}",
     compareGapNotComparable: "non comparable cette année-là",

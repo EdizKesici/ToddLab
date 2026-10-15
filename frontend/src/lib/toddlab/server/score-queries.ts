@@ -1,7 +1,7 @@
 import "server-only";
 import { getCatalog } from "../store";
 import { getScoreFile, getScoreMeta } from "../score-store";
-import { deltaBetweenYears, type ScoreCompSeries } from "../score-core";
+import { deltaBetweenYears, unitWeightOf, type ScoreCompSeries } from "../score-core";
 import {
   STORED_PRESETS,
   type ScoreCompareYear,
@@ -241,8 +241,9 @@ export function buildCompareComparability(
     let wAny = 0;
     for (const k of keys) {
       const present = scored.filter((id) => file.normalised[k]?.[id]?.[y] !== undefined).length;
-      if (present > 0) wAny += weights[k];
-      if (present === scored.length) wCommon += weights[k];
+      // components are COUNTED (decision 28), whatever the preset's weights
+      if (present > 0) wAny += unitWeightOf(k);
+      if (present === scored.length) wCommon += unitWeightOf(k);
     }
     const share = wAny > 0 ? wCommon / wAny : 0;
     out.push({

@@ -24,7 +24,7 @@
 # DECISIONS (Ediz's, ADR-0011 §Decision): one source per component for all
 # countries and years, never mixed within a component; absolute scale with
 # fixed p1/p99 bounds (frozen, versioned; log for the very skewed); the
-# fertility target 2.1; coverage 0.60; delta needs 0.50 common weight
+# fertility target 2.1; coverage 0.50 (share of components, decision 28); delta needs 0.50 common components
 # computed on components whose UNDERLYING OBSERVATION differs between the
 # two dates (v28 amendment — same-observation components would damp the
 # delta artificially); road mortality per-vehicle enters the official score
@@ -64,7 +64,7 @@
 version: "1"
 bounds_from_year: 1990
 percentiles: [0.01, 0.99]
-coverage_threshold: 0.60
+coverage_threshold: 0.50
 delta_min_common_weight: 0.50
 fertility_target: 2.1
 rounding: 2

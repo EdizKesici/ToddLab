@@ -50,6 +50,16 @@ export function roundTo(x: number, decimals: number): number {
   return sign * nearest;
 }
 
+/**
+ * The weight a component has when components are COUNTED (decision 28): 1 per
+ * indicator, 0.5 for each sex face of a sex-split indicator. Coverage and the
+ * common-component share use it, so the weighting (Egal, Todd, custom) changes
+ * the mean but never which countries are scored.
+ */
+export function unitWeightOf(key: string): number {
+  return key.endsWith("/male") || key.endsWith("/female") ? 0.5 : 1;
+}
+
 export function ageOf(comp: ScoreCompSeries, year: number): number {
   return comp.age[String(year)] ?? 0;
 }
@@ -79,23 +89,26 @@ export function scoreAtYear(
   year: number,
   opts: { coverageThreshold: number },
 ): ScoreAtYear | null {
-  let sumAll = 0;
+  let unitAll = 0;
+  let unitAvail = 0;
   let sumAvail = 0;
   let weighted = 0;
   let n = 0;
   let nFresh = 0;
   for (const c of comps) {
     if (c.weight <= 0) continue; // outside the preset's metric set (v30: Todd-only presets)
-    sumAll += c.weight;
+    const u = unitWeightOf(c.key);
+    unitAll += u;
     const v = c.normalised[String(year)];
     if (v === undefined) continue;
     n++;
+    unitAvail += u;
     sumAvail += c.weight;
     weighted += c.weight * v;
     if (ageOf(c, year) === 0) nFresh++;
   }
-  if (n === 0 || sumAll === 0) return null;
-  const coverage = sumAvail / sumAll;
+  if (n === 0 || unitAll === 0) return null;
+  const coverage = unitAvail / unitAll; // share of components, not of weight (decision 28)
   const raw = weighted / sumAvail;
   return {
     score: roundTo(raw, 2),
@@ -136,20 +149,22 @@ export function deltaBetweenYears(
   y2: number,
   opts: { minCommonWeight: number },
 ): DeltaResult {
-  let sumAll = 0;
+  let unitAll = 0;
+  let unitCommon = 0;
   let sumCommon = 0;
   let weightedDelta = 0;
   const decomposition: DeltaTerm[] = [];
 
   for (const c of comps) {
     if (c.weight <= 0) continue; // outside the preset's metric set (v30: Todd-only presets)
-    sumAll += c.weight;
+    unitAll += unitWeightOf(c.key);
     const v1 = c.normalised[String(y1)];
     const v2 = c.normalised[String(y2)];
     if (v1 === undefined || v2 === undefined) continue;
     const obs1 = obsYearOf(c, y1);
     const obs2 = obsYearOf(c, y2);
     if (obs1 === obs2) continue; // same underlying observation — excluded (v28)
+    unitCommon += unitWeightOf(c.key);
     sumCommon += c.weight;
     weightedDelta += c.weight * (v2 - v1);
     decomposition.push({
@@ -179,7 +194,7 @@ export function deltaBetweenYears(
   }
   decomposition.sort((a, b) => Math.abs(b.term) - Math.abs(a.term));
 
-  const share = roundTo(sumCommon / sumAll, 4);
+  const share = roundTo(unitCommon / unitAll, 4); // share of components (decision 28)
   if (share < opts.minCommonWeight) {
     return {
       refused: true,

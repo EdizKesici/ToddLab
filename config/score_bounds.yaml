@@ -1,7 +1,7 @@
 bounds:
   modelled:
     birth_rate_fertility/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 1.2487535788317012
       lo: 0.0
@@ -11,7 +11,7 @@ bounds:
       source: worldbank:SP.DYN.TFRT.IN
       source_class: modelled
     cirrhosis_alcohol_mortality/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 56.728
       lo: 1.9
@@ -21,7 +21,7 @@ bounds:
       source: canonical
       source_class: canonical
     hiv_prevalence_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 0.00045
       hi: 3.170647837547242
       lo: -7.706262975199909
@@ -31,7 +31,7 @@ bounds:
       source: canonical
       source_class: canonical
     homicide_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 0.2619783072
       hi: 4.0994260736636
       lo: -1.3394935755954616
@@ -41,7 +41,7 @@ bounds:
       source: owid:homicide-rate-unodc
       source_class: modelled
     industrial_employment_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 39.814063452247595
       lo: 2.5812560902673214
@@ -51,7 +51,7 @@ bounds:
       source: worldbank:SL.IND.EMPL.ZS
       source_class: modelled
     infant_mortality/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 2.023014275
       hi: 4.856645474779177
       lo: 0.7049938005795621
@@ -61,7 +61,7 @@ bounds:
       source: owid:infant-mortality
       source_class: modelled
     life_expectancy/female:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 86.45652000000001
       lo: 46.44808999999999
@@ -71,7 +71,7 @@ bounds:
       source: worldbank:SP.DYN.LE00.FE.IN
       source_class: modelled
     life_expectancy/male:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 81.7
       lo: 42.78838
@@ -81,7 +81,7 @@ bounds:
       source: worldbank:SP.DYN.LE00.MA.IN
       source_class: modelled
     life_expectancy_60/female:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 27.188469840699998
       lo: 13.6197092417
@@ -91,7 +91,7 @@ bounds:
       source: who_gho:WHOSIS_000015
       source_class: modelled
     life_expectancy_60/male:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 23.7973120277
       lo: 10.6614996006
@@ -101,7 +101,7 @@ bounds:
       source: who_gho:WHOSIS_000015
       source_class: modelled
     maternal_mortality_ratio/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 3.0
       hi: 7.269686339041811
       lo: 1.0986122886681098
@@ -111,7 +111,7 @@ bounds:
       source: worldbank:SH.STA.MMRT
       source_class: modelled
     math_test_scores/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 561.7232368
       lo: 338.1354024
@@ -121,7 +121,7 @@ bounds:
       source: canonical
       source_class: canonical
     mean_years_of_schooling/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 13.800162801742557
       lo: 1.8716737926006317
@@ -131,7 +131,7 @@ bounds:
       source: canonical
       source_class: canonical
     obesity_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 67.42516051999999
       lo: 0.6082316296
@@ -141,7 +141,7 @@ bounds:
       source: canonical
       source_class: canonical
     reading_test_scores/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 543.724148
       lo: 339.6164659
@@ -151,7 +151,7 @@ bounds:
       source: canonical
       source_class: canonical
     science_test_scores/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 554.0880794000001
       lo: 354.80805580000003
@@ -161,7 +161,7 @@ bounds:
       source: canonical
       source_class: canonical
     secondary_education_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 94.36143945121897
       lo: 4.672723445892334
@@ -171,7 +171,7 @@ bounds:
       source: unesco_uis:EA.3T8.AG25T99
       source_class: modelled
     suicide_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 34.85291230469999
       lo: 0.61489813347
@@ -181,7 +181,7 @@ bounds:
       source: who_gho:SDGSUICIDE
       source_class: modelled
     tertiary_education_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 52.38271530151367
       lo: 0.9103851568152412
@@ -191,7 +191,7 @@ bounds:
       source: unesco_uis:EA.5T8.AG25T99
       source_class: modelled
     top_income_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 33.436800000000005
       lo: 5.948300000000001
@@ -201,7 +201,7 @@ bounds:
       source: canonical
       source_class: canonical
     unemployment_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 31.05229999999991
       lo: 0.4
@@ -212,7 +212,7 @@ bounds:
       source_class: modelled
   official:
     abortion_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 1850.3666000000028
       lo: 0.0
@@ -222,7 +222,7 @@ bounds:
       source: canonical
       source_class: canonical
     birth_rate_fertility/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 0.9902959932984179
       lo: 0.0
@@ -232,7 +232,7 @@ bounds:
       source: canonical
       source_class: canonical
     cirrhosis_alcohol_mortality/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 56.728
       lo: 1.9
@@ -242,7 +242,7 @@ bounds:
       source: canonical
       source_class: canonical
     homicide_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 0.2
       hi: 3.810942048015117
       lo: -1.6094379124341003
@@ -252,7 +252,7 @@ bounds:
       source: canonical
       source_class: canonical
     illegitimate_births/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 64.17599999999997
       lo: 2.2
@@ -262,7 +262,7 @@ bounds:
       source: canonical
       source_class: canonical
     industrial_employment_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 30.808999999999994
       lo: 8.291
@@ -272,7 +272,7 @@ bounds:
       source: canonical
       source_class: canonical
     infant_mortality/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 1.72435023502
       hi: 3.783040158007027
       lo: 0.5452024373860596
@@ -282,7 +282,7 @@ bounds:
       source: canonical
       source_class: canonical
     life_expectancy/female:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 87.1344
       lo: 56.114000000000004
@@ -292,7 +292,7 @@ bounds:
       source: canonical
       source_class: canonical
     life_expectancy/male:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 82.05780927759199
       lo: 51.7
@@ -302,7 +302,7 @@ bounds:
       source: canonical
       source_class: canonical
     life_expectancy_60/female:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 29.177200000000003
       lo: 15.604
@@ -312,7 +312,7 @@ bounds:
       source: canonical
       source_class: canonical
     life_expectancy_60/male:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 24.842
       lo: 13.585172219722743
@@ -322,7 +322,7 @@ bounds:
       source: canonical
       source_class: canonical
     maternal_mortality_ratio/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 1.0396386
       hi: 4.873425152891094
       lo: 0.042225899634557466
@@ -332,7 +332,7 @@ bounds:
       source: canonical
       source_class: canonical
     math_test_scores/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 561.7232368
       lo: 338.1354024
@@ -342,7 +342,7 @@ bounds:
       source: canonical
       source_class: canonical
     reading_test_scores/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 543.724148
       lo: 339.6164659
@@ -352,7 +352,7 @@ bounds:
       source: canonical
       source_class: canonical
     road_accident_mortality_per_vehicle/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: 0.27890970416
       hi: 2.2843541167453423
       lo: -1.2768671905474078
@@ -362,7 +362,7 @@ bounds:
       source: canonical
       source_class: canonical
     science_test_scores/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 554.0880794000001
       lo: 354.80805580000003
@@ -372,7 +372,7 @@ bounds:
       source: canonical
       source_class: canonical
     secondary_education_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 75.2
       lo: 10.798
@@ -382,7 +382,7 @@ bounds:
       source: canonical
       source_class: canonical
     suicide_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 41.19000000000001
       lo: 0.7
@@ -392,7 +392,7 @@ bounds:
       source: canonical
       source_class: canonical
     tertiary_education_share/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 51.504
       lo: 8.299000000000001
@@ -402,7 +402,7 @@ bounds:
       source: canonical
       source_class: canonical
     unemployment_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 27.833999999999993
       lo: 2.6830000000000003
@@ -412,7 +412,7 @@ bounds:
       source: canonical
       source_class: canonical
     youth_suicide_rate/both:
-      bounds_version: 2026-10-14.10
+      bounds_version: 2026-10-15.1
       floor: null
       hi: 19.40079999999999
       lo: 1.5044
@@ -422,11 +422,11 @@ bounds:
       source: canonical
       source_class: canonical
 meta:
-  bounds_version: 2026-10-14.10
-  generated: '2026-10-14'
+  bounds_version: 2026-10-15.1
+  generated: '2026-10-15'
   method: p1/p99 (percentiles key of config/score.yaml) over all non-null country-years of the retained
     source since bounds_from_year (1990); floor = p1 of the strictly positive sample for log components;
     target lo = 0; the source per (score, component) is the §4.4 selection frozen at generation time —
     rebuild reads this file and never recomputes
-  score_config_sha256: 50132b4645eddcfc4fdfcb5321da6adaa8236c7aa2e0844401f299d4ea22fa45
+  score_config_sha256: c46ca783bcc881206e4574a8d2a8977fe69e8c67eb531dd191e6a64f0b514a64
   score_config_version: '1'

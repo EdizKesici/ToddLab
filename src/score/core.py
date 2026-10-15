@@ -468,15 +468,27 @@ def _ordered_sum(values) -> float:
     return total
 
 
+def unit_weight(key: tuple) -> float:
+    """The weight a component has when components are COUNTED (v30, decision 28):
+    1 per indicator, 0.5 for each sex face of a sex-split indicator - the 'equal'
+    preset's weights, whatever the preset in use."""
+    return 0.5 if key[1] in ("male", "female") else 1.0
+
+
+def unit_total(weights: dict) -> float:
+    """Counted size of the preset's metric set: the components with weight > 0."""
+    return sum(unit_weight(k) for k, w in weights.items() if w > 0)
+
+
 def aggregate(
     normalised: dict,  # ComponentKey -> entity -> year -> stored value
     weights: dict,  # ComponentKey -> weight
 ) -> dict:
     """entity -> year(str) -> [score, coverage] over the components with
     a stored value that year. score = weighted mean of STORED values;
-    coverage = available weight / total weight (exact — the weights are
-    exact, only the normalised values are rounded)."""
-    total_w = sum(weights.values())
+    coverage = the share of COMPONENTS available (equal weights, decision 28):
+    the weighting changes the mean, never which countries are scored."""
+    total_u = unit_total(weights)
     by_ey: dict = {}
     for key in sorted(normalised):
         w = weights[key]
@@ -484,14 +496,15 @@ def aggregate(
             continue  # v30: a zero-weight component (outside the preset's metric set) takes no part
         for entity, years in normalised[key].items():
             for year, value in years.items():
-                by_ey.setdefault(entity, {}).setdefault(year, []).append((w, value))
+                by_ey.setdefault(entity, {}).setdefault(year, []).append((w, value, unit_weight(key)))
     out: dict = {}
     for entity in sorted(by_ey):
         for year in sorted(by_ey[entity]):
             pairs = by_ey[entity][year]
-            w_sum = sum(w for w, _ in pairs)
-            score = _ordered_sum(w * v for w, v in pairs) / w_sum
-            out.setdefault(entity, {})[str(year)] = [round(score, 2), round(w_sum / total_w, 4)]
+            w_sum = sum(w for w, _, _ in pairs)
+            u_sum = sum(u for _, _, u in pairs)  # multiples of 0.5: exact
+            score = _ordered_sum(w * v for w, v, _ in pairs) / w_sum
+            out.setdefault(entity, {})[str(year)] = [round(score, 2), round(u_sum / total_u, 4)]
     return out
 
 
@@ -504,16 +517,17 @@ def score_and_coverage(
     """The single (score, coverage) pair for one entity-year — the
     verifier's independent recomputation path and the golden vectors'
     generator."""
-    total_w = sum(weights.values())
+    total_u = unit_total(weights)
     pairs = []
     for key in sorted(normalised):
         value = normalised[key].get(entity, {}).get(year)
         if value is not None and weights[key] > 0:
-            pairs.append((weights[key], value))
+            pairs.append((weights[key], value, unit_weight(key)))
     if not pairs:
         return None
-    w_sum = sum(w for w, _ in pairs)
-    return (round(_ordered_sum(w * v for w, v in pairs) / w_sum, 2), round(w_sum / total_w, 4))
+    w_sum = sum(w for w, _, _ in pairs)
+    u_sum = sum(u for _, _, u in pairs)
+    return (round(_ordered_sum(w * v for w, v, _ in pairs) / w_sum, 2), round(u_sum / total_u, 4))
 
 
 def delta(
@@ -554,9 +568,9 @@ def delta(
             common.append((key, s[year1], s[year2]))
     if not common:
         return None
-    total_w = sum(weights.values())
+    total_u = unit_total(weights)
+    share = sum(unit_weight(k) for k, _, _ in common) / total_u  # share of COMPONENTS (decision 28)
     w_common = sum(weights[k] for k, _, _ in common)
-    share = w_common / total_w
     if share < delta_min_common_weight:
         return {
             "refused": True,

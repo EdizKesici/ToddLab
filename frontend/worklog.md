@@ -587,3 +587,16 @@ Work Log:
 
 Stage Summary:
 - 495 tests, tsc 0, eslint 0, build OK; frontend still reproduces 24,067 of 24,067 stored scores exactly.
+
+---
+Task ID: 29
+Agent: Claude Code (Hermes)
+Task: Egal and Todd must score the same countries (decision 28).
+
+Work Log:
+- Cause of the 90 -> 139 jump: coverage was a share of the preset's weight; fixed by counting components (unit weights) and lowering the threshold to 0.50 for every calculation.
+- Backend: `unit_weight`, `unit_total`, coverage and delta share by components; bounds refrozen; tests for the invariant (Egal and Todd, Todd-only pair, same country-years in the shipped files).
+- Frontend: score-core `unitWeightOf` in coverage and delta share, comparability and movers on the same rule, wording of the delta refusal and the shaded-years legend.
+
+Stage Summary:
+- 497 tests, tsc 0; the frontend reproduces 26,646 of 26,646 stored scores and the 24 golden vectors exactly.

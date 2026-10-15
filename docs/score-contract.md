@@ -80,7 +80,7 @@ and `golden_vectors.json` is what to unit-test against.
     rests on.
   - `scores`: per preset (`equal`, `todd`, `equal_todd_only`, `todd_todd_only`), `entity_id -> year ->
     [score, coverage]`, EMITTED ONLY where `coverage >=
-    coverage_threshold` (0.60) AND at least one component is FRESH
+    coverage_threshold` (0.50) AND at least one component is FRESH
     (age 0) — the ghost guard. No year beyond `max_obs_year` exists.
 - `data/dist/score/golden_vectors.json` — ≤ 20 hand-checkable cases
   (score/coverage, deltas accepted and refused, the split-sex case, the
@@ -107,7 +107,11 @@ age(Y)   = Y - obs_year          (0 = fresh; recorded in `age` when >= 1)
 - `max_obs_year` (in `meta.json`, 2025 for both scores today) is the
   greatest year with a real observation in any retained source of the
   score — no score year exists beyond it.
-- Coverage counts a carried component as available (its full weight).
+- Coverage counts a carried component as available. Since decision 28 (v30)
+  coverage is the share of COMPONENTS available (each indicator 1, each sex face
+  of a sex-split indicator 0.5: the 'equal' weights), never of the preset's
+  weight, so Egal, Todd and custom weights score exactly the same
+  country-years; the weighting only changes the mean.
 - A score EXISTS iff `coverage >= coverage_threshold` AND at least one
   component is fresh at `Y` (the ghost guard: a country-year living
   entirely on carried values is refused).
@@ -119,7 +123,9 @@ age(Y)   = Y - obs_year          (0 = fresh; recorded in `age` when >= 1)
 ```
 score(e, y)   = sum(w_c * n_c(e, y)) / sum(w_c)        over components c
                 with a resolved value for (e, y)
-coverage(e,y) = sum(w_c available) / sum(w_c all components of the score)
+coverage(e,y) = sum(u_c available) / sum(u_c all components of the score)
+                u_c = 1 per indicator, 0.5 per sex face (decision 28); only
+                components with w_c > 0 are counted
 ```
 
 - `n_c` values come from `normalised` (the stored, resolved values).
@@ -143,11 +149,12 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 - The exclusion is the v28 amendment: a component resting on the SAME
   observation at both dates contributes a zero term that would damp the
   delta and dilute the common weight — it must not be in C.
-- Display: `|C|`, the common-weight share `sum_C(w_c) /
-  sum(w_c all)`, and each component's term `w_c * (n_c(y2) -
+- Display: `|C|`, the common-component share `sum_C(u_c) /
+  sum(u_c all)` (u_c: 1 per indicator, 0.5 per sex face, decision 28; the
+  field keeps its historical name `common_weight_share`), and each component's term `w_c * (n_c(y2) -
   n_c(y1)) / sum_C(w)` (the additive decomposition — arithmetic means
   give you this for free; it is why they were chosen).
-- REFUSE when `C` is empty or the common-weight share is below
+- REFUSE when `C` is empty or the common-component share is below
   `delta_min_common_weight` (0.50). Refusal is information ("the two
   years do not overlap enough to compare"), display it as such.
 
@@ -193,8 +200,8 @@ weights must skip `weight <= 0` the same way.
 
 - **Gaps are still visible**: a gap longer than 3 years is a gap — no
   smoothed curve, no interpolated year, no carry beyond
-  `max_age_years`. A country-year with coverage < 0.60 shows its
-  components, not a score; a ghost (coverage >= 0.60, nothing fresh)
+  `max_age_years`. A country-year with coverage < 0.50 shows its
+  components, not a score; a ghost (coverage >= 0.50, nothing fresh)
   shows nothing at all.
 - **Carried values are labelled, never disguised**: when `age > 0`,
   display the badge **"data from YYYY"** (YYYY = `year - age`) next to

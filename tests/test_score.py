@@ -1567,3 +1567,43 @@ def test_weighted_sum_is_a_plain_left_to_right_addition():
     for v in (0.1, 0.2, 0.3):
         plain += v
     assert _ordered_sum([0.1, 0.2, 0.3]) == plain
+
+
+def test_coverage_counts_components_not_weights_decision_28():
+    # Egal and Todd (and any custom weighting) score exactly the same country-years:
+    # the weighting changes the mean, never the coverage.
+    from src.score.core import aggregate, delta, unit_total, unit_weight
+
+    keys = [("a", "both"), ("b", "both"), ("c", "both"), ("d", "male"), ("d", "female")]
+    normalised = {
+        ("a", "both"): {"x": {2020: 80.0}},
+        ("b", "both"): {"x": {2020: 60.0}},
+        ("c", "both"): {},
+        ("d", "male"): {"x": {2020: 40.0}},
+        ("d", "female"): {"x": {2020: 50.0}},
+    }
+    equal = {k: (0.5 if k[1] != "both" else 1.0) for k in keys}
+    heavy = {("a", "both"): 16.0, ("b", "both"): 1.0, ("c", "both"): 1.0, ("d", "male"): 0.5, ("d", "female"): 0.5}
+    assert unit_weight(("d", "male")) == 0.5 and unit_total(equal) == unit_total(heavy) == 4.0
+    cov_equal = aggregate(normalised, equal)["x"]["2020"][1]
+    cov_heavy = aggregate(normalised, heavy)["x"]["2020"][1]
+    assert cov_equal == cov_heavy == round(3.0 / 4.0, 4)
+    # the mean still follows the weights
+    assert aggregate(normalised, equal)["x"]["2020"][0] != aggregate(normalised, heavy)["x"]["2020"][0]
+    # a zero-weight component is outside the counted set
+    todd_only = {**equal, ("b", "both"): 0.0}
+    assert unit_total(todd_only) == 3.0
+
+
+def test_shipped_scores_have_the_same_country_years_for_every_weighting_decision_28():
+    import json
+
+    dist = Path(__file__).resolve().parents[1] / "data" / "dist" / "score"
+    for score in ("official", "modelled"):
+        scores = json.loads((dist / f"{score}.json").read_text(encoding="utf-8"))["scores"]
+
+        def years(preset):
+            return {(e, y) for e, ys in scores[preset].items() for y in ys}
+
+        assert years("equal") == years("todd"), score
+        assert years("equal_todd_only") == years("todd_todd_only"), score
