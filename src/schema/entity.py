@@ -42,7 +42,11 @@ class SourceIds(BaseModel):
     distinguished from a missing field, which would be a config error.
     """
 
-    owid: str | None = None
+    # A LIST when the same entity is printed under several names across the
+    # OWID-served datasets (v30: NCD-RisC prints "Congo, DRC"). A bare string
+    # is one name. Never a guessed alias: each extra name is verified against
+    # the live file.
+    owid: str | list[str] | None = None
     worldbank: str | None = None
     who_gho: str | None = None
     # Entity name AS PRINTED in UN Demographic Yearbook tables, when it
@@ -55,7 +59,7 @@ class SourceIds(BaseModel):
     # guessed alias.
     un_dyb: str | list[str] | None = None
 
-    @field_validator("un_dyb", mode="before")
+    @field_validator("owid", "un_dyb", mode="before")
     @classmethod
     def _normalize_un_dyb_aliases(cls, value):
         # Backward-compatible normalization: a bare string becomes a
@@ -111,7 +115,9 @@ class EntityRegistry:
     def __init__(self, entities: list[Entity]):
         self.entities = entities
         self._by_id = {e.entity_id: e for e in entities}
-        self._by_owid_name = {e.source_ids.owid: e for e in entities if e.source_ids.owid}
+        self._by_owid_name = {
+            alias: e for e in entities for alias in (e.source_ids.owid or [])
+        }
         # un_dyb aliases (normalized to a list by SourceIds): each printed
         # name of an entity indexes to it.
         self._by_dyb_name = {

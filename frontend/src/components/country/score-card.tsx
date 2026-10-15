@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { CalendarClock, ChevronDown, Scale, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { CalendarClock, ChevronDown, GitCompareArrows, Scale, Sparkles } from "lucide-react";
 import {
   CartesianGrid,
   Line,
@@ -267,6 +268,19 @@ export function ScoreCard({ entityId }: { entityId: string }) {
               )}
             </div>
           </div>
+
+          <Link
+            href={`/score?${new URLSearchParams({
+              s: effectiveScore ?? "official",
+              p: preset === "custom" ? lastBasePreset : preset,
+              ...(preset !== "custom" && scope === "todd" ? { m: "todd" } : {}),
+              c: entityId,
+            }).toString()}#compare`}
+            className="inline-flex w-fit items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <GitCompareArrows className="h-3.5 w-3.5 text-primary" aria-hidden />
+            {t((d) => d.score.compareFromCountry)}
+          </Link>
 
           <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground">
             {effectiveScore === "official"

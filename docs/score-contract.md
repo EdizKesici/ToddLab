@@ -268,3 +268,24 @@ weights must skip `weight <= 0` the same way.
 - 4 ghost country-years in 2025 official (australia, canada, chile,
   costa_rica): fertility coverage arrived for costa_rica, nothing
   fresh did — the guard holds.
+
+### Comparing countries and ranking the movers (v30, decision 26)
+
+- **Comparability of a country comparison.** For each year where at least two
+  of the compared countries have an emitted score, the web app flags whether
+  they share enough of the scored weight: the weight of the components resolved
+  for EVERY scored country over the weight of those resolved for ANY of them.
+  Below `delta_min_common_weight` (0.50, the contract's own threshold for a
+  delta) the gap compares different components and is shaded and labelled "not
+  comparable". It is read from the stored normalised values; nothing is
+  recomputed. The gap shown is the one of the latest year where every selected
+  country is scored.
+- **Official and modelled side by side** is a view of two independent queries,
+  never a merged series.
+- **Movers.** `/api/score/movers` ranks every country scored in BOTH years of a
+  chosen period by the delta of this contract (change over the components that
+  rest on a different observation in both years, refused below the
+  common-weight threshold; the refused count is reported). The delta can differ
+  from the difference of the two published scores when their component sets
+  differ; the web app flags those rows ("different components in the two
+  years") instead of hiding it.

@@ -141456,7 +141456,7 @@
       "citation": "Our World in Data, grapher dataset 'average-height-of-men-by-year-of-birth'",
       "url": "https://ourworldindata.org/grapher/average-height-of-men-by-year-of-birth",
       "license": "CC-BY-4.0",
-      "n_points": 1488,
+      "n_points": 1499,
       "data": [
         {
           "entity_id": "afghanistan",
@@ -142922,6 +142922,61 @@
           "entity_id": "congo",
           "year": 1980,
           "value": 168.369
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1810,
+          "value": 163.3
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1870,
+          "value": 165.734
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1880,
+          "value": 163.2
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1890,
+          "value": 162.609
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1910,
+          "value": 165.3
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1920,
+          "value": 163.146
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1930,
+          "value": 167.308
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1950,
+          "value": 168.469
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1960,
+          "value": 168.32
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1970,
+          "value": 169.049
+        },
+        {
+          "entity_id": "congo_the_democratic_republic_of_the",
+          "year": 1980,
+          "value": 167.542
         },
         {
           "entity_id": "costa_rica",

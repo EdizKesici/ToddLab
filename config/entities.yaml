@@ -670,6 +670,7 @@
     owid: Saint Barthélemy
     worldbank: BLM
     who_gho: BLM
+    un_dyb: Saint-Barthélemy
   label_source: pycountry
 - entity_id: belarus
   label: Belarus
@@ -904,7 +905,9 @@
   predecessor: null
   successors: []
   source_ids:
-    owid: Congo, The Democratic Republic of the
+    owid:
+    - Congo, The Democratic Republic of the
+    - Congo, DRC
     worldbank: COD
     who_gho: COD
     un_dyb: Democratic Republic of the Congo

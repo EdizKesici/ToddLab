@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getScoreFile, scoreLayerExists } from "@/lib/toddlab/score-store";
 import { isStoredPreset, type ScoreName } from "@/lib/toddlab/score-types";
+import { buildCompareComparability } from "@/lib/toddlab/server/score-queries";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,8 @@ const ENTITY_RE = /^[a-z][a-z0-9_]*$/;
  * Per-year emitted scores ([score, coverage]) for up to four entities, read
  * straight from the stored preset tables (data/dist/score/{score}.json).
  * No recomputation: the comparison uses exactly the same numbers as the
- * rankings table. Entities keep the requested order so client line colors
+ * rankings table. `comparability` flags, year by year, whether the countries
+ * share enough scored weight for their gap to be read (see score-queries.ts). Entities keep the requested order so client line colors
  * match the picker chips.
  */
 export async function GET(req: Request) {
@@ -41,5 +43,12 @@ export async function GET(req: Request) {
     return { entity_id: id, points };
   });
 
-  return NextResponse.json({ score, preset, entities });
+  const comparability = buildCompareComparability(ids, score, preset);
+  return NextResponse.json({
+    score,
+    preset,
+    entities,
+    comparability: comparability.years,
+    min_common_weight: comparability.min_common_weight,
+  });
 }

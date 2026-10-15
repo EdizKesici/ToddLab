@@ -21151,6 +21151,15 @@
     },
     {
       "entity_id": "saint_barthelemy",
+      "year": 2014,
+      "value": null,
+      "provider": "un_dyb",
+      "source_ref": "2018/table15",
+      "quality_code": "C",
+      "missing_marker": "..."
+    },
+    {
+      "entity_id": "saint_barthelemy",
       "year": 2015,
       "value": null,
       "provider": "un_dyb",

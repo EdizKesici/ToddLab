@@ -43815,6 +43815,24 @@
     },
     {
       "entity_id": "saint_barthelemy",
+      "year": 2014,
+      "value": null,
+      "provider": "un_dyb",
+      "source_ref": "2018/table04",
+      "sex": "female",
+      "missing_marker": "..."
+    },
+    {
+      "entity_id": "saint_barthelemy",
+      "year": 2014,
+      "value": null,
+      "provider": "un_dyb",
+      "source_ref": "2018/table04",
+      "sex": "male",
+      "missing_marker": "..."
+    },
+    {
+      "entity_id": "saint_barthelemy",
       "year": 2016,
       "value": null,
       "provider": "un_dyb",

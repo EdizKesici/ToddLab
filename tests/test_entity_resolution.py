@@ -122,3 +122,23 @@ def test_v21_the_dyb1978_prints_resolve_by_name(real_entities):
     ):
         e = real_entities.by_dyb_name(printed) or real_entities.by_label(printed)
         assert e is not None and e.entity_id == eid, printed
+
+
+def test_owid_and_dyb_aliases_v30(real_entities):
+    # NCD-RisC prints the DRC as "Congo, DRC"; the UN Yearbook prints "Saint-Barthélemy"
+    registry = real_entities
+    assert registry.resolve_from_source("owid", "Congo, DRC", None).entity_id == "congo_the_democratic_republic_of_the"
+    assert registry.resolve_from_source("owid", "Congo, The Democratic Republic of the", None).entity_id == "congo_the_democratic_republic_of_the"
+    assert registry.resolve_from_source("un_dyb", "Saint-Barthélemy", None).entity_id == "saint_barthelemy"
+
+
+def test_known_non_countries_are_not_mapping_gaps():
+    from src.pipeline.normalize import is_known_non_country
+
+    for name in ("Europe (UN)", "Sub-Saharan Africa (WID)", "Low-income countries", "OECD average",
+                 "Latin America (UNAIDS)", "Less developed regions", "World", "Scotland",
+                 "Iraq (Kurdistan Region)", "Channel Islands"):
+        assert is_known_non_country(name), name
+    # real countries and invented names stay in the mapping-gap bucket
+    for name in ("Congo, DRC", "Freedonia", "Wakanda", "Saint-Barthélemy", "France"):
+        assert not is_known_non_country(name), name

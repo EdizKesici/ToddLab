@@ -22,6 +22,7 @@ and, when the source prints it, per-point `citation`/`definition_note`
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -271,6 +272,39 @@ def normalize_indicator(
 _SEGMENT_SCRATCH: dict[str, dict[str, list[NormalizedPoint]]] = {}
 
 
+# v30: names that are NOT countries and are dropped on purpose. Without this
+# list the "possible_mapping_gap" bucket held 80 of 87 distinct names that were
+# aggregates or sub-national parts, which hid the handful of real gaps.
+_AGGREGATE_RE = re.compile(
+    r"\((?:UN|WID|UNAIDS)\)$"            # regional roll-ups of the UN, WID, UNAIDS files
+    r"|income countries|income group"      # World Bank income groups
+    r"|developing|developed regions|least developed|less developed"
+    r"|\b(?:average|participants)\b"     # PISA OECD / participants averages
+    r"|^(?:World|Africa|Asia|Europe|Oceania|Americas|North America|Northern America|"
+    r"South America|South Asia|Sub-Saharan Africa|East Asia and Pacific|"
+    r"Europe and Central Asia|Latin America and Caribbean|Latin America and the Caribbean|"
+    r"Middle East and North Africa|European Union \(27\))$",
+    re.IGNORECASE,
+)
+KNOWN_NON_COUNTRY: dict[str, str] = {
+    "Scotland": "sub-national part of the United Kingdom",
+    "Northern Ireland": "sub-national part of the United Kingdom",
+    "England and Wales": "sub-national part of the United Kingdom",
+    "England & Wales": "sub-national part of the United Kingdom",
+    "Iraq (Central Iraq)": "sub-national part of Iraq",
+    "Iraq (Kurdistan Region)": "sub-national part of Iraq",
+    "Bosnia and Herzegovina: Federation": "sub-national entity of Bosnia and Herzegovina",
+    "Bosnia and Herzegovina: Republika Srpska": "sub-national entity of Bosnia and Herzegovina",
+    "Channel Islands": "Jersey + Guernsey umbrella: no umbrella entity is invented (config/sources.yaml)",
+    "Saint Helena ex. dep.": "the UN Yearbook prints Saint Helena in pieces; attaching one piece to the whole territory would be an approximation",
+    "Saint Helena: Ascension": "the UN Yearbook prints Saint Helena in pieces; attaching one piece to the whole territory would be an approximation",
+}
+
+
+def is_known_non_country(name: str) -> bool:
+    return name in KNOWN_NON_COUNTRY or bool(_AGGREGATE_RE.search(name))
+
+
 def classify_unresolved(unresolved: dict[str, list[str]], raw_dir: Path, provider: str, indicator_id: str, source_ref: str) -> dict[str, dict]:
     """Splits each source's unresolved names into two buckets, using the
     OWID_-prefix heuristic reported by the live-network audit:
@@ -288,7 +322,14 @@ def classify_unresolved(unresolved: dict[str, list[str]], raw_dir: Path, provide
     """
     raw_path = _latest_snapshot(raw_dir, provider, indicator_id, source_ref)
     if raw_path is None:
-        return {ref: {"owid_special": [], "possible_mapping_gap": sorted(names)} for ref, names in unresolved.items()}
+        return {
+            ref: {
+                "owid_special": [],
+                "known_non_country": sorted(n for n in names if is_known_non_country(n)),
+                "possible_mapping_gap": sorted(n for n in names if not is_known_non_country(n)),
+            }
+            for ref, names in unresolved.items()
+        }
 
     raw = json.loads(raw_path.read_text(encoding="utf-8"))
     code_by_name: dict[str, str | None] = {}
@@ -297,11 +338,20 @@ def classify_unresolved(unresolved: dict[str, list[str]], raw_dir: Path, provide
 
     classified: dict[str, dict] = {}
     for source_ref, names in unresolved.items():
-        owid_special, mapping_gap = [], []
+        owid_special, mapping_gap, non_country = [], [], []
         for name in names:
             code = code_by_name.get(name)
-            (owid_special if (code and code.startswith("OWID_")) else mapping_gap).append(name)
-        classified[source_ref] = {"owid_special": sorted(owid_special), "possible_mapping_gap": sorted(mapping_gap)}
+            if code and code.startswith("OWID_"):
+                owid_special.append(name)
+            elif is_known_non_country(name):
+                non_country.append(name)
+            else:
+                mapping_gap.append(name)
+        classified[source_ref] = {
+            "owid_special": sorted(owid_special),
+            "known_non_country": sorted(non_country),
+            "possible_mapping_gap": sorted(mapping_gap),
+        }
     return classified
 
 

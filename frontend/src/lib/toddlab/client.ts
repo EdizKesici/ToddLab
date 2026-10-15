@@ -1,7 +1,11 @@
 "use client";
 
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import type { StoredPreset } from "./score-types";
+import type {
+  ScoreCompareYear,
+  ScoreMoversPayload,
+  StoredPreset,
+} from "./score-types";
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
@@ -471,6 +475,28 @@ export function useScoreEntity(
   });
 }
 
+export function useScoreMovers(
+  score: "official" | "modelled",
+  preset: StoredPreset,
+  from: number | null,
+  to: number | null,
+): UseQueryResult<ScoreMoversPayload> {
+  const q = new URLSearchParams({ score, preset });
+  if (from !== null) q.set("from", String(from));
+  if (to !== null) q.set("to", String(to));
+  return useQuery({
+    queryKey: ["score-movers", score, preset, from, to],
+    queryFn: () => fetchJson<ScoreMoversPayload>(`/api/score/movers?${q.toString()}`),
+    staleTime: 10 * 60 * 1000,
+    placeholderData: (prev) => prev,
+    retry: (count, err) => {
+      const status = (err as Error & { status?: number }).status;
+      if (status === 503) return false;
+      return count < 2;
+    },
+  });
+}
+
 export function useScoreRankings(
   year: number | null,
 ): UseQueryResult<ScoreRankings> {
@@ -506,6 +532,9 @@ export interface ScoreComparePayload {
   score: "official" | "modelled";
   preset: StoredPreset;
   entities: ScoreCompareEntity[];
+  /** Years where >= 2 of the selected countries are scored, with the shared-weight share. */
+  comparability: ScoreCompareYear[];
+  min_common_weight: number;
 }
 
 /**

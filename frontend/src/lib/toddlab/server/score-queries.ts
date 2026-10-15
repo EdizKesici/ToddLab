@@ -1,8 +1,13 @@
 import "server-only";
 import { getCatalog } from "../store";
 import { getScoreFile, getScoreMeta } from "../score-store";
+import { deltaBetweenYears, type ScoreCompSeries } from "../score-core";
 import {
   STORED_PRESETS,
+  type ScoreCompareYear,
+  type ScoreMoverRow,
+  type ScoreMoversPayload,
+  type StoredPreset,
   type ScoreEntityComponent,
   type ScoreEntityPayload,
   type ScoreEntitySide,
@@ -202,6 +207,117 @@ export function buildScoreRankingsPayload(
     default_year: { official: defaultYearFor("official"), modelled: defaultYearFor("modelled") },
     max_obs_year: meta.max_obs_year,
     rankings,
+  };
+}
+
+/**
+ * Per-year comparability of a country comparison. For each year where at least
+ * two of the selected countries have an emitted score: the weight of the
+ * components resolved for ALL of them over the weight of those resolved for ANY
+ * of them. Below delta_min_common_weight (the contract's own threshold for a
+ * delta) the gap compares different components and is flagged as not
+ * comparable. Read from the stored normalised values: no recomputation.
+ */
+export function buildCompareComparability(
+  ids: string[],
+  score: ScoreName,
+  preset: StoredPreset,
+): { years: ScoreCompareYear[]; min_common_weight: number } {
+  const meta = getScoreMeta();
+  const file = getScoreFile(score);
+  const weights = meta.presets[score][preset] ?? {};
+  const keys = Object.keys(weights).filter((k) => weights[k] > 0);
+  const table = file.scores[preset];
+  const minCommon = meta.global.delta_min_common_weight;
+
+  const yearSet = new Set<string>();
+  for (const id of ids) for (const y of Object.keys(table[id] ?? {})) yearSet.add(y);
+
+  const out: ScoreCompareYear[] = [];
+  for (const y of [...yearSet].sort()) {
+    const scored = ids.filter((id) => table[id]?.[y] !== undefined);
+    if (scored.length < 2) continue;
+    let wCommon = 0;
+    let wAny = 0;
+    for (const k of keys) {
+      const present = scored.filter((id) => file.normalised[k]?.[id]?.[y] !== undefined).length;
+      if (present > 0) wAny += weights[k];
+      if (present === scored.length) wCommon += weights[k];
+    }
+    const share = wAny > 0 ? wCommon / wAny : 0;
+    out.push({
+      year: Number(y),
+      n_entities: scored.length,
+      common_share: Math.round(share * 10000) / 10000,
+      comparable: share >= minCommon,
+    });
+  }
+  return { years: out, min_common_weight: minCommon };
+}
+
+/**
+ * Best and worst score movers between two years. The ranking metric is the
+ * contract's DELTA (docs/score-contract.md): the weighted change over the
+ * components resolved from a different observation in both years, refused when
+ * they carry less than delta_min_common_weight of the weight. Only countries
+ * with an emitted score in BOTH years are ranked, so both endpoints are real.
+ */
+export function buildScoreMoversPayload(
+  score: ScoreName,
+  preset: StoredPreset,
+  fromInput: number | null,
+  toInput: number | null,
+): ScoreMoversPayload {
+  const meta = getScoreMeta();
+  const file = getScoreFile(score);
+  const weights = meta.presets[score][preset] ?? {};
+  const years = scoredYearsOf(score);
+  const defTo = defaultYearFor(score);
+  const to = toInput !== null && years.includes(toInput) ? toInput : defTo;
+  const defFrom = years.filter((y) => y <= to - 10).pop() ?? years[0] ?? to;
+  let from = fromInput !== null && years.includes(fromInput) ? fromInput : defFrom;
+  if (from >= to) from = years.filter((y) => y < to).pop() ?? from;
+
+  const table = file.scores[preset];
+  const rows: ScoreMoverRow[] = [];
+  let nBoth = 0;
+  let nRefused = 0;
+  for (const [entityId, scored] of Object.entries(table)) {
+    const a = scored[String(from)];
+    const b = scored[String(to)];
+    if (!a || !b) continue;
+    nBoth++;
+    const comps: ScoreCompSeries[] = Object.keys(weights).map((k) => ({
+      key: k,
+      weight: weights[k],
+      normalised: file.normalised[k]?.[entityId] ?? {},
+      age: file.age[k]?.[entityId] ?? {},
+    }));
+    const d = deltaBetweenYears(comps, from, to, { minCommonWeight: meta.global.delta_min_common_weight });
+    if (d.refused || d.delta === null) {
+      nRefused++;
+      continue;
+    }
+    rows.push({
+      entity_id: entityId,
+      delta: d.delta,
+      score_from: a[0],
+      score_to: b[0],
+      n_components: d.n_components,
+      common_weight_share: d.common_weight_share,
+    });
+  }
+  rows.sort((x, y) => y.delta - x.delta || x.entity_id.localeCompare(y.entity_id));
+  return {
+    score,
+    preset,
+    from,
+    to,
+    years,
+    rows,
+    n_refused: nRefused,
+    n_scored_both: nBoth,
+    min_common_weight: meta.global.delta_min_common_weight,
   };
 }
 

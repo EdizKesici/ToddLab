@@ -26167,6 +26167,14 @@
     },
     {
       "entity_id": "saint_barthelemy",
+      "year": 2014,
+      "value": null,
+      "provider": "un_dyb",
+      "source_ref": "2018/table04",
+      "missing_marker": "..."
+    },
+    {
+      "entity_id": "saint_barthelemy",
       "year": 2016,
       "value": null,
       "provider": "un_dyb",

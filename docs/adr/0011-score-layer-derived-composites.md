@@ -633,3 +633,30 @@ which can land on a false tie; it now rounds like Python's `round()` (exact
 value, ties to even). Effect on the stored scores: 136 of 24,067 values moved by
 0.01 (rounding ties); the frontend now reproduces every stored score exactly
 (24,067 of 24,067, tolerance 0) and all 24 golden vectors.
+
+---
+
+## Amendment 2026-10-15 (v30): decision 26, comparing countries and ranking the movers; unresolved names
+
+**Decision 26 (Ediz, 2026-10-15).** The web app gets (1) a "compare with another
+country" shortcut from the country page, (2) official and modelled side by side
+in the country comparison, (3) a marker for the years in which a comparison is
+not comparable (the countries share less than `delta_min_common_weight` of the
+scored weight; contract section added), and (4) a ranking of the biggest score
+gains and drops over a chosen period, ranked by the contract's delta and
+limited to countries scored in both years. Measured on the official equal
+preset the 0.50 threshold flags 1.7% of country pairs in 2015 and 3.2% in 2022
+(0.0% in 2005); the shared share is always shown, the flag is the contract's.
+
+**Unresolved names (same decision).** Of the 87 distinct names that the
+normaliser could not resolve, 80 were aggregates (regions, income groups, WID,
+UNAIDS and UN roll-ups, OECD / PISA averages) or sub-national parts (Scotland,
+Northern Ireland, England and Wales, Kurdistan Region, the two Bosnian
+entities) and were reported as "likely mapping gap" because only `OWID_` codes
+were recognised as special. They now land in a `known_non_country` bucket and
+rebuild logs no warning. Three real gaps were fixed: "Congo, DRC" (NCD-RisC's
+name for the Democratic Republic of the Congo, 11 male-height points),
+"Saint-Barthélemy" (UN Yearbook spelling). Left out on purpose: the Channel
+Islands (no umbrella entity is invented) and the two UN Yearbook pieces of
+Saint Helena (attaching one piece to the whole territory would be an
+approximation). The OWID entity names may now be a list, like the Yearbook's.

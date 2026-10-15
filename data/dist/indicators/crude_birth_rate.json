@@ -25275,6 +25275,14 @@
     },
     {
       "entity_id": "saint_barthelemy",
+      "year": 2014,
+      "value": 10.0344935717,
+      "provider": "un_dyb",
+      "source_ref": "2018/table09",
+      "quality_code": "C"
+    },
+    {
+      "entity_id": "saint_barthelemy",
       "year": 2015,
       "value": null,
       "provider": "un_dyb",

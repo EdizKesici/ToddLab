@@ -574,3 +574,16 @@ Work Log:
 
 Stage Summary:
 - 493 tests, tsc 0, eslint 0, build OK; frontend reproduces 24,067 of 24,067 stored scores exactly and all 24 golden vectors.
+
+---
+Task ID: 28
+Agent: Claude Code (Hermes)
+Task: Country comparison upgrades, score movers ranking, unresolved-name cleanup.
+
+Work Log:
+- /score compare card: "compare with another country" link on the country score card (`/score?...&c=<id>#compare`), official and modelled side by side (`v=both`), years shaded when the countries share under 50% of the scored weight, gap read at the latest year all countries are scored, with the shared share.
+- New `/api/score/movers` + "Biggest score movers" card (`f`, `t` in the URL): best and worst deltas between two years, refused count reported, rows flagged when the published scores rest on different components.
+- Backend: unresolved names split into a `known_non_country` bucket; "Congo, DRC" and "Saint-Barthélemy" resolved; OWID entity names may be a list.
+
+Stage Summary:
+- 495 tests, tsc 0, eslint 0, build OK; frontend still reproduces 24,067 of 24,067 stored scores exactly.

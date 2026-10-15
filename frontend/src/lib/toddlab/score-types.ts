@@ -157,3 +157,39 @@ export interface ScoreRankingsPayload {
   max_obs_year: Record<ScoreName, number>;
   rankings: Record<ScoreName, Record<StoredPreset, ScoreRankingRow[]>>;
 }
+
+/** One year of a country comparison: how much of the scored weight the countries share. */
+export interface ScoreCompareYear {
+  year: number;
+  /** Countries with an emitted score that year (among the selected ones). */
+  n_entities: number;
+  /** Weight of the components resolved for EVERY scored country / weight of those resolved for ANY (0..1). */
+  common_share: number;
+  /** common_share >= delta_min_common_weight: the gap compares mostly the same components. */
+  comparable: boolean;
+}
+
+/** One country in the score-movers ranking (delta between two years, common components only). */
+export interface ScoreMoverRow {
+  entity_id: string;
+  delta: number;
+  score_from: number;
+  score_to: number;
+  n_components: number;
+  common_weight_share: number;
+}
+
+export interface ScoreMoversPayload {
+  score: ScoreName;
+  preset: StoredPreset;
+  from: number;
+  to: number;
+  years: number[];
+  /** Sorted by delta, best improvement first. */
+  rows: ScoreMoverRow[];
+  /** Countries scored in both years whose delta the contract refuses (too few common components). */
+  n_refused: number;
+  /** Countries scored in both years. */
+  n_scored_both: number;
+  min_common_weight: number;
+}

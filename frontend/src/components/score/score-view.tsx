@@ -10,6 +10,7 @@ import {
   CartesianGrid,
   Line,
   LineChart,
+  ReferenceArea,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -23,6 +24,7 @@ import { ErrorBlock, LoadingBlock } from "@/components/shared/states";
 import { ChartTooltipShell } from "@/components/shared/charts";
 import { colorForIndex, EntityPicker } from "@/components/shared/entity-picker";
 import { YearSlider } from "@/components/shared/year-slider";
+import { ScoreMovers } from "./score-movers";
 import {
   interpolate,
   useEntityLabel,
@@ -53,7 +55,11 @@ function parseState(sp: Pick<URLSearchParams, "get">) {
   const m = sp.get("m");
   const yRaw = sp.get("y");
   const cRaw = sp.get("c");
+  const fRaw = sp.get("f");
+  const tRaw = sp.get("t");
   const y = yRaw === null ? null : Number.parseInt(yRaw, 10);
+  const f = fRaw === null ? null : Number.parseInt(fRaw, 10);
+  const to = tRaw === null ? null : Number.parseInt(tRaw, 10);
   const compare =
     cRaw === null
       ? []
@@ -68,6 +74,10 @@ function parseState(sp: Pick<URLSearchParams, "get">) {
     scope: m === "todd" ? ("todd" as ScoreScope) : ("all" as ScoreScope),
     year: y !== null && Number.isFinite(y) ? y : null,
     compare,
+    /** "both": official and modelled charts side by side (never merged). */
+    view: sp.get("v") === "both" ? ("both" as const) : ("one" as const),
+    moversFrom: f !== null && Number.isFinite(f) ? f : null,
+    moversTo: to !== null && Number.isFinite(to) ? to : null,
   };
 }
 
@@ -143,6 +153,9 @@ export function ScoreView() {
         scope: ScoreScope;
         year: number | null;
         compare: string[];
+        view: "one" | "both";
+        moversFrom: number | null;
+        moversTo: number | null;
       }>,
     ) => {
       const current = parseState(new URLSearchParams(window.location.search));
@@ -153,6 +166,9 @@ export function ScoreView() {
       if (next.scope === "todd") q.set("m", "todd");
       if (next.year !== null) q.set("y", String(next.year));
       if (next.compare.length > 0) q.set("c", next.compare.join(","));
+      if (next.view === "both") q.set("v", "both");
+      if (next.moversFrom !== null) q.set("f", String(next.moversFrom));
+      if (next.moversTo !== null) q.set("t", String(next.moversTo));
       router.replace(`/score?${q.toString()}`, { scroll: false });
     },
     [router],
@@ -162,7 +178,20 @@ export function ScoreView() {
   const meta = useScoreMeta();
   const entities = useEntities();
   const stored = storedPreset(state.preset, state.scope);
-  const compareQuery = useScoreCompare(state.compare, state.score, stored);
+  const both = state.view === "both";
+  // Two independent queries: official and modelled are separate calculations and
+  // are never merged; in the one-score view only the selected one is fetched.
+  const officialCompare = useScoreCompare(
+    both || state.score === "official" ? state.compare : [],
+    "official",
+    stored,
+  );
+  const modelledCompare = useScoreCompare(
+    both || state.score === "modelled" ? state.compare : [],
+    "modelled",
+    stored,
+  );
+  const compareQuery = state.score === "official" ? officialCompare : modelledCompare;
 
   const labelOf = useCallback(
     (id: string) => entityLabel(id, entities.data?.entities.find((e) => e.entity_id === id)?.label),
@@ -337,7 +366,7 @@ export function ScoreView() {
           </Card>
 
           {/* Compare two countries over time */}
-          <Card className="mt-6">
+          <Card id="compare" className="mt-6 scroll-mt-20">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 font-serif-display text-lg">
                 <TrendingUp className="h-4 w-4 text-primary" aria-hidden />
@@ -345,16 +374,49 @@ export function ScoreView() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 pt-0">
-              <EntityPicker
-                selected={state.compare}
-                onChange={(ids) => patch({ compare: ids.slice(-4) })}
-                max={4}
-              />
+              <div className="flex flex-wrap items-center gap-3">
+                <EntityPicker
+                  selected={state.compare}
+                  onChange={(ids) => patch({ compare: ids.slice(-4) })}
+                  max={4}
+                />
+                <Segmented
+                  ariaLabel={t((d) => d.score.compareView)}
+                  value={state.view}
+                  onChange={(v) => patch({ view: v })}
+                  options={[
+                    { value: "one", label: t((d) => d.score.compareOneScore) },
+                    { value: "both", label: t((d) => d.score.compareSideBySide) },
+                  ]}
+                />
+              </div>
               <p className="text-xs text-muted-foreground">{t((d) => d.score.compareHint)}</p>
               {state.compare.length === 0 ? (
                 <p className="rounded-lg border border-dashed px-4 py-10 text-center text-sm text-muted-foreground">
                   {t((d) => d.score.compareEmpty)}
                 </p>
+              ) : both ? (
+                <div className="grid gap-6 md:grid-cols-2">
+                  {(
+                    [
+                      ["official", officialCompare],
+                      ["modelled", modelledCompare],
+                    ] as const
+                  ).map(([name, q]) => (
+                    <div key={name} className="min-w-0 space-y-2">
+                      <h4 className="text-sm font-medium">
+                        {name === "official" ? t((d) => d.score.official) : t((d) => d.score.modelled)}
+                      </h4>
+                      {q.isError ? (
+                        <ErrorBlock onRetry={() => q.refetch()} className="min-h-48" />
+                      ) : q.isLoading || !q.data ? (
+                        <LoadingBlock label={t((d) => d.common.loading)} className="min-h-48" />
+                      ) : (
+                        <ScoreCompareChart data={q.data} selected={state.compare} labelOf={labelOf} />
+                      )}
+                    </div>
+                  ))}
+                </div>
               ) : compareQuery.isError ? (
                 <ErrorBlock onRetry={() => compareQuery.refetch()} className="min-h-48" />
               ) : compareQuery.isLoading || !compareQuery.data ? (
@@ -368,6 +430,14 @@ export function ScoreView() {
               )}
             </CardContent>
           </Card>
+
+          <ScoreMovers
+            score={state.score}
+            preset={stored}
+            from={state.moversFrom}
+            to={state.moversTo}
+            onChange={(f, t2) => patch({ moversFrom: f, moversTo: t2 })}
+          />
 
           {/* Notes */}
           <motion.div
@@ -393,6 +463,22 @@ export function ScoreView() {
 /* --------------------------- Score comparison ----------------------------- */
 
 type CompareRow = { year: number } & Record<string, number | null>;
+
+/** Contiguous runs of years flagged not comparable (consecutive years only). */
+function notComparableSpans(data: ScoreComparePayload): { x1: number; x2: number }[] {
+  const spans: { x1: number; x2: number }[] = [];
+  let last: number | null = null;
+  for (const y of data.comparability) {
+    if (y.comparable) {
+      last = null;
+      continue;
+    }
+    if (last !== null && y.year === last + 1) spans[spans.length - 1].x2 = y.year + 0.5;
+    else spans.push({ x1: y.year - 0.5, x2: y.year + 0.5 });
+    last = y.year;
+  }
+  return spans;
+}
 
 function ScoreCompareChart({
   data,
@@ -441,16 +527,28 @@ function ScoreCompareChart({
     [series],
   );
 
-  // Spread between the highest and the lowest last scored value
-  // (for two countries this is simply the gap between the two).
-  const lastScores = latest
-    .map((l) => l.last)
-    .filter((p): p is ScoreComparePoint => p !== null);
-  const gap =
-    lastScores.length >= 2
-      ? Math.max(...lastScores.map((p) => p.score)) -
-        Math.min(...lastScores.map((p) => p.score))
-      : null;
+  const spans = React.useMemo(() => notComparableSpans(data), [data]);
+  const byYear = React.useMemo(
+    () => new Map(data.comparability.map((c) => [c.year, c])),
+    [data],
+  );
+
+  // The gap is read at the latest year where EVERY selected country is scored
+  // (not at each country's own last year, which may differ), and flagged when
+  // the countries share too little scored weight that year.
+  const withPoints = series.filter((s) => s.ent.points.length > 0);
+  const gapYear = React.useMemo(() => {
+    if (withPoints.length < 2) return null;
+    const common = data.comparability.filter((c) => c.n_entities === withPoints.length);
+    return common.length > 0 ? common[common.length - 1] : null;
+  }, [data, withPoints.length]);
+  const gap = React.useMemo(() => {
+    if (!gapYear) return null;
+    const vals = withPoints
+      .map((s) => s.ent.points.find((p) => p.year === gapYear.year)?.score)
+      .filter((v): v is number => typeof v === "number");
+    return vals.length >= 2 ? Math.max(...vals) - Math.min(...vals) : null;
+  }, [gapYear, withPoints]);
 
   if (rows.length === 0) {
     return (
@@ -460,12 +558,25 @@ function ScoreCompareChart({
     );
   }
 
+  const pct = String(Math.round(data.min_common_weight * 100));
+
   return (
     <div className="space-y-4">
       <div className="h-64 min-w-0">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={rows} margin={{ top: 6, right: 8, bottom: 0, left: -18 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+            {spans.map((sp) => (
+              <ReferenceArea
+                key={`${sp.x1}-${sp.x2}`}
+                x1={sp.x1}
+                x2={sp.x2}
+                ifOverflow="hidden"
+                fill="var(--muted-foreground)"
+                fillOpacity={0.14}
+                stroke="none"
+              />
+            ))}
             <XAxis
               dataKey="year"
               type="number"
@@ -504,6 +615,13 @@ function ScoreCompareChart({
                     label: t((d) => d.score.compareGap),
                     value: fmtScore(Math.max(...vals) - Math.min(...vals), lang),
                   });
+                  const cmp = byYear.get(Number(label));
+                  if (cmp) {
+                    tipRows.push({
+                      label: t((d) => d.score.compareCommon),
+                      value: `${Math.round(cmp.common_share * 100)} %${cmp.comparable ? "" : " · " + t((d) => d.score.compareNotComparable)}`,
+                    });
+                  }
                 }
                 return <ChartTooltipShell title={String(label)} rows={tipRows} />;
               }}
@@ -525,6 +643,16 @@ function ScoreCompareChart({
           </LineChart>
         </ResponsiveContainer>
       </div>
+
+      {spans.length > 0 && (
+        <p className="flex items-start gap-2 text-xs text-muted-foreground">
+          <span
+            aria-hidden
+            className="mt-0.5 inline-block h-3 w-5 shrink-0 rounded-sm bg-muted-foreground/20"
+          />
+          {interpolate(t((d) => d.score.compareLegendShade), { pct })}
+        </p>
+      )}
 
       {/* Latest scored year per country + gap */}
       <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
@@ -548,12 +676,27 @@ function ScoreCompareChart({
             </div>
           );
         })}
-        {gap !== null && (
-          <div className="tnum inline-flex items-center gap-1.5 text-muted-foreground">
-            <span>{t((d) => d.score.compareGap)} :</span>
+        {gap !== null && gapYear !== null ? (
+          <div className="tnum inline-flex flex-wrap items-center gap-1.5 text-muted-foreground">
+            <span>{interpolate(t((d) => d.score.compareGapAt), { year: String(gapYear.year) })} :</span>
             <span className="font-medium text-foreground">{fmtScore(gap, lang)}</span>
             <span>{t((d) => d.score.deltaPoints)}</span>
+            <span>
+              · {t((d) => d.score.compareCommon)} : {Math.round(gapYear.common_share * 100)} %
+            </span>
+            {!gapYear.comparable && (
+              <Badge
+                variant="outline"
+                className="border-amber-600/30 bg-amber-600/10 font-normal text-amber-700 dark:text-amber-400"
+              >
+                {t((d) => d.score.compareNotComparable)}
+              </Badge>
+            )}
           </div>
+        ) : (
+          withPoints.length >= 2 && (
+            <span className="text-muted-foreground">{t((d) => d.score.compareNoCommonYear)}</span>
+          )
         )}
       </div>
     </div>

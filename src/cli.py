@@ -146,11 +146,14 @@ def cmd_rebuild(_args) -> int:
     norm_summary = normalize_all(indicators, RAW_DIR, PROCESSED_DIR, entities)
     for iid, s in norm_summary.items():
         n_gap = sum(len(v.get("possible_mapping_gap", [])) for v in s["unresolved"].values())
-        n_special = sum(len(v.get("owid_special", [])) for v in s["unresolved"].values())
+        n_special = sum(
+            len(v.get("owid_special", [])) + len(v.get("known_non_country", []))
+            for v in s["unresolved"].values()
+        )
         if n_gap:
             logging.warning("%s: %d likely mapping gap(s) in entities.yaml -> see %s.unresolved.json", iid, n_gap, iid)
         if n_special:
-            logging.info("%s: %d OWID aggregate/special entity name(s), expected -> see %s.unresolved.json", iid, n_special, iid)
+            logging.info("%s: %d aggregate / sub-national / special name(s), dropped on purpose -> see %s.unresolved.json", iid, n_special, iid)
 
     merge_all(list(indicators.keys()), PROCESSED_DIR)
     validate_results = validate_all(indicators, PROCESSED_DIR, entities, REPORTS_DIR)
