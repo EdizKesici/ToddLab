@@ -45,11 +45,9 @@ export const metadata: Metadata = {
   // Each page canonicalises to its own URL (resolved against metadataBase), so
   // query strings such as /score?s=modelled&c=... never compete with the page.
   alternates: { canonical: "./" },
-  // Google Search Console ownership: set GOOGLE_SITE_VERIFICATION to the token
-  // of the "HTML tag" method; nothing is rendered when it is unset.
-  ...(process.env.GOOGLE_SITE_VERIFICATION
-    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
-    : {}),
+  // Google Search Console ownership ("HTML tag" method). The token is public by
+  // design (it is printed in every page's <head>), so it lives in the code.
+  verification: { google: "K_5bemCFKqXadhIwkGpFQilK7RFDfHKBXSuyKh2WpdU" },
   openGraph: {
     // No title/description here: pages inherit their own metadata into the
     // OG tags — forcing them at the root would freeze og:title to "ToddLab".
