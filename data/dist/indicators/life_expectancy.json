@@ -358,7 +358,6 @@
           "135": "The Government of Ukraine has informed the United Nations that it is not in a position to provide statistical data concerning the Autonomous Republic of Crimea and the city of Sevastopol. - Le gouvernement Ukrainien a informé l'ONU qu'il n'est pas en mesure de fournir des données statistiques concernant la République autonome de Crimée et la ville de Sébastopol.",
           "138": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
           "142": "Data refer to registered events only within island councils and civil registration office. - Correspond aux événements enregistrés par les conseils des îles et par les services de l’état civil.",
-          "146": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "2": "Data refer to Algerian population only. - Les données ne concernent que la population algérienne.",
           "22": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
           "23": "Provisional data. - Données provisoires.",
@@ -412,7 +411,6 @@
           "117": "The Government of Ukraine has informed the United Nations that it is not in a position to provide statistical data concerning the Autonomous Republic of Crimea and the city of Sevastopol. - Le gouvernement Ukrainien a informé l'ONU qu'il n'est pas en mesure de fournir des données statistiques concernant la République autonome de Crimée et la ville de Sébastopol.",
           "120": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
           "122": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
-          "127": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "17": "Based on underlying data of the Population and Housing Census 2014. - Données fondées sur le recensement de la population de 2014.",
           "2": "Data refer to Algerian population only. - Les données ne concernent que la population algérienne.",
           "23": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
@@ -455,7 +453,6 @@
           "115": "Excludes data for Kosovo and Metohia. - Sans les données pour le Kosovo et Metohie.",
           "121": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
           "123": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
-          "128": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "16": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
           "2": "Data refer to Algerian population only. - Les données ne concernent que la population algérienne.",
           "20": "Data refer to the 12 months preceding the census in November. - Données se rapportant aux 12 mois précédant le recensement de novembre.",
@@ -502,7 +499,6 @@
           "101": "Excludes data for Kosovo and Metohia. - Sans les données pour le Kosovo et Metohie.",
           "106": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
           "108": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
-          "113": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "115": "Data refer to usually resident population present on census night. Data refer to the 12 months preceding the census in October. - Les données concernent la population habituellement résidente présente la nuit du recensement. Les données se rapportent aux 12 mois précédant le recensement de octobre.",
           "15": "Provisional data. - Données provisoires.",
           "19": "Based on preliminary findings of 2011 Uganda Demographic and Health Survey. - D’après les résultats préliminaires de l’enquête de 2011 sur la démographie et la santé en Ouganda.",
@@ -576,8 +572,7 @@
           "89": "Excluding Transnistria and the municipality of Bender. - Les données ne tiennent pas compte de l’information sur la Transnistria et la municipalité de Bender.",
           "90": "Excludes data for Kosovo and Metohia. - Sans les données pour le Kosovo et Metohie.",
           "93": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
-          "95": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
-          "99": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours."
+          "95": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément."
         }
       }
     },
@@ -675,7 +670,6 @@
           "80": "Excludes data for Kosovo and Metohia. - Sans les données pour le Kosovo et Metohie.",
           "83": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
           "85": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
-          "89": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "9": "Data refer to the 12 months preceding the census in April. The figures in this table are derived from survey data. They are representative only of private households, internally displaced persons, refugees and nomads, and do not include cattle camps, institutional households, homeless people or overnight travelers. - Les données se rapportent aux douze mois précédant le recensement d'avril. Les chiffres de ce tableau proviennent de données d’enquête. Ils représentent exclusivement les ménages privés et les déplacés, réfugiés et nomades; ils ne comprennent ni les personnes se trouvant dans des camps pastoraux et des établissements collectifs, ni les sans-abri, ni les voyageurs."
         }
       }
@@ -722,8 +716,7 @@
           "71": "Excluding Faeroe Islands and Greenland shown separately, if available. - Non compris les Iles Féroé et le Groenland, qui font l'objet de rubriques distinctes, si disponible.",
           "81": "Excluding Svalbard and Jan Mayen Islands shown separately, if available. - Non compris Svalbard et Jan Mayen qui font l'objet de rubriques distinctes, si disponible.",
           "88": "Excluding Channel Islands (Guernsey and Jersey) and Isle of Man, shown separately, if available. - Non compris les îles Anglo-Normandes (Guernesey et Jersey) et l'île de Man, qui font l'objet de rubriques distinctes, si disponible.",
-          "90": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
-          "94": "Data cover the period from 1 July previous year to 30 June present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours."
+          "90": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément."
         }
       }
     },
@@ -37980,198 +37973,6 @@
       "missing_marker": "..."
     },
     {
-      "entity_id": "norfolk_island",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "94"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "94"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "89"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "89"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2010,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2014/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "99"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2010,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2014/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "99"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "113"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "113"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2012,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "113"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2012,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "113"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2013,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2017/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "128"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2013,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2017/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "128"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2014,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2018/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "127"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2014,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2018/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "127"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2015,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2019/table04",
-      "sex": "female",
-      "footnote_refs": [
-        "146"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2015,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2019/table04",
-      "sex": "male",
-      "footnote_refs": [
-        "146"
-      ],
-      "missing_marker": "..."
-    },
-    {
       "entity_id": "north_macedonia",
       "year": 2007,
       "value": 76.1367363904,
@@ -41294,114 +41095,6 @@
       "value": null,
       "provider": "un_dyb",
       "source_ref": "2024/table04",
-      "sex": "male",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table04",
-      "sex": "female",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table04",
-      "sex": "male",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table04",
-      "sex": "female",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table04",
-      "sex": "male",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "female",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "male",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2012,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "female",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2012,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table04",
-      "sex": "male",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2013,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2017/table04",
-      "sex": "female",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2013,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2017/table04",
-      "sex": "male",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2019,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table04",
-      "sex": "female",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2019,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table04",
       "sex": "male",
       "missing_marker": "..."
     },

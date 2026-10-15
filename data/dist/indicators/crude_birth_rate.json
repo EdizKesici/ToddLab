@@ -690,7 +690,6 @@
           "60": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
           "61": "Including United States military personnel, their dependants and contract employees. - Y compris les militaires des Etats-Unis, les membres de leur famille les accompagnant et les agents contractuels des Etats-Unis.",
           "63": "Includes children born in New Zealand to women resident in Niue who chose to travel to New Zealand to give birth. - Y compris les enfants nés en Nouvelle-Zélande de femmes résidant à Nioué qui ont choisi de se rendre en Nouvelle-Zélande pour accoucher.",
-          "64": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "65": "The coverage of registration is estimated at 70 per cent. - Le degré de complétude de l'enregistrement est évalué à 70 pour cent.",
           "66": "Data refer to usually resident population present on census night. Data refer to the 12 months preceding the census in October. - Les données concernent la population habituellement résidente présente la nuit du recensement. Les données se rapportent aux 12 mois précédant le recensement de octobre.",
           "7": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
@@ -759,7 +758,6 @@
           "56": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
           "57": "Including United States military personnel, their dependants and contract employees. - Y compris les militaires des Etats-Unis, les membres de leur famille les accompagnant et les agents contractuels des Etats-Unis.",
           "58": "Includes children born in New Zealand to women resident in Niue who chose to travel to New Zealand to give birth. - Y compris les enfants nés en Nouvelle-Zélande de femmes résidant à Nioué qui ont choisi de se rendre en Nouvelle-Zélande pour accoucher.",
-          "59": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "6": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
           "60": "Source: U.S. National Center for Health Statistics, National Vital Statistics Reports (NVSR). - Source : US National Center for Health Statistics, National Vital Statistics Reports (NVSR).",
           "61": "The coverage of registration is estimated at 70 per cent. - Le degré de complétude de l'enregistrement est évalué à 70 pour cent.",
@@ -898,7 +896,6 @@
           "56": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
           "57": "Including United States military personnel, their dependants and contract employees. - Y compris les militaires des Etats-Unis, les membres de leur famille les accompagnant et les agents contractuels des Etats-Unis.",
           "58": "Includes children born in New Zealand to women resident in Niue who chose to travel to New Zealand to give birth. - Y compris les enfants nés en Nouvelle-Zélande de femmes résidant à Nioué qui ont choisi de se rendre en Nouvelle-Zélande pour accoucher.",
-          "59": "Data cover the period from 1 July of the previous year to 30 June of the present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "6": "Data refer to the 12 months preceding the census in June. - Les données se raportent aux 12 mois précédant le recensement de juin.",
           "62": "Data refer to the 12 months preceding the census in November. - Données se rapportant aux 12 mois précédant le recensement de novembre.",
           "7": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
@@ -974,7 +971,6 @@
           "64": "Excluding Niue, shown separately, which is part of Cook Islands, but because of remoteness is administered separately. - Non compris Nioué, qui fait l'objet d'une rubrique distincte et qui fait partie des îles Cook, mais qui, en raison de son éloignement, est administrée séparément.",
           "65": "Including United States military personnel, their dependants and contract employees. - Y compris les militaires des Etats-Unis, les membres de leur famille les accompagnant et les agents contractuels des Etats-Unis.",
           "66": "Includes children born in New Zealand to women resident in Niue who chose to travel to New Zealand to give birth. - Y compris les enfants nés en Nouvelle-Zélande de femmes résidant à Nioué qui ont choisi de se rendre en Nouvelle-Zélande pour accoucher.",
-          "67": "Data cover the period from 1 July previous year to 30 June present year. - Pour la période allant du 1er juillet de l’année précédente au 30 juin de l’année en cours.",
           "8": "Excludes the islands of St. Brandon and Agalega. - Non compris les îles St. Brandon et Agalega.",
           "9": "Excluding live-born infants who died before their birth was registered. - Non compris les enfants nés vivants décédés avant l'enregistrement de leur naissance."
         }
@@ -21955,114 +21951,6 @@
       "missing_marker": "..."
     },
     {
-      "entity_id": "norfolk_island",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "67"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "59"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2009,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "59"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2010,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2014/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "59"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "64"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2012,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "64"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2013,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "64"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2014,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "64"
-      ],
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "norfolk_island",
-      "year": 2015,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "+C",
-      "footnote_refs": [
-        "64"
-      ],
-      "missing_marker": "..."
-    },
-    {
       "entity_id": "north_macedonia",
       "year": 2007,
       "value": 11.1021996429,
@@ -23797,159 +23685,6 @@
       "value": null,
       "provider": "un_dyb",
       "source_ref": "2024/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2012/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2009,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2013/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2010,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2014/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2012,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2015/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2013,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2017/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2014,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2017/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2015,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2019/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2016,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2020/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2017,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2021/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2018,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2022/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2019,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2020,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2021,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2022,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table09",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2023,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2023/table09",
       "quality_code": "C",
       "missing_marker": "..."
     },

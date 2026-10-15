@@ -19998,51 +19998,6 @@
       "missing_marker": "..."
     },
     {
-      "entity_id": "pitcairn",
-      "year": 2007,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table15",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2008,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table15",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2009,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table15",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2010,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table15",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
-      "entity_id": "pitcairn",
-      "year": 2011,
-      "value": null,
-      "provider": "un_dyb",
-      "source_ref": "2011/table15",
-      "quality_code": "C",
-      "missing_marker": "..."
-    },
-    {
       "entity_id": "poland",
       "year": 2007,
       "value": 5.9864955797,

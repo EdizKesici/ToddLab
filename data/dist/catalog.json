@@ -87,7 +87,7 @@
         }
       ]
     },
-    "n_points": 4238,
+    "n_points": 4224,
     "n_witness_points": 14208,
     "todd_refs": {
       "family": "society",
@@ -412,7 +412,7 @@
         }
       ]
     },
-    "n_points": 3347,
+    "n_points": 3321,
     "n_witness_points": 14208
   },
   {
@@ -893,7 +893,7 @@
         }
       ]
     },
-    "n_points": 2720,
+    "n_points": 2715,
     "n_witness_points": 80828,
     "todd_refs": {
       "family": "mortality",
@@ -1029,7 +1029,7 @@
         }
       ]
     },
-    "n_points": 6032,
+    "n_points": 6004,
     "n_witness_points": 47884,
     "todd_refs": {
       "family": "mortality",

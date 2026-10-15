@@ -295,6 +295,8 @@ KNOWN_NON_COUNTRY: dict[str, str] = {
     "Iraq (Kurdistan Region)": "sub-national part of Iraq",
     "Bosnia and Herzegovina: Federation": "sub-national entity of Bosnia and Herzegovina",
     "Bosnia and Herzegovina: Republika Srpska": "sub-national entity of Bosnia and Herzegovina",
+    "Norfolk Island": "territory without any data point, removed from entities.yaml (decision 27)",
+    "Pitcairn": "territory without any data point, removed from entities.yaml (decision 27)",
     "Channel Islands": "Jersey + Guernsey umbrella: no umbrella entity is invented (config/sources.yaml)",
     "Saint Helena ex. dep.": "the UN Yearbook prints Saint Helena in pieces; attaching one piece to the whole territory would be an approximation",
     "Saint Helena: Ascension": "the UN Yearbook prints Saint Helena in pieces; attaching one piece to the whole territory would be an approximation",

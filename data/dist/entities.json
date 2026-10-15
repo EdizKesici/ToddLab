@@ -277,26 +277,6 @@
     "formerly_part_of": null
   },
   {
-    "entity_id": "antarctica",
-    "label": "Antarctica",
-    "iso3": "ATA",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
-    "entity_id": "french_southern_territories",
-    "label": "French Southern Territories",
-    "iso3": "ATF",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
     "entity_id": "antigua_and_barbuda",
     "label": "Antigua and Barbuda",
     "iso3": "ATG",
@@ -535,16 +515,6 @@
     "formerly_part_of": null
   },
   {
-    "entity_id": "bouvet_island",
-    "label": "Bouvet Island",
-    "iso3": "BVT",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
     "entity_id": "botswana",
     "label": "Botswana",
     "iso3": "BWA",
@@ -568,16 +538,6 @@
     "entity_id": "canada",
     "label": "Canada",
     "iso3": "CAN",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
-    "entity_id": "cocos_keeling_islands",
-    "label": "Cocos (Keeling) Islands",
-    "iso3": "CCK",
     "valid_from": null,
     "valid_to": null,
     "predecessor": null,
@@ -718,16 +678,6 @@
     "entity_id": "curacao",
     "label": "Curaçao",
     "iso3": "CUW",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
-    "entity_id": "christmas_island",
-    "label": "Christmas Island",
-    "iso3": "CXR",
     "valid_from": null,
     "valid_to": null,
     "predecessor": null,
@@ -1153,16 +1103,6 @@
     "formerly_part_of": null
   },
   {
-    "entity_id": "heard_island_and_mcdonald_islands",
-    "label": "Heard Island and McDonald Islands",
-    "iso3": "HMD",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
     "entity_id": "honduras",
     "label": "Honduras",
     "iso3": "HND",
@@ -1226,16 +1166,6 @@
     "entity_id": "india",
     "label": "India",
     "iso3": "IND",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
-    "entity_id": "british_indian_ocean_territory",
-    "label": "British Indian Ocean Territory",
-    "iso3": "IOT",
     "valid_from": null,
     "valid_to": null,
     "predecessor": null,
@@ -1823,16 +1753,6 @@
     "formerly_part_of": null
   },
   {
-    "entity_id": "norfolk_island",
-    "label": "Norfolk Island",
-    "iso3": "NFK",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
     "entity_id": "nigeria",
     "label": "Nigeria",
     "iso3": "NGA",
@@ -1936,16 +1856,6 @@
     "entity_id": "panama",
     "label": "Panama",
     "iso3": "PAN",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
-    "entity_id": "pitcairn",
-    "label": "Pitcairn",
-    "iso3": "PCN",
     "valid_from": null,
     "valid_to": null,
     "predecessor": null,
@@ -2157,29 +2067,9 @@
     "formerly_part_of": null
   },
   {
-    "entity_id": "south_georgia_and_the_south_sandwich_islands",
-    "label": "South Georgia and the South Sandwich Islands",
-    "iso3": "SGS",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
     "entity_id": "saint_helena_ascension_and_tristan_da_cunha",
     "label": "Saint Helena, Ascension and Tristan da Cunha",
     "iso3": "SHN",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
-  },
-  {
-    "entity_id": "svalbard_and_jan_mayen",
-    "label": "Svalbard and Jan Mayen",
-    "iso3": "SJM",
     "valid_from": null,
     "valid_to": null,
     "predecessor": null,
@@ -2537,16 +2427,6 @@
       "until_year": 1991,
       "note": "Data before 1991 was reported by OWID's sources under this country's modern name/code, but reflects the Soviet Union (USSR), not this country governed independently -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation) rather than split into a separate 'ussr' series, since the underlying numbers are identical either way."
     }
-  },
-  {
-    "entity_id": "united_states_minor_outlying_islands",
-    "label": "United States Minor Outlying Islands",
-    "iso3": "UMI",
-    "valid_from": null,
-    "valid_to": null,
-    "predecessor": null,
-    "successors": [],
-    "formerly_part_of": null
   },
   {
     "entity_id": "uruguay",

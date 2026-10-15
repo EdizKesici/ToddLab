@@ -1,9 +1,13 @@
 # config/entities.yaml -- geographic entity resolution table
 #
-# 249 current countries/territories generated from pycountry (ISO 3166-1,
-# English names), plus 9 historical/manual entities added by hand (USSR,
-# Czechoslovakia, Yugoslavia, East/West Germany, North/South Yemen,
-# Kosovo).
+# 237 current countries/territories generated from pycountry (ISO 3166-1,
+# English names), plus 12 historical/manual entities added by hand (USSR and its
+# two UN-seat republics, Czechoslovakia, Yugoslavia, Serbia and Montenegro,
+# East/West Germany, North/South Yemen, the Netherlands Antilles, Kosovo).
+# v30, decision 27: the 12 territories without a single data point were removed
+# (Antarctica, Bouvet, Heard and McDonald, the French Southern Territories, the
+# British Indian Ocean Territory, South Georgia, the US Minor Outlying Islands,
+# Svalbard and Jan Mayen, Cocos, Christmas, Norfolk, Pitcairn).
 #
 # KNOWN LIMITATIONS (to fix before production use):
 # - `source_ids.owid` is a BET: it assumes the OWID name == the pycountry
@@ -459,30 +463,6 @@
     worldbank: ASM
     who_gho: ASM
   label_source: pycountry
-- entity_id: antarctica
-  label: Antarctica
-  iso3: ATA
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Antarctica
-    worldbank: ATA
-    who_gho: ATA
-  label_source: pycountry
-- entity_id: french_southern_territories
-  label: French Southern Territories
-  iso3: ATF
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: French Southern Territories
-    worldbank: ATF
-    who_gho: ATF
-  label_source: pycountry
 - entity_id: antigua_and_barbuda
   label: Antigua and Barbuda
   iso3: ATG
@@ -777,18 +757,6 @@
     worldbank: BTN
     who_gho: BTN
   label_source: pycountry
-- entity_id: bouvet_island
-  label: Bouvet Island
-  iso3: BVT
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Bouvet Island
-    worldbank: BVT
-    who_gho: BVT
-  label_source: pycountry
 - entity_id: botswana
   label: Botswana
   iso3: BWA
@@ -824,18 +792,6 @@
     owid: Canada
     worldbank: CAN
     who_gho: CAN
-  label_source: pycountry
-- entity_id: cocos_keeling_islands
-  label: Cocos (Keeling) Islands
-  iso3: CCK
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Cocos (Keeling) Islands
-    worldbank: CCK
-    who_gho: CCK
   label_source: pycountry
 - entity_id: switzerland
   label: Switzerland
@@ -1008,18 +964,6 @@
     owid: Curaçao
     worldbank: CUW
     who_gho: CUW
-  label_source: pycountry
-- entity_id: christmas_island
-  label: Christmas Island
-  iso3: CXR
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Christmas Island
-    worldbank: CXR
-    who_gho: CXR
   label_source: pycountry
 - entity_id: cayman_islands
   label: Cayman Islands
@@ -1537,18 +1481,6 @@
     who_gho: HKG
     un_dyb: "China, Hong Kong SAR"
   label_source: pycountry
-- entity_id: heard_island_and_mcdonald_islands
-  label: Heard Island and McDonald Islands
-  iso3: HMD
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Heard Island and McDonald Islands
-    worldbank: HMD
-    who_gho: HMD
-  label_source: pycountry
 - entity_id: honduras
   label: Honduras
   iso3: HND
@@ -1632,18 +1564,6 @@
     owid: India
     worldbank: IND
     who_gho: IND
-  label_source: pycountry
-- entity_id: british_indian_ocean_territory
-  label: British Indian Ocean Territory
-  iso3: IOT
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: British Indian Ocean Territory
-    worldbank: IOT
-    who_gho: IOT
   label_source: pycountry
 - entity_id: ireland
   label: Ireland
@@ -2363,18 +2283,6 @@
     worldbank: NER
     who_gho: NER
   label_source: pycountry
-- entity_id: norfolk_island
-  label: Norfolk Island
-  iso3: NFK
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Norfolk Island
-    worldbank: NFK
-    who_gho: NFK
-  label_source: pycountry
 - entity_id: nigeria
   label: Nigeria
   iso3: NGA
@@ -2507,18 +2415,6 @@
     owid: Panama
     worldbank: PAN
     who_gho: PAN
-  label_source: pycountry
-- entity_id: pitcairn
-  label: Pitcairn
-  iso3: PCN
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Pitcairn
-    worldbank: PCN
-    who_gho: PCN
   label_source: pycountry
 - entity_id: peru
   label: Peru
@@ -2778,18 +2674,6 @@
     worldbank: SGP
     who_gho: SGP
   label_source: pycountry
-- entity_id: south_georgia_and_the_south_sandwich_islands
-  label: South Georgia and the South Sandwich Islands
-  iso3: SGS
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: South Georgia and the South Sandwich Islands
-    worldbank: SGS
-    who_gho: SGS
-  label_source: pycountry
 - entity_id: saint_helena_ascension_and_tristan_da_cunha
   label: Saint Helena, Ascension and Tristan da Cunha
   iso3: SHN
@@ -2801,18 +2685,6 @@
     owid: Saint Helena, Ascension and Tristan da Cunha
     worldbank: SHN
     who_gho: SHN
-  label_source: pycountry
-- entity_id: svalbard_and_jan_mayen
-  label: Svalbard and Jan Mayen
-  iso3: SJM
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: Svalbard and Jan Mayen
-    worldbank: SJM
-    who_gho: SJM
   label_source: pycountry
 - entity_id: solomon_islands
   label: Solomon Islands
@@ -3250,18 +3122,6 @@
       -- OWID has no standalone USSR entity in its mortality data (confirmed live). Shown as one continuous series by design (decision made in conversation)
       rather than split into a separate 'ussr' series, since the underlying numbers
       are identical either way.
-- entity_id: united_states_minor_outlying_islands
-  label: United States Minor Outlying Islands
-  iso3: UMI
-  valid_from: null
-  valid_to: null
-  predecessor: null
-  successors: []
-  source_ids:
-    owid: United States Minor Outlying Islands
-    worldbank: UMI
-    who_gho: UMI
-  label_source: pycountry
 - entity_id: uruguay
   label: Uruguay
   iso3: URY

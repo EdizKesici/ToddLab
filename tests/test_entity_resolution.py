@@ -1,5 +1,5 @@
 def test_registry_loads_258_entities(real_entities):
-    assert len(real_entities.entities) >= 255  # 249 pycountry + 8 historical + Kosovo
+    assert len(real_entities.entities) >= 249  # 237 pycountry (12 data-less territories removed, decision 27) + 12 historical / manual
 
 
 def test_resolution_by_iso3(real_entities):

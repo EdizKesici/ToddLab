@@ -660,3 +660,17 @@ name for the Democratic Republic of the Congo, 11 male-height points),
 Islands (no umbrella entity is invented) and the two UN Yearbook pieces of
 Saint Helena (attaching one piece to the whole territory would be an
 approximation). The OWID entity names may now be a list, like the Yearbook's.
+
+**Decision 27 (Ediz, 2026-10-15).** Entities that do not exist as countries are
+removed, unless they existed at some point in history (the USSR, North and
+South Yemen, Chechnya would qualify; the sub-national names Kurdistan, the two
+Bosnian entities, Balochistan are not entities here and stay dropped at import).
+Applied: the 12 current territories without a single data point (Antarctica,
+Bouvet, Heard and McDonald, the French Southern Territories, the British Indian
+Ocean Territory, South Georgia, the US Minor Outlying Islands, Svalbard and Jan
+Mayen, Cocos, Christmas, Norfolk, Pitcairn) are removed from `entities.yaml`
+(261 -> 249 entities); the five historical entities without data (West Germany,
+Yemen Arab Republic, Yemen People's Republic, Serbia and Montenegro, the
+Netherlands Antilles) are kept. Measured: no non-null value changes, scores
+unchanged (only null points of Norfolk Island and Pitcairn leave four indicator
+files).
