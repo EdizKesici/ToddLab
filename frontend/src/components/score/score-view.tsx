@@ -385,7 +385,15 @@ export function ScoreView() {
                   value={state.view}
                   onChange={(v) => patch({ view: v })}
                   options={[
-                    { value: "one", label: t((d) => d.score.compareOneScore) },
+                    {
+                      value: "one",
+                      label: interpolate(t((d) => d.score.compareOneScore), {
+                        score:
+                          state.score === "official"
+                            ? t((d) => d.score.official)
+                            : t((d) => d.score.modelled),
+                      }),
+                    },
                     { value: "both", label: t((d) => d.score.compareSideBySide) },
                   ]}
                 />
