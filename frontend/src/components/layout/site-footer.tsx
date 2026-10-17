@@ -17,15 +17,33 @@ export function SiteFooter() {
               {t((d) => d.home.footerBlurb)}
             </p>
           </div>
-          <a
-            href="https://github.com/EdizKesici/ToddLab"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Github className="h-3.5 w-3.5" />
-            {t((d) => d.common.github)}
-          </a>
+          <div className="flex shrink-0 flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            <a
+              href="https://github.com/EdizKesici/ToddLab"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+            >
+              <Github className="h-3.5 w-3.5" />
+              {t((d) => d.common.github)}
+            </a>
+            <a
+              href="https://github.com/EdizKesici/ToddLab/blob/main/LICENSE"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              {t((d) => d.common.license)}
+            </a>
+            <a
+              href="https://github.com/EdizKesici/ToddLab/blob/main/docs/licenses.md"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              {t((d) => d.common.dataCredits)}
+            </a>
+          </div>
         </div>
       </div>
     </footer>

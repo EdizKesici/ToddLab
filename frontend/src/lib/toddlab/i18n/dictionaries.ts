@@ -67,6 +67,8 @@ export const en = {
     witnessNote:
       "Modelled estimates are shown for comparison, never merged with the official series.",
     github: "GitHub repository",
+    license: "License",
+    dataCredits: "Data credits",
     rank: "Rank",
     of: "of",
     value: "Value",
@@ -423,6 +425,8 @@ export const fr: Dictionary = {
     witnessNote:
       "Les estimations sont affichées pour comparaison, jamais fusionnées avec les séries officielles.",
     github: "Dépôt GitHub",
+    license: "Licence",
+    dataCredits: "Crédits des données",
     rank: "Rang",
     of: "sur",
     value: "Valeur",
