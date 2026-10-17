@@ -600,3 +600,15 @@ Work Log:
 
 Stage Summary:
 - 497 tests, tsc 0; the frontend reproduces 26,646 of 26,646 stored scores and the 24 golden vectors exactly.
+
+---
+Task ID: 30
+Agent: Claude Code (Hermes)
+Task: CSV export, footer links.
+
+Work Log:
+- Footer: links to the LICENSE file and to docs/licenses.md (data credits).
+- CSV export, read from the published payload without recomputation: `/api/indicators/{id}/export` (canonical + witness tiers in one long table, `tier` column, gap points omitted), `/api/score/export?score&preset&year` (ranking of a year) and `...&entity=<id>` (one country's score by year). Every file starts with `# ` comment lines: provenance, nature, definition, source citations and licences, attribution notice, and for the score the derived-product notice, scale version, threshold and carry rule. Download buttons on the indicator page, under the score ranking and on the country score card. No zip.
+
+Stage Summary:
+- tsc 0, eslint 0, build OK; CSVs checked rectangular with the Python csv module (pandas not installed here, not tested with it).

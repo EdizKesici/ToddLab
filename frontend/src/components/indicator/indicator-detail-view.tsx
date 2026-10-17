@@ -18,6 +18,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { type SexChoice } from "@/components/shared/sex-toggle";
 import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/shared/states";
 import { Badge } from "@/components/ui/badge";
+import { DownloadCsv } from "@/components/shared/download-csv";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -298,6 +299,7 @@ function DetailContent({
             {description}
           </p>
         )}
+        <DownloadCsv href={`/api/indicators/${meta.id}/export`} />
       </PageHeader>
 
       <div className="space-y-6">

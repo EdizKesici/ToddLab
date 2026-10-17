@@ -25,6 +25,7 @@ import { ChartTooltipShell } from "@/components/shared/charts";
 import { colorForIndex, EntityPicker } from "@/components/shared/entity-picker";
 import { YearSlider } from "@/components/shared/year-slider";
 import { ScoreMovers } from "./score-movers";
+import { DownloadCsv } from "@/components/shared/download-csv";
 import {
   interpolate,
   useEntityLabel,
@@ -306,13 +307,18 @@ export function ScoreView() {
                   <Scale className="h-4 w-4 text-primary" />
                   {t((d) => d.score.title)} · {data.year}
                 </CardTitle>
-                <Input
-                  value={filter}
-                  onChange={(e) => setFilter(e.target.value)}
-                  placeholder={t((d) => d.score.searchPlaceholder)}
-                  className="h-9 w-full sm:w-64"
-                  aria-label={t((d) => d.score.searchPlaceholder)}
-                />
+                <div className="flex flex-wrap items-center gap-2">
+                  <DownloadCsv
+                    href={`/api/score/export?score=${state.score}&preset=${stored}&year=${data.year}`}
+                  />
+                  <Input
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    placeholder={t((d) => d.score.searchPlaceholder)}
+                    className="h-9 w-full sm:w-64"
+                    aria-label={t((d) => d.score.searchPlaceholder)}
+                  />
+                </div>
               </div>
             </CardHeader>
             <CardContent className="pt-0">

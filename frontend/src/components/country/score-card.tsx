@@ -17,6 +17,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChartTooltipShell } from "@/components/shared/charts";
+import { DownloadCsv } from "@/components/shared/download-csv";
 import { ScoreComponentsList } from "./score-components-list";
 import { ScoreDeltaPanel } from "./score-delta-panel";
 import { ScoreWeightsPanel } from "./score-weights-panel";
@@ -33,7 +34,7 @@ import {
   scoreAtYear,
   type ScoreCompSeries,
 } from "@/lib/toddlab/score-core";
-import type { ScoreName, ScoreScope } from "@/lib/toddlab/score-types";
+import { storedPreset, type ScoreName, type ScoreScope } from "@/lib/toddlab/score-types";
 import { cn } from "@/lib/utils";
 
 type PresetChoice = "equal" | "todd" | "custom";
@@ -281,6 +282,12 @@ export function ScoreCard({ entityId }: { entityId: string }) {
             <GitCompareArrows className="h-3.5 w-3.5 text-primary" aria-hidden />
             {t((d) => d.score.compareFromCountry)}
           </Link>
+          <DownloadCsv
+            href={`/api/score/export?score=${effectiveScore ?? "official"}&preset=${storedPreset(
+              preset === "custom" ? lastBasePreset : preset,
+              preset === "custom" ? "all" : scope,
+            )}&entity=${entityId}`}
+          />
 
           <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground">
             {effectiveScore === "official"
