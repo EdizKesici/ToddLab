@@ -25,3 +25,6 @@ frontend/next-env.d.ts
 frontend/*.log
 .env*
 *.tsbuildinfo
+
+# Local copies of Todd's books (copyrighted): never committed, never deployed
+docs/scanned_books/

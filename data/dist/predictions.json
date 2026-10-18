@@ -1,7 +1,7 @@
 {
   "source": "docs/todd_predictions.md: Todd's predictions, one row per prediction, citations checked against the books. The list keeps the prediction and a verdict symbol; the outcomes and verdicts are drafts assessed from a 2026 vantage point.",
   "meta": {
-    "source_sha256": "4de4b66fe077480cdc3d34f3eb14e55c5b4c55e7177931ac8d205db6a216358e",
+    "source_sha256": "a1d6f1c96e804a4a8632887af25fbd989f5c4c1f447cf891b43d5bd8d28971fc",
     "n_predictions": 80,
     "n_books": 15,
     "verdicts": {
@@ -231,14 +231,14 @@
           "text_fr": "Les États-Unis sont désormais trop grands et trop lourds démographiquement pour nourrir leur croissance par l'importation massive de main-d'œuvre très qualifiée : le modèle de la fuite des cerveaux à coût nul du XIXe siècle est terminé"
         },
         {
-          "text": "[1998] Japan and Germany are resolutely entering stagnation",
+          "text": "Japan and Germany are resolutely entering stagnation",
           "verdict": "verified",
-          "text_fr": "[1998] Le Japon et l'Allemagne s'engagent résolument dans la stagnation"
+          "text_fr": "Le Japon et l'Allemagne s'engagent résolument dans la stagnation"
         },
         {
-          "text": "The inequality rise originating in the United States extends to the whole developed world [1998]",
+          "text": "The inequality rise originating in the United States extends to the whole developed world",
           "verdict": "verified",
-          "text_fr": "La hausse des inégalités, née aux États-Unis, s'étend à l'ensemble du monde développé [1998]"
+          "text_fr": "La hausse des inégalités, née aux États-Unis, s'étend à l'ensemble du monde développé"
         },
         {
           "text": "Emerging Asian countries will not stop at exporting simple goods: the continued cultural development will let them move up the range",
