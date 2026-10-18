@@ -25887,8 +25887,8 @@
   ],
   "todd_refs": {
     "family": "society",
-    "citations": 16,
-    "books": 6,
+    "citations": 14,
+    "books": 5,
     "refs": [
       {
         "book": "Le Fou et le Prolétaire",
@@ -25917,13 +25917,6 @@
         "citations": 1,
         "label": "Out-of-wedlock births, France 1968-2004",
         "note": "France, 1968-2004, out-of-wedlock birth share."
-      },
-      {
-        "book": "L'invention de la France",
-        "year": 2012,
-        "citations": 2,
-        "label": "Illegitimate births (share of births)",
-        "note": "Bavaria/Carinthia/Paris/Alsace regional data."
       },
       {
         "book": "Qui est Charlie ?",

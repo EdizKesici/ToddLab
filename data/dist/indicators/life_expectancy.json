@@ -323804,8 +323804,8 @@
   ],
   "todd_refs": {
     "family": "mortality",
-    "citations": 26,
-    "books": 11,
+    "citations": 25,
+    "books": 10,
     "refs": [
       {
         "book": "La Chute finale",
@@ -323856,13 +323856,6 @@
         "citations": 1,
         "label": "Life expectancy at birth by sex, France 1990-2007",
         "note": "France-specific series."
-      },
-      {
-        "book": "L'invention de la France",
-        "year": 2012,
-        "citations": 1,
-        "label": "Life expectancy",
-        "note": "Brittany vs Languedoc, 1975, 8-year regional gap."
       },
       {
         "book": "Qui est Charlie ?",

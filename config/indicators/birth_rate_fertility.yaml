@@ -6,7 +6,7 @@ higher_is_better: false
 todd_core: true
 
 sources:
-  # THE CORPUS'S #1 (todd_refs, 111 citations, 16/16 books — the only
+  # THE CORPUS'S #1 (todd_refs, 109 citations, 15/15 books — the only
   # metric Todd uses in every single book) and THE TFR-vs-CBR DECISION v14
   # answers: Todd's variable is FERTILITY PER WOMAN (the corpus notes say
   # it outright — "World TFR decline", "TFR trends 1965-77", "onset
@@ -229,7 +229,7 @@ license: >
 companion_indicators: ["crude_birth_rate"]
 
 notes: >
-  THE EIGHTH INDICATOR, THE CORPUS'S #1 (111 citations, 16/16 books —
+  THE EIGHTH INDICATOR, THE CORPUS'S #1 (109 citations, 15/15 books —
   fertility is the only metric Todd uses in every book: the
   19th-century European transition of L'invention de l'Europe and
   L'enfance du monde, the Soviet natality collapse of La Chute finale,

@@ -612,3 +612,14 @@ Work Log:
 
 Stage Summary:
 - tsc 0, eslint 0, build OK; CSVs checked rectangular with the Python csv module (pandas not installed here, not tested with it).
+
+---
+Task ID: 31
+Agent: Claude Code (Hermes)
+Task: Todd corpus restricted to the books with predictions (decision 29).
+
+Work Log:
+- todd_core.csv: the 7 rows of L'invention de la France (no prediction file in predict_check) removed; todd_refs.yaml regenerated (15 books, 456 citations); Todd-preset weights recomputed by the rebuild; tests and notes that hard-coded 16 books / 470 citations updated; the frontend hint no longer states a book count.
+
+Stage Summary:
+- 497 tests, tsc 0, eslint 0; frontend reproduces 26,646 of 26,646 stored scores and the 24 golden vectors exactly.

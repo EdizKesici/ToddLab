@@ -97,3 +97,26 @@ or the CSV is fixed — loud, per the project's contract.
 economy / demography / markers / education) is wider than the Indicator
 schema's Family enum; it stays a free string at the corpus level and is
 narrowed only when a metric becomes an indicator.
+
+---
+
+## Amendment 2026-10-17 (v30): the corpus keeps only the books with predictions
+
+**Decision 29 (Ediz, 2026-10-17).** `todd_core.csv` only keeps the books that
+appear in the prediction compilation (`predict_check/`, 15 books). One book of
+the former 16 has no prediction file because Todd makes no real predictions in
+it: *L'invention de la France* (2012). Its 7 rows (14 citations: infant
+mortality 5, suicide 3, fertility 2, illegitimate births 2, life expectancy 1,
+homicide 1, cirrhosis 0) were removed from `todd_core.csv` (115 -> 108 rows,
+470 -> 456 citations, sha256 `98469aef...`), and `config/todd_refs.yaml` was
+regenerated. Every one of the 22 metrics keeps at least one book, so no
+indicator changes its Todd / extra status.
+
+Effect on the score: the `todd` weight of a component is its number of distinct
+books, so seven components lose 1 (fertility 16 -> 15, infant mortality 13 ->
+12, suicide 11 -> 10, homicide 10 -> 9, illegitimate births 6 -> 5, cirrhosis 4
+-> 3, life expectancy 11 -> 10, split in two sexes). The `equal` presets and the
+set of scored country-years are unchanged (coverage counts components,
+decision 28); the values of the `todd` presets move (about 99% of them, by
+small amounts). Bounds are not concerned. The frontend reproduces all 26,646
+stored scores and the 24 golden vectors exactly.

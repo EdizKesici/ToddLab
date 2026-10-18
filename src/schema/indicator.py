@@ -149,7 +149,7 @@ ROOT_LABELS: dict[str, str] = {
     # statistical office computes and publishes), collected by Eurostat
     # via its own questionnaire, the same collector judgment as unsd_dyb
     # for content. THE REASON THIS ROOT EXISTS: the Todd corpus's #1
-    # metric is TFR (111 citations, 16/16 books) and NO other living
+    # metric is TFR (109 citations, 15/15 books) and NO other living
     # collector wire prints it — the UN DYB publishes CBR (Table 9) and
     # age-specific rates (Table 10) but no TFR column (verified on the
     # 2024 file, 2026-09-19), and the OECD SDMX registry carries no

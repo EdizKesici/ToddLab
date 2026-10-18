@@ -1016,11 +1016,11 @@ def test_todd_refs_ride_the_matching_indicators_only(tmp_path, real_indicators, 
     _, dist_dir, _, _ = _run_pipeline(tmp_path, real_indicators, real_entities)
 
     for iid, citations, books in [
-        ("infant_mortality", 52, 13),
-        ("life_expectancy", 26, 11),
-        ("homicide_rate", 25, 10),
-        ("suicide_rate", 80, 11),
-        ("birth_rate_fertility", 111, 16),
+        ("infant_mortality", 47, 12),
+        ("life_expectancy", 25, 10),
+        ("homicide_rate", 24, 9),
+        ("suicide_rate", 77, 10),
+        ("birth_rate_fertility", 109, 15),
     ]:
         payload = json.loads((dist_dir / "indicators" / f"{iid}.json").read_text())
         tr = payload["todd_refs"]
@@ -1054,7 +1054,7 @@ def test_todd_corpus_json_is_the_executable_roadmap(tmp_path, real_indicators, r
 
     assert corpus["meta"]["metrics"] == 22
     assert corpus["meta"]["implemented_metrics"] == 22  # THE CORPUS CLOSED (v20 at 24/24; v26 withdrew immigration_stock + agricultural_employment_share — 22/22 since); crude_birth_rate is todd_core=false (no corpus id of its own)
-    assert corpus["meta"]["total_citations"] == 470
+    assert corpus["meta"]["total_citations"] == 456
     assert len(corpus["meta"]["source_csv_sha256"]) == 64
     assert "todd_core.csv" in corpus["source"]
 
@@ -1096,7 +1096,7 @@ def test_todd_corpus_json_is_the_executable_roadmap(tmp_path, real_indicators, r
     # the catalog entries carry the same block (frontend renders "why"
     # from the catalog without loading every indicator file)
     catalog = {c["id"]: c for c in json.loads((dist_dir / "catalog.json").read_text())}
-    assert catalog["suicide_rate"]["todd_refs"]["citations"] == 80
+    assert catalog["suicide_rate"]["todd_refs"]["citations"] == 77
     assert "todd_refs" not in catalog["maternal_deaths"]
 
 
@@ -1111,10 +1111,10 @@ def test_stats_renders_the_corpus_lines(tmp_path, real_indicators, real_entities
 
     assert "suicide_rate: canonical" in out
     assert "birth_rate_fertility: canonical" in out
-    assert "todd refs: 80 citations across 11 book(s) (heaviest: Le Fou et le Prolétaire 1979, 38)" in out
-    assert "todd refs: 111 citations across 16 book(s)" in out
-    assert "todd refs: 52 citations across 13 book(s)" in out
-    assert "todd corpus: 22 metrics, 470 citations, 16 books" in out
+    assert "todd refs: 77 citations across 10 book(s) (heaviest: Le Fou et le Prolétaire 1979, 38)" in out
+    assert "todd refs: 109 citations across 15 book(s)" in out
+    assert "todd refs: 47 citations across 12 book(s)" in out
+    assert "todd corpus: 22 metrics, 456 citations, 15 books" in out
     assert "implemented 22/22" in out
     # THE BACKLOG LINE IS GONE — the corpus is complete: no "top
     # unimplemented" line prints anymore, and its ABSENCE is the pin
@@ -1250,7 +1250,7 @@ def test_birth_rate_fertility_todd_refs_and_corpus_ranking(tmp_path, real_indica
     _, dist_dir, _, _ = _run_pipeline(tmp_path, real_indicators, real_entities)
     payload = json.loads((dist_dir / "indicators" / "birth_rate_fertility.json").read_text())
     tr = payload["todd_refs"]
-    assert (tr["citations"], tr["books"]) == (111, 16)
+    assert (tr["citations"], tr["books"]) == (109, 15)
     # the heaviest book: Après l'Empire (2002, 20 citations — the world
     # TFR decline tables)
     heaviest = max(tr["refs"], key=lambda r: r["citations"])
@@ -1336,7 +1336,7 @@ def test_illegitimate_births_is_two_tier_with_the_german_seam(tmp_path, real_ind
 
     assert payload["todd_core"] is True
     tr = payload["todd_refs"]
-    assert (tr["citations"], tr["books"]) == (16, 6)
+    assert (tr["citations"], tr["books"]) == (14, 5)
     assert payload["companion_indicators"] == []  # no companion: a share, not a paired measure
     assert payload["unit"] == "percent_of_live_births"
 
@@ -1409,7 +1409,7 @@ def test_illegitimate_births_is_two_tier_with_the_german_seam(tmp_path, real_ind
     assert [r["root"] for r in roots["witness"]] == ["oecd_family"]
     corpus = json.loads((dist_dir / "todd_corpus.json").read_text())
     metric = next(m for m in corpus["metrics"] if m["id"] == "illegitimate_births")
-    assert metric["implemented"] is True and metric["citations"] == 16
+    assert metric["implemented"] is True and metric["citations"] == 14
 
     # No range violation on either tier (a 0-100 share; Chile 75.08 the
     # witness tail's peak).
@@ -1720,7 +1720,7 @@ def test_cirrhosis_is_the_fourth_cause_code_with_the_benchmark_pair(tmp_path, re
 
     assert payload["todd_core"] is True
     tr = payload["todd_refs"]
-    assert (tr["citations"], tr["books"]) == (9, 4)
+    assert (tr["citations"], tr["books"]) == (9, 3)
     assert payload["unit"] == "deaths_per_100000_population"
     assert payload["family"] == "mortality"
 

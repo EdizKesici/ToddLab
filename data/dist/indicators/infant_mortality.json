@@ -485526,8 +485526,8 @@
   ],
   "todd_refs": {
     "family": "mortality",
-    "citations": 52,
-    "books": 13,
+    "citations": 47,
+    "books": 12,
     "refs": [
       {
         "book": "La Chute finale",
@@ -485592,13 +485592,6 @@
         "citations": 2,
         "label": "Infant mortality rate (per 1000)",
         "note": "France + brief France/USA comparison, departmental breakdown."
-      },
-      {
-        "book": "L'invention de la France",
-        "year": 2012,
-        "citations": 5,
-        "label": "Infant mortality rate",
-        "note": "19th-c. departmental data + foundling mortality."
       },
       {
         "book": "Où en sommes-nous ?",

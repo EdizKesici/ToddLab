@@ -238,8 +238,8 @@ def test_the_committed_corpus_loads_and_its_meta_agrees():
     corpus = load_todd_refs(CONFIG_DIR)
     assert corpus is not None
     assert corpus.meta.metrics == 22
-    assert corpus.meta.rows == 115
-    assert corpus.meta.books == 16
+    assert corpus.meta.rows == 108
+    assert corpus.meta.books == 15
     assert corpus.meta.total_citations == sum(m.citations_total for m in corpus.metrics.values())
     # the corpus's own #1 is the unimplemented fertility metric
     first = next(iter(corpus.metrics.values()))

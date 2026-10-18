@@ -124672,8 +124672,8 @@
   ],
   "todd_refs": {
     "family": "mortality",
-    "citations": 80,
-    "books": 11,
+    "citations": 77,
+    "books": 10,
     "refs": [
       {
         "book": "La Chute finale",
@@ -124717,13 +124717,6 @@
         "citations": 2,
         "label": "Suicide rate per 100,000",
         "note": "23-country table (Russia 35.3, Baltic states ~33, Muslim countries near zero)."
-      },
-      {
-        "book": "L'invention de la France",
-        "year": 2012,
-        "citations": 3,
-        "label": "Suicide rate",
-        "note": "Mostly map-based (1875-85, 1934); class table 1955-65."
       },
       {
         "book": "Qui est Charlie ?",

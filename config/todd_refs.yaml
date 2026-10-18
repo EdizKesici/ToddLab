@@ -16,11 +16,11 @@
 # same way, the extra column ignored.
 
 meta:
-  source_csv_sha256: a46fccbe2a467219feaa2514a5825c50617871ee5607bda95f42b7fe43c8fa93
-  rows: 115
+  source_csv_sha256: 98469aefe572abdccdcf50e0ceff781dc48042b6e033011ba4646cb4d7951fbd
+  rows: 108
   metrics: 22
-  books: 16
-  total_citations: 470
+  books: 15
+  total_citations: 456
 metrics:
   birth_rate_fertility:
     family: society
@@ -77,11 +77,6 @@ metrics:
       citations: 2
       label: Total fertility rate (period indicator), France
       note: France-specific fertility series.
-    - book: L'invention de la France
-      year: 2012
-      citations: 2
-      label: Birth rate / fertility
-      note: Cartographic/dating focus; 1975 department map.
     - book: Qui est Charlie ?
       year: 2015
       citations: 3
@@ -142,11 +137,6 @@ metrics:
       citations: 2
       label: Suicide rate per 100,000
       note: 23-country table (Russia 35.3, Baltic states ~33, Muslim countries near zero).
-    - book: L'invention de la France
-      year: 2012
-      citations: 3
-      label: Suicide rate
-      note: Mostly map-based (1875-85, 1934); class table 1955-65.
     - book: Qui est Charlie ?
       year: 2015
       citations: 2
@@ -218,11 +208,6 @@ metrics:
       citations: 2
       label: Infant mortality rate (per 1000)
       note: France + brief France/USA comparison, departmental breakdown.
-    - book: L'invention de la France
-      year: 2012
-      citations: 5
-      label: Infant mortality rate
-      note: 19th-c. departmental data + foundling mortality.
     - book: Où en sommes-nous ?
       year: 2017
       citations: 2
@@ -360,11 +345,6 @@ metrics:
       citations: 1
       label: Life expectancy at birth by sex, France 1990-2007
       note: France-specific series.
-    - book: L'invention de la France
-      year: 2012
-      citations: 1
-      label: Life expectancy
-      note: Brittany vs Languedoc, 1975, 8-year regional gap.
     - book: Qui est Charlie ?
       year: 2015
       citations: 2
@@ -419,11 +399,6 @@ metrics:
       citations: 1
       label: Homicide rate per 100,000 (France + international)
       note: France + international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia).
-    - book: L'invention de la France
-      year: 2012
-      citations: 1
-      label: Homicide rate
-      note: 1875-85 map; stable violence geography over two centuries.
     - book: Qui est Charlie ?
       year: 2015
       citations: 1
@@ -496,11 +471,6 @@ metrics:
       citations: 1
       label: Out-of-wedlock births, France 1968-2004
       note: France, 1968-2004, out-of-wedlock birth share.
-    - book: L'invention de la France
-      year: 2012
-      citations: 2
-      label: Illegitimate births (share of births)
-      note: Bavaria/Carinthia/Paris/Alsace regional data.
     - book: Qui est Charlie ?
       year: 2015
       citations: 1
@@ -541,11 +511,6 @@ metrics:
       citations: 5
       label: Cirrhosis / alcohol-related mortality
       note: France vs USA/Germany/Italy, class breakdown.
-    - book: L'invention de la France
-      year: 2012
-      citations: 0
-      label: Cirrhosis / alcohol-related mortality
-      note: Mapped, 1975; Nord/Pas-de-Calais highest.
     - book: La Défaite de l'Occident
       year: 2024
       citations: 2

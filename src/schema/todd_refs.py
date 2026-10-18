@@ -1,7 +1,7 @@
 """Schema for config/todd_refs.yaml — the Todd corpus as first-class metadata.
 
 WHAT THIS FILE MODELS
-Ediz's OCR compilation of every metric Todd uses across 16 books (one row
+Ediz's OCR compilation of every metric Todd uses across the books retained (16, then 15 since v30) (one row
 per metric x book, citation-counted) enters the repo as a GENERATED config
 (scripts/normalize_todd_refs.py performs the one-way transform from
 todd_core.csv; the CSV is Ediz's source of truth, tracked at the repo root

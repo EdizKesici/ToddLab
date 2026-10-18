@@ -91,8 +91,8 @@
     "n_witness_points": 14208,
     "todd_refs": {
       "family": "society",
-      "citations": 111,
-      "books": 16,
+      "citations": 109,
+      "books": 15,
       "refs": [
         {
           "book": "La Chute finale",
@@ -166,13 +166,6 @@
           "note": "France-specific fertility series."
         },
         {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 2,
-          "label": "Birth rate / fertility",
-          "note": "Cartographic/dating focus; 1975 department map."
-        },
-        {
           "book": "Qui est Charlie ?",
           "year": 2015,
           "citations": 3,
@@ -244,7 +237,7 @@
     "todd_refs": {
       "family": "mortality",
       "citations": 9,
-      "books": 4,
+      "books": 3,
       "refs": [
         {
           "book": "La Chute finale",
@@ -260,13 +253,6 @@
           "citations": 5,
           "label": "Cirrhosis / alcohol-related mortality",
           "note": "France vs USA/Germany/Italy, class breakdown."
-        },
-        {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 0,
-          "label": "Cirrhosis / alcohol-related mortality",
-          "note": "Mapped, 1975; Nord/Pas-de-Calais highest."
         },
         {
           "book": "La Défaite de l'Occident",
@@ -567,8 +553,8 @@
     "n_witness_points": 4220,
     "todd_refs": {
       "family": "mortality",
-      "citations": 25,
-      "books": 10,
+      "citations": 24,
+      "books": 9,
       "refs": [
         {
           "book": "La Chute finale",
@@ -621,13 +607,6 @@
           "note": "France + international comparison (UK/Germany/Sweden/US/Mexico/Russia/Colombia)."
         },
         {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 1,
-          "label": "Homicide rate",
-          "note": "1875-85 map; stable violence geography over two centuries."
-        },
-        {
           "book": "Qui est Charlie ?",
           "year": 2015,
           "citations": 1,
@@ -677,8 +656,8 @@
     "n_witness_points": 2139,
     "todd_refs": {
       "family": "society",
-      "citations": 16,
-      "books": 6,
+      "citations": 14,
+      "books": 5,
       "refs": [
         {
           "book": "Le Fou et le Prolétaire",
@@ -707,13 +686,6 @@
           "citations": 1,
           "label": "Out-of-wedlock births, France 1968-2004",
           "note": "France, 1968-2004, out-of-wedlock birth share."
-        },
-        {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 2,
-          "label": "Illegitimate births (share of births)",
-          "note": "Bavaria/Carinthia/Paris/Alsace regional data."
         },
         {
           "book": "Qui est Charlie ?",
@@ -897,8 +869,8 @@
     "n_witness_points": 80828,
     "todd_refs": {
       "family": "mortality",
-      "citations": 52,
-      "books": 13,
+      "citations": 47,
+      "books": 12,
       "refs": [
         {
           "book": "La Chute finale",
@@ -965,13 +937,6 @@
           "note": "France + brief France/USA comparison, departmental breakdown."
         },
         {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 5,
-          "label": "Infant mortality rate",
-          "note": "19th-c. departmental data + foundling mortality."
-        },
-        {
           "book": "Où en sommes-nous ?",
           "year": 2017,
           "citations": 2,
@@ -1033,8 +998,8 @@
     "n_witness_points": 47884,
     "todd_refs": {
       "family": "mortality",
-      "citations": 26,
-      "books": 11,
+      "citations": 25,
+      "books": 10,
       "refs": [
         {
           "book": "La Chute finale",
@@ -1085,13 +1050,6 @@
           "citations": 1,
           "label": "Life expectancy at birth by sex, France 1990-2007",
           "note": "France-specific series."
-        },
-        {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 1,
-          "label": "Life expectancy",
-          "note": "Brittany vs Languedoc, 1975, 8-year regional gap."
         },
         {
           "book": "Qui est Charlie ?",
@@ -1626,8 +1584,8 @@
     "n_witness_points": 12210,
     "todd_refs": {
       "family": "mortality",
-      "citations": 80,
-      "books": 11,
+      "citations": 77,
+      "books": 10,
       "refs": [
         {
           "book": "La Chute finale",
@@ -1671,13 +1629,6 @@
           "citations": 2,
           "label": "Suicide rate per 100,000",
           "note": "23-country table (Russia 35.3, Baltic states ~33, Muslim countries near zero)."
-        },
-        {
-          "book": "L'invention de la France",
-          "year": 2012,
-          "citations": 3,
-          "label": "Suicide rate",
-          "note": "Mostly map-based (1875-85, 1934); class table 1955-65."
         },
         {
           "book": "Qui est Charlie ?",

@@ -57499,7 +57499,7 @@
   "todd_refs": {
     "family": "mortality",
     "citations": 9,
-    "books": 4,
+    "books": 3,
     "refs": [
       {
         "book": "La Chute finale",
@@ -57515,13 +57515,6 @@
         "citations": 5,
         "label": "Cirrhosis / alcohol-related mortality",
         "note": "France vs USA/Germany/Italy, class breakdown."
-      },
-      {
-        "book": "L'invention de la France",
-        "year": 2012,
-        "citations": 0,
-        "label": "Cirrhosis / alcohol-related mortality",
-        "note": "Mapped, 1975; Nord/Pas-de-Calais highest."
       },
       {
         "book": "La Défaite de l'Occident",

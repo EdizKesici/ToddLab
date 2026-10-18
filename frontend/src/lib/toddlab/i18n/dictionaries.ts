@@ -316,7 +316,7 @@ export const en = {
     relModelledText:
       "The reference series is itself a model output or a compilation, not figures published by statistical services: read it as an estimate.",
     toddRefsTitle: "In Todd's books",
-    toddRefsHint: "Citation weight of this metric across the 16 books of the corpus.",
+    toddRefsHint: "Citation weight of this metric across the books of the corpus.",
     focusViewAll: "Show all countries",
     license: "License",
     coverage: "Declared coverage",
@@ -676,7 +676,7 @@ export const fr: Dictionary = {
     relModelledText:
       "La série de référence est elle-même le résultat d'un modèle ou d'une compilation, pas des chiffres publiés par des services statistiques : à lire comme une estimation.",
     toddRefsTitle: "Dans les livres de Todd",
-    toddRefsHint: "Poids de citations de cette métrique à travers les 16 livres du corpus.",
+    toddRefsHint: "Poids de citations de cette métrique à travers les livres du corpus.",
     focusViewAll: "Voir tous les pays",
     license: "Licence",
     coverage: "Couverture déclarée",

@@ -74,13 +74,6 @@ illegitimate_births,Illegitimate births (share of births),society,La troisième 
 homicide_rate,Homicide rate,mortality,La troisième planète (1983),2,US/Mexico + Asia WHO table.
 consanguineous_marriage_rate,First-cousin (consanguineous) marriage frequency,society,La troisième planète (1983),1,World-scale range cited (0-60%).
 life_expectancy,Life expectancy,mortality,La troisième planète (1983),1,"Cuba/Argentina/Spain triplet, c.1970."
-suicide_rate,Suicide rate,mortality,L'invention de la France (2012),3,"Mostly map-based (1875-85, 1934); class table 1955-65."
-infant_mortality,Infant mortality rate,mortality,L'invention de la France (2012),5,19th-c. departmental data + foundling mortality.
-birth_rate_fertility,Birth rate / fertility,society,L'invention de la France (2012),2,Cartographic/dating focus; 1975 department map.
-illegitimate_births,Illegitimate births (share of births),society,L'invention de la France (2012),2,Bavaria/Carinthia/Paris/Alsace regional data.
-life_expectancy,Life expectancy,mortality,L'invention de la France (2012),1,"Brittany vs Languedoc, 1975, 8-year regional gap."
-homicide_rate,Homicide rate,mortality,L'invention de la France (2012),1,1875-85 map; stable violence geography over two centuries.
-cirrhosis_alcohol_mortality,Cirrhosis / alcohol-related mortality,mortality,L'invention de la France (2012),0,"Mapped, 1975; Nord/Pas-de-Calais highest."
 industrial_employment_share,"Industry share of active population, c.1880 (map) and c.1970 (map) + country values",economy,L'invention de l'Europe (1990),20,"Multiple European maps/tables, 1880-1987, several countries."
 unemployment_rate,"Unemployment rate, Austria 1930–1934 and Belgian industry 1934",economy,L'invention de l'Europe (1990),3,"Austria 1930-34, Belgium/Germany/US interwar."
 infant_mortality,"Infant mortality, France 1750→1910→1980s",mortality,L'invention de l'Europe (1990),1,France 1750->1910->1980s; 'mass suffering' disappearance argument.

@@ -190,11 +190,11 @@ weights must skip `weight <= 0` the same way.
 - `equal`: weight 1 per indicator (0.5 per sex component).
 - `todd`: weight = the number of DISTINCT BOOKS citing the component's
   `corpus_metric` in the Todd corpus (floor 1 when null or 0).
-  Fertility carries 16 of 92 indicator weight on the official score
-  (also 92 on the modelled score since v30 — the official side lost
-  the weights of the three model-based indicators and gained none) —
-  the concentration is Todd's own reading, display it, and offer
-  `equal` beside it.
+  Fertility carries 15 of 89 indicator weight in the Todd + extra set, on
+  both scores (82 on the official and 84 on the modelled score in the
+  Todd-only set; read from `meta.json`, 2026-10-17, after the corpus
+  dropped the book without predictions) — the concentration is Todd's own
+  reading, display it, and offer `equal` beside it.
 
 ## Display discipline (the three prohibitions, applied to rendering)
 
