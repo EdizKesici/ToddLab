@@ -3,6 +3,7 @@ import type {
   CatalogEntry,
   DistEntity,
   IndicatorFile,
+  PredictionsPayload,
   ToddCorpus,
 } from "./types";
 import { distFileExists, readDistJson } from "./server/dist";
@@ -30,6 +31,10 @@ export function getEntities(): DistEntity[] {
 
 export function getCorpus(): ToddCorpus {
   return readJson<ToddCorpus>("todd_corpus.json");
+}
+
+export function getPredictions(): PredictionsPayload {
+  return readJson<PredictionsPayload>("predictions.json");
 }
 
 /** Indicators withdrawn upstream (V26 retraction) or gitignored — never served. */

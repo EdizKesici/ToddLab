@@ -120,7 +120,7 @@ src/            pipeline, connectors, schema, score layer, CLI
 config/         indicators, sources, entities, score definition
 catalog/        curated tables
 data/dist/      published payload (committed)
-docs/           architecture, methodology, ADRs, score contract
+docs/           architecture, methodology, ADRs, score contract, Todd's predictions
 scripts/        score-bounds freezer, CSV normalizers, fixture builders
 tests/          pytest suite
 frontend/       Next.js web app
@@ -130,6 +130,10 @@ extra_core.csv  metrics outside Todd's books
 
 Further reading: `docs/methodology.md`, `docs/architecture.md`,
 `docs/the-measurement-problem.md`, `docs/adr/`.
+
+Todd's predictions: `docs/todd_predictions.md` lists, book by book, what Todd
+announced, with his own words checked against the books, what happened since,
+and a draft verdict. The website shows a short version at `/predictions`.
 
 ## License
 

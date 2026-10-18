@@ -11,6 +11,7 @@ export const en = {
     countries: "Countries",
     indicators: "Indicators",
     score: "Score",
+    predictions: "Predictions",
     methodology: "Method",
   },
   common: {
@@ -330,6 +331,21 @@ export const en = {
     unavailableText:
       "This indicator is not part of the current dataset. It can be regenerated from the backend pipeline.",
   },
+  predictions: {
+    title: "Todd's predictions",
+    subtitle:
+      "What Emmanuel Todd announced in his books, book by book. For each prediction, the quotation was checked against the exact text of the book.",
+    count: "{n} predictions in {b} books",
+    legendTitle: "Verdict",
+    verified: "Verified",
+    partial: "Partially verified",
+    notRealized: "Not realized",
+    draftNote:
+      "The verdicts are draft assessments written in 2026 and meant to be reviewed; they are not a measurement. The full table, with the quotations, their translations and the outcomes, is in the repository.",
+    fullTable: "Full table on GitHub",
+    bookPredictions: "{n} predictions",
+    bookPrediction: "1 prediction",
+  },
   method: {
     title: "The method",
     subtitle: "How ToddLab sources, keeps and shows numbers — and why some data cannot lie.",
@@ -370,6 +386,7 @@ export const fr: Dictionary = {
     countries: "Pays",
     indicators: "Indicateurs",
     score: "Score",
+    predictions: "Prédictions",
     methodology: "Méthode",
   },
   common: {
@@ -689,6 +706,21 @@ export const fr: Dictionary = {
     unavailableTitle: "Données non incluses",
     unavailableText:
       "Cet indicateur ne fait pas partie du jeu de données actuel. Il peut être régénéré depuis le pipeline backend.",
+  },
+  predictions: {
+    title: "Les prédictions de Todd",
+    subtitle:
+      "Ce qu'Emmanuel Todd a annoncé dans ses livres, livre par livre. Pour chaque prédiction, la citation a été vérifiée contre le texte exact du livre.",
+    count: "{n} prédictions dans {b} livres",
+    legendTitle: "Verdict",
+    verified: "Vérifiée",
+    partial: "Partiellement vérifiée",
+    notRealized: "Non réalisée",
+    draftNote:
+      "Les verdicts sont des évaluations provisoires rédigées en 2026, à relire ; ce n'est pas une mesure. Le tableau complet, avec les citations, leurs traductions et les résultats, est dans le dépôt.",
+    fullTable: "Tableau complet sur GitHub",
+    bookPredictions: "{n} prédictions",
+    bookPrediction: "1 prédiction",
   },
   method: {
     title: "La méthode",

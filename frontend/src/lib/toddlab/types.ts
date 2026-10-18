@@ -101,6 +101,27 @@ export interface DistEntity {
 
 /* ---------------------------------- Corpus ---------------------------------- */
 
+/* ------------------------------- Predictions -------------------------------- */
+
+export type PredictionVerdict = "verified" | "partial" | "not_realized";
+
+/** dist/predictions.json: Todd's predictions, one list per book. */
+export interface PredictionsPayload {
+  source: string;
+  meta: {
+    source_sha256: string;
+    n_predictions: number;
+    n_books: number;
+    verdicts: Record<PredictionVerdict, number>;
+  };
+  books: {
+    label: string;
+    title: string;
+    year: string;
+    predictions: { text: string; text_fr: string | null; verdict: PredictionVerdict }[];
+  }[];
+}
+
 export interface ToddCorpus {
   source: string;
   meta: {

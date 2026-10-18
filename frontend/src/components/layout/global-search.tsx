@@ -111,6 +111,7 @@ export function GlobalSearch() {
       { id: "compare", label: t((d) => d.nav.compare), alt: "comparer", href: "/compare" },
       { id: "countries", label: t((d) => d.nav.countries), alt: "pays pays", href: "/countries" },
       { id: "indicators", label: t((d) => d.nav.indicators), alt: "indicateurs", href: "/indicators" },
+      { id: "predictions", label: t((d) => d.nav.predictions), alt: "predictions prevision", href: "/predictions" },
       { id: "methodology", label: t((d) => d.nav.methodology), alt: "methode", href: "/methodology" },
     ],
     [t],

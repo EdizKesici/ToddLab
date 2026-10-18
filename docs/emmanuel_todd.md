@@ -22,3 +22,8 @@ Todd's epistemology: births, deaths, literacy results and anthropometric data ar
 Todd maps the world's family structures (absolute nuclear, egalitarian nuclear, stem, exogamous community, anomic...) and claims that ideologies are secularized family systems, such as communism taking root in exogamous-community zones (Slavic world, China), English liberalism in the absolute-nuclear zone. Full taxonomy in "L'Origine des systèmes familiaux" (2011) — "The Origin of Family Systems".
 
 
+## 3. His predictions
+
+Todd's books contain explicit predictions, with a named target or a dated horizon. [`todd_predictions.md`](todd_predictions.md) lists them in one table, grouped by book. Each row gives the prediction, Todd's own words (the quotation, checked against the scanned books), an English translation, what happened since, and a verdict: verified, partially verified or not realized.
+
+The quotations are the verified part. The outcomes and verdicts are drafts, written in 2026 and meant to be reviewed. Books in which Todd makes no real predictions are not listed. The website shows a short version of the list at `/predictions`: the predictions of each book and a verdict symbol.

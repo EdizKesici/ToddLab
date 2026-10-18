@@ -1,0 +1,520 @@
+{
+  "source": "docs/todd_predictions.md: Todd's predictions, one row per prediction, citations checked against the books. The list keeps the prediction and a verdict symbol; the outcomes and verdicts are drafts assessed from a 2026 vantage point.",
+  "meta": {
+    "source_sha256": "4de4b66fe077480cdc3d34f3eb14e55c5b4c55e7177931ac8d205db6a216358e",
+    "n_predictions": 80,
+    "n_books": 15,
+    "verdicts": {
+      "verified": 53,
+      "partial": 21,
+      "not_realized": 6
+    }
+  },
+  "books": [
+    {
+      "label": "La Chute finale (1976/1990)",
+      "title": "La Chute finale",
+      "year": "1976/1990",
+      "predictions": [
+        {
+          "text": "Soviet economy enters zero real growth around 1975",
+          "verdict": "verified",
+          "text_fr": "L'économie soviétique atteint la croissance réelle nulle vers 1975"
+        },
+        {
+          "text": "Russia will remain a superpower whose shadow weighs on Europe",
+          "verdict": "verified",
+          "text_fr": "La Russie restera un supergrand dont l'ombre pèsera sur l'Europe"
+        },
+        {
+          "text": "Within ten, twenty or thirty years, the world will witness the erosion or collapse of the USSR",
+          "verdict": "verified",
+          "text_fr": "D'ici dix, vingt ou trente ans, le monde assistera à l'effritement ou à l'effondrement de l'URSS"
+        },
+        {
+          "text": "Economic decentralization will lead, medium-term, to the Baltic, Caucasian and Muslim republics breaking away",
+          "verdict": "verified",
+          "text_fr": "La décentralisation économique conduira, à moyen terme, au décrochage des républiques baltes, caucasiennes et musulmanes"
+        },
+        {
+          "text": "The USSR's effacement restores the 1939 balance of powers: the US far ahead, then Japan, Germany, the USSR",
+          "verdict": "partial",
+          "text_fr": "L'effacement de l'URSS rétablit l'équilibre des puissances de 1939 : les États-Unis loin devant, puis le Japon, l'Allemagne, l'URSS"
+        },
+        {
+          "text": "Russia's demographic \"conqueror\" will be Islam",
+          "verdict": "not_realized",
+          "text_fr": "Le « vainqueur » démographique de la Russie sera l'Islam"
+        }
+      ]
+    },
+    {
+      "label": "Le Fou et le Prolétaire (1979)",
+      "title": "Le Fou et le Prolétaire",
+      "year": "1979",
+      "predictions": [
+        {
+          "text": "Stalinism will not disappear within ten, twenty or thirty years",
+          "verdict": "verified",
+          "text_fr": "Le stalinisme ne disparaîtra pas dans dix, vingt ou trente ans"
+        },
+        {
+          "text": "Soon all French people will speak the same language (regional languages doomed)",
+          "verdict": "verified",
+          "text_fr": "Bientôt tous les Français parleront la même langue (les langues régionales sont condamnées)"
+        },
+        {
+          "text": "Nuclear accidents will occur within the next thirty years in aging reactors (worn pipes + bureaucratic laxity)",
+          "verdict": "verified",
+          "text_fr": "Des accidents nucléaires surviendront dans les trente années à venir dans des centrales vieillissantes (tuyaux usés et laxisme bureaucratique)"
+        },
+        {
+          "text": "The PCF \"red belt\" around Paris will eventually fade",
+          "verdict": "verified",
+          "text_fr": "La « ceinture rouge » du PCF autour de Paris finira par s'estomper"
+        },
+        {
+          "text": "The British will never simply accept the principle of a multinational State",
+          "verdict": "verified",
+          "text_fr": "Les Britanniques n'admettront jamais purement et simplement le principe d'un État multinational"
+        },
+        {
+          "text": "The PCF will die in its bed, not of a violent death: the unique historical example of a peaceful, progressive disappearance of a powerful communist movement",
+          "verdict": "verified",
+          "text_fr": "Le PCF mourra dans son lit, et non de mort violente : l'exemple historique unique d'une disparition pacifique et progressive d'un mouvement communiste puissant"
+        }
+      ]
+    },
+    {
+      "label": "La troisième planète (1983)",
+      "title": "La troisième planète",
+      "year": "1983",
+      "predictions": [
+        {
+          "text": "Korea will follow Japan's trajectory of world-shaking economic expansion",
+          "verdict": "verified",
+          "text_fr": "La Corée suivra la trajectoire du Japon, une expansion économique qui bouleverse le monde"
+        }
+      ]
+    },
+    {
+      "label": "L'enfance du monde (1984)",
+      "title": "L'enfance du monde",
+      "year": "1984",
+      "predictions": [
+        {
+          "text": "Japan and Korea will soon surpass, in GNP per capita, a number of Western European countries",
+          "verdict": "verified",
+          "text_fr": "Le Japon et la Corée dépasseront bientôt, en produit national par habitant, un certain nombre de pays d'Europe de l'Ouest"
+        },
+        {
+          "text": "The countries below 50% literacy around 1980 (India, the Muslim world, black Africa) will still be the third world of the year 2000",
+          "verdict": "verified",
+          "text_fr": "Les pays alphabétisés à moins de 50 % vers 1980 (Inde, monde musulman, Afrique noire) seront encore le tiers monde de l'an 2000"
+        },
+        {
+          "text": "In the year 2100, income per head in Asia (from South India to the Philippines) will outpace the Arab world and South America, whose literacy rates are as high but progress more slowly",
+          "verdict": "partial",
+          "text_fr": "En l'an 2100, le revenu par habitant de l'Asie (de l'Inde du Sud aux Philippines) dépassera celui du monde arabe et de l'Amérique du Sud, dont les taux d'alphabétisation sont aussi élevés mais progressent plus lentement"
+        }
+      ]
+    },
+    {
+      "label": "La nouvelle France (1988)",
+      "title": "La nouvelle France",
+      "year": "1988",
+      "predictions": [
+        {
+          "text": "The three structural mutations (rising education, collapsing religious practice, shrinking working class) are definitive and will not reverse",
+          "verdict": "verified",
+          "text_fr": "Les trois mutations structurelles (hausse du niveau d'éducation, effondrement de la pratique religieuse, rétraction de la classe ouvrière) sont définitives et ne s'inverseront pas"
+        },
+        {
+          "text": "From the PS's 1988 return to power, abstentionism is the new dominant force of the French political system",
+          "verdict": "verified",
+          "text_fr": "À partir du retour du PS au pouvoir en 1988, l'abstentionnisme est la force neuve du système politique français"
+        },
+        {
+          "text": "French Catholicism is on the point of succumbing definitively under the invisible blows of a cultural and sexual revolution",
+          "verdict": "partial",
+          "text_fr": "Le catholicisme français est sur le point de succomber définitivement sous les coups invisibles d'une révolution culturelle et sexuelle"
+        },
+        {
+          "text": "The left-right oscillation will continue, faster and faster, increasingly devoid of concrete meaning",
+          "verdict": "verified",
+          "text_fr": "L'oscillation gauche-droite se poursuivra, de plus en plus rapide, de plus en plus dépourvue de signification concrète"
+        }
+      ]
+    },
+    {
+      "label": "L'invention de l'Europe (1990)",
+      "title": "L'invention de l'Europe",
+      "year": "1990",
+      "predictions": [
+        {
+          "text": "The disappearance of communist pressure leaves room for a specifically Russian pressure which, as surely as Stalinism, constrains Europe towards unity",
+          "verdict": "partial",
+          "text_fr": "La disparition de la pression communiste laisse la place à une pression spécifiquement russe qui, aussi sûrement que le stalinisme, contraint l'Europe à l'unité"
+        },
+        {
+          "text": "Given current demographic balances, even a reunified Germany would not be, far from it, a historical giant",
+          "verdict": "verified",
+          "text_fr": "Dans l'état actuel des équilibres démographiques, même une Allemagne réunifiée ne serait pas, loin de là, un géant historique"
+        },
+        {
+          "text": "The dechristianization of Europe is irreversible: no large-scale re-Christianization of the continent is possible (the process is discontinuous, but never reverses)",
+          "verdict": "verified",
+          "text_fr": "La déchristianisation de l'Europe est irréversible : aucune rechristianisation de grande ampleur du continent n'est possible (le processus est discontinu, mais ne s'inverse jamais)"
+        },
+        {
+          "text": "In the uniformly dechristianized, agnostic Europe of the 1990s-2000s, Islam's chances of survival are close to nil; Muslim immigrants will be culturally laminated within a generation",
+          "verdict": "not_realized",
+          "text_fr": "Dans l'Europe uniformément déchristianisée et agnostique des années 1990-2000, les chances de survie de l'islam sont à peu près nulles ; les immigrés musulmans seront culturellement laminés en une génération"
+        },
+        {
+          "text": "Demographically depressed by its low fertility, Europe needs immigrants: settling foreigners on its soil is one of the conditions of its survival",
+          "verdict": "verified",
+          "text_fr": "Démographiquement déprimée par sa faible fécondité, l'Europe a besoin d'immigrés : l'installation d'étrangers sur son sol est l'une des conditions de sa survie"
+        }
+      ]
+    },
+    {
+      "label": "Le Destin des immigrés (1994)",
+      "title": "Le Destin des immigrés",
+      "year": "1994",
+      "predictions": [
+        {
+          "text": "Turkey will have 100 million inhabitants in 2025",
+          "verdict": "not_realized",
+          "text_fr": "La Turquie comptera 100 millions d'habitants en 2025"
+        },
+        {
+          "text": "Restructured by Islam, the Turkish minority in Germany will keep mutual-aid networks able to withstand the vagaries of the postindustrial economy",
+          "verdict": "verified",
+          "text_fr": "Restructurée par l'islam, la minorité turque d'Allemagne gardera des réseaux d'entraide capables de résister aux aléas de l'économie postindustrielle"
+        }
+      ]
+    },
+    {
+      "label": "L'illusion économique (1998)",
+      "title": "L'illusion économique",
+      "year": "1998",
+      "predictions": [
+        {
+          "text": "Under global free trade, if all firms compress wages, a systemic shortfall of consumption follows within a few decades, and the last judgment of zero growth is inevitable",
+          "verdict": "partial",
+          "text_fr": "Sous le libre-échange mondial, si toutes les entreprises compriment les salaires, un retard systémique de la consommation s'installe en quelques décennies, et le jugement dernier de la croissance zéro est inéluctable"
+        },
+        {
+          "text": "The euro is not viable in the long term under free-trade conditions",
+          "verdict": "partial",
+          "text_fr": "L'euro n'est pas viable à long terme en régime de libre-échange"
+        },
+        {
+          "text": "The Russian anthropological system will not dissolve within a few years",
+          "verdict": "verified",
+          "text_fr": "Le système anthropologique russe ne se dissoudra pas en quelques années"
+        },
+        {
+          "text": "China's economic exit from communism will be easier than Russia's, while its political liberation will be much more problematic",
+          "verdict": "verified",
+          "text_fr": "La sortie économique du communisme sera plus facile en Chine qu'en Russie, alors que sa libération politique sera beaucoup plus problématique"
+        },
+        {
+          "text": "Japan's trade balance will not return to equilibrium: the yen's rise converts the goods surplus into capital, until the world system reaches stagnation or rupture",
+          "verdict": "partial",
+          "text_fr": "La balance commerciale du Japon ne reviendra pas à l'équilibre : la hausse du yen convertit l'excédent marchand en capital, jusqu'à ce que le système mondial atteigne la stagnation ou la rupture"
+        },
+        {
+          "text": "The US is now too large and too demographically heavy to feed its growth by mass-importing highly skilled labor: the zero-cost brain-drain model of the 19th century is over",
+          "verdict": "verified",
+          "text_fr": "Les États-Unis sont désormais trop grands et trop lourds démographiquement pour nourrir leur croissance par l'importation massive de main-d'œuvre très qualifiée : le modèle de la fuite des cerveaux à coût nul du XIXe siècle est terminé"
+        },
+        {
+          "text": "[1998] Japan and Germany are resolutely entering stagnation",
+          "verdict": "verified",
+          "text_fr": "[1998] Le Japon et l'Allemagne s'engagent résolument dans la stagnation"
+        },
+        {
+          "text": "The inequality rise originating in the United States extends to the whole developed world [1998]",
+          "verdict": "verified",
+          "text_fr": "La hausse des inégalités, née aux États-Unis, s'étend à l'ensemble du monde développé [1998]"
+        },
+        {
+          "text": "Emerging Asian countries will not stop at exporting simple goods: the continued cultural development will let them move up the range",
+          "verdict": "verified",
+          "text_fr": "Les pays asiatiques émergents ne s'arrêteront pas à l'exportation de biens simples : la poursuite du développement culturel leur permettra de monter en gamme"
+        },
+        {
+          "text": "The triumph of the stem-societies can only be temporary: the 1990s will see the victorious economies enter into difficulty",
+          "verdict": "verified",
+          "text_fr": "Le triomphe des sociétés souches ne peut être que temporaire : les années 90 verront les économies victorieuses entrer en difficulté"
+        },
+        {
+          "text": "Germany, which briefly escaped the slowdown thanks to reunification, as did its Dutch economic satellite, will be \"caught up by history\" around 1995",
+          "verdict": "verified",
+          "text_fr": "L'Allemagne, qui a brièvement échappé au ralentissement grâce à la réunification, comme son satellite économique néerlandais, sera « rattrapée par l'histoire » vers 1995"
+        },
+        {
+          "text": "European nations will follow divergent demographic trajectories over 1990-2030: the hypothesis of a common demographic history for all European countries makes absolutely no sense",
+          "verdict": "verified",
+          "text_fr": "Les nations européennes suivront des trajectoires démographiques divergentes sur 1990-2030 : l'hypothèse d'une histoire démographique commune à toute l'Europe n'a absolument aucun sens"
+        },
+        {
+          "text": "A common currency presupposes common budgetary management, yet the inequality of demographic shocks makes the very idea of one implausible",
+          "verdict": "verified",
+          "text_fr": "Une monnaie commune suppose une gestion budgétaire commune, or l'inégalité des chocs démographiques rend l'idée même d'une telle gestion invraisemblable"
+        },
+        {
+          "text": "The post-1965 religious reflux will spread, with a lag, to Spain and northern Portugal and finally Ireland",
+          "verdict": "verified",
+          "text_fr": "Le reflux religieux postérieur à 1965 gagnera, avec un léger retard, l'Espagne et le nord du Portugal, puis enfin l'Irlande"
+        },
+        {
+          "text": "Europe is in the process of regaining its scientific and technological leadership, and must assume that destiny",
+          "verdict": "partial",
+          "text_fr": "L'Europe est en train de retrouver son leadership scientifique et technologique et doit assumer ce destin"
+        }
+      ]
+    },
+    {
+      "label": "Après l'Empire (2002)",
+      "title": "Après l'Empire",
+      "year": "2002",
+      "predictions": [
+        {
+          "text": "North Korea, \"the first and last communism with primogeniture succession\", is doomed to disappear, absent any external intervention",
+          "verdict": "not_realized",
+          "text_fr": "La Corée du Nord, « premier (et dernier) communisme à avoir institué une succession par primogéniture », est vouée à disparaître en l'absence de toute intervention extérieure"
+        },
+        {
+          "text": "De-communized Russia and de-Khomeynized Iran will not convert to the US hyper-individualist social form; convergence will preserve distinct anthropological sub-types",
+          "verdict": "verified",
+          "text_fr": "La Russie décommunisée et l'Iran dékhomeynisé ne se convertiront pas à la forme sociale hyper-individualiste des États-Unis ; la convergence préservera des sous-types anthropologiques distincts"
+        },
+        {
+          "text": "There will be no American empire around 2050",
+          "verdict": "verified",
+          "text_fr": "Il n'y aura pas d'empire américain vers 2050"
+        },
+        {
+          "text": "Russia is emerging from its decade of disorder and becoming again a stable, reliable actor of the balance of power",
+          "verdict": "verified",
+          "text_fr": "La Russie émerge de sa décennie de désordre et redevient un acteur stable et fiable de l'équilibre des puissances"
+        },
+        {
+          "text": "Russian liberalized economy will never become Anglo-Saxon-style individualist capitalism; it will keep community traits",
+          "verdict": "verified",
+          "text_fr": "L'économie russe libéralisée ne deviendra jamais un capitalisme individualiste à l'anglo-saxonne ; elle gardera des traits communautaires"
+        },
+        {
+          "text": "The Russian political system will not operate on the Anglo-Saxon two-party alternation model",
+          "verdict": "verified",
+          "text_fr": "Le système politique russe ne fonctionnera pas sur le modèle de l'alternance bipartisane anglo-saxonne"
+        },
+        {
+          "text": "Moscow cannot simply take over Ukraine",
+          "verdict": "verified",
+          "text_fr": "Moscou ne peut pas reprendre purement et simplement le contrôle de l'Ukraine"
+        },
+        {
+          "text": "Europe no longer needs to fear militarily a Russia",
+          "verdict": "not_realized",
+          "text_fr": "L'Europe n'a plus à craindre militairement une Russie"
+        },
+        {
+          "text": "Europe is condemned to annex new spaces on its margins by contiguity and diffusion, and its continental weight will progressively erase US political and military power",
+          "verdict": "verified",
+          "text_fr": "L'Europe est condamnée à annexer sur ses marges de nouveaux espaces par contiguïté et diffusion, et sa masse continentale effacera progressivement le pouvoir politique et militaire américain"
+        },
+        {
+          "text": "The post-1991 world will not be uniformly democratic and liberal (refutation of Fukuyama)",
+          "verdict": "verified",
+          "text_fr": "Le monde né après 1991 ne sera pas uniformément démocratique et libéral (réfutation de Fukuyama)"
+        }
+      ]
+    },
+    {
+      "label": "Après la démocratie (2008)",
+      "title": "Après la démocratie",
+      "year": "2008",
+      "predictions": [
+        {
+          "text": "Literacy in the Muslim world will soon be universal",
+          "verdict": "partial",
+          "text_fr": "L'alphabétisation sera bientôt universelle dans le monde musulman"
+        },
+        {
+          "text": "De-islamization is advancing in the Muslim world, masked at first by a final reaffirmation of belief shaken by modernity",
+          "verdict": "partial",
+          "text_fr": "La désislamisation avance dans le monde musulman, masquée d'abord par une dernière réaffirmation de la croyance ébranlée par la modernité"
+        },
+        {
+          "text": "If the class struggle continues, or rather resumes, it will probably be with Karl Marx but without the PCF",
+          "verdict": "verified",
+          "text_fr": "Si la lutte des classes continue, ou plutôt reprend, ce sera probablement avec Karl Marx mais sans le PCF"
+        },
+        {
+          "text": "The wage levels and growth rates in China and India make structural adjustment \"endless\" for the West; planetary wage equalization will not come within our lifetime or our children's",
+          "verdict": "verified",
+          "text_fr": "Le niveau des salaires en Chine et en Inde et leur rythme de croissance rendent l'ajustement structurel « sans fin » pour l'Occident ; le coût du travail ne sera pas égalisé à l'échelle planétaire de notre vivant ni de celui de nos enfants"
+        },
+        {
+          "text": "France is only at the beginning of a collective awakening, but the choice of an external enemy, Muslim or Chinese, is already looming",
+          "verdict": "partial",
+          "text_fr": "La France n'en est qu'au début d'une prise de conscience collective, mais le choix d'un ennemi extérieur, musulman ou chinois, se profile déjà"
+        },
+        {
+          "text": "An economic catastrophe is certain; only its form and pace are unknown",
+          "verdict": "verified",
+          "text_fr": "Une catastrophe économique est certaine ; seuls sa forme et son rythme sont inconnus"
+        },
+        {
+          "text": "French wages will keep falling under the combined pressure of China, India and other low-labor-cost countries",
+          "verdict": "partial",
+          "text_fr": "Les salaires français continueront de baisser sous la pression conjuguée de la Chine, de l'Inde et des autres pays à faible coût de main-d'œuvre"
+        }
+      ]
+    },
+    {
+      "label": "Qui est Charlie ? (2015)",
+      "title": "Qui est Charlie ?",
+      "year": "2015",
+      "predictions": [
+        {
+          "text": "The residual religious beliefs of today's young French will not strengthen by the end of their lives",
+          "verdict": "partial",
+          "text_fr": "Les croyances religieuses résiduelles des jeunes Français d'aujourd'hui ne se renforceront pas au terme de leur vie"
+        },
+        {
+          "text": "Far from making the far right disappear, the 11 January demonstration opened the floodgates to a new surge of the Front national",
+          "verdict": "verified",
+          "text_fr": "Loin de faire disparaître l'extrême droite, la manifestation du 11 janvier a ouvert les vannes à une nouvelle poussée du Front national"
+        }
+      ]
+    },
+    {
+      "label": "Où en sommes-nous ? (2017)",
+      "title": "Où en sommes-nous ?",
+      "year": "2017",
+      "predictions": [
+        {
+          "text": "Universal literacy: by about 2030, the younger generations will know how to read and write everywhere, including in Africa",
+          "verdict": "partial",
+          "text_fr": "Alphabétisation universelle : vers 2030, les jeunes générations sauront partout lire et écrire, y compris en Afrique"
+        },
+        {
+          "text": "China is \"on the verge of\" sinking into a crisis with incalculable geopolitical consequences",
+          "verdict": "partial",
+          "text_fr": "La Chine est « sur le point de s'enfoncer » dans une crise aux conséquences géopolitiques incalculables"
+        },
+        {
+          "text": "Advanced societies, whose internal cohesion is undermined by peace between nations, will keep manufacturing an internal enemy, a Muslim internal group or demonizing an external one, Russia",
+          "verdict": "verified",
+          "text_fr": "Les sociétés avancées, dont la cohésion interne est minée par la paix entre les nations, continueront de se fabriquer un ennemi intérieur, un groupe musulman interne, ou de diaboliser un ennemi extérieur, la Russie"
+        },
+        {
+          "text": "Germany's new type of aid to families will show little demographic effect",
+          "verdict": "verified",
+          "text_fr": "La nouvelle aide aux familles de l'Allemagne aura peu d'effet démographique"
+        },
+        {
+          "text": "France, handicapped by the single currency unfavorable to its egalitarian nuclear core, will keep sliding in GDP per capita, ending closer to Italy and Spain than to the rich nations' club",
+          "verdict": "partial",
+          "text_fr": "La France, handicapée par une monnaie unique défavorable à son centre nucléaire égalitaire, continuera de régresser en PIB par habitant et finira plus proche de l'Italie et de l'Espagne que du club des nations riches"
+        },
+        {
+          "text": "Russia is not about to collapse, it now represents a pole of resistance to decline",
+          "verdict": "verified",
+          "text_fr": "La Russie n'est pas sur le point de s'effondrer, elle représente désormais un pôle de résistance au déclin"
+        },
+        {
+          "text": "In its steady state, China presents itself as a reasonable and reliable actor on the world stage",
+          "verdict": "partial",
+          "text_fr": "À l'état stable, la Chine se présente comme un acteur raisonnable et fiable sur la scène mondiale"
+        }
+      ]
+    },
+    {
+      "label": "Les Luttes de classes en France (2019)",
+      "title": "Les Luttes de classes en France",
+      "year": "2019",
+      "predictions": [
+        {
+          "text": "French society is only at the start of a cycle: its implosion has only begun",
+          "verdict": "verified",
+          "text_fr": "La société française n'est qu'au début d'un cycle : son implosion ne fait que commencer"
+        },
+        {
+          "text": "France's global cognitive-educational level will decline in the coming decades",
+          "verdict": "verified",
+          "text_fr": "Le niveau cognitif et éducatif global de la France baissera dans les décennies à venir"
+        },
+        {
+          "text": "The FN/RN's chances of taking power are zero and cannot rise",
+          "verdict": "not_realized",
+          "text_fr": "Les chances du FN/RN d'arriver au pouvoir sont nulles et ne risquent pas d'augmenter"
+        },
+        {
+          "text": "Todd's fundamental fear for the next ten or fifteen years (from 2019) is something that could be called a \"coup d'État\"",
+          "verdict": "partial",
+          "text_fr": "La crainte fondamentale de Todd pour les dix ou quinze ans à venir (depuis 2019) est quelque chose qu'on pourrait appeler un « coup d'État »"
+        }
+      ]
+    },
+    {
+      "label": "Où en sont-elles ? (2021)",
+      "title": "Où en sont-elles ?",
+      "year": "2021",
+      "predictions": [
+        {
+          "text": "Women's independence will allow female bisexuality to grow and assert its dominant place within the LGBT bloc",
+          "verdict": "verified",
+          "text_fr": "L'indépendance des femmes permettra la croissance de la bisexualité féminine et l'affirmation de sa place dominante au sein du bloc LGBT"
+        }
+      ]
+    },
+    {
+      "label": "La Défaite de l'Occident (2024)",
+      "title": "La Défaite de l'Occident",
+      "year": "2024",
+      "predictions": [
+        {
+          "text": "Ukraine's army is losing the war for lack of material",
+          "verdict": "verified",
+          "text_fr": "L'armée ukrainienne perd la guerre, faute de moyens matériels"
+        },
+        {
+          "text": "The Western dream of an anti-Putin uprising is just a dream: the Putin regime is stable",
+          "verdict": "verified",
+          "text_fr": "Le rêve occidental d'un soulèvement anti-Poutine n'est qu'un rêve : le régime de Poutine est stable"
+        },
+        {
+          "text": "NATO will undergo a de facto disintegration as a result of the war",
+          "verdict": "partial",
+          "text_fr": "L'OTAN subira une désintégration de fait à cause de la guerre"
+        },
+        {
+          "text": "Russia will not be defeated in the war in Ukraine",
+          "verdict": "verified",
+          "text_fr": "La Russie ne sera pas vaincue dans la guerre en Ukraine"
+        },
+        {
+          "text": "US power is regressing fast; obvious to non-Europeans",
+          "verdict": "partial",
+          "text_fr": "La puissance des États-Unis régresse, et vite ; c'est évident aux yeux des non-Européens"
+        },
+        {
+          "text": "US agricultural trade, now balanced and flirting with deficit, will turn clearly deficitary within the next ten to twenty years as the population keeps growing",
+          "verdict": "verified",
+          "text_fr": "Le commerce agricole américain, aujourd'hui à l'équilibre et flirtant avec le déficit, deviendra franchement déficitaire d'ici dix à vingt ans, la population continuant de croître"
+        },
+        {
+          "text": "Taiwan and Japan will not be defended by the United States against China: America no longer has the industrial means",
+          "verdict": "partial",
+          "text_fr": "Taïwan et le Japon ne seront pas défendus par les États-Unis contre la Chine : l'Amérique n'en a plus les moyens industriels"
+        }
+      ]
+    }
+  ]
+}

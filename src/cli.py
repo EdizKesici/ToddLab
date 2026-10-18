@@ -34,6 +34,8 @@ RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 DIST_DIR = ROOT / "data" / "dist"
 REPORTS_DIR = ROOT / "reports"
+PREDICTIONS_MD = ROOT / "docs" / "todd_predictions.md"
+PREDICTIONS_FR_CSV = ROOT / "catalog" / "curated" / "todd_predictions_fr.csv"
 
 sys.path.insert(0, str(ROOT))
 
@@ -54,6 +56,7 @@ from src.pipeline.build import build_all  # noqa: E402
 from src.pipeline.fetch import fetch_all  # noqa: E402
 from src.pipeline.merge import merge_all  # noqa: E402
 from src.pipeline.normalize import normalize_all  # noqa: E402
+from src.pipeline.predictions import build_predictions  # noqa: E402
 from src.pipeline.stats import render_stats  # noqa: E402
 from src.pipeline.validate import validate_all  # noqa: E402
 from src.score.emit import BoundsDriftError, build_score_layer  # noqa: E402
@@ -169,6 +172,18 @@ def cmd_rebuild(_args) -> int:
         print(f"Todd corpus -> {DIST_DIR / 'todd_corpus.json'}")
     if extra_refs is not None:
         print(f"Extra corpus -> {DIST_DIR / 'extra_corpus.json'}")
+
+    # Todd's predictions: the markdown compilation is parsed and checked against
+    # its own header counts; a mismatch stops the rebuild.
+    try:
+        predictions = build_predictions(PREDICTIONS_MD, DIST_DIR, PREDICTIONS_FR_CSV)
+    except ConfigError as e:
+        print(f"INVALID DOCUMENT (Todd's predictions):\n{e}", file=sys.stderr)
+        return 1
+    print(
+        f"Predictions -> {DIST_DIR / 'predictions.json'} "
+        f"({predictions['meta']['n_predictions']} predictions, {predictions['meta']['n_books']} books)"
+    )
 
     # v27: the score layer rides the rebuild — AFTER build_all, reading the
     # freshly written dist + the frozen bounds. The drift guard fails the

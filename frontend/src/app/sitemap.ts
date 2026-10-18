@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/countries",
     "/indicators",
     "/score",
+    "/predictions",
     "/methodology",
   ].map((path) => ({
     url: `${base}${path}`,

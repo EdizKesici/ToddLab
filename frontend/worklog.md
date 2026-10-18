@@ -623,3 +623,17 @@ Work Log:
 
 Stage Summary:
 - 497 tests, tsc 0, eslint 0; frontend reproduces 26,646 of 26,646 stored scores and the 24 golden vectors exactly.
+
+---
+Task ID: 32
+Agent: Claude Code (Hermes)
+Task: Todd's predictions page.
+
+Work Log:
+- docs/todd_predictions.md (the unified, book-checked table, 80 predictions in 15 books) is the single source. src/pipeline/predictions.py parses it and refuses a table that disagrees with its own header (counts per book and per verdict, numbering, columns, verdict symbols, a book coming back); `rebuild` writes dist/predictions.json (prediction + verdict only, markdown escapes removed, source sha256).
+- Frontend: /predictions (server page, force-dynamic, reads the dist file), one list per book with a verdict icon (verified / partially verified / not realized), legend, draft-verdict note and a link to the full table on GitHub; nav item, global search entry, sitemap, EN + FR strings (no em-dashes in the French text).
+- README and docs/emmanuel_todd.md point to the document.
+- French wording of the predictions: catalog/curated/todd_predictions_fr.csv (prediction, prediction_fr), keyed by the exact English text; `rebuild` publishes it as `text_fr` (null + a logged warning when a row is missing or stale, the page then falls back to English); a test requires every prediction to be translated and no stale row. Book titles stay as printed.
+
+Stage Summary:
+- 519 tests, tsc 0, eslint 0, build OK; a rebuild reproduces the existing dist byte for byte and only adds predictions.json. Checked in the browser (FR and EN, desktop and 390 px, no overflow, 80 list items).
