@@ -411,7 +411,7 @@
     "canonical_nature": "published",
     "companion_indicators": [],
     "reliability": "low",
-    "reliability_criteria": "Canonical tier = a curated table of 12 countries, one row each, every row citing the Wikipedia article it was read from (read 2026-10-14) and the statement it relies on. Low: the source is a secondary compilation (Wikipedia), not the statute itself, rows were assembled by hand from article text, and only the countries where divorce was legalized in the 20th century have a row. Countries where divorce has been available since the 19th century or earlier (France, the United Kingdom, Germany, the Nordic countries...) have no single legalization date and are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. No witness tier: no machine-readable door carries the series (probed 2026-10-14).",
+    "reliability_criteria": "Canonical tier = a curated table of 38 countries, one row each, every row citing the open web page it was read from (read 2026-10-14 and 2026-10-18) and quoting the statement it relies on. Low: the sources are secondary (Wikipedia, encyclopedias, comparative-law reports, journal articles, a few legal collections), not always the statute itself, and rows were assembled by hand from page text; several rows come from pages about something else (a biography, a dictatorship, a thesis). Where divorce was available under religious law before the first STATE law (Hungary, Greece, Latvia, Russia...), the row dates the first state law and says so in its note. Countries whose divorce has no single datable law (the Nordic countries, Germany, the Netherlands, Canada, India with its religious personal laws, most Muslim-majority countries...) are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. The United Kingdom row is the date for England (the sources say England). No witness tier: no machine-readable door carries the series (probed 2026-10-14 and 2026-10-18).",
     "reclassification_sensitive": false,
     "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
     "roots": {
@@ -424,7 +424,7 @@
       ],
       "witness": []
     },
-    "n_points": 12,
+    "n_points": 38,
     "n_witness_points": 0
   },
   {

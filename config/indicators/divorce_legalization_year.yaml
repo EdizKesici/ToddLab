@@ -14,21 +14,31 @@ sources:
     role: canonical
     root: national_legislation
 
-coverage_start: 1911
+coverage_start: 1857
 coverage_end: 2011
 
 reliability: low
 reliability_criteria: >
-  Canonical tier = a curated table of 12 countries, one row each, every row
-  citing the Wikipedia article it was read from (read 2026-10-14) and the
-  statement it relies on. Low: the source is a secondary compilation
-  (Wikipedia), not the statute itself, rows were assembled by hand from
-  article text, and only the countries where divorce was legalized in the 20th century have a row. Countries where divorce has been available since the 19th century or earlier (France, the United Kingdom, Germany, the Nordic countries...) have no single legalization date and are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. No witness tier: no machine-readable door carries
-  the series (probed 2026-10-14).
+  Canonical tier = a curated table of 38 countries, one row each, every row
+  citing the open web page it was read from (read 2026-10-14 and 2026-10-18)
+  and quoting the statement it relies on. Low: the sources are secondary
+  (Wikipedia, encyclopedias, comparative-law reports, journal articles, a
+  few legal collections), not always the statute itself, and rows were
+  assembled by hand from page text; several rows come from pages about
+  something else (a biography, a dictatorship, a thesis). Where divorce was
+  available under religious law before the first STATE law (Hungary, Greece,
+  Latvia, Russia...), the row dates the first state law and says so in its
+  note. Countries whose divorce has no single datable law (the Nordic
+  countries, Germany, the Netherlands, Canada, India with its religious
+  personal laws, most Muslim-majority countries...) are ABSENT; the
+  Philippines and the Vatican, where divorce is not legal, are absent too.
+  The United Kingdom row is the date for England (the sources say England).
+  No witness tier: no machine-readable door carries the series (probed
+  2026-10-14 and 2026-10-18).
 reclassification_sensitive: false
 
 plausible_range:
-  min: 1900
+  min: 1800
   max: 2030
 
 license: >
@@ -37,9 +47,21 @@ license: >
 
 notes: >
   Start of the legal availability of divorce in the regime still in force
-  (decision 24). Source: the list 'countries that have relatively recently
-  legalized divorce' of Wikipedia's Divorce article (Italy 1970, Portugal 1975,
-  Brazil 1977, Spain 1981, Argentina 1987, Paraguay 1991, Colombia 1991, Andorra
-  1995, Ireland 1996, Chile 2004, Malta 2011) plus Panama 1911 from the Divorce
-  law by country table. HONEST LIMITS: 12 countries, a deliberately small set;
-  the Andorra date is not cross-checked; Paraguay is 1992 in the other table.
+  (decision 24; perimeter widened by decision 30 to datable laws of any
+  century and to modern codes). Sources: the list 'countries that have
+  relatively recently legalized divorce' of Wikipedia's Divorce article (Italy
+  1970, Portugal 1975, Brazil 1977, Spain 1981, Argentina 1987, Paraguay 1991,
+  Colombia 1991, Andorra 1995, Ireland 1996, Chile 2004, Malta 2011), Panama
+  1911 from the Divorce law by country table, seven rows read from other
+  Wikipedia articles on 2026-10-18 (France 1884, United Kingdom 1857, New
+  Zealand 1867, Uruguay 1907, Venezuela 1904, Mexico 1914, Austria 1938), and
+  nineteen rows read from open pages found by a regional search on 2026-10-18
+  (Switzerland 1874, Liechtenstein 1974, Poland 1946, Czechia 1919, Hungary
+  1895, Greece 1920, Latvia 1921, Russia 1917, Cuba 1918, Ecuador 1902, Peru
+  1930, Bolivia 1932, Dominican Republic 1897, El Salvador 1894, Guatemala
+  1894, Jamaica 1879, China 1950, Uganda 1904, Yugoslavia 1946). HONEST
+  LIMITS: 38 countries; every quote was re-checked against the fetched page
+  text; Andorra, Austria, Uruguay, Venezuela, Guatemala and Jamaica are not
+  cross-checked; Paraguay is 1992 in the other table; the United Kingdom date
+  is England's; the Ecuador, Dominican Republic and El Salvador rows are
+  approximate (narrow first regime, OCR text, no statute named).

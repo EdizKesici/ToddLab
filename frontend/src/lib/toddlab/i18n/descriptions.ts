@@ -142,8 +142,8 @@ export const INDICATOR_DESCRIPTIONS: Record<string, { en: string; fr: string }> 
     fr: "Année où l'avortement est devenu légalement accessible dans le régime encore en vigueur (sur demande ou pour des motifs larges).",
   },
   divorce_legalization_year: {
-    en: "Year divorce became legally available under the regime still in force (countries that legalized it in the 20th century).",
-    fr: "Année où le divorce est devenu légalement accessible dans le régime encore en vigueur (pays l'ayant légalisé au XXe siècle).",
+    en: "Year divorce became legally available under the regime still in force (countries where a datable law founds it).",
+    fr: "Année où le divorce est devenu légalement accessible dans le régime encore en vigueur (pays où une loi datable l'a instauré).",
   },
   womens_suffrage_introduction_year: {
     en: "Year women obtained the right to vote in national elections on equal terms (Inter-Parliamentary Union).",

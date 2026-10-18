@@ -637,3 +637,17 @@ Work Log:
 
 Stage Summary:
 - 519 tests, tsc 0, eslint 0, build OK; a rebuild reproduces the existing dist byte for byte and only adds predictions.json. Checked in the browser (FR and EN, desktop and 390 px, no overflow, 80 list items).
+
+---
+Task ID: 33
+Agent: Claude Code (Hermes)
+Task: docs fix, prediction tags, divorce coverage, local books folder.
+
+Work Log:
+- docs/emmanuel_todd.md completed (intro matches the content, founding case, link from the books to the indicators, predictions section); the `[1998]` tags of two predictions removed (markdown, French CSV, dist).
+- divorce_legalization_year: 12 -> 38 countries (decision 30): seven Wikipedia rows (France 1884, United Kingdom 1857 (England), New Zealand 1867, Mexico 1914, Venezuela 1904, Uruguay 1907, Austria 1938) and nineteen rows from a regional web search; every quote re-fetched and checked against the page text; plausible range and coverage start widened; tests, curated README, ADR-0011 and the FR/EN indicator description updated. Scores unchanged (markers never enter them).
+- The scanned books now live in docs/scanned_books/ (git-ignored, never deployed).
+
+Stage Summary:
+- 519 tests, tsc 0, eslint 0; a rebuild changes only catalog.json and the divorce indicator file.
+- Page titles and descriptions of indicator and country pages follow the page language (French labels, FR description) instead of the English label.

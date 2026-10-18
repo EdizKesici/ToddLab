@@ -334,10 +334,14 @@ countries the page does not list have no row.
 ### `abortion_legalization.csv` and `divorce_legalization.csv` (v30, extra metrics)
 
 Start of the legal availability of abortion (50 countries, 1948-2022) and of
-divorce (12 countries, 1911-2011) in the regime still in force (decision 24).
-Source: English Wikipedia articles read 2026-10-14 ("Abortion in <country>",
-"Timeline of reproductive rights legislation", "Divorce", "Divorce law by
-country"); each row cites the article and the statement it relies on, and the
-`definition_note` carries the legal scope, earlier episodes and later reforms.
-Secondary source by the owner's choice (2026-10-14): treat as indicative.
-Countries without a dated statement have no row.
+divorce (38 countries, 1857-2011) in the regime still in force (decision 24;
+the divorce perimeter was widened on 2026-10-18 by decision 30). Sources:
+English Wikipedia articles read 2026-10-14 ("Abortion in <country>", "Timeline
+of reproductive rights legislation", "Divorce", "Divorce law by country") and,
+for 26 divorce rows, open pages read 2026-10-18 (other Wikipedia articles,
+encyclopedias, comparative-law reports, journal articles, legal collections);
+each row cites the page and quotes the statement it relies on, and the
+`definition_note` carries the legal scope, earlier episodes and later reforms
+as far as the page states them. Secondary source by the owner's choice
+(2026-10-14): treat as indicative. Countries without a dated statement have no
+row.

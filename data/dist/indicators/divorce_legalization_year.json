@@ -8,14 +8,14 @@
   "canonical_nature": "published",
   "companion_indicators": [],
   "reliability": "low",
-  "reliability_criteria": "Canonical tier = a curated table of 12 countries, one row each, every row citing the Wikipedia article it was read from (read 2026-10-14) and the statement it relies on. Low: the source is a secondary compilation (Wikipedia), not the statute itself, rows were assembled by hand from article text, and only the countries where divorce was legalized in the 20th century have a row. Countries where divorce has been available since the 19th century or earlier (France, the United Kingdom, Germany, the Nordic countries...) have no single legalization date and are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. No witness tier: no machine-readable door carries the series (probed 2026-10-14).",
+  "reliability_criteria": "Canonical tier = a curated table of 38 countries, one row each, every row citing the open web page it was read from (read 2026-10-14 and 2026-10-18) and quoting the statement it relies on. Low: the sources are secondary (Wikipedia, encyclopedias, comparative-law reports, journal articles, a few legal collections), not always the statute itself, and rows were assembled by hand from page text; several rows come from pages about something else (a biography, a dictatorship, a thesis). Where divorce was available under religious law before the first STATE law (Hungary, Greece, Latvia, Russia...), the row dates the first state law and says so in its note. Countries whose divorce has no single datable law (the Nordic countries, Germany, the Netherlands, Canada, India with its religious personal laws, most Muslim-majority countries...) are ABSENT; the Philippines and the Vatican, where divorce is not legal, are absent too. The United Kingdom row is the date for England (the sources say England). No witness tier: no machine-readable door carries the series (probed 2026-10-14 and 2026-10-18).",
   "reclassification_sensitive": false,
   "coverage_declared": {
-    "start": 1911,
+    "start": 1857,
     "end": 2011
   },
   "license": "Facts with citation (small extracts, clearly attributed) - see docs/licenses.md and catalog/curated/README.md.",
-  "notes": "Start of the legal availability of divorce in the regime still in force (decision 24). Source: the list 'countries that have relatively recently legalized divorce' of Wikipedia's Divorce article (Italy 1970, Portugal 1975, Brazil 1977, Spain 1981, Argentina 1987, Paraguay 1991, Colombia 1991, Andorra 1995, Ireland 1996, Chile 2004, Malta 2011) plus Panama 1911 from the Divorce law by country table. HONEST LIMITS: 12 countries, a deliberately small set; the Andorra date is not cross-checked; Paraguay is 1992 in the other table.",
+  "notes": "Start of the legal availability of divorce in the regime still in force (decision 24; perimeter widened by decision 30 to datable laws of any century and to modern codes). Sources: the list 'countries that have relatively recently legalized divorce' of Wikipedia's Divorce article (Italy 1970, Portugal 1975, Brazil 1977, Spain 1981, Argentina 1987, Paraguay 1991, Colombia 1991, Andorra 1995, Ireland 1996, Chile 2004, Malta 2011), Panama 1911 from the Divorce law by country table, seven rows read from other Wikipedia articles on 2026-10-18 (France 1884, United Kingdom 1857, New Zealand 1867, Uruguay 1907, Venezuela 1904, Mexico 1914, Austria 1938), and nineteen rows read from open pages found by a regional search on 2026-10-18 (Switzerland 1874, Liechtenstein 1974, Poland 1946, Czechia 1919, Hungary 1895, Greece 1920, Latvia 1921, Russia 1917, Cuba 1918, Ecuador 1902, Peru 1930, Bolivia 1932, Dominican Republic 1897, El Salvador 1894, Guatemala 1894, Jamaica 1879, China 1950, Uganda 1904, Yugoslavia 1946). HONEST LIMITS: 38 countries; every quote was re-checked against the fetched page text; Andorra, Austria, Uruguay, Venezuela, Guatemala and Jamaica are not cross-checked; Paraguay is 1992 in the other table; the United Kingdom date is England's; the Ecuador, Dominican Republic and El Salvador rows are approximate (narrow first regime, OCR text, no statute named).",
   "sources": [
     {
       "provider": "curated",
@@ -50,6 +50,24 @@
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce legalized 1987; unilateral divorce without separation 2015"
     },
     {
+      "entity_id": "austria",
+      "year": 1938,
+      "value": 1938.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Archduchess Elisabeth Marie of Austria' (en.wikipedia.org/wiki/Archduchess_Elisabeth_Marie_of_Austria), read 2026-10-18: 'Although divorce became legal in 1938, when Austria became part of Germany and adopted German law after the Anschluss'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Civil divorce arrived with the adoption of German law after the Anschluss of 1938 and stayed after 1945 (the same article places Elisabeth Marie's divorce after the end of the war); source is a biography, not cross-checked"
+    },
+    {
+      "entity_id": "bolivia_plurinational_state_of",
+      "year": 1932,
+      "value": 1932.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "El Diario, 'El presidente Salamanca y la ley del divorcio absoluto' (pub.eldiario.net, 2012-04), read 2026-10-18: 'se aprobó la Ley del Divorcio Absoluto inspirada en la ley uruguaya de 1908'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Absolute divorce law approved by the April 1932 legislature, inspired by the Uruguayan law of 1908; later reforms not covered by this quote"
+    },
+    {
       "entity_id": "brazil",
       "year": 1977,
       "value": 1977.0,
@@ -68,6 +86,15 @@
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: New Civil Marriage Law, introduced as a bill in 1995"
     },
     {
+      "entity_id": "china",
+      "year": 1950,
+      "value": 1950.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "SciELO, Trans/Form/Acao article (scielo.br/j/trans/a/rybtYfpy6zFG5VNQjdZWprQ), read 2026-10-18: 'In 1950, the Marriage Law was promulgated and clarified the freedom and right of divorce.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Marriage Law of the People's Republic of China, promulgated in 1950; the source does not discuss earlier regimes (the Republic of China Civil Code of 1930 also provided for divorce), so the row is the date for the current regime only"
+    },
+    {
       "entity_id": "colombia",
       "year": 1991,
       "value": 1991.0,
@@ -75,6 +102,87 @@
       "source_ref": "divorce_legalization",
       "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'",
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: From 1976 divorce was allowed only for non-Catholics; the 1991 date is the one for all; table: legalized only in 9 specific cases (1991), unilateral no-fault 2025"
+    },
+    {
+      "entity_id": "cuba",
+      "year": 1918,
+      "value": 1918.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Colegio de Registradores / Notariado, study on divorce in Cuba (notariado.org, DLFE-222967.pdf), read 2026-10-18: 'la ley de divorcio, el 30 de julio de 1918'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce law published in the Gaceta Oficial on 30 July 1918; later amendments not covered by this quote"
+    },
+    {
+      "entity_id": "czechia",
+      "year": 1919,
+      "value": 1919.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Commission on European Family Law, national report on divorce in the Czech Republic (ceflonline.net/wp-content/uploads/Czech-Divorce.pdf), read 2026-10-18: 'This Marriage Amendment introduced, in addition to a church wedding, the option of a civil ceremony as well as the possibility of divorce'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Act No. 320/1919 Coll. (Marriage Amendment); earlier and later regimes not covered by this quote"
+    },
+    {
+      "entity_id": "dominican_republic",
+      "year": 1897,
+      "value": 1897.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Coleccion de Leyes, Decretos y Resoluciones 1897, Dominican government legal database (consultoria.gov.do/api/document/3264834), OCR text as served by the page, read 2026-10-18: 'Niim. 3730.--LEY sobre divorcio y separacidn de cuerpcs Y bienes.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Law No. 3730 on divorce and separation of persons and property, in the 1897 collection of laws (OCR text as served by the page, misspelt); the year 1897 is the collection's printed year and the date of the preceding law (29 May 1897), not a sentence about divorce; later laws not covered"
+    },
+    {
+      "entity_id": "ecuador",
+      "year": 1902,
+      "value": 1902.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Ecuador en la historia, 'La Revolucion Liberal y Eloy Alfaro' (ecuadorenlahistoria.com/la-revolucion-liberal-y-eloy-alfaro-1895-1912), read 2026-10-18: 'Las leyes de matrimonio civil y divorcio se expidieron en 1902.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Civil marriage and divorce laws of 1902; the scope (grounds) of the 1902 law is not given by this source and later reforms are not covered"
+    },
+    {
+      "entity_id": "el_salvador",
+      "year": 1894,
+      "value": 1894.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "El Salvador (historico.elsalvador.com), 'Sabes cuando fue el primer divorcio en San Salvador' (historico.elsalvador.com/historico/472301), read 2026-10-18: 'el tercero que va desde marzo de 1881 hasta octubre de 1894, donde existió el divorcio sin disolución del vínculo; el cuarto que va desde 1894 hasta 1902, donde la legislación civil ha mantenido el divorcio absoluto'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Absolute divorce returned in October 1894; the page says absolute divorce had existed only from March 1880 to March 1881 (earlier episode) and that from 1881 to 1894 divorce did not dissolve the bond; no statute is named; the page's own periodization stops at 1902"
+    },
+    {
+      "entity_id": "france",
+      "year": 1884,
+      "value": 1884.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Mariticide' (en.wikipedia.org/wiki/Mariticide), read 2026-10-18: 'It fell out of use once divorce was legalized [...] in 1857 in England and 1884 in France'; 'advocates of restoring divorce, which had been abolished in 1816' (same article); Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-18: 'Divorce was legalised in France after the French Revolution on a similar basis, although the legal order of the ancien regime was reinstated at the Bourbon restoration of 1816'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Legalized after the Revolution (1792, the date recorded in decision 24; the Wikipedia article gives no year), abolished in 1816, legalized again in 1884; reforms after 1884 are not covered by these sources"
+    },
+    {
+      "entity_id": "greece",
+      "year": 1920,
+      "value": 1920.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Commission on European Family Law, national report on divorce in Greece (ceflonline.net/wp-content/uploads/Greece-Divorce.pdf), read 2026-10-18: 'The first modern state act for divorce was Law No. 2228/1920 which determined specific grounds for divorce.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Law 2228/1920, the first modern STATE act on divorce (the source says divorce law was mainly Roman-Byzantine law until 1920, so the row dates the first state law, not the first availability); later laws not covered by this quote"
+    },
+    {
+      "entity_id": "guatemala",
+      "year": 1894,
+      "value": 1894.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Universidad de San Carlos de Guatemala, thesis (biblioteca.usac.edu.gt/tesis/04/04_7251.pdf), read 2026-10-18: 'fue regulado en el año de 1894, mediante el Decreto 484 del Presidente José Maria Reina Barrios'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Decree 484 of 1894 regulated divorce with dissolution of the bond; university thesis, not cross-checked; later reforms not covered"
+    },
+    {
+      "entity_id": "hungary",
+      "year": 1895,
+      "value": 1895.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Pestbuda, '125 years of civil marriage' (pestbuda.hu/en/cikk/20201016_joyous_i_do_s_125_years_of_civil_marriage_in_budapest), read 2026-10-18: 'The marriage law provided details regarding engagement, the barriers to marriage, marriage, the invalidity and termination of a marriage. Separate passages dealt with 'separation from bed and table', and marriages performed abroad and marriage between foreigners. The law entered into force 125 years ago on 1 October 1895'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Act XXXI of 1894 on marriage law, in force from 1 October 1895 (the quote says the law covered the termination of a marriage); earlier denominational regimes and later reforms not covered by this quote"
     },
     {
       "entity_id": "ireland",
@@ -95,6 +203,33 @@
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Law of 1 December 1970; separation period of five years, reduced in 1987 and 2015"
     },
     {
+      "entity_id": "jamaica",
+      "year": 1879,
+      "value": 1879.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "vLex Jamaica, 'Divorce' (jm.vlex.com/vid/divorce-914980175), read 2026-10-18: 'Divorce was introduced to Jamaica by the Divorce Law of 1879.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce Law of 1879; the exact title of the act was not confirmed on an open page and later reforms are not covered by this quote"
+    },
+    {
+      "entity_id": "latvia",
+      "year": 1921,
+      "value": 1921.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Latvijas Universitate, conference paper on the right to divorce (apgads.lu.lv ... iscflul.9.2.16.-lazdins.pdf), read 2026-10-18: 'The article is dedicated to the analyses of the right to divorce provided by Law on Marriage of 1 February 1921'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Law on Marriage of 1 February 1921; the quote comes from the abstract of a conference paper on the right to divorce; earlier ecclesiastical regime and later reforms not covered by this quote"
+    },
+    {
+      "entity_id": "liechtenstein",
+      "year": 1974,
+      "value": 1974.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Historisches Lexikon des Fürstentums Liechtenstein (historisches-lexikon.li/Eherecht), read 2026-10-18: 'Das Ehegesetz 1974 ermöglichte schliesslich die Ehescheidung, allerdings erst nach der gerichtlichen Trennung und dem Ablauf einer dreijährigen Trennungsfrist.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Marriage Act of 1974: divorce only after judicial separation and a three-year separation period; later reforms not covered by this quote"
+    },
+    {
       "entity_id": "malta",
       "year": 2011,
       "value": 2011.0,
@@ -102,6 +237,24 @@
       "source_ref": "divorce_legalization",
       "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)'; also 'Divorce law by country' table: '2011: Divorce legalized'",
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Approved by the 2011 referendum"
+    },
+    {
+      "entity_id": "mexico",
+      "year": 1914,
+      "value": 1914.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Women in Mexico' (en.wikipedia.org/wiki/Women_in_Mexico), read 2026-10-18: 'Carranza made changes in family and marital law with long-lasting consequences. In December 1914, he issued a decree that allowed for divorce under certain circumstances'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Carranza's decree of December 1914 allowed divorce under certain circumstances and was expanded in 1916; later reforms not covered"
+    },
+    {
+      "entity_id": "new_zealand",
+      "year": 1867,
+      "value": 1867.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Divorce in New Zealand' (en.wikipedia.org/wiki/Divorce_in_New_Zealand), read 2026-10-18: section 'Prior to 1867': 'Divorce allowing remarriage could only be obtained through a private act of Parliament in the United Kingdom'; section '1867': 'The Divorce and Matrimonial Causes Act 1867 was passed [...] Judgement on divorce proceedings was transferred from Parliament to the courts'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce and Matrimonial Causes Act 1867, virtually identical to the English law of 1857; amended 1881, replaced by the Divorce Act 1898, now governed by the Family Proceedings Act 1980"
     },
     {
       "entity_id": "panama",
@@ -122,6 +275,24 @@
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: The 'Divorce law by country' table prints 1992 for the same event; the Divorce article's list (1991) is kept"
     },
     {
+      "entity_id": "peru",
+      "year": 1930,
+      "value": 1930.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Justia Peru (peru.justia.com/federales/decretos-leyes/6889-oct-8-1930/gdoc) and Congreso de la Republica (www2.congreso.gob.pe, proyecto de ley 2001), read 2026-10-18: 'Decreto Ley 6889 dispuso la obligatoriedad del matrimonio civil a partir del 4 de Octubre de 1930'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Decree-Law 6889 of 1930, titled on Justia 'Ley de Divorcio Absoluto y Matrimonio Civil Obligatorio' (title read on the Justia page, whose text did not load; the date 8 October 1930 appears only in its URL); the Congress page gives 4 October 1930 for compulsory civil marriage and says civil marriage was optional under the law of 23 December 1827"
+    },
+    {
+      "entity_id": "poland",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Commission on European Family Law, national report on divorce in Poland (ceflonline.net/wp-content/uploads/Poland-Divorce.pdf), read 2026-10-18: 'This decree allowed for the possibility of a divorce from a state court at the request of a spouse.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Matrimonial Law decree (published 1945, in force from 1 January 1946); the page says it was valid until 30 September 1950; later family law not covered by this quote; earlier regimes in the partition areas not covered"
+    },
+    {
       "entity_id": "portugal",
       "year": 1975,
       "value": 1975.0,
@@ -131,6 +302,15 @@
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce possible for civil and religious marriage 1910-1940, then barred for religious marriages until 1975; Wikipedia's list dates the current availability 1975"
     },
     {
+      "entity_id": "russian_federation",
+      "year": 1917,
+      "value": 1917.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Commission on European Family Law, national report on divorce in Russia (ceflonline.net/wp-content/uploads/Russia-Divorce.pdf), read 2026-10-18: 'The civil divorce procedure only became possible in 1917.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Civil divorce became possible in 1917 (the source says divorce was subject to religious rules before); later codes not covered by this quote; the row is the date of the Russian republic's law"
+    },
+    {
       "entity_id": "spain",
       "year": 1981,
       "value": 1981.0,
@@ -138,6 +318,60 @@
       "source_ref": "divorce_legalization",
       "citation": "Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-14: 'Countries that have relatively recently legalized divorce are Italy (1970), Portugal (1975, although from 1910 to 1940 it was possible both for the civil and religious marriage), Brazil (1977), Spain (1981), Argentina (1987), Paraguay (1991), Colombia (1991; from 1976 was allowed only for non-Catholics), Andorra (1995), Ireland (1996), Chile (2004) and Malta (2011)' and 'the 1931 Constitution of the Second Spanish Republic for the first time recognised a right to divorce'",
       "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Current availability from the 1981 law; first recognized by the 1931 Republic constitution (ended under Franco)"
+    },
+    {
+      "entity_id": "switzerland",
+      "year": 1874,
+      "value": 1874.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Historisches Lexikon der Schweiz (hls-dhs-dss.ch/de/articles/007993/2006-04-07), read 2026-10-18: 'Im gleichen Jahr wurde das Bundesgesetz betreffend Feststellung und Beurkundung des Zivilstandes und die Ehe erlassen. Es führte die obligatorische Zivilehe ein und brachte die allgemeine, konfessionsneutrale Anerkennung der Scheidung'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Federal law of 1874 on civil status and marriage (the year is that of the preceding sentence of the article); other dates for earlier cantonal regimes and the later Civil Code are not covered by this quote"
+    },
+    {
+      "entity_id": "uganda",
+      "year": 1904,
+      "value": 1904.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "African Human Rights Law Journal (ahrlj.up.ac.za/kabumba-b), read 2026-10-18: 'although the Divorce Act came into force on 1 October 1904, it had unfortunately never been reformed over a century later.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Divorce Act (Cap. 249), in force from 1 October 1904 and never substantially reformed according to the source; customary divorce not covered"
+    },
+    {
+      "entity_id": "united_kingdom",
+      "year": 1857,
+      "value": 1857.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Mariticide' (en.wikipedia.org/wiki/Mariticide), read 2026-10-18: 'It fell out of use once divorce was legalized [...] in 1857 in England and 1884 in France'; Wikipedia, 'Divorce' (en.wikipedia.org/wiki/Divorce), read 2026-10-18: 'until the passage of the Matrimonial Causes Act 1857, divorce could only be obtained through a specific Act of Parliament'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Matrimonial Causes Act 1857 moved divorce from private Acts of Parliament to the courts; the sources speak of England, so the date is that of England (and Wales) and says nothing about Scotland or Northern Ireland; later reforms not covered"
+    },
+    {
+      "entity_id": "uruguay",
+      "year": 1907,
+      "value": 1907.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Carolina Muzzilli' (en.wikipedia.org/wiki/Carolina_Muzzilli), read 2026-10-18: 'In 1907, when divorce was legalized in Uruguay, Muzzilli demanded divorce laws be enacted in Argentina, too'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Legalized in 1907; later reforms not covered; source is a biography of an Argentine activist, not cross-checked"
+    },
+    {
+      "entity_id": "venezuela_bolivarian_republic_of",
+      "year": 1904,
+      "value": 1904.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Wikipedia, 'Dictatorship of Cipriano Castro' (en.wikipedia.org/wiki/Dictatorship_of_Cipriano_Castro), read 2026-10-18: 'The subsequent 1904 Constitution of Venezuela extended the presidential term from 4 to 6 years, reduced the number of federal states to 13, and legalized divorce'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Legalized by the 1904 Constitution; later reforms not covered; source is an article on the Castro dictatorship, not cross-checked"
+    },
+    {
+      "entity_id": "yugoslavia_sfr",
+      "year": 1946,
+      "value": 1946.0,
+      "provider": "curated",
+      "source_ref": "divorce_legalization",
+      "citation": "Library of Congress, law library report (tile.loc.gov/storage-services/service/ll/llglrdppub/2019670261/2019670261.pdf), read 2026-10-18: 'while marriage and divorce were to be governed by the Basic Law Concerning Marriages of April 29, 1946, as amended.'",
+      "definition_note": "Year = start of the legal availability of divorce in the regime still in force; earlier episodes and later reforms in this note: Basic Law on Marriage of 29 April 1946 governed marriage and divorce; historical entity (successor states not given); earlier regime not covered by this quote"
     }
   ],
   "witnesses": []

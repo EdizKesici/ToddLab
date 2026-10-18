@@ -712,3 +712,45 @@ Todd-only sets: official 51 / 48 / 33, modelled 186 / 185 / 156.
 The frontend reproduces all 26,646 stored scores exactly and all 24 golden
 vectors. The figures of decision 26 about comparability were measured under the
 previous weight-based rule.
+
+
+## Amendment 2026-10-18 (v30): decision 30, the divorce table covers datable laws of any century
+
+**Decision 30 (Ediz, 2026-10-18).** `divorce_legalization_year` grows from 12 to
+38 countries. Decision 24's perimeter ("every country for which a dated,
+citable law is found") is applied to laws of the 19th century and to modern
+codes, not only to countries that legalized divorce in the 20th century, and
+to any open web page, not only Wikipedia. Rule unchanged: the start of the
+current, uninterrupted legal availability, earlier episodes in the row's note.
+Where divorce already existed under religious law and the first STATE law is
+the datable event (Hungary 1895, Greece 1920, Latvia 1921, Russia 1917), the
+row dates that law and its note says so.
+
+Added rows. Wave 1, English Wikipedia articles (read 2026-10-18): France 1884,
+United Kingdom 1857 (the sources say England: the row is England's date), New
+Zealand 1867, Mexico 1914, Venezuela 1904, Uruguay 1907, Austria 1938. Wave 2,
+a regional web search over about 120 countries (six parallel searches, each
+row required to carry a verbatim quote and a URL; 37 candidate rows came back); every quote was then
+re-fetched and checked as a substring of the page text, and one candidate
+(Costa Rica) was dropped because its page did not date the introduction of
+divorce: Switzerland 1874, Liechtenstein 1974, Poland 1946, Czechia 1919,
+Hungary 1895, Greece 1920, Latvia 1921, Russia 1917, Cuba 1918, Ecuador 1902,
+Peru 1930, Bolivia 1932, Dominican Republic 1897, El Salvador 1894, Guatemala
+1894, Jamaica 1879, China 1950, Uganda 1904, Yugoslavia 1946 (historical
+entity). Candidates not entered although a page was found: Belgium (1796
+French law, continuity to the present not shown), Romania (the 1865 code's
+divorce articles were repealed in 1943 and 1948), Bulgaria (divorce existed
+under canon law before 1945), Estonia (1922 or 1923, unresolved), Ukraine and
+Belarus (Soviet decrees, regime unclear), Turkey, Tunisia, Nepal and North
+Korea (divorce existed before, the page says the law regulated or equalised
+it), San Marino (the page is the law's title only), Slovakia (year not on the
+quoted page).
+
+Measured limit: for most of the world there is no single datable law (the
+Nordic countries, Germany, the Netherlands, Canada, India, the United States,
+nearly all Muslim-majority countries, most of sub-Saharan Africa where the
+pages found only a later reform act); the searches returned "not
+determinable" for 89 of the countries tried. Several rows come from pages about something else (a
+biography, a dictatorship, a thesis) and are marked as not cross-checked. The
+metric stays `reliability: low` and outside the score (markers never enter
+it).
