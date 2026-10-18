@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import IndicatorDetailView from "@/components/indicator/indicator-detail-view";
 import { INDICATOR_DESCRIPTIONS } from "@/lib/toddlab/i18n/descriptions";
+import { INDICATOR_LABELS_FR } from "@/lib/toddlab/i18n/labels-fr";
 import { getServerDictionary } from "@/lib/toddlab/i18n/server";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteUrl } from "@/lib/site-url";
@@ -14,8 +15,19 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const entry = getCatalog().find((i) => i.id === id);
+  const { lang, d } = await getServerDictionary();
   if (!entry) {
-    return { title: (await getServerDictionary()).d.notFound.title };
+    return { title: d.notFound.title };
+  }
+  // Same language as the page body: the cookie / Accept-Language decides, as for the other pages.
+  if (lang === "fr") {
+    const label = INDICATOR_LABELS_FR[id] ?? entry.label;
+    return {
+      title: label,
+      description:
+        INDICATOR_DESCRIPTIONS[id]?.fr ??
+        `${label} sur ToddLab : chiffres officiels et estimations modélisées, classés par année, avec leur provenance complète.`,
+    };
   }
   const description =
     INDICATOR_DESCRIPTIONS[id]?.en ??
