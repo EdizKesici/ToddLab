@@ -1,6 +1,6 @@
 # ToddLab Frontend — Worklog
 
-Projet : frontend Next.js 16 consommant le backend ToddLab (version de référence : V29, cf. Task 15). Depuis la Task 15, le frontend vit dans `frontend/` du dépôt ToddLab ; le backend est à la racine du même dépôt (`data/dist/`).
+Projet : frontend Next.js 16 consommant le backend ToddLab (cf. Task 15). Depuis la Task 15, le frontend vit dans `frontend/` du dépôt ToddLab ; le backend est à la racine du même dépôt (`data/dist/`).
 Tous les agents : lire ce fichier AVANT de travailler, y ajouter sa section APRÈS.
 
 ---
@@ -133,21 +133,21 @@ Work Log:
 - Lint final : 0 erreur, 0 warning
 
 Stage Summary:
-- V1 ToddLab frontend complète et vérifiée navigateur : 5 pages + 8 routes API, EN/FR, light/dark, responsive
+- ToddLab frontend complète et vérifiée navigateur : 5 pages + 8 routes API, EN/FR, light/dark, responsive
 - Architecture prête pour le Score Civilisationnel (placeholder en place, hooks et formats en place)
-- Données : V25 (28 indicateurs disponibles, immigration_stock exclu — gitignore upstream)
+- Données : 28 indicateurs disponibles, immigration_stock exclu — gitignore upstream)
 
 ---
 Task ID: 3
 Agent: orchestrator (main)
-Task: Retours utilisateur V1 — vocabulaire simplifié, nettoyage hero/footer/stats, em-dashes FR, page indicateur (description + sources + fiabilité), espacements Comparer
+Task: Retours utilisateur — vocabulaire simplifié, nettoyage hero/footer/stats, em-dashes FR, page indicateur (description + sources + fiabilité), espacements Comparer
 
 Work Log:
 - dictionaries.ts réécrit : vocabulaire jargon → mots simples partout (canonical/witness → EN Official/Estimate, FR Officiel/Estimation ; stats band → "verifiable data points"/"modelled estimates", FR "points vérifiables"/"estimations modélisées") ; keys supprimées : nav.tagline, home.heroKicker, home.statsCorpus (stat 24/24 retirée de stats-band, grille lg:grid-cols-5), common.{dataVintage,asReported,witnessShort,canonicalShort,modelled→"Estimates"}, indicators.{rootsTitle,rootsHint,door,priority,sourcesCanonical,notesTitle}
 - Hero : kicker "Open-source data project"/"Projet de données open-source" supprimé (hero.tsx) ; titre → EN "Some data cannot lie." / FR "Certaines données ne peuvent pas mentir." ; header : tagline italique supprimée (site-header.tsx) ; teaser-cards : aria-label tagline retiré
 - FR sans em-dash (tiret cadratin) : toutes les strings FR du dictionnaire → "-"/":" ou virgules (hero, teasers, presets La Chute finale/La Défaite, method s1-s6, scoreComing, gapNote, witnessNote, formerUnionWarning, countries.subtitle, unavailableText) ; placeholders "—" → "-" (ranking-table ×3, countries page, indicator-grid) ; stats-band placeholder count-up "—" → "…" ; EN garde ses em-dashes
-- Footer : lien Méthode + ligne "Données : ToddLab V25 · UN DYB · …" supprimés ; layout simplifié (logo + blurb + GitHub) ; nouveau footerBlurb : EN "Measuring societies by what they live through, not by what they declare. Built on the method of Emmanuel Todd." / FR "Mesurer les sociétés par ce qu'elles vivent, non par ce qu'elles déclarent. Construit sur la méthode d'Emmanuel Todd." (alternatives proposées à l'utilisateur)
-- Méthode : s6Body sans version ("un instantané du backend ToddLab", plus de V25) ; s2 "Chiffres officiels vs estimations" réécrit avec le nouveau vocabulaire ; subtitle "certaines données ne peuvent pas mentir" ; metadata EN des pages (layout.tsx, methodology) mises à jour (title simple "ToddLab", vocabulaire)
+- Footer : lien Méthode + ligne "Données : ToddLab · UN DYB · …" supprimés ; layout simplifié (logo + blurb + GitHub) ; nouveau footerBlurb : EN "Measuring societies by what they live through, not by what they declare. Built on the method of Emmanuel Todd." / FR "Mesurer les sociétés par ce qu'elles vivent, non par ce qu'elles déclarent. Construit sur la méthode d'Emmanuel Todd." (alternatives proposées à l'utilisateur)
+- Méthode : s6Body sans numéro de version ("un instantané du backend ToddLab") ; s2 "Chiffres officiels vs estimations" réécrit avec le nouveau vocabulaire ; subtitle "certaines données ne peuvent pas mentir" ; metadata EN des pages (layout.tsx, methodology) mises à jour (title simple "ToddLab", vocabulaire)
 - Nouveau fichier src/lib/toddlab/i18n/descriptions.ts : descriptions courtes EN+FR pour les 29 indicateurs + PROVIDER_LABELS EN/FR (owid→"Our World in Data", un_dyb→"Annuaire démographique de l'ONU", curated→"Tables vérifiées ToddLab", etc.) ; hooks useIndicatorDescription() et useProviderLabel() ajoutés à i18n/index.tsx
 - Page indicateur [id] : description courte affichée dans le PageHeader avant la carte (aussi en branche 503 immigration_stock) ; SourcesSection remplacée par 2 lignes brèves "Chiffres officiels provenant de … / Estimations provenant de …" (fournisseurs dédupliqués, libellés humains) — généalogie/roots/priority/citations retirés ; carte fiabilité réduite à Badge + 1 phrase par niveau (relHighText/relMediumText/relLowText) ; NotesBlock/Collapsible/Button imports nettoyés
 - Page Comparer : espacements (control bar py-4/space-y-5, rows gap-x-4 gap-y-3, section mt-8 space-y-6, grille cartes gap-6) ; indicator-series-card : légende "— Hommes · ┄ Femmes" remplacée par vrais segments de ligne (border spans) ; badge import inutilisé retiré
@@ -164,7 +164,7 @@ Stage Summary:
 ---
 Task ID: 4
 Agent: orchestrator (main)
-Task: Retours V2 — préréglages hors cadre, synthèse lisible, refs Todd en chips, estimations colorées par pays, cartes clairsemées (événement-année + couverture), footer FR, libellés Todd
+Task: Retours — préréglages hors cadre, synthèse lisible, refs Todd en chips, estimations colorées par pays, cartes clairsemées (événement-année + couverture), footer FR, libellés Todd
 
 Work Log:
 - dictionaries.ts : footerBlurb FR = phrase exacte de l'utilisateur ("Un laboratoire de données publiques inspiré de la méthode d'Emmanuel Todd : chaque chiffre sourcé, chaque absence signalée.") + EN miroir ; toddOnly FR "Utilisées dans les livres de Todd" / EN "In Todd's books only" ; toddCore FR "Dans les livres de Todd" + nouvelle clé toddCoreTip (tooltip badge localisé, jargon "(todd_core)" retiré — badges.tsx) ; nouvelles clés compare.synthesisAvg, indicators.mapCoverage/mapCoverageOne/mapSparse/mapEventNote (EN+FR, plural-safe) ; synthesisHint enrichi (tri par rang moyen + heat)
@@ -187,7 +187,7 @@ Stage Summary:
 ---
 Task ID: 5
 Agent: orchestrator (main)
-Task: Retours V3 — flux pays→indicateur focalisé (?country=), tableau Classement épuré, préréglages scénarios avec ère + méditerranée 12 pays
+Task: Retours — flux pays→indicateur focalisé (?country=), tableau Classement épuré, préréglages scénarios avec ère + méditerranée 12 pays
 
 Work Log:
 - Page pays → indicateur : le titre de chaque carte métrique pointe désormais vers /indicators/{id}?country={entity_id} (indicator-grid.tsx)
@@ -208,7 +208,7 @@ Stage Summary:
 ---
 Task ID: 6
 Agent: orchestrator (main)
-Task: Retours V4 - (a) tableau Classement trop haut (512 -> ~400/450), (b) Comparer : la Synthèse de groupe ne se génère qu'avec le Taux de chômage en mode période - pourquoi ?, (c) Comparer : le sélecteur d'années descend jusqu'à 1816 - quelles données ?
+Task: Retours — (a) tableau Classement trop haut (512 -> ~400/450), (b) Comparer : la Synthèse de groupe ne se génère qu'avec le Taux de chômage en mode période - pourquoi ?, (c) Comparer : le sélecteur d'années descend jusqu'à 1816 - quelles données ?
 
 Work Log:
 - Enquête données (python sur data/dist) : AUCUNE donnée canonique à 1816. Le plus ancien point canonique = top_income_share 1820 (russian_federation, saudi_arabia). Le witness (estimations) life_expectancy de France commence EXACTEMENT en 1816 (OWID long-run : reconstructions Riley/HMD + UN WPP) ; witnesses globaux descendent à 1543 (life_expectancy) et 1751 (maternal_mortality). life_expectancy canonique France ne commence qu'en 2008.
@@ -227,7 +227,7 @@ Stage Summary:
 ---
 Task ID: 7
 Agent: orchestrator (main)
-Task: Retour V5 - rendre la hauteur du tableau Classement adaptable à la carte "Séries temporelles" à sa droite (elle grandit/rétrécit selon le nombre de pays)
+Task: Retours — rendre la hauteur du tableau Classement adaptable à la carte "Séries temporelles" à sa droite (elle grandit/rétrécit selon le nombre de pays)
 
 Work Log:
 - Constat : grille xl:grid-cols-2 avec items-start + scroll box plafonné à max-h-[28rem] -> les deux cartes évoluaient indépendamment
@@ -243,11 +243,11 @@ Stage Summary:
 ---
 Task ID: 8
 Agent: orchestrator (main)
-Task: (0) suivi backend V26 + resync, (1) état d'URL sur /indicators/[id], (2) SEO/partage (metadata par page, sitemap, robots, images OG), (3) recherche globale Cmd+K
+Task: (0) suivi backend + resync, (1) état d'URL sur /indicators/[id], (2) SEO/partage (metadata par page, sitemap, robots, images OG), (3) recherche globale Cmd+K
 
 Work Log:
-- Repo backend re-cloné (l'ancien /home/z/toddlab-analysis avait disparu) : V25 -> V26/V26.1/V26.1.1. data/dist : rétractation de DEUX indicateurs (agricultural_employment_share : fichier+catalogue+corpus ; immigration_stock : retiré du corpus) ; contrat inchangé sinon ; corpus 24 -> 22 métriques, 483 -> 470 citations
-- scripts/sync-data.sh corrigé (cp -r SRC DST nichait dist/dist/ quand DST existe ; -> cp -r SRC/. DST/) ; resync ; store KNOWN_VINTAGE "V25 (snapshot 2026-09)" -> "V26 (snapshot 2026-10)" ; API vérifiées (27 indicateurs, corpus 22)
+- Repo backend re-cloné (l'ancien /home/z/toddlab-analysis avait disparu) : resynchronisation du backend. data/dist : rétractation de DEUX indicateurs (agricultural_employment_share : fichier+catalogue+corpus ; immigration_stock : retiré du corpus) ; contrat inchangé sinon ; corpus 24 -> 22 métriques, 483 -> 470 citations
+- scripts/sync-data.sh corrigé (cp -r SRC DST nichait dist/dist/ quand DST existe ; -> cp -r SRC/. DST/) ; resync ; store KNOWN_VINTAGE mis à jour (snapshot 2026-10) ; API vérifiées (27 indicateurs, corpus 22)
 - Nouveau src/components/indicator/use-indicator-query-state.ts : ?country(focus, préservé)&y&s&c&sp&w ; omet les valeurs par défaut (y == default_year, s/sp == all, w == 0, c == sélection initiale) ; router.replace scroll:false ; merge depuis window.location (pas le snapshot de rendu) ; parseCountries : regex entity_id, dédoublonne, cap 6
 - indicator-series-card.tsx : entièrement contrôlé (countries/sex/witness remontés à la page, DEFAULT_COUNTRIES déplacé) ; page : autoYear local pour l'auto-recul année-vide (pas d'écriture URL), handleYear/HandleSex -> patch
 - SEO : les 5 pages clientes déplacées en vues (components/{indicator,country,compare}/*-view) + pages serveur ; generateMetadata sur /indicators, /countries, /countries/[id], /indicators/[id] (labels via store, descriptions EN) ; layout racine : metadataBase(site-url.ts : NEXT_PUBLIC_SITE_URL -> VERCEL_URL -> localhost), twitter card, openGraph SANS titre forcé (hérite par page) ; public/robots.txt supprimé (conflit) ; app/robots.ts + app/sitemap.ts (5 statiques + 27 indicateurs + 261 entités) ; opengraph-image.tsx x3 (root + 2 dynamiques) via OgCard partagé (satori, palette papier/encre/terracotta)
@@ -258,12 +258,12 @@ Stage Summary:
 - Toute la vue d'une page indicateur (année, sexe, pays des séries, estimations, focus) vit dans l'URL : chaque vue est partageable/rechargeable, avec des URLs canoniques propres (défauts omis)
 - Site partageable : metadata dynamiques par page + images OG rendues par route + sitemap/robots ; sur Vercel, VERCEL_URL est repris automatiquement (NEXT_PUBLIC_SITE_URL pour un domaine custom)
 - Recherche Cmd/Ctrl+K (et "/") : pays+entités+indicateurs+pages, insensible aux accents, aucune infrastructure serveur (labels déjà en cache React Query)
-- Backend V26 intégré : 27 indicateurs, corpus 22 métriques ; score civilisationnel : toujours en attente de la spécification utilisateur
+- Backend intégré : 27 indicateurs, corpus 22 métriques ; score civilisationnel : toujours en attente de la spécification utilisateur
 
 ---
 Task ID: 9
 Agent: orchestrator (main)
-Task: Retours V6 - (a) recherche globale : supprimer les suggestions hardcodées du state vide, (b) indice base 100 dans Séries temporelles
+Task: Retours — (a) recherche globale : supprimer les suggestions hardcodées du state vide, (b) indice base 100 dans Séries temporelles
 
 Work Log:
 - Recherche : query vide -> PLUS AUCUNE suggestion (fini les 8+8 indicateurs/pays + pages affichés à vide) ; une seule ligne muette « Exemple : fécondité » / "Example: fertility" (clé common.searchExample) ; EMPTY_STATE_LIMIT supprimé ; matches[] vide sans requête ; CommandEmpty ("Aucun résultat") désormais conditionné à hasQuery (sinon cmdk l'afficherait aussi à vide, la liste ne contenant plus d'items) ; groupes/indicateurs/pays affichés uniquement sur résultats réels de la recherche
@@ -283,7 +283,7 @@ Stage Summary:
 ---
 Task ID: 10
 Agent: orchestrator (main)
-Task: Retours V7 - (a) accueil : nouvelle phrase de traçabilité FR+EN, (b) zoom sur l'axe du temps de la carte Séries temporelles
+Task: Retours — (a) accueil : nouvelle phrase de traçabilité FR+EN, (b) zoom sur l'axe du temps de la carte Séries temporelles
 
 Work Log:
 - Accueil : home.heroDescription, dernière phrase remplacée EN ("Every number keeps its full provenance... never interpolated away" -> "Every value keeps its full traceability: source, quality indicators and missing data.") et FR ("Chaque nombre garde sa provenance complète... jamais interpolées." -> "Chaque valeur conserve sa traçabilité intégrale : source, indicateurs de qualité et données manquantes.") ; vérifié rendu EN+FR sur /
@@ -324,11 +324,11 @@ Agent: Z.ai Code (main)
 Task: Vérifier le repo GitHub backend (améliorations + modalités du score civilisationnel), analyse détaillée, puis compléter l'implémentation frontend.
 
 Work Log:
-- Fetch du clone /home/z/toddlab-analysis : déjà à jour avec origin/main (f26e464, v28.3, 2026-10-10) ; git ls-remote confirme qu'aucune branche/tag plus récent n'existe (seul main + tag v25-before-withdrawal)
+- Fetch du clone /home/z/toddlab-analysis : déjà à jour avec origin/main (f26e464, 2026-10-10) ; git ls-remote confirme qu'aucune branche/tag plus récent n'existe (seul main + un tag de sauvegarde)
 - Grep « civilisation/civiliz/modalit » dans le repo : 0 hit ; les « modalités » = la spécification complète de la couche score (config/score.yaml 294 l., docs/score-contract.md 238 l., ADR-0011, data/dist/score/meta.json)
 - Analyse détaillée : 18 indicateurs / 20 composantes officielles (poids 18) et 18 composantes modélisées (poids 16) ; directions (higher/lower/target 2.1), transforms (linear/log), basis (todd/consensus), presets égal (1/indicateur) et Todd (nb de livres distincts : fécondité 16/99 officiel, 92 modélisé), règle de report max 3 ans + âge affiché + garde-fou fantôme, couverture >= 0.60, delta sur observations distinctes refusé sous 50 % de poids commun, exclusions motivées (Gini, incarceration, illégitime+route/véhicule officiels seulement), échelle gelée bornes p1/p99 v2026-10-08.1
-- Comparé checksums data/dist frontend vs backend : 7/7 fichiers identiques octet/octet (v28.3 déjà synchronisé)
-- Constaté que l'implémentation score existe déjà (contexte perdu) : /score (classements, presets, année, URL state), teaser accueil top 5 des deux scores, carte score pays (scoreAtYear, delta v28 avec exclusion même-observation, poids personnalisés, badges âge/source/modelled), 3 routes API, score-core.ts conforme au contrat
+- Comparé checksums data/dist frontend vs backend : 7/7 fichiers identiques octet/octet (déjà synchronisé)
+- Constaté que l'implémentation score existe déjà (contexte perdu) : /score (classements, presets, année, URL state), teaser accueil top 5 des deux scores, carte score pays (scoreAtYear, delta avec exclusion même-observation, poids personnalisés, badges âge/source/modelled), 3 routes API, score-core.ts conforme au contrat
 - Trouvé 4 écarts résiduels et les a corrigés :
   a) badge de fiabilité du catalogue manquant dans la liste des composantes du score (exigé par score-contract.md « Badges to surface » ; 4 composantes medium : hiv, maternal_mortality_ratio, obesity, top_income) -> ajouté ReliabilityBadge (reliability != high) dans score-components-list.tsx
   b) em-dash « — » comme marqueur de valeur manquante dans score-components-list.tsx -> « - » (règle typographique FR)
@@ -337,11 +337,11 @@ Work Log:
 - Vérification agent-browser complète : /score FR (32 pays, Suisse 74,80, top-1 Irlande 76,62 en Todd), France officiel égal 2025 = 64,92 reproduit indépendamment en python depuis les fichiers dist, poids fécondité 15 -> 68,77 reproduit aussi, delta 2015->2025 = -0,59 (17 composantes, 88,9 % du poids), modélisé FR 72,70 (15/18), note Todd « 16 sur 99 » présente, badge fiabilité « Moyenne » visible sur VIH, langage FR persistant, aucun em-dash visible côté UI (seulement dans les données backend anglaises), lint OK, 0 erreur console
 
 Stage Summary:
-- Le repo GitHub n'a RIEN de plus récent que v28.3 (déjà analysé et déjà synchronisé côté frontend)
-- Les « modalités du score civilisationnel » = la couche score v27-v28.3 du backend ; l'implémentation frontend V28.3 existait déjà dans le contexte perdu et est conforme au contrat (score, couverture, presets, delta, poids custom, badges, garde-fous)
+- Le repo GitHub n'a RIEN de plus récent que le dernier état synchronisé (déjà analysé et déjà synchronisé côté frontend)
+- Les « modalités du score civilisationnel » = la couche score du backend ; l'implémentation frontend existait déjà dans le contexte perdu et est conforme au contrat (score, couverture, presets, delta, poids custom, badges, garde-fous)
 - 4 écarts corrigés : badge fiabilité, em-dash, slider->custom auto, overflow mobile
 - ScorePlaceholder (src/components/home/score-placeholder.tsx) est du code mort : remplacé par ScoreTeaser, peut être supprimé
-- À signaler à l'utilisateur : s'il attendait des modalités PLUS récentes que v28.3, elles ne sont pas poussées sur GitHub (dernier commit 2026-10-10 v28.3)
+- À signaler à l'utilisateur : s'il attendait des modalités PLUS récentes que le dernier état synchronisé, elles ne sont pas poussées sur GitHub (dernier commit 2026-10-10)
 
 ---
 Task ID: 12
@@ -412,10 +412,10 @@ Work Log:
 
 Stage Summary:
 - Frontend nettoyé et intégré au dépôt ToddLab ; aucune modification fonctionnelle de l'UI.
-- Version du backend : V29 (HEAD « V29 fix », local = origin/main au 2026-10-13).
-- Resynchronisation V28.3 -> V29 faite dans un second temps : scripts/sync-data.sh exécuté, frontend/data/dist identique au data/dist du backend (diff -rq vide) ; agricultural_employment_share.json (retiré du backend depuis V26, jamais servi) a disparu de la copie ; KNOWN_VINTAGE = « V29 (snapshot 2026-10) » (store.ts) et commentaires « backend V29 » (score-store.ts, score-types.ts, types.ts).
-- Écart V28.3 -> V29 sur data/dist (12 fichiers, 51 lignes) : comparaison JSON champ par champ, seuls changent des champs « note/notes » et les empreintes sha de score/meta.json (todd_core.csv v2 : colonne « status » retirée, 16 notes nettoyées) ; aucune valeur de série ni de score.
-- Vérification après resync : eslint 0, tsc 0, next build OK ; serveur standalone : /api/stats vintage « V29 », 27 indicateurs, 261 entités, 113 435 points canoniques ; pages principales et routes score en 200 ; score officiel Égal 2025 inchangé (France 64,92, Allemagne 68,79). Piège de test : un ancien serveur resté sur le port masque le nouveau (EADDRINUSE) et renvoie l'ancienne version ; vérifier le port avant de conclure.
+- Backend : local = origin/main au 2026-10-13.
+- Resynchronisation faite dans un second temps : scripts/sync-data.sh exécuté, frontend/data/dist identique au data/dist du backend (diff -rq vide) ; agricultural_employment_share.json (retiré du backend, jamais servi) a disparu de la copie ; KNOWN_VINTAGE (store.ts) et commentaires (score-store.ts, score-types.ts, types.ts) mis à jour.
+- Écart sur data/dist (12 fichiers, 51 lignes) : comparaison JSON champ par champ, seuls changent des champs « note/notes » et les empreintes sha de score/meta.json (todd_core.csv : colonne « status » retirée, 16 notes nettoyées) ; aucune valeur de série ni de score.
+- Vérification après resync : eslint 0, tsc 0, next build OK ; serveur standalone : /api/stats vintage, 27 indicateurs, 261 entités, 113 435 points canoniques ; pages principales et routes score en 200 ; score officiel Égal 2025 inchangé (France 64,92, Allemagne 68,79). Piège de test : un ancien serveur resté sur le port masque le nouveau (EADDRINUSE) et renvoie l'ancienne version ; vérifier le port avant de conclure.
 - Déploiement : le projet reste en localhost (aucune URL publique à configurer ; sitemap et robots pointent vers http://localhost:3000, ce qui est voulu).
 
 ---
@@ -425,23 +425,23 @@ Task: Remove the frontend's copy of the backend data; read data/dist in place.
 
 Work Log:
 - New src/lib/toddlab/server/dist.ts: locates <repo>/data/dist (TODDLAB_DIST_DIR override, else the nearest data/dist/catalog.json walking up from the working directory, ignoring anything under .next because the standalone build embeds a stale build-time copy) and caches parsed files keyed by mtime.
-- store.ts and score-store.ts use it; the in-process meta cache is gone. `vintage` is now read from data/dist/score/meta.json (`score bounds <bounds_version>`) instead of the hardcoded "V29 (snapshot 2026-10)".
+- store.ts and score-store.ts use it; the in-process meta cache is gone. `vintage` is now read from data/dist/score/meta.json (`score bounds <bounds_version>`) instead of a hardcoded string.
 - /indicators, /countries and sitemap.xml were prerendered at build time; they are now force-dynamic so they follow the data too.
 - Deleted frontend/data/dist (about 50 MB, duplicated in git) and frontend/scripts/sync-data.sh; frontend/.gitignore was removed earlier (root .gitignore covers node_modules, .next, ...).
 
 Stage Summary:
-- No sync step anymore. Verified: eslint 0, tsc 0, next build OK, standalone server via `npm start` serves all pages with 200; API responses byte-identical to the previous build except `vintage` and the infant_mortality notes text (CHANGELOG mention removed); editing data/dist/score/meta.json was reflected by /api/stats on the next request, and reverting it too.
+- No sync step anymore. Verified: eslint 0, tsc 0, next build OK, standalone server via `npm start` serves all pages with 200; API responses byte-identical to the previous build except `vintage` and the infant_mortality notes text; editing data/dist/score/meta.json was reflected by /api/stats on the next request, and reverting it too.
 - The frontend now requires the backend's data/dist next to it (same repository).
 
 
 ---
 Task ID: 17
 Agent: Claude Code (Hermes)
-Task: Follow the backend v30 score change (decision 20) in the frontend.
+Task: Follow the backend score change (decision 20) in the frontend.
 
 Work Log:
 - No frontend code change: the score pages read data/dist in place and the component list comes from score/meta.json.
-- Backend v30: hiv_prevalence_rate, obesity_rate and top_income_share are in the modelled score only; the official score has 17 components (weight 15; todd preset 92) and bounds 2026-10-13.1.
+- Backend: hiv_prevalence_rate, obesity_rate and top_income_share are in the modelled score only; the official score has 17 components (weight 15; todd preset 92) and bounds 2026-10-13.1.
 
 Stage Summary:
 - Verified on the production server: /, /score, /countries/france and the /api/score routes answer 200.
@@ -481,7 +481,7 @@ Agent: Claude Code (Hermes)
 Task: Show the three model-based canonical series as estimates.
 
 Work Log:
-- Backend v30: new additive field `canonical_nature` (published | modelled) on every indicator file and on catalog.json; hiv_prevalence_rate, obesity_rate and top_income_share are `modelled`. Score files are unchanged.
+- Backend: new additive field `canonical_nature` (published | modelled) on every indicator file and on catalog.json; hiv_prevalence_rate, obesity_rate and top_income_share are `modelled`. Score files are unchanged.
 - Frontend: types and API payloads carry the field; for `modelled` indicators the sources card says "Estimations provenant de" (not "Chiffres officiels provenant de"), the reliability text says the reference series is a model or compilation, and the rank tooltip says "Estimation". The method page states the exception. The words "Officiel" and "Estimation" are kept.
 
 Stage Summary:
@@ -493,7 +493,7 @@ Agent: Claude Code (Hermes)
 Task: Todd only / Todd + extra metric sets in the score.
 
 Work Log:
-- Backend v30 (decision 21): extra_core.csv -> config/extra_refs.yaml -> dist/extra_corpus.json; two more stored presets (equal_todd_only, todd_todd_only) where the extra components weigh 0; every component carries corpus_set (todd | extra). The equal / todd presets are unchanged.
+- Backend (decision 21): extra_core.csv -> config/extra_refs.yaml -> dist/extra_corpus.json; two more stored presets (equal_todd_only, todd_todd_only) where the extra components weigh 0; every component carries corpus_set (todd | extra). The equal / todd presets are unchanged.
 - score-core.ts skips components with weight <= 0 (coverage, n, fresh count, delta), like the backend. Verified by compiling it and replaying the 24 golden vectors and all 24,449 stored scores of the 4 presets x 2 scores: no mismatch.
 - /score has a second toggle "Todd + extra | Todd seul" (URL param m=todd, API preset = storedPreset(weighting, scope)); the rankings count only weighted components. The country score card has the same toggle (hidden in custom mode, where the weights are the user's).
 
@@ -518,7 +518,7 @@ Agent: Claude Code (Hermes)
 Task: UNESCO UIS connector, mean years of schooling, UIS attainment in the modelled score.
 
 Work Log:
-- Backend v30: connector for the UIS Data API (provider unesco_uis), the extra metric mean_years_of_schooling (estimate, indicator only), and the UIS attainment rates as witnesses of the secondary and tertiary attainment indicators; bounds regenerated at 2026-10-14.1 (decision 22 in ADR-0011). Official scores unchanged; the modelled score covers more countries (2015: 165 -> 170, 2025: 74 -> 114 in the equal preset).
+- Backend: connector for the UIS Data API (provider unesco_uis), the extra metric mean_years_of_schooling (estimate, indicator only), and the UIS attainment rates as witnesses of the secondary and tertiary attainment indicators; bounds regenerated at 2026-10-14.1 (decision 22 in ADR-0011). Official scores unchanged; the modelled score covers more countries (2015: 165 -> 170, 2025: 74 -> 114 in the equal preset).
 - Frontend: provider labels (EN / FR) and the Provider type know unesco_uis; the data is read in place, nothing else changes.
 
 Stage Summary:
@@ -530,7 +530,7 @@ Agent: Claude Code (Hermes)
 Task: Youth suicide rate (extra metric) from Eurostat.
 
 Work Log:
-- Backend v30: the Eurostat connector learns hlth_cd_acdr2 (the causes-of-death crude rate by age, ref grammar icd10/age/sex, unit RT pinned, layout guard, NUTS-2 regional codes dropped as non-country codes); new root eurostat_cod; indicator youth_suicide_rate (ages 15-24, 36 countries, 2011-2023, todd_core false, indicator only).
+- Backend: the Eurostat connector learns hlth_cd_acdr2 (the causes-of-death crude rate by age, ref grammar icd10/age/sex, unit RT pinned, layout guard, NUTS-2 regional codes dropped as non-country codes); new root eurostat_cod; indicator youth_suicide_rate (ages 15-24, 36 countries, 2011-2023, todd_core false, indicator only).
 - Frontend: FR labels and descriptions for youth_suicide_rate and mean_years_of_schooling.
 
 Stage Summary:
@@ -542,7 +542,7 @@ Agent: Claude Code (Hermes)
 Task: Abortion rate (extra metric) from the WHO/Europe Data Warehouse.
 
 Work Log:
-- Backend v30: new connector for the WHO/Europe Data Warehouse API v5 (provider who_euro, collector tier, root who_euro_hfa): measure HFA_586 "Abortions per 1000 live births", 49 countries, 1970-2023, 1,717 observations; population-weighted group averages dropped; measure and unit pin-guards. The server omits the Sectigo intermediate certificate: the connector ships that public intermediate as an extra trust anchor for this host only (verification stays on).
+- Backend: new connector for the WHO/Europe Data Warehouse API v5 (provider who_euro, collector tier, root who_euro_hfa): measure HFA_586 "Abortions per 1000 live births", 49 countries, 1970-2023, 1,717 observations; population-weighted group averages dropped; measure and unit pin-guards. The server omits the Sectigo intermediate certificate: the connector ships that public intermediate as an extra trust anchor for this host only (verification stays on).
 - Indicator abortion_rate (indicator only, not in the score; higher_is_better false by the illegitimate_births convention, no normative claim). License inferred CC BY-NC-SA 3.0 IGO (NonCommercial) - docs/licenses.md.
 - Frontend: provider labels, FR label and description, unit label and format.
 
@@ -651,3 +651,15 @@ Work Log:
 Stage Summary:
 - 519 tests, tsc 0, eslint 0; a rebuild changes only catalog.json and the divorce indicator file.
 - Page titles and descriptions of indicator and country pages follow the page language (French labels, FR description) instead of the English label.
+
+---
+Task ID: 34
+Agent: Claude Code (Hermes)
+Task: Documents without release versions.
+
+Work Log:
+- Release tags (vNN), version-centred narratives, CHANGELOG references and references to deleted scripts and withdrawn migration fixtures removed from docs/, the READMEs and this log; ADR amendments keep their date and decision number.
+- Figures re-read from the live dist and corrected: scored countries (48 / 176 in 2019), carried shares (21.5% / 15.9%), ghost country-years in 2025 (11 official / 1 modelled), 2000 official (20), todd preset fertility weight (15 of 89), corpus citation counts and ranks, cost of the extra set.
+
+Stage Summary:
+- 519 tests; only external library versions (Recharts 3, WHO API v5) remain.

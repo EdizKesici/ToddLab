@@ -7,18 +7,18 @@ of mind can be argued against the recorded reasoning instead of folklore.
 ## Numbering
 
 **ADR-0007 is the first ADR written as an ADR.** Numbers 0001-0006 are
-reserved for decisions that were already taken during the conversation and
-are recorded in `CHANGELOG.md`. They can be backfilled into full ADRs if
-they ever need revisiting:
+reserved for decisions that were already taken during the conversation,
+before the ADR format. They can be backfilled into full ADRs if they ever
+need revisiting:
 
-| Reserved | Decision (where it lives today) |
+| Reserved | Decision |
 |---|---|
-| 0001 | Storage Option A: `data/dist` committed, `data/raw` + `data/processed` + `reports/` gitignored (CHANGELOG 2026-09-04) |
-| 0002 | English-only labels: `label_fr` dropped from schema and configs (CHANGELOG 2026-09-04) |
-| 0003 | Board taxonomy: "Todd" and "Extra" as curated views over one pipeline, not separate datasets (conversation; `docs/emmanuel_todd.md`) |
-| 0004 | Ex-Soviet republics keep continuous series across 1991 + `formerly_part_of` warning instead of a fabricated USSR series (CHANGELOG 2026-09-03, "USSR tracer resolved") |
-| 0005 | Snapshot selection by parsed timestamp, never lexical filename sort (CHANGELOG 2026-09-03, live-audit fix) |
-| 0006 | `homicide_rate` source selection: `homicide-rate-unodc` + `field` for the multi-variable CSV (CHANGELOG 2026-09-04) |
+| 0001 | Storage Option A: `data/dist` committed, `data/raw` + `data/processed` + `reports/` gitignored |
+| 0002 | English-only labels: `label_fr` dropped from schema and configs |
+| 0003 | Board taxonomy: "Todd" and "Extra" as curated views over one pipeline, not separate datasets (`docs/emmanuel_todd.md`) |
+| 0004 | Ex-Soviet republics keep continuous series across 1991 + `formerly_part_of` warning instead of a fabricated USSR series |
+| 0005 | Snapshot selection by parsed timestamp, never lexical filename sort |
+| 0006 | `homicide_rate` source selection: `homicide-rate-unodc` + `field` for the multi-variable CSV |
 
 ## Register
 
@@ -27,8 +27,8 @@ they ever need revisiting:
 | [0007](0007-source-of-record-and-witnesses.md) | Source-of-record per layer, witnesses, and the curation gate | Accepted (2026-09-06) |
 | [0008](0008-todd-board-canonical-layer.md) | The Todd board's canonical layer is the as-reported tier (Technique A) | Accepted (2026-09-06) |
 | [0009](0009-todd-corpus-as-first-class-metadata.md) | The Todd corpus as first-class metadata (todd_refs) | Accepted (2026-09-19) |
-| [0010](0010-bilateral-faces-parallel-never-merged.md) | The two bilateral faces (birth / citizenship) are parallel layers, never merged | Moot since v26 (the faces' only indicator withdrawn; the discipline lives on in the segment layers) |
-| [0011](0011-score-layer-derived-composites.md) | The score layer: two derived composites (official / modelled), frozen bounds, never merged | Accepted (v27), amended (v27.1, v28) — the project's first and only derived product; the indicator layer untouched but for decision 10's direction flip; decision 11 (v27.1) removed incarceration_rate from the score only (no defensible direction); decisions 12-16 (v28) confirmed the remaining directions in the books, added illegitimate_births to the official score only, and amended decision 3 with the carry rule (real observations carried forward at most 3 years, age recorded and displayed) |
+| [0010](0010-bilateral-faces-parallel-never-merged.md) | The two bilateral faces (birth / citizenship) are parallel layers, never merged | Moot (the faces' only indicator withdrawn; the discipline lives on in the segment layers) |
+| [0011](0011-score-layer-derived-composites.md) | The score layer: two derived composites (official / modelled), frozen bounds, never merged | Accepted, amended — the project's first and only derived product; the indicator layer untouched but for decision 10's direction flip; decision 11 removed incarceration_rate from the score only (no defensible direction); decisions 12-16 confirmed the remaining directions in the books, added illegitimate_births to the official score only, and amended decision 3 with the carry rule (real observations carried forward at most 3 years, age recorded and displayed) |
 
 ## Format
 
@@ -46,14 +46,6 @@ they ever need revisiting:
 **Positive** / **Negative (accepted)** / **Neutral**
 ```
 
-ADRs cite their evidence (live audits, docs, CHANGELOG entries) rather
+ADRs cite their evidence (live audits, docs) rather
 than restating it. They are never deleted: superseding an ADR means
 writing a new one that references it.
-
-## Endnote (2026-10-13)
-
-`CHANGELOG.md` was removed from the repository and from its public history
-on 2026-10-13. The "CHANGELOG" references in the table above and in the
-ADRs (0007, 0008, 0010) are kept as written, as historical citations of a
-file that no longer exists; the evidence they pointed to is not
-recoverable from this repository.

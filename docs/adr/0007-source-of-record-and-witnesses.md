@@ -15,8 +15,7 @@ reads, and the "real" figures live in national publications, does ToddLab
 have to scrape 193 national statistical offices — and wouldn't stitching
 several sources together be "bricolage" (patchwork engineering)?
 
-Live investigation during this audit (details and artifacts in the
-CHANGELOG, 2026-09-06 entry):
+Live investigation during this audit (2026-09-06):
 
 1. **No universal "raw" database exists, or can exist.** "Raw" is a rank in
    a production chain (register → national publication → international
@@ -119,13 +118,13 @@ CHANGELOG, 2026-09-06 entry):
 
 - `docs/the-measurement-problem.md` §3 (layers), §7 (collector tier +
   paradigm case), §7.2 (consequences)
-- CHANGELOG 2026-09-06 (live verifications: DYB 1978 Table 15, DYB 2024
+- Live verifications of 2026-09-06: DYB 1978 Table 15, DYB 2024
   Table 15 end-to-end, WHO Mortality Database inventory, IGME portal,
-  HMD/HCD)
+  HMD/HCD
 - Precedents: HMD Methods Protocol; UN IGME "estimates and the data used
   to derive them"; OWID per-chart provenance model.
 - Numbering note: ADR-0001..0006 are reserved for decisions already taken
-  and recorded in the CHANGELOG (see `docs/adr/README.md`).
+  before the ADR format (see `docs/adr/README.md`).
 
 ---
 
@@ -134,7 +133,7 @@ planned-route statements above are retired — the "HMD/HCD (planned)"
 collector row (Context item 2's collector list), the alternative-route
 mentions ("the named alternative route (HMD, national office)", "HMD
 for Russia, national offices for the US/UK", "HMD authentication" in
-the cost list), and the CHANGELOG reference's HMD/HCD live verification
+the cost list), and the HMD/HCD live verification
 are historical records, not plans: HMD is no longer a planned
 collector, a per-indicator alternative route, or a planned
 cross-check. HCD (the Human Cause-of-Death Data series, HMD's sister

@@ -11,7 +11,7 @@
 
 Since the project's first week, the "Todd board" has been defined by a
 hand-curated list of metrics (10 drafted in conversation, refined to the
-six indicators built by v12). The selection rationale lived in
+six indicators built at the time). The selection rationale lived in
 conversation and in `docs/emmanuel_todd.md` — defensible, but not
 *checkable*, and not *weighted*: nothing in the repo could say how much
 a metric matters to Todd's work, or what to build next.
@@ -46,14 +46,14 @@ without the repo silently overriding it (or it overriding the repo)?
    `cross_validate_todd_core` against `config/indicators/*.yaml` — a
    stale flag in the compilation must never override the config's truth.
 
-   *2026-10-11 (v29): the column was DROPPED from the CSV — all 115 rows
+   *2026-10-11: the column was DROPPED from the CSV — all 115 rows
    read `not_implemented` (all 22 metrics implemented in the repo at the
    time), a permanently stale flag contradicting the real state, so Ediz
    removed it. The decision above stands as the recorded reasoning and
    keeps its meaning for legacy vintages: a CSV that still carries an
    extra `status` column normalises identically (extra columns are
    ignored), and a missing required column still fails loudly. The same
-   v29 delivery cleaned the notes to what-is-cited-only (where / when /
+   delivery cleaned the notes to what-is-cited-only (where / when /
    which table; no process remarks, no file cross-references, no
    importance judgments) — six rows had nothing left to say and their
    published `refs[].note` is now the empty string, the key staying
@@ -75,7 +75,7 @@ without the repo silently overriding it (or it overriding the repo)?
    e.g. birth_rate_fertility 111 citations, 16/16 books, unimplemented).
 6. **`cli stats` closes with the corpus block** (implemented share +
    citation-weighted backlog), and every Todd-core indicator line
-   carries its citations/books — numbers quoted in changelogs stay
+   carries its citations/books — numbers quoted in documents stay
    emitted by command.
 
 ## Consequences
@@ -100,7 +100,7 @@ narrowed only when a metric becomes an indicator.
 
 ---
 
-## Amendment 2026-10-17 (v30): the corpus keeps only the books with predictions
+## Amendment 2026-10-17: the corpus keeps only the books with predictions
 
 **Decision 29 (Ediz, 2026-10-17).** `todd_core.csv` only keeps the books that
 appear in the prediction compilation (`predict_check/`, 15 books). One book of

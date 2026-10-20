@@ -17,7 +17,7 @@ added — only OWID is active in phase 1.
 - Source page link to display: easy to reconstruct from `source_ref` (e.g.
   `infant-mortality` -> `https://ourworldindata.org/grapher/infant-mortality`).
 
-## UNESCO Institute for Statistics (active, v30)
+## UNESCO Institute for Statistics (active)
 
 - License: CC BY-SA 4.0 (UIS terms of use, databrowser.uis.unesco.org).
   ShareAlike: the dist files carrying UIS data (`mean_years_of_schooling`)
@@ -26,7 +26,7 @@ added — only OWID is active in phase 1.
   extraction" - the indicator file's `sources[]` block carries the citation
   and the license.
 
-## WHO/Europe Data Warehouse, Health for All database (active, v30)
+## WHO/Europe Data Warehouse, Health for All database (active)
 
 - License: CC BY-NC-SA 3.0 IGO - **an inference**: the Gateway footer's
   "Data sharing license" link leads to the WHO copyright page, where WHO

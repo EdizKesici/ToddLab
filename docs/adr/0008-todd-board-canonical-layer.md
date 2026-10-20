@@ -71,7 +71,7 @@ admission of permanent defeat rather than a choice.
    honestly absent for those entities, with the witness carrying the
    harmonized series meanwhile — the coverage report shows both facts.
 
-## Implementation (v6)
+## Implementation
 
 - `SourceRole` (canonical/witness) + `SourceRef.role` and
   `SourceRef.unit` in the indicator schema; `Provider.curated` +
@@ -86,7 +86,7 @@ admission of permanent defeat rather than a choice.
 - `merge`: canonical arbitration (within tier, by priority, logged) +
   witness series construction (per-source, gap-preserving, duplicate
   reductions logged).
-- `build`: dist v2 — `sources` (role + layer + native unit),
+- `build`: `sources` (role + layer + native unit),
   per-point provenance on `data`, `witnesses` block with converted
   values.
 - `config/indicators/infant_mortality.yaml`: curated (canonical, p1) +
@@ -125,8 +125,8 @@ divergence is now carried by the data layer itself.
   coverage via the witness.
 - Two series per indicator in the dist: the frontend contract grows
   (roles, layers, native units, per-point provenance). Breaking change
-  vs v5's `sources_used`/single-series format — documented in the
-  CHANGELOG; no frontend exists yet.
+  vs the former `sources_used`/single-series format; no frontend
+  existed yet.
 - The canonical unit change (percent -> per-1,000) rescales every
   published infant-mortality value by x10 — deliberate, documented, and
   the price of putting the conversion where the outlier is.
@@ -143,7 +143,6 @@ divergence is now carried by the data layer itself.
   (questions now closed), §7.2
 - `catalog/curated/README.md` (gate, provenance, cross-checks for the
   USSR series)
-- CHANGELOG 2026-09-06, v6 entry (implementation + live verification)
 
 ---
 

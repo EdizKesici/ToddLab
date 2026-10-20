@@ -30,7 +30,7 @@ A point may enter a curated table only if **all three** hold:
 If a point fails any condition, it does not enter — the gap stays
 visible in the coverage report instead.
 
-## File format (v21: the extended transcription header)
+## File format (the extended transcription header)
 
 The five legacy columns plus four optional transcription columns
 (`sex`, `provisional`, `quality_code`, `reference_range`) — see
@@ -104,7 +104,7 @@ if ever needed, with its own citations); no interpolation of anything;
 the 1976-87 publication blackout is carried per-row in
 `definition_note` rather than papered over.
 
-## The marker series (v15) — the tier's second family
+## The marker series — the tier's second family
 
 The markers are a different SHAPE from the founding series: one point
 per country, the point's year and value BOTH the event year, the
@@ -113,7 +113,7 @@ reads differently here: for the founding series the demonstrated
 distortion was a collector that stopped too early; for the markers it
 is the ABSENCE of any machine-readable door at all (probed live
 2026-09-20: OWID returns 404 on every candidate slug for both metrics,
-and no collector prints statutes — the probe record lives in the v15
+and no collector prints statutes — the probe record lives in the
 worklog and config/sources.yaml's curated notes).
 
 ### `same_sex_marriage_legalization.csv` — the 'religion zero' marker
@@ -178,7 +178,7 @@ ITS country's standard dating; the note carries the decomposition);
 countries outside the European comparison set have no row (the honest
 absent state).
 
-## The consensus-literature series (v17) — the tier's third family
+## The consensus-literature series — the tier's third family
 
 A different shape again from both the founding series and the markers:
 not one point per country (a dated event), not one continuous series
@@ -201,7 +201,7 @@ job, the number is never converted).
 - (a) todd_ref: the corpus's #6, the heaviest single-book concentration
   after the #1 (Le Destin des immigrés 16).
 - (b) distortion = absence: no machine-readable door anywhere (the
-  v16 probe record: GHO 0 hit, WDI 0/25000, OWID 404 on every
+  probe record: GHO 0 hit, WDI 0/25000, OWID 404 on every
   candidate slug; the DHS surveys are microdata releases, not series
   doors) — probed live 2026-09-20, recorded in config/sources.yaml.
 - (c) citations: per-row, the study itself — the consang.net global
@@ -215,8 +215,7 @@ job, the number is never converted).
   representative control cohort 29.8), Kalam et al. 2024 (India's
   NFHS-4+5 pooled national 13.6), Kaplan et al. 2016 (Turkey's
   Ministry-of-Health national 18.5). Every row was READ from a saved
-  evidence file at generation time (scripts/v17_probe/consang/
-  build_curated_table.py) — the v16 fixture-discipline lesson applied
+  evidence file at generation time — the fixture discipline applied
   to the catalog itself.
 
 **Conventions (documented per row, never applied silently):**
@@ -245,7 +244,7 @@ Sudan 57% vs the compilation's Khartoum 52.0 — as-reported on both
 ends); the 19th-century face (his historical France/Algeria tables)
 waits for a citable print — the table starts 1943.
 
-## The transcription series (v21) — the tier's fourth family
+## The transcription series — the tier's fourth family
 
 The vanished entities of the as-reported canon (USSR, Czechoslovakia,
 Yugoslavia SFR, the GDR, the two Yemens) have no door in the modern
@@ -270,7 +269,7 @@ extraction), never typed from memory.
   carry the live-birth definition footnote (Table 15 fn 33); the GDR
   rows carry the Berlin footnote (fn 24); '*' prints ride
   provisional=true; the row code C rides quality_code.
-- Gate (a): the vanished entities are the v1 audit's own gap list.
+- Gate (a): the vanished entities are the initial audit's own gap list.
   Gate (b): the distortion is TOTAL — without this table the
   indicator carries NOTHING for these states, and the harmonized
   witnesses attach their histories to successor codes instead.
@@ -318,7 +317,7 @@ recorded in config/sources.yaml.
 4. The connector, snapshot, normalize, merge and dist plumbing is
    already generic — no code change needed.
 
-### `womens_suffrage_introduction.csv` (v30, extra metric)
+### `womens_suffrage_introduction.csv` (extra metric)
 
 Women's right to vote in national elections, on equal terms, one row per
 country (185 rows, 1893-2005). Source: the Inter-Parliamentary Union's
@@ -331,7 +330,7 @@ several dates listed as stages of one grant take the earliest. Rows were
 generated from the page by script and reviewed against the printed table;
 countries the page does not list have no row.
 
-### `abortion_legalization.csv` and `divorce_legalization.csv` (v30, extra metrics)
+### `abortion_legalization.csv` and `divorce_legalization.csv` (extra metrics)
 
 Start of the legal availability of abortion (50 countries, 1948-2022) and of
 divorce (38 countries, 1857-2011) in the regime still in force (decision 24;

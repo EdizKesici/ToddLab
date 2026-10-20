@@ -1,23 +1,22 @@
 # ADR-0011: The score layer — two derived composites, official and modelled
 
-- **Status**: ACCEPTED (2026-10-05, v27); AMENDED (2026-10-06, v27.1 —
+- **Status**: ACCEPTED (2026-10-05); AMENDED (2026-10-06 —
   decision 11: `incarceration_rate` removed from the score only);
-  AMENDED (2026-10-06, v28 — decisions 12-16: directions confirmed in
+  AMENDED (2026-10-06 — decisions 12-16: directions confirmed in
   the books, `illegitimate_births` joins the official score, and the
-  score-per-year carry rule); AMENDED (2026-10-07, v28.1 — decision 17:
+  score-per-year carry rule); AMENDED (2026-10-07 — decision 17:
   the DYB Table 4 TFR wired as `birth_rate_fertility`'s second canonical
-  door, the official fertility scale RETAINED); AMENDED (2026-10-08,
-  v28.2 — decision 18: the official fertility scale regenerated on the
+  door, the official fertility scale RETAINED); AMENDED (2026-10-08 —
+  decision 18: the official fertility scale regenerated on the
   worldwide canonical sample, and the drift guard hardened to trip on
-  coverage drift, not only on source-name changes); AMENDED (2026-10-09,
-  v28.3 — decision 19: the UNODC / WHO Mortality Database widening of
+  coverage drift, not only on source-name changes); AMENDED (2026-10-09 —
+  decision 19: the UNODC / WHO Mortality Database widening of
   the official score's coverage REFUSED, the measured what-if on record);
-  AMENDED (2026-10-11, v29 — decision 19's cirrhosis row erratum: the
-  v28.3 brief's 45/44/54/57 was the THREE-SWAP combination mislabelled
-  as the cirrhosis swap, not an earlier reading of it — the brief was
-  wrong, not the measurement; cirrhosis alone reads 40/42/45/49,
-  re-run and confirmed); AMENDED (2026-10-13, v30 — decision 20: the
-  three model-based canonical series move to the modelled score only)
+  AMENDED (2026-10-11 — decision 19's cirrhosis row erratum: 45/44/54/57
+  is the THREE-SWAP combination, not the cirrhosis swap; cirrhosis alone
+  reads 40/42/45/49, re-run and confirmed); AMENDED (2026-10-13 —
+  decision 20: the three model-based canonical series move to the
+  modelled score only)
 - **Scope**: the project's FIRST AND ONLY derived product — two composite
   scores per country-year built on top of the frozen indicator dist; where
   the layer lives, what it may never touch, and the rules that compute it
@@ -28,7 +27,7 @@
   vocabulary taught this project how two views of one phenomenon stay
   side by side), the retirement of the unused "composite-derived-layer"
   reserve recorded in architecture.md and the
-  `industrial_employment_share` notes (the v18 probe dissolved the
+  `industrial_employment_share` notes (the probe dissolved the
   derivation question for THAT indicator; this ADR answers it for the
   whole layer)
 
@@ -40,11 +39,10 @@ constitution's anti-derivation line stands at the INDICATOR layer — no
 interpolation, no averaging, no reconciliation — and it stays. But a
 board of 27 hard indicators answers "what does each piece say", never
 "where does the country stand", and Ediz wanted both questions answered
-without corrupting the first. The v26 withdrawal had already closed the
-counts' door on the score's future (a stock of persons has no direction);
-what remained was the architecture the withdrawal's changelog recorded
-as V27+ memory: an absolute fixed-bound scale, one source per indicator,
-never an interpolation.
+without corrupting the first. The withdrawal of the counts had already closed
+their door on the score's future (a stock of persons has no direction);
+what remained was the architecture: an absolute fixed-bound scale, one
+source per indicator, never an interpolation.
 
 The decision that shaped everything else: TWO SEPARATE SCORES, never
 merged. "Official" (canonical-tier sources — the project's own
@@ -71,12 +69,12 @@ Ediz's decisions (locked; numbered and testable):
    percentile rank — rank is a display on the composite, never a
    property of it. No interpolation, ever; real observations may be
    carried forward for at most 3 years, with their age recorded and
-   displayed (v28, decision 16 — the amendment; a carried value is a
+   displayed (decision 16: a carried value is a
    reuse of a real observation, never an invented one, and the bounds
    are computed on fresh observations only).
 4. A difference between two years is computed **only on the components
    available at both dates WHOSE UNDERLYING OBSERVATION DIFFERS**
-   (v28 amendment: a component resting on the same observation at both
+   (a component resting on the same observation at both
    dates is excluded — its zero term would damp the delta and dilute the
    common weight), displays its common-component count and the
    per-component decomposition, and is REFUSED below 0.50 of common
@@ -93,7 +91,7 @@ Ediz's decisions (locked; numbered and testable):
 7. **`gini_index` is removed from the score only** — it stays an
    indicator, `todd_core: true`, in the catalog and on the site. Reason:
    double counting with `top_income_share`. Two measured facts (read
-   live 2026-10-05, restated neutrally in v27.1): (i) the WID Gini
+   live 2026-10-05): (i) the WID Gini
    witness (`owid:gini-coefficient-wid`) covers exactly the same 3,203
    country-year keys as `top_income_share`'s canonical
    (`owid:incomes-of-the-richest`) — the same survey universe carrying
@@ -108,28 +106,26 @@ Ediz's decisions (locked; numbered and testable):
    schema): `maternal_deaths` (a count; the ratio is the component),
    the two markers, `male_height_trend`,
    `consanguineous_marriage_rate`, `crude_birth_rate`,
-   `road_accident_mortality` (per capita), and the v26 withdrawals.
+   `road_accident_mortality` (per capita), and the withdrawn indicators.
    The POSTPONED `illegitimate_births` is postponement no longer —
-   decision 15 (v28) made it the official score's component.
+   decision 15 makes it the official score's component.
 10. **`industrial_employment_share` flips to "higher is better"** —
     Ediz's explicit instruction (Todd defends industry against free
     trade, *L'illusion économique*): the indicator config, its dist
-    file and its catalog entry change in exactly that one field
-    (v27's only indicator-layer change, a Breaking line in the
-    changelog), the score component carries `provisional: true` until
-    the direction is confirmed in the books, and a drift test now
+    file and its catalog entry change in exactly that one field,
+    the score component carried `provisional: true` until
+    the direction was confirmed in the books (decision 12), and a drift test
     asserts the catalog flag and the score direction can never
     disagree silently.
-11. **`incarceration_rate` is removed from the score only** (v27.1,
-    2026-10-05) — Ediz's methodological objection, accepted: the prison
+11. **`incarceration_rate` is removed from the score only** (2026-10-05)
+    — Ediz's methodological objection, accepted: the prison
     population measures what policing and the justice system do, not
     crime or well-being. The same movement reads in opposite ways — a
     fall can mean fewer offenders or a police force that misses them; a
     rise can mean a crackdown judged effective (the El Salvador case is
     the example; the reading there is contested) or harsher penal
     policy. No defensible monotone direction exists, so it cannot be a
-    score component (the v27 config's `basis: editorial` was the
-    warning that should have kept it out). It stays an indicator —
+    score component. It stays an indicator —
     `todd_core: true`, in the catalog, in the corpus, on the site —
     exactly the Gini's treatment (decision 7). The score keeps
     `homicide_rate` as its outcome measure of crime. Side effect,
@@ -142,9 +138,9 @@ Ediz's decisions (locked; numbered and testable):
     composition alternate; without it the modelled score gains 13 to 39
     countries per year between 2000 and 2022.
 12. **`industrial_employment_share` and `tertiary_education_share`:
-    "higher is better" is confirmed in Todd's books** (v28, 2026-10-06).
+    "higher is better" is confirmed in Todd's books** (2026-10-06).
     Both components drop `provisional: true` and move to `basis: todd`
-    (they were editorial+provisional since v27). With this and decisions
+    (they were editorial+provisional). With this and decisions
     13-14, NO component carries `basis: editorial` any more and none is
     provisional — the frontend's caveat retires.
 13. **`birth_rate_fertility` stays a target of 2.1; too high and too
@@ -171,8 +167,8 @@ Ediz's decisions (locked; numbered and testable):
     official score reaches 18 indicators / 20 components (total weight
     18); the modelled stays 16 / 18 / 16.
 16. **Score per year: keep the latest real observation, at most 3 years
-    old, with its age shown** (v28, 2026-10-06). This replaces the
-    exact-year rule of v27 and amends decision 3: no interpolation; real
+    old, with its age shown** (2026-10-06). This replaces the
+    exact-year rule and amends decision 3: no interpolation; real
     observations may be carried forward for at most 3 years, with their
     age recorded and displayed. It is NOT interpolation — no value is
     invented: a real, older observation is reused, capped, and
@@ -181,12 +177,12 @@ Ediz's decisions (locked; numbered and testable):
     because PISA comes every ~3 years, top income share and the
     official life expectancy at 60 have gaps up to 4 years, and the
     last years of the series are ragged (suicide and life expectancy
-    at 60 stop in 2021). On the V27.1 dist the composition effect was
+    at 60 stop in 2021). Under the exact-year rule the composition effect was
     0.86 (official) / 0.95 (modelled) score points per year against a
     real mean annual change of about 1.4, and it reversed the sign of
     the year-on-year change in about 18% (modelled) to 20% (official)
     of consecutive-year pairs; with the carry rule the composition
-    noise falls to 0.33 / 0.34 (measured on the V27.1 dist, 2000-2020).
+    noise falls to 0.33 / 0.34 (measured 2000-2020).
     Mechanics: for each (score, component, entity) and year Y in
     [bounds_from_year, max_obs_year(score)], the value used is the
     LATEST real observation with obs_year in [Y - 3, Y]; age = Y -
@@ -204,14 +200,14 @@ Ediz's decisions (locked; numbered and testable):
     all 37 pre-existing blocks kept every field at the 2026-10-06.2
     regeneration).
 17. **The DYB Table 4 TFR is `birth_rate_fertility`'s second canonical
-    door; the frozen official fertility scale is RETAINED** (v28.1,
-    2026-10-07 — Ediz's review of v28 approving the ranked wiring plan
+    door; the frozen official fertility scale is RETAINED** (2026-10-07 —
+    Ediz's review approving the ranked wiring plan
     #1: "Le câblage de la fécondité par l'Annuaire démographique
     (risque faible, gain de 4 à 5 pays), à essayer avec le reste").
     The indicator layer's constitution is untouched: the TFR is
     PRINTED by the collector in Table 4 (the printed-value status of
-    Table 17's ratios — v14's "no collector wire prints a national
-    TFR" finding had probed Table 10 and missed it), so no derivation
+    Table 17's ratios — an earlier finding that "no collector wire prints a
+    national TFR" had probed Table 10 and missed it), so no derivation
     enters. The door is priority-merged UNDER Eurostat (the FX/FR seam
     discipline: every entity-year both collectors print keeps
     Eurostat's value, the discarded candidates logged in
@@ -221,15 +217,15 @@ Ediz's decisions (locked; numbered and testable):
     2021/2022: +6, 2023: +4, 2024: +5 with ZERO losses, and the
     fertility component enters the aggregates of 10 already-scored
     entities (97 entity-years move, -2.8 to +3.4 points). The frozen
-    fertility bounds were deliberately NOT regenerated AT THAT VERSION
-    (the drift guard's then-trigger — a §4.4 source-NAME change — did
-    not fire, the selection still retained "canonical"); the
-    regeneration became decision 18 below, taken the next day with the
-    measured what-if on record.
+    fertility bounds were deliberately NOT regenerated by the wiring itself
+    (the drift guard's trigger at that time — a §4.4 source-NAME change —
+    did not fire, the selection still retained "canonical"); the
+    regeneration is decision 18 below, with the measured what-if on
+    record.
 18. **The official fertility bounds are REGENERATED on the worldwide
     canonical sample, and the drift guard trips on COVERAGE drift, not
-    only on source-name changes** (v28.2, 2026-10-08). Why: the v28.1
-    wiring kept the frozen European scale (hi 0.611 on 1,278
+    only on source-name changes** (2026-10-08). Why: the wiring
+    of decision 17 kept the frozen European scale (hi 0.611 on 1,278
     observations / 47 entities) while the component's canonical became
     the two-collector worldwide series — every TFR above 3.87 or below
     1.14 read 0 on the component (190 country-years across 44 entities
@@ -244,7 +240,7 @@ Ediz's decisions (locked; numbered and testable):
     component now reads 0 only beyond TFR 5.65 / below 0.78; the
     modelled bounds and every modelled score value are untouched (the
     modelled fertility reads the unchanged World Bank witness). The
-    GUARD RULE (the v28.1 defect, fixed here): the freezer additionally
+    GUARD RULE: the freezer additionally
     records `n_entities` per block (the distinct entities of the bounds
     sample), and rebuild recomputes both `n_sample` and `n_entities`
     live with the freezer's OWN sampling rule (one implementation,
@@ -253,16 +249,15 @@ Ediz's decisions (locked; numbered and testable):
     (config/score.yaml — 0.25, a PARAMETER of this decision: a normal
     yearly refresh adds roughly 3% to a 30-year sample, so 0.25
     tolerates several years of refreshes and would have refused the
-    v28.1 wiring at +97% observations / roughly +275% entities on the
+    wiring of decision 17 at +97% observations / roughly +275% entities on the
     fertility block). The source-name check stays; BOTH checks run on
     every rebuild; the refusal message names the score, the component,
     both measures' frozen and live values, and the deliberate re-freeze
-    prescription (re-run the freezer, bump `bounds_version`, record it
-    in the changelog). No automatic refresh, no bypass flag.
+    prescription (re-run the freezer, bump `bounds_version`). No automatic refresh, no bypass flag.
 19. **The official score's coverage is NOT widened through UNODC or the
     WHO Mortality Database — REFUSED, with the measurement on record**
-    (v28.3, 2026-10-09). What was evaluated: the two doors the v28/v28.1
-    probes left open. The UNODC intentional-homicide face (the v28.1
+    (2026-10-09). What was evaluated: the two doors earlier
+    probes left open. The UNODC intentional-homicide face (the
     memo: printed rates with per-point Source genealogy, 203 areas —
     but 15.2% of the candidate face carries UNODC's own GSH revisions,
     and promoting it is a REGISTER SWITCH for the 46 entities whose
@@ -273,7 +268,7 @@ Ediz's decisions (locked; numbered and testable):
     cause/sex/age, no rate column anywhere: reading a crude rate off
     the collector's own counts plus a population denominator is exactly
     what the anti-derivation rule forbids). The measurement (what-if on
-    the V28.2 dist, equal weights, coverage 0.60, the shipped carry and
+    the dist, equal weights, coverage 0.60, the shipped carry and
     ghost rules; the swapped component's bounds re-frozen on the
     witness sample with the freezer's own rule; the stand-ins are the
     EXISTING global witness series, so every row is an UPPER BOUND for
@@ -284,27 +279,20 @@ Ediz's decisions (locked; numbered and testable):
     46/48/45/49; suicide on the WHO GHO witness (185 entities)
     46/48/45/49; homicide and suicide together 51/49/46/51; the
     cirrhosis row is an ARTIFACT, not a widening — 40/42/45/49 as
-    reproduced here by both tools (the brief's own earlier reading
-    45/44/54/57; both readings agree on the shape: the WHO GHO
+    reproduced here by both tools (the WHO GHO
     cirrhosis witness is a 2019-only cross-section — 540 points, 180
     entities, one distinct year — so the swap DROPS 2010/2015 coverage
     while 2019/2021 ride the fresh cross-section; the row measures the
     swap's coverage artifact, not the source, and is recorded as not
     representative).
 
-    2026-10-11 ERRATUM (v29): the parenthetical above that presented
-    45/44/54/57 as "the brief's own earlier reading" of the cirrhosis
-    swap mislabels that row — it was never a reading of the cirrhosis
-    swap at all. The v28.3 brief's 45/44/54/57 was the COMBINATION of
-    the three swaps (homicide + suicide + cirrhosis) presented under
-    the cirrhosis label; the brief was wrong, not the measurement.
-    Re-run on 2026-10-11 by BOTH tools (the repo-core swap on the
-    pristine V28.3 dist; the reference prototype — agreeing on every
-    row): cirrhosis alone 40/42/45/49 (unchanged), the three-swap
-    combination 45/44/54/57 — the mislabelled row reproduced
-    exactly, which is what it was. The conclusion stands
-    unchanged: the cirrhosis row is not representative, because the
-    only worldwide cirrhosis witness (WHO GHO) covers 2019 only.
+    2026-10-11 ERRATUM: 45/44/54/57 is the COMBINATION of the three swaps
+    (homicide + suicide + cirrhosis), not the cirrhosis swap. Re-run on
+    2026-10-11 by BOTH tools (the repo-core swap on the pristine dist; the
+    reference prototype — agreeing on every row): cirrhosis alone 40/42/45/49,
+    the three-swap combination 45/44/54/57. The conclusion stands:
+    the cirrhosis row is not representative, because the only worldwide
+    cirrhosis witness (WHO GHO) covers 2019 only.
 
     Why refused: (a) THE JOINT CONSTRAINT — a
     non-OECD country is kept out of the official score by the narrow
@@ -345,12 +333,11 @@ transforms, sex handling, basis, provisional flags, corpus_metric) +
 `scripts/freeze_score_bounds.py`), output `data/dist/score/` —
 `meta.json`, `official.json`, `modelled.json`, `golden_vectors.json`.
 `rebuild` reads the frozen bounds and NEVER recomputes them; a drift
-guard fails the build loudly on EITHER of its two triggers (v28.2,
-decision 18): the frozen source no longer matches what the §4.4 rules
+guard fails the build loudly on EITHER of its two triggers (decision 18): the frozen source no longer matches what the §4.4 rules
 would pick, or the bounds sample's `n_sample` / `n_entities` drifts
 beyond `bounds_drift_tolerance` (a fetch moved the coverage under the
-score — re-freezing is a deliberate `bounds_version` bump, recorded in
-the changelog, never an auto-refresh). The backend pre-computes
+score — re-freezing is a deliberate `bounds_version` bump, never an
+auto-refresh). The backend pre-computes
 normalised values, retained sources, coverage and the two presets; the
 frontend applies custom weights on top of the stored values per
 `docs/score-contract.md`, and unit-tests itself against the golden
@@ -361,27 +348,28 @@ vectors.
 The accepted negatives, stated as such:
 
 - **The composition noise is measured and capped, not gone.** The
-  exact-year rule of v27 made a score's composition jump with the
+  exact-year rule made a score's composition jump with the
   sources' rhythms (PISA every ~3 years, tertiary attainment in 5-year
   steps, suicide and life expectancy at 60 stopping in 2021): a
   composition effect of 0.86 (official) / 0.95 (modelled) score points
   per year against a real mean annual change of about 1.4, sign
-  reversals in about 18-20% of consecutive-year pairs. The v28 carry
+  reversals in about 18-20% of consecutive-year pairs. The carry
   rule (decision 16) cuts that noise to 0.33 / 0.34 — at the price the
   amendment names: the last three years of a series are largely carried
-  values (2025: 74 modelled countries, 32 official), every carried
+  values (2025: every one of the 125 modelled and 32 official scored countries rests on at least one carried value), every carried
   component wears its age and the frontend badge "data from YYYY", and
-  the carried share (13.5% official / 9.3% modelled of scored values)
-  is displayed, not hidden. A gap longer than 3 years is still a gap.
-- **"Official" means the canonical tier, not "non-modelled"**: obesity
-  (WHO) and HIV are modeled estimates, top income share rides
-  OWID/WID. The contract says so; the badge `source_class: modelled`
-  flags the (currently empty, tested on a fixture) official fallback.
+  the carried share (21.5% official / 15.9% modelled of the resolved
+  values behind the stored `equal` scores) is displayed, not hidden. A gap longer than 3 years is still a gap.
+- **"Official" means figures published by state statistical services**
+  (decision 20): obesity (NCD-RisC), HIV (UNAIDS) and top income share (WID)
+  are in the modelled score only. The contract says so; the badge
+  `source_class: modelled` flags the (currently empty, tested on a
+  fixture) official fallback.
 - **The fertility target is a simplification** (2.1 everywhere;
   replacement is higher where mortality is high).
 - **The official fertility scale is the worldwide canonical sample**
-  (v28.2, decision 18): p1/p99 over 2,523 observations across 177
-  entities — the two-collector canonical the v28.1 wiring built, no
+  (decision 18): p1/p99 over 2,523 observations across 177
+  entities — the two-collector canonical built by decision 17's wiring, no
   longer the European 47-entity sample the scale was first frozen on.
   The consequence is the p99 tail semantics: a country-year whose TFR
   distance sits beyond the sample's p99 reads 0 on the component —
@@ -389,54 +377,47 @@ The accepted negatives, stated as such:
   on the current dist). Korea 2023 (TFR 0.721, distance 1.069) does
   exactly that: 1.069 > 0.990, so the component reads 0 — that is the
   tail rule, NOT a Korea-specific scale, and the same reading applies
-  to every point beyond p99, nothing more (the v28.1 entry had
-  attributed the retained tail to "Korea and Macao" specifically; the
-  attribution is corrected here — those are simply the points beyond
-  the percentile, and the regenerated scale still leaves Korea 2023
-  beyond it).
+  to every point beyond p99, nothing more; the regenerated scale
+  still leaves Korea 2023 beyond it.
 - **The modelled score's fertility scale is untouched** by decision 18
   (its component reads the World Bank witness, whose sample did not
-  move): every modelled normalised value and score is identical to
-  v28.1 — only the two files' per-component `bounds_version` metadata
+  move): every modelled normalised value and score is unchanged by
+  it — only the two files' per-component `bounds_version` metadata
   moved with the freeze.
 - **No provisional direction remains**: industrial employment, tertiary
   attainment, the fertility target and top income share are confirmed
-  in the books (decisions 12-14, v28) — the `provisional` flags and
+  in the books (decisions 12-14) — the `provisional` flags and
   the last `basis: editorial` entries retired with them.
 - **The modelled score lacks road mortality per-vehicle** (decision 6's
-  corollary) **and `illegitimate_births`** (decision 15, v28 — 47
-  entities, almost all European): it compares ~140 countries on 16
-  indicators, not 18. The official score gains the illégitimité and
+  corollary) **and `illegitimate_births`** (decision 15 — 47
+  entities, almost all European): it scores 176 countries in 2019 (the
+  official score: 48). The official score gains the illégitimité and
   with it a stronger European weight in its composition — the
   asymmetry is the price of not pushing ~40 non-European countries per
   year under the coverage threshold.
-- The todd preset gives fertility 16 of 99 indicator weight on the
-  official score (92 modelled — the per-vehicle component's book count
-  is official-only; v27.1 removed incarceration's weight 3 from the
-  96/95 it was; v28 added illegitimate_births' 6 to the official side).
-  The concentration is Todd's own book counts — displayed, not hidden;
+- The todd preset gives fertility 15 of 89 indicator weight on both
+  scores in the Todd + extra set (82 official / 84 modelled in the Todd-only
+  set; read from `meta.json` on the current dist). The concentration is Todd's own book counts — displayed, not hidden;
   the equal preset exists precisely because of it.
-- **The official score of 2000 is 21 countries, not 3** (v28): the
-  carry rule undoes v27.1's threshold fall (countries that lost
-  coverage when the total weight shrank to 17 regain it when
-  observations are carried), and the first years of a score follow
-  from the resolved data. The right edge is the honest new cost: no
+- **The official score of 2000 is 20 countries**: the
+  carry rule lets countries regain coverage when observations are
+  carried, and the first years of a score follow from the resolved data. The right edge is the
+  honest cost: no
   score year exists beyond the score's max_obs_year (2025 for both
   scores today), and a country-year with coverage above the threshold
-  but nothing fresh is a ghost — refused (3 such country-years in
-  2025, official).
+  but nothing fresh is a ghost — refused (11 such country-years in
+  2025 in the official score under the `equal` preset, 1 in the modelled).
 
 The indicator layer is untouched by all of this — the derivation lives
 in its own layer, its own config, its own ADR, labelled derived
-everywhere — with decision 10's single flag flip as the one deliberate,
-Breaking, reviewable exception (decisions 11 and 15, like 7 and 9 before
+everywhere — with decision 10's single flag flip as the one deliberate, reviewable exception (decisions 11 and 15, like 7 and 9 before
 them, touch the score layer only). The score layer retires the
 "composite-derived-layer" reserve: the question architecture.md held
-open since v15 is answered, here, in writing.
+open is answered, here, in writing.
 
 ---
 
-## Amendment 2026-10-13 (v30): decision 20, "official" means published by
+## Amendment 2026-10-13: decision 20, "official" means published by
 ## a state statistical service
 
 **Decision 20 (Ediz, 2026-10-13).** The official score keeps only figures
@@ -470,7 +451,7 @@ ILO modelled estimates are modelled, while the ILO series flagged `LFS`
 or `OE` by their per-observation SOURCE are candidates for the official
 side).
 
-Follow-up (2026-10-13, v30): the same fact is now carried by the indicator
+Follow-up (2026-10-13): the same fact is now carried by the indicator
 config and the dist. `canonical_nature` (`published` | `modelled`, default
 `published`) is an additive field of every indicator file and of
 `catalog.json`; the three decision-20 indicators declare `modelled`, and a
@@ -481,7 +462,7 @@ as an estimate, never as an official figure.
 
 ---
 
-## Amendment 2026-10-14 (v30): decision 21, two metric sets - Todd, and Todd + extra
+## Amendment 2026-10-14: decision 21, two metric sets - Todd, and Todd + extra
 
 **Decision 21 (Ediz, 2026-10-14).** The user can choose, for the score,
 between the metrics Todd uses in his books ("Todd only") and those plus the
@@ -509,7 +490,7 @@ Planned extra metrics (not yet wired) are listed in `extra_core.csv` and
 
 ---
 
-## Amendment 2026-10-14 (v30): decision 22, the UNESCO UIS attainment rates feed the modelled score
+## Amendment 2026-10-14: decision 22, the UNESCO UIS attainment rates feed the modelled score
 
 **Decision 22 (Ediz, 2026-10-14).** The UNESCO Institute for Statistics'
 attainment rates (UIS Data API, `api.uis.unesco.org`, provider `unesco_uis`,
@@ -546,7 +527,7 @@ indicator only, not in the score).
 
 ---
 
-## Amendment 2026-10-14 (v30): decision 23, licensing posture and the abortion ranking direction
+## Amendment 2026-10-14: decision 23, licensing posture and the abortion ranking direction
 
 **Decision 23 (Ediz, 2026-10-14).** (1) ToddLab will never be commercial: the
 NonCommercial condition of the WHO/Europe data (inferred CC BY-NC-SA 3.0 IGO,
@@ -558,7 +539,7 @@ method") is kept over the extra-metric list's "legally induced" wording.
 
 ---
 
-## Amendment 2026-10-14 (v30): decision 24, marker rules for the three extra legalization years
+## Amendment 2026-10-14: decision 24, marker rules for the three extra legalization years
 
 **Decision 24 (Ediz, 2026-10-14).** The three marker metrics outside Todd's
 books are curated tables, one row per country, each row citing its source.
@@ -591,7 +572,7 @@ data not reachable, owner decision 2026-10-14 to drop it).
 
 ---
 
-## Amendment 2026-10-14 (v30): decision 25, the extra metrics enter the score; the summation rule
+## Amendment 2026-10-14: decision 25, the extra metrics enter the score; the summation rule
 
 **Decision 25 (Ediz, 2026-10-14).** The extra metrics that can be scored enter
 the score under `corpus_set: extra` (weight 1 in `equal` and `todd`, 0 in the
@@ -636,7 +617,7 @@ value, ties to even). Effect on the stored scores: 136 of 24,067 values moved by
 
 ---
 
-## Amendment 2026-10-15 (v30): decision 26, comparing countries and ranking the movers; unresolved names
+## Amendment 2026-10-15: decision 26, comparing countries and ranking the movers; unresolved names
 
 **Decision 26 (Ediz, 2026-10-15).** The web app gets (1) a "compare with another
 country" shortcut from the country page, (2) official and modelled side by side
@@ -677,7 +658,7 @@ files).
 
 ---
 
-## Amendment 2026-10-15 (v30): decision 28, coverage counts components; threshold 0.50
+## Amendment 2026-10-15: decision 28, coverage counts components; threshold 0.50
 
 **Finding (Ediz, on the modelled score).** Switching the weighting from Egal to
 Todd changed the number of countries available (90 -> 139 in 2025). Cause:
@@ -714,7 +695,7 @@ vectors. The figures of decision 26 about comparability were measured under the
 previous weight-based rule.
 
 
-## Amendment 2026-10-18 (v30): decision 30, the divorce table covers datable laws of any century
+## Amendment 2026-10-18: decision 30, the divorce table covers datable laws of any century
 
 **Decision 30 (Ediz, 2026-10-18).** `divorce_legalization_year` grows from 12 to
 38 countries. Decision 24's perimeter ("every country for which a dated,

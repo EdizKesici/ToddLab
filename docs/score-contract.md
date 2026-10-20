@@ -1,5 +1,4 @@
-# The score layer's frontend contract (v27, amended v27.1, v28, v28.1,
-# v28.2 and v30, ADR-0011)
+# The score layer's frontend contract (ADR-0011)
 
 This is the EXACT, documented contract for computing a score, a custom-
 weighted score, or a two-year difference from `data/dist/score/`. The
@@ -16,34 +15,32 @@ and `golden_vectors.json` is what to unit-test against.
   openly from what the indicators measured, and every file says so.
 - **Two scores, never merged**: `official` (canonical-tier sources, 21
   components / total weight 19, 19 indicators — illegitimate_births
-  among them since v28; 37 countries scored in 2019 in the Todd + extra
+  among them; 48 countries scored in 2019 in the Todd + extra
   set) and `modelled` (widest-coverage single source per component, 21
-  components / total weight 19, 19 indicators, 158 countries in 2019 in
+  components / total weight 19, 19 indicators, 176 countries in 2019 in
   the Todd + extra set). They diverge where modeling runs ahead of collection;
   the divergence is the signal. Display them side by side, never
   average them.
 - **"Official" means figures published by state statistical services**
   (registers, censuses, their own surveys), with no model behind them.
-  Since v30 (decision 20) the three model-based or compiled series are
+  By decision 20 the three model-based or compiled series are
   in the modelled score only: HIV (UNAIDS modelled estimates), obesity
   (NCD-RisC Bayesian model) and top income share (WID constructed
   series). A component inside the official score whose retained source
   is a witness would carry `source_class: "modelled"` — surface the
   badge.
-- **The v28 carry rule is NOT interpolation** (decision 16, amends
+- **The carry rule is NOT interpolation** (decision 16, amends
   ADR-0011's decision 3): no value is invented — a real, older
   observation is reused, capped at `max_age_years` (3), and labelled
   with its age.
 - **The official fertility component is a PRIORITY MERGE of two
-  as-reported collectors** (decision 17, v28.1): Eurostat's
+  as-reported collectors** (decision 17): Eurostat's
   `demo_find` TFR (priorities 1-3) wins on every shared entity-year,
   and the DYB Table 4 TFR fills every entity-year Eurostat does not
   print — one component, two collectors, never reconciled. Measured on
   the shipped provenance log (live, 2026-10-08): of the 568 shared
   entity-years, 220 agree exactly, 157 within 0.01, 128 within 0.05 —
-  about 90% at rounding level (the v28.1 entry said 564; the live
-  count on the shipped arbitration log is 568, the correction recorded
-  in the v28.2 changelog). 7 entities show collector-vs-collector
+  about 90% at rounding level. 7 entities show collector-vs-collector
   seams >= 0.1 (Azerbaijan up to 0.44; Romania, Bulgaria, Georgia,
   Latvia, Moldova, Montenegro — Eurostat's value always wins, the
   discarded DYB candidate logged per point), and the 130 DYB-only
@@ -60,7 +57,7 @@ and `golden_vectors.json` is what to unit-test against.
   parameters (`bounds_from_year`, `percentiles`, `coverage_threshold`,
   `delta_min_common_weight`, `fertility_target`, `rounding`,
   `max_age_years`, `bounds_drift_tolerance` — the drift guard's refusal
-  threshold since v28.2), the `carry_rule` description, `max_obs_year` per
+  threshold), the `carry_rule` description, `max_obs_year` per
   score, the component list (`direction`, `transform`, `basis`,
   `provisional`, `sex`, `corpus_metric`, `corpus_set`), ALL FOUR presets' weights per
   component, input fingerprints (config/bounds/corpus sha256), and the
@@ -89,7 +86,7 @@ and `golden_vectors.json` is what to unit-test against.
   edge, an illegitimate_births official point, a ghost-guard refusal).
   Your implementation must reproduce every one.
 
-## The carry rule (v28, decision 16)
+## The carry rule (decision 16)
 
 For each (score, component, entity) and each year `Y` in
 `[bounds_from_year, max_obs_year]`:
@@ -107,7 +104,7 @@ age(Y)   = Y - obs_year          (0 = fresh; recorded in `age` when >= 1)
 - `max_obs_year` (in `meta.json`, 2025 for both scores today) is the
   greatest year with a real observation in any retained source of the
   score — no score year exists beyond it.
-- Coverage counts a carried component as available. Since decision 28 (v30)
+- Coverage counts a carried component as available. By decision 28
   coverage is the share of COMPONENTS available (each indicator 1, each sex face
   of a sex-split indicator 0.5: the 'equal' weights), never of the preset's
   weight, so Egal, Todd and custom weights score exactly the same
@@ -146,7 +143,7 @@ C       = components with a resolved value at BOTH y1 and y2
 delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
 ```
 
-- The exclusion is the v28 amendment: a component resting on the SAME
+- The exclusion is decision 16's amendment: a component resting on the SAME
   observation at both dates contributes a zero term that would damp the
   delta and dilute the common weight — it must not be in C.
 - Display: `|C|`, the common-component share `sum_C(u_c) /
@@ -158,7 +155,7 @@ delta   = sum_{c in C}(w_c * (n_c(y2) - n_c(y1))) / sum_{c in C}(w_c)
   `delta_min_common_weight` (0.50). Refusal is information ("the two
   years do not overlap enough to compare"), display it as such.
 
-### The metric sets (v30, decision 21)
+### The metric sets (decision 21)
 
 Every component carries `corpus_set`: `todd` (the indicator is in Todd's
 books, `todd_core: true`) or `extra` (outside them, listed in
@@ -169,7 +166,7 @@ books, `todd_core: true`) or `extra` (outside them, listed in
   with weight **0** on every `extra` component.
 
 The extra components weigh 1 under BOTH weightings (they have no books to
-count). Since decision 25 (v30) eight extra metrics are components:
+count). By decision 25 eight extra metrics are components:
 `life_expectancy_60`, `maternal_mortality_ratio` and
 `road_accident_mortality_per_vehicle` (official or both, as before),
 `reading_test_scores` and `science_test_scores` (both scores, like the Todd
@@ -178,8 +175,8 @@ estimate) and `youth_suicide_rate` and `abortion_rate` (official only: the
 data cover 36 and 49 European countries, and in the modelled score they would
 push most non-European countries under the coverage threshold). The three
 legalization-year markers cannot enter a mean of normalised values and stay
-indicators. Measured cost of the extra set, 2015, equal preset: official 44 ->
-37 countries scored, modelled 170 -> 144; the Todd-only sets are unchanged. A component with weight 0 takes no part at all: not in the weighted
+indicators. Measured cost of the extra set, 2015, equal preset: official 51 ->
+49 countries scored, modelled 186 -> 173; the Todd-only sets are unchanged. A component with weight 0 takes no part at all: not in the weighted
 mean, not in the coverage denominator, not in a delta (neither `n_components`
 nor the decomposition), and not in the ghost guard (a Todd-only score needs a
 fresh component among the weighted ones). A frontend re-implementing custom
@@ -206,19 +203,19 @@ weights must skip `weight <= 0` the same way.
 - **Carried values are labelled, never disguised**: when `age > 0`,
   display the badge **"data from YYYY"** (YYYY = `year - age`) next to
   the component; display the carried-value share of a score (the share
-  of its resolved values with `age >= 1`) — 13.5% official / 9.3%
-  modelled of scored values today — and never present a carried value
+  of its resolved values with `age >= 1`) — 21.5% official / 15.9%
+  modelled of the resolved values behind the stored `equal` scores today — and never present a carried value
   as a fresh measurement.
 - **The scale is absolute and frozen**: `bounds_version` in every
   component block. A score of 72 in 1995 and 72 in 2020 mean the same
   thing on the same scale — that is the point of p1/p99 bounds frozen
-  at generation time. Never re-rank per year. Since v28.2 the frozen
+  at generation time. Never re-rank per year. The frozen
   file also records each block's bounds-sample `n_sample` and
   `n_entities`, and the build REFUSES (it does not silently re-scale)
   if the live selection would pick another source OR if either measure
   drifts beyond `bounds_drift_tolerance` — the two drift triggers are
   the source NAME and the sample's coverage; both demand a deliberate
-  re-freeze (`bounds_version` bump, changelog entry). Since v28.3 the
+  re-freeze (`bounds_version` bump). The
   frozen file is VALIDATED at load: every block's counts must be
   integers and strictly positive, or both CLI doors refuse the file
   outright (a missing or zero count is a refusal, never a skipped
@@ -227,7 +224,7 @@ weights must skip `weight <= 0` the same way.
   score; `reliability: "low"` of the underlying indicator (read the
   catalog); the chosen `source` per component; the component count
   behind every value. (The `provisional: true` badge retired with
-  v28's decisions 12-14 — no direction awaits confirmation any more.)
+  decisions 12-14 — no direction awaits confirmation any more.)
 - **`incarceration_rate` and `gini_index` are indicators OUTSIDE the
   score** (decisions 11 and 7). The catalog still carries
   `higher_is_better: false` for incarceration — that boolean PREDATES
@@ -244,7 +241,7 @@ weights must skip `weight <= 0` the same way.
 - The composition noise is cut, not gone (0.32/0.34 points per year,
   2000-2020, from 0.86/0.95 at the exact year) — and the price is
   that the last years of a series are largely carried values (2025:
-  74 modelled countries, 32 official). Coverage and age display is
+  every one of the 125 modelled and 32 official scored countries rests on at least one carried value). Coverage and age display is
   the honest answer.
 - The fertility target (2.1) is a simplification; replacement is
   higher where mortality is high.
@@ -252,14 +249,14 @@ weights must skip `weight <= 0` the same way.
   source exists — decision 6) and no `illegitimate_births` (decision
   15: 47 entities, almost all European — adding it would push ~40
   non-European countries per year under the coverage threshold).
-- The official score of 2000 carries 21 countries (the carry rule
-  undid v27.1's threshold fall to 3); the first year of a score
+- The official score of 2000 carries 20 countries (the carry rule
+  keeps the first years populated); the first year of a score
   follows from the resolved data, by design (decision 8).
-- Since v28.1 the official fertility component reads TWO collectors
+- The official fertility component reads TWO collectors
   (Eurostat first, the DYB Table 4 TFR filling — decision 17): the
   official fertility normalised map carries 177 entities where it
   carried 47, and the UK's series resumes 2019-2023 (it was
-  witness-only after Brexit). Since v28.2 (decision 18) the component's
+  witness-only after Brexit). By decision 18 the component's
   frozen scale is the WORLDWIDE canonical sample (bounds_version
   2026-10-08.1: hi 0.9903 on 2,523 observations / 177 entities — the
   European freeze of 2026-10-06.2, hi 0.611 on 1,278 / 47, is
@@ -272,11 +269,13 @@ weights must skip `weight <= 0` the same way.
   not exact below the ~0.05 TFR level (the two-collector seam facts
   above): display the component's source badge, and treat small
   cross-country gaps as rounding-level agreement, not signal.
-- 4 ghost country-years in 2025 official (australia, canada, chile,
-  costa_rica): fertility coverage arrived for costa_rica, nothing
-  fresh did — the guard holds.
+- 11 ghost country-years in 2025 in the official score under the `equal`
+  preset (australia, canada, chile, costa_rica, georgia, israel, japan,
+  korea_republic_of, moldova_republic_of, united_kingdom, united_states)
+  and 1 in the modelled score (sudan): coverage reached the threshold,
+  nothing fresh did — the guard holds.
 
-### Comparing countries and ranking the movers (v30, decision 26)
+### Comparing countries and ranking the movers (decision 26)
 
 - **Comparability of a country comparison.** For each year where at least two
   of the compared countries have an emitted score, the web app flags whether

@@ -1,14 +1,14 @@
 # ADR-0010: The two bilateral faces are parallel layers, never merged
 
-- **Status**: MOOT SINCE v26 (2026-10-02) — the bilateral faces' ONLY rider,
+- **Status**: MOOT SINCE 2026-10-02 — the bilateral faces' ONLY rider,
   `immigration_stock`, was withdrawn entirely by the owner's decision
   (a count of persons, not a rate — no direction, no composite-score
   future, and a 228 MB dist file that blocked the GitHub push). The
   decision itself is not contested: the withdrawal removed the layers,
   not the reasoning. The ADR's parallel-faces discipline LIVES ON in the
-  segment layers (`segments` / `segments_citizenship`, v25 — the ADR's
-  own vocabulary extended to population classes), and the historical
-  record of the v22-v24 wiring stays in the CHANGELOG. The day a
+  segment layers (`segments` / `segments_citizenship` — the ADR's
+  own vocabulary extended to population classes), and the wiring is
+  no longer in the code. The day a
   per-origin rate face exists on any wire, this ADR is the record to
   argue against.
 - **Scope**: how the dist carries the two legal decompositions of the
@@ -16,11 +16,11 @@
   never do across them; the vocabulary that names them
 - **Depends on**: ADR-0007 (source-of-record and witnesses — the
   never-a-cross-layer-blend rule this ADR extends to a second axis),
-  v22's `bilateral` layer (the birth face, CHANGELOG 2026-09-22)
+  the `bilateral` layer (the birth face)
 
 ## Context
 
-v22 wired the bilateral (destination x origin) decomposition of
+The first wiring covered the bilateral (destination x origin) decomposition of
 `immigration_stock` on the place-of-birth axis: Eurostat `migr_pop3ctb`
 ROW doors (canonical) + the OECD questionnaire's foreign-born matrix
 `DSD_MIG_F@DF_MIG_POPF` (witness). But Todd's own boards read the SAME
@@ -43,8 +43,8 @@ merge arbitrate between them, blend them, or carry them separately?
 ## Decision
 
 1. **The dist carries TWO parallel layers, never merged.** `bilateral`
-   (the birth face, v22) and `bilateral_citizenship` (the legal face,
-   v23) are separate keys in the indicator's dist payload, each with
+   (the birth face) and `bilateral_citizenship` (the legal face)
+   are separate keys in the indicator's dist payload, each with
    its own `data` and its own `witnesses`. A (destination, origin,
    year) key that prints on both faces exists TWICE, once per layer,
    with each face's own value — the divergence IS the display
@@ -58,9 +58,9 @@ merge arbitrate between them, blend them, or carry them separately?
    average each other — the ADR-0007 never-a-cross-layer-blend rule,
    extended from the canonical/witness axis to the legality axis.
 3. **The routing key is `RawRecord.origin_axis`** — `"birth"` |
-   `"citizenship"` | `None` (single-axis, or a pre-v23 snapshot: the
-   birth face is the default by construction, so v22 raw trees rebuild
-   bit-identically on v23 code). The connectors stamp it; normalize
+   `"citizenship"` | `None` (single-axis, or a snapshot from before the citizenship face: the
+   birth face is the default by construction, so older raw trees rebuild
+   bit-identically). The connectors stamp it; normalize
    routes on it; the dist layer names follow it. The field is additive:
    no pre-existing record is modified.
 4. **Same drop discipline, same entity admission, per face.** Both
@@ -82,10 +82,10 @@ merge arbitrate between them, blend them, or carry them separately?
 
 **Positive**: the Todd question the pair exists for (how much of the
 foreign-born stock has naturalized, per origin) becomes a one-file
-comparison instead of an unanswerable blend; the v22 contract survives
+comparison instead of an unanswerable blend; the earlier contract survives
 byte-identically (the new layer is additive — the same guarantee the
 `bilateral` layer itself shipped with); a future third face (by-sex,
-the recorded V24 hook) extends the pattern one routing value at a time.
+the recorded hook) extends the pattern one routing value at a time.
 
 **Negative (accepted)**: the dist file grows (the citizenship layer
 adds 112,058 canonical + 109,763 witness points); consumers must read
@@ -96,7 +96,7 @@ differs (34 vs 30 Eurostat destinations) and the asymmetry must be
 explained wherever the pair is displayed.
 
 **Neutral**: the merge/validate/build machinery is shared and
-parameterized by layer name (one helper, two calls — the v22 inline
+parameterized by layer name (one helper, two calls — the first inline
 block extracted); the provenance trail carries `layer:
 "bilateral_citizenship"` entries self-describing, one trail for both
 faces.
